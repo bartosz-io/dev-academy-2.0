@@ -1,0 +1,629 @@
+<style>
+  .header {
+    text-align: center;
+  }
+
+  .header .title {
+    margin-top: 50px;
+    margin-bottom: -20px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .header .subtitle {
+    font-size: 22px;
+  }
+
+  .header .promise {
+    line-height: 47px;
+    font-size: 42px;
+    max-width: 920px;
+    margin: 40px auto;
+    font-weight: bold;
+  }
+
+  .highlighted {
+    color: #ff0062;
+  }
+
+  .video {
+    margin: auto;
+    max-width: 900px;
+    max-height: 500px;
+    height: 48vw;
+    background: gray;
+    text-align: center;
+    color: white;
+  }
+
+  .video iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  .join {
+    text-align: center;
+    padding: 18px 36px;
+    font-size: 38px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #ff0062;
+    margin: 30px auto;
+    display: block;
+    width: fit-content;
+  }
+
+  .guarantee {
+    text-align: center;
+    margin-top: -10px;
+    font-size: 20px;
+  }
+
+  .section-header {
+    color: #ff0062;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 80px 0 40px;
+    text-align: center;
+  }
+
+  .instructor {
+    margin: auto;
+    display: flex;
+    max-width: 900px;
+  }
+
+  .instructor img {
+    border-radius: 4px;
+  }
+
+  .instructor-name {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 26px;
+  }
+
+  .tick-bullets {
+    margin-left: 40px;
+    font-size: 20px;
+  }
+
+  .tick-bullets ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .tick-bullets ul li:before {
+    content: '✔️';
+    margin-right: 15px;
+  }
+
+  .tick-bullets ul li {
+    margin-bottom: 10px;
+  }
+
+  .talks {
+    max-width: 900px;
+  }
+
+  .section {
+    font-size: 18px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .narrow-section {
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .cols {
+    display: flex;
+    margin-top: 50px;
+  }
+
+  .col {
+    flex: 1;
+  }
+
+  .col2 {
+    flex: 2;
+  }
+
+  .col.last {
+    flex: none;
+    width: 33%;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  ul.result-bullets {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  ul.result-bullets li:before {
+    content: '👉';
+    margin-right: 15px;
+  }
+
+  ul.result-bullets li {
+    margin-bottom: 12px;
+  }
+
+  .module {
+    margin: 0 5px;
+    padding: 10px 0;
+    background-color: #ebebeb;
+  }
+
+  .hot {
+    font-size: 0.7em;
+    background: #ff006296;
+    padding: 1px 4px;
+    border-radius: 4px;
+  }
+
+  .lessons {
+    font-size: 16px;
+  }
+
+  .separator {
+    margin-top: 50px;
+  }
+
+  .total {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .crossed {
+    text-decoration: line-through;
+  }
+
+  .video-title {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .recommendation-bar.white {
+    background: white;
+  }
+
+  .recommendation-bar.white .recommendation {
+    color: black;
+  }
+
+  .recommendation-bar.white .recommendation .author {
+    color: gray;
+  }
+
+  img.top-40 {
+    margin: 40px auto;
+  }
+
+  .margin-bottom-40 {
+    margin-bottom: 40px;
+  }
+
+  .close {
+    font-size: 20px;
+    margin: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .instructor {
+      flex-direction: column;
+    }
+
+    .cols-column-reverse {
+      flex-direction: column-reverse;
+    }
+
+    .cols-column {
+      flex-direction: column;
+    }
+
+    .col.last {
+      width: 100%;
+    }
+    
+    .tick-bullets {
+      margin-left: 0;
+    }
+  }
+</style>
+
+<div class="header">
+  <h1 class="title">
+    Angular Enterprise Security Academy
+  </h1>
+  <p class="subtitle">
+    10-week effective learning program
+  </p>
+  <p class="promise">
+    Learn all you need about <span class="highlighted">Web Security</span> and implement a <span
+      class="highlighted">role-based enterprise-grade
+      authorization</span> in Angular and Node.js
+  </p>
+</div>
+<div class="video">
+  <iframe src="https://player.vimeo.com/video/373738871" webkitallowfullscreen
+    mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<div class="bold center close">Registration is closed.</div>
+<div class="bold center close">We are coming back in 2020.</div>
+
+<div class="section-header">Your teacher</div>
+<div class="instructor">
+  <div>
+    <img src="/assets/profile.jpg" alt="">
+    <div class="instructor-name">Bartosz Pietrucha</div>
+  </div>
+  <div class="tick-bullets">
+    <ul>
+      <li>Angular Academy Founder</li>
+      <li>Taught hundreds of developers around the World</li>
+      <li>Spoken at conferences like AngularUP, ngVikings, NG-Colombia, JSConf.be and more</li>
+      <li>Worked at companies like Credit Suisse, UBS, F-Secure, Tecnotree building enterprise software</li>
+      <li>Passionate about developers' growth</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-header">Selected Bartosz's conference talks</div>
+<div class="talks">
+  <div class="row">
+    <div class='embed-container'><iframe src='https://www.youtube.com/embed/j5NQ19DGBxM' frameborder='0'
+        allowfullscreen></iframe>
+      <div class="video-title">ngVikings, Finland</div>
+    </div>
+    <div class='embed-container'><iframe src='https://www.youtube.com/embed/MtpcOghiMkk' frameborder='0'
+        allowfullscreen></iframe>
+      <div class="video-title">HolyJS, Russia</div>
+    </div>
+    <div class='embed-container'><iframe src='https://www.youtube.com/embed/x3m0gqPspVs' frameborder='0'
+        allowfullscreen></iframe>
+      <div class="video-title">AngularUP, Israel</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">What is Angular Enterprise Security Academy?</div>
+  <div class="center">
+    <span class="bold">10-weeks learning program</span> that will make you <span class="highlighted bold">confident
+      about security</span></br>in your Angular applications (and any API)!
+  </div>
+  <div class="cols cols-column-reverse">
+    <div class="col">
+      <img src="code.png" alt="">
+    </div>
+    <div class="col2">
+      <div class="center">
+        <div class="bold">
+          By the end of this program,
+        </div>
+        <div>you will:</div>
+      </div>
+      <ul class="result-bullets">
+        <li>have a solid understanding of Web Security model</li>
+        <li>know Web Security vulnerabilities and prevention methods</li>
+        <li>implement role-based authorization system in real-live app</li>
+        <li>know how secure Angular app and backend API</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-header">What is included in the Academy?</div>
+<div class="narrow-section">
+  <div class="tick-bullets">
+    <ul>
+      <li>10-weeks learning program - <b>recorded lessons</b> (worth 799$)</li>
+      <li>10 LIVE group coaching sessions (worth 10 x 199$ = 1990$) 🔥</li>
+      <li>GDPR and legal guide (worth 399$)</li>
+      <li>Joint-work group on Slack (worth 199$)</li>
+      <li>All the recordings from coaching sessions (worth 199$)</li>
+      <li>List of authorization libaries (worth 49$)</li>
+      <li>Life-time access to the materials (with all future updates) 🔥</li>
+    </ul>
+  </div>
+  <div class="total">THE WHOLE PACKAGE for <span class="crossed">3635$</span> 399$ !!!</div>
+</div>
+
+<div class="bold center close">Registration is closed.</div>
+
+<div class="section-header">Is there another way?</div>
+<div class="center narrow-section">
+  Of course! You can be learning on your own, googling, writing questions on Stack Overflow, etc. But it takes a lot of
+  time... What I am offering you is a MASSIVE shortcut in a reasonable price. ...or you can go to a live bootcamp - travel, pay for a flight and hotel, and pay somewhere around 1000-1500$. The decision belongs to you. Take a look at the message below - it is one of our Slack members, struggling with implementing security... If you join the Academy, all your challanges will be solved during one of our live coaching sessions.
+  <br />
+</div>
+<img class="top-40" src="other_way.png" alt="">
+
+<div class="section-header">Academy Agenda</div>
+<div class="cols cols-column section">
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 1</div>
+      <div class="center">The big plan</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>The big goal</li>
+      <li>Course structure and topics</li>
+      <li>What you need</li>
+      <li>Training outcomes</li>
+      <li>Joint working</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 2</div>
+      <div class="center">Web Security model</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>Same-origin policy</li>
+      <li>Cross-origin resource sharing</li>
+      <li>Content Security Policy</li>
+      <li>Subresource intergrity</li>
+      <li>Cryptographic signatures</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 3</div>
+      <div class="center">Client vs. server security</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>Client-side security boundries</li>
+      <li>Server-side security</li>
+      <li>HTTPS Communication</li>
+      <li>Tokens vs. sessions <span class="hot">HOT!</span></li>
+      <li>When to use tokens?</li>
+      <li>When to use sessions?</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+</div>
+<div class="cols cols-column section">
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 4</div>
+      <div class="center">Security vulnerabilities</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>OWASP Top 10</li>
+      <li>Cross-site scripting</li>
+      <li>Cross-site request forgery</li>
+      <li>JWT Hacking <span class="hot">HOT!</span></li>
+      <li>Other web applications attacks</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 5</div>
+      <div class="center">Application architecure</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>Application overview</li>
+      <li>Secured Angular parts</li>
+      <li>Secured API</li>
+      <li>Node.js application setup</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 6</div>
+      <div class="center">Core features implementation</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>Login feature</li>
+      <li>Sign up feature</li>
+      <li>Router Guards</li>
+      <li>HttpInterceptors</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+</div>
+<div class="cols cols-column section">
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 7</div>
+      <div class="center">Client security implementation</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>Content Security Policy</li>
+      <li>XSS prevention</li>
+      <li>CSRF prevention</li>
+      <li>HttpOnly and Secure Cookies <span class="hot">HOT!</span></li>
+      <li>UserAuth object</li>
+      <li>Storing JWT token <span class="hot">HOT!</span></li>
+      <li>Refreshing the token</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 8</div>
+      <div class="center">API security implementation</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>Introduction to Express.js</li>
+      <li>Node.js security libraries</li>
+      <li>Generating JWT</li>
+      <li>Starting a session</li>
+      <li>Authorizing API calls</li>
+      <li>The two vectors of authorization</li>
+      <li>Preventing calls without the ownership</li>
+      <li>Preventing calls without the role</li>
+      <li>CORS</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+  <div class="col">
+    <div class="module">
+      <div class="bold center">Module 9</div>
+      <div class="center">Roles and account management</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>Adding a new user to an account</li>
+      <li>Managing active sessions <span class="hot">HOT!</span></li>
+      <li>Resetting a password</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+</div>
+<div class="cols cols-column section">
+  <div class="col last">
+    <div class="module">
+      <div class="bold center">Module 10</div>
+      <div class="center">GDPR and legal guidence</div>
+    </div>
+    <ol class="lessons">
+      <li>Welcome lesson</li>
+      <li>GDPR introduction</li>
+      <li>What you MUST do <span class="hot">HOT!</span></li>
+      <li>What you cannot do</li>
+      <li>Privacy policy</li>
+      <li>Terms of service</li>
+      <li>Homework</li>
+    </ol>
+  </div>
+</div>
+
+<div class="section-header">What others say?</div>
+
+<div class="section">
+  <img src="refs/ln1.png" alt="LinkedIn">
+  <img src="refs/ln2.png" alt="LinkedIn">
+</div>
+<div class="cols section">
+  <div class="col">
+    <img src="refs/tt1.png" alt="Twitter">
+  </div>
+  <div class="col">
+    <img src="refs/tt2.png" alt="Twitter">
+  </div>
+</div>
+<div class="cols section">
+  <div class="col">
+    <img src="refs/yt1.png" alt="YouTube">
+  </div>
+  <div class="col">
+    <img src="refs/yt2.png" alt="YouTube">
+  </div>
+</div>
+<div class="recommendation-bar white">
+  <div class="recommendation">
+    <img src="/assets/brad.jpg" alt="" class="avatar">
+    <div class="text">
+      Bartosz brings in-depth knowledge and experience in Angular enterprise development. He gives tremendous
+      value to the Angular community.
+      <div class="author">Brad Green, Former Engineering Director for Angular in Google</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-header">Risk-free guarantee</div>
+<div class="cols section cols-column">
+  <div class="col">
+    The materials are going to be designed to give you 10x more value tak you expect. But, if for whatever reason you
+    will not be satified, then you can write an email within 30 days of official lauch of the program to
+    bartosz@angular-academy.com and I will give you money back.
+    <br /><br />
+    My goal is to help you and give as much value as possible.
+  </div>
+  <div class="col">
+    <img src="satisfaction-guaranteed.png" alt="">
+  </div>
+</div>
+
+<div class="section-header">When does the Academy start?</div>
+<div class="section center">
+  <div>
+    The Academy officially starts in <span class="highlighted bold">February 2020</span>.
+  </br>Since the official launch you will start receiving the materials and invitations for the live coaching sessions.
+  </div>
+</div>
+
+<div class="section-header">Frequently Asked Questions</div>
+<div class="section margin-bottom-40">
+  <div class="bold">When does the registration end?</div>
+  <div>The registration ends 29th November 2019, 20:00 GMT. After this time, there will not be a possibility to join the program. Although, there will be a waiting list open for the next edition of the program.</div>
+</div>
+<div class="section margin-bottom-40">
+  <div class="bold">Why can't I join during the program?</div>
+  <div>The program is designed in such a way that all participants who started at the same time are progressing equally through it. Then, every participant will get the most out of the training.</div>
+</div>
+<div class="section margin-bottom-40">
+  <div class="bold">Can I pay for the participation, but take part in the next edition?</div>
+  <div>Yes. Even more. You can take part in this edition and all of the next editions - free of additional costs.</div>
+</div>
+<div class="section margin-bottom-40">
+  <div class="bold">How will the program be hosted?</div>
+  <div>The video lessons will be hosted on Teachable.com. The coaching sessions will be hosted via webinar software.</div>
+</div>
+<div class="section margin-bottom-40">
+  <div class="bold">Will the price of the program rise?</div>
+  <div>Yes, it will rise in the future. The program is going to be improved and updated according to the participants needs.</div>
+</div>
+<div class="section margin-bottom-40">
+  <div class="bold">Do you provide any guarantee?</div>
+  <div>Yes, I do. Angular Academy offers 30 days money-back guarantee. If you don't find the program fitting your needs after 30 days of the official start, you can ask for the refund - you just send an email to bartosz@angular-academy.com and you will receive your money back.</div>
+</div>
+<div class="section margin-bottom-40">
+  <div class="bold">I don't have time to take such a comprehensive course. Is it for me?</div>
+  <div>In order to take advantage of the program you have to invest at least 1 hour a week. The materials are going to be concise and concrete to maximize the learning and minimize the time needed for it.</div>
+</div>
+<div class="section margin-bottom-40">
+  <div class="bold">How long do I have the access to the materials of the program?</div>
+  <div>You receive a life-time access to the program. It also means that if the course is extended with the new modules in the future, you will have the access to it, without any additional costs.</div>
+</div>
+
+<div class="section-header">Are you ready to join?</div>
+<div class="section center">
+  <div>
+    This program will save you at least 10 hours of work and research (100 hours in 10 weeks)!</br><span
+      class="highlighted bold">Are you ready to take action?</span>
+  </div>
+</div>
+
+<div class="bold center close">Registration is closed.</div>
+
+<div class="separator"></div>
+<div class="guarantee">
+  🔒 100% satisfaction guaranteed!
+</div>
+<div class="separator"></div>
+
+<div class="center margin-bottom-40">
+  <a href="https://docs.google.com/document/d/1T42ik6WbVr2ZVWeoxtd-ZBa8p1Y67ndNZukt6slig_U/edit">Pre-order sales Terms and Conditions</a>
+</div>

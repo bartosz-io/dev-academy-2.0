@@ -1,0 +1,5 @@
+<ul class="tags">
+    <% site.tags.forEach(function(tag) { %>
+        <li <% if(is_tag(tag.name)) { %> class="active" <% } %>><a href="/tags/<%- tag.name %>"><%- titlecase(tag.name) %></a></li>
+    <% }) %>
+</ul>

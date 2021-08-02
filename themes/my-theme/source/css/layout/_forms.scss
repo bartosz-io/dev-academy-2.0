@@ -1,0 +1,35 @@
+input,
+textarea {
+  border: 0;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 24rem;
+}
+
+button,
+input,
+textarea {
+  line-height: 1.3;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $dark-400;
+  }
+}
+
+button,
+a {
+  &:focus-visible {
+    outline: 3px solid $pink-200;
+  }
+}
+
+label {
+  font-weight: 700;
+  padding-bottom: $size-8;
+}

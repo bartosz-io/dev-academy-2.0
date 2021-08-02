@@ -1,0 +1,46 @@
+[class^='icofont-'] {
+  font-family: $font-family-ico;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  line-height: 1;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.icofont-copyright:before {
+  content: "\eef3";
+}
+
+.icofont-twitter:before {
+  content: "\ed7a";
+}
+
+.icofont-facebook:before {
+  content: "\ed37";
+}
+
+.icofont-chat:before {
+  content: "\eed5";
+}
+
+.icofont-navigation-menu:before {
+  content: "\efa2";
+}
+
+.icofont-close:before {
+  content: "\eee4";
+}
+
+.icofont-curved-double-right:before {
+  content: "\ea72";
+}
+
+.icofont-curved-double-left:before {
+  content: "\ea71";
+}

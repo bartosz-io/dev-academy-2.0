@@ -9,13 +9,14 @@
     "server": "hexo server --draft"
   },
   "hexo": {
-    "version": "5.3.0"
+    "version": "5.4.0"
   },
   "dependencies": {
     "hexo": "^5.0.0",
     "hexo-browsersync": "^0.3.0",
     "hexo-feed": "^1.1.0",
     "hexo-filter-nofollow": "^2.0.2",
+    "hexo-filter-responsive-images": "^1.7.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^3.0.0",
     "hexo-generator-index": "^2.0.0",
@@ -25,6 +26,10 @@
     "hexo-renderer-marked": "^3.3.0",
     "hexo-renderer-scss": "^1.2.0",
     "hexo-server": "^2.0.0",
-    "highlight.js": "^10.5.0"
+    "hexo-toc": "^1.1.0",
+    "hexo-util": "^2.5.0",
+    "imagemin": "^7.0.1",
+    "imagemin-webp": "^6.0.0",
+    "minimatch": "^3.0.4"
   }
 }

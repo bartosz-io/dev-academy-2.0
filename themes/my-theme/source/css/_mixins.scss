@@ -1,0 +1,5 @@
+@import 'variables';
+
+@mixin transition($prop) {
+  transition: $transition-time $prop $transition-type;
+}

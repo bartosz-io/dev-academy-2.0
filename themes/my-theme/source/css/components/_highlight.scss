@@ -1,0 +1,87 @@
+.highlight {
+  margin: 0 0 3rem;
+  padding: 1.5rem 2rem;
+  background: $dark-500;
+  border: .1rem solid $light-700;
+  overflow: auto;
+  color: $light-300;
+  line-height: 2.5rem;
+
+  pre {
+    font-family: $font-family-monospace;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gutter {
+    pre {
+      text-align: right;
+      padding-right: 20px;
+      color: #666;
+      font-size: 0.85em;
+    }
+  }
+
+  .line {
+    line-height: 2.5rem;
+
+    &.marked {
+      background: $light-600;
+    }
+  }
+}
+
+pre .comment,
+pre .title {
+  color: #999;
+}
+pre .variable,
+pre .attribute,
+pre .tag,
+pre .regexp,
+pre .ruby .constant,
+pre .xml .tag .title,
+pre .xml .pi,
+pre .xml .doctype,
+pre .html .doctype,
+pre .css .id,
+pre .css .class,
+pre .css .pseudo {
+  color: #f2777a;
+}
+pre .number,
+pre .preprocessor,
+pre .built_in,
+pre .literal,
+pre .params,
+pre .constant {
+  color: #f99157;
+}
+pre .class,
+pre .ruby .class .title,
+pre .css .rules .attribute {
+  color: #9c9;
+}
+pre .string,
+pre .value,
+pre .inheritance,
+pre .header,
+pre .xml .cdata {
+  color: #9c9;
+}
+pre {
+  .css {
+    .hexcolor {
+      color: #6cc;
+    }
+  }
+}
+pre .function,
+pre .javascript .title {
+  color: #69c;
+}
+pre .keyword,
+pre .javascript .function {
+  color: #c9c;
+}

@@ -1,0 +1,96 @@
+// Sizing/spacing
+$size-4: .4rem;
+$size-8: .8rem;
+$size-12: 1.2rem;
+$size-16: 1.6rem;
+$size-24: 2.4rem;
+$size-32: 3.2rem;
+$size-48: 4.8rem;
+$size-64: 6.4rem;
+$size-96: 9.6rem;
+$size-128: 12.8rem;
+$size-152: 15.2rem;
+$size-192: 19.2rem;
+$size-256: 25.6rem;
+$size-384: 38.4rem;
+$size-512: 51.2rem;
+$size-640: 64rem;
+$size-768: 76.8rem;
+
+// Font sizes
+$font-size-12: 1.2rem;
+$font-size-14: 1.4rem;
+$font-size-16: 1.6rem;
+$font-size-18: 1.8rem;
+$font-size-20: 2rem;
+$font-size-22: 2.2rem;
+$font-size-24: 2.4rem;
+$font-size-30: 3rem;
+$font-size-34: 3.4rem;
+$font-size-48: 4.8rem;
+$font-size-56: 5.6rem;
+$font-size-100: 10rem;
+
+// Fonts
+$font-family-ico: 'IcoFont';
+$font-family: 'Roboto', sans-serif;
+$font-family-monospace: 'Source Code Pro', monospace;
+$font-family-georgia: Georgia, 'Times New Roman', serif;
+
+// Colors
+// - Primary dark
+$dark-100: #000;
+$dark-200: #151515;
+$dark-300: #181818;
+$dark-400: #212121;
+$dark-500: #2e2e2e;
+$dark-600: #333842;
+
+// - Light
+$light-100: #fff;
+$light-200: #ededed;
+$light-200: #e1e1e1;
+$light-300: #d4d4d4;
+$light-500: #8d8d8d;
+$light-600: #767676;
+$light-700: #999;
+
+// - Teal
+$teal-100: #1b95e0;
+$teal-200: #2186c3;
+$teal-300: #3ba4fe;
+$teal-400: #256fbe;
+$teal-600: #00acff;
+
+// - Pink
+$pink-100: #e91e63;
+$pink-200: #d33067;
+$pink-300: #ff2b70;
+
+$twitter: #1da1f2;
+$facebook: #66679d;
+$chat: $teal-300;
+
+$white: #fff;
+$font-color: $dark-200;
+
+// - Z-indexes
+$z-index-100: 100;
+$z-index-200: 200;
+$z-index-300: 300;
+$z-index-400: 400;
+$z-index-500: 500;
+
+// Alerts
+$danger: #DC4B4B;
+
+// Box shadows
+$box-shadow: 0 -2px 6px hsla(220, 47%, 48%, .15);
+
+// Transitions
+$transition-time: .3s;
+$transition-type: ease-in-out;
+$transition-default: $transition-time all $transition-type;
+
+// Container gap
+$container-gap: 2rem;

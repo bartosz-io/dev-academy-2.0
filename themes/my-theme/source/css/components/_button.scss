@@ -1,0 +1,53 @@
+.button {
+  color:  $light-100;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: .8rem 2rem;
+  font-weight: 700;
+  border: 0;
+  border-radius: .4rem;
+  white-space: nowrap;
+  line-height: 1.3;
+  font-size: 1.4rem;
+  transition: background-color 0.3s ease;
+
+  [class^='icofont-'] {
+    padding-right: .3rem;
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    color: $light-100;
+  }
+}
+
+.button-primary {
+  background-color: $pink-100;
+
+  &:hover {
+    background-color: $pink-200;
+  }
+}
+
+.button-large {
+  padding: 1.5rem 3rem;
+}
+
+.button-block {
+  display: block;
+  width: 100%;
+}
+
+.button-twitter {
+  background: $teal-100;
+
+  &:hover {
+    background-color: $teal-200;
+  }
+}
+
+.button-small {
+  padding: .5rem 1.6rem;
+  font-size: 1.4rem;
+}

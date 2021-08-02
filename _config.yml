@@ -1,0 +1,203 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: Dev-Academy.com
+subtitle:
+description: 'Articles, blog posts, video trainings for full-stack developers'
+keywords: 'angular, rxjs, reactive, node, software architecture, testing, frontend, backend, fullstack web development'
+author: Bartosz Pietrucha
+language: en
+timezone: ''
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
+url: https://dev-academy.com
+root: /
+permalink: /:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: blog
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.ejs # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true
+  field: site
+  exclude: []
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 6
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: D MMM YYYY
+time_format: HH:mm:ss
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
+
+# Disqus
+disqus_shortname: angular-academy-1
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 0
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: my-theme
+
+# Sitemap
+# https://www.npmjs.com/package/hexo-generator-seo-friendly-sitemap
+sitemap:
+  path: sitemap.xml
+
+# SCSS support
+# https://www.npmjs.com/package/hexo-renderer-scss
+node_sass:
+  debug: false
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
+
+# TOC - Table Of Contents support
+# https://www.npmjs.com/package/hexo-toc
+toc:
+  maxdepth: 3
+  class: toc
+  slugify: transliteration
+  decodeEntities: false
+
+#  Generate Atom 1.0 or RSS 2.0 feed.
+#  https://www.npmjs.com/package/hexo-generator-feed
+feed:
+  type:
+    - atom
+    - rss2
+  path:
+    - atom.xml
+    - rss2.xml
+  limit: false
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
+
+# Browser sync
+# https://www.npmjs.com/package/hexo-browsersync
+browsersync:
+  logLevel: "warn"
+  ghostMode:
+    scroll: true
+
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: ''
+
+# rel="external nofollow noreferrer"
+# https://www.npmjs.com/package/hexo-filter-nofollow
+nofollow:
+  enable: true
+  field: site
+  exclude:
+    - courses.dev-academy.com
+    - websecurity-academy.com
+    - tuesday.websecurity-academy.com
+
+# responsive images
+responsive_images:
+  pattern: '**/*.+(png|jpg|jpeg)'
+  sizes:
+    small:
+      width: 360
+    medium:
+      width: 640
+    large:
+      width: 1086
+
+# Miscellaneous
+google_analytics:
+gauges_analytics:
+favicon: /assets/favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
+
+rss: /atom.xml
+
+# Content
+excerpt_link: Read More
+
+# Sidebar
+sidebar: left
+widgets:
+  - category
+  - tag
+  - tagcloud
+  - archive
+  - recent_posts
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+# - category
+# - tagcloud
+# - archive
+
+# widget behavior
+archive_type: 'monthly'
+show_count: false

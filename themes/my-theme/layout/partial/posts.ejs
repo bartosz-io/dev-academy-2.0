@@ -1,0 +1,26 @@
+<section class="posts">
+    <% page.posts.each(function(post, i){ %>
+        <article class="post">
+            <div class="post-content">
+                <a href="<%- post.path %>">
+                    <figure>
+                        <img class="archive-article-banner" src="<%- url_for(post.path) %>small_banner.png" alt="post-banner">
+                    </figure>
+                </a>
+                <header>
+                    <a href="<%- post.path %>"><h2><%- post.title %></h2></a>
+                    <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, 'D MMM') %></time>
+                </header>
+            </div>
+        </article>
+    <% }) %>
+</section>
+
+<% if (page.total > 1){ %>
+    <nav id="page-nav">
+        <%- paginator({
+            prev_text: "« Prev",
+            next_text: "Next »"
+        }) %>
+    </nav>
+<% } %>

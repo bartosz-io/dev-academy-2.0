@@ -1,0 +1,12 @@
+<button class="button button-primary button-large button-block" id="show-comments">Show comments</button>
+<div class="article-comments" id="disqus_thread"></div>
+
+<script>
+    var disqus_shortname = '<%= config.disqus_shortname %>';
+
+    <% if (page.permalink){ %>
+    var disqus_url = '<%= page.permalink %>';
+    <% } %>
+</script>
+
+<script src="https://<%= config.disqus_shortname %>.disqus.com/count.js" defer></script>

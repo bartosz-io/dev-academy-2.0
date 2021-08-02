@@ -1,0 +1,40 @@
+.sidebar {
+  padding: 5rem 2rem;
+  background: $dark-400;
+}
+
+.sidebar-info {
+  display: none;
+}
+
+.sidebar-author {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-author-image {
+  border: 3px solid $light-100;
+  border-radius: 100%;
+  width: 12rem;
+  height: 12rem;
+}
+
+.sidebar-author-details {
+  margin-left: 3rem;
+
+  .button {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+}
+
+.sidebar-author-name {
+  color: $light-100;
+}
+
+.sidebar-author-description {
+  color: $light-500;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: .5rem 0 1.5rem;
+}

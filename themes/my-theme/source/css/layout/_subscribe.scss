@@ -1,0 +1,19 @@
+.subscribe {
+  background-color: $light-200;
+
+  img {
+    display: none;
+  }
+}
+
+.subscribe-content {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.subscribe-text {
+  h4 {
+    padding-bottom: 1rem;
+  }
+}
