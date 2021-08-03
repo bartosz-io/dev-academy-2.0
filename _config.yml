@@ -201,3 +201,14 @@ index_widgets:
 # widget behavior
 archive_type: 'monthly'
 show_count: false
+
+# hexo-all-minifier
+css_minifier:
+  enable: true
+js_minifier:
+  enable: true
+  mangle: true
+html_minifier:
+  enable: false
+image_minifier:
+  enable: false

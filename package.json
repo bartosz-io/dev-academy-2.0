@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "hexo": "^5.0.0",
+    "hexo-all-minifier": "^0.5.7",
     "hexo-browsersync": "^0.3.0",
     "hexo-feed": "^1.1.0",
     "hexo-filter-nofollow": "^2.0.2",
