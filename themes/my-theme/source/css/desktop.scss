@@ -80,6 +80,14 @@
     }
   }
 
+  main {
+    min-height: calc(100vh - 30rem);
+  }
+
+  .footer {
+    height: 6rem;
+  }
+
   .footer-content {
     flex-direction: row;
     justify-content: space-between;
@@ -148,12 +156,29 @@
   .article-wrapper {
     display: flex;
   }
+
+  .pagination {
+    align-items: center;
+  }
+
+  .page-number {
+    display: flex;
+    padding: 1rem;
+  }
+
+  .current {
+    font-weight: 700;
+  }
 }
 
 @media (min-width: 992px) {
   main,
   .footer {
     padding-left: 28rem;
+  }
+
+  main {
+    min-height: calc(100vh - 6rem);
   }
 
   .footer {
@@ -229,6 +254,12 @@
 
   .article-page {
     padding: 6rem 0;
+  }
+}
+
+@media (min-width: 1180px) {
+  .posts {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

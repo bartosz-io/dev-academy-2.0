@@ -4,23 +4,24 @@
             <div class="post-content">
                 <a href="<%- post.path %>">
                     <figure>
-                        <img class="archive-article-banner" src="<%- url_for(post.path) %>small_banner.png" alt="post-banner">
+                        <img class="post-image" src="<%- url_for(post.path) %>small_banner.png" alt="post-banner">
                     </figure>
+                    <header>
+                        <h2 class="post-title"><%- post.title %></h2>
+                        <time class="post-time" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, 'D MMM') %></time>
+                    </header>
                 </a>
-                <header>
-                    <a href="<%- post.path %>"><h2><%- post.title %></h2></a>
-                    <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, 'D MMM') %></time>
-                </header>
             </div>
         </article>
     <% }) %>
 </section>
 
 <% if (page.total > 1){ %>
-    <nav id="page-nav">
+    <nav class="pagination">
         <%- paginator({
-            prev_text: "« Prev",
-            next_text: "Next »"
+            prev_text: "<span class='icofont-curved-double-left'></span> Prev",
+            next_text: "Next <span class='icofont-curved-double-right'></span>",
+            escape: false
         }) %>
     </nav>
 <% } %>

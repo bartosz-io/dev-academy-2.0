@@ -1,10 +1,11 @@
-.tags {
+.tag-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem 0;
+  padding: 2rem 0 3rem;
+}
 
-  a {
-    padding: 1rem;
-  }
+.tag-list-link {
+  padding: 1rem 1.5rem;
+  font-weight: 700;
 }
