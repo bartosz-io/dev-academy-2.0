@@ -3,6 +3,10 @@
 @import 'variables';
 @import 'third-parties/odometer';
 
+.test-class {
+  display: inline-block;
+}
+
 @media (min-width: 768px) {
   .button {
     font-size: 1.6rem;
