@@ -1,7 +1,8 @@
 ---
 title: {{ title }}
-categories:
-alt:
-image:
-excerpt:
+date: {{ date }}
+author: Bartosz Pietrucha
+avatar: bartosz-pietrucha.jpg
+description:
+tags:
 ---
