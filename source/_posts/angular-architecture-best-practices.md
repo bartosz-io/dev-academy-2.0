@@ -2,6 +2,7 @@
 title: Angular Architecture Patterns and Best Practices (that help to scale)
 author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
+description: <placeholder> will be added soon!
 date: 2019-07-02
 tags: [Angular, Architecture]
 ---

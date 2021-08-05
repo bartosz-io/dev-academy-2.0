@@ -2,6 +2,7 @@
 title: 'RxJS switchMap, concatMap, mergeMap, exhaustMap'
 author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
+description: <placeholder> will be added soon!
 date: 2019-06-01
 tags: [Angular, RxJS]
 ---

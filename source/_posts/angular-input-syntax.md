@@ -2,6 +2,7 @@
 title: Angular Input Syntax
 author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
+description: <placeholder> will be added soon!
 date: 2019-09-16 15:53:06
 tags: [Angular, "Knowledge Pill"]
 ---

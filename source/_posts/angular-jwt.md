@@ -3,6 +3,7 @@ title: Angular JWT Authorization with Refresh Token and Http Interceptor
 tags: [Angular, Security]
 author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
+description: <placeholder> will be added soon!
 date: 2019-05-01
 ---
 {% image_fw 1.78 "banner.png" "Angular JWT Authorization with Refresh Token and Http Interceptor" %}

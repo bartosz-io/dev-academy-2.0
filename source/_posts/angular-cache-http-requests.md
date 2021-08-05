@@ -2,6 +2,7 @@
 title: How to cache HTTP requests in Angular
 author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
+description: <placeholder> will be added soon!
 date: 2019-09-14 16:28:16
 tags: [Angular, RxJS, "Knowledge Pill"]
 ---

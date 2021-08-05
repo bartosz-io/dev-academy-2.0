@@ -1,21 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-    <link rel="preload" href="<%- url_for('/fonts/roboto.woff2') %>" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="<%- url_for('/fonts/roboto-medium.woff2') %>" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="<%- url_for('/fonts/roboto-bold.woff2') %>" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="<%- url_for('/fonts/source-code-pro.woff2') %>" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="<%- url_for('/fonts/icofont.woff2') %>" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="<%- url_for('/css/styles.css') %>" as="style">
-    <link rel="preload" href="<%- url_for('/css/desktop.css') %>" as="style">
-    <link rel="stylesheet" href="<%- url_for('/css/styles.css') %>">
-    <link rel="stylesheet" media="(min-width: 500px)" href="<%- url_for('/css/desktop.css') %>">
-
+    <%- partial('partial/head/meta') %>
+    <%- partial('partial/head/title') %>
+    <%- partial('partial/head/fonts') %>
+    <%- partial('partial/head/styles') %>
+    <%- partial('partial/head/rss') %>
+    <%- partial('partial/head/favicon') %>
+    <%- partial('partial/head/og') %>
 <!--    <script src="%- url_for('/js/gtm.js') %" defer></script>-->
 </head>
 <body>
@@ -46,8 +38,6 @@
 
     <!-- ConvertKit Main Form -->
 <!--    <script defer data-uid="e4bf864ac2" src="https://dev-academy.ck.page/e4bf864ac2/index.js"></script>-->
-
-    <!-- Odometer Transition Number -->
 
 <% } %>
 </body>

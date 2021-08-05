@@ -13,7 +13,11 @@
 }
 
 .subscribe-text {
-  h4 {
+  p {
+    margin-bottom: 2rem;
     padding-bottom: 1rem;
+    line-height: 1.3;
+    font-size: 2rem;
+    font-weight: 700;
   }
 }

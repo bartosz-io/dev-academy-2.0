@@ -2,6 +2,7 @@
 title: How to analyze Angular bundle
 author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
+description: <placeholder> will be added soon!
 date: 2019-09-15 16:11:55
 tags: [Angular, "Knowledge Pill"]
 ---

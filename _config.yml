@@ -172,7 +172,7 @@ responsive_images:
 # Miscellaneous
 google_analytics:
 gauges_analytics:
-favicon: /assets/favicon.png
+favicon: /img/favicon.png
 twitter:
 google_plus:
 fb_admins:
@@ -205,9 +205,11 @@ show_count: false
 # hexo-all-minifier
 css_minifier:
   enable: true
+  silent: true
 js_minifier:
   enable: true
   mangle: true
+  silent: true
 html_minifier:
   enable: false
 image_minifier:
