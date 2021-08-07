@@ -3,10 +3,6 @@
 @import 'variables';
 @import 'third-parties/odometer';
 
-.test-class {
-  display: inline-block;
-}
-
 @media (min-width: 768px) {
   .button {
     font-size: 1.6rem;
@@ -122,6 +118,24 @@
   }
 
   .subscribe-content {
+    padding: 3rem 0;
+  }
+
+  .custom-subscribe img {
+    display: flex;
+    width: 20rem;
+  }
+
+  .custom-subscribe-content {
+    align-items: center;
+  }
+
+  .custom-subscribe-text p {
+    font-size: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .custom-subscribe-content {
     padding: 3rem 0;
   }
 

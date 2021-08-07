@@ -8,10 +8,12 @@
 @import 'base';
 @import 'icons';
 
+@import 'third-parties/highlight';
+
 @import 'components/article';
 @import 'components/button';
 @import 'components/cookie-info';
-@import 'third-parties/highlight';
+@import 'components/custom-subscribe';
 @import 'components/tags';
 @import 'components/toc';
 
@@ -20,4 +22,4 @@
 @import 'layout/header';
 @import 'layout/sidebar';
 @import 'layout/slackbar';
-@import 'layout/subscribe';
+@import 'components/subscribe';
