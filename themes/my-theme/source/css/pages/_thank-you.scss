@@ -1,0 +1,18 @@
+@import '../variables';
+
+.thank-you {
+  .thank-you-wrapper {
+    text-align: center;
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  .thank-you-highlighted {
+    color: $pink-300;
+  }
+
+  .thank-you-information {
+    display: none;
+  }
+}

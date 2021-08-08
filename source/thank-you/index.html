@@ -1,79 +1,13 @@
 ---
-simple: true
+thankYouPage: true
 ---
-<style>
-    .wrapper {
-        text-align: center;
-        margin-top: 10%;
-    }
+<div class="thank-you-wrapper">
+    <h3>You need to <span class="thank-you-highlighted">CONFIRM</span> your email 😊</h3>
 
-    a:link,
-    a:visited,
-    a:hover,
-    a:active {
-        color: white;
-    }
+    <picture>
+        <source srcset="/img/email.gif" media="(min-width: 768px)">
+        <img src="/img/email_mobile.jpg" alt="">
+    </picture>
 
-    .email {
-        margin: 40px auto !important;
-        box-shadow: 2px 2px 6px 0px grey;
-        border-radius: 5px;
-    }
-
-    .dashed-primary {
-        font-weight: bold;
-        border-bottom: dashed 2px #ff0062;
-    }
-
-    .primary {
-        color: #ff0062;
-    }
-
-    .line {
-        margin: 10px 0;
-    }
-
-    .thankyou {
-        font-size: 40px;
-    }
-
-    .incentive {
-        font-size: 26px;
-        color: rgba(0,0,0,0.7);
-    }
-
-    .mobile img {
-        width: 100%;
-    }
-
-    @media (min-width: 901px) {
-        .mobile {
-            display: none;
-        }
-    }
-
-    @media (max-width: 900px) {
-        .desktop {
-            display: none;
-        }
-
-        .thankyou {
-            font-size: 20px;
-        }
-    }
-</style>
-
-<div class="wrapper">
-    <div class="thankyou">
-        <b>You need to <span class="primary">CONFIRM</span> your email 😊
-    </div>
-    <div class="desktop">
-        <img class="email" src="/assets/email.gif">
-    </div>
-    <div class="mobile">
-        <img class="email" src="/assets/email_mobile.jpg">
-    </div>
-    <div class="incentive desktop">
-        You can drag the email from <span class="dashed-primary">Promotions</span> to <span class="dashed-primary">Primary</span></br>so you will never miss my emails!
-    </div>
+    <p class="thank-you-information">You can drag the email from <span>Promotions</span> to <span>Primary</span><br>so you will never miss my emails!</p>
 </div>

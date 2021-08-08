@@ -185,6 +185,26 @@
   .current {
     font-weight: 700;
   }
+
+  .thank-you {
+    .thank-you-wrapper {
+      h3 {
+        font-size: $font-size-34;
+        margin-bottom: 3rem;
+      }
+    }
+
+    .thank-you-information {
+      display: block;
+      font-size: $font-size-24;
+      line-height: 1.5;
+
+      span {
+        font-weight: 700;
+        border-bottom: .2rem dashed $pink-300;
+      }
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -270,6 +290,21 @@
 
   .article-page {
     padding: 6rem 0;
+  }
+
+  .thank-you {
+    .sidebar {
+      display: none;
+    }
+
+    .footer,
+    main {
+      padding-left: 0;
+    }
+
+    .article {
+      width: 100%;
+    }
   }
 }
 
