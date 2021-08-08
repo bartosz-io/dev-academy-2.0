@@ -2,7 +2,7 @@
 title: How to analyze Angular bundle
 author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
-description: <placeholder> will be added soon!
+description: A thorough analysis of angular bundle with webpack analyzer to better understand what's the weight of specific parts in the application.
 date: 2019-09-15 16:11:55
 tags: [Angular, "Knowledge Pill"]
 ---

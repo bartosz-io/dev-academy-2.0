@@ -4,7 +4,7 @@ author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 date: 2021-02-18
 tags: [Angular, Security]
-description: In this guide, we will design and implement a complete solution for user authentication including user login, registration, and account confirmation with the Angular framework.
+description: A complete guide to user login and registration with using JWT. A hands-on, detailed and secure implementation in the application.
 ---
 {% image_fw 1.78 "banner.png" "Angular User Login and Registration Guide (Cookies and JWT)" %}
 
