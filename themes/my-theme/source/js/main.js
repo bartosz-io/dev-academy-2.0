@@ -112,7 +112,7 @@ function navigation() {
 function cookieInfo() {
     var key = 'cookie-popup';
     var hiddenClass = 'hidden';
-    var cookie =  document.querySelector('.cookie-info')
+    var cookie =  document.querySelector('.cookie-consent')
 
     if (localStorage.getItem(key)) {
         if (cookie) {
