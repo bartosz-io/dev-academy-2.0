@@ -1,33 +1,25 @@
-// TODO REWRITE
-
 .cookie-info {
   position: fixed;
+  left: 2rem;
+  right: 2rem;
+  bottom: 2rem;
   display: none;
-  left: 0;
-  width: 100%;
+  max-width: 44rem;
   z-index: $z-index-500;
   padding: $container-gap;
-  bottom: 0;
-  box-shadow: $box-shadow;
-  font-size: $font-size-14;
-  text-align: center;
   transition: $transition-default;
+  color: $light-200;
+  background-color: $dark-600;
+  border-radius: .5rem;
 
-  .btn {
-    margin: $size-16 $size-4 0;
-    font-weight: 400;
-    border-radius: .5rem;
-    font-size: $font-size-12;
+  .button {
+    min-width: 14rem;
+    margin: 0 auto;
+    display: block;
   }
 
   &.hidden {
-    left: -100%;
     opacity: 0;
     visibility: hidden;
-  }
-
-  p {
-    line-height: 2.6rem;
-    padding-bottom: 0;
   }
 }

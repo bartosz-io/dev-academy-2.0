@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     loadDisqusComments();
-    // cookieInfo();
+    cookieInfo();
 });
 
 function loadOdometer() {
