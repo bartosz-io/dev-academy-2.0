@@ -7,9 +7,17 @@ window.addEventListener('DOMContentLoaded', function() {
         loadOdometer();
     }
 
+    cookieConsent();
     loadDisqusComments();
-    cookieInfo();
+    loadConvertKit();
 });
+
+function loadConvertKit() {
+    var script = document.createElement('script');
+    script.src = 'https://f.convertkit.com/ckjs/ck.5.js';
+    script.defer = true;
+    document.body.appendChild(script);
+}
 
 function loadOdometer() {
     var script = document.createElement('script');
@@ -109,8 +117,8 @@ function navigation() {
     }
 }
 
-function cookieInfo() {
-    var key = 'cookie-popup';
+function cookieConsent() {
+    var key = 'cookie-consent';
     var hiddenClass = 'hidden';
     var cookie =  document.querySelector('.cookie-consent')
 
