@@ -8,7 +8,6 @@
     <%- partial('partial/head/rss') %>
     <%- partial('partial/head/favicon') %>
     <%- partial('partial/head/og') %>
-<!--    <script src="%- url_for('/js/gtm.js') %" defer></script>-->
 </head>
 <body <% if (page.thankYouPage) {%> class="thank-you" <% } %>>
 
@@ -36,6 +35,7 @@
     <%- partial('partial/ck-form', {}, {caches: true}) %>
 
     <script src="<%- url_for('/js/main.js') %>" defer></script>
+    <script src="<%- url_for('/js/gtm.js') %>" defer></script>
 <% } %>
 </body>
 </html>
