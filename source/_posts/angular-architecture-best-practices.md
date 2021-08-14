@@ -291,7 +291,7 @@ We have covered the topic of the abstraction layers in our frontend application.
 
 The next principle we want to introduce in our system is about the data flow and propagation of change. Angular itself uses [unidirectional data flow on presentation level](https://blog.angularindepth.com/do-you-really-know-what-unidirectional-data-flow-means-in-angular-a6f55cefdc63) (via input bindings), but we will impose a similar restriction on the application level. Together with reactive state management (based on streams), it will give us the very important property of the system - **data consistency**. Below diagram presents the general idea of unidirectional data flow.
 
-{% img "flow abstract.gif" "Unidirectional data flow" "lazy" %}
+{% img "flowAbstract.gif" "Unidirectional data flow" "lazy" %}
 
 Whenever any model value change in our application, Angular [change detection system](https://vsavkin.com/two-phases-of-angular-2-applications-fda2517604be) takes care of the propagation of that change. It does it via input property bindings from **the top to bottom** of the whole component tree. It means that a child component can only depend on its parent and never vice versa. This is why we call it unidirectional data flow. This allows Angular to traverse the components tree **only once** (as there are no cycles in the tree structure) to achieve a stable state, which means that every value in the bindings is propagated.
 

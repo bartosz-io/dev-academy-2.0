@@ -31,8 +31,7 @@ hexo.extend.tag.register('image', function (args) {
   return `<picture>
     <source type="image/webp"
       ${getSrcSet(path, srcWebp)}
-      ${getSizes(maxWidth)}
-      ${getAlt(alt)}>
+      ${getSizes(maxWidth)}>
     <img loading="lazy"
       ${getSrcSet(path, src)}
       ${getSizes(maxWidth)}
@@ -49,16 +48,14 @@ hexo.extend.tag.register('image_fw', function (args) {
   var srcWebp = getWebpFile(src);
 
   return `<picture>
-    <source style="width: 100%; height: auto; aspect-ratio: ${ratio}"
-      type="image/webp"
-      ${getSrcSet(path, srcWebp)}
-      ${getSizes()}
-      ${getAlt(alt)}">
+    <source type="image/webp" 
+        ${getSrcSet(path, srcWebp)} 
+        ${getSizes()}>
     <img style="width: 100%; height: auto; aspect-ratio: ${ratio}"
-      loading="auto"
       ${getSrcSet(path, src)}
       ${getSizes()}
       ${getAlt(alt)}
+      itemprop="image"
       src="${path}${src}">
   </picture>`;
 });
