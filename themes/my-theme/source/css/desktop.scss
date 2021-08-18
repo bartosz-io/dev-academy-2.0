@@ -209,6 +209,14 @@
   .cookie-consent {
     left: auto;
   }
+
+  .header-nav-item-courses {
+    display: list-item;
+  }
+
+  .header-nav-link-mobile {
+    display: none;
+  }
 }
 
 @media (min-width: 992px) {
