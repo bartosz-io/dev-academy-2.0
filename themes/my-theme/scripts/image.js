@@ -64,7 +64,7 @@ hexo.extend.tag.register('banner_ad', function (args) {
   var assetPath = args[0];
   var targetUrl = args[1];
 
-  return `<a class="course-image" href="${targetUrl}" aria-label="Dev Academy courses">
+  return `<a class="course-image" href="${targetUrl}" rel="nofollow" aria-label="Dev Academy courses">
     <img src="/img/${assetPath}" alt="" loading="lazy">
   </a>`;
 });
