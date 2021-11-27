@@ -65,7 +65,7 @@ As mentioned above, Angular ships with powerful built-in defense mechanisms to p
 
 The best defense mechanism for blocking XSS attacks is ensuring that the web browser never misinterprets data as code. Angular archives this by auto-escaping all data bindings that rely on interpolation. By sanitizing and escaping untrusted values, all data gets transformed into safe values before being inserted into the HTML file.
 
-When an untrusted value gets inserted into the DOM by interpolation (using double curly brackets, for example {{ value }} ), Angular is automatically aware of the potential risk. It applies its encoding mechanism to ensure that the untrusted value cannot cause any danger. Potentially dangerous characters like angle brackets get converted to their respective HTML or URL encoded equivalents. The user's browser renders the attacker's code as data, which does not get executed anymore.
+When an untrusted value gets inserted into the DOM by interpolation (using double curly brackets like `{{ var }}`), Angular is automatically aware of the potential risk. It applies its encoding mechanism to ensure that the untrusted value cannot cause any danger. Potentially dangerous characters like angle brackets get converted to their respective HTML or URL encoded equivalents. The user's browser renders the attacker's code as data, which does not get executed anymore.
 
 ### Angular and dynamic HTML code
 
@@ -75,15 +75,15 @@ Rich text editors (like [Froala](https://froala.com/wysiwyg-editor/), [CKEditor]
 
 Angular's interpolation would classify all input as untrusted and therefore escape all HTML tags. This would not be the desired outcome, as all HTML tags would be printed onto the screen as text content.
 
-In this case, we need to bind the HTML creation to Angular's \[innerHtml\]; this ensures that the input will be interpreted as HTML. By data binding with the innerHtml property, Angular recognizes critical data as unsafe and automatically sanitizes it to remove untrusted values. Please note the square brackets around the innerHTML property: they indicate that it belongs to Angular and is not a native DOM API innerHTML property.
+In this case, we need to bind the HTML creation to Angular's `[innerHtml]`; this ensures that the input will be interpreted as HTML. By data binding with the innerHtml property, Angular recognizes critical data as unsafe and automatically sanitizes it to remove untrusted values. Please note the square brackets around the innerHTML property: they indicate that it belongs to Angular and is not a native DOM API innerHTML property.
 
-In short, Angular's built-in sanitizer prevents malicious code from being executed by removing potentially unsafe attributes like &lt;script&gt; but keeps safe content such as the &lt;p&gt; or &lt;section&gt; element. Its automatic sanitization works very intelligently: it identifies the context and reacts accordingly. A harmless value in CSS stays untouched; however, the same value could potentially be dangerous in a URL and therefore gets sanitized.
+In short, Angular's built-in sanitizer prevents malicious code from being executed by removing potentially unsafe attributes like `<script>` but keeps safe content such as the `<p>` or `<section>` element. Its automatic sanitization works very intelligently: it identifies the context and reacts accordingly. A harmless value in CSS stays untouched; however, the same value could potentially be dangerous in a URL and therefore gets sanitized.
 
 ### What is better, escaping or sanitizing malicious code?
 
-When Angular escapes untrusted values, specific strings are encoded with their HTML entities and displayed in the DOM. The browser interprets the data as text and not code anymore. A &lt;script&gt; tag, for example, will be displayed but not be rendered as JavaScript code.
+When Angular escapes untrusted values, specific strings are encoded with their HTML entities and displayed in the DOM. The browser interprets the data as text and not code anymore. A `<script>` tag, for example, will be displayed but not be rendered as JavaScript code.
 
-On the other hand, the sanitize method removes potentially dangerous elements, such as &lt;script&gt; or the href attribute of an &lt;a&gt; tag. It makes sure to eliminate all unsafe elements so that only safe HTML is left. This may sound like filtering, but the way Angular sanitizes data works differently: Its built-in HTML sanitizer uses predefined safe values (e.g. a valid HTML element) and marks everything else as unsafe.
+On the other hand, the sanitize method removes potentially dangerous elements, such as `<script>` or the `href` attribute of an `<a>` tag. It makes sure to eliminate all unsafe elements so that only safe HTML is left. This may sound like filtering, but the way Angular sanitizes data works differently: Its built-in HTML sanitizer uses predefined safe values (e.g. a valid HTML element) and marks everything else as unsafe.
 
 The main difference between interpolated and innerHTML code is the behaviour of data interpreted. Property binding helps us bind values to an HTML element's target property but use interpolation to show any data in the template like strings, numbers, dates, arrays, etc. Angular will sanitize and escape untrusted values for you.
 
@@ -147,7 +147,7 @@ When using Angular Universal, the prerendered code is the same as the Angular co
 
 However, avoid using other 3rd party template engines like Handlebars, Pug, etc., for your Angular application. Implementing these template engines could lead to potentially dangerous code injected into the template. The data injected is external and out of the scope of Angular's security features, leading to a high risk of introducing template-injection vulnerabilities.
 
-### XSS Vulnerabilities through open-source dependencies
+### XSS vulnerabilities through open-source dependencies
 
 You, as the developer, do not have to reinvent the wheel repeatedly when it comes to adding more functionalities to your app. The Angular community provides a rich ecosystem of plugins to solve nearly every possible task, which is very handy. But blindly integrating these pieces of software may introduce security vulnerabilities to your Angular application. Any 3rd party Angular module with known vulnerabilities becomes a threat that can impact the security of your entire project.
 
