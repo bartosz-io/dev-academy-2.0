@@ -1,8 +1,8 @@
 ---
-title: Preventing XSS in Angular
+title: Angular XSS prevention 🔐 Best practices, CSP, Trusted Types
 author: Christoph Jürgens
 avatar: christoph-juergens.jpg
-description: Learn Angular XSS best practices and methods to prevent cross-site scripting attacks in Angular (JavaScript) applications. This article explains how to block XSS attacks by preventing malicious code from entering the DOM, as well as other security mechanisms like Content Security Policy.
+description: Learn Angular XSS modern best practices and methods to prevent cross-site scripting attacks in Angular (JavaScript) applications. 🔒
 date: 2021-11-27
 tags: [Angular, Security]
 ---
