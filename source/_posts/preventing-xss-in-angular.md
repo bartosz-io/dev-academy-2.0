@@ -2,7 +2,7 @@
 title: Preventing XSS in Angular
 author: Christoph Jürgens
 avatar: christoph-juergens.jpg
-description: Preventing cross-site scripting attacks in Angular applications with sanitization and Content Security Policy.
+description: Learn Angular XSS best practices and methods to prevent cross-site scripting attacks in Angular (JavaScript) applications. This article explains how to block XSS attacks by preventing malicious code from entering the DOM, as well as other security mechanisms like Content Security Policy.
 date: 2021-11-27
 tags: [Angular, Security]
 ---
