@@ -69,7 +69,7 @@ When an untrusted value gets inserted into the DOM by interpolation (using doubl
 
 ### Angular and dynamic HTML code
 
-Angular applications in production often require rendering HTML dynamically. Typical examples would be WYSIWIG editors in Content Management Systems, comment sections under blog posts, or product reviews on eCommerce sites.
+Angular applications in production often require rendering HTML dynamically. Typical examples would be WYSIWYG editors in Content Management Systems, comment sections under blog posts, or product reviews on eCommerce sites.
 
 Rich text editors (like [Froala](https://froala.com/wysiwyg-editor/), [CKEditor](https://ckeditor.com/), or WordPress' Gutenberg Editor) create HTML output that needs to be inserted into your application, then parsed and rendered as HTML by the browser.
 
