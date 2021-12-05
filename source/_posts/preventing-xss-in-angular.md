@@ -1,5 +1,5 @@
 ---
-title: Angular XSS prevention 🔐 Best practices, CSP, Trusted Types
+title: Angular XSS prevention 🔐 Modern best practices
 author: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Learn Angular XSS modern best practices and methods to prevent cross-site scripting attacks in Angular (JavaScript) applications. 🔒
