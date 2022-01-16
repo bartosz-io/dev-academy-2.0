@@ -153,7 +153,7 @@ When it comes to the state, the abstraction layer makes our components independe
 
 Having this kind abstraction gives us a lot of flexibility and allows to change the way we manage state not even touching the presentation layer. It's even possible to seamlessly migrate to a real-time backend like Firebase, making our application **real-time**. I personally like to start with BehaviorSubjects to manage the state. If later, at some point in the development of the system, there is a need to use something else, with this kind of architecture, it is very easy to refactor.
 
-{% banner_ad "secure_banner.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
 
 #### Synchronization strategy
 

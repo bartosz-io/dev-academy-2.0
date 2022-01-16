@@ -64,7 +64,7 @@ I believe that it is very important to understand the fundamental differences be
 
 > **WARNING:** Whenever you are using any kind of authorization token that you store in `LocalStorage` or `IndexedDB` (so it's accessible by JavaScript code) you are exposing the token to be hijacked via cross-site scripting attack. However, there are valid mitigation techniques, like [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), [Subresource integrity](https://developer.mozilla.org/pl/docs/Web/Security/Subresource_Integrity), and built-in frameworks' sanitization mechanisms, that (when applied properly!) reduce that risk to a negligible degree. That being said that risk is real, so you should pay enough attention to those security issues.
 
-{% banner_ad "secure_banner.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
 
 ## Detailed implementation
 

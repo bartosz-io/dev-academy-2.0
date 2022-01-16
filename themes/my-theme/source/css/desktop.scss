@@ -222,6 +222,10 @@
   .header-nav-link-mobile {
     display: none;
   }
+
+  .course-image img {
+    max-width: 50%;
+  }
 }
 
 @media (min-width: 992px) {
