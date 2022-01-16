@@ -276,6 +276,20 @@
       color: $light-300;
       line-height: 2.4rem;
     }
+
+    &.checklist {
+      position: static;
+      padding: 15px 0 0 0;
+
+      .sidebar-checklist-image {
+        margin-top: 15px;
+        display: block;
+      }
+    }
+
+    .checklist-link {
+      display: block;
+    }
   }
 
   .sidebar-author {

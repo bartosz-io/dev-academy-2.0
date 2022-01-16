@@ -30,6 +30,10 @@ body {
     color: $light-200;
     background: $dark-300;
   }
+
+  @media (max-width: 768px) {
+    padding-bottom: 55px;
+  }
 }
 
 a {
