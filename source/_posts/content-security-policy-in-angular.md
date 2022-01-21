@@ -1,5 +1,5 @@
 ---
-title: Protect Angular apps with ⚔️ Content Security Policy (CSP)
+title: Protect Angular apps with ⚔️ Content Security Policy
 author: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Protect Angular apps with Content Security Policy (CSP) against security vulnerabilities in Angular (JavaScript) applications. ⚔️
@@ -48,7 +48,7 @@ The CSP header value uses one or more directives to define several content restr
 
 The _default-src_ sets the default the following CSP directives. It is used as a fallback if directives are not declared, which means that if a directive is missing in the CSP header, the browser uses the _default-src_'s value.
 
-The following example uses _'self'_ to indicate the web app's origin and _dev-academy.com_ as an external trusted origin.
+The following example uses `'self'` to indicate the web app's origin and _dev-academy.com_ as an external trusted origin.
 
 ```
 default-src 'self' dev-academy.com;
@@ -100,9 +100,9 @@ The above list is just a few examples. Please follow this [link](https://develop
 
 ### Source values
 
-Next to the origins, the CSP directives also support predefined values. One of them is the already mentioned _'self'_ value, which only allows resources to be loaded from the current origin, and the _'none'_ value does not allow loading any resources.
+Next to the origins, the CSP directives also support predefined values. One of them is the already mentioned `'self'` value, which only allows resources to be loaded from the current origin, and the `'none'` value does not allow loading any resources.
 
-Additionally, CSP also supports unsafe values, which you should avoid using if possible. _'unsafe-inline'_ allows the execution of inline scripts or styles. However, as the name applies, using _'unsafe-inline'_ is generally unsafe as it withdraws most of the security benefits that our CSP provides.
+Additionally, CSP also supports unsafe values, which you should avoid using if possible. `'unsafe-inline'` allows the execution of inline scripts or styles. However, as the name applies, using `'unsafe-inline'` is generally unsafe as it withdraws most of the security benefits that our CSP provides.
 
 If you require to allow inline scripts or styles on your application or website, you should consider using hashes or nonces if possible, which we will discuss later in this article.
 
@@ -132,7 +132,7 @@ These days many web applications require inline scripts to run trusted JavaScrip
 </script>
 ```
 
-As already mentioned, the Content Security Policy would stop the execution if we do not set it to _script-src 'unsafe-inline'_. However, this would not only allow the code snippet above, but it would also allow all inline code, which should be considered a security risk.
+As already mentioned, the Content Security Policy would stop the execution if we do not set it to _script-src `'unsafe-inline'`_. However, this would not only allow the code snippet above, but it would also allow all inline code, which should be considered a security risk.
 
 One solution could be to use a hash, which validates the integrity of the script block and is supported since CSP Level 2. The following snippet shows an example of a CSP that allows only this specific inline code to be executed.
 
@@ -194,15 +194,17 @@ Content-Security-Policy-Report-Only: default-src 'self'; report-uri https://dev-
 
 Now that we have had a detailed look at what Content Security Policy is and why it is so important as an additional layer of security let's talk about how to enable it in an Angular application.
 
-Angular uses View Encapsulation, which encapsulates a component's styles within the host element so that these styles do not affect the rest of the application. This behaviour results in inline styling created by the framework, which requires _'unsafe-inline'_ for the _style-src_ CSP directive when using Angular. Therefore the minimal Content Security Policy required for an Angular application is:
+Angular uses View Encapsulation, which encapsulates a component's styles within the host element so that these styles do not affect the rest of the application. This behaviour results in inline styling created by the framework, which requires `'unsafe-inline'` for the _style-src_ CSP directive when using Angular. Therefore the minimal Content Security Policy required for an Angular application is:
 
+```
 Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline';
+```
 
-Setting the _style-src_ directive to _'self' 'unsafe-inline'_ allows the application to load its global styles from its origin (_'self'_) and its components to load their inline styles (_'unsafe-inline'_).
+Setting the `style-src` directive to `'self' 'unsafe-inline'` allows the application to load its global styles from its origin (`'self'`) and its components to load their inline styles (`'unsafe-inline'`).
 
-The use of _'unsafe-inline'_ for styles does not seem ideal, but the security team at Google is not concerned about it; they claim its risk is very low. But it is important to make sure to follow all recommendations and best practices from my last article, [Angular XSS prevention - Best practices](https://dev-academy.com/preventing-xss-in-angular/).
+The use of `'unsafe-inline'` for styles does not seem ideal, but the security team at Google is not concerned about it; they claim its risk is very low. But it is important to make sure to follow all recommendations and best practices from my last article, [Angular XSS prevention - Best practices](https://dev-academy.com/preventing-xss-in-angular/).
 
-It's also important to ensure **only allow _'unsafe-inline'_ for your styles**, but not for _default-src_ or _script-src_. Allowing inline scripts decreases your Content Security Policy's effectiveness immensely!
+It's also important to ensure **only allow `'unsafe-inline'` for your styles**, but not for _default-src_ or _script-src_. Allowing inline scripts decreases your Content Security Policy's effectiveness immensely!
 
 Unfortunately, including remote code files is not very easy either. CSP hashes do not work for external resources, and also nonces are not an option because they need to be refreshed on every page load, which conflicts with the static design of our Angular application. The only solution is to allow the origin from where the code gets loaded.
 
@@ -210,7 +212,7 @@ Unfortunately, including remote code files is not very easy either. CSP hashes d
 
 There are multiple ways to enable Content Security Policy within your Angular app; one sends the configuration with every HTTP response header from the server, as shown in the examples above. Any server-side programming environment or webserver should allow you to send a custom HTTP response header.
 
-For example, if you use NodeJS with Express and serve your Angular application as static files, you can use the popular [_helmet-csp_ package](https://www.npmjs.com/package/helmet-csp). This middleware helps to set your Content Security Policies.
+For example, if you use NodeJS with Express and serve your Angular application as static files, you can use the popular [helmet-csp package](https://www.npmjs.com/package/helmet-csp). This middleware helps to set your Content Security Policies.
 
 ```javascript
 const contentSecurityPolicy = require("helmet-csp");
