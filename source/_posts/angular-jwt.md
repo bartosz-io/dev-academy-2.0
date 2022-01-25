@@ -113,7 +113,9 @@ When the user successfully logs into the application and receives an access toke
 
 At this point, it is worth taking a closer look at the *self-contained* nature of JWT. When the server receives HTTP requests with JWT Access Token, it **does not** have to ask any persistence layer (for example database) for the verification of users rights. Those rights are **inside** the token. And since we guarantee **authenticity** and **integrity** of Access Token we can trust the information inside it. This is a really interesting feature of JWT because it opens the door for higher scalability of the system. Alternative scenarios would require saving some session id on the backend side and asking for it each and every time there is a need to authorize the request. Having *self-contained* Access Token, we don't have to *replicate* token among server clusters or implement [*sticky sessions*](https://en.wikipedia.org/wiki/Load_balancing_%28computing%29#Persistence).
 
-{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+If you are interested in learning more about **building secure Web applications** consider joining our flagship program [WebSecurity Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-jwt-post). It will teach you everything you need to know in that area.
+
+{% banner_ad "wsa.gif" "https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-jwt-post" %}
 
 ## Http interceptor
 
