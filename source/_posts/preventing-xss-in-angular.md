@@ -161,7 +161,7 @@ Below is a brief overview of these two concepts; I will elaborate on the nitty-g
 
 ### Content Security Policy (CSP)
 
-The Content Security Policy is a web standard that can mitigate the risk of XSS. The Content-Security-Policy HTTP headers constrain a modern browser viewing your application to only download resources from trusted sources. A resource can be a script, a stylesheet, an image, or some other type of file. When having CSP settings in place and configured correctly, your application only executes code from resource URLs you trust. Follow this link to learn more about [CSP in Angular applications](/content-security-policy-in-angular/).
+The Content Security Policy is a web standard that can mitigate the risk of XSS. The Content-Security-Policy HTTP headers constrain a modern browser viewing your application to only download resources from trusted sources. A resource can be a script, a stylesheet, an image, or some other type of file. When having CSP settings in place and configured correctly, your application only executes code from resource URLs you trust. Follow this link to learn more about [Angular CSP](/content-security-policy-in-angular/).
 
 ### Trusted Types
 
