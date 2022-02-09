@@ -214,3 +214,6 @@ html_minifier:
   enable: false
 image_minifier:
   enable: false
+
+
+  
