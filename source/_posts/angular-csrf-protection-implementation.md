@@ -1,5 +1,5 @@
 ---
-title: How to implement CSRF protection in an Angular application 🔐
+title: CSRF protection in an Angular application 🔐 - How to implement?
 author: Peter D. Mobley
 link: https://geogram.com
 avatar: peter-mobley.jpg
