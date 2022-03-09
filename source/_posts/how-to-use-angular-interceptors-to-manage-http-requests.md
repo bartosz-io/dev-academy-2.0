@@ -101,6 +101,8 @@ One of the most common use cases for interceptors is handling auth requests. Thi
 
 The examples provided are, of course, using mocked examples of security tokens. The main goal is to show the reader how to implement auth interceptors by adding custom headers to the requests. In this scenario, we will be adding an authorization token. The examples discussed below should be easily adaptable to a real-world application with a proper authentication system.
 
+If you are interested in learning more about **authorization and building secure Web applications** consider joining our flagship online program [WebSecurity Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-http-interceptors-post). It will teach you everything you need to know in that area.
+
 ### Basic Authentication
 
 Consider a `Basic Authentication` scenario where we must authorize every request accessing the API. We could have an interceptor like the following:
@@ -512,5 +514,3 @@ Angular 4.3 simplified everyone's lives by adding the HTTP interceptors to the H
 The examples provided are only the tip of the iceberg of all possibilities. The main goal was to show the reader how to implement and cope with the most standard use cases around any modern-day application.
 
 The critical concepts are that interceptors can handle incoming and outgoing requests, can transform them by creating a new mutated request, and can themselves return without passing the request to the next interceptor. The latter should probably be used sparingly, but it's essential to know it can be done.
-
-If you are interested in learning more about **building secure Web applications** consider joining our flagship program [WebSecurity Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-http-interceptors-post). It will teach you everything you need to know in that area.
