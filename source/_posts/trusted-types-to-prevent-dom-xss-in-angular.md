@@ -1,17 +1,20 @@
 ---
-title: Securing Angular apps with Trusted Types to prevent DOM XSS
+title: Trusted Types to prevent DOM XSS 🤝 in Angular
 author: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Learn how to secure Angular applications with Trusted Types to put an end to DOM XSS vulnerabilities.
 date: 2022-03-08
 tags: [Angular, Security]
 ---
+{% image_fw 1.78 "banner.png" "Trusted Types to prevent DOM XSS in Angular" %}
 
 A Cross-Site Scripting (XSS) vulnerability in an Angular application can be a &quot;game over&quot; scenario. As soon as attackers discover an XSS vulnerability in the app, they often can control the entire application. Angular ships with advanced XSS protection out-of-the-box, but even the smallest bug or unaware code mistakes can become a serious XSS vulnerability.
 
 This article is the third part of our &quot;Preventing XSS in Angular&quot; series; we will look at another security layer to add to our in-depth defence strategy: **Trusted Types**.
 
 Trusted Types is a web platform defence mechanism that can help to stop XSS vulnerabilities in our Angular application. We will learn how Trusted Types can stop the emergence of DOM XSS vulnerabilities and discuss how to configure Trusted Types in Angular.
+
+If you are interested in learning more about **building secure Web applications** consider joining our flagship online program [WebSecurity Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-trusted-types). It will teach you everything you need to know in that area with the support of our international community 😁.
 
 <!-- toc -->
 
@@ -25,9 +28,7 @@ Based on where an attacker places an injection for execution, XSS attacks can be
 
 ### Reflected XSS
 
-Reflected XSS (non-persistent XSS) is one of the most common types of XSS. To execute a reflected XSS attack, the perpetrator crafts a link using malicious query parameters and tricks the victim into clicking on it by sending phishing emails or other social engineering techniques.
-
-Compared to stored XSS, non-persistent XSS only requires the malicious script to be added to a link and a user to click on it.
+Reflected XSS (non-persistent XSS) is one of the most common types of XSS. To execute a reflected XSS attack, the perpetrator crafts a link using malicious query parameters and tricks the victim into clicking on it by sending phishing emails or other social engineering techniques. Compared to stored XSS, non-persistent XSS only requires the malicious script to be added to a link and a user to click on it.
 
 ### Stored XSS
 
@@ -81,6 +82,8 @@ Trusted Types is a browser security mechanism created by the security team at Go
 
 Trusted Types not only can help you secure your app from XSS attacks but also enforce safer coding practices, which also helps simplify auditing the code of your Angular application.
 
+{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+
 ### How to enable Trusted Types?
 
 Trusted Types can be enabled by using the Content Security Policy directive `require-trusted-types-for`. In part two of this series, we looked closely at CSP to prevent untrusted code from being downloaded and executed in our Angular application. To enable Trusted Types, you need to configure the Content Security Policy of the application to send the following policy:
@@ -125,7 +128,7 @@ Still, considering the potential danger, it is strongly recommended to avoid usi
 
 Trusted Types is a fairly new browser security mechanism, which means when writing this article, the [browser support](https://caniuse.com/trusted-types) is still quite poor. They are supported by Chrome and all Chromium-based browsers like MS Edge, but currently not Firefox or Apple's Safari.
 
-However, that does not mean configuring Trusted Types for your Angular app is not useful! The opposite is true:
+However, that does not mean configuring Trusted Types for your Angular app is not useful! The opposite is true.
 
 ### Chrome in development
 
