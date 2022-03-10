@@ -114,7 +114,7 @@ Every small bug or mistake that could lead to an XSS vulnerability will throw su
 
 ### Trusted Types and bypassing Angular&#39;s DomSanitizer
 
-Trusted Types do not tolerate unsafe DOM assignments, so if your application uses any of the methods in Angular's DomSanitizer that bypass security, such as bypassSecurityTrustHtml, Angular will not allow them by default if you have set the Trusted Types for Angular. You need to enable these functions explicitly by adding `angular#unsafe-bypass` to the CSP of the application.
+Trusted Types do not tolerate unsafe DOM assignments, so if your application uses any of the methods in Angular's DomSanitizer that bypass security, such as `bypassSecurityTrustHtml`, Angular will not allow them by default if you have set the Trusted Types for Angular. You need to enable these functions explicitly by adding `angular#unsafe-bypass` to the CSP of the application.
 
 ```
 Content-Security-Policy: require-trusted-types-for 'script' trusted-types angular angular#unsafe-bypass
@@ -132,9 +132,9 @@ However, that does not mean configuring Trusted Types for your Angular app is no
 
 ### Chrome in development
 
-When using Chrome while developing an Angular app, we can configure Trusted Types, and Chrome will enforce the desired security behaviour. That means the browser will refuse to accept insecure coding patterns and force the developer to stick to **Angular's secure way of dealing with user input** while developing.
+When using Chrome while developing an Angular app, we can configure Trusted Types, and Chrome will enforce the desired security behaviour. That means Chrome will refuse to accept insecure coding patterns and force the developer to stick to **Angular's secure way of dealing with user input** while developing.
 
-This forces the developers to build secure apps that can be safely deployed and be used by Firefox users. In production, Firefox might ignore the Trusted Types policy but can still rely on greatly improved security against XSS attacks because of the enforcement of safe coding patterns. They highlighted unsafe assignments to the DOM in development, and this helps allocate and fix these issues in the application's code, benefitting all users independently which browser they use.
+This forces the developers to build secure apps that can be safely deployed and used by Firefox users. In production, Firefox might ignore the Trusted Types policy but can still rely on greatly improved security against XSS attacks because of the enforcement of safe coding patterns. Highlighting unsafe assignments to the DOM during development helps to allocate and fix these issues before shipping to production, benefitting all users independently which browser they use.
 
 ## Third-party code and dependencies
 
@@ -142,7 +142,7 @@ Trusted Types is a browser-level protection mechanism, so it also applies to all
 
 Trusted Types changes the behaviour of the browser. With Trusted Types enabled, when third-party code tries to assign unsafe data to a potentially dangerous sink like `innerHTML`, the user's browser does accept the data and does not execute it in the sink.
 
-This browser behaviour protects the application even if a vulnerability exists in third-party code. However, please keep in mind that your web application is secure, but the third-party code does not get executed to break the application. To use the third-party code securely, you can specify a default Trusted Types policy.
+This browser behaviour protects the application even if a vulnerability exists in third-party code. However, please keep in mind that your web application is secure, but the third-party code does not get executed so it probably breaks the application. To execute the third-party code securely, you can specify a default Trusted Types policy.
 
 ### Default Trusted Types policy
 
