@@ -226,6 +226,21 @@
   .course-image img {
     max-width: 50%;
   }
+
+  .related-post-close {
+    transition: $transition-default;
+
+    &:hover {
+      cursor: pointer;
+      color: $light-100;
+    }
+  }
+
+  .related-posts {
+    min-width: 34rem;
+    max-width: 40rem;
+    left: auto;
+  }
 }
 
 @media (min-width: 992px) {
