@@ -227,6 +227,10 @@
     max-width: 50%;
   }
 
+  .related-post {
+    flex-direction: column;
+  }
+
   .related-post-close {
     transition: $transition-default;
 
@@ -240,6 +244,18 @@
     min-width: 34rem;
     max-width: 40rem;
     left: auto;
+  }
+
+  .related-post-meta {
+    display: flex;
+    padding-left: 1rem;
+    padding-right: 4rem;
+    flex-direction: column;
+    line-height: 2rem;
+  }
+
+  .related-post-footer {
+    padding-left: 0;
   }
 }
 

@@ -14,8 +14,10 @@
                         <span class="related-post-date"><time class="related-post-time" datetime="<%= date_xml(post.date) %>"><%= date(post.date, null) %></time></span>
                     </div>
                 </div>
-                <span class="related-post-next">Next read:</span>
-                <h4 class="related-post-title"><%- post.title %></h4>
+                <div class="related-post-footer">
+                    <span class="related-post-next">Next read:</span>
+                    <h4 class="related-post-title"><%- post.title %></h4>
+                </div>
                 <span class="icofont-close related-post-close "></span>
             </a>
         <% } %>

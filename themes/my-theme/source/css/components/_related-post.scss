@@ -15,7 +15,6 @@
 
 .related-post {
   display: flex;
-  flex-direction: column;
   position: relative;
   padding: 2rem 2rem 1.5rem;
   border-radius: .5rem;
@@ -31,6 +30,7 @@
 }
 
 .related-post-image {
+  min-width: 8rem;
   width: 8rem;
   border-radius: .4rem;
 }
@@ -41,11 +41,11 @@
 }
 
 .related-post-meta {
-  display: flex;
+  display: none;
+}
+
+.related-post-footer {
   padding-left: 1rem;
-  padding-right: 4rem;
-  flex-direction: column;
-  line-height: 2rem;
 }
 
 .related-post-time,
