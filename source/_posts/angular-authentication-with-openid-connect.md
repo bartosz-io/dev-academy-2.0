@@ -10,7 +10,9 @@ tags: [Angular, Security, OIDC]
 
 User authentication is a common task almost every web developer has to deal with when developing modern web applications. Angular development is no exception.
 
-There's also a growing expectation from users that they can sign up/sign in to your app using their identity managed by an identity provider independent of your app.
+There's also a growing expectation from users that they can sign up/sign in to your app using their identity managed by an identity provider independent of your app. An example of this is the well-known "Sign in with Google" and "Continue with Facebook" buttons.
+
+OpenID Connect (OIDC) allows the developers to avoid manually implementing user authentication and use an identity provider that would handle that complexity for them instead.
 
 In this blog post, we will briefly review what OIDC is, what flows it has, and which OIDC flow you should use for Single Page Applications. After that, we'll apply the theory in practice by implementing a simple login functionality in an Angular application using Google as an Identity Provider (IP). We will show how easy it is to add OIDC to Angular apps using one of the most popular OIDC client libraries.
 
@@ -18,13 +20,13 @@ In this blog post, we will briefly review what OIDC is, what flows it has, and w
 
 OpenID Foundation developed OpenID Connect and ratified it as a standard for identity interactions in 2014. It is an interoperable REST-like authentication protocol based on OAuth 2.0.
 
-### Is OAuth and OIDC same?
+### Are OAuth and OIDC the same?
 
-Let's recall what OAuth (stands for Open Authorization) 2.0 is - it is an authorization framework for delegated access control. It defines multiple grant types - ways of obtaining access tokens from an authorization server. In particular, the authorization code grant type allows defines how a user -- a _resource owner_ can authorize a third-party client access of a certain _scope_ of their resources on a _resource server_ on their behalf.
+Let's recall what OAuth (stands for Open Authorization) 2.0 is - it is an authorization framework for delegated access control. It defines multiple grant types - ways of obtaining access tokens from an authorization server. In particular, the authorization code grant type defines how a user -- a _resource owner_ -- can authorize third-party clients to access a certain _scope_ of their resources on a _resource server_ on their behalf.
 
-The third-party get issued an access token, which is an arbitrary string that doesn't necessarily contain any information about the user who was authenticated during the authorization process. The access token can be used to access the resource server on behalf of the end user. The resource server, upon receiving the access token, will make a request to the issuer of the token to get the metadata about the end user associated with that token. This process is invisible to the third-party client app.
+The third-party gets issued an access token, which is an arbitrary string that doesn't necessarily contain any information about the user who was authenticated during the authorization process. The access token can be used to access the resource server on behalf of the end-user. The resource server, upon receiving the access token, will make a request to the issuer of the token to get the metadata about the end-user associated with that token. This process is invisible to the third-party client app.
 
-One way to obtain the information about the end user identity is to call a resource server's API that returns that kind of information. For example, in case of Facebook, the following request:
+One way to obtain the information about the end-user identity is to call a resource server's API that returns that kind of information. For example, in the case of Facebook, the following request:
 
 ```text
 GET https://graph.facebook.com/me?access_token=ACCESS-TOKEN
@@ -39,7 +41,7 @@ with a valid access token would return the following JSON:
 }
 ```
 
-with the name and the Facebook ID of the end user to whom the access token is bound by the issuer.
+with the name and the Facebook ID of the end-user to whom the access token is bound by the issuer.
 
 GitHub also provides an endpoint that returns the information about the user to whom the access token is mapped:
 
@@ -84,11 +86,11 @@ GET https://api.github.com/user
 }
 ```
 
-We have used OAuth 2.0 to get the information about the user from two different resource servers. We could see how the APIs were different, but they both provided us with the information that we could use to authenticate the end user.
+We have used OAuth 2.0 to get the information about the user from two different resource servers. We could see how the APIs were different, but they both provided us with the information that we could use to authenticate the end-user.
 
 The question is now how the endpoint should be called? `GET /user`? `GET /identity`? `GET /user-details`? `GET /user-info`? What should the response look like?
 
-Another problem is that we are using _**access**_ tokens for authentication, although their purpose is an authorization. There is also no standard way to log out the user or manage sessions.
+Another problem is that we are using _**access**_ tokens for authentication, although their purpose is authorization. There is also no standard way to log out the user or manage sessions.
 
 This workaround - using authorization code grant type to authenticate a user is not needed when using OpenID Connect.
 
@@ -118,14 +120,14 @@ access_token=yijjJJtzKk
 &state=h5CPnIm4RD
 ```
 
-Since response parameters are returned in the URI fragment value, the browser will parse the fragment encoded values and pass them to SPA scripts for consumption. Because the SPAs are self-contained, i.e. run entirely in the browser, the fragment value never needs to be sent in the HTTP requests.
-
-The client app must then perform the following validations:
+Since the response parameters are returned in the URI fragment value, the browser will parse the fragment encoded values and pass them to the Angular application for consumption. The responsibility of the Angular application will be to validate the ID token and remove the URL fragment part so that the tokens don't appear in the browser history. Below are the four things that need to be done with the values returned in the fragment:
 
 - validate that the `state` value is an exact match to the value that was sent to the authorization server in the authentication request,
 - validate the signature of the ID Token,
 - validate that the `nonce` value in the ID token is an exact match of the value that was sent to the authorization server in the authentication request,
 - validate that the `at_hash` value in the ID token is an exact match of the Base64 URL encoded left half of the hash of the `access_token`.
+
+Next, let's review what's inside the ID token.
 
 ### OIDC ID token
 
@@ -156,7 +158,7 @@ For example:
 }
 ```
 
-This JSON is Base64 URL encoded to form the first part of the ID token.
+This JSON is a Base64 URL encoded to form the first part of the ID token.
 
 Note, that the ID tokens usually start with "eyJhbGciOi", which is Base64 URL encoding of `{"alg":` - the first 7 characters of a typical ID token header.
 
@@ -166,13 +168,13 @@ The second part of the token is the payload that contains claims about the authe
 
 Note, that while JWT doesn't have any required claims, the ID token has 5 required claims:
 
-- `iss` - Issuer Identifier. This value is a case-sensitive URL using the `https` scheme. Besides the scheme and the host components, it can also contain port and path component, but no query or fragment components.
-- `sub` - Subject Identifier. This value is a case-sensitive, locally unique and never reassigned ID of the authenticated user within the Issuer. This value is intended to be used by the clients. The maximum length is 255 ASCII characters.
+- `iss` - Issuer Identifier. This value is a case-sensitive URL using the `https` scheme. Besides the scheme and the host components, it can also contain port and path components, but no query or fragment components.
+- `sub` - Subject Identifier. This value is a case-sensitive, locally unique, and never reassigned ID of the authenticated user within the Issuer. This value is intended to be used by the clients. The maximum length is 255 ASCII characters.
 - `aud` - Audience(s) that this ID Token is intended for. Most commonly it is a case-sensitive string that contains the OAuth 2.0 `client_id` value. In the general case, the `aud` value is an array of case-sensitive strings and may contain identifiers for other audiences.
 - `exp` - Expiration time of the token, represented as the UNIX epoch time (number of seconds from 1970-01-01T00:00:00Z in UTC). The current time must be strictly less than the `exp` value.
 - `iat` - Time at which the token was issued, represented as the UNIX epoch time.
 
-There are 5 other optional claims defined in OIDC core specification. The most important one for SPAs is `nonce` that was already mentioned above. This parameter was added to the initial OAuth 2.0 authorization grant request in OIDC to mitigate replay attacks. This claim is required in the implicit flow.
+There are 5 other optional claims defined in the OIDC core specification. The most important one for SPAs is `nonce` that was already mentioned above. This parameter was added to the initial OAuth 2.0 authorization grant request in OIDC to mitigate replay attacks. This claim is required in the implicit flow.
 
 Here is an example of an ID token payload:
 
@@ -187,7 +189,7 @@ Here is an example of an ID token payload:
 }
 ```
 
-This JSON is also Base64 URL encoded to form the second part of the ID token.
+This JSON is also a Base64 URL encoded to form the second part of the ID token.
 
 #### Signature
 
@@ -199,9 +201,9 @@ signature = RS256(`${header}.${payload}`, privateKey)
 
 The signature is then Base64 URL encoded to form the third part of the ID token.
 
-Since the ID tokens are usually signed with a private key, the users of ID tokens can easily verify that the payload wasn't changed, and that the sender of the ID token is actually who it says it is.
+Since the ID tokens are usually signed with a private key, the users of ID tokens can easily verify that the payload wasn't changed and that the sender of the ID token is actually who it says it is.
 
-Next let's do some practice. We'll create a GCP project, and configure it for OIDC.
+Next, let's do some practice. We'll create a GCP project, and configure it for OIDC.
 
 ## Create a GCP project and enable OAuth2
 
@@ -211,9 +213,9 @@ Go to the GCP [New Project](https://console.cloud.google.com/projectcreate) page
 
 {% image 383px "creating-new-gcp-project.png" "Creating new GCP project" %}
 
-### Configure OAuth2 consent screen
+### Configure the OAuth2 consent screen
 
-Next, we need to set up the OAuth2 consent screen. Go to [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent) setup page. Choose "External" user and press the "Create" button.
+Next, we need to set up the OAuth2 consent screen. Go to the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent) setup page. Choose "External" user and press the "Create" button.
 
 {% image 533px "configuring-oauth-consent-screen-in-gcp-console.png" "Configuring OAuth consent screen in GCP console" %}
 
@@ -273,7 +275,7 @@ In Authorized Redirect URIs (sometimes called Callback URL), type `http://localh
 
 After pressing the "Create" button, a popup with the app credentials will appear. Note the Client ID on this popup. We'll be using it in a later step to configure the OIDC client library.
 
-Finally, let's get to some coding! In the next chapter we'll create and configure Angular app to support sign-in using Google Identity.
+Finally, let's get to some coding! In the next chapter, we'll create and configure the Angular app to support sign-in using Google Identity.
 
 ## Angular Application
 
@@ -370,7 +372,7 @@ export class AppComponent {
 }
 ```
 
-This boilerplate is enough to set up our Angular application to enable OpenID Connect with implicit flow.
+This boilerplate is enough to set up our Angular application to enable OpenID Connect with the implicit flow.
 
 Note: `JwksValidationHandler` deals with token validation logic and is necessary for implementing OpenID Connect the implicit flow. Note, that this dependency will not be needed for the OpenID Connect authorization code flow with PKCE.
 
@@ -454,6 +456,6 @@ Press the logout button, and the user's profile picture and name should disappea
 
 ## Conclusion
 
-In this post we took a look how easy it is to implement login using OpenID Connect in Angular apps.
+In this post, we took a look at how easy it is to implement login using OpenID Connect in Angular apps.
 
-In the following post we will continue exploring the library, upgrade our Angular app to use Authorization code flow with PKCE, review what is a proof key and why it is needed, extract the user profile component, create a new component and use it in a protected page / route, that it is only visible to an authenticated user. Since protected routes are usually implemented using an auth guard, to decouple auth service from application logic, we will create a new service and use it in the auth guard. Finally, we will use access token to call a private HTTP API.
+In the following posts, we will continue exploring the library, upgrade our Angular app to use Authorization code flow with PKCE, review what is a proof key and why it is needed, extract the user profile component, create a new component and use it in a protected page / route, that it is only visible to an authenticated user. Since protected routes are usually implemented using an auth guard, to decouple auth service from application logic, we will create a new service and use it in the auth guard. Finally, we will use an access token to call a private HTTP API.
