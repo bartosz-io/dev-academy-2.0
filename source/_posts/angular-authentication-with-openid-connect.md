@@ -16,6 +16,8 @@ OpenID Connect (OIDC) allows the developers to avoid manually implementing user 
 
 In this blog post, we will briefly review what OIDC is, what flows it has, and which OIDC flow you should use for Single Page Applications. After that, we'll apply the theory in practice by implementing a simple login functionality in an Angular application using Google as an Identity Provider (IP). We will show how easy it is to add OIDC to Angular apps using one of the most popular OIDC client libraries.
 
+<!-- toc -->
+
 ## Introduction
 
 OpenID Foundation developed OpenID Connect and ratified it as a standard for identity interactions in 2014. It is an interoperable REST-like authentication protocol based on OAuth 2.0.
