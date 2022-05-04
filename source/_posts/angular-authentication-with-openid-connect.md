@@ -443,7 +443,7 @@ To access the identity claims in our component, add the following code:
 
 We can then access the claims on our "Login page" in the HTML template of our component like this:
 
-```angular2html
+```html
   <div style="display: flex; margin: 1rem; align-items: center">
     <img src="{{claims?.picture}}" alt="" style="border-radius: 50%">
     <p style="margin: 1rem;">{{claims?.name}}</p>
