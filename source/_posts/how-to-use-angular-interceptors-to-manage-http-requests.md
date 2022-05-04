@@ -6,7 +6,7 @@ description: Learn how to use Angular interceptors to manage HTTP requests inclu
 date: 2021-12-11
 tags: [Angular, Security, Architecture]
 id: angular-interceptors
-relatedPost:
+relatedPost: angular-rxjs
 ---
 {% image_fw 1.78 "banner.png" "How To Use Angular Interceptors to Manage HTTP Requests" %}
 

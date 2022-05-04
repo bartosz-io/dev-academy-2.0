@@ -6,7 +6,7 @@ description: Protect Angular apps with Content Security Policy (CSP) against sec
 date: 2022-01-21
 tags: [Angular, Security]
 id: angular-csp
-relatedPost:
+relatedPost: trusted-types
 ---
 {% image_fw 1.78 banner.png "Content Security Policy Angular" %}
 

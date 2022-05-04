@@ -6,7 +6,7 @@ description: A better understanding of caching HTTP requests in Angular by using
 date: 2019-09-14 16:28:16
 tags: [Angular, RxJS, "Knowledge Pill"]
 id: angular-cache
-relatedPost:
+relatedPost: angular-bundle-analysis
 ---
 This is **Angular Knowledge Pill** - short and concise article! 💊
 It takes just 10 seconds to learn something new 🔥

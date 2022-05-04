@@ -6,7 +6,7 @@ description: Complete guide of Angular architecture best practices. High-level a
 date: 2019-07-02
 tags: [Angular, Architecture]
 id: angular-architecture
-relatedPost:
+relatedPost: user-login-and-registration
 ---
 {% image_fw 1.78 banner.png "Angular Architecture Patterns and Best Practices" %}
 

@@ -6,7 +6,7 @@ description: Learn Angular XSS modern best practices and methods to prevent cros
 date: 2021-11-27
 tags: [Angular, Security]
 id: angular-xss
-relatedPost:
+relatedPost: angular-csp
 ---
 {% image_fw 1.78 banner.png "Preventing XSS in Angular" %}
 
