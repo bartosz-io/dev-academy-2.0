@@ -117,6 +117,7 @@ h6 {
 }
 
 code {
+  overflow-wrap: break-word;
   padding: .1rem .3rem;
   font-size: $font-size-14;
   background: $light-200;
