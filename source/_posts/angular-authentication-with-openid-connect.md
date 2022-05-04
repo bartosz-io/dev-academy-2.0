@@ -353,9 +353,8 @@ export const authConfig: AuthConfig = {
 
 Google Identity provider documentation on [OAuth 2.0 for Client-side Web Applications](https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow) is using `implicit` flow, therefore we start with configuring our Angular client for it. Note, that there is another approach called "Authorization code flow with PKCE" recommended as the current security best practice. Google Identity only supports authorization code flow with confidential clients. SPAs are public clients, therefore we cannot use this flow without a backend.
 
-Note: we're setting `clearHashAfterLogin: false` so that we can inspect the URL fragment after login. In production, you would want to keep this setting at its default value of `true`.
-
-Note 2: `strictDiscoveryDocumentValidation: false` is currently needed because Google's discovery document doesn't conform to the library's validator requirements ("Every url in discovery document has to start with the issuer url").
+> Note: we're setting `clearHashAfterLogin: false` so that we can inspect the URL fragment after login. In production, you would want to keep this setting at its default value of `true`.
+> Note 2: `strictDiscoveryDocumentValidation: false` is currently needed because Google's discovery document doesn't conform to the library's validator requirements ("Every url in discovery document has to start with the issuer url").
 
 #### Configure App Component
 
