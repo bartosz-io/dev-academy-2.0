@@ -6,6 +6,8 @@ avatar: viktors-garkavijs.jpg
 description: Learn how to quickly setup simple authentication with OpenID Connect in Angular application.
 date: 2022-04-08
 tags: [Angular, Security, OIDC]
+id: angular-oidc
+relatedPost: user-login-and-registration
 ---
 {% image_fw 1.78 banner.png "Angular Authentication with OpenID Connect (OIDC)" %}
 
