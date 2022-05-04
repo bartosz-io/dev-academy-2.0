@@ -7,6 +7,7 @@ description: Learn how to quickly setup simple authentication with OpenID Connec
 date: 2022-04-08
 tags: [Angular, Security, OIDC]
 ---
+{% image_fw 1.78 banner.png "Angular Authentication with OpenID Connect (OIDC)" %}
 
 User authentication is a common task almost every web developer has to deal with when developing modern web applications. Angular development is no exception.
 
