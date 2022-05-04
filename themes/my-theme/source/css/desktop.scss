@@ -226,6 +226,37 @@
   .course-image img {
     max-width: 50%;
   }
+
+  .related-post {
+    flex-direction: column;
+  }
+
+  .related-post-close {
+    transition: $transition-default;
+
+    &:hover {
+      cursor: pointer;
+      color: $light-100;
+    }
+  }
+
+  .related-posts {
+    min-width: 34rem;
+    max-width: 36rem;
+    left: auto;
+  }
+
+  .related-post-meta {
+    display: flex;
+    padding-left: 1rem;
+    padding-right: 4rem;
+    flex-direction: column;
+    line-height: 2rem;
+  }
+
+  .related-post-footer {
+    padding-left: 0;
+  }
 }
 
 @media (min-width: 992px) {

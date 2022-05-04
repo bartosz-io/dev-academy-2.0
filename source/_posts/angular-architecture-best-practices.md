@@ -5,6 +5,8 @@ avatar: bartosz-pietrucha.jpg
 description: Complete guide of Angular architecture best practices. High-level abstraction layers, unidirectional data flow, reactive state management and modular design.
 date: 2019-07-02
 tags: [Angular, Architecture]
+id: angular-architecture
+relatedPost: user-login-and-registration
 ---
 {% image_fw 1.78 banner.png "Angular Architecture Patterns and Best Practices" %}
 

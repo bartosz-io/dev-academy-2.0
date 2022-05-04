@@ -5,6 +5,8 @@ author: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: Understanding of restricting access to the given parts in Angular application by using router guards and intercepting HTTP calls. Explanation why we need refresh tokens.
 date: 2019-05-01
+id: angular-jwt
+relatedPost: user-login-and-registration
 ---
 {% image_fw 1.78 "banner.png" "Angular JWT Authorization with Refresh Token and Http Interceptor" %}
 

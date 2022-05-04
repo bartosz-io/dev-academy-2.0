@@ -1,0 +1,78 @@
+@import '../variables';
+
+.related-posts {
+  position: fixed;
+  left: 2rem;
+  right: 2rem;
+  bottom: 4rem;
+  z-index: $z-index-100;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.related-post {
+  display: flex;
+  position: relative;
+  padding: 2rem 2rem 1.5rem;
+  border-radius: .5rem;
+  background-color: $dark-400;
+  color: $light-150;
+  box-shadow: 0 .1rem .4rem $dark-500;
+
+  &:hover {
+    .related-post-title {
+      color: $light-150;
+    }
+  }
+}
+
+.related-post-image {
+  min-width: 8rem;
+  width: 8rem;
+  border-radius: .4rem;
+}
+
+.related-post-header {
+  display: flex;
+  align-items: center;
+}
+
+.related-post-meta {
+  display: none;
+}
+
+.related-post-footer {
+  padding-left: 1rem;
+}
+
+.related-post-time,
+.related-post-next {
+  color: $light-700;
+  font-size: 1.3rem;
+}
+
+.related-post-author {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: $light-300;
+}
+
+.related-post-title {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.related-post-next {
+  padding-top: 1rem;
+}
+
+.related-post-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2.5rem;
+  color: $light-700;
+}

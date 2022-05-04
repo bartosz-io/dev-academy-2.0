@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', function() {
     cookieConsent();
     loadDisqusComments();
     loadConvertKit();
+    relatedPosts();
 });
 
 function loadConvertKit() {
@@ -143,5 +144,31 @@ function cookieConsent() {
                 }, 300);
             });
         }
+    }
+}
+
+function relatedPosts() {
+    var relatedPostsContainer = document.querySelector('.related-posts');
+    var relatedPosts = relatedPostsContainer.querySelectorAll('.related-post');
+    var visibleClass = 'visible';
+
+    if (relatedPosts.length) {
+
+        document.addEventListener('scroll', function() {
+            var isHalfPage = window.scrollY > (document.body.offsetHeight - window.innerHeight) / 2;
+
+            if (isHalfPage) {
+                relatedPostsContainer.classList.add(visibleClass);
+            } else {
+                relatedPostsContainer.classList.remove(visibleClass);
+            }
+        }, {passive: true})
+
+        var close = document.querySelector('.related-post-close');
+
+        close.addEventListener('click', function(event) {
+            event.preventDefault();
+            close.closest('.related-posts').remove();
+        })
     }
 }

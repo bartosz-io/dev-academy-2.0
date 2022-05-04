@@ -6,6 +6,8 @@ avatar: peter-mobley.jpg
 description: Learn how to implement Cross-site Request Forgery (CSRF) Protection in Angular.
 date: 2022-02-23
 tags: [Angular, Security]
+id: csrf-protection
+relatedPost: angular-xss
 ---
 <!-- BANNER NEEDED -->
 {% image_fw 1.78 "banner.png" "How to implement CSRF protection in an Angular application" %}

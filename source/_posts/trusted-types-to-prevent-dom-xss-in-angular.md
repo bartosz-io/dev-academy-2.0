@@ -5,6 +5,8 @@ avatar: christoph-juergens.jpg
 description: Learn how to secure Angular applications with Trusted Types to put an end to DOM XSS vulnerabilities.
 date: 2022-03-08
 tags: [Angular, Security]
+id: trusted-types
+relatedPost: angular-interceptors
 ---
 {% image_fw 1.78 "banner.png" "Trusted Types to prevent DOM XSS in Angular" %}
 
