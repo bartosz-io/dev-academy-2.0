@@ -394,7 +394,7 @@ Finally, let's implement a component method to check if the user is logged in, a
 
 ... and add some html template code:
 
-```angular2html
+```html
   <button (click)="handleLoginClick()">{{isLoggedIn ? 'Logout' : 'Login'}}</button>
 ```
 
