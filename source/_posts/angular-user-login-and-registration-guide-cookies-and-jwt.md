@@ -6,7 +6,7 @@ date: 2021-02-18
 tags: [Angular, Security]
 description: A complete guide to user login and registration with using JWT. A hands-on, detailed and secure implementation in the application.
 id: user-login-and-registration
-relatedPost: angular-interceptors
+relatedPost: angular-xss
 ---
 {% image_fw 1.78 "banner.png" "Angular User Login and Registration Guide (Cookies and JWT)" %}
 
