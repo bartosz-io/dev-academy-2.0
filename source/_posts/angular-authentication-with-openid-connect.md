@@ -1,5 +1,5 @@
 ---
-title: Angular Authentication with OpenID Connect (OIDC)
+title: Angular Authentication 👨‍🦱 with OpenID Connect (OIDC)
 author: Viktors Garkavijs
 link: https://mixefy.jp
 avatar: viktors-garkavijs.jpg
