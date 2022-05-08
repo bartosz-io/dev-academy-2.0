@@ -149,10 +149,14 @@ function cookieConsent() {
 
 function relatedPosts() {
     var relatedPostsContainer = document.querySelector('.related-posts');
-    var relatedPosts = relatedPostsContainer.querySelectorAll('.related-post');
-    var visibleClass = 'visible';
 
-    if (relatedPosts.length) {
+    if (relatedPostsContainer) {
+        var relatedPosts = relatedPostsContainer.querySelectorAll('.related-post');
+        var visibleClass = 'visible';
+
+        if (!relatedPosts.length) {
+            return;
+        }
 
         document.addEventListener('scroll', function() {
             var isHalfPage = window.scrollY > (document.body.offsetHeight - window.innerHeight) / 2;
