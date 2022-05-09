@@ -210,6 +210,8 @@ Since the ID tokens are usually signed with a private key, the users of ID token
 
 Next, let's do some practice. We'll create a GCP project, and configure it for OIDC.
 
+{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+
 ## Create a GCP project and enable OAuth2
 
 To proceed with this tutorial, you'll need a Google Cloud Platform (GCP) account. If you don't have one, you can [create one for free](https://cloud.google.com/free) - all you need is a Gmail account (which you can also register for free - no credit card required).

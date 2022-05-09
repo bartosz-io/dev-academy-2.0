@@ -148,6 +148,8 @@ As mentioned before, the remaining functions are pretty straightforward; removeI
 
 The other components' other functions are handlers for the events triggered by the template in the code demo.
 
+{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+
 ### The robust way
 
 The simple approach to persist data illustrated above might be helpful for primary use cases and a tiny Angular app. That approach brings some potential issues when scaling up to a more significant application, such as being directly dependent on using the localStorage object, making it more difficult to be tested, or even switching to a different storage mechanism seamlessly. We can tackle these potential issues by creating an abstraction layer. We will create a service that will expose the methods for handling the localStorage API. This way, we can easily make changes in one single point, and all the components using this service will have access to the same features by dependency injection. Testing will also be easier since we can then mock this dependency to avoid directly working with the localStorage values.

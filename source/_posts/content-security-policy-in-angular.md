@@ -96,6 +96,8 @@ The _media-src_ directive states trusted origins of audio and video, for example
 media-src videos.dev-academy.com;
 ```
 
+{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+
 #### More CSP directives
 
 The above list is just a few examples. Please follow this [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to find a complete list of CSP directives maintained by Mozilla.
