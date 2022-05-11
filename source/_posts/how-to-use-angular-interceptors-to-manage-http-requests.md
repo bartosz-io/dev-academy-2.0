@@ -60,7 +60,7 @@ It's crucial to understand that once the order of execution of this chain is est
 
 Why is it so essential to understand this? Because they will consistently execute the request in the same order, they were configured. This could make a big difference when thinking about what order should be used to avoid surprises when expecting a detailed response and receiving a different one because the interceptor that executed it before in the chain already transformed it.
 
-{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
 
 ## How to implement it?
 

@@ -148,7 +148,7 @@ As mentioned before, the remaining functions are pretty straightforward; removeI
 
 The other components' other functions are handlers for the events triggered by the template in the code demo.
 
-{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
 
 ### The robust way
 

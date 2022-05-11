@@ -84,7 +84,7 @@ Trusted Types is a browser security mechanism created by the security team at Go
 
 Trusted Types not only can help you secure your app from XSS attacks but also enforce safer coding practices, which also helps simplify auditing the code of your Angular application.
 
-{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
 
 ### How to enable Trusted Types?
 

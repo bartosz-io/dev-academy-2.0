@@ -96,7 +96,7 @@ The _media-src_ directive states trusted origins of audio and video, for example
 media-src videos.dev-academy.com;
 ```
 
-{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
 
 #### More CSP directives
 
