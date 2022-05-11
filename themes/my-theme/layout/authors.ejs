@@ -1,0 +1,29 @@
+<div class="authors">
+    <h1 class="authors-header">Expert Authors</h1>
+    <p>We are contstantly growing and attracting incredible experts, to share with us outstanding expertise and knowledge.</p>
+    <div class="pills">
+        <div class="pill">All Experts</div>
+        <div class="pill pill-angular pill-inactive">Angular Expert</div>
+        <div class="pill pill-nodejs pill-inactive">NodeJS Expert</div>
+    </div>
+
+    <div class="authors-list">
+
+        <% page.authors.forEach(function(author, i){ %>
+
+            <article class="author">
+                <header class="author-header">
+                    <img src="<%- author.image %>">
+                    <h3 class="author-name"><%- author.name %></h3>
+                    <h3 class="author-description"><%- author.desc %></h3>
+                </header>
+                <div class="author-contribution">
+                    <div class="author-line-header">Contribution level</div>
+                </div>
+                <div class="author-latest">
+
+                </div>
+            </article>
+        <% }) %>
+    </div>
+</div>

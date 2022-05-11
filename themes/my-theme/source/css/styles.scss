@@ -14,10 +14,13 @@
 @import 'pages/thank-you';
 
 @import 'components/article';
+@import 'components/author';
 @import 'components/button';
 @import 'components/cookie-consent';
 @import 'components/custom-subscribe';
+@import 'components/pill';
 @import 'components/related-post';
+@import 'components/subscribe';
 @import 'components/tags';
 @import 'components/toc';
 
@@ -26,4 +29,3 @@
 @import 'layout/header';
 @import 'layout/sidebar';
 @import 'layout/slackbar';
-@import 'components/subscribe';

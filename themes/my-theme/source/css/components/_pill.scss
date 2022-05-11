@@ -1,0 +1,36 @@
+@import '../variables';
+
+.pills {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.pill {
+  padding: .8rem 2.8rem;
+  font-size: 1.6rem;
+  color: $white;
+  background-color: $dark-100;
+  text-align: center;
+  border-radius: 1rem;
+  line-height: 1.9rem;
+  transition: $transition-time opacity $transition-type;
+  margin-right: 1.3rem;
+  margin-bottom: 1.3rem;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.pill-angular {
+  background-color: #D73964;
+}
+
+.pill-nodejs {
+  background-color: #8A3CFF;
+}
+
+.pill-inactive {
+  opacity: 0.3;
+}

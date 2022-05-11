@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function() {
-    if (this.isMobile()) {
+    if (!this.isTablet()) {
         navigation();
     }
 
