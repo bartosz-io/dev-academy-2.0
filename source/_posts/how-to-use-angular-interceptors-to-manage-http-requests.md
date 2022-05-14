@@ -312,6 +312,8 @@ else {
   
 For the scope of this example, if the error status code is not 401, we throw the error up to potentially be caught by a dedicated error interceptor.
 
+{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+
 ### Caching Interceptor
 
 Caching is itself a considerably broad and complex subject. Some configurations and nuances can significantly improve application performance or be the root of a significant number of problems when poorly implemented.

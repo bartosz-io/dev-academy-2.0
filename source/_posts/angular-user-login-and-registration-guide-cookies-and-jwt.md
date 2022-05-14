@@ -531,6 +531,8 @@ export class ForRolesDirective {
 
 Remember that the directive needs to be declared in an Angular module. In our case, we are declaring it in `AuthModule` and exporting it to be available to the outside world.
 
+{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+
 ### Protecting routes
 
 Users' authorization and roles dictate not only UI elements' visibility. On the higher level, we need to restrict access to the application's routes. Thanks to our top-level routing and separation into authentication and application this task is very easy. We need Router Guards that govern the access to these 2 parts.
