@@ -2,17 +2,19 @@
     <h1 class="authors-header">Expert Authors</h1>
     <p>We are contstantly growing and attracting incredible experts, to share with us outstanding expertise and knowledge.</p>
     <div class="pills">
-        <div class="pill">All Experts</div>
-        <div class="pill pill-angular pill-inactive">Angular Expert</div>
-        <div class="pill pill-nodejs pill-inactive">NodeJS Expert</div>
+        <div class="pill" data-spec="all">All Experts</div>
+        <div class="pill pill-angular pill-inactive" data-spec="angular">Angular Expert</div>
+        <div class="pill pill-nodejs pill-inactive" data-spec="nodejs">NodeJS Expert</div>
     </div>
     <div class="authors-list">
         <% page.authors.forEach(function(author){ %>
             <article class="author">
                 <header class="author-header">
-                    <img src="<%- author.image %>">
-                    <div class="author-specs">
-                        <% author.spec.forEach(function(spec, index){ %><span class="author-spec author-spec-<%- spec %>"><%- spec %></span><% }); %>
+                    <div class="author-header-top">
+                        <img src="<%- author.image %>">
+                        <div class="author-specs">
+                            <% author.spec.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>"></span><% }); %>
+                        </div>
                     </div>
                     <h3 class="author-name"><%- author.name %></h3>
                     <p class="author-description"><%- author.desc %></p>

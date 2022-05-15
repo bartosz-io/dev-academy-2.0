@@ -157,5 +157,41 @@
 }
 
 .author-specs {
-  display: none;
+  text-align: right;
+}
+
+.author-spec {
+  display: inline-flex;
+  padding: 1rem 2rem;
+  border-radius: .4rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.author-spec-angular {
+  background-color: $pink-200;
+
+  &:before {
+    background: url('/img/icons/angular.png') no-repeat;
+  }
+}
+
+.author-spec-nodejs {
+  background-color: $purple-100;
+
+  &:before {
+    background: url('/img/icons/nodejs.png') no-repeat;
+  }
+}
+
+.author-header-top {
+  display: flex;
+  justify-content: space-between;
 }

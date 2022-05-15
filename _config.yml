@@ -220,7 +220,7 @@ authors:
   "Bartosz Pietrucha":
     slug: bartosz-pietrucha
     desc: This is bartosz pietrucha description.
-    spec: [NodeJS, Angular]
+    spec: [nodejs, angular]
     image: /img/bartosz-pietrucha.jpg
     motto: I very much believe in learning through my own experience.
     joined: 09.04.2022
@@ -232,7 +232,7 @@ authors:
   "Christoph Jürgens":
     slug: christoph-jurgens
     desc: Christoph Jürgens description..
-    spec: [NodeJS, Angular, Javascript]
+    spec: [angular]
     image: /img/christoph-juergens.jpg
     motto: This is my motto.
     joined: 12.04.2022
@@ -241,11 +241,11 @@ authors:
       linkedin: https://www.linkedin.com/in/bpietrucha/
       twitter: https://www.linkedin.com/in/bpietrucha/
       github: https://www.linkedin.com/in/bpietrucha/
-  "Viktors Garkavijs":
-    slug: viktors-garkavijs
-    desc: Viktors Garkavijs description.
-    spec: [Angular]
-    image: /img/viktors-garkavijs.jpg
+  "Hugo Noro":
+    slug: hugo-noro
+    desc: Hugo Noro description.
+    spec: [angular]
+    image: /img/hugo-noro.png
     motto: I very much believe in learning through my own experience.
     joined: 22.04.2022
     socials:
@@ -256,8 +256,20 @@ authors:
   "Peter D. Mobley":
     slug: peter-mobley
     desc: Peter D. Mobley description.
-    spec: [Angular]
+    spec: [angular]
     image: /img/peter-mobley.jpg
+    motto: I very much believe in learning through my own experience.
+    joined: 22.04.2022
+    socials:
+      site: https://www.linkedin.com/in/bpietrucha/
+      linkedin: https://www.linkedin.com/in/bpietrucha/
+      twitter: https://www.linkedin.com/in/bpietrucha/
+      github: https://www.linkedin.com/in/bpietrucha/
+  "Viktors Garkavijs":
+    slug: viktors-garkavijs
+    desc: Viktors Garkavijs description.
+    spec: [angular]
+    image: /img/viktors-garkavijs.jpg
     motto: I very much believe in learning through my own experience.
     joined: 22.04.2022
     socials:

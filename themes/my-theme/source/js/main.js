@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', function() {
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
+    authors();
 });
 
 function loadConvertKit() {
@@ -149,10 +150,15 @@ function cookieConsent() {
 
 function relatedPosts() {
     var relatedPostsContainer = document.querySelector('.related-posts');
-    var relatedPosts = relatedPostsContainer.querySelectorAll('.related-post');
-    var visibleClass = 'visible';
 
-    if (relatedPosts.length) {
+
+    if (relatedPostsContainer) {
+        var relatedPosts = relatedPostsContainer.querySelectorAll('.related-post');
+        var visibleClass = 'visible';
+
+        if (!relatedPosts.length) {
+            return;
+        }
 
         document.addEventListener('scroll', function() {
             var isHalfPage = window.scrollY > (document.body.offsetHeight - window.innerHeight) / 2;
@@ -169,6 +175,18 @@ function relatedPosts() {
         close.addEventListener('click', function(event) {
             event.preventDefault();
             close.closest('.related-posts').remove();
+        })
+    }
+}
+
+function authors() {
+    var authors =  document.querySelector('.authors');
+
+    if (authors) {
+        var pills = authors.querySelector('.pills');
+
+        pills.addEventListener('click', (event) => {
+            // TODO add event delegation data-attrs
         })
     }
 }

@@ -6,8 +6,9 @@
 }
 
 .pill {
-  padding: .8rem 2.8rem;
-  font-size: 1.6rem;
+  display: flex;
+  padding: .8rem 1.8rem .7rem;
+  font-size: 1.5rem;
   color: $white;
   background-color: $dark-100;
   text-align: center;
@@ -23,12 +24,31 @@
   }
 }
 
+.pill-angular,
+.pill-nodejs {
+  &:before {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    margin-right: .5rem;
+  }
+}
+
 .pill-angular {
-  background-color: #D73964;
+  background-color: $pink-200;
+
+  &:before {
+    background: url('/img/icons/angular.png') no-repeat;
+  }
 }
 
 .pill-nodejs {
-  background-color: #8A3CFF;
+  background-color: $purple-100;
+
+  &:before {
+    background: url('/img/icons/nodejs.png') no-repeat;
+  }
 }
 
 .pill-inactive {
