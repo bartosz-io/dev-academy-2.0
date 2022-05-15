@@ -7,18 +7,16 @@ hexo.extend.generator.register('authors', function(locals) {
 
     let authors = configAuthors.map(function(author) {
         var authorPosts = locals.posts.filter(post => post.author === author[0]);
+        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 1 ? 'advanced' : 'beginner';
 
         return {
             name: author[0],
             ...author[1],
             posts: authorPosts,
             postsCount: authorPosts.length,
+            level: level
         };
     });
-
-    console.log(authors[0]);
-    console.log(typeof authors[0].posts);
-    // console.log(authors.length);
 
     return {
         path: 'authors/index.html',

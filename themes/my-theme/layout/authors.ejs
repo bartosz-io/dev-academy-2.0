@@ -6,23 +6,38 @@
         <div class="pill pill-angular pill-inactive">Angular Expert</div>
         <div class="pill pill-nodejs pill-inactive">NodeJS Expert</div>
     </div>
-
     <div class="authors-list">
-
-        <% page.authors.forEach(function(author, i){ %>
-
+        <% page.authors.forEach(function(author){ %>
             <article class="author">
                 <header class="author-header">
                     <img src="<%- author.image %>">
+                    <div class="author-specs">
+                        <% author.spec.forEach(function(spec, index){ %><span class="author-spec author-spec-<%- spec %>"><%- spec %></span><% }); %>
+                    </div>
                     <h3 class="author-name"><%- author.name %></h3>
-                    <h3 class="author-description"><%- author.desc %></h3>
+                    <p class="author-description"><%- author.desc %></p>
                 </header>
                 <div class="author-contribution">
                     <div class="author-line-header">Contribution level</div>
+                    <div class="author-contribution-count">
+                        <% if (author.level === 'expert') { %>Expert<% } else if (author.level === 'advanced') { %>Advanced Contributor<% } else { %>Beginner<% } %>
+                        - <%- author.postsCount %>&nbsp;<% if (author.postsCount > 1) { %>Articles<% } else { %>Article<% } %>
+                    </div>
+                    <div class="author-contribution-level author-contribution-level-<%- author.level%>">
+                        <span>Beginner</span>
+                        <span>Advanced Contributor</span>
+                        <span>Expert</span>
+                    </div>
                 </div>
                 <div class="author-latest">
-
+                    <div class="author-line-header">Latest articles</div>
+                    <div class="author-latest-articles">
+                        <% author.posts.sort('date', 'desc').each(function(post, index){ %>
+                            <% if (index === 0 || index === 1) { %><a href="<%- post.path %>" class="author-latest-article"><%- post.title %></a><% } %>
+                        <% }); %>
+                    </div>
                 </div>
+                <a class="author-more" href="/authors/<%- author.slug %>">See more</a>
             </article>
         <% }) %>
     </div>

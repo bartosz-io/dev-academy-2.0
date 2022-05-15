@@ -190,6 +190,14 @@
   .related-post-footer {
     padding-left: 0;
   }
+
+  .authors-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .author {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: 992px) {
@@ -378,6 +386,10 @@
 @media (min-width: 1180px) {
   .posts {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .authors-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
