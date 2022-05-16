@@ -180,13 +180,36 @@ function relatedPosts() {
 }
 
 function authors() {
-    var authors =  document.querySelector('.authors');
+    var authorsContainer =  document.querySelector('.authors');
 
-    if (authors) {
-        var pills = authors.querySelector('.pills');
+    if (authorsContainer) {
+        var pillsContainer = authorsContainer.querySelector('.pills');
 
-        pills.addEventListener('click', (event) => {
-            // TODO add event delegation data-attrs
+        pillsContainer.addEventListener('click', function(event) {
+            const spec = event.target.getAttribute('data-spec');
+            if (spec) {
+                var pills = pillsContainer.querySelectorAll('.pill');
+                var pillInactiveClass = 'pill-inactive';
+                pills.forEach((pill) => pill.classList.add(pillInactiveClass));
+
+                event.target.classList.remove(pillInactiveClass);
+
+                var authors = authorsContainer.querySelectorAll('.author');
+
+                if (spec === 'all') {
+                    authors.forEach((author) => author.style.display = 'block');
+                } else {
+                    authors.forEach((author) => author.style.display = 'none');
+
+                    authorsContainer.querySelectorAll('.author-specs').forEach(function(specs) {
+                        let a = specs.querySelector('.author-spec-' + spec);
+
+                        if (a) {
+                            a.closest('.author').style.display = 'block';
+                        }
+                    })
+                }
+            }
         })
     }
 }
