@@ -10,14 +10,16 @@
         <% page.authors.forEach(function(author){ %>
             <article class="author">
                 <header class="author-header">
-                    <div class="author-header-top">
-                        <img src="<%- author.image %>">
+                    <div class="author-header-left">
+                        <img src="<%- author.image %>" alt="<%- author.name %>">
                         <div class="author-specs">
                             <% author.spec.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>"></span><% }); %>
                         </div>
                     </div>
-                    <h3 class="author-name"><%- author.name %></h3>
-                    <p class="author-description"><%- author.desc %></p>
+                    <div class="author-header-bio">
+                        <h3 class="author-name"><%- author.name %></h3>
+                        <p class="author-description"><%- author.desc %></p>
+                    </div>
                 </header>
                 <div class="author-contribution">
                     <div class="author-line-header">Contribution level</div>

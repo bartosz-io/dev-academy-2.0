@@ -3,6 +3,21 @@
 @import 'variables';
 @import 'third-parties/odometer';
 
+@media (min-width: 420px) {
+  .author-specs {
+    position: static;
+  }
+
+  .author-header-bio {
+    padding-top: 0;
+    padding-left: 1.5rem;
+  }
+
+  .author-header {
+    flex-direction: row;
+  }
+}
+
 @media (min-width: 768px) {
   .button {
     font-size: 1.6rem;
@@ -380,6 +395,10 @@
     > a {
       position: static;
     }
+  }
+
+  .authors-list {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 

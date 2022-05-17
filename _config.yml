@@ -219,7 +219,7 @@ image_minifier:
 authors:
   "Bartosz Pietrucha":
     slug: bartosz-pietrucha
-    desc: This is bartosz pietrucha description.
+    desc: This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description.
     spec: [nodejs, angular]
     image: /img/bartosz-pietrucha.jpg
     motto: I very much believe in learning through my own experience.
@@ -231,7 +231,7 @@ authors:
       github: https://www.linkedin.com/in/bpietrucha/
   "Christoph Jürgens":
     slug: christoph-jurgens
-    desc: Christoph Jürgens description..
+    desc: Christoph Jürgens description.. Christoph Jürgens description..
     spec: [angular]
     image: /img/christoph-juergens.jpg
     motto: This is my motto.
@@ -243,7 +243,7 @@ authors:
       github: https://www.linkedin.com/in/bpietrucha/
   "Hugo Noro":
     slug: hugo-noro
-    desc: Hugo Noro description.
+    desc: Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description.
     spec: [angular]
     image: /img/hugo-noro.png
     motto: I very much believe in learning through my own experience.
@@ -255,7 +255,7 @@ authors:
       github: https://www.linkedin.com/in/bpietrucha/
   "Peter D. Mobley":
     slug: peter-mobley
-    desc: Peter D. Mobley description.
+    desc: Peter D. Mobley description. Peter D. Mobley description. Peter D. Mobley description. Peter D. Mobley description.
     spec: [angular]
     image: /img/peter-mobley.jpg
     motto: I very much believe in learning through my own experience.
@@ -267,7 +267,7 @@ authors:
       github: https://www.linkedin.com/in/bpietrucha/
   "Viktors Garkavijs":
     slug: viktors-garkavijs
-    desc: Viktors Garkavijs description.
+    desc: Viktors Garkavijs description. Viktors Garkavijs description. Viktors Garkavijs description.
     spec: [angular]
     image: /img/viktors-garkavijs.jpg
     motto: I very much believe in learning through my own experience.
