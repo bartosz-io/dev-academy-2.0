@@ -39,11 +39,13 @@ hexo.extend.generator.register('author', function(locals) {
     configAuthors.forEach(function(author) {
         var slug = author[1].slug.trim();
         var authorPosts = locals.posts.filter(post => post.author === author[0]);
+        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 1 ? 'advanced' : 'beginner';
         var authorData = {
             name: author[0],
             ...author[1],
             posts: authorPosts,
             postsCount: authorPosts.length,
+            level: level
         };
 
         routes.push({

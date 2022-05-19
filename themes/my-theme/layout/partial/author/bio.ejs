@@ -1,2 +1,22 @@
-AUTHOR: <%- author.name %> <br>
-posts count: <%- author.postsCount %>
+<a href="<%- url_for('/authors') %>">Back To All Authors</a>
+<h1>About the author</h1>
+<section class="author-bio">
+    <div class="author-info">
+        <div class="author-info-left">
+            <img src="<%- author.image %>" class="author-image" alt="<%- author.name %>">
+            <div class="author-articles-count"><%- author.postsCount %>&nbsp;<% if (author.postsCount > 1) { %>Articles<% } else { %>Article<% } %></div>
+        </div>
+        <div class="author-info-right">
+            <h1 class="author-name">About the author</h1>
+            <div class="author-joined"><%- author.joined %></div>
+            <div class="author-description"><%- author.desc %></div>
+        </div>
+    </div>
+    <div class="author-motto"><%- author.motto %></div>
+    <ul class="author-socials">
+        <% if (author.socials.site) { %><li><a href="<%- author.socials.site %>" target="_blank" rel="nofollow noopener">site</a></li><% } %>
+        <% if (author.socials.linkedin) { %><li><a href="<%- author.socials.linkedin %>" target="_blank" rel="nofollow noopener">linkedin</a></li><% } %>
+        <% if (author.socials.twitter) { %><li><a href="<%- author.socials.twitter %>" target="_blank" rel="nofollow noopener">twitter</a></li><% } %>
+        <% if (author.socials.github) { %><li><a href="<%- author.socials.github %>" target="_blank" rel="nofollow noopener">github</a></li><% } %>
+    </ul>
+</section>
