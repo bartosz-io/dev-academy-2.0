@@ -12,9 +12,6 @@
                 <header class="author-header">
                     <div class="author-header-left">
                         <img src="<%- author.image %>" alt="<%- author.name %>">
-                        <div class="author-specs">
-                            <% author.spec.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>"></span><% }); %>
-                        </div>
                     </div>
                     <div class="author-header-bio">
                         <h3 class="author-name"><%- author.name %></h3>
@@ -28,9 +25,12 @@
                                 <% if (author.name !== 'Bartosz Pietrucha' && author.academies.fta) { %><li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">⭐ Fullstack Testing Academy member</a></li><% } %>
                             </ul>
                         <% } %>
-                        <p class="author-description"><%- author.desc %></p>
+                        <div class="author-specs">
+                            <% author.spec.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
+                        </div>
                     </div>
                 </header>
+                <p class="author-description"><%- author.desc %></p>
                 <div class="author-contribution">
                     <div class="author-line-header">Contribution level</div>
                     <div class="author-contribution-count">

@@ -22,7 +22,7 @@
 .author-header {
   display: flex;
   border-radius: 0.3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
   flex-direction: column;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .author-description {
-  padding-bottom: 0;
+  padding-bottom: 3rem;
   line-height: 2.4rem;
 }
 
@@ -175,9 +175,7 @@
 .author-specs {
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
-  top: 0;
-  right: 0;
+  padding-top: .5rem;
 }
 
 .author-spec {
