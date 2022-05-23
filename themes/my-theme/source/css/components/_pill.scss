@@ -17,6 +17,7 @@
   transition: $transition-time opacity $transition-type;
   margin-right: 1.3rem;
   margin-bottom: 1.3rem;
+  text-transform: capitalize;
 
   &:hover {
     opacity: 1;

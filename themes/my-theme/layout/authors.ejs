@@ -3,8 +3,10 @@
     <p>We are contstantly growing and attracting incredible experts, to share with us outstanding expertise and knowledge.</p>
     <div class="pills">
         <div class="pill" data-spec="all">All Experts</div>
-        <div class="pill pill-angular pill-inactive" data-spec="angular">Angular Expert</div>
-        <div class="pill pill-nodejs pill-inactive" data-spec="nodejs">NodeJS Expert</div>
+        <% config.authors_specs.forEach(function(spec){ var specName; %>
+            <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
+            <div class="pill pill-<%- spec %> pill-inactive" data-spec="<%- spec %>"><%- specName %> Expert</div>
+        <% }) %>
     </div>
     <div class="authors-list">
         <% page.authors.forEach(function(author){ %>

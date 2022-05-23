@@ -216,6 +216,7 @@ image_minifier:
   enable: false
 
 # site authors, custom generator
+authors_specs: [nodejs, angular]
 authors:
   "Bartosz Pietrucha":
     slug: bartosz-pietrucha
