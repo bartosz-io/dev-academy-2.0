@@ -221,10 +221,10 @@ authors:
   "Bartosz Pietrucha":
     slug: bartosz-pietrucha
     desc: This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description.
-    spec: [nodejs, angular]
+    specs: [nodejs, angular]
     image: /img/bartosz-pietrucha.jpg
     motto: I very much believe in learning through my own experience.
-    joined: 09.04.2022
+    joined: 05 April 2022
     academies:
       fta: true
       wsa: true
@@ -236,10 +236,10 @@ authors:
   "Christoph Jürgens":
     slug: christoph-jurgens
     desc: Christoph Jürgens description.. Christoph Jürgens description..
-    spec: [angular]
+    specs: [angular]
     image: /img/christoph-juergens.jpg
     motto: This is my motto.
-    joined: 12.04.2022
+    joined: 12 April 2022
     academies:
       fta: true
       wsa: true
@@ -251,10 +251,10 @@ authors:
   "Hugo Noro":
     slug: hugo-noro
     desc: Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description.
-    spec: [angular]
+    specs: [angular]
     image: /img/hugo-noro.png
     motto: I very much believe in learning through my own experience.
-    joined: 22.04.2022
+    joined: 22 April 2022
     academies:
       fta: true
       wsa: true
@@ -266,10 +266,10 @@ authors:
   "Peter D. Mobley":
     slug: peter-mobley
     desc: Peter D. Mobley description. Peter D. Mobley description. Peter D. Mobley description. Peter D. Mobley description.
-    spec: [angular]
+    specs: [angular]
     image: /img/peter-mobley.jpg
     motto: I very much believe in learning through my own experience.
-    joined: 22.04.2022
+    joined: 21 April 2021
     academies:
       fta: true
       wsa: true
@@ -281,10 +281,10 @@ authors:
   "Viktors Garkavijs":
     slug: viktors-garkavijs
     desc: Viktors Garkavijs description. Viktors Garkavijs description. Viktors Garkavijs description.
-    spec: [angular]
+    specs: [angular]
     image: /img/viktors-garkavijs.jpg
     motto: I very much believe in learning through my own experience.
-    joined: 22.04.2022
+    joined: 02 January 2022
     academies:
       fta: true
       wsa: true

@@ -17,18 +17,9 @@
                     </div>
                     <div class="author-header-bio">
                         <h3 class="author-name"><%- author.name %></h3>
-                        <% if (author.academies && (author.academies.wsa || author.academies.fta)) { %>
-                            <ul class="author-academies">
-                                <% if (author.name === 'Bartosz Pietrucha') { %>
-                                    <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">🌟 Web Security Academy founder</a></li>
-                                    <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">🌟 Fullstack Testing Academy founder</a></li>
-                                <% } %>
-                                <% if (author.name !== 'Bartosz Pietrucha' && author.academies.wsa) { %><li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">⭐ Web Security Academy member</a></li><% } %>
-                                <% if (author.name !== 'Bartosz Pietrucha' && author.academies.fta) { %><li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">⭐ Fullstack Testing Academy member</a></li><% } %>
-                            </ul>
-                        <% } %>
+                        <%- partial('partial/author/academies', {author: author}) %>
                         <div class="author-specs">
-                            <% author.spec.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
+                            <% author.specs.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
                         </div>
                     </div>
                 </header>
