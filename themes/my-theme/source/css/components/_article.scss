@@ -12,14 +12,22 @@
   ul {
     list-style: disc;
   }
+
+  .author-academies {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+
+    li {
+      margin-right: 1rem;
+    }
+  }
 }
 
 .article-header {
   padding-top: 2rem;
-}
-
-.article-meta {
-  padding-bottom: 2rem;
 }
 
 .article-avatar {
@@ -31,22 +39,31 @@
 .article-author {
   display: flex;
   align-items: center;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: .1rem solid $light-200;
 }
 
 .article-date {
   color: $light-600;
-  list-style-type: disc;
-  display: list-item;
-  margin-left: 3rem;
+  margin-right: 1.5rem;
 }
 
 .article-details {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
-.article-author-name {
+.article-author-info {
+  display: flex;
+  flex-direction: column;
   padding-left: 1rem;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .article-share {
@@ -89,8 +106,9 @@
 ul.article-tag-list {
   display: flex;
   list-style-type: none;
+  flex-wrap: wrap;
+  margin-bottom: 0;
   padding-left: 0;
-  margin: 1.5rem 0 0;
 }
 
 .article-tag-list-link {

@@ -17,7 +17,7 @@
                     </div>
                     <div class="author-header-bio">
                         <h3 class="author-name"><%- author.name %></h3>
-                        <%- partial('partial/author/academies', {author: author}) %>
+                        <%- author_academies(author.name) %>
                         <div class="author-specs">
                             <% author.specs.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
                         </div>

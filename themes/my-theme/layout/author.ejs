@@ -5,8 +5,7 @@
         <div class="author-info-left">
             <img src="<%- page.author.image %>" class="author-image" alt="<%- page.author.name %>">
             <div class="author-articles-count"><span>⭐ <%- page.author.postsCount %></span>&nbsp;<% if (page.author.postsCount > 1) { %>Articles<% } else { %>Article<% } %></div>
-            <%- partial('partial/author/academies', {author: page.author}) %>
-
+            <%- author_academies(page.author.name) %>
         </div>
         <div class="author-info-right">
             <h1 class="author-name"><%- page.author.name %></h1>

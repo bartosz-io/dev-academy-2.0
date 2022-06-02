@@ -60,4 +60,47 @@ hexo.extend.generator.register('author', function(locals) {
     return routes;
 });
 
-// TODO add helper to get specific author + HTML
+hexo.extend.helper.register('author_academies', function(authorName) {
+    var configAuthors = Object.entries(this.config.authors);
+
+    if (!configAuthors.length) {
+        return '';
+    }
+
+    var author = configAuthors.find(author => author[0] === authorName);
+
+    if (author) {
+        var isWsa = author[1].academies.wsa;
+        var isFta = author[1].academies.wsa;
+        var isFounder = authorName === 'Bartosz Pietrucha';
+
+        var wsaTplFounder = '🌟 Web Security Academy founder';
+        var ftaTplFounder = '🌟 Fullstack Testing Academy founder';
+
+        var wsaTpl = isFounder ? wsaTplFounder : isWsa ? '⭐ Web Security Academy member' : '';
+        var ftaTpl = isFounder ? ftaTplFounder : isFta ? '⭐ Fullstack Testing Academy member' : '' ;
+
+        if (wsaTpl || ftaTpl) {
+            return `<ul class="author-academies">
+                      <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
+                      <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
+                    </ul>`;
+        }
+        return ''
+    }
+
+    return '';
+});
+
+hexo.extend.helper.register('author_url', function(authorName) {
+    var configAuthors = Object.entries(this.config.authors);
+
+    if (!configAuthors.length) {
+        return '/';
+    }
+
+    var author = configAuthors.find(author => author[0] === authorName);
+
+
+    return `/authors/${author[1].slug}`;
+});
