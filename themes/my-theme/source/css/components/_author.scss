@@ -406,13 +406,16 @@
 .author-short-info-top {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   font-style: italic;
   color: $dark-700;
   padding-bottom: 2rem;
+  font-size: 1.4rem;
 }
 
 .author-short-info-bottom {
   display: flex;
+  flex-direction: column;
 
   img {
     border-radius: .4rem;
@@ -425,12 +428,13 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding-left: 4rem;
+  padding-left: 0;
 
   h4 {
     margin-bottom: 0;
     font-size: 2.4rem;
-    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
 
     a {
       color: $dark-100;
@@ -442,21 +446,21 @@
   }
 
   .author-contribution-level {
-    min-width: 40rem;
+    margin-top: 2rem;
   }
 }
 
 .author-short-info-count {
   color: $dark-700;
   font-size: 1.8rem;
+  padding-bottom: 1rem;
 }
 
 .author-short-info-header {
   display: flex;
-  align-items: center;
-}
+  flex-direction: column;
 
-// TODO to be remove soon
-.HB-Takeover {
-  display: none !important;
+  .author-specs {
+    padding-bottom: 1rem;
+  }
 }
