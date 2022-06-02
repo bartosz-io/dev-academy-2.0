@@ -87,24 +87,34 @@
   span {
     line-height: 1.8rem;
 
-    &:before {
+    &:before,
+    &:after {
       content: '';
-      display: block;
       width: 100%;
       height: .8rem;
       background-color: $light-800;
       margin-bottom: .5rem;
     }
 
+    &:before {
+      display: block;
+    }
+
+    &:after {
+      display: none;
+    }
+
     &:first-child {
-      &:before {
+      &:before,
+      &:after {
         border-top-left-radius: .4rem;
         border-bottom-left-radius: .4rem;
       }
     }
 
     &:last-child {
-      &:before {
+      &:before,
+      &:after {
         border-top-right-radius: .4rem;
         border-bottom-right-radius: .4rem;
       }
@@ -112,12 +122,29 @@
   }
 }
 
+.author-contribution-level-after {
+  span:before {
+    display: none;
+  }
+
+  span:after {
+    display: block;
+  }
+}
+
 .author-contribution-level-beginner {
   span {
     &:nth-child(1) {
-      &:before {
+      &:before,
+      &:after {
         background: linear-gradient(270deg, #7477b3 23.96%, #4495DA 79.49%);
       }
+    }
+  }
+
+  &.author-contribution-level-bold {
+    span:nth-child(1) {
+      font-weight: 700;
     }
   }
 }
@@ -125,15 +152,23 @@
 .author-contribution-level-advanced {
   span {
     &:nth-child(1) {
-      &:before {
+      &:before,
+      &:after {
         background: linear-gradient(270deg, #7477b3 23.96%, #4495DA 79.49%);
       }
     }
 
     &:nth-child(2) {
-      &:before {
+      &:before,
+      &:after {
         background: linear-gradient(270deg, #c44472 23.96%, #7477b3 79.49%);
       }
+    }
+  }
+
+  &.author-contribution-level-bold {
+    span:nth-child(2) {
+      font-weight: 700;
     }
   }
 }
@@ -141,21 +176,30 @@
 .author-contribution-level-expert {
   span {
     &:nth-child(1) {
-      &:before {
+      &:before,
+      &:after {
         background: linear-gradient(270deg, #7477b3 23.96%, #4495DA 79.49%);
       }
     }
 
     &:nth-child(2) {
-      &:before {
+      &:before,
+      &:after {
         background: linear-gradient(270deg, #c44472 23.96%, #7477b3 79.49%);
       }
     }
 
     &:nth-child(3) {
-      &:before {
+      &:before,
+      &:after {
         background: linear-gradient(270deg, #D73964 23.96%, #c44472 79.49%);
       }
+    }
+  }
+
+  &.author-contribution-level-bold {
+    span:nth-child(3) {
+      font-weight: 700;
     }
   }
 }
@@ -350,6 +394,66 @@
 
 .author-posts {
   padding: 7rem 0;
+}
+
+.author-short-info {
+  background-color: $light-150;
+  border-radius: .4rem;
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+
+.author-short-info-top {
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+  color: $dark-700;
+  padding-bottom: 2rem;
+}
+
+.author-short-info-bottom {
+  display: flex;
+
+  img {
+    border-radius: .4rem;
+    width: 12rem;
+    height: 12rem;
+  }
+}
+
+.author-short-info-desc {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-left: 4rem;
+
+  h4 {
+    margin-bottom: 0;
+    font-size: 2.4rem;
+    padding-right: 1rem;
+
+    a {
+      color: $dark-100;
+
+      &:hover {
+        color: $teal-600;
+      }
+    }
+  }
+
+  .author-contribution-level {
+    min-width: 40rem;
+  }
+}
+
+.author-short-info-count {
+  color: $dark-700;
+  font-size: 1.8rem;
+}
+
+.author-short-info-header {
+  display: flex;
+  align-items: center;
 }
 
 // TODO to be remove soon

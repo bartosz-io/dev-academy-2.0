@@ -9,7 +9,7 @@
                     <img src="<%- url_for('/img/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.author %>">
                     <div class="article-author-info">
                         <a href="<%- author_url(post.author) %>"><span class="article-author-name"><span itemprop="name"><%- post.author %></span></span></a>
-                        <%- author_academies(post.author, 'post') %>
+                        <%- author_academies(post.author) %>
                     </div>
                 </div>
                 <div class="article-meta">
@@ -26,6 +26,8 @@
         <footer class="article-footer">
             <%- partial('post/tags') %>
         </footer>
+
+        <%- author_info(post.author, post.date) %>
 
     </article>
 

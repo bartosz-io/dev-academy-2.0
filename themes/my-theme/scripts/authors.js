@@ -104,3 +104,52 @@ hexo.extend.helper.register('author_url', function(authorName) {
 
     return `/authors/${author[1].slug}`;
 });
+
+hexo.extend.helper.register('author_info', function(authorName, postDate) {
+    var configAuthors = Object.entries(this.config.authors);
+
+    if (!configAuthors.length) {
+        return '/';
+    }
+
+    var author = configAuthors.find(author => author[0] === authorName);
+
+    if (author) {
+        var authorPosts = hexo.locals.get('posts').filter(post => post.author === author[0]);
+        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 1 ? 'advanced' : 'beginner';
+        var articleSuffix = authorPosts.length === 1 ? 'Article' : 'Articles';
+
+        var authorSpecs = author[1].specs;
+        var specsTpl = '';
+
+        authorSpecs.forEach((spec) => {
+            specsTpl += `<span class="author-spec author-spec-${spec}" title="${spec} expert"></span>`
+        });
+
+        return `<div class="author-short-info">
+            <div class="author-short-info-top">
+                <span class="author-short-info-about">About The Author</span>
+                <div class="author-short-info-date">
+                    Posted: ${this.date(postDate, 'MMMM Do, YYYY')}
+                </div>
+            </div>
+            <div class="author-short-info-bottom">
+                <img src="${author[1].image}" alt="${author[0]}">
+                <div class="author-short-info-desc">
+                    <div class="author-short-info-header">
+                        <h4><a href="${this.author_url(author[0])}">${author[0]}</a></h4>
+                        <div class="author-specs">${specsTpl}</div>
+                    </div>
+                    <div class="author-short-info-count">📄 ${authorPosts.length} ${articleSuffix}</div>
+                    <div class="author-contribution-level author-contribution-level-after author-contribution-level-bold author-contribution-level-${level}">
+                        <span>Beginner</span>
+                        <span>Advanced</span>
+                        <span>Expert</span>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    return '';
+});
