@@ -140,7 +140,7 @@ hexo.extend.helper.register('author_info', function(authorName, postDate) {
                         <h4><a href="${this.author_url(author[0])}">${author[0]}</a></h4>
                         <div class="author-specs">${specsTpl}</div>
                     </div>
-                    <div class="author-short-info-count">📄 ${authorPosts.length} ${articleSuffix}</div>
+                    <div class="author-short-info-count">⭐ ${authorPosts.length} ${articleSuffix}</div>
                     <div class="author-contribution-level author-contribution-level-after author-contribution-level-bold author-contribution-level-${level}">
                         <span>Beginner</span>
                         <span>Advanced</span>
