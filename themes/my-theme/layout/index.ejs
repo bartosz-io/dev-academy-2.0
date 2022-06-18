@@ -1,2 +1,3 @@
 <%- partial('partial/tags') %>
-<%- partial('partial/posts') %>
+<%- partial('partial/posts', {posts: page.posts}) %>
+<%- partial('partial/pagination') %>

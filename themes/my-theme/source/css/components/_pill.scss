@@ -1,0 +1,57 @@
+@import '../variables';
+
+.pills {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.pill {
+  display: flex;
+  padding: .8rem 1.8rem .7rem;
+  font-size: 1.5rem;
+  color: $white;
+  background-color: $dark-100;
+  text-align: center;
+  border-radius: .4rem;
+  line-height: 1.9rem;
+  transition: $transition-time opacity $transition-type;
+  margin-right: 1.3rem;
+  margin-bottom: 1.3rem;
+  text-transform: capitalize;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.pill-angular,
+.pill-nodejs {
+  &:before {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    margin-right: .7rem;
+  }
+}
+
+.pill-angular {
+  background-color: $pink-200;
+
+  &:before {
+    background: url('/img/icons/angular.png') no-repeat;
+  }
+}
+
+.pill-nodejs {
+  background-color: $purple-100;
+
+  &:before {
+    background: url('/img/icons/nodejs.png') no-repeat;
+  }
+}
+
+.pill-inactive {
+  opacity: 0.3;
+}

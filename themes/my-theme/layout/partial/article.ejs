@@ -3,16 +3,19 @@
         <header class="article-header">
             <h1 itemprop="name"><%- page.title %></h1>
             <link itemprop="url" href="<%- page.permalink %>">
-            <div class="article-meta">
-                <div class="article-details">
-                    <div class="article-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <img src="<%- url_for('/img/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.author %>">
-                        <a href="<%- post.link %>"><span class="article-author-name"><span itemprop="name"><%- post.author %></span></span></a>
-                    </div>
-                    <time class="article-date" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, null) %></time>
-                </div>
 
-                <%- partial('partial/post/tags') %>
+            <div class="article-details">
+                <div class="article-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <img src="<%- url_for('/img/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.author %>">
+                    <div class="article-author-info">
+                        <a href="<%- author_url(post.author) %>"><span class="article-author-name"><span itemprop="name"><%- post.author %></span></span></a>
+                        <%- author_academies(post.author) %>
+                    </div>
+                </div>
+                <div class="article-meta">
+                    <time class="article-date" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, null) %></time>
+                    <%- partial('partial/post/tags') %>
+                </div>
             </div>
         </header>
 
@@ -23,6 +26,8 @@
         <footer class="article-footer">
             <%- partial('post/tags') %>
         </footer>
+
+        <%- author_info(post.author, post.date) %>
 
     </article>
 

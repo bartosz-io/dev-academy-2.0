@@ -3,7 +3,118 @@
 @import 'variables';
 @import 'third-parties/odometer';
 
+@media (min-width: 420px) {
+  .author-specs {
+    position: static;
+  }
+
+  .author-header-bio {
+    padding-top: 0;
+    padding-left: 1.5rem;
+  }
+
+  .author-header {
+    flex-direction: row;
+  }
+
+  .author-short-info-top {
+    flex-direction: row;
+  }
+
+  .author-short-info-desc {
+    padding-left: 2rem;
+    flex-grow: 1;
+
+    h4 {
+      padding-top: 0;
+    }
+
+    .author-contribution-level {
+      margin-top: 0;
+    }
+  }
+
+  .author-short-info-count {
+    padding-bottom: 0;
+  }
+
+  .author-short-info-header {
+    align-items: center;
+    flex-flow: wrap;
+
+    h4 {
+      padding-bottom: 0;
+      padding-right: 1rem;
+    }
+
+    .author-specs {
+      padding-bottom: 0;
+    }
+  }
+
+  .author-short-info-bottom {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 480px) {
+  .author-short-info-top {
+    font-size: 1.6rem;
+  }
+
+  .author-info {
+    flex-direction: row;
+  }
+
+  .author-info-left,
+  .author-info-right {
+    flex: 0 0 auto;
+  }
+
+  .author-info-left {
+    flex-basis: 40%;
+    padding-right: 2rem;
+  }
+
+  .author-info-right {
+    flex-basis: 60%;
+    padding-left: 2rem;
+  }
+}
+
 @media (min-width: 768px) {
+  .author-short-info-desc {
+    padding-left: 4rem;
+  }
+
+  .author-motto {
+    padding-top: 7rem;
+  }
+
+  .author-joined {
+    font-size: 1.6rem;
+  }
+
+  .author-info-left {
+    padding-right: 7rem;
+  }
+
+  .author-info-right {
+    padding-left: 7rem;
+    padding-top: 3rem;
+
+    &:before {
+      content: '';
+      width: .1rem;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: $light-300;
+    }
+  }
+
   .button {
     font-size: 1.6rem;
 
@@ -18,66 +129,6 @@
 
   blockquote {
     margin: 1rem 2rem 3rem;
-  }
-
-  .header {
-    flex-direction: row;
-    justify-content: space-between;
-    min-height: auto;
-    height: 8rem;
-    align-items: center;
-  }
-
-  .header-title {
-    display: flex;
-    align-items: center;
-
-    div {
-      display: flex;
-      flex-direction: column;
-      font-size: 2.2rem;
-      font-weight: 700;
-      padding-left: 1rem;
-      margin-bottom: 0;
-
-      small {
-        font-size: 1.2rem;
-        line-height: 1.2rem;
-        font-weight: 500;
-        color: $light-700;
-      }
-
-      a {
-        color: $light-200;
-      }
-    }
-  }
-
-  .header-nav-toggle {
-    display: none;
-  }
-
-  .header-nav {
-    display: block;
-    padding: 0;
-
-    ul {
-      display: flex;
-    }
-  }
-
-  .header-nav-link {
-    padding-left: 3rem;
-  }
-
-  .header-logo {
-    align-self: center;
-  }
-
-  .header-title {
-    > a {
-      position: static;
-    }
   }
 
   main {
@@ -145,16 +196,6 @@
     padding: 3rem 0;
   }
 
-  .article-meta {
-    display: flex;
-    align-items: center;
-  }
-
-  ul.article-tag-list {
-    margin-top: 0;
-    padding-left: 2rem;
-  }
-
   .article {
     width: calc(100% - 8rem);
   }
@@ -216,14 +257,6 @@
     left: auto;
   }
 
-  .header-nav-item-courses {
-    display: list-item;
-  }
-
-  .header-nav-link-mobile {
-    display: none;
-  }
-
   .course-image img {
     max-width: 100%;
   }
@@ -257,6 +290,14 @@
 
   .related-post-footer {
     padding-left: 0;
+  }
+
+  .authors-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .author {
+    margin-bottom: 0;
   }
 }
 
@@ -377,11 +418,87 @@
       width: 100%;
     }
   }
+
+  .header-nav-toggle {
+    display: none;
+  }
+
+  .header-nav {
+    display: block;
+    padding: 0;
+
+    ul {
+      display: flex;
+    }
+  }
+
+  .header-nav-link {
+    padding-left: 3rem;
+  }
+
+  .header-nav-item-courses {
+    display: list-item;
+  }
+
+  .header-nav-link-mobile {
+    display: none;
+  }
+
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: auto;
+    height: 8rem;
+    align-items: center;
+  }
+
+  .header-title {
+    display: flex;
+    align-items: center;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      font-size: 2.2rem;
+      font-weight: 700;
+      padding-left: 1rem;
+      margin-bottom: 0;
+
+      small {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        font-weight: 500;
+        color: $light-700;
+      }
+
+      a {
+        color: $light-200;
+      }
+    }
+  }
+
+  .header-logo {
+    align-self: center;
+  }
+
+  .header-title {
+    > a {
+      position: static;
+    }
+  }
+
+  .authors-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 @media (min-width: 1180px) {
   .posts {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .authors-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

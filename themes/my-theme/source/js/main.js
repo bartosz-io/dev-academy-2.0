@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function() {
-    if (this.isMobile()) {
+    if (!this.isTablet()) {
         navigation();
     }
 
@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', function() {
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
+    authors();
 });
 
 function loadConvertKit() {
@@ -173,6 +174,41 @@ function relatedPosts() {
         close.addEventListener('click', function(event) {
             event.preventDefault();
             close.closest('.related-posts').remove();
+        })
+    }
+}
+
+function authors() {
+    var authorsContainer =  document.querySelector('.authors');
+
+    if (authorsContainer) {
+        var pillsContainer = authorsContainer.querySelector('.pills');
+
+        pillsContainer.addEventListener('click', function(event) {
+            const spec = event.target.getAttribute('data-spec');
+            if (spec) {
+                var pills = pillsContainer.querySelectorAll('.pill');
+                var pillInactiveClass = 'pill-inactive';
+                pills.forEach((pill) => pill.classList.add(pillInactiveClass));
+
+                event.target.classList.remove(pillInactiveClass);
+
+                var authors = authorsContainer.querySelectorAll('.author');
+
+                if (spec === 'all') {
+                    authors.forEach((author) => author.style.display = 'block');
+                } else {
+                    authors.forEach((author) => author.style.display = 'none');
+
+                    authorsContainer.querySelectorAll('.author-specs').forEach(function(specs) {
+                        let a = specs.querySelector('.author-spec-' + spec);
+
+                        if (a) {
+                            a.closest('.author').style.display = 'block';
+                        }
+                    })
+                }
+            }
         })
     }
 }

@@ -1,5 +1,5 @@
 <section class="posts">
-    <% page.posts.each(function(post, i){ %>
+    <% posts.each(function(post, i){ %>
         <article class="post">
             <div class="post-content">
                 <a href="<%- post.path %>">
@@ -18,13 +18,3 @@
         </article>
     <% }) %>
 </section>
-
-<% if (page.total > 1){ %>
-    <nav class="pagination">
-        <%- paginator({
-            prev_text: "<span class='icofont-curved-double-left'></span> Prev",
-            next_text: "Next <span class='icofont-curved-double-right'></span>",
-            escape: false
-        }) %>
-    </nav>
-<% } %>

@@ -1,0 +1,51 @@
+<div class="authors">
+    <h1 class="authors-header">Expert Authors</h1>
+    <p>We are contstantly growing and attracting incredible experts, to share with us outstanding expertise and knowledge.</p>
+    <div class="pills">
+        <div class="pill" data-spec="all">All Experts</div>
+        <% config.authors_specs.forEach(function(spec){ var specName; %>
+            <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
+            <div class="pill pill-<%- spec %> pill-inactive" data-spec="<%- spec %>"><%- specName %> Expert</div>
+        <% }) %>
+    </div>
+    <div class="authors-list">
+        <% page.authors.forEach(function(author){ %>
+            <article class="author">
+                <header class="author-header">
+                    <div class="author-header-left">
+                        <img src="<%- author.image %>" alt="<%- author.name %>">
+                    </div>
+                    <div class="author-header-bio">
+                        <h3 class="author-name"><%- author.name %></h3>
+                        <%- author_academies(author.name) %>
+                        <div class="author-specs">
+                            <% author.specs.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
+                        </div>
+                    </div>
+                </header>
+                <p class="author-description"><%- author.desc %></p>
+                <div class="author-contribution">
+                    <div class="author-line-header">Contribution level</div>
+                    <div class="author-contribution-count">
+                        <% if (author.level === 'expert') { %>Expert<% } else if (author.level === 'advanced') { %>Advanced Contributor<% } else { %>Beginner<% } %>
+                        - <%- author.postsCount %>&nbsp;<% if (author.postsCount > 1) { %>Articles<% } else { %>Article<% } %>
+                    </div>
+                    <div class="author-contribution-level author-contribution-level-<%- author.level%>">
+                        <span>Beginner</span>
+                        <span>Advanced Contributor</span>
+                        <span>Expert</span>
+                    </div>
+                </div>
+                <div class="author-latest">
+                    <div class="author-line-header">Latest articles</div>
+                    <div class="author-latest-articles">
+                        <% author.posts.sort('date', 'desc').each(function(post, index){ %>
+                            <% if (index === 0 || index === 1) { %><a href="<%- post.path %>" class="author-latest-article"><%- post.title %></a><% } %>
+                        <% }); %>
+                    </div>
+                </div>
+                <a class="author-more" href="/authors/<%- author.slug %>">See more</a>
+            </article>
+        <% }) %>
+    </div>
+</div>
