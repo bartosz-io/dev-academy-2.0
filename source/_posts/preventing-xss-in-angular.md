@@ -186,4 +186,3 @@ These are the most important takeaways from this article:
 
 So, if you follow Angular's coding patterns, your website will be secure from XXS attacks. Additionally, don't forget always to make sure to keep up with the latest releases. The Angular team might fix possible security defects discovered in previous versions. Also, never modify Angular core files. If you think you might have found some flaws, share your improvements with the community and make a pull request on [GitHub](https://github.com/angular).
 
-This article was written by [Christoph Jürgens](https://www.linkedin.com/in/christoph-juergens-54a20311/). Christoph is a software engineer and technical lead with a soft spot for web security. He is particularly interested in working with cutting-edge technologies to create clean, well-designed code for building high-quality applications.
