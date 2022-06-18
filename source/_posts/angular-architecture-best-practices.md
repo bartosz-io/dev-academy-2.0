@@ -291,7 +291,7 @@ We have covered the topic of the abstraction layers in our frontend application.
 
 ## Unidirectional data flow and reactive state management
 
-The next principle we want to introduce in our system is about the data flow and propagation of change. Angular itself uses [unidirectional data flow on presentation level](https://blog.angularindepth.com/do-you-really-know-what-unidirectional-data-flow-means-in-angular-a6f55cefdc63) (via input bindings), but we will impose a similar restriction on the application level. Together with reactive state management (based on streams), it will give us the very important property of the system - **data consistency**. Below diagram presents the general idea of unidirectional data flow.
+The next principle we want to introduce in our system is about the data flow and propagation of change. Angular itself uses unidirectional data flow on presentation level (via input bindings), but we will impose a similar restriction on the application level. Together with reactive state management (based on streams), it will give us the very important property of the system - **data consistency**. Below diagram presents the general idea of unidirectional data flow.
 
 {% img "flowAbstract.gif" "Unidirectional data flow" "lazy" %}
 
