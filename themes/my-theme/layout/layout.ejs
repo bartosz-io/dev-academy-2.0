@@ -8,6 +8,7 @@
     <%- partial('partial/head/rss') %>
     <%- partial('partial/head/favicon') %>
     <%- partial('partial/head/og') %>
+    <% if (is_tag() || page.thankYouPage) { %> <meta name="robots" content="noindex"> <% } %>
 </head>
 <body <% if (page.thankYouPage) {%> class="thank-you" <% } %>>
 
