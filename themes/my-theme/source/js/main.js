@@ -151,7 +151,6 @@ function cookieConsent() {
 function relatedPosts() {
     var relatedPostsContainer = document.querySelector('.related-posts');
 
-
     if (relatedPostsContainer) {
         var relatedPosts = relatedPostsContainer.querySelectorAll('.related-post');
         var visibleClass = 'visible';
