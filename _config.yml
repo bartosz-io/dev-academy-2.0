@@ -220,76 +220,76 @@ authors_specs: [nodejs, angular]
 authors:
   "Bartosz Pietrucha":
     slug: bartosz-pietrucha
-    desc: This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description.
+    desc: Bartosz is the founder of Dev Academy blog and courses. He has been coding since 13 yo and holds Master Degree in computer science. He loves to grow and see others grow thanks to the work he does. Occassional conference speaker.
     specs: [nodejs, angular]
-    image: /img/bartosz-pietrucha.jpg
-    motto: I very much believe in learning through my own experience.
-    joined: 05 April 2022
+    image: /img/bartosz-large.png
+    motto: I very much believe in learning almost every day. Exploring the surrounding world is the most exciting thing we could ever do.
+    joined: 1 May 2019
     academies:
       fta: true
       wsa: true
     socials:
-      site: https://www.linkedin.com/in/bpietrucha/
+      site: https://bartosz.io/
       linkedin: https://www.linkedin.com/in/bpietrucha/
-      twitter: https://www.linkedin.com/in/bpietrucha/
-      github: https://www.linkedin.com/in/bpietrucha/
+      twitter: https://twitter.com/bartosz_io/
+      github: https://github.com/bartosz-io/
   "Christoph Jürgens":
     slug: christoph-jurgens
-    desc: Christoph Jürgens description.. Christoph Jürgens description..
-    specs: [angular]
+    desc: Technical Director at The App Hub.
+    specs: [nodejs, angular]
     image: /img/christoph-juergens.jpg
     motto: This is my motto.
-    joined: 12 April 2022
+    joined: 27 Nov 2021
     academies:
       fta: true
       wsa: true
     socials:
-      site: https://www.linkedin.com/in/bpietrucha/
-      linkedin: https://www.linkedin.com/in/bpietrucha/
-      twitter: https://www.linkedin.com/in/bpietrucha/
-      github: https://www.linkedin.com/in/bpietrucha/
+      site: https://www.linkedin.com/in/christoph-juergens-54a20311/
+      linkedin: https://www.linkedin.com/in/christoph-juergens-54a20311/
+      twitter: https://twitter.com/comjdev/
+      github: https://github.com/comjdev/
   "Hugo Noro":
     slug: hugo-noro
-    desc: Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description. Hugo Noro description.
+    desc: Senior Frontend Engineer.
     specs: [angular]
     image: /img/hugo-noro.png
-    motto: I very much believe in learning through my own experience.
-    joined: 22 April 2022
+    motto: I very much believe in learning.
+    joined: 11 Dec 2021
     academies:
       fta: true
       wsa: true
     socials:
-      site: https://www.linkedin.com/in/bpietrucha/
-      linkedin: https://www.linkedin.com/in/bpietrucha/
-      twitter: https://www.linkedin.com/in/bpietrucha/
-      github: https://www.linkedin.com/in/bpietrucha/
+      site: https://www.linkedin.com/in/hugo-noro/
+      linkedin: https://www.linkedin.com/in/hugo-noro/
+      twitter: https://twitter.com/hugo_noro/
+      github: https://github.com/hugonoro/
   "Peter D. Mobley":
     slug: peter-mobley
-    desc: Peter D. Mobley description. Peter D. Mobley description. Peter D. Mobley description. Peter D. Mobley description.
-    specs: [angular]
+    desc: Peter D. Mobley is the founder and CEO of Geogram, an innovative advertising and design firm that uses technology to advance clients' annual revenue and generate growth from $10 million to over $100 million annually. As an expert in branding, Mr. Mobley has driven growth for Fortune Global 5000 companies including BYD - Build Your Dreams, within an 18-month period, from $15 million to over $600 million in orders in North America's transportation electrification markets.
+    specs: [javascript, angular, go, nodejs, html]
     image: /img/peter-mobley.jpg
-    motto: I very much believe in learning through my own experience.
-    joined: 21 April 2021
+    motto: Most people have a misconception of branding when developing a marketing and advertising campaigns; They mistakenly focus on 'features and benefits' instead of focusing on how the product or service makes the person 'feel'. The idea here is not to get consumers to buy, but to get fans to share. Once that happens, everything else seems to fall into place.
+    joined: 23 Feb 2022
     academies:
-      fta: true
       wsa: true
+      fta: false
     socials:
       site: https://geogram.com
-      linkedin: https://www.linkedin.com/in/bpietrucha/
-      twitter: https://www.linkedin.com/in/bpietrucha/
-      github: https://www.linkedin.com/in/bpietrucha/
+      linkedin: https://www.linkedin.com/in/petermobley/
+      twitter: https://twitter.com/petermobley/
+      # github:
   "Viktors Garkavijs":
     slug: viktors-garkavijs
-    desc: Viktors Garkavijs description. Viktors Garkavijs description. Viktors Garkavijs description.
+    # desc:
     specs: [angular]
     image: /img/viktors-garkavijs.jpg
-    motto: I very much believe in learning through my own experience.
-    joined: 02 January 2022
+    motto: I very much believe in learning.
+    joined: 8 Apr 2022
     academies:
-      fta: true
       wsa: true
+      fta: false
     socials:
       site: https://mixefy.jp
-      linkedin: https://www.linkedin.com/in/bpietrucha/
-      twitter: https://www.linkedin.com/in/bpietrucha/
-      github: https://www.linkedin.com/in/bpietrucha/
+      github: https://github.com/gaeshi/
+      # linkedin:
+      # twitter:
