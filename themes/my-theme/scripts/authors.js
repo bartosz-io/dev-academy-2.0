@@ -7,7 +7,7 @@ hexo.extend.generator.register('authors', function(locals) {
 
     let authors = configAuthors.map(function(author) {
         var authorPosts = locals.posts.filter(post => post.author === author[0]);
-        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 1 ? 'advanced' : 'beginner';
+        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 2 ? 'advanced' : 'beginner';
 
         return {
             name: author[0],
@@ -71,22 +71,30 @@ hexo.extend.helper.register('author_academies', function(authorName) {
 
     if (author) {
         var isWsa = author[1].academies.wsa;
-        var isFta = author[1].academies.wsa;
+        var isFta = author[1].academies.fta;
         var isFounder = authorName === 'Bartosz Pietrucha';
 
-        var wsaTplFounder = '🌟 Web Security Academy founder';
-        var ftaTplFounder = '🌟 Fullstack Testing Academy founder';
+        var wsaTplFounder = '🎖️ Web Security Academy founder';
+        var ftaTplFounder = '🎖️ Fullstack Testing Academy founder';
 
-        var wsaTpl = isFounder ? wsaTplFounder : isWsa ? '⭐ Web Security Academy member' : '';
-        var ftaTpl = isFounder ? ftaTplFounder : isFta ? '⭐ Fullstack Testing Academy member' : '' ;
+        var wsaTpl = isFounder ? wsaTplFounder : isWsa ? '🏅 Web Security Academy member' : '';
+        var ftaTpl = isFounder ? ftaTplFounder : isFta ? '🏅 Fullstack Testing Academy member' : '' ;
 
-        if (wsaTpl || ftaTpl) {
+        if (wsaTpl && ftaTpl) {
             return `<ul class="author-academies">
                       <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
                       <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
                     </ul>`;
+        } else if (wsaTpl) {
+            return `<ul class="author-academies">
+                      <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
+                    </ul>`;
+        } else if (ftaTpl) {
+            return `<ul class="author-academies">
+                      <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
+                    </ul>`;
         }
-        return ''
+        return '';
     }
 
     return '';
