@@ -100,6 +100,7 @@ theme: my-theme
 # https://www.npmjs.com/package/hexo-generator-seo-friendly-sitemap
 sitemap:
   path: sitemap.xml
+  tag: false
 
 # SCSS support
 # https://www.npmjs.com/package/hexo-renderer-scss
