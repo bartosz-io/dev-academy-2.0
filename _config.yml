@@ -251,10 +251,10 @@ authors:
       github: https://github.com/comjdev/
   "Hugo Noro":
     slug: hugo-noro
-    desc: Senior Frontend Engineer.
-    specs: [angular]
+    desc: Hugo is a Senior Software Engineer with a background in fullstack development within the .NET techstack. He has a Masters in computer engineering and started specialing in Angular since 2016. Quality over quantity is the everyday motto.
+    specs: [javascript, typescript, angular, nodejs]
     image: /img/hugo-noro.png
-    motto: I very much believe in learning.
+    motto: Quality over quantity should always be a priority.
     joined: 11 Dec 2021
     academies:
       fta: true
