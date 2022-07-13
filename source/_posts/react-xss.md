@@ -7,6 +7,7 @@ date: 2022-07-08
 tags: [React, Security]
 id: react-xss
 relatedPost: angular-xss
+published: false
 ---
 {% image_fw 1.78 "banner.png" "Preventing XSS in React" %}
 
