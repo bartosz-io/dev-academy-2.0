@@ -309,3 +309,18 @@ authors:
       github: https://github.com/BearLikeCode
       linkedin: https://www.linkedin.com/in/vlad-ataman/
       twitter: https://twitter.com/BearLikeCode
+  "Mauricio Matias C.":
+    slug: mauricio-matias
+    desc: Mauricio is passionate about building and design (mixing hardware and software). He loves and follows the Open Source and Free Software initiatives. Occasionally he instructs programming and shares his day-to-day tech experiences through talks. He is currently an active member of a tech community called "HackLab BrickHeads Cochabamba".
+    specs: [Javascript, Vue, Node, Python]
+    image: /img/mauricio-matias.jpeg
+    motto: Make it good, make it with love, keep it simple.
+    joined: 10 Jul 2022
+    academies:
+      wsa: true
+      fta: false
+    socials:
+      site: https://cr0wg4n.medium.com
+      github: http://github.com/cr0wg4n
+      linkedin: https://www.linkedin.com/in/cr0wg4n
+      twitter: https://twitter.com/cr0wg4n
