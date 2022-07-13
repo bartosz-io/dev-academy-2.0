@@ -61,7 +61,7 @@ Write this XSS line and perform your search.
 
 The result is something like this, what happened here?. The XSS injection works. It is a common way to test XSS vulnerabilities, but why does it work?
 
-{% img "exploting.png" "exploting xss via <img> tag, xss performed, malicious code" "lazy" %}
+{% img "exploiting.png" "exploiting xss via <img> tag, xss performed, malicious code" "lazy" %}
 
 Look at the following application code ("[SearchView.vue](https://github.com/cr0wg4n/vuejs-xss-example/blob/main/src/views/SearchView.vue)" file). You will notice that the incoming manipulation of the URL query is processed by innerHTML to be reflected in the DOM. That appends the incoming URL query (malicious XSS script) at the element with the "result" id, executing the malicious script embedded in the `<img>` tag.
 
