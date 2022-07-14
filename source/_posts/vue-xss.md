@@ -10,20 +10,20 @@ relatedPost: angular-xss
 ---
 {% image_fw 1.78 banner.png "Preventing XSS in Vue" %}
 
-Something usual in software development is to give a high priority to the implementation of functionalities over other aspects such as security. Mainly when the development team, company, or others do not have an active culture of secure development, putting at risk the most valuable asset for companies and their users, the information.
+Something usual in software development is to give a high priority to the implementation of functionalities over other aspects such as security. Mainly when the development team, company, or others do not have an active culture of secure development, they are putting at risk the most valuable asset for companies and their users... the information. Of course not information is created equal, but when confidencial information is revealed, this most often creates a huge demage, both financially and reputationally.
 
-Today we will learn how to prevent, mitigate and secure our web applications from the Cross-Site Scripting (XSS) attack vector, one of the most trivial, usual, and dangerous in the world of web applications.
+Today we will learn how to prevent, mitigate, and secure our web applications from the cross-site scripting (XSS) attack vector, one of the most trivial, usual, and dangerous in the world of web applications.
 
 <!-- toc -->
 
-When a cross-site scripting vulnerability is exploited, anything is possible. To give you an idea of how dangerous can be this attack, you can check the following malicious actions as a result of XSS exploitation.
+When a cross-site scripting vulnerability is exploited, basically anything is possible. To give you an idea of how dangerous can be this attack, you can check the following malicious actions an attacker can perform in a result of XSS exploitation:
 
-* Take complete control of the web application.
-* Modification of the website HTML and DOM manipulation.
-* Session cookie stealing.
-* Freeway to access sensitive data (passwords, bank accounts, and credit card details).
-* Identity theft.
-* Web request spoofing.
+* taking complete control of the web application,
+* modification of the website HTML and DOM manipulation,
+* session cookie stealing,
+* freeway to access sensitive data (passwords, bank accounts, and credit card details) stored in local/session storage,
+* identity theft,
+* web request spoofing.
 
 ## Cross-Site-Scripting
 
@@ -35,7 +35,7 @@ Stored attacks are those in which the injected script is stored on the target se
 
 ### Reflected XSS Attacks
 
-They are those in which the injected script is reflected from a web application to a victim's browser. For example: In a search result, an error message or any other response that includes some or all of the information sent to the server as part of the request (commonly in the URL). Reflected attacks are delivered to the victims via another route, such as in an email or another website.
+Reflected XSS attacks are those in which the injected script is reflected from a web application direct inputs inside a victim's browser. For example: In a search result, an error message or any other response that includes some or all of the information sent to the server as part of the request (commonly in the URL). The input data does not even need to be sent to the server in case of single-page applications that can process data directly in the browser. Reflected attacks are delivered to the victims via another way, such as in an email or another website (usually with malicious link).
 
 ### OWASP Top Ten
 
@@ -45,9 +45,9 @@ Currently, the XSS attack is part of a new category named "Injection" in the OWA
 
 ## Vue XSS: Let's Exploit
 
-It's time to exploit Cross-Site Scripting in a Vue application 😎. You can explore the source code at this [link](https://github.com/cr0wg4n/vuejs-xss-example). Vue is a powerful front-end framework. Check out this [link](https://vuejs.org/guide/introduction.html) if you don't know about it to begin this front-end framework in a practical way.
+It's time to exploit cross-site scripting in a Vue application 😎. You can explore the source code at this [link](https://github.com/cr0wg4n/vuejs-xss-example). Vue is a powerful front-end framework. Check out this [link](https://vuejs.org/guide/introduction.html) if you don't know about it to begin this front-end framework in a practical way.
 
-For the following examples, we will assume that the web app is complete, both frontend and backend (database persistence) and that it also contains active session cookies.
+For the following examples, we will assume that the web app is complete, both frontend and backend (database persistence), and that it also contains active session cookies.
 
 Clone the project, install the dependencies and run the project. All details are in the README file. Once you have covered the above steps, we are ready to start. At the "/reflected" route, we can view this page.
 
@@ -59,11 +59,11 @@ Write this XSS line and perform your search.
 <img src="simple xss" onerror="alert(document.cookie.split(';'))">
 ```
 
-The result is something like this, what happened here?. The XSS injection works. It is a common way to test XSS vulnerabilities, but why does it work?
+The result is presented in the image below. The is how XSS injection works. It is a common way to test XSS vulnerabilities, but **why** does it work this way? 🤔
 
 {% img "exploiting.png" "exploiting xss via <img> tag, xss performed, malicious code" "lazy" %}
 
-Look at the following application code ("[SearchView.vue](https://github.com/cr0wg4n/vuejs-xss-example/blob/main/src/views/SearchView.vue)" file). You will notice that the incoming manipulation of the URL query is processed by innerHTML to be reflected in the DOM. That appends the incoming URL query (malicious XSS script) at the element with the "result" id, executing the malicious script embedded in the `<img>` tag.
+Look at the following application code ("[SearchView.vue](https://github.com/cr0wg4n/vuejs-xss-example/blob/main/src/views/SearchView.vue)" file). You will notice that the incoming manipulation of the URL query is processed by `innerHTML` to be reflected in the DOM. That appends the incoming URL query (malicious XSS script) at the element with the "result" id, executing the malicious script embedded in the `<img>` tag.
 
 ``` html
 <template>
@@ -89,7 +89,7 @@ Can you guess what kind of XSS vulnerability we exploit? Exactly, Reflected XSS.
 
 ### Preventing XSS 🛡️
 
-Vue mitigates this type of XSS through a feature named "escaping". Where any information entered can be taken as a text string. To take advantage of it is necessary to replace the use of innerHTML and the not recommended direct use of the JavaScript DOM with the native Vue functionality called "Text Interpolation" (you can check the "[SearchViewMitigated.vue](https://github.com/cr0wg4n/vuejs-xss-example/blob/main/src/views/SearchViewMitigated.vue)" file to solve the XSS scenario).
+Vue mitigates this type of XSS through a feature named "escaping". Where any information entered can be taken as a text string. To take advantage of it is necessary to replace the use of `innerHTML` and the not recommended direct use of the JavaScript DOM with the native Vue functionality called "Text Interpolation" (you can check the "[SearchViewMitigated.vue](https://github.com/cr0wg4n/vuejs-xss-example/blob/main/src/views/SearchViewMitigated.vue)" file to solve the XSS scenario).
 
 ``` html
 <template>
@@ -142,7 +142,7 @@ I recommend you to use libraries such as sanitize-html, vue-sanitize, or vue-3-s
 </template>
 ```
 
-As you can see, the content of the posts enters without a previous preprocessing or sanitization to the v-html directive. To fix this problem you just need to use the functions injected to Vue through some of the mentioned libraries (vue-3-sanitize library in this case).
+As you can see, the content of the posts enters without a previous preprocessing or sanitization to the `v-html` directive. To fix this problem you just need to use the functions injected to Vue through some of the mentioned libraries (vue-3-sanitize library in this case).
 
 ``` html
 <div v-html="$sanitize(post.content)"></div>
@@ -152,9 +152,9 @@ These sanitization libraries have a system of rules such as allow lists and deny
 
 ## If it is not Vue, is it you?
 
-Vue is only as secure as you let it be. Vue ignores `<script>` tags introduced at runtime by default. However, it does not guarantee to cover other forms of JavaScript code injection or evaluation. Features such as "Text Interpolation" and different ways of sanitizing HTML tags, attributes, CSS, or JavaScript help to cover possible cross-site scripting scenarios in Vue. Avoid v-html if possible.
+Vue is only as secure as you let it be. Vue ignores `<script>` tags introduced at runtime by default. However, it does not guarantee to cover other forms of JavaScript code injection or evaluation. Features such as "Text Interpolation" and different ways of sanitizing HTML tags, attributes, CSS, or JavaScript help to cover possible cross-site scripting scenarios in Vue. Avoid `v-html` if possible.
 
-If you want to know more Vue content and how to manage the security around the Vue ecosystem. Take a look at this official [link](https://vuejs.org/guide/best-practices/security.html). Additionally, you can consider the use of the content security policy.
+If you want to know more Vue content and how to manage the security around the Vue ecosystem. Take a look at this official [link](https://vuejs.org/guide/best-practices/security.html). Additionally, you can consider the use of the [content security policy](/content-security-policy-in-angular/).
 
 ## Don't trust ❌
 
