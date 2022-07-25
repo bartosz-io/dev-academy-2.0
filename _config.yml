@@ -324,3 +324,18 @@ authors:
       github: http://github.com/cr0wg4n
       linkedin: https://www.linkedin.com/in/cr0wg4n
       twitter: https://twitter.com/cr0wg4n
+  "A M Sanjeev":
+    slug: a-m-sanjeev
+    desc: A computer science and engineering student at FET, Gurukula Kangri (Deemed to be University) Haridwar, Uttarakhand. He likes Web development and content writing. Currently working as Web Development Teaching Assistant for Pupilfirst.
+    specs: [JavaScript, Node, Angular, Ruby, Java]
+    image: /img/a-m-sanjeev.jpg
+    motto: Do it now. Sometimes 'later' becomes 'never'.
+    joined: 10 Jul 2022
+    academies:
+      wsa: true
+      fta: false
+    socials:
+      # site:
+      github: https://github.com/AMSANJEEV28
+      linkedin: https://www.linkedin.com/mwlite/in/a-m-sanjeev-456431207
+      # twitter: 
