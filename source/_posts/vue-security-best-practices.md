@@ -2,7 +2,7 @@
 title: Vue Security Best Practices
 author: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
-description: Learn Vue modern best practices and methods to keep you Vue application (JavaScript) secure. 🔒
+description: Learn Vue modern best practices and methods to keep your Vue application (JavaScript) secure. 🔒
 date: 2022-07-25
 tags: [Vue, Security]
 id: vue-security-best-practices
@@ -13,6 +13,8 @@ relatedPost: vue-xss
 
 Hi, #VueFriend! In this post, we cover security best practices around the Vue ecosystem (in a nutshell). Security issues are always related to the development process, putting at risk the most valuable asset, the end user information. To avoid this kind of scenario, we have some best practices to improve the security in your single-page applications, web pages, web apps, or other builds with Vue. Let's get started!.
 
+<!-- toc -->
+
 ## "v-if" vs "v-show", don't have the same logic
 Sometimes beginner Vue developers confuse the v-if and v-show directives or use them indifferently. The "v-if" lets you render or not some HTML portion through some logic condition. Otherwise, the v-show always renders the HTML portion through some logic condition too, but it displays or hides the content using the "display: none" CSS property. The HTML portion is always reflected on the HTML template. In summary "v-if" renders or not, and "v-show" always renders, but hides or displays the content.
 
@@ -20,51 +22,51 @@ In that sense, "v-if" and "v-show" are useful in accomplishing the task to show 
 
 #### BAD
 ``` html
-    <template>
-      <button
-        v-show="userType === 'admin'"
-        class="button-class-admin"
-        @click="someAdminAction()"
-      >
-        Admin Button
-      </button>
-      <button
-        v-show="userType === 'admin'"
-        class="button-class-normal"
-        @click="someNormalAction()"
-      >
-        Normal Button
-      </button>
-    </template>
-    <script>
-    import { ref } from "vue";
-    export default {
-      setup() {
-        const userType = ref("guest");
-    
-        const someAdminAction = () => {
-          console.log("some admin user logic");
-        };
-        const someNormalAction = () => {
-          console.log("some normal user logic");
-        };
-        return {
-          userType,
-          someAdminAction,
-          someNormalAction,
-        };
-      },
+<template>
+    <button
+    v-show="userType === 'admin'"
+    class="button-class-admin"
+    @click="someAdminAction()"
+    >
+    Admin Button
+    </button>
+    <button
+    v-show="userType === 'admin'"
+    class="button-class-normal"
+    @click="someNormalAction()"
+    >
+    Normal Button
+    </button>
+</template>
+<script>
+import { ref } from "vue";
+export default {
+    setup() {
+    const userType = ref("guest");
+
+    const someAdminAction = () => {
+        console.log("some admin user logic");
     };
-    </script>
+    const someNormalAction = () => {
+        console.log("some normal user logic");
+    };
+    return {
+        userType,
+        someAdminAction,
+        someNormalAction,
+    };
+    },
+};
+</script>
 ```
 
 Open the browser's developer tools and inspect the HTML code around the button. Can you see?.
 
-![v-show use's result, parent component html view](https://images.surferseo.art/4e515ca6-57b1-4462-825c-0e9d5364e933.png)
+{% img "v-show.png" "v-show use's result, parent component html view" "lazy" %}
 
 Other buttons are there but are not displayed. If you remove the "display: none" CSS property from each one, the buttons turn to show.
 
-![removing "display:none" reveals top-level user buttons, parent component html view](https://images.surferseo.art/636b23e5-4699-4469-845a-383de38bdace.png)
+{% img "v-show-buttons.png" "removing 'display:none' reveals top-level user buttons, parent component html view" "lazy" %}
 
 It will depend on how well the logic behind the buttons is developed so that when the "guest" user presses it. Nothing serious happens.
 
@@ -72,22 +74,22 @@ It will depend on how well the logic behind the buttons is developed so that whe
 To fix this security issue you can replace "v-show" with "v-if" as the following code shows.
 
 ``` html
-    <template>
-      <button
-        v-if="userType === 'admin'"
-        class="button-class-admin"
-        @click="someAdminAction()"
-      >
-        Admin Button
-      </button>
-      <button
-        v-if="userType === 'admin'"
-        class="button-class-normal"
-        @click="someNormalAction()"
-      >
-        Normal Button
-      </button>
-    </template>
+<template>
+    <button
+    v-if="userType === 'admin'"
+    class="button-class-admin"
+    @click="someAdminAction()"
+    >
+    Admin Button
+    </button>
+    <button
+    v-if="userType === 'admin'"
+    class="button-class-normal"
+    @click="someNormalAction()"
+    >
+    Normal Button
+    </button>
+</template>
 ```
 
 Replacing "v-show" for "v-if" solves the issue? Not really. It depends on how many levels/layers of security are in your Vue app. The "v-show" and "v-if" Vue directives have their specific use cases, check this [link](https://vuejs.org/api/built-in-directives.html#v-show). Use them wisely.
@@ -219,7 +221,7 @@ This command helps you know if some dependency has related low, moderate, high, 
 
 In a practical example try to install the "parse-url@5.0.8" package version (here is the [link](https://snyk.io/vuln/npm%3Aparse-url) to the package vulnerability report). This package has 1 high and 1 critical vulnerability related to Cross-Site Scripting and Server-Side Request Forgery (It's not dangerous if you don't use this dependency in production 😆), then run the audit command.
 
-![one practical example of npm audit command](https://images.surferseo.art/9a2e0481-ef44-413b-9202-1e6664e2aedc.png)
+{% img "npm-audit.png" "one practical example of npm audit command" "lazy" %}
 
 As you can see. The npm report is detailed, and you can correct the issue by running the following command:
 
@@ -278,7 +280,7 @@ One of many ways to use Vue is via CDN script (in versions less than 2.7.4) as t
 
 When you have the Vue Devtools extension installed properly in your browser, this simple Vue demo HTML will let you open the Devtools, in more complex applications Vue Devtools are the top-notch tool for a Vue Developer (you can see components, storage, events, and more).
 
-![Vue devtools are enabled](https://images.surferseo.art/c2c7dbe5-a83d-4ae1-ac16-968e238dfdff.png)
+{% img "vue-devtools.png" "Vue devtools are enabled" "lazy" %}
 
 If you take this demo to production as it is. The Devtools will remain open for anyone who can view your Vue application via the internet. To mitigate this problem, you can simply replace the CDN development script tag with the CDN production script tag.
 
@@ -287,7 +289,7 @@ If you take this demo to production as it is. The Devtools will remain open for 
 ```
 Immediately the Devtools will be disabled (take a look at the next Devtools extension message). Take this advice as ready-to-production best practice.
 
-![Vue devtools disabled in the end user's browser](https://images.surferseo.art/87ac5740-7860-4444-af86-647161888fde.png)
+{% img "devtools-disabled.png" "Vue devtools disabled in the end user's browser" "lazy" %}
 
 ## DOM is not an option
 Avoid the use of DOM manipulation with vanilla JavasScript. If you require to use it, test the cornerstone cases (expect critical scenarios will keep you a step ahead of your attackers). Direct DOM manipulation can introduce some unexpected vulnerabilities to your Vue application. Some of them are cookie manipulation, javascript injection, WebSocket-URL poisoning, Ajax request-header manipulation, Denial of service, and the most dangerous. Cross-Site Scripting or most knowledge as XSS vulnerability. What is XSS? the next section covers this vulnerability.
