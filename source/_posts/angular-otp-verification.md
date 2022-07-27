@@ -29,7 +29,7 @@ The following groups of variables could make up this second factor:
 
 ## Time-based One-Time Password
 
-The Time-based One-Time Password (TOTP) is a one-time passcode that is widely used for user authentication. A TOPT generator is given to the user and is delivered as a hardware key fob or software token. The time-based one time password is created by the generator using an algorithm that computes a one-time passcode using a secret supplied with the authentication server and the current time. The user is shown the passcode, which is only valid for a short time. The passcode expires after a certain amount of time. The user normally includes his username and standard password in the login form, along with a valid passcode.
+The Time-based One-Time Password (TOTP) is a one-time passcode that is widely used for user authentication. A TOPT generator is given to the user and is delivered as a hardware key fob or software token. The time-based one-time password is created by the generator using an algorithm that computes a one-time passcode using a secret supplied with the authentication server and the current time. The user is shown the passcode, which is only valid for a short time. The passcode expires after a certain amount of time. The user normally includes his username and standard password in the login form, along with a valid passcode.
 
 ## Requesting OTP
 
@@ -117,9 +117,9 @@ return this.dialog.open(OtpComponent, config).afterClosed();
 
 It appears as an Angular NgModel.
 
-## Angular NgModel
+## Angular ngModel
 
-It is a built-in directive for Angular that produces a FormControl object from the domain model and attaches it to a form control element. The ngmodel directive links the value of HTML controls (such as input, select, and textarea) to application data.
+It is a built-in directive for Angular that produces a FormControl object from the domain model and attaches it to a form control element. The ngModel directive links the value of HTML controls (such as input, select, and textarea) to application data.
 
 We can only accomplish that using the HTML element and the component element together. The syntax `[()]` is used for two-way binding. It combines the one-way event binding `()` and one-way property binding `[]` syntaxes together.
 
