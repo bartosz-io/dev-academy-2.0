@@ -22,8 +22,8 @@ The content of this article:
   * eval
   * href
   * dangerouslySetHTML
-* Simple protection from xss attacks
-* React xss protection
+* Simple protection from XSS attacks
+* React XSS protection
 * Summary
 
 ## Attacks
