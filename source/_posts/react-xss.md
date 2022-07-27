@@ -16,16 +16,6 @@ This malicious code can steal your cookies, modify the content or take control o
 
 <!-- toc -->
 
-The content of this article:
-* Attacks
-* DOM-based XSS attacks
-  * eval
-  * href
-  * dangerouslySetHTML
-* Simple protection from XSS attacks
-* React XSS protection
-* Summary
-
 ## Attacks
 Starting about mid-2012, the research community started using two new terms to help organize the types of XSS.
 Types of XSS attacks since mid-2012:
