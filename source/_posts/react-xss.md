@@ -7,182 +7,160 @@ date: 2022-07-08
 tags: [React, Security]
 id: react-xss
 relatedPost: angular-xss
-published: false
+published: true
 ---
 {% image_fw 1.78 "banner.png" "Preventing XSS in React" %}
 
-Cross-site scripting (XSS) attacks are a type of attack in which malicious code is injected into a web page and then executed. The malicious code can steal cookies, modify the content or take total control of the entire website.
+XSS attacks or Cross-site scripting is a type of attack in which malicious code is injected into a web page and then executed.
+This malicious code can steal your cookies, modify the content or take control of an entire webpage.
 
 <!-- toc -->
 
-## Types of XSS attacks
+## Attacks
+Starting about mid-2012, the research community started using two new terms to help organize the types of XSS.
+Types of XSS attacks since mid-2012:
 
-* Reflected XSS attacks
-* Stored XSS attacks
-* DOM-based XSS attacks
+{% img "xss-division.png" "XSS division" "lazy" %}
 
-For years, most people thought of these (Stored, Reflected, DOM) as three different types of XSS, but in reality, they overlap. You can have both Stored and Reflected DOM-Based XSS. You can also have Stored and Reflected Non-DOM Based XSS too, but that's confusing, so to help clarify things, starting about mid-2012, the research community proposed and started using two new terms to help organize the types of XSS that can occur:
+## DOM-based XSS attacks in React
+These attacks belong to the subset of Client cross-site scripting as the data source is from the client side only.
 
-* Server XSS
-* Client XSS
+{% img "client-division.png" "Client division" "lazy" %}
 
-{% img "xss-types.png" "Server XSS vs Client XSS" "lazy" %}
+I will show you three examples of DOM-based XSS attacks in this article.
+We will look at eval, href and dangerouslySetHTML vulnerabilities.
 
-## DOM-Bassed XSS
+### eval
 
-In this article, we'll focus on the **DOM-Bassed XSS attack.**
-
-I will demonstrate three XSS vulnerabilities that can occur in React: 1) `eval`, 2) `href`, and 3) `dangerouslySetHTML`.
-
-### eval() vulnerability
-
-The eval function evaluates strings as JavaScript. Therefore, if the attacker injects javascript code into `eval()`, your app would run the attacker's script.
-
-{% img "eval.png" "eval XSS vulnerability" "lazy" %}
+The eval() function evaluates a string and returns its completion value.
+The issue with the eval function is that you can paste malicious javascript code inside and execute it.
+Let’s make an example, here is a code snippet in JSX code snippet
 
 ``` javascript Code snippet
-import React, { useState } from 'react';const Eval = () => {
-  const [data, setData] = useState({
-    firstName: '',
-    lastName: '',
-  });
-  
-  const handleType = (e) => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value,
-    });
-  };
-  
-  const handleSubmit = () => {
-    eval(data.firstName + data.lastName);
-  };
-  
-  return (
-    <div>
-      <input
-        type='text'
-        name='firstName'
-        value={data.firstName}
-        onChange={(e) => handleType(e)}
-      />
-      <input
-        type='text'
-        name='lastName'
-        value={data.lastName}
-        onChange={(e) => handleType(e)}
-      />
-      <button onClick={() => handleSubmit()}>Submit</button>{' '}
-    </div>
-  );
+import React, { useState } from 'react';
+
+const Eval = () => {
+    const [data, setData] = useState();
+
+    const handleType = (e) => {
+        setData(e.target.value);
+    };
+
+    const handleSubmit = () => {
+        eval(data);
+    };
+
+    return (
+        <div>
+            <p>Place this code inside input: <code>alert('Hacked')</code></p>
+            <input
+                type='text'
+                name='firstName'
+                value={data}
+                onChange={(e) => handleType(e)}
+            />
+            <button onClick={() => handleSubmit()} className="button">Submit</button>{' '}
+        </div>
+    );
 };
 
 export default Eval;
 ```
+And below is a result of the code snippet
 
-### href vulnerability
+{% img "eval.png" "eval XSS vulnerability" "lazy" %}
 
-In the component below, we ask the user to embed user input. We set the href dynamically in the \<a\> tag to the user's provided link. See bold below. Instead of providing a link, the attacker inputs `javascript: alert('Hacked!')` so that when someone clicks on the link, the `alert()` will be executed.
+We use the user's browser and user input to execute a simple alert function and in real life, the attacker can use another javascript malicious code to make something terrible with your webpage, cookies.
 
-{% img "href.png" "href XSS vulnerability" "lazy" %}
+### href
+
+href is an attribute of an element.
+The <a> element defines a hyperlink, which is used to link from one page to another.
+
+As an example, we can embed user input inside a href and this is an issue.
+You can see in the code snippet below, we use a data variable to fill href attribute and data fills with an input element.
 
 ``` javascript Code snippet
 import React, { useState } from 'react';
+
 const Href = () => {
-  const [data, setData] = useState({
-    text: '',
-  });
-const handleType = (e) => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value,
-    });
-  };
-return (
-    <div>
-      <input
-        type='text'
-        name='text'
-        value={data.text}
-        onChange={(e) => handleType(e)}
-      />
-      <a href={data.text}>click Here</a>
-    </div>
-  );
+    const [data, setData] = useState();
+    const handleType = (e) => {
+        setData(e.target.value);
+    };
+
+    return (
+        <div>
+            <p>Place this code inside input: <code>javascript: alert('Hacked');</code></p>
+            <input
+                type='text'
+                name='text'
+                value={data}
+                onChange={(e) => handleType(e)}
+            />
+            <a href={data} className="button">Click Here</a>
+        </div>
+    );
 };
 
 export default Href;
 ```
+Execution of code:
 
-### dangerouslySetHTML vulnerability
+{% img "href.png" "href XSS vulnerability" "lazy" %}
 
-The name says it all. Each HTML element in JSX code has a dangerouslySetHTML property. You can pass HTML into this property as a string and the HTML will be rendered in the DOM.
+### dangerouslySetHTML
 
-{% img "dangerouslySetHTML.png" "dangerouslySetHTML XSS vulnerability" "lazy" %}
+This is a property in HTML code that you can use HTML elements in react code instead of innerHTML function.
+The content of **dangerouslySetHTML** is dynamic and skips the comparison against the virtual DOM. As you can understand it is the third XSS vulnerability.
+Below is a code and result of execution
 
 ``` javascript Code snippet
 import React from 'react';
+
 const DangerouslySetInnerHTML = () => {
-  const createMarkup = () => {
-    return {
-      __html: "<img onerror='alert(\"Hacked!\");' src='invalid-image' />",
+    const placeHtml = () => {
+        return {
+             __html: "<img onerror='alert(\"Hacked!\");' src='invalid-image' />",
+        };
     };
-  };
-return (
-    <div>
-      <div dangerouslySetInnerHTML={createMarkup()} />
-    </div>
-  );
+
+    return (
+        <div>
+            <p>We inserted img inside div using dangerouslySetInnerHTML property and add js code in onerror attribute</p>
+            <div dangerouslySetInnerHTML={placeHtml()} /></div>
+    );
 };
 
 export default DangerouslySetInnerHTML;
 ```
+Result of render:
 
-## How can we prevent these attacks
+{% img "dangerouslySetHTML.png" "dangerouslySetHTML XSS vulnerability" "lazy" %}
 
-You can escape (replace) reserved characters (such as `<` and `>`) with their respective character entities (`&lt;` and `&gt;`). Therefore, when the code is rendered, no JavaScript can be executed. Instead, the character entities will be converted to their respective reserve characters.
+## Simple protection from XSS attacks
 
-Also, you can "sanitize" user inputs using a library called `dompurify`: [https://github.com/cure53/DOMPurify](https://github.com/cure53/DOMPurify)
+You can replace reserved characters (such as < and >) with their respective character entities (&lt; and &gt;).
+As a result, the code is rendered, no JavaScript code can't be executed, and character entities will be converted to their respective reserve characters.
+Also, you can use “sanitize” user inputs using a library called dompurify.[https://github.com/cure53/DOMPurify](https://github.com/cure53/DOMPurify)
 
-**XSS Protection in React:** React is a JavaScript library for building user interfaces, and as such, it has some built-in security measures to prevent xss in react.
+## React XSS protection
 
-When we create new elements using the React API, React will automatically review data to auto-escape scripting code. Below is a code snippet of React's createElement() method.
-
-``` javascript
-return React.createElement("p", {}, review); 
-```
-
-As you can see before input is used very often for such attacks. That's why in React documentation we have articles about controlled and uncontrolled components.
-
-In React, Controlled Components are those in which form's data is handled by the component's state. It takes its current value through props and makes changes through callbacks like onClick,onChange, etc. A parent component manages its own state and passes the new values as props to the controlled component.
-
+As you can see the most vulnerable place is input and we have an article about controlled and uncontrolled components in React documentation.
 Below you can read a blockquote from the React official documentation:
+> In the form elements are either the typed ones like textarea. input or the selected one like radio buttons or checkboxes, whenever there is any change, made it is updated accordingly through some functions that update the state as well. 
+We recommend using controlled components to implement forms. In a controlled component, form data is handled by a React component. 
+In HTML, form elements such as \<input\>, \<textarea\>, and \<select\> typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState(). 
+The alternative is uncontrolled components, where form data is handled by the DOM itself.
+To write an uncontrolled component, instead of writing an event handler for every state update, you can use a ref (createRef) to get form values from the DOM.
 
-> In the form elements are either the typed ones like textarea. input or the selected one like radio buttons or checkboxes, whenever there is any change, made it is updated accordingly through some functions that update the state as well. We recommend using controlled components to implement forms. In a controlled component, form data is handled by a React component. In HTML, form elements such as \<input\>, \<textarea\>, and \<select\> typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState(). The alternative is uncontrolled components, where form data is handled by the DOM itself. To write an uncontrolled component, instead of writing an event handler for every state update, you can use a ref (createRef) to get form values from the DOM.
+## Summary
 
-Also, as you can see previously one of the XSS attacks works with DOM directly throw accessing its content.
+Protecting your React application to prevent cross-site scripting is not a one-step process. The best way to protect React applications from XSS attacks is to prevent them earlier in your codebase. You can create a list of recommendations for your teammates.
 
-We have an article about work in DOM in React code. We need to use Refs in React documentation and it says: Refs provide a way to access DOM nodes or React elements created in the render method. Something else about refs from React documentation:
-
-## When to use Refs
-
-There are a few good use cases for refs:
-
-* Managing focus, text selection, or media playback.
-* Triggering imperative animations.
-* Integrating with third-party DOM libraries.
-
-> Avoid using refs for anything that can be done declaratively.
-
-Protecting your React application to prevent cross-site scripting is not a one-step process. The best way to safeguard your React application against XSS attacks is to anticipate them early in your codebase. You can then define a set of rules or coding guidelines for your application.
-
-Here's how you can prevent XSS in your application:
-
-1. Validate all data that flows into your application from the server or a third-party API. This cushions your application against an XSS attack, and at times, you may be able to prevent it, as well.
-2. Don't mutate DOM directly. If you need to render different content, use `innerText` instead of `innerHTML`. Be extremely cautious when using escape hatches like `findDOMNode` or `createRef` in React.
-3. Always try to render data through JSX and let React handle the security concerns for you.
-4. Use `dangerouslySetInnerHTML` in only specific use cases. When using it, make sure you're sanitizing all your data before rendering it on the DOM.
-5. Avoid writing your own sanitization techniques. It's a separate subject on its own that requires some expertise.
-6. Use good libraries for sanitizing your data. There are a number of them, but you must compare the pros and cons of each specific to your use case before going forward with one.
-
-You can use the above points as a coding guideline when building React applications.
+Here is my list:
+1. Use dangerouslySetHTML and createRef in very specific use cases.
+2. Don't mutate DOM directly as we can make it with React.
+3. Use React functionality instead of writing personal techniques. READ documentation.
+4. Validate all data that you have and income data (from a user and from API)
+5. Don't create your personal sanitization libraries, select the best among other libraries from trusted developers.
