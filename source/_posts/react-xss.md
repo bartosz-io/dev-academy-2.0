@@ -108,7 +108,7 @@ Execution of code:
 
 ### dangerouslySetHTML
 
-This is a property in HTML code that you can use HTML elements in React code instead of innerHTML function. The content of `dangerouslySetHTML` is dynamic and skips the comparison against the virtual DOM. As you can understand it is the third XSS vulnerability. Below is a code and result of execution:
+This is a property in HTML code that you can use HTML elements in React code instead of `innerHTML` function. The content of `dangerouslySetHTML` is dynamic and skips the comparison against the virtual DOM. As you can understand it is the third XSS vulnerability. Below is a code and result of execution:
 
 ``` javascript Code snippet
 import React from 'react';
