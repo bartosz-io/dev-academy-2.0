@@ -175,8 +175,7 @@ and send the OTP value to the tap method
 ``` typescript Angular/src/app/auth/containers/login/login.component.ts
 tap((otp) => (loginRequest.otp = otp))
 ```
-The budget-angular training application's otpcomponent dialog's complete source code can be found here.
-[OtpComponent Source Code](https://github.com/bartosz-io/budget-angular/tree/master/src/app/auth/components/otp-dialog)
+The budget-angular training application's otpcomponent dialog's complete source code can be found here: [OtpComponent Source Code](https://github.com/bartosz-io/budget-angular/tree/master/src/app/auth/components/otp-dialog)
 ## The next steps
 
 The next thing we will learn is how everything is put into practice and how the Node.js backend validates the OTP. To learn more about OAuth/OIDC, construct a secure role-based enterprise-grade authorization, and implement other topics related to full-stack web security, visit our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-otp-post).
