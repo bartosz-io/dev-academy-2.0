@@ -175,6 +175,7 @@ and send the OTP value to the tap method
 ``` typescript Angular/src/app/auth/containers/login/login.component.ts
 tap((otp) => (loginRequest.otp = otp))
 ```
+The budget-angular training application's otpcomponent dialog's complete source code can be found here.
 [OtpComponent Source Code](https://github.com/bartosz-io/budget-angular/tree/master/src/app/auth/components/otp-dialog)
 ## The next steps
 
