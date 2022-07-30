@@ -92,7 +92,7 @@ To fix this security issue you can replace `v-show` with `v-if` as the following
 </template>
 ```
 
-Replacing `v-show` for `v-if` solves the issue? Not really. It depends on how many levels/layers of security are in your Vue app. The `v-show` and "v-if" Vue directives have their specific use cases, check this [link](https://vuejs.org/api/built-in-directives.html#v-show). Use them wisely.
+Replacing `v-show` for `v-if` solves the issue? Not really. It depends on how many levels/layers of security are in your Vue app. The `v-show` and `v-if` Vue directives have their specific use cases, check this [link](https://vuejs.org/api/built-in-directives.html#v-show). Use them wisely.
 
 ## Complex formatting shouldn't be welcome on template expressions (Keep it simple)
 Sometimes we don't have lots of time to spend formatting information. Especially, it's a common practice to see how beginner developers always start formatting and using `map`, `filter`, and other JavaScript ways of sorting, filtering, or data formatting as template expressions.
@@ -219,7 +219,7 @@ npm audit
 
 This command helps you know if some dependency has related low, moderate, high, or critical issues.
 
-In a practical example try to install the "parse-url@5.0.8" package version (here is the [link](https://snyk.io/vuln/npm%3Aparse-url) to the package vulnerability report). This package has 1 high and 1 critical vulnerability related to Cross-Site Scripting and Server-Side Request Forgery (It's not dangerous if you don't use this dependency in production 😆), then run the audit command.
+In a practical example try to install the `parse-url@5.0.8` package version (here is the [link](https://snyk.io/vuln/npm%3Aparse-url) to the package vulnerability report). This package has 1 high and 1 critical vulnerability related to Cross-Site Scripting and Server-Side Request Forgery (It's not dangerous if you don't use this dependency in production 😆), then run the audit command.
 
 {% img "npm-audit.png" "one practical example of npm audit command" "lazy" %}
 
@@ -344,7 +344,7 @@ Here is an example of how to use enable it.
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 ```
 
-"max-age" defines how much time (in seconds, 1 year in the example) the browser or others should remember that this site can only be accessed using HTTPS. `includeSubDomains` is an optional parameter that means this rule applies to all of the site’s subdomains.
+`max-age` defines how much time (in seconds, 1 year in the example) the browser or others should remember that this site can only be accessed using HTTPS. `includeSubDomains` is an optional parameter that means this rule applies to all of the site’s subdomains.
 
 ### X-Frame-Options
 
