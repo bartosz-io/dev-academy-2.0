@@ -15,10 +15,10 @@ Hi, #VueFriend! In this post, we cover security best practices around the Vue ec
 
 <!-- toc -->
 
-## "v-if" vs "v-show", don't have the same logic
-Sometimes beginner Vue developers confuse the v-if and v-show directives or use them indifferently. The "v-if" lets you render or not some HTML portion through some logic condition. Otherwise, the v-show always renders the HTML portion through some logic condition too, but it displays or hides the content using the "display: none" CSS property. The HTML portion is always reflected on the HTML template. In summary "v-if" renders or not, and "v-show" always renders, but hides or displays the content.
+## `v-if` vs `v-show`, don't have the same logic
+Sometimes beginner Vue developers confuse the v-if and v-show directives or use them indifferently. The `v-if` lets you render or not some HTML portion through some logic condition. Otherwise, the v-show always renders the HTML portion through some logic condition too, but it displays or hides the content using the `display: none` CSS property. The HTML portion is always reflected on the HTML template. In summary `v-if` renders or not, and `v-show` always renders, but hides or displays the content.
 
-In that sense, "v-if" and "v-show" are useful in accomplishing the task to show information according to specific logical criteria. Let's make a case, there is a user interface with buttons according to roles (admin, normal, and guest). If you are an admin, the button should be green, the normal should be gray, and the guest doesn't have any button. Take a look at the next case if you use the "v-show" directive.
+In that sense, `v-if` and `v-show` are useful in accomplishing the task to show information according to specific logical criteria. Let's make a case, there is a user interface with buttons according to roles (admin, normal, and guest). If you are an admin, the button should be green, the normal should be gray, and the guest doesn't have any button. Take a look at the next case if you use the `v-show` directive.
 
 #### BAD
 ``` html
@@ -64,14 +64,14 @@ Open the browser's developer tools and inspect the HTML code around the button. 
 
 {% img "v-show.png" "v-show use's result, parent component html view" "lazy" %}
 
-Other buttons are there but are not displayed. If you remove the "display: none" CSS property from each one, the buttons turn to show.
+Other buttons are there but are not displayed. If you remove the `display: none` CSS property from each one, the buttons turn to show.
 
 {% img "v-show-buttons.png" "removing 'display:none' reveals top-level user buttons, parent component html view" "lazy" %}
 
 It will depend on how well the logic behind the buttons is developed so that when the "guest" user presses it. Nothing serious happens.
 
 #### CORRECT
-To fix this security issue you can replace "v-show" with "v-if" as the following code shows.
+To fix this security issue you can replace `v-show` with `v-if` as the following code shows.
 
 ``` html
 <template>
@@ -92,10 +92,10 @@ To fix this security issue you can replace "v-show" with "v-if" as the following
 </template>
 ```
 
-Replacing "v-show" for "v-if" solves the issue? Not really. It depends on how many levels/layers of security are in your Vue app. The "v-show" and "v-if" Vue directives have their specific use cases, check this [link](https://vuejs.org/api/built-in-directives.html#v-show). Use them wisely.
+Replacing `v-show` for `v-if` solves the issue? Not really. It depends on how many levels/layers of security are in your Vue app. The `v-show` and "v-if" Vue directives have their specific use cases, check this [link](https://vuejs.org/api/built-in-directives.html#v-show). Use them wisely.
 
 ## Complex formatting shouldn't be welcome on template expressions (Keep it simple)
-Sometimes we don't have lots of time to spend formatting information. Especially, it's a common practice to see how beginner developers always start formatting and using "map", "filter", and other JavaScript ways of sorting, filtering, or data formatting as template expressions.
+Sometimes we don't have lots of time to spend formatting information. Especially, it's a common practice to see how beginner developers always start formatting and using `map`, `filter`, and other JavaScript ways of sorting, filtering, or data formatting as template expressions.
 
 We have the following code example for you. The bad, and the correct approach.
 
@@ -145,7 +145,7 @@ export default {
 };
 </script>
 ```
-This practice can compromise the extensibility of your Vue page and introduce certain unexpected behaviors if its use is frequent. Also, don't forget to use ":key" whenever "v-for" is present. ":key" is used as an ID or hint for Vue to understand what exactly it is you’re trying to achieve in case the list will be changed some moment.
+This practice can compromise the extensibility of your Vue page and introduce certain unexpected behaviors if its use is frequent. Also, don't forget to use `:key` whenever `v-for` is present. `:key` is used as an ID or hint for Vue to understand what exactly it is you’re trying to achieve in case the list will be changed some moment.
 
 If you need filtering, sorting, or data formatting. The best practice is to take advantage of the "computed properties" as follows.
 
@@ -234,7 +234,7 @@ And automatically the dependency will be updated to a fixed version. Check your 
 ## The source code never lies, see what dependencies you're adding
 It is interesting to see how packages and their creators behave over time.
 
-This year the creator of the packages "colors.js" and "faker.js" self-sabotage their code in a peaceful protest symbol (follow this [link](http://web.archive.org/web/20210704022108/https://github.com/Marak/faker.js/issues/1046) to see the thread from GitHub). The bad thing is in those packages whose creators' credentials are compromised and end up in the hands of cyber criminals who alter their functionality (code injection). Some actions that malicious packages can achieve are:
+This year the creator of the packages `colors.js` and `faker.js` self-sabotage their code in a peaceful protest symbol (follow this [link](http://web.archive.org/web/20210704022108/https://github.com/Marak/faker.js/issues/1046) to see the thread from GitHub). The bad thing is in those packages whose creators' credentials are compromised and end up in the hands of cyber criminals who alter their functionality (code injection). Some actions that malicious packages can achieve are:
 
 *   Theft of environment variables with valuable keys, credentials, ssh keys, digital wallets, and critical information.
     
@@ -303,7 +303,7 @@ Some of the best practices around are:
 
 *   Avoid using DOM directly or use it wisely.
     
-*   Sanitize html tags, if you need to reflect some string with HTML content inside, you can use libraries like [vue-3-sanitize](https://www.npmjs.com/package/vue-3-sanitize), [vue-sanitize](https://www.npmjs.com/package/vue-sanitize), or [sanitize-hml](https://github.com/apostrophecms/sanitize-html) to sanitize it.
+*   Sanitize html tags, if you need to reflect some string with HTML content inside, you can use libraries like [vue-3-sanitize](https://www.npmjs.com/package/vue-3-sanitize), [vue-sanitize](https://www.npmjs.com/package/vue-sanitize), or [sanitize-html](https://github.com/apostrophecms/sanitize-html) to sanitize it.
     
 *   Forms, URLs, and every input data, in general, must be validated before its use (the validation must be carried out both in the frontend and in the backend). A nice library that can help you to fulfill this task is [Yup](https://www.npmjs.com/package/yup).
     
@@ -325,7 +325,7 @@ Vue apps often work in conjunction with a backend, when you submit some form, yo
     }
 ```
 
-Now the attacker knows if the user "demo@demo.com" has an active account on the "https://example.com" web page. This is an example of how attackers map user accounts on a lot of popular websites. If you are not convinced the best way to be done is to check your application/user logs in which you find how malicious attackers are trying to map URLs, and users as an initial phase of information recollection.
+Now the attacker knows if the user `demo@demo.com` has an active account on the `https://example.com` web page. This is an example of how attackers map user accounts on a lot of popular websites. If you are not convinced the best way to be done is to check your application/user logs in which you find how malicious attackers are trying to map URLs, and users as an initial phase of information recollection.
 
 To stay out of this case decreases your error message details or handles error codes as a protocol between your web server and your Vue Application. This advice applies to API calls, HTTP requests, and similar ones.
 
@@ -344,7 +344,7 @@ Here is an example of how to use enable it.
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 ```
 
-"max-age" defines how much time (in seconds, 1 year in the example) the browser or others should remember that this site can only be accessed using HTTPS. "includeSubDomains" is an optional parameter that means this rule applies to all of the site’s subdomains.
+"max-age" defines how much time (in seconds, 1 year in the example) the browser or others should remember that this site can only be accessed using HTTPS. `includeSubDomains` is an optional parameter that means this rule applies to all of the site’s subdomains.
 
 ### X-Frame-Options
 
@@ -358,7 +358,7 @@ This header tells the browser that it should block any frame-embedded content in
 
 ### X-Content-Type-Options
 
-Setting this header will prevent the browser from interpreting files as a different MIME type than what is specified in the Content-Type HTTP header (e.g. treating "text/plain" as "text/CSS"). To enable it you can use the following way.
+Setting this header will prevent the browser from interpreting files as a different MIME type than what is specified in the Content-Type HTTP header (e.g. treating `text/plain` as `text/CSS`). To enable it you can use the following way.
 
 ```
 X-Content-Type-Options: nosniff
@@ -366,7 +366,7 @@ X-Content-Type-Options: nosniff
 
 ### Content-Security-Policy
 
-A Content Security Policy (also named CSP) requires careful tuning and a precise definition of policies. If enabled, CSP has a significant impact on the way browsers render pages (e.g., inline JavaScript is disabled by default and must be explicitly allowed in the policy). CSP prevents a wide range of attacks, including cross-site scripting and other cross-site injections. This security policy is widely complex and no exists general recipe or way to add this security header. Each web app, website, or other needs a serious evaluation to put some CSP policies. To understand more about CSP you can consult this [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
+A Content Security Policy (also named CSP) requires careful tuning and a precise definition of policies. If enabled, CSP has a significant impact on the way browsers render pages (e.g., inline JavaScript is disabled by default and must be explicitly allowed in the policy). CSP prevents a wide range of attacks, including cross-site scripting and other cross-site injections. This security policy is widely complex and no exists general recipe or way to add this security header. Each web app, website, or other needs a serious evaluation to put some CSP policies. To understand more about CSP you can consult this [official MDN link](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) and our blog post about CSP for [Angular Apps](https://dev-academy.com/content-security-policy-in-angular/).
 
 ### Referrer-Policy
 
@@ -376,7 +376,7 @@ The Referrer-Policy HTTP header controls which referrer information (sent with t
 Referrer-Policy: no-referrer
 ```
 
-Sometimes the "Referer" header is used for analytics reasons in this case you can use "same-origin" instead of "no-referrer". Exists more ways to use it (check your case) we encourage you to inspect this [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy).
+Sometimes the `Referer` header is used for analytics reasons in this case you can use `same-origin` instead of `no-referrer`. Exists more ways to use it (check your case) we encourage you to inspect this [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy).
 
 ### Clear-Site-Data
 
@@ -393,7 +393,7 @@ Once you have some security headers configured properly check them with the [Sec
 Summary
 -------
 
-To begin with, Vue is a beautiful frontend framework. Its ecosystem and community are pretty good. The official documentation is your best source to deal with doubts, questions, and problems don't think too much to consult it. Before using any directive or feature of Vue check it the documentation (it offers functionality explanations, examples, and use cases). As we saw previously, "v-if" and "v-show" don't should be used indistinctly.
+To begin with, Vue is a beautiful frontend framework. Its ecosystem and community are pretty good. The official documentation is your best source to deal with doubts, questions, and problems don't think too much to consult it. Before using any directive or feature of Vue check it the documentation (it offers functionality explanations, examples, and use cases). As we saw previously, `v-if` and `v-show` don't should be used indistinctly.
 
 Avoid using complex data formatting in the Vue templating part. Vue offers several ways how can you organize and deal with data formatting, sorting, or filtering.
 
