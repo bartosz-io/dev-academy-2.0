@@ -15,7 +15,7 @@ Hi, #VueFriend! In this post, we cover security best practices around the Vue ec
 
 <!-- toc -->
 
-## `v-if` vs `v-show`, don't have the same logic
+## `v-if` vs `v-show`, they don't have the same logic
 Sometimes beginner Vue developers confuse the v-if and v-show directives or use them indifferently. The `v-if` lets you render or not some HTML portion through some logic condition. Otherwise, the v-show always renders the HTML portion through some logic condition too, but it displays or hides the content using the `display: none` CSS property. The HTML portion is always reflected on the HTML template. In summary `v-if` renders or not, and `v-show` always renders, but hides or displays the content.
 
 In that sense, `v-if` and `v-show` are useful in accomplishing the task to show information according to specific logical criteria. Let's make a case, there is a user interface with buttons according to roles (admin, normal, and guest). If you are an admin, the button should be green, the normal should be gray, and the guest doesn't have any button. Take a look at the next case if you use the `v-show` directive.
@@ -390,10 +390,8 @@ Clear-Site-Data: "cache","cookies","storage"
 
 Once you have some security headers configured properly check them with the [SecurityHeaders](https://securityheaders.com) web application, here is a [good example](https://securityheaders.com/?q=https%3A%2F%2Fdeveloper.mozilla.org&followRedirects=on).
 
-Summary
--------
-
-To begin with, Vue is a beautiful frontend framework. Its ecosystem and community are pretty good. The official documentation is your best source to deal with doubts, questions, and problems don't think too much to consult it. Before using any directive or feature of Vue check it the documentation (it offers functionality explanations, examples, and use cases). As we saw previously, `v-if` and `v-show` don't should be used indistinctly.
+### Summary
+To begin with, Vue is a beautiful frontend framework. Its ecosystem and community are pretty good. The official documentation is your best source to deal with doubts, questions, and problems don't think too much to consult it. Before using any directive or feature of Vue check it the documentation (it offers functionality explanations, examples, and use cases). As we saw previously, `v-if` and `v-show` shouldn't used indistinctly.
 
 Avoid using complex data formatting in the Vue templating part. Vue offers several ways how can you organize and deal with data formatting, sorting, or filtering.
 
