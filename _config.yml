@@ -339,3 +339,18 @@ authors:
       github: https://github.com/AMSANJEEV28
       linkedin: https://www.linkedin.com/mwlite/in/a-m-sanjeev-456431207
       # twitter: 
+  "Saujan Ghimire":
+    slug: saujan-ghimire
+    desc: To do
+    specs: [JavaScript, Node, Angular]
+    image: /img/saujan-ghimire.jpg
+    motto: My motto
+    joined: 5 Aug 2022
+    academies:
+      wsa: true
+      fta: false
+    socials:
+      site: google.com
+      # github:
+      # linkedin:
+      # twitter: 
