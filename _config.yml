@@ -341,16 +341,16 @@ authors:
       # twitter: 
   "Saujan Ghimire":
     slug: saujan-ghimire
-    desc: To do
+    desc: Saujan is founder and tech lead at I-IKIGAI. With an Electro-Mechanical Engineering degree, he is now also a self taught dev bringing software to realtime IoT systems.
     specs: [javascript, node, angular]
     image: /img/saujan-ghimire.jpg
-    motto: My motto
-    joined: 5 Aug 2022
+    motto: The only thing constant is Change, keep adapting, keep exploring!
+    joined: 01 Feb 2020
     academies:
       wsa: true
       fta: false
     socials:
-      site: google.com
-      # github:
-      # linkedin:
-      # twitter: 
+      site: https://i-ikigai.nl/
+      github: https://github.com/sookah
+      linkedin: https://www.linkedin.com/in/saujan-ghimire/
+      twitter: https://twitter.com/saunghimire
