@@ -160,7 +160,7 @@ function relatedPosts() {
         }
 
         document.addEventListener('scroll', function() {
-            var isHalfPage = window.scrollY > (document.body.offsetHeight - window.innerHeight) / 2;
+            var isHalfPage = window.scrollY > (document.body.offsetHeight - window.innerHeight) * 0.8;
 
             if (isHalfPage) {
                 relatedPostsContainer.classList.add(visibleClass);
