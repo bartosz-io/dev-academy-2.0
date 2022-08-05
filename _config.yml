@@ -5,11 +5,11 @@
 # Site
 title: Dev-Academy.com - Web security | Testing & automation | Application architecture
 subtitle:
-description: 'Next-level in web development with angular, nodejs and more. Dev Academy is the place for full stack web developers where you will learn best practices.'
-keywords: 'angular, rxjs, reactive, node, software architecture, testing, frontend, backend, fullstack web development'
+description: "Next-level in web development with angular, nodejs and more. Dev Academy is the place for full stack web developers where you will learn best practices."
+keywords: "angular, rxjs, reactive, node, software architecture, testing, frontend, backend, fullstack web development"
 author: Bartosz Pietrucha
 language: en
-timezone: ''
+timezone: ""
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
@@ -18,8 +18,8 @@ root: /
 permalink: /:title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+    trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+    trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -36,28 +36,28 @@ new_post_name: :title.ejs # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
-  enable: true
-  field: site
-  exclude: []
+    enable: true
+    field: site
+    exclude: []
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
 relative_link: false
 future: true
 highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
+    enable: true
+    line_number: true
+    auto_detect: false
+    tab_replace:
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
-  per_page: 9
-  order_by: -date
+    path: ""
+    per_page: 9
+    order_by: -date
 
 # Category & Tag
 default_category: uncategorized
@@ -75,7 +75,7 @@ meta_generator: true
 date_format: D MMM YYYY
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: "mtime"
 
 # Disqus
 disqus_shortname: angular-academy-1
@@ -99,76 +99,76 @@ theme: my-theme
 # Sitemap
 # https://www.npmjs.com/package/hexo-generator-seo-friendly-sitemap
 sitemap:
-  path: sitemap.xml
-  tag: false
+    path: sitemap.xml
+    tag: false
 
 # SCSS support
 # https://www.npmjs.com/package/hexo-renderer-scss
 node_sass:
-  debug: false
-  outputStyle: nested
-  precision: 5
-  sourceComments: false
+    debug: false
+    outputStyle: nested
+    precision: 5
+    sourceComments: false
 
 # TOC - Table Of Contents support
 # https://www.npmjs.com/package/hexo-toc
 toc:
-  maxdepth: 3
-  class: toc
-  slugify: transliteration
-  decodeEntities: false
+    maxdepth: 3
+    class: toc
+    slugify: transliteration
+    decodeEntities: false
 
 #  Generate Atom 1.0 or RSS 2.0 feed.
 #  https://www.npmjs.com/package/hexo-generator-feed
 feed:
-  type:
-    - atom
-    - rss2
-  path:
-    - atom.xml
-    - rss2.xml
-  limit: false
-  hub:
-  content:
-  content_limit: 140
-  content_limit_delim: ' '
-  order_by: -date
-  icon: icon.png
-  autodiscovery: true
-  template:
+    type:
+        - atom
+        - rss2
+    path:
+        - atom.xml
+        - rss2.xml
+    limit: false
+    hub:
+    content:
+    content_limit: 140
+    content_limit_delim: " "
+    order_by: -date
+    icon: icon.png
+    autodiscovery: true
+    template:
 
 # Browser sync
 # https://www.npmjs.com/package/hexo-browsersync
 browsersync:
-  logLevel: "warn"
-  ghostMode:
-    scroll: true
+    logLevel: "warn"
+    ghostMode:
+        scroll: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+    type: ""
 
 # rel="external nofollow noreferrer"
 # https://www.npmjs.com/package/hexo-filter-nofollow
 nofollow:
-  enable: true
-  field: site
-  exclude:
-    - courses.dev-academy.com
-    - websecurity-academy.com
-    - tuesday.websecurity-academy.com
+    enable: true
+    field: site
+    exclude:
+        - courses.dev-academy.com
+        - websecurity-academy.com
+        - tuesday.websecurity-academy.com
 
 # responsive images
 responsive_images:
-  pattern: '**/*.+(png|jpg|jpeg)'
-  sizes:
-    small:
-      width: 360
-    medium:
-      width: 640
-    large:
-      width: 1086
+    pattern: "**/*.+(png|jpg|jpeg)"
+    sizes:
+        small:
+            width: 360
+        medium:
+            width: 640
+        large:
+            width: 1086
 
 # Miscellaneous
 google_analytics:
@@ -187,11 +187,11 @@ excerpt_link: Read More
 # Sidebar
 sidebar: left
 widgets:
-  - category
-  - tag
-  - tagcloud
-  - archive
-  - recent_posts
+    - category
+    - tag
+    - tagcloud
+    - archive
+    - recent_posts
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
@@ -200,157 +200,157 @@ index_widgets:
 # - archive
 
 # widget behavior
-archive_type: 'monthly'
+archive_type: "monthly"
 show_count: false
 
 # hexo-all-minifier
 css_minifier:
-  enable: true
-  silent: true
+    enable: true
+    silent: true
 js_minifier:
-  enable: true
-  mangle: true
-  silent: true
+    enable: true
+    mangle: true
+    silent: true
 html_minifier:
-  enable: false
+    enable: false
 image_minifier:
-  enable: false
+    enable: false
 
 # site authors, custom generator
 authors_specs: [nodejs, angular, vue, react]
 authors:
-  "Bartosz Pietrucha":
-    slug: bartosz-pietrucha
-    desc: Bartosz is the founder of Dev Academy blog and courses. He has been coding since 13 yo and holds Master Degree in computer science. He loves to grow and see others grow thanks to the work he does. Occassional conference speaker.
-    specs: [nodejs, angular]
-    image: /img/bartosz-large.png
-    motto: I very much believe in learning almost every day. Exploring the surrounding world is the most exciting thing we could ever do.
-    joined: 1 May 2019
-    academies:
-      fta: true
-      wsa: true
-    socials:
-      site: https://bartosz.io/
-      linkedin: https://www.linkedin.com/in/bpietrucha/
-      twitter: https://twitter.com/bartosz_io/
-      github: https://github.com/bartosz-io/
-  "Christoph Jürgens":
-    slug: christoph-jurgens
-    desc: Christoph is a software engineer and technical lead with a soft spot for web security. He is particularly interested in working with cutting-edge technologies to create clean, well-designed code for building high-quality applications.
-    specs: [nodejs, angular]
-    image: /img/christoph-juergens.jpg
-    motto: This is my motto.
-    joined: 27 Nov 2021
-    academies:
-      fta: true
-      wsa: true
-    socials:
-      site: https://www.linkedin.com/in/christoph-juergens-54a20311/
-      linkedin: https://www.linkedin.com/in/christoph-juergens-54a20311/
-      twitter: https://twitter.com/comjdev/
-      github: https://github.com/comjdev/
-  "Hugo Noro":
-    slug: hugo-noro
-    desc: Hugo is a Senior Software Engineer with a background in fullstack development within the .NET techstack. He has a Masters in computer engineering and started specialing in Angular since 2016. Quality over quantity is the everyday motto.
-    specs: [javascript, typescript, angular, nodejs]
-    image: /img/hugo-noro.png
-    motto: Quality over quantity should always be a priority.
-    joined: 11 Dec 2021
-    academies:
-      fta: true
-      wsa: true
-    socials:
-      site: https://www.linkedin.com/in/hugo-noro/
-      linkedin: https://www.linkedin.com/in/hugo-noro/
-      twitter: https://twitter.com/hugo_noro/
-      github: https://github.com/hugonoro/
-  "Peter D. Mobley":
-    slug: peter-mobley
-    desc: Peter D. Mobley is the founder and CEO of Geogram, an innovative advertising and design firm that uses technology to advance clients' annual revenue and generate growth from $10 million to over $100 million annually. As an expert in branding, Mr. Mobley has driven growth for Fortune Global 5000 companies including BYD - Build Your Dreams, within an 18-month period, from $15 million to over $600 million in orders in North America's transportation electrification markets.
-    specs: [javascript, angular, go, nodejs, html]
-    image: /img/peter-mobley.jpg
-    motto: Most people have a misconception of branding when developing a marketing and advertising campaigns; They mistakenly focus on 'features and benefits' instead of focusing on how the product or service makes the person 'feel'. The idea here is not to get consumers to buy, but to get fans to share. Once that happens, everything else seems to fall into place.
-    joined: 23 Feb 2022
-    academies:
-      wsa: true
-      fta: false
-    socials:
-      site: https://geogram.com
-      linkedin: https://www.linkedin.com/in/petermobley/
-      twitter: https://twitter.com/petermobley/
-      # github:
-  "Viktors Garkavijs":
-    slug: viktors-garkavijs
-    # desc:
-    specs: [angular]
-    image: /img/viktors-garkavijs.jpg
-    motto: I very much believe in learning.
-    joined: 8 Apr 2022
-    academies:
-      wsa: true
-      fta: false
-    socials:
-      site: https://mixefy.jp
-      github: https://github.com/gaeshi/
-      # linkedin:
-      # twitter:
-  "Vlad Ataman":
-    slug: vlad-ataman
-    desc: Vlad is a Middle Software Engineer with a background in full-stack and mobile development with JS tech stack. Also, he has a Master's degree in computer science and started his career in 2017.
-    specs: [javascript, nodejs, react]
-    image: /img/vlad-ataman.png
-    motto: Only hard work and core can make you better.
-    joined: 1 Jul 2022
-    academies:
-      wsa: true
-      fta: false
-    socials:
-      # site:
-      github: https://github.com/BearLikeCode
-      linkedin: https://www.linkedin.com/in/vlad-ataman/
-      twitter: https://twitter.com/BearLikeCode
-  "Mauricio Matias C.":
-    slug: mauricio-matias
-    desc: Mauricio is passionate about building and design (mixing hardware and software). He loves and follows the Open Source and Free Software initiatives. Occasionally he instructs programming and shares his day-to-day tech experiences as Software Developer through talks. He is currently an active member of a tech community called "HackLab BrickHeads Cochabamba".
-    specs: [javascript, vue, nodejs, python]
-    image: /img/mauricio-matias.jpeg
-    motto: Make it good, make it with love, keep it simple.
-    joined: 10 Jul 2022
-    academies:
-      wsa: true
-      fta: true
-    socials:
-      site: https://cr0wg4n.medium.com
-      github: http://github.com/cr0wg4n
-      linkedin: https://www.linkedin.com/in/cr0wg4n
-      twitter: https://twitter.com/cr0wg4n
-  "A M Sanjeev":
-    slug: a-m-sanjeev
-    desc: A computer science and engineering student at FET, Gurukula Kangri (Deemed to be University) Haridwar, Uttarakhand, India. He likes Web development and Content writing. Currently working as Web Development Teaching Assistant for Pupilfirst.
-    specs: [javascript, node, angular, ruby]
-    image: /img/a-m-sanjeev.jpg
-    motto: Do it now. Sometimes 'later' becomes 'never'.
-    joined: 10 Jul 2022
-    academies:
-      wsa: true
-      fta: false
-    socials:
-      # site:
-      github: https://github.com/AMSANJEEV28
-      linkedin: https://www.linkedin.com/mwlite/in/a-m-sanjeev-456431207
-      # twitter: 
-  "Saujan Ghimire":
-    slug: saujan-ghimire
-    desc: To do
-    specs: [javascript, node, angular]
-    image: /img/saujan-ghimire.jpg
-    motto: My motto
-    joined: 5 Aug 2022
-    academies:
-      wsa: true
-      fta: false
-    socials:
-      site: google.com
-      # github:
-      # linkedin:
-      # twitter: 
+    "Bartosz Pietrucha":
+        slug: bartosz-pietrucha
+        desc: Bartosz is the founder of Dev Academy blog and courses. He has been coding since 13 yo and holds Master Degree in computer science. He loves to grow and see others grow thanks to the work he does. Occassional conference speaker.
+        specs: [nodejs, angular]
+        image: /img/bartosz-large.png
+        motto: I very much believe in learning almost every day. Exploring the surrounding world is the most exciting thing we could ever do.
+        joined: 1 May 2019
+        academies:
+            fta: true
+            wsa: true
+        socials:
+            site: https://bartosz.io/
+            linkedin: https://www.linkedin.com/in/bpietrucha/
+            twitter: https://twitter.com/bartosz_io/
+            github: https://github.com/bartosz-io/
+    "Christoph Jürgens":
+        slug: christoph-jurgens
+        desc: Christoph is a software engineer and technical lead with a soft spot for web security. He is particularly interested in working with cutting-edge technologies to create clean, well-designed code for building high-quality applications.
+        specs: [nodejs, angular]
+        image: /img/christoph-juergens.jpg
+        motto: This is my motto.
+        joined: 27 Nov 2021
+        academies:
+            fta: true
+            wsa: true
+        socials:
+            site: https://www.linkedin.com/in/christoph-juergens-54a20311/
+            linkedin: https://www.linkedin.com/in/christoph-juergens-54a20311/
+            twitter: https://twitter.com/comjdev/
+            github: https://github.com/comjdev/
+    "Hugo Noro":
+        slug: hugo-noro
+        desc: Hugo is a Senior Software Engineer with a background in fullstack development within the .NET techstack. He has a Masters in computer engineering and started specialing in Angular since 2016. Quality over quantity is the everyday motto.
+        specs: [javascript, typescript, angular, nodejs]
+        image: /img/hugo-noro.png
+        motto: Quality over quantity should always be a priority.
+        joined: 11 Dec 2021
+        academies:
+            fta: true
+            wsa: true
+        socials:
+            site: https://www.linkedin.com/in/hugo-noro/
+            linkedin: https://www.linkedin.com/in/hugo-noro/
+            twitter: https://twitter.com/hugo_noro/
+            github: https://github.com/hugonoro/
+    "Peter D. Mobley":
+        slug: peter-mobley
+        desc: Peter D. Mobley is the founder and CEO of Geogram, an innovative advertising and design firm that uses technology to advance clients' annual revenue and generate growth from $10 million to over $100 million annually. As an expert in branding, Mr. Mobley has driven growth for Fortune Global 5000 companies including BYD - Build Your Dreams, within an 18-month period, from $15 million to over $600 million in orders in North America's transportation electrification markets.
+        specs: [javascript, angular, go, nodejs, html]
+        image: /img/peter-mobley.jpg
+        motto: Most people have a misconception of branding when developing a marketing and advertising campaigns; They mistakenly focus on 'features and benefits' instead of focusing on how the product or service makes the person 'feel'. The idea here is not to get consumers to buy, but to get fans to share. Once that happens, everything else seems to fall into place.
+        joined: 23 Feb 2022
+        academies:
+            wsa: true
+            fta: false
+        socials:
+            site: https://geogram.com
+            linkedin: https://www.linkedin.com/in/petermobley/
+            twitter: https://twitter.com/petermobley/
+            # github:
+    "Viktors Garkavijs":
+        slug: viktors-garkavijs
+        # desc:
+        specs: [angular]
+        image: /img/viktors-garkavijs.jpg
+        motto: I very much believe in learning.
+        joined: 8 Apr 2022
+        academies:
+            wsa: true
+            fta: false
+        socials:
+            site: https://mixefy.jp
+            github: https://github.com/gaeshi/
+            # linkedin:
+            # twitter:
+    "Vlad Ataman":
+        slug: vlad-ataman
+        desc: Vlad is a Middle Software Engineer with a background in full-stack and mobile development with JS tech stack. Also, he has a Master's degree in computer science and started his career in 2017.
+        specs: [javascript, nodejs, react]
+        image: /img/vlad-ataman.png
+        motto: Only hard work and core can make you better.
+        joined: 1 Jul 2022
+        academies:
+            wsa: true
+            fta: false
+        socials:
+            # site:
+            github: https://github.com/BearLikeCode
+            linkedin: https://www.linkedin.com/in/vlad-ataman/
+            twitter: https://twitter.com/BearLikeCode
+    "Mauricio Matias C.":
+        slug: mauricio-matias
+        desc: Mauricio is passionate about building and design (mixing hardware and software). He loves and follows the Open Source and Free Software initiatives. Occasionally he instructs programming and shares his day-to-day tech experiences as Software Developer through talks. He is currently an active member of a tech community called "HackLab BrickHeads Cochabamba".
+        specs: [javascript, vue, nodejs, python]
+        image: /img/mauricio-matias.jpeg
+        motto: Make it good, make it with love, keep it simple.
+        joined: 10 Jul 2022
+        academies:
+            wsa: true
+            fta: true
+        socials:
+            site: https://cr0wg4n.medium.com
+            github: http://github.com/cr0wg4n
+            linkedin: https://www.linkedin.com/in/cr0wg4n
+            twitter: https://twitter.com/cr0wg4n
+    "A M Sanjeev":
+        slug: a-m-sanjeev
+        desc: A computer science and engineering student at FET, Gurukula Kangri (Deemed to be University) Haridwar, Uttarakhand, India. He likes Web development and Content writing. Currently working as Web Development Teaching Assistant for Pupilfirst.
+        specs: [javascript, node, angular, ruby]
+        image: /img/a-m-sanjeev.jpg
+        motto: Do it now. Sometimes 'later' becomes 'never'.
+        joined: 10 Jul 2022
+        academies:
+            wsa: true
+            fta: false
+        socials:
+            # site:
+            github: https://github.com/AMSANJEEV28
+            linkedin: https://www.linkedin.com/mwlite/in/a-m-sanjeev-456431207
+            # twitter:
+    "Saujan Ghimire":
+        slug: saujan-ghimire
+        desc: Saujan is founder and tech lead at I-IKIGAI. With an Electro-Mechanical Engineering degree, he is now also a self taught dev bringing software to realtime IoT systems.
+        specs: [javascript, node, angular]
+        image: /img/saujan-ghimire.jpg
+        motto: The only thing constant is Change, keep adapting, keep exploring!
+        joined: 01 Feb 2020
+        academies:
+            wsa: true
+            fta: false
+        socials:
+            site: https://i-ikigai.nl/
+            github: https://github.com/sookah
+            linkedin: https://www.linkedin.com/in/saujan-ghimire/
+            twitter: https://twitter.com/saunghimire
