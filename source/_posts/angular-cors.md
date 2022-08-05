@@ -160,7 +160,7 @@ Now if we run `ng serve --open` and visit we can see that the request was comple
 
 We can now inspect the dev console to see that ACAO allows all header is present.
 
-{% img "allow-all-response" "Response with ACAO set to allow all (*)" "lazy" %}
+{% img "allow-all-response.png" "Response with ACAO set to allow all (*)" "lazy" %}
 
 and that the Response data wasn't blocked:
 
