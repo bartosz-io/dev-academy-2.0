@@ -224,32 +224,77 @@
 
 .author-spec {
   display: inline-flex;
+}
+
+@mixin author-spec {
   padding: .5rem .7rem;
   border-radius: .4rem;
   margin-right: .6rem;
   margin-bottom: .5rem;
+}
+
+.author-spec-angular {
+  background-color: $pink-200;
+  @include author-spec();
 
   &:before {
     content: '';
     display: inline-block;
     width: 2rem;
     height: 2rem;
-  }
-}
-
-.author-spec-angular {
-  background-color: $pink-200;
-
-  &:before {
     background: url('/img/icons/angular.png') no-repeat;
   }
 }
 
 .author-spec-nodejs {
-  background-color: $purple-100;
+  background-color: $purple-100;  
+  @include author-spec();  
 
   &:before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
     background: url('/img/icons/nodejs.png') no-repeat;
+  }
+}
+
+.author-spec-react {
+  background-color: $teal-200;
+  @include author-spec();  
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: url('/img/icons/react.png') no-repeat;
+  }
+}
+
+.author-spec-vue {
+  background-color: $green-400;
+  @include author-spec();  
+  
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: url('/img/icons/vue.png') no-repeat;
+  }
+}
+
+.author-spec-javascript {
+  background-color: $yellow-400;
+  @include author-spec();  
+  
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: url('/img/icons/javascript.png') no-repeat;
   }
 }
 

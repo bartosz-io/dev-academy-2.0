@@ -26,7 +26,10 @@
 }
 
 .pill-angular,
-.pill-nodejs {
+.pill-nodejs,
+.pill-react,
+.pill-vue,
+.pill-javascript {
   &:before {
     content: '';
     width: 2rem;
@@ -49,6 +52,30 @@
 
   &:before {
     background: url('/img/icons/nodejs.png') no-repeat;
+  }
+}
+
+.pill-react {
+  background-color: $teal-200;
+
+  &:before {
+    background: url('/img/icons/react.png') no-repeat;
+  }
+}
+
+.pill-vue {
+  background-color: $green-400;
+
+  &:before {
+    background: url('/img/icons/vue.png') no-repeat;
+  }
+}
+
+.pill-javascript {
+  background-color: $yellow-400;
+
+  &:before {
+    background: url('/img/icons/javascript.png') no-repeat;
   }
 }
 
