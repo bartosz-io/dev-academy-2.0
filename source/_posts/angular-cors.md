@@ -93,7 +93,7 @@ This is an error response for missing the required ACAO header, which is used to
 
 Visiting the Network > Headers tab we see that the Response Headers do not contain the ACAO headers.
 
-{% img "no-headers" "No ACAO headers" "lazy" %}
+{% img "no-headers.png" "No ACAO headers" "lazy" %}
 
 The response results are then blocked from being accessed by the browser if such a request fails, this can be seen in the response tab. The results can be empty but some browsers can also show results but still block the app from accessing them.
 
