@@ -235,17 +235,17 @@ authors:
       twitter: https://twitter.com/bartosz_io/
       github: https://github.com/bartosz-io/
   "Christoph Jürgens":
-    slug: christoph-jurgens
+    slug: christoph-juergens
     desc: Christoph is a software engineer and technical lead with a soft spot for web security. He is particularly interested in working with cutting-edge technologies to create clean, well-designed code for building high-quality applications.
-    specs: [nodejs, angular]
+    specs: [javascript, typescript, nodejs, angular, nestjs, flutter]
     image: /img/christoph-juergens.jpg
-    motto: This is my motto.
+    motto: First, solve the problem. Then, write the code.
     joined: 27 Nov 2021
     academies:
       fta: true
       wsa: true
     socials:
-      site: https://www.linkedin.com/in/christoph-juergens-54a20311/
+      site: https://www.theapphub.com.au/
       linkedin: https://www.linkedin.com/in/christoph-juergens-54a20311/
       twitter: https://twitter.com/comjdev/
       github: https://github.com/comjdev/
