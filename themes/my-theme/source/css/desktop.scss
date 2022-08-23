@@ -315,100 +315,11 @@
     background-color: $dark-400;
   }
 
-  .sidebar {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    top: 8rem;
-    left: 0;
-    height: calc(100% - 8rem);
-    width: 28rem;
-    padding: 3rem 2rem 6rem;
-
-    &:before {
-      content: '';
-      display: flex;
-      height: 3rem;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0) 0, rgba(0,0,0,.23) 100%);
-    }
-  }
-
-  .sidebar-img {
-    display: block;
-  }
-
-  .sidebar-info {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    color: $light-100;
-    background: $dark-300;
-    border-top: 2px solid $teal-200;
-    font-size: 1.8rem;
-    text-align: center;
-    animation: shake 1s cubic-bezier(.36,.07,.19,.97) 13s both;
-
-    p {
-      color: $light-300;
-      line-height: 2.4rem;
-    }
-
-    &.checklist {
-      position: static;
-      padding: 15px 0 0 0;
-
-      .sidebar-checklist-image {
-        margin-top: 15px;
-        display: block;
-      }
-    }
-
-    .checklist-link {
-      display: block;
-    }
-  }
-
-  .sidebar-author {
-    flex-direction: column;
-    align-items: center;
-    background: $dark-300;
-    border-top: 2px solid $teal-200;
-    padding: 2rem;
-  }
-
-  .sidebar-author-details {
-    margin-left: 0;
-    text-align: center;
-
-    .button {
-      font-size: 1.6rem;
-      width: 100%;
-    }
-  }
-
-  .sidebar-author-description {
-    font-size: 1.4rem;
-    line-height: 2rem;
-  }
-
-  .sidebar-author-name {
-    padding-top: 1.5rem;
-  }
-
   .article-page {
     padding: 6rem 0;
   }
 
   .thank-you {
-    .sidebar {
-      display: none;
-    }
-
     .footer,
     main {
       padding-left: 0;
