@@ -19,7 +19,9 @@ $size-768: 76.8rem;
 
 // Font sizes
 $font-size-12: 1.2rem;
+$font-size-13: 1.3rem;
 $font-size-14: 1.4rem;
+$font-size-15: 1.5rem;
 $font-size-16: 1.6rem;
 $font-size-18: 1.8rem;
 $font-size-20: 2rem;
@@ -38,6 +40,16 @@ $font-family-monospace: 'Source Code Pro', monospace;
 $font-family-georgia: Georgia, 'Times New Roman', serif; // TODO To remove probably
 
 // Colors
+$primary: #4700AB;
+$secondary: #130B37;
+
+// - Primary indigo
+$indigo-400: $primary;
+
+// - Secondary navy
+$navy-400: $secondary;
+$navy-500: #14142B;
+
 // - Primary dark
 $dark-100: #000;
 $dark-200: #151515;
@@ -51,10 +63,11 @@ $dark-700: #4F4F4F;
 $light-100: #fff;
 $light-150: #f9f9f9;
 $light-175: #f3f3f3;
-$light-200: #ededed;
-$light-200: #e1e1e1;
+
+$light-200: #F7F7FC;
+$light-500: #A0A3BD;
+
 $light-300: #d4d4d4;
-$light-500: #8d8d8d;
 $light-600: #767676;
 $light-650: #828282;
 $light-700: #999;

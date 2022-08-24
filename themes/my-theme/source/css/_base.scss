@@ -23,16 +23,13 @@ body {
   color: $font-color;
   font-family: $font-family;
   background-color: $light-100;
+  letter-spacing: .075rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   ::selection {
     color: $light-200;
     background: $dark-300;
-  }
-
-  @media (max-width: 768px) {
-    padding-bottom: 55px;
   }
 }
 

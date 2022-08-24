@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function() {
     cookieConsent();
     loadDisqusComments();
     loadConvertKit();
-    relatedPosts();
+    // relatedPosts();
     authors();
 });
 

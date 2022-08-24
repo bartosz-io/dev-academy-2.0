@@ -136,20 +136,6 @@
     min-height: calc(100vh - 30rem);
   }
 
-  .footer {
-    height: 6rem;
-  }
-
-  .footer-content {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .footer-navigation {
-    padding-top: 0;
-    padding-left: 4rem;
-  }
-
   .slack {
     position: sticky;
     top: 80px;
@@ -299,20 +285,44 @@
   .author {
     margin-bottom: 0;
   }
+
+  // new styles
+  .footer-privacy {
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .footer-privacy-navigation {
+    font-size: $font-size-15;
+
+    a:hover {
+      color: $light-200;
+    }
+
+    li + li:before {
+      top: .6rem;
+    }
+  }
+
+  .footer-navigation-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .footer-navigation-column {
+    ul a:hover {
+      color: $light-500;
+    }
+  }
 }
 
 @media (min-width: 992px) {
-  main,
-  .footer {
-    padding-left: 28rem;
-  }
-
   main {
     min-height: calc(100vh - 6rem);
-  }
-
-  .footer {
-    background-color: $dark-400;
   }
 
   .article-page {
@@ -320,11 +330,6 @@
   }
 
   .thank-you {
-    .footer,
-    main {
-      padding-left: 0;
-    }
-
     .article {
       width: 100%;
     }
@@ -400,6 +405,15 @@
 
   .authors-list {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  // new styles
+  .footer-navigation-columns {
+    grid-template-columns: repeat(4, 1fr);
+
+    .footer-navigation-column:last-of-type {
+      padding-left: 6rem;
+    }
   }
 }
 
