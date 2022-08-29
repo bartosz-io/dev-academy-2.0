@@ -1,14 +1,21 @@
 .header {
-  min-height: 6rem;
-  background-color: $dark-400;
-  padding: 0 2rem;
-  display: flex;
-  flex-direction: column;
+  background-color: $navy-400;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: $z-index-300;
+}
+
+.header-bar {
+  display: flex;
+  min-height: 8rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  display: inline-flex;
 }
 
 .header-title {
@@ -43,37 +50,23 @@
   }
 }
 
-.header-nav-link-highlighted {
-  color: $pink-400;
-
-  &:hover {
-    color: $pink-100;
-  }
-}
-
-.header-nav-toggle {
-  position: fixed;
-  top: 1.2rem;
-  right: 2rem;
-  color: $light-700;
-  font-size: 3rem;
-
-  &.active {
-    display: block;
-    top: 1.2rem;
-
-    .icofont-navigation-menu:before {
-      content: '\eee4';
-    }
-  }
-}
-
-.header-nav-item-courses {
+.header-nav-link-content,
+.header-nav-toggle-close {
   display: none;
 }
 
-.header-nav-link-mobile {
-  position: fixed;
-  top: 1rem;
-  right: 8rem;
+.header-nav-toggle-close {
+
+}
+
+.header-nav-toggle {
+  &.active {
+    .header-nav-toggle-menu {
+      display: none;
+    }
+
+    .header-nav-toggle-close {
+      display: flex;
+    }
+  }
 }
