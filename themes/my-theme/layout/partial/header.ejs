@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header-bar">
             <div class="header-title">
-                <a href="<%- url_for('/') %>" class="header-logo"><img src="<%- url_for('/img/dev-academy-logo.png') %>" width="60" height="49" alt="Dev Academy Logo"></a>
+                <a href="<%- url_for('/') %>" class="header-logo"><img src="<%- url_for('/img/dev-academy-logo.png') %>" width="45" height="37" alt="Dev Academy Logo"></a>
                 <div>
                     <a href="<%- url_for('/') %>" id="logo-text">Dev Academy</a>
                 </div>
@@ -16,7 +16,7 @@
             <nav class="header-nav">
                 <ul>
                     <li>
-                        <a class="header-nav-link" href="#" rel="nofollow">Academy</a>
+                        <a class="header-nav-link header-nav-link-submenu" href="#">Academy</a>
                         <div class="header-nav-link-content">
                             <span class="header-nav-link-header">Academy</span>
                             <ul>
@@ -34,11 +34,13 @@
                     <li><a class="header-nav-link" href="https://courses.dev-academy.com" rel="nofollow">Courses</a></li>
                     <li><a class="header-nav-link" href="<%- url_for('/blog') %>">Blog</a></li>
                     <li><a class="header-nav-link" href="<%- url_for('/authors') %>">Authors</a></li>
-                    <li><a class="header-nav-link" href="https://www.youtube.com/channel/UCcJutJNPZVG5sbp_xaTmKEw" rel="nofollow">YT</a></li>
-                    <li><a class="header-nav-link" href="" rel="nofollow">Insta</a></li>
-                    <li><a class="header-nav-link" href="" rel="nofollow">FB</a></li>
                 </ul>
             </nav>
+            <ul class="header-socials">
+                <li><a class="header-social-link" href="https://www.youtube.com/channel/UCcJutJNPZVG5sbp_xaTmKEw" rel="nofollow"><img src="<%- url_for('/img/icons/youtube.svg') %>" width="29" height="29" alt=""></a></li>
+                <li><a class="header-social-link" href="" rel="nofollow"><img src="<%- url_for('/img/icons/instagram.svg') %>" width="29" height="29" alt=""></a></li>
+                <li><a class="header-social-link" href="" rel="nofollow"><img src="<%- url_for('/img/icons/facebook.svg') %>" width="15" height="29" alt=""></a></li>
+            </ul>
         </div>
     </div>
 </header>

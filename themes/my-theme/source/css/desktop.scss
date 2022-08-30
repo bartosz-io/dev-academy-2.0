@@ -318,14 +318,6 @@
       color: $hover;
     }
   }
-
-  .header-nav-toggle {
-    display: none;
-  }
-
-  .header-title div {
-    display: block;
-  }
 }
 
 @media (min-width: 992px) {
@@ -354,6 +346,18 @@
     .footer-navigation-column:last-of-type {
       padding-left: 6rem;
     }
+  }
+
+  .header {
+    background-color: $navy-400;
+  }
+
+  .header-nav-toggle {
+    display: none;
+  }
+
+  .header-title div {
+    display: block;
   }
 }
 

@@ -1,5 +1,5 @@
 .header {
-  background-color: $navy-400;
+  background-color: $navy-600;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,7 +9,7 @@
 
 .header-bar {
   display: flex;
-  min-height: 8rem;
+  min-height: 7rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -29,25 +29,86 @@
   }
 }
 
+.header-socials,
+.header-nav-link-header,
+.header-nav-link-description {
+  display: none;
+}
+
 .header-nav {
   display: none;
-  padding: 3rem 0 1rem;
+  padding: 1rem 0 2.5rem;
 
   &.active {
-    display: flex;
+    display: block;
+
+    + .header-socials {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
 .header-nav-link {
-  color: $light-500;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 1rem 0;
+  color: $light-100;
+  font-weight: 600;
+  font-size: $font-size-15;
   transition: color 0.3s ease;
+  letter-spacing: .075rem;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  display: flex;
+  position: relative;
+  border-bottom: .1rem solid $light-600;
 
   &:hover {
-    color: $light-300;
+    color: $hover;
   }
+}
+
+.header-nav-link-submenu {
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.4rem;
+    background-repeat: no-repeat;
+    background-image: url('/img/icons/chevron-down.svg');
+  }
+
+  &.active {
+    border-bottom: 0;
+
+    + .header-nav-link-content {
+      display: block;
+    }
+
+    &:after {
+      width: 2.4rem;
+      background-image: url('/img/icons/chevron-up.svg');
+    }
+  }
+}
+
+.header-socials {
+  margin-bottom: 2.5rem;
+
+  li {
+    margin: 0 1.5rem;
+  }
+}
+
+.header-social-link {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: $navy-500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-nav-link-content,
@@ -55,11 +116,9 @@
   display: none;
 }
 
-.header-nav-toggle-close {
-
-}
-
 .header-nav-toggle {
+  max-height: 2.4rem;
+
   &.active {
     .header-nav-toggle-menu {
       display: none;
@@ -68,5 +127,14 @@
     .header-nav-toggle-close {
       display: flex;
     }
+  }
+}
+
+.header-nav-link-content {
+  padding-left: 1.5rem;
+  border-bottom: .1rem solid $light-600;
+
+  .header-nav-link {
+    border-bottom: 0;
   }
 }

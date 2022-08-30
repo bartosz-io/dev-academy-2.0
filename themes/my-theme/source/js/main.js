@@ -81,6 +81,7 @@ function navigation() {
     var openMsg = 'Click here to open the mobile menu';
     var closeMsg = 'Click here to close the mobile menu';
     var activeClass = 'active';
+    var submenuClass = 'header-nav-link-submenu';
 
     if (toggle && menu) {
         toggle.addEventListener('click', function(event) {
@@ -95,7 +96,12 @@ function navigation() {
 
         menu.addEventListener('click', function(event) {
            if (event.target.nodeName === 'A') {
-               close();
+               if (event.target.classList.contains(submenuClass)) {
+                   event.preventDefault();
+                   event.target.classList.toggle(activeClass);
+               } else {
+                   close();
+               }
            }
         });
     }
