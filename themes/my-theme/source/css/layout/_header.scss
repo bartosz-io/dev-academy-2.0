@@ -16,6 +16,10 @@
 
 .header-logo {
   display: inline-flex;
+
+  span {
+    display: none;
+  }
 }
 
 .header-title {
