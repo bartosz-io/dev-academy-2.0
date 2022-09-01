@@ -22,20 +22,12 @@
     line-height: 3.2rem;
     margin-bottom: 2rem;
     position: relative;
-
-    &:after {
-      content: '';
-      display: flex;
-      margin-top: .2rem;
-      width: 9rem;
-      height: .4rem;
-      border-radius: 4rem;
-      background-color: $primary;
-    }
   }
 
   ul {
     li {
+      padding-bottom: .5rem;
+
       a {
         display: inline-flex;
         align-items: center;
@@ -59,7 +51,7 @@
 .footer-privacy {
   background-color: $navy-500;
   color: $light-500;
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
 .footer-privacy-navigation {

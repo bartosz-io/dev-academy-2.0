@@ -1,0 +1,21 @@
+.border {
+  &:after {
+    content: '';
+    display: flex;
+    margin-top: .2rem;
+    width: 9rem;
+    height: .4rem;
+    border-radius: 4rem;
+    background-color: $primary;
+  }
+}
+
+.border-light {
+  &:after {
+    background-color: $indigo-100;
+  }
+}
+
+.border-small:after {
+  width: 6rem;
+}
