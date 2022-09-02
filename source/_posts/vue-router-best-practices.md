@@ -91,7 +91,7 @@ const router = createRouter({
 export default router;
 ```
 
-Well, this code works well if one <RouterView/> or <router-view/> component is included inside the ProductView component because it is the parent of the comments route (which renders the ProductCommentsView component). But this practice increases the coupling of components in the application, which will be dangerous in the future. Ideally, ProductView component could be an independent component that renders general descriptions of one concrete product. So, in the next section (Nested Routes), we solve the problem 😄.
+Well, this code works well if one `<RouterView/>` or `<router-view/>` component is included inside the ProductView component because it is the parent of the comments route (which renders the ProductCommentsView component). But this practice increases the coupling of components in the application, which will be dangerous in the future. Ideally, ProductView component could be an independent component that renders general descriptions of one concrete product. So, in the next section (Nested Routes), we solve the problem 😄.
 
 ### Nested Routes
 
