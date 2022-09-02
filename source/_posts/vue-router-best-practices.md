@@ -527,7 +527,7 @@ As we exposed in the last Vue article ([Vue Security Best Practices](https://dev
 
                     /product/:id/review
 
-`id` param could be everything. But it's not a good practice to use it as any value and pass it to an API as it is. Of course, the API should have a process to filter this kind of input, but if it is not the correct, the better way is intercept it to in the client side and on the API side as the last resource.
+The `id` parameter could be everything. But it's not a good practice to use it as any value and pass it to an API as it is. Of course, the API should have a process to filter this kind of input, but if it is not the correct, the better way is intercept it to in the client side and on the API side as the last resource.
 
 Fortunately, vue-router has its mechanism to validate params with Regex. Try the next code snippet, when the `id` param only should be an integer number.
 
