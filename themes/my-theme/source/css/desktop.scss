@@ -131,11 +131,6 @@
     margin: 1rem 2rem 3rem;
   }
 
-  main {
-    padding-top: 8rem;
-    min-height: calc(100vh - 30rem);
-  }
-
   .slack {
     position: sticky;
     top: 80px;
@@ -318,13 +313,13 @@
       color: $hover;
     }
   }
+
+  .article-header {
+    padding-top: 0;
+  }
 }
 
 @media (min-width: 992px) {
-  main {
-    min-height: calc(100vh - 6rem);
-  }
-
   .article-page {
     padding: 6rem 0;
   }

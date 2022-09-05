@@ -307,10 +307,11 @@
   }
 
   a {
-    color: $teal-400;
+    color: $light-500;
+    font-weight: 500;
 
     &:hover {
-      color: $teal-600;
+      color: $hover;
     }
   }
 }

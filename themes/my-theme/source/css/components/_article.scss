@@ -27,12 +27,21 @@
 }
 
 .article-header {
-  padding-top: 2rem;
+  padding-top: 10rem;
+  background-color: $navy-400;
+
+  h1 {
+    font-weight: 700;
+    color: $light-300;
+    line-height: 4.4rem;
+    letter-spacing: .1rem;
+    font-size: $font-size-32;
+  }
 }
 
 .article-avatar {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
 }
 
@@ -57,7 +66,12 @@
 .article-author-info {
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
+}
+
+.article-author-name {
+  font-weight: 600;
+  font-size: $font-size-13;
 }
 
 .article-meta {

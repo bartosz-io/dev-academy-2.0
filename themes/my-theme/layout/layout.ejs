@@ -25,9 +25,7 @@
             <%- partial('partial/slackbar', {}, {caches: true}) %>
         <% } %>
 
-        <div class="container">
-            <%- body %>
-        </div>
+        <%- body %>
 
         <% if (is_post())  {%>
             <%- partial('partial/subscribe', {}, {caches: true}) %>

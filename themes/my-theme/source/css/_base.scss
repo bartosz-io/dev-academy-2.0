@@ -35,12 +35,12 @@ body {
 
 a {
   display: inline;
-  color: $teal-400;
+  color: $light-300;
   transition: color $transition-time $transition-type;
   word-break: break-word;
 
   &:hover {
-    color: $teal-600;
+    color: $hover;
   }
 }
 
@@ -58,11 +58,6 @@ a {
 
 .right {
   text-align: right;
-}
-
-main {
-  padding-top: 6rem;
-  min-height: calc(100vh - 34rem);
 }
 
 picture {
