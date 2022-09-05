@@ -93,7 +93,7 @@ const router = createRouter({
 export default router;
 ```
 
-Well, this code works well if one `<RouterView/>` or `<router-view/>` component is included inside the ProductView component because it is the parent of the comments route (which renders the ProductCommentsView component). But this practice increases the coupling of components in the application, which will be dangerous in the future. Ideally, ProductView component could be an independent component that renders general descriptions of one concrete product. So, in the next section (Nested Routes), we solve the problem 😄.
+Well, this code works well if one `<RouterView/>` or `<router-view/>` component is included inside the `ProductView` component because it is the parent of the comments route (which renders the `ProductCommentsView` component). But this practice increases the coupling of components in the application, which will be dangerous in the future. Ideally, `ProductView` component could be an independent component that renders general descriptions of one concrete product. So, in the next section (Nested Routes), we solve the problem 😄.
 
 ### Nested Routes
 
@@ -121,7 +121,7 @@ const routes = [
 ];
 ```
 
-But this example still has the same problem mentioned previously (the ProductView component needs the <router-view> to render the children, which introduces more complexity to ProductView). To solve this conflict exists one elegant approach. So, this consists of the use of a Void Component (a simple vue file). What does it mean? Well, let's see it in code.
+But this example still has the same problem mentioned previously (the `ProductView` component needs the <router-view> to render the children, which introduces more complexity to `ProductView`). To solve this conflict exists one elegant approach. So, this consists of the use of a Void Component (a simple vue file). What does it mean? Well, let's see it in code.
 
 ```js
 /* EmptyView.vue */
@@ -171,7 +171,7 @@ Note that the first child has the path set as a void string, which means that th
 
 ### Programmatic Navigation
 
-Aside from using `<router-link>` component on the template side (declarative form), we can do this programmatically using the router's instance methods. Remember: Inside a Vue instance, you can use the router instance as **\$router**. And you call it as **this.$router.push**.
+Aside from using `<router-link>` component on the template side (declarative form), we can do this programmatically using the router's instance methods. Remember: Inside a Vue instance, you can use the router instance as `$router`. And you call it as `this.$router.push`.
 
 We have some examples that trigger the same result.
 
@@ -262,11 +262,11 @@ So, think about a simple web application for shopping and some general functiona
 
 These, as a general draft to think deep on that web application, but first, on the Vue ecosystem, even other frameworks handle these important concepts: components, views, middlewares, and layouts.
 
-The "Component" concept refers to a piece of vue code that can be reused or not on another component, usually the tiniest piece (like a brick to build vast walls) to build complex apps.
+The **Component** concept refers to a piece of vue code that can be reused or not on another component, usually the tiniest piece (like a brick to build vast walls) to build complex apps.
 
-"Views" are an abstract concept because they are one component more, with the difference that they could be composed of many components to be used as a page.
+**Views** are an abstract concept because they are one component more, with the difference that they could be composed of many components to be used as a page.
 
-"Middlewares" were removed on the new version of the vue-router library. Because Navigation guards are improved to stay, the following code example shows how a per-route guard looks.
+**Middlewares** were removed on the new version of the vue-router library. Because Navigation guards are improved to stay, the following code example shows how a per-route guard looks.
 
 ```js
 const routes = [
@@ -282,11 +282,11 @@ const routes = [
 ];
 ```
 
-We cover Navigation Guards in detail in the next section. "Middlewares" are not related to vue-router, but this concept is used extensively in Nuxt.
+We cover Navigation Guards in detail in the next section. **Middlewares** are not related to vue-router, but this concept is used extensively in Nuxt.
 
-And the concept of "Layouts" uses a nice feature of vue-router "Named Views" layout is like a template with slots that can be replaced with components as needed (as was defined on the router object).
+And the concept of **Layouts** uses a nice feature of vue-router "Named Views" layout is like a template with slots that can be replaced with components as needed (as was defined on the router object).
 
-The following code snippet shows how components are passed by the "components" property inside the home route, where the Navbar and Footer are replaceable by any component.
+The following code snippet shows how components are passed by the `components` property inside the home route, where the Navbar and Footer are replaceable by any component.
 
 ```js
 <!-- App.vue -->
@@ -495,11 +495,11 @@ export default {
 </script>
 ```
 
-First, we have a Global Guard to check if the user is authenticated. If not is redirected to the login page.
+First, we have a **Global Guard** to check if the user is authenticated. If not is redirected to the login page.
 
-Second, we have a Per-route Guard to verify if the user has permission as a writer.
+Second, we have a **Per-route Guard** to verify if the user has permission as a writer.
 
-And the In-component Guard is used at the ProfileView.vue as an analytics service to track the user moves.
+And the **In-component Guard** is used at the `ProfileView.vue` as an analytics service to track the user moves.
 
 ## Lazy load, speed up your app
 
