@@ -17,6 +17,8 @@ Hi #VueFriend, in this article we cover best practices around routing in Vue, ar
 
 When your Vue app grows is inevitable to make crucial routing decisions. We have prepared some examples for you and a lot of suggestions, remember, not exists the best choice. It is about balance and tradeoffs. Well, let's play our cards.
 
+<!-- toc -->
+
 Routing is all about flows and information. Think of some streets and avenues in your country. When urban planning politics does not exist, the traffic is horrible, and the accessibility is not the best. In consequence, life is hard. The same could happen on our Vue Apps and lead to dangerous scenarios and bad user experiences. To avoid "dangerous scenarios" check out our related [security article with Vue](https://dev-academy.com/vue-security-best-practices/).
 
 ## "vue-router" library
@@ -517,7 +519,9 @@ const routes = [
 
 When we execute the build command, the dist folder should have a file like this:
 
-                    ProfileView.{SHORT\_HASH}.js ----> dist/assets/ProfileView.8ab749c4.js
+```sh
+    ProfileView.{SHORT\_HASH}.js ----> dist/assets/ProfileView.8ab749c4.js
+```
 
 So, this JavaScript file and component will be loaded on demand.
 
@@ -525,7 +529,9 @@ So, this JavaScript file and component will be loaded on demand.
 
 As we exposed in the last Vue article ([Vue Security Best Practices](https://dev-academy.com/vue-security-best-practices/)), every input is a possible door to an unexpected problem. Dynamic routes are indeed a kind of input, thus we have some practices to avoid problems. Check the next dynamic route.
 
-                    /product/:id/review
+```sh
+    /product/:id/review
+```
 
 The `id` parameter could be everything. But it's not a good practice to use it as any value and pass it to an API as it is. Of course, the API should have a process to filter this kind of input, but if it is not the correct, the better way is intercept it to in the client side and on the API side as the last resource.
 
@@ -552,7 +558,9 @@ You could use the parentheses to put your regular expressions, but if it does no
 
 Another kind of input is an URL with query params like this:
 
-                    /search?q=la+vaca+lola
+```sh
+    /search?q=la+vaca+lola
+```
 
 vue-router has a concept called `props` used to pass it to the target component and delegate its use and validation.
 
