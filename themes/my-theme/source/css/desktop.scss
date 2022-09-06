@@ -177,30 +177,6 @@
     padding: 3rem 0;
   }
 
-  .article {
-    width: calc(100% - 8rem);
-  }
-
-  .article-share {
-    position: sticky;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 16rem;
-    height: 100%;
-    margin-left: 2rem;
-    padding-top: 3rem;
-    padding-bottom: 0;
-  }
-
-  .article-share-list {
-    flex-direction: column;
-  }
-
-  .article-wrapper {
-    display: flex;
-  }
-
   .pagination {
     align-items: center;
   }
@@ -468,6 +444,7 @@
     span {
       display: flex;
       padding-left: 1.5rem;
+      letter-spacing: .075rem;
       font-weight: 600;
       color: $light-100;
       font-size: $font-size-15;
@@ -485,6 +462,27 @@
     .header-nav-link-content {
       display: block;
       animation: fadeIn .5s;
+    }
+  }
+
+  .article-share {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 12rem;
+    right: 0;
+    padding-top: .5rem;
+    padding-bottom: 0;
+    background: $light-400;
+    border-radius: .4rem;
+  }
+
+  .article-share-list {
+    flex-direction: column;
+
+    a {
+      padding: 1.4rem 1.6rem;
     }
   }
 }
