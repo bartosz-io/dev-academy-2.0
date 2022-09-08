@@ -290,8 +290,12 @@
     }
   }
 
-  .article-header {
-    padding-top: 0;
+  .article-header h1 {
+    font-size: $font-size-46;
+  }
+
+  .author-academies li {
+    font-size: $font-size-16;
   }
 }
 
@@ -388,6 +392,7 @@
     background: $navy-400;
     padding: 4rem;
     border-radius: 1rem;
+    border-bottom: 0;
 
     ul {
       display: block;
@@ -484,6 +489,10 @@
     a {
       padding: 1.4rem 1.6rem;
     }
+  }
+
+  .article-header {
+    padding-top: 4rem;
   }
 }
 

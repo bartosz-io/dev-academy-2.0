@@ -22,26 +22,27 @@
 
     li {
       margin-right: 1rem;
+      padding-bottom: 0.5rem;
     }
   }
 }
 
 .article-header {
   padding-top: 10rem;
+  padding-bottom: 2rem;
   background-color: $navy-400;
 
   h1 {
-    font-weight: 700;
+    font-weight: 800;
     color: $light-300;
-    line-height: 4.4rem;
     letter-spacing: .1rem;
     font-size: $font-size-32;
   }
 }
 
 .article-avatar {
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
 }
 
@@ -49,13 +50,13 @@
   display: flex;
   align-items: center;
   padding-bottom: 2rem;
-  margin-bottom: 2rem;
-  border-bottom: .1rem solid $light-200;
 }
 
 .article-date {
-  color: $light-600;
-  margin-right: 1.5rem;
+  color: $light-200;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: $font-size-14;
 }
 
 .article-details {
@@ -71,13 +72,11 @@
 
 .article-author-name {
   font-weight: 600;
-  font-size: $font-size-13;
+  font-size: $font-size-16;
 }
 
 .article-meta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  padding-bottom: 2rem;
 }
 
 .article-share {
@@ -114,17 +113,23 @@ ul.article-tag-list {
 }
 
 .article-tag-list-link {
-  text-decoration: underline;
+  background-color: $light-125;
+  font-size: $font-size-16;
+  border-radius: 5rem;
+  padding: .5rem 2rem;
+  color: $navy-400;
+  display: inline-flex;
+  transition: background-color $transition-time $transition-type;
 
-  &:before {
-    content: '#';
+  &:hover {
+    color: inherit;
+    background-color: $hover;
   }
 }
 
 .article-tag-list-item {
-  + .article-tag-list-item {
-    margin-left: 1rem;
-  }
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .article-content {

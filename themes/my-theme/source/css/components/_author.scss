@@ -302,13 +302,12 @@
   padding-bottom: 1rem;
 
   li {
-    font-size: 1.3rem;
+    font-size: $font-size-14;
     line-height: 1.9rem;
   }
 
   a {
-    color: $light-500;
-    font-weight: 500;
+    color: $light-150;
 
     &:hover {
       color: $hover;
