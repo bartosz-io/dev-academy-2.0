@@ -367,11 +367,12 @@
 
     ul {
       display: flex;
+      align-items: center;
     }
   }
 
   .header-nav-link {
-    padding: 1.5rem 2.5rem;
+    padding: 1.5rem;
     border: 0;
   }
 
@@ -429,6 +430,8 @@
 
     li {
       margin: 0 1rem;
+      display: flex;
+      align-items: center;
     }
 
     li:last-of-type {
