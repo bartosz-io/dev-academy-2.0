@@ -1,5 +1,5 @@
 .header {
-  background-color: $navy-600;
+  background-color: $navy-400;
   position: fixed;
   top: 0;
   left: 0;
@@ -54,7 +54,7 @@
 }
 
 .header-nav-link {
-  color: $light-100;
+  color: $light-200;
   font-weight: 600;
   font-size: $font-size-15;
   transition: color 0.3s ease;
@@ -71,6 +71,7 @@
 
 .header-nav-link-submenu {
   position: relative;
+  padding-left: 0;
 
   &:after {
     content: '';

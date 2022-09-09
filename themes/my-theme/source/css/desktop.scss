@@ -325,7 +325,6 @@
 
   .header {
     position: static;
-    background-color: $navy-400;
 
     .container {
       display: flex;
@@ -389,8 +388,8 @@
     width: 100%;
     top: 100%;
     left: 0;
-    background: $navy-400;
-    padding: 4rem;
+    background: $navy-800;
+    padding: 3rem 4rem;
     border-radius: 1rem;
     border-bottom: 0;
 
