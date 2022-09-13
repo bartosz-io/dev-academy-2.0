@@ -35,7 +35,6 @@
   h1 {
     font-weight: 800;
     color: $light-300;
-    letter-spacing: .1rem;
     font-size: $font-size-32;
   }
 }
@@ -134,7 +133,7 @@ ul.article-tag-list {
 
 .article-content {
   img {
-    margin: 2rem auto 4rem;
+    margin: 2rem auto 5rem;
     display: block;
   }
 }
