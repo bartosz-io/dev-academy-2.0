@@ -127,10 +127,6 @@
     font-size: 1.4rem;
   }
 
-  blockquote {
-    margin: 1rem 2rem 3rem;
-  }
-
   .slack {
     position: sticky;
     top: 80px;
@@ -258,6 +254,39 @@
   }
 
   // new styles
+  body {
+    font-size: $font-size-18;
+  }
+
+  p {
+    line-height: 3.2rem;
+  }
+
+  h1 {
+    font-size: $font-size-46;
+  }
+
+  h2 {
+    font-size: $font-size-34;
+  }
+
+  h3 {
+    font-size: $font-size-24;
+  }
+
+  .highlight {
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+
+  blockquote {
+    font-size: $font-size-18;
+  }
+
+  .toc > ul {
+    padding-left: 5rem;
+  }
+
   .footer-privacy {
     .container {
       display: flex;

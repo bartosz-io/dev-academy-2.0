@@ -1,7 +1,55 @@
 .toc {
   padding-bottom: 4rem;
 
+  > ul {
+    position: relative;
+    padding-left: 4rem;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0.5rem;
+      left: 0;
+      width: .2rem;
+      background-color: $indigo-150;
+      display: flex;
+      height: calc(100% - 1rem);
+      border-radius: 50%;
+    }
+  }
+
   ul, ol {
     margin-bottom: 0;
+    list-style: none;
+
+    li {
+      padding-top: .5rem;
+    }
+  }
+
+  a {
+    font-size: $font-size-16;
+    position: relative;
+
+    &:before {
+      content: '';
+      transition: background-color $transition-time $transition-type;
+      position: absolute;
+      top: .9rem;
+      left: -1.6rem;
+      width: .5rem;
+      height: .5rem;
+      border-radius: 50%;
+      display: flex;
+      background-color: $light-750;
+    }
+
+    &:hover {
+      color: $dark-350;
+
+      &:before {
+        background-color: $dark-350;
+      }
+    }
   }
 }

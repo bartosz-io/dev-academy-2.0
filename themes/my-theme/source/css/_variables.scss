@@ -40,7 +40,6 @@ $font-size-100: 10rem;
 $font-family-ico: 'IcoFont';
 $font-family: 'Poppins', sans-serif;
 $font-family-monospace: 'Source Code Pro', monospace;
-$font-family-georgia: Georgia, 'Times New Roman', serif; // TODO To remove probably
 
 // Colors
 $primary: #610BEF;
@@ -49,6 +48,7 @@ $hover: #8DE9FF;
 
 // - Primary indigo
 $indigo-100: #BFBEFC;
+$indigo-150: #CBCEFF;
 $indigo-400: $primary;
 $indigo-600: #4700AB;
 
@@ -62,6 +62,7 @@ $navy-800: #4E4B66;
 $dark-100: #000;
 $dark-200: #151515;
 $dark-300: #181818;
+$dark-350: #1F1D2E;
 $dark-400: #212121;
 $dark-500: #2e2e2e;
 $dark-600: #333842;
@@ -78,6 +79,7 @@ $light-300: #FCFCFC;
 $light-400: #D9D9D9;
 $light-500: #A0A3BD;
 $light-600: #9A99AD;
+$light-750: #A0A3BD;
 
 $light-650: #828282;
 $light-700: #999;

@@ -26,17 +26,20 @@
             <div class="article-content" itemprop="description">
                 <%- page.content %>
             </div>
+
+            <footer class="article-footer">
+                <%- partial('post/tags') %>
+            </footer>
+            <%- author_info(post.author, post.date) %>
         </div>
-
-        <footer class="article-footer">
-            <%- partial('post/tags') %>
-        </footer>
-
-        <%- author_info(post.author, post.date) %>
 
     </article>
 
-    <%- partial('post/share') %>
+    <div class="container">
+        <%- partial('post/share') %>
+    </div>
 </div>
 
-<%- partial('post/disqus') %>
+<div class="container">
+    <%- partial('post/disqus') %>
+</div>
