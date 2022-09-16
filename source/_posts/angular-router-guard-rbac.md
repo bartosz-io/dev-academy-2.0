@@ -4,16 +4,13 @@ author: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn about Angular Guard, AuthService, AuthGuard Implementation, and Routing Module Implementations and create a simple Angular app with user and admin roles and role-based authorization.
 date: 2022-09-11
-tags: [Angular, Security]
-id: 
-relatedPost:
+tags: [Angular, Security, Routing]
+id: angular-router-guard-rbac
+relatedPost: vue-router-best-practices
 ---
 {% image_fw 1.78 banner.png "Angular Guard for Role-Based Access Control (RBAC)" %}
 
-Angular Guard for Role-Based Access Control (RBAC)
-==================================================
-
-We learned how to use the [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-otp-post&_ga=2.165189500.2131069689.1662582129-1733203209.1662582129) training program [budget-angular](https://github.com/bartosz-io/budget-angular) to request and verify one-time passwords in the preceding post [**Angular OTP (one-time password) Verification 🔢**](https://dev-academy.com/angular-otp-verification/). We talked about two-factor authentication (2FA), time-based one-time passwords, and using Angular to request OTP verification.
+We learned how to use the [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-router-guard-rbac-post&=2.165189500.2131069689.1662582129-1733203209.1662582129) training program [budget-angular](https://github.com/bartosz-io/budget-angular) to request and verify one-time passwords in the preceding post [**Angular OTP (one-time password) Verification 🔢**](https://dev-academy.com/angular-otp-verification/). We talked about two-factor authentication (2FA), time-based one-time passwords, and using Angular to request OTP verification.
 
 In this article, we will discuss Angular Guard, AuthService, AuthGuard Implementation, and Routing Module Implementations.
 
@@ -23,25 +20,9 @@ The **_/admin_** route is accessible to only admins. The user can access the app
 
 ### **Let's Begin**
 
-*   Introduction
-    
-*   What is an Angular Guard?
-    
-*   What is Angular Injector
-    
-    *   @Injectable
-        
-    *   providedIn: ‘root’
-        
-*   What is AuthService?
-    
-*   AuthGuard Implementation
-    
-*   Routing Module Implementation
-    
+<!-- toc -->
 
-INTRODUCTION
-------------
+## INTRODUCTION
 
 A fantastic web application may be developed with ease using the many features and ready-to-use services offered by Angular. And one of those practical characteristics is routing. However, there are situations when you want users to browse based on a specific requirement, such as preventing inadvertent data loss by requiring authorized users (e.g., logged in) to access the dashboard.
 
@@ -49,8 +30,7 @@ Using certain conditional statements on individual pages and navigating users if
 
 The use of route guards is another solution to this issue. This has built-in interfaces that can be used to control the navigation of routes.
 
-WHAT IS AN ANGULAR GUARD?
--------------------------
+## WHAT IS AN ANGULAR GUARD?
 
 Angular Route guards are Angular interfaces that, when used, enable us to control a route's accessibility based on conditions specified in the class implementation of that interface. Or in other words, Guards are the interfaces that provide information about whether a requested route is permitted. The guards observe the methods' return values from the implemented interfaces while carrying out these tasks.
 
@@ -75,10 +55,11 @@ Let's explore each route individually:
     
     _method signature:_
     
+    ```
         interface CanActivate {
           canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
         }
-    
+    ```
     learn more about Angular CanActivate [here...](https://angular.io/api/router/CanActivate#description)
     
 2.  **_CanActivateChild_**
@@ -87,9 +68,11 @@ Let's explore each route individually:
     
     _method signature:_
     
+    ```
         interface CanActivateChild {
           canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
         }
+        ```
     
     learn more about Angular CanActivateChild [here...](https://angular.io/api/router/CanActivateChild)
     
@@ -103,9 +86,11 @@ Let's explore each route individually:
     
     _method signature:_
     
+    ```
         interface CanDeactivate<T> {
           canDeactivate(component: T, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
         }
+        ```
     
     learn more about Angular CanDeactivate [here...](https://angular.io/api/router/CanDeactivate)
     
@@ -115,9 +100,11 @@ Let's explore each route individually:
     
     _method signature:_
     
+    ```
         interface CanLoad {
           canLoad(route: Route, segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
         }
+    ```
     
     learn more about Angular CanLoad [here...](https://angular.io/api/router/CanLoad)
     
@@ -131,17 +118,18 @@ Let's explore each route individually:
     
     _method signature:_
     
+    ```
         interface Resolve<T> {
           resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> | Promise<T> | T
         }
+    ```
     
     After resolving the data, resolve will pass the component a datatype T. Learn more about Angular Resolve [here...](https://angular.io/api/router/Resolve)
     
 
 The **_CanActivate_** guard will now be used in this article to safeguard the router's link. We could utilize **_CanActivateChild_**, in the same way, to simply add role-based protection for our router.
 
-WHAT IS AUTHSERVICE?
---------------------
+## WHAT IS AUTHSERVICE?
 
 To offer details about the user's login status and roles, we will develop an Auth service. It's just a straightforward simulation for logging in and receiving jobs. Although we will learn more about Angular Guard for RBAC Driven by JWT in the following article. So, here we have:
 
@@ -153,8 +141,7 @@ The **_isLoggedIn()_** function lets us know if a user is currently logged in to
 
 From local storage, the **_getRole()_** function returns the user's role.
 
-WHAT IS AN ANGULAR INJECTOR?
-----------------------------
+## WHAT IS AN ANGULAR INJECTOR?
 
 The dependency is created and injected into the component or service by the Angular Injector. Using the injection token, the injector searches the Angular Providers for the dependency. The Angular Providers array returns the Provider, which includes instructions on how to create an instance of the dependency. The injector creates the instance, which is then injected into the component or service.
 
@@ -168,6 +155,7 @@ providedIn: 'root' is an additional option you can pass in the @Injectable decor
 
 ### AUTHSERVICE
 
+```
      @Injectable({
           providedIn: 'root'
         })
@@ -205,15 +193,17 @@ providedIn: 'root' is an additional option you can pass in the @Injectable decor
             return this.roleAs;
           }
         }
+```
 
-AUTH GUARD IMPLEMENTATION
--------------------------
+## AUTH GUARD IMPLEMENTATION
 
 Use the Angular-CLI command to create a guard.
 
 **Create auth-guard:**
 
+```
     ng generate guard auth
+```
 
 The **_CanActivate_** method will be called before each request to the router. In this method, we'll see if the user is logged in and has the correct role.
 
@@ -221,6 +211,7 @@ The **_checkUserLogin()_** method takes two parameters. These are **_ActivatedRo
 
 **AuthGuard.ts**
 
+```
      @Injectable({
           providedIn: 'root'
         })
@@ -267,24 +258,30 @@ The **_checkUserLogin()_** method takes two parameters. These are **_ActivatedRo
             return false;
           }
         }
+```
 
-ROUTING MODULE IMPLEMENTATION
------------------------------
+## ROUTING MODULE IMPLEMENTATION
+
 
 We will inform the Routes object about the role. This is a straightforward procedure. All we have to do is add a guard and our data to the role.
 
 **Add Guard:**
 
+```
     canActivate: [AuthGuard]
+```
 
 **Providing the role information that will allow access to that page:**
 
+```
     data: {
               role: 'ROLE_ADMIN'
          }
+```
 
 **routing-module.ts**
 
+```
     const routes: Routes = [
         
           { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -311,13 +308,14 @@ We will inform the Routes object about the role. This is a straightforward proce
           exports: [RouterModule]
         })
         export class AppRoutingModule { }
+```
 
-Summary
--------
+## Summary
+
 
 We can protect our routes based on our role using the scenario above. This article explains how to use role claims to support RBAC. We reviewed Angular Guards, Angular Injector, Auth Service, AuthGuard Implementation, and Routing Module Implementation.
 
-THE NEXT STEPS
---------------
+## THE NEXT STEPS
 
-This was a straightforward angular application to put into action. Although we will learn more about Angular Guard for Role-Based Access Control (RBAC) Driven by JWT in the following article. Visit our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-otp-post).
+
+This was a straightforward angular application to put into action. Although we will learn more about Angular Guard for Role-Based Access Control (RBAC) Driven by JWT in the following article. Visit our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-router-guard-rbac-post).
