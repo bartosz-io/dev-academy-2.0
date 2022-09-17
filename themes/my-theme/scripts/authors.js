@@ -1,3 +1,6 @@
+const BEGINNER_MAX = 2;
+const ADVANCED_MAX = 4;
+
 hexo.extend.generator.register('authors', function(locals) {
     var configAuthors = Object.entries(this.config.authors);
 
@@ -7,7 +10,7 @@ hexo.extend.generator.register('authors', function(locals) {
 
     let authors = configAuthors.map(function(author) {
         var authorPosts = locals.posts.filter(post => post.author === author[0]);
-        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 2 ? 'advanced' : 'beginner';
+        var level = authorPosts.length > ADVANCED_MAX ? 'expert' : authorPosts.length > BEGINNER_MAX ? 'advanced' : 'beginner';
 
         return {
             name: author[0],
@@ -39,7 +42,7 @@ hexo.extend.generator.register('author', function(locals) {
     configAuthors.forEach(function(author) {
         var slug = author[1].slug.trim();
         var authorPosts = locals.posts.filter(post => post.author === author[0]);
-        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 1 ? 'advanced' : 'beginner';
+        var level = authorPosts.length > ADVANCED_MAX ? 'expert' : authorPosts.length > BEGINNER_MAX ? 'advanced' : 'beginner';
         var authorData = {
             name: author[0],
             ...author[1],
@@ -124,7 +127,7 @@ hexo.extend.helper.register('author_info', function(authorName, postDate) {
 
     if (author) {
         var authorPosts = hexo.locals.get('posts').filter(post => post.author === author[0]);
-        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 1 ? 'advanced' : 'beginner';
+        var level = authorPosts.length > ADVANCED_MAX ? 'expert' : authorPosts.length > BEGINNER_MAX ? 'advanced' : 'beginner';
         var articleSuffix = authorPosts.length === 1 ? 'Article' : 'Articles';
 
         var authorSpecs = author[1].specs;
