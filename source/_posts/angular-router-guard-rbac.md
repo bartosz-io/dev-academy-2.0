@@ -109,7 +109,7 @@ interface CanLoad {
 learn more about Angular CanLoad [here](https://angular.io/api/router/CanLoad)
 
 5.  **_Resolve Guard_**
-    
+
 Classes can become data providers by implementing an interface. The router can be utilized with a data provider class to resolve data while navigating.
 
 Data transmission between components is necessary for complex angular applications; occasionally, the data is too large to pass through query parameters. Resolve Guard has been supplied by angular to address this scenario.
