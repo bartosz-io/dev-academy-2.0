@@ -139,6 +139,8 @@ ul.article-tag-list {
 }
 
 .article-content {
+  padding-top: 4rem;
+
   ul,
   ol {
     li {
@@ -147,7 +149,7 @@ ul.article-tag-list {
   }
 
   picture:first-of-type {
-    margin: -5rem auto 0;
+    margin: -9rem auto 0;
   }
 
   img {
