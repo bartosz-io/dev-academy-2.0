@@ -1,8 +1,8 @@
 .article {
   ol,
   ul {
-    padding-left: 2rem;
     margin-bottom: 2rem;
+    padding-left: 2rem;
   }
 
   ol {
@@ -140,6 +140,11 @@ ul.article-tag-list {
 
 .article-content {
   padding-top: 4rem;
+
+  > ul,
+  > ol {
+    margin-bottom: 6rem;
+  }
 
   ul,
   ol {
