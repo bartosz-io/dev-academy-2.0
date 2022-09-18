@@ -13,6 +13,12 @@
     list-style: disc;
   }
 
+  .article-share-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
   .author-academies {
     display: flex;
     list-style-type: none;
@@ -148,21 +154,6 @@ ul.article-tag-list {
     margin: 2rem auto 5rem;
     display: block;
     border-radius: 0.8rem;
-  }
-}
-
-.article-footer {
-  border-top: 1px solid $light-300;
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-
-  .article-tag-list {
-    padding-left: 0;
-
-    a {
-      text-decoration: none;
-      font-size: $font-size-14;
-    }
   }
 }
 

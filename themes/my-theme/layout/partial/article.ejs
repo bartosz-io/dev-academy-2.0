@@ -27,19 +27,12 @@
                 <%- page.content %>
             </div>
 
-            <footer class="article-footer">
-                <%- partial('post/tags') %>
-            </footer>
+            <%- partial('post/share') %>
+            <%- partial('post/disqus') %>
+
+            <h2 class="border border-light">Author</h2>
             <%- author_info(post.author, post.date) %>
         </div>
-
     </article>
 
-    <div class="container">
-        <%- partial('post/share') %>
-    </div>
-</div>
-
-<div class="container">
-    <%- partial('post/disqus') %>
 </div>

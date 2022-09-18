@@ -1,12 +1,15 @@
-<button class="button button-primary button-large button-block" id="show-comments">Show comments</button>
-<div class="article-comments" id="disqus_thread"></div>
+<div class="article-comments-wrapper">
+    <h2 class="border border-light">Comments</h2>
+    <button class="button button-primary button-large button-block" id="show-comments">Show comments</button>
+    <div class="article-comments" id="disqus_thread"></div>
 
-<script>
-    var disqus_shortname = '<%= config.disqus_shortname %>';
+    <script>
+        var disqus_shortname = '<%= config.disqus_shortname %>';
 
-    <% if (page.permalink){ %>
-    var disqus_url = '<%= page.permalink %>';
-    <% } %>
-</script>
+        <% if (page.permalink){ %>
+        var disqus_url = '<%= page.permalink %>';
+        <% } %>
+    </script>
 
-<script src="https://<%= config.disqus_shortname %>.disqus.com/count.js" defer></script>
+    <script src="https://<%= config.disqus_shortname %>.disqus.com/count.js" defer></script>
+</div>
