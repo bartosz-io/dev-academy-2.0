@@ -22,7 +22,7 @@ The **_/admin_** route is accessible to only admins. The user can access the app
 
 <!-- toc -->
 
-## INTRODUCTION
+## Introduction
 
 A fantastic web application may be developed with ease using the many features and ready-to-use services offered by Angular. And one of those practical characteristics is routing. However, there are situations when you want users to browse based on a specific requirement, such as preventing inadvertent data loss by requiring authorized users (e.g., logged in) to access the dashboard.
 
@@ -30,7 +30,7 @@ Using certain conditional statements on individual pages and navigating users if
 
 The use of route guards is another solution to this issue. This has built-in interfaces that can be used to control the navigation of routes.
 
-## WHAT IS AN ANGULAR GUARD?
+## What is an Angular Guard?
 
 Angular Route guards are Angular interfaces that, when used, enable us to control a route's accessibility based on conditions specified in the class implementation of that interface. Or in other words, Guards are the interfaces that provide information about whether a requested route is permitted. The guards observe the methods' return values from the implemented interfaces while carrying out these tasks.
 
@@ -60,7 +60,7 @@ interface CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
 }
 ```
-learn more about Angular CanActivate [here](https://angular.io/api/router/CanActivate#description)
+Learn more about Angular CanActivate [here](https://angular.io/api/router/CanActivate#description)
 
 2.  **_CanActivateChild_**
     
@@ -74,7 +74,7 @@ interface CanActivateChild {
 }
 ```
 
-learn more about Angular CanActivateChild [here](https://angular.io/api/router/CanActivateChild)
+Learn more about Angular CanActivateChild [here](https://angular.io/api/router/CanActivateChild)
     
 3.  **_CanDeactivate_**
 
@@ -92,7 +92,7 @@ interface CanDeactivate<T> {
 }
 ```
 
-learn more about Angular CanDeactivate [here](https://angular.io/api/router/CanDeactivate)
+Learn more about Angular CanDeactivate [here](https://angular.io/api/router/CanDeactivate)
 
 4.  **_CanLoad_**
 
@@ -106,7 +106,7 @@ interface CanLoad {
 }
 ```
 
-learn more about Angular CanLoad [here](https://angular.io/api/router/CanLoad)
+Learn more about Angular CanLoad [here](https://angular.io/api/router/CanLoad)
 
 5.  **_Resolve Guard_**
 
@@ -128,7 +128,7 @@ After resolving the data, resolve will pass the component a datatype T. Learn mo
 
 The **_CanActivate_** guard will now be used in this article to safeguard the router's link. We could utilize **_CanActivateChild_**, in the same way, to simply add role-based protection for our router.
 
-## WHAT IS AUTHSERVICE?
+## What Is AuthService?
 
 To offer details about the user's login status and roles, we will develop an Auth service. It's just a straightforward simulation for logging in and receiving jobs. Although we will learn more about Angular Guard for RBAC Driven by JWT in the following article. So, here we have:
 
@@ -140,11 +140,11 @@ The **_isLoggedIn()_** function lets us know if a user is currently logged in to
 
 From local storage, the **_getRole()_** function returns the user's role.
 
-## WHAT IS AN ANGULAR INJECTOR?
+## What is an Angular Injector?
 
 The dependency is created and injected into the component or service by the Angular Injector. Using the injection token, the injector searches the Angular Providers for the dependency. The Angular Providers array returns the Provider, which includes instructions on how to create an instance of the dependency. The injector creates the instance, which is then injected into the component or service.
 
-### @INJECTABLE
+### @Injectable
 
 The Injectable is a decorator that must be added to the dependency's consumer. This decorator instructs Angular that the arguments must be injected using the Angular DI system. Learn more about @injectible [here](https://angular.io/api/core/Injectable)
 
@@ -152,7 +152,7 @@ The Injectable is a decorator that must be added to the dependency's consumer. T
 
 providedIn: 'root' is an additional option you can pass in the @Injectable decorator to tell Angular that you want to provide this Injectable in the root injector. You can have lazy-loaded singleton services by using providedIn: 'root.'
 
-### AUTHSERVICE
+### AuthService
 
 ```typescript
 @Injectable({
@@ -194,7 +194,7 @@ export class AuthService {
 }
 ```
 
-## AUTH GUARD IMPLEMENTATION
+## Auth Guard Implementation
 
 Use the Angular-CLI command to create a guard.
 
@@ -258,7 +258,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
 }
 ```
 
-## ROUTING MODULE IMPLEMENTATION
+## Routing Module Implementation
 
 We will inform the Routes object about the role. This is a straightforward procedure. All we have to do is add a guard and our data to the role.
 
@@ -310,6 +310,6 @@ export class AppRoutingModule { }
 
 We can protect our routes based on our role using the scenario above. This article explains how to use role claims to support RBAC. We reviewed Angular Guards, Angular Injector, Auth Service, AuthGuard Implementation, and Routing Module Implementation.
 
-## THE NEXT STEPS
+## The next steps
 
 This was a straightforward angular application to put into action. Although we will learn more about Angular Guard for Role-Based Access Control (RBAC) Driven by JWT in the following article. Visit our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-router-guard-rbac-post).
