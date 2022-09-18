@@ -50,7 +50,7 @@ There are now five different types of Angular route guards provided by angular:
 Let's explore each route individually:
 
 1.  **_CanActivate interface_**
-    
+
 Controls the activation of a route. A class's implementation of an interface that a guard can use to determine whether a route can be activated. All guards must return true for navigation to proceed. Navigation will be halted if any guard returns false.
 
 _method signature:_
@@ -60,13 +60,13 @@ interface CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
 }
 ```
-learn more about Angular CanActivate [here](https://angular.io/api/router/CanActivate#description)
+learn more about Angular CanActivate [here](https://angular.io/api/router/CanActivate#description).
 
 2.  **_CanActivateChild_**
-    
-    The only difference between **_CanActivate_** and **_CanActivateChild_** is that **_CanActivate_** controls the accessibility of the current route, whereas **_CanActivateChild_** controls the accessibility of a given route's child routes. As a result, using this eliminates the need to add **_canActive_** to each child route; instead, you only need to add **_canActiveChild_** to the parent route, and it will function for child routes as well.
-    
-    _method signature:_
+
+The only difference between **_CanActivate_** and **_CanActivateChild_** is that **_CanActivate_** controls the accessibility of the current route, whereas **_CanActivateChild_** controls the accessibility of a given route's child routes. As a result, using this eliminates the need to add **_canActive_** to each child route; instead, you only need to add **_canActiveChild_** to the parent route, and it will function for child routes as well.
+
+_method signature:_
     
 ```typescript
 interface CanActivateChild {
@@ -74,7 +74,7 @@ interface CanActivateChild {
 }
 ```
 
-learn more about Angular CanActivateChild [here](https://angular.io/api/router/CanActivateChild)
+learn more about Angular CanActivateChild [here](https://angular.io/api/router/CanActivateChild).
     
 3.  **_CanDeactivate_**
 
@@ -124,7 +124,7 @@ interface Resolve<T> {
 }
 ```
 
-After resolving the data, resolve will pass the component a datatype T. Learn more about Angular Resolve [here](https://angular.io/api/router/Resolve)
+After resolving the data, resolve will pass the component a datatype T. Learn more about Angular Resolve [here](https://angular.io/api/router/Resolve).
 
 The **_CanActivate_** guard will now be used in this article to safeguard the router's link. We could utilize **_CanActivateChild_**, in the same way, to simply add role-based protection for our router.
 
@@ -146,7 +146,7 @@ The dependency is created and injected into the component or service by the Angu
 
 ### @INJECTABLE
 
-The Injectable is a decorator that must be added to the dependency's consumer. This decorator instructs Angular that the arguments must be injected using the Angular DI system. Learn more about @injectible [here](https://angular.io/api/core/Injectable)
+The Injectable is a decorator that must be added to the dependency's consumer. This decorator instructs Angular that the arguments must be injected using the Angular DI system. Learn more about @injectible [here](https://angular.io/api/core/Injectable).
 
 ### providedIn: ‘root’
 
