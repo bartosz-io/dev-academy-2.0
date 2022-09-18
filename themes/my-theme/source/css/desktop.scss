@@ -274,11 +274,6 @@
     font-size: $font-size-24;
   }
 
-  .highlight {
-    margin-left: 6rem;
-    margin-right: 6rem;
-  }
-
   blockquote {
     font-size: $font-size-18;
   }
@@ -485,6 +480,11 @@
       color: $light-100;
       font-size: $font-size-15;
     }
+
+    img {
+      width: 3.4rem;
+      height: 3.4rem;
+    }
   }
 
   .header-nav-submenu:hover {
@@ -501,6 +501,10 @@
     }
   }
 
+  .header-bar-start {
+    display: none;
+  }
+
   .article-share {
     position: fixed;
     display: flex;
@@ -514,6 +518,10 @@
     border-radius: .4rem;
   }
 
+  .header-nav-start {
+    display: flex;
+  }
+
   .article-share-list {
     flex-direction: column;
 
@@ -524,6 +532,10 @@
 
   .article-header {
     padding-top: 4rem;
+  }
+
+  .article .container {
+    width: 80rem;
   }
 }
 
@@ -552,6 +564,6 @@
 
 @media (min-width: 1400px) {
   .container {
-    width: 120rem;
+    width: 124rem;
   }
 }

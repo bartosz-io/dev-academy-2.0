@@ -17,6 +17,11 @@
 .header-logo {
   display: inline-flex;
 
+  img {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
   span {
     display: none;
   }
@@ -107,10 +112,10 @@
 }
 
 .header-social-link {
-  width: 4rem;
-  height: 4rem;
+  width: 4.8rem;
+  height: 4.8rem;
   border-radius: 50%;
-  background-color: $navy-500;
+  background-color: $dark-350;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,4 +147,14 @@
   .header-nav-link {
     border-bottom: 0;
   }
+}
+
+.header-nav-start {
+  display: none;
+}
+
+.header-bar-start {
+  position: fixed;
+  right: 7.5rem;
+  top: 1.3rem;
 }

@@ -72,6 +72,7 @@
 .article-author-name {
   font-weight: 600;
   font-size: $font-size-16;
+  color: $light-200;
 }
 
 .article-meta {
@@ -132,6 +133,17 @@ ul.article-tag-list {
 }
 
 .article-content {
+  ul,
+  ol {
+    li {
+      padding-top: .5rem;
+    }
+  }
+
+  picture:first-of-type {
+    margin: -5rem auto 0;
+  }
+
   img {
     margin: 2rem auto 5rem;
     display: block;
