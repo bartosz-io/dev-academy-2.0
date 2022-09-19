@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded', function() {
     if (!this.isTablet()) {
-        navigation();
+        mobileNavigation();
+    } else {
+        stickyNavigation();
     }
 
     if (this.isTablet()) {
@@ -75,7 +77,7 @@ function isTablet() {
     return window.innerWidth > 991;
 }
 
-function navigation() {
+function mobileNavigation() {
     var toggle = document.querySelector('.header-nav-toggle');
     var menu = document.querySelector('.header-nav');
     var openMsg = 'Click here to open the mobile menu';
@@ -123,6 +125,26 @@ function navigation() {
         toggle.classList.remove(activeClass);
         toggle.setAttribute('aria-label', openMsg);
     }
+}
+
+function stickyNavigation() {
+    var lastScrollY = 0;
+    var header = document.querySelector('.header');
+    var headerStickyClass = 'header-sticky';
+
+    window.addEventListener('scroll', function(event) {
+        if (lastScrollY < window.scrollY) {
+            if (header.classList.contains(headerStickyClass)) {
+                header.classList.remove(headerStickyClass);
+            }
+        } else {
+            if (window.scrollY > 500) {
+                header.classList.add(headerStickyClass);
+            }
+        }
+
+        lastScrollY = window.scrollY;
+    }, {passive: true});
 }
 
 function cookieConsent() {

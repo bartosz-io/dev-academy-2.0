@@ -326,12 +326,19 @@
 
   .header {
     position: static;
+    height: 10.5rem;
+    transition: all 0.3s ease-in-out;
 
     .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+  }
+
+  .header-sticky {
+    position: sticky;
+    animation: fadeIn 0.3s;
   }
 
   .header-menu {
