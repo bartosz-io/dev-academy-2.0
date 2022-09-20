@@ -23,15 +23,23 @@
         </header>
 
         <div class="container">
-            <div class="article-content" itemprop="description">
-                <%- page.content %>
+            <div class="article-content-wrapper">
+                <div class="article-content" itemprop="description">
+                    <%- page.content %>
+                </div>
+                <%- partial('post/sidebar') %>
             </div>
+        </div>
 
-            <%- partial('post/share') %>
-            <%- partial('post/disqus') %>
 
-            <h2 class="border border-light">Author</h2>
-            <%- author_info(post.author, post.date) %>
+        <div class="article-footer-wrapper">
+            <div class="container">
+                <%- partial('post/share') %>
+                <%- partial('post/disqus') %>
+
+                <h2 class="border border-light">Author</h2>
+                <%- author_info(post.author, post.date) %>
+            </div>
         </div>
     </article>
 

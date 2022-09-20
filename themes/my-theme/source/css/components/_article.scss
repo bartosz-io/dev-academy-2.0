@@ -21,6 +21,7 @@
 
   .author-academies {
     display: flex;
+    flex-direction: column;
     list-style-type: none;
     padding: 0;
     margin-bottom: 0;
@@ -35,7 +36,6 @@
 
 .article-header {
   padding-top: 10rem;
-  padding-bottom: 2rem;
   background-color: $navy-400;
 
   h1 {
@@ -138,8 +138,16 @@ ul.article-tag-list {
   margin-bottom: 1.5rem;
 }
 
+.article-sidebar {
+  display: none;
+}
+
+.article-content-wrapper {
+  padding-top: 2rem;
+}
+
 .article-content {
-  padding-top: 4rem;
+  overflow: hidden;
 
   > ul,
   > ol {
@@ -153,8 +161,8 @@ ul.article-tag-list {
     }
   }
 
-  picture:first-of-type {
-    margin: -9rem auto 0;
+  picture:first-of-type img {
+    margin-top: 0;
   }
 
   img {

@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', function() {
-    if (!this.isTablet()) {
-        mobileNavigation();
-    } else {
+    if (this.isTablet()) {
         stickyNavigation();
+    } else {
+        mobileNavigation();
     }
 
     if (this.isTablet()) {
