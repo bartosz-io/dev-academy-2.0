@@ -131,15 +131,20 @@ function stickyNavigation() {
     var lastScrollY = 0;
     var header = document.querySelector('.header');
     var headerStickyClass = 'header-sticky';
+    var headerStickyOutClass = 'header-sticky-out';
 
     window.addEventListener('scroll', function(event) {
         if (lastScrollY < window.scrollY) {
-            if (header.classList.contains(headerStickyClass)) {
+            if (window.scrollY > 500) {
                 header.classList.remove(headerStickyClass);
+                header.classList.add(headerStickyOutClass);
             }
         } else {
             if (window.scrollY > 500) {
                 header.classList.add(headerStickyClass);
+                header.classList.remove(headerStickyOutClass);
+            } else {
+                header.classList.remove(headerStickyOutClass);
             }
         }
 

@@ -11,15 +11,3 @@
   90% { transform: translate(1px, 2px) rotate(1deg); }
   100% { transform: translate(0px, 0px) rotate(0); }
 }
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}

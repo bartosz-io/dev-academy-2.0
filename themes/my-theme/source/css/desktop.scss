@@ -324,8 +324,12 @@
     }
   }
 
+  body {
+    padding-top: 10.5rem;
+  }
+
   .header {
-    position: static;
+    position: fixed;
     height: 10.5rem;
     transition: all 0.3s ease-in-out;
 
@@ -337,8 +341,15 @@
   }
 
   .header-sticky {
-    position: sticky;
-    animation: fadeIn 0.3s;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .header-sticky-out {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-3rem);
   }
 
   .header-menu {
