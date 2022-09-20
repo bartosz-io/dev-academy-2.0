@@ -18,7 +18,7 @@ In this article, we'll create a simple Angular app with user and admin roles and
 
 The **_/admin_** route is accessible to only admins. The user can access the application's **_/user_** route if they log in as a user from the login page. As a guest, he can only view the **_/home_** page; he cannot use the **_/admin_** page or **_/user_** routes. We can restrict access to **_/admin_** or **_/user_** routes. The authentication service will be used by the login component to log in to the application. If the user is already logged in as an admin or user, he will be taken to the **_/home_** page.
 
-### **In this Article..**
+### **In this Article**
 
 <!-- toc -->
 
