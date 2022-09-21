@@ -170,6 +170,11 @@ ul.article-tag-list {
     display: block;
     border-radius: 0.8rem;
   }
+
+  a:hover {
+    color: $teal-300;
+    text-decoration: underline;
+  }
 }
 
 .article-page {

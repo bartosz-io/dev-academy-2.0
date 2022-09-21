@@ -11,7 +11,7 @@
       top: 0.5rem;
       left: 0;
       width: .2rem;
-      background-color: $indigo-150;
+      background-color: $light-500;
       display: flex;
       height: calc(100% - 1rem);
       border-radius: 50%;
@@ -26,6 +26,7 @@
   a {
     font-size: $font-size-16;
     position: relative;
+    color: $teal-300;
 
     &:before {
       content: '';
@@ -33,15 +34,16 @@
       position: absolute;
       top: .9rem;
       left: -1.6rem;
-      width: .5rem;
-      height: .5rem;
+      width: .4rem;
+      height: .4rem;
       border-radius: 50%;
       display: flex;
-      background-color: $light-750;
+      background-color: $teal-300;
     }
 
     &:hover {
       color: $dark-350;
+      text-decoration: none;
 
       &:before {
         background-color: $dark-350;

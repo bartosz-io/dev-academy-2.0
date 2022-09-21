@@ -34,7 +34,7 @@ body {
 
 a {
   display: inline;
-  color: $light-750;
+  color: $teal-300;
   transition: color $transition-time $transition-type;
   word-break: break-word;
 
@@ -113,7 +113,7 @@ h6 {
 code {
   overflow-wrap: break-word;
   padding: .1rem .3rem;
-  font-size: $font-size-14;
+  font-size: inherit;
   background: $light-200;
   border-radius: .2rem;
   color: $dark-500;
