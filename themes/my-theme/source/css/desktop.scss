@@ -180,34 +180,56 @@
   }
 
   .related-post {
-    flex-direction: column;
-  }
+    display: flex;
+    padding: 1rem 5rem 1rem 1rem;
 
-  .related-post-close {
-    transition: $transition-default;
+    figure {
+      display: block;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: 14rem;
+    }
 
-    &:hover {
-      cursor: pointer;
-      color: $light-100;
+    .button {
+      font-size: $font-size-14;
+      width: 9rem;
+      border-radius: .4rem;
+      display: block;
     }
   }
 
-  .related-posts {
-    min-width: 34rem;
-    max-width: 36rem;
-    left: auto;
+  .related-post-image {
+    border-radius: .8rem;
+    width: 14rem;
+  }
+
+  .related-post-header {
+    padding: 0 2rem;
+  }
+
+  .related-post-title {
+    font-size: $font-size-18;
+    font-weight: 600;
   }
 
   .related-post-meta {
     display: flex;
-    padding-left: 1rem;
-    padding-right: 4rem;
     flex-direction: column;
-    line-height: 2rem;
   }
 
-  .related-post-footer {
-    padding-left: 0;
+  .related-post-author {
+    font-size: $font-size-13;
+    color: $light-200;
+    font-weight: 600;
+    letter-spacing: .025rem;
+    padding-top: .8rem;
+  }
+
+  .related-post-date {
+    font-size: $font-size-13;
+    color: $light-750;
+    font-weight: 500;
+    letter-spacing: .025rem;
   }
 
   .authors-list {
@@ -531,6 +553,15 @@
 
   .article-wrapper .container {
     width: 84rem;
+  }
+
+  .related-posts {
+    width: 80rem;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+
+
   }
 }
 

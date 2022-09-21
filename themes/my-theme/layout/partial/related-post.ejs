@@ -2,22 +2,21 @@
     <% site.posts.each(function(post){ %>
         <% if (post.id === currentPost.relatedPost)  {%>
             <a href="<%- post.path %>" class="related-post">
+                <figure>
+                    <picture>
+                        <source srcset="<%- url_for(post.path) %>small_banner.webp" type="image/webp">
+                        <img class="related-post-image" src="<%- url_for(post.path) %>small_banner.png" alt="<%- url_for(post.title) %>">
+                    </picture>
+                </figure>
                 <div class="related-post-header">
-                    <figure>
-                        <picture>
-                            <source srcset="<%- url_for(post.path) %>small_banner.webp" type="image/webp">
-                            <img class="related-post-image" src="<%- url_for(post.path) %>small_banner.png" alt="<%- url_for(post.title) %>">
-                        </picture>
-                    </figure>
+                    <span class="related-post-next">Next read</span>
+                    <h4 class="related-post-title"><%- post.title %></h4>
                     <div class="related-post-meta">
                         <span class="related-post-author"><%- post.author %></span>
                         <span class="related-post-date"><time class="related-post-time" datetime="<%= date_xml(post.date) %>"><%= date(post.date, null) %></time></span>
                     </div>
                 </div>
-                <div class="related-post-footer">
-                    <span class="related-post-next">Next read:</span>
-                    <h4 class="related-post-title"><%- post.title %></h4>
-                </div>
+                <span class="button button-primary">Next</span>
                 <span class="icofont-close related-post-close "></span>
             </a>
         <% } %>
