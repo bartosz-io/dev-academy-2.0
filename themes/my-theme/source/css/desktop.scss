@@ -195,6 +195,7 @@
       width: 9rem;
       border-radius: .4rem;
       display: block;
+      text-align: center;
     }
   }
 
@@ -557,11 +558,9 @@
 
   .related-posts {
     width: 80rem;
-    left: 50%;
+    left: calc(50% + 2rem);
     transform: translateX(-50%);
     right: auto;
-
-
   }
 }
 
