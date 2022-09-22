@@ -115,8 +115,6 @@ A simple explanation is, that a hacker sends an XML query containing the payload
 
 This attack can happen when a weakly configured XML parser is used. However, can easily be negated by using XXE detecting tools and ensuring all XML processing code is up to date. Vulnerabilities like these tend not to be present in most cases due to modern frameworks handling most safety concerns like these.
 
-This topic
-
 ## Memory Leaks
 
 A memory leak refers to any scenario where memory is occupied but its usage is no longer needed or valid leading to potential security issues. This can be leveraged in a DDOS attack by occupying system memory until it crashes or instigates unsought behavior in the program.
@@ -137,7 +135,6 @@ In functional programming, these memory leaks are generally encountered when cal
         const result = await fetch('example.com');
         .then// do something with result
       })();
-      // do something with result
     }, []);
 ```
 
@@ -147,7 +144,7 @@ Under certain conditions, this code will produce a warning indicating a memory l
 
 ### How to negate memory leaks
 
-This can be avoided by **unsubscribing** from async functions after use. The preferred method of doing this when doing an API request using an AbortController.
+This can be avoided by **unsubscribing** from async functions after use. The preferred method of doing this, when doing an API request, is by using an AbortController.
 
 ```javascript
     useEffect(() => {
@@ -164,7 +161,7 @@ This can be avoided by **unsubscribing** from async functions after use. The pre
     }, []);
 ```
 
-It is necessary to note that although it is always a good idea to avoid all coding practices that avoid unintended side effects, in most modern frameworks and software, issues like these can be detected early and generally won't have much of an impact or use case on its own.
+It is necessary to note that although it is always a good idea to avoid all coding practices that invoke unintended side effects, in most modern frameworks and software, issues like these can be detected early and generally won't have much of an impact or use case on its own.
 
 ## Handling Sensitive Data
 
