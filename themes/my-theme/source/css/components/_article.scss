@@ -245,3 +245,14 @@ ul.article-tag-list {
 .page-number {
   display: none;
 }
+
+.posts-listing-header {
+  font-size: $font-size-46;
+  color: $dark-350;
+  line-height: 5.5rem;
+  padding-top: 10rem;
+
+  span {
+    color: $indigo-600;
+  }
+}
