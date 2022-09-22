@@ -110,34 +110,6 @@
   padding-bottom: 6rem;
 }
 
-ul.article-tag-list {
-  display: flex;
-  list-style-type: none;
-  flex-wrap: wrap;
-  margin-bottom: 0;
-  padding-left: 0;
-}
-
-.article-tag-list-link {
-  background-color: $light-125;
-  font-size: $font-size-16;
-  border-radius: 5rem;
-  padding: .5rem 2rem;
-  color: $navy-400;
-  display: inline-flex;
-  transition: background-color $transition-time $transition-type;
-
-  &:hover {
-    color: inherit;
-    background-color: $hover;
-  }
-}
-
-.article-tag-list-item {
-  margin-right: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
 .article-sidebar {
   display: none;
 }
