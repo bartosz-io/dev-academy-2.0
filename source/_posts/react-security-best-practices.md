@@ -12,6 +12,8 @@ relatedPost: react-xss
 
 In this article, we'll discuss some of the best practices for security when using React in your web applications. We'll cover topics such as how to avoid malicious code injections, avoid memory leaks, and more. By following these best practices, you can help keep your React-based web application safe and secure.
 
+<!--- toc --->
+
 ## React and Security Vulnerabilities
 
 When it comes to building web applications, security should always be one of the leading priorities. React is no exception. React's popularity has made it a target for attackers.
@@ -19,13 +21,9 @@ When it comes to building web applications, security should always be one of the
 Most vulnerabilities can be avoided by following a few rules general to almost all frameworks such as
 
 * keeping sensitive data encrypted as a rule, unless explicitly required otherwise
-
 * not uploading your .env files to your git repository
-
 * following the rule of least privilege where applicable
-
 * keeping libraries up to date and checked
-
 * don't make using libraries the first resort for everything
 
 I recommend taking a look at this article about [Vue Security Best Practices](https://dev-academy.com/vue-security-best-practices/). Many of the concepts are relevant irrespective of your preferred framework.
