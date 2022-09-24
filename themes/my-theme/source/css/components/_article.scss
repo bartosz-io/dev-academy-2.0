@@ -154,6 +154,8 @@
 }
 
 .posts {
+  padding-bottom: 3rem;
+  
   @media (min-width: 650px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
