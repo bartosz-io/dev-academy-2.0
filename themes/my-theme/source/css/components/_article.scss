@@ -218,26 +218,6 @@
   }
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  padding: 4rem 0 6rem;
-
-  .next,
-  .prev {
-    align-items: center;
-    padding: 1rem;
-  }
-
-  [class^='icofont-'] {
-    font-size: $font-size-20;
-  }
-}
-
-.page-number {
-  display: none;
-}
-
 .posts-listing-header {
   font-size: $font-size-46;
   color: $dark-350;
