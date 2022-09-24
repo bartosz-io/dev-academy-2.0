@@ -9,10 +9,10 @@
     "server": "hexo server --draft"
   },
   "hexo": {
-    "version": "5.4.0"
+    "version": "6.3.0"
   },
   "dependencies": {
-    "hexo": "^5.0.0",
+    "hexo": "^6.3.0",
     "hexo-all-minifier": "^0.5.7",
     "hexo-auto-canonical": "^0.1.1",
     "hexo-browsersync": "^0.3.0",
