@@ -13,11 +13,11 @@ ul.tag-list {
   padding: .5rem 2rem;
   color: $navy-400;
   display: inline-flex;
-  transition: background-color $transition-time $transition-type;
+  transition: background-color $transition-time $transition-type
+              color $transition-time $transition-type;
 
   &:hover {
-    color: inherit;
-    background-color: $hover;
+    color: $teal-300;
   }
 }
 

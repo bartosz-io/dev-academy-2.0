@@ -15,6 +15,14 @@
   font-size: $font-size-16;
   width: 100%;
   min-width: 31rem;
+
+  &:hover {
+    &::placeholder {
+      color: $teal-300;
+    }
+
+    color: $teal-300;
+  }
 }
 
 .search-icon {
