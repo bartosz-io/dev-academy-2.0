@@ -4,6 +4,10 @@ ul.tag-list {
   flex-wrap: wrap;
   margin-bottom: 0;
   padding-left: 0;
+
+  .tag-list-item:last-of-type {
+    margin-right: 0;
+  }
 }
 
 .tag-list-link {
