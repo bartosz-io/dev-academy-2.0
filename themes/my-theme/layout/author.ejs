@@ -1,33 +1,36 @@
-<a href="<%- url_for('/authors') %>" class="authors-back-link"><span class="icofont-arrow-left"></span>Back To All Authors</a>
-<div class="author-title">About the author</div>
-<section class="author-bio">
-    <div class="author-info">
-        <div class="author-info-left">
-            <img src="<%- page.author.image %>" class="author-image" alt="<%- page.author.name %>">
-            <div class="author-articles-count"><span>⭐ <%- page.author.postsCount %></span>&nbsp;<% if (page.author.postsCount > 1) { %>Articles<% } else { %>Article<% } %></div>
-            <%- author_academies(page.author.name) %>
-        </div>
-        <div class="author-info-right">
-            <h1 class="author-name"><%- page.author.name %></h1>
-            <div class="author-joined">Active contributor since <%- date(page.author.joined, 'MMMM Do, YYYY') %></div>
-            <div class="author-description"><%- page.author.desc %></div>
-            <div class="pills">
-                <% page.author.specs.forEach(function(spec){ var specName; %>
-                <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
-                <div class="pill pill-<%- spec %>" data-spec="<%- spec %>"><%- specName %> Expert</div>
-                <% }) %>
+<div class="container">
+    <a href="<%- url_for('/authors') %>" class="authors-back-link"><span class="icofont-arrow-left"></span>Back To All Authors</a>
+    <div class="author-title">About the author</div>
+    <section class="author-bio">
+        <div class="author-info">
+            <div class="author-info-left">
+                <img src="<%- page.author.image %>" class="author-image" alt="<%- page.author.name %>">
+                <div class="author-articles-count"><span>⭐ <%- page.author.postsCount %></span>&nbsp;<% if (page.author.postsCount > 1) { %>Articles<% } else { %>Article<% } %></div>
+                <%- author_academies(page.author.name) %>
+            </div>
+            <div class="author-info-right">
+                <h1 class="author-name"><%- page.author.name %></h1>
+                <div class="author-joined">Active contributor since <%- date(page.author.joined, 'MMMM Do, YYYY') %></div>
+                <div class="author-description"><%- page.author.desc %></div>
+                <div class="pills">
+                    <% page.author.specs.forEach(function(spec){ var specName; %>
+                    <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
+                    <div class="pill pill-<%- spec %>" data-spec="<%- spec %>"><%- specName %> Expert</div>
+                    <% }) %>
+                </div>
             </div>
         </div>
+        <div class="author-motto"><%- page.author.motto %></div>
+        <ul class="author-socials">
+            <% if (page.author.socials.site) { %><li><a href="<%- page.author.socials.site %>" target="_blank" rel="nofollow noopener"><span class="icofont-web"></span></a></li><% } %>
+            <% if (page.author.socials.linkedin) { %><li><a href="<%- page.author.socials.linkedin %>" target="_blank" rel="nofollow noopener"><span class="icofont-linkedin"></span></a></li><% } %>
+            <% if (page.author.socials.twitter) { %><li><a href="<%- page.author.socials.twitter %>" target="_blank" rel="nofollow noopener"><span class="icofont-twitter"></span></a></li><% } %>
+            <% if (page.author.socials.github) { %><li><a href="<%- page.author.socials.github %>" target="_blank" rel="nofollow noopener"><span class="icofont-github"></span></a></li><% } %>
+        </ul>
+    </section>
+    <div class="author-posts">
+        <div class="author-title">Author's articles</div>
+        <%- partial('partial/posts', {posts: page.author.posts}) %>
     </div>
-    <div class="author-motto"><%- page.author.motto %></div>
-    <ul class="author-socials">
-        <% if (page.author.socials.site) { %><li><a href="<%- page.author.socials.site %>" target="_blank" rel="nofollow noopener"><span class="icofont-web"></span></a></li><% } %>
-        <% if (page.author.socials.linkedin) { %><li><a href="<%- page.author.socials.linkedin %>" target="_blank" rel="nofollow noopener"><span class="icofont-linkedin"></span></a></li><% } %>
-        <% if (page.author.socials.twitter) { %><li><a href="<%- page.author.socials.twitter %>" target="_blank" rel="nofollow noopener"><span class="icofont-twitter"></span></a></li><% } %>
-        <% if (page.author.socials.github) { %><li><a href="<%- page.author.socials.github %>" target="_blank" rel="nofollow noopener"><span class="icofont-github"></span></a></li><% } %>
-    </ul>
-</section>
-<div class="author-posts">
-    <div class="author-title">Author's articles</div>
-    <%- partial('partial/posts', {posts: page.author.posts}) %>
 </div>
+
