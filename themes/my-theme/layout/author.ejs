@@ -1,11 +1,9 @@
+<div class="author-container-space"></div>
 <div class="container">
-    <a href="<%- url_for('/authors') %>" class="authors-back-link"><span class="icofont-arrow-left"></span>Back To All Authors</a>
-    <div class="author-title">About the author</div>
     <section class="author-bio">
         <div class="author-info">
             <div class="author-info-left">
                 <img src="<%- page.author.image %>" class="author-image" alt="<%- page.author.name %>">
-                <div class="author-articles-count"><span>⭐ <%- page.author.postsCount %></span>&nbsp;<% if (page.author.postsCount > 1) { %>Articles<% } else { %>Article<% } %></div>
                 <%- author_academies(page.author.name) %>
             </div>
             <div class="author-info-right">
@@ -20,6 +18,8 @@
                 </div>
             </div>
         </div>
+        <!--                <div class="author-articles-count"><span>⭐ <%- page.author.postsCount %></span>&nbsp;<% if (page.author.postsCount > 1) { %>Articles<% } else { %>Article<% } %></div>-->
+
         <div class="author-motto"><%- page.author.motto %></div>
         <ul class="author-socials">
             <% if (page.author.socials.site) { %><li><a href="<%- page.author.socials.site %>" target="_blank" rel="nofollow noopener"><span class="icofont-web"></span></a></li><% } %>

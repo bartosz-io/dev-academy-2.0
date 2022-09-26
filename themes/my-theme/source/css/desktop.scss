@@ -562,6 +562,10 @@
   .posts-listing-header {
     padding-top: 5rem;
   }
+
+  .author-container-space {
+    height: 16rem;
+  }
 }
 
 @media (min-width: 1180px) {
@@ -589,7 +593,7 @@
 
 @media (min-width: 1390px) {
   .container {
-    width: 124rem;
+    width: 130rem;
   }
 
   .article-content-wrapper {
