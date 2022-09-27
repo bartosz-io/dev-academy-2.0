@@ -347,6 +347,36 @@
     padding-top: 10.5rem;
   }
 
+  .header-top {
+    height: 5rem;
+    flex-direction: row;
+  }
+
+  .header-top-text {
+    display: flex;
+    padding-bottom: 0;
+
+    div + div {
+      padding-left: 1rem;
+    }
+  }
+
+  .header-top-counter {
+    padding: 0 2rem;
+  }
+
+  .b-header-top {
+    padding-top: 15.5rem;
+
+    .header {
+      height: 15.5rem;
+    }
+
+    .article-share {
+      top: 18rem;
+    }
+  }
+
   .header {
     position: fixed;
     height: 10.5rem;
@@ -557,10 +587,6 @@
     left: calc(50% + 2rem);
     transform: translateX(-50%);
     right: auto;
-  }
-
-  .posts-listing-header {
-    padding-top: 5rem;
   }
 
   .author-container-space {

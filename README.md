@@ -37,3 +37,7 @@ authors:
           twitter: https://www.linkedin.com/in/bpietrucha/
           github: https://www.linkedin.com/in/bpietrucha/
 ```
+
+# Banery
+- Pole **banners** pozwala na włączenie poszczególnych banerów, posiadające już określone wysokości, których nie wolno ruszać.
+  - top_banner: true | false - 150px (15rem) height na mobile i 50px (5rem) na desktopie. Klasa dodawana do body: **b-header-top**

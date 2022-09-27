@@ -8,6 +8,7 @@
 }
 
 .header-bar {
+  position: relative;
   display: flex;
   min-height: 7rem;
   justify-content: space-between;
@@ -154,7 +155,44 @@
 }
 
 .header-bar-start {
-  position: fixed;
-  right: 7.5rem;
+  position: absolute;
+  right: 5.5rem;
   top: 1.3rem;
+}
+
+.header-top {
+  background: linear-gradient(95.08deg, $teal-350 2.49%, $indigo-700 97.19%);
+  font-size: $font-size-16;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 15rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-top-text {
+  color: $light-100;
+  font-weight: 600;
+  padding-bottom: .5rem;
+}
+
+.header-top-counter {
+  color: $light-200;
+  padding-bottom: 1.5rem;
+}
+
+.header-top-link {
+  color: $hover;
+  text-decoration: underline;
+  font-weight: 600;
+
+  &:hover {
+    color: $dark-350;
+  }
+}
+
+.b-header-top {
+  padding-top: 22rem;
 }

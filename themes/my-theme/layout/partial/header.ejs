@@ -1,4 +1,7 @@
 <header class="header">
+    <% if (config.banners.top_banner){ %>
+        <%- partial('banners/banner-top-navigation') %>
+    <% } %>
     <div class="container">
         <div class="header-bar">
             <div class="header-title">
