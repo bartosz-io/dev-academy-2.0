@@ -1,0 +1,13 @@
+<aside class="article-sidebar">
+    <div class="article-sidebar-content">
+        <% if (post.bannerHeader) {%>
+            <h4 class="article-sidebar-header"><%- post.bannerHeader %></h4>
+        <% } %>
+        <% if (post.bannerSubheader) {%>
+            <h5 class="article-sidebar-header"><%- post.bannerSubheader %></h5>
+        <% } %>
+        <% if (post.bannerUrl) {%>
+            <a href="<%- post.bannerHeader %>" class="article-sidebar-header button button-primary button-small">Check it out!</a>
+        <% } %>
+    </div>
+</aside>

@@ -219,6 +219,7 @@ image_minifier:
 # site banners, custom templates
 banners:
   top_banner: true
+  article_side_banner: true
 
 # site authors, custom generator
 authors_specs: [nodejs, angular, vue, react]

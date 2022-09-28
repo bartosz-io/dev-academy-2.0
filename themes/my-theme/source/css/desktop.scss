@@ -643,12 +643,13 @@
     border-radius: .8rem;
     height: 30rem;
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
   }
 
-  .article-wrapper .container {
+  .b-article-sidebar .article-wrapper .container {
     width: 109rem;
     margin-left: calc(50% - 40rem);
   }

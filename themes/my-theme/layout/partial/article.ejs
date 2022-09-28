@@ -27,7 +27,9 @@
                 <div class="article-content" itemprop="description">
                     <%- page.content %>
                 </div>
-                <%- partial('post/sidebar') %>
+                <% if (config.banners.article_side_banner) {%>
+                    <%- partial('banners/banner_article_sidebar', {post: post}) %>
+                <% } %>
             </div>
         </div>
 
