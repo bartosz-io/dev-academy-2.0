@@ -9,7 +9,7 @@ id: angular-otp
 relatedPost: user-login-and-registration
 bannerHeader: 'banner header'
 bannerSubheader: 'banner subheader'
-bannerUrl: 'banner url'
+bannerUrl: '/'
 ---
 {% image_fw 1.78 banner.png "Angular OTP Verification" %}
 
