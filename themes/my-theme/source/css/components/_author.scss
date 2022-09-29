@@ -39,6 +39,7 @@
 .author-description {
   padding-bottom: 3rem;
   line-height: 2.4rem;
+  font-size: $font-size-18;
 }
 
 .author-header-bio {
@@ -339,18 +340,18 @@
 .author-info-right {
   position: relative;
   margin-top: 2.5rem;
-  padding: 0 0 3rem 0;
 }
 
 .author-bio {
   .author-name {
-    font-size: 4rem;
+    font-size: $font-size-46;
+    color: $dark-350;
     margin-bottom: 2rem;
+    margin-top: 5rem;
   }
 
   .author-description {
-    padding-top: 3rem;
-    padding-bottom: 6rem;
+    padding: 3rem 0;
   }
 
   .pill:hover {
@@ -369,9 +370,8 @@
 }
 
 .author-joined {
-  font-style: italic;
-  color: $dark-700;
-  font-size: 1.4rem;
+  color: $navy-800;
+  font-size: $font-size-18;
 }
 
 .author-articles-count {
@@ -397,6 +397,7 @@
 
   .author-academies {
     padding-top: 2.5rem;
+    text-align: center;
 
     li {
       font-size: $font-size-18;
@@ -407,34 +408,41 @@
 }
 
 .author-motto {
-  font-size: 2.5rem;
+  font-size: $font-size-28;
   font-style: italic;
-  padding-top: 4rem;
+  padding: 3rem 0;
   text-align: center;
-  max-width: 75%;
-  margin: 0 auto;
+  background-color: $light-200;
 
-  &:before,
-  &:after {
-    content: '"';
+  .container {
+    &:before,
+    &:after {
+      content: '"';
+    }
   }
 }
 
 .author-socials {
-  font-size: 5rem;
-  padding-top: 7rem;
   display: flex;
-  justify-content: center;
+  padding-bottom: 3rem;
 
   li {
-    padding: 0 1.5rem;
+    padding-right: 1.5rem;
   }
 
   a {
-    color: $dark-100;
+    color: $light-100;
+    width: 5rem;
+    height: 5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $navy-800;
+    border-radius: 50%;
+    transition: $transition-time background-color $transition-type;
 
     &:hover {
-      color: $teal-600;
+      background-color: $hover;
     }
   }
 }
@@ -488,10 +496,21 @@
 .author-profession {
   color: $light-100;
   font-size: $font-size-22;
+  display: inline-flex;
+}
+
+.author-profession-badge {
+  background-color: $yellow-400;
+  color: $navy-800;
+  font-size: $font-size-14;
+  font-weight: 700;
+  border-radius: 5rem;
+  padding: .8rem 1.6rem;
+  text-transform: uppercase;
 }
 
 .author-container-space {
-  height: 23rem;
+  height: 17rem;
   background-color: $navy-400;
 }
 
