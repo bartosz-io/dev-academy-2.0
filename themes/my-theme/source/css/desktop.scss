@@ -541,7 +541,6 @@
 
     .header-nav-link-content {
       display: block;
-      animation: fadeIn .5s;
     }
   }
 
@@ -651,15 +650,17 @@
     align-items: center;
   }
 
-  .b-article-sidebar .article-wrapper .container {
-    width: 109rem;
-    margin-left: calc(50% - 40rem);
-  }
+  .b-article-sidebar {
+    .article-wrapper .container {
+      width: 109rem;
+      margin-left: calc(50% - 40rem);
+    }
 
-  .article-header,
-  .article-footer-wrapper {
-    .container {
-      width: 84rem;
+    .article-header,
+    .article-footer-wrapper {
+      .container {
+        width: 84rem;
+      }
     }
   }
 }
