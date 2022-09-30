@@ -86,8 +86,7 @@
   span {
     line-height: 2.8rem;
 
-    &:before,
-    &:after {
+    &:before {
       content: '';
       width: 100%;
       height: .6rem;
@@ -99,10 +98,6 @@
       display: block;
     }
 
-    &:after {
-      display: none;
-    }
-
     &:first-child {
       &:before,
       &:after {
@@ -112,8 +107,7 @@
     }
 
     &:last-child {
-      &:before,
-      &:after {
+      &:before {
         border-top-right-radius: .4rem;
         border-bottom-right-radius: .4rem;
       }
@@ -121,29 +115,12 @@
   }
 }
 
-.author-contribution-level-after {
-  span:before {
-    display: none;
-  }
-
-  span:after {
-    display: block;
-  }
-}
-
 .author-contribution-level-beginner {
   span {
     &:nth-child(1) {
-      &:before,
-      &:after {
+      &:before {
         background: linear-gradient(90deg, #4495da, #7477b3);
       }
-    }
-  }
-
-  &.author-contribution-level-bold {
-    span:nth-child(1) {
-      font-weight: 700;
     }
   }
 }
@@ -151,23 +128,15 @@
 .author-contribution-level-advanced {
   span {
     &:nth-child(1) {
-      &:before,
-      &:after {
+      &:before {
         background: linear-gradient(90deg, #4495da, #7477b3);
       }
     }
 
     &:nth-child(2) {
-      &:before,
-      &:after {
+      &:before {
         background: linear-gradient(90deg, #7477b3, #7978df);
       }
-    }
-  }
-
-  &.author-contribution-level-bold {
-    span:nth-child(2) {
-      font-weight: 700;
     }
   }
 }
@@ -175,31 +144,54 @@
 .author-contribution-level-expert {
   span {
     &:nth-child(1) {
-      &:before,
-      &:after {
+      &:before {
         background: linear-gradient(90deg, #4495da, #7477b3);
       }
     }
 
     &:nth-child(2) {
-      &:before,
-      &:after {
+      &:before {
         background: linear-gradient(90deg, #7477b3, #7978df);
       }
     }
 
     &:nth-child(3) {
-      &:before,
-      &:after {
+      &:before {
         background: linear-gradient(90deg, #7978df, #7a5ed5);
       }
     }
   }
+}
 
-  &.author-contribution-level-bold {
-    span:nth-child(3) {
-      font-weight: 700;
+.author-contribution-level-highlighted {
+  color: $navy-800;
+
+  span {
+    &:before {
+      height: 1.6rem;
     }
+
+    &:first-child {
+      &:before {
+        border-top-left-radius: 10rem;
+        border-bottom-left-radius: 10rem;
+      }
+    }
+
+    &:last-child {
+      &:before {
+        border-top-right-radius: 10rem;
+        border-bottom-right-radius: 10rem;
+      }
+    }
+  }
+
+  &.author-contribution-level-beginner span:nth-child(1),
+  &.author-contribution-level-advanced span:nth-child(2),
+  &.author-contribution-level-expert span:nth-child(3) {
+    font-weight: 700;
+    font-size: $font-size-16;
+    color: $indigo-600;
   }
 }
 
@@ -367,6 +359,16 @@
       }
     }
   }
+
+  h2 {
+    font-size: $font-size-28;
+    font-weight: 600;
+    color: $dark-350;
+  }
+
+  .author-contribution-level {
+    margin-bottom: 4rem;
+  }
 }
 
 .author-joined {
@@ -413,6 +415,7 @@
   padding: 3rem 0;
   text-align: center;
   background-color: $light-200;
+  margin-bottom: 5rem;
 
   .container {
     &:before,
@@ -429,21 +432,29 @@
   li {
     padding-right: 1.5rem;
   }
+}
 
-  a {
-    color: $light-100;
-    width: 5rem;
-    height: 5rem;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $navy-800;
-    border-radius: 50%;
-    transition: $transition-time background-color $transition-type;
+.author-social-icon {
+  color: $light-100;
+  width: 4.8rem;
+  height: 4.8rem;
+  display: inline-flex;
 
-    &:hover {
-      background-color: $hover;
-    }
+  &.author-social-icon-github {
+    background-image: url('/img/icons/social-github.svg');
+    height: 4.6rem;
+  }
+
+  &.author-social-icon-twitter {
+    background-image: url('/img/icons/social-twitter.svg')
+  }
+
+  &.author-social-icon-linkedin {
+    background-image: url('/img/icons/social-linkedin.svg')
+  }
+
+  &.author-social-icon-www {
+    background-image: url('/img/icons/social-www.svg')
   }
 }
 

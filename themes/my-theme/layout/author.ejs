@@ -12,10 +12,10 @@
                     <div class="author-joined">Active contributor since <%- date(page.author.joined, 'MMMM Do, YYYY') %></div>
                     <div class="author-description"><%- page.author.desc %></div>
                     <ul class="author-socials">
-                        <% if (page.author.socials.site) { %><li><a href="<%- page.author.socials.site %>" target="_blank" rel="nofollow noopener"><span class="icofont-web"></span></a></li><% } %>
-                        <% if (page.author.socials.linkedin) { %><li><a href="<%- page.author.socials.linkedin %>" target="_blank" rel="nofollow noopener"><span class="icofont-linkedin"></span></a></li><% } %>
-                        <% if (page.author.socials.twitter) { %><li><a href="<%- page.author.socials.twitter %>" target="_blank" rel="nofollow noopener"><span class="icofont-twitter"></span></a></li><% } %>
-                        <% if (page.author.socials.github) { %><li><a href="<%- page.author.socials.github %>" target="_blank" rel="nofollow noopener"><span class="icofont-github"></span></a></li><% } %>
+<!--                        <% if (page.author.socials.site) { %><li><a href="<%- page.author.socials.site %>" target="_blank" rel="nofollow noopener" class="author-social-icon author-social-icon-www"></a></li><% } %>-->
+                        <% if (page.author.socials.linkedin) { %><li><a href="<%- page.author.socials.linkedin %>" target="_blank" rel="nofollow noopener" class="author-social-icon author-social-icon-github"></a></li><% } %>
+                        <% if (page.author.socials.twitter) { %><li><a href="<%- page.author.socials.twitter %>" target="_blank" rel="nofollow noopener" class="author-social-icon author-social-icon-twitter"></a></li><% } %>
+                        <% if (page.author.socials.github) { %><li><a href="<%- page.author.socials.github %>" target="_blank" rel="nofollow noopener" class="author-social-icon author-social-icon-linkedin"></a></li><% } %>
                     </ul>
                 </div>
             </div>
@@ -24,14 +24,15 @@
         <div class="container"><%- page.author.motto %></div>
     </div>
 
-    <div class="pills">
-        <% page.author.specs.forEach(function(spec){ var specName; %>
-        <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
-        <div class="pill pill-<%- spec %>" data-spec="<%- spec %>"><%- specName %> Expert</div>
-        <% }) %>
-    </div>
-
     <div class="container">
+        <h2>Skills and achievements</h2>
+        <%- author_contribution_level(page.author.name) %>
+        <div class="pills">
+            <% page.author.specs.forEach(function(spec){ var specName; %>
+            <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
+            <div class="pill pill-<%- spec %>" data-spec="<%- spec %>"><%- specName %> Expert</div>
+            <% }) %>
+        </div>
             <!--                <div class="author-articles-count"><span>⭐ <%- page.author.postsCount %></span>&nbsp;<% if (page.author.postsCount > 1) { %>Articles<% } else { %>Article<% } %></div>-->
 
 

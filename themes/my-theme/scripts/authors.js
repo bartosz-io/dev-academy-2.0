@@ -89,7 +89,26 @@ hexo.extend.helper.register('author_url', function(authorName) {
     return `/authors/${author[1].slug}`;
 });
 
-hexo.extend.helper.register('author_info', function(authorName, postDate) {
+hexo.extend.helper.register('author_contribution_level', function(authorName) {
+    var configAuthors = Object.entries(this.config.authors);
+
+    if (!configAuthors.length) {
+        return '/';
+    }
+
+    var author = configAuthors.find(author => author[0] === authorName);
+
+    if (author) {
+        var authorPosts = hexo.locals.get('posts').filter(post => post.author === author[0]);
+        var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 1 ? 'advanced' : 'beginner';
+
+        return authorContributionLevel(level, true);
+    }
+
+    return '';
+});
+
+hexo.extend.helper.register('author_info', function(authorName) {
     var configAuthors = Object.entries(this.config.authors);
 
     if (!configAuthors.length) {
@@ -110,11 +129,7 @@ hexo.extend.helper.register('author_info', function(authorName, postDate) {
                     <div class="author-profession">${profession}</div>
                     <h4><a href="${this.author_url(author[0])}">${author[0]}</a></h4>
                 </div>
-                <div class="author-contribution-level author-contribution-level-${level}">
-                    <span>Beginner</span>
-                    <span>Advanced</span>
-                    <span>Expert</span>
-                </div>
+                ${authorContributionLevel(level)}
                 ${authorAcademies(author, authorName)}
                 <a href="${this.author_url(author[0])}" class="author-visit">Get to know me better</a>
             </div>
@@ -123,6 +138,15 @@ hexo.extend.helper.register('author_info', function(authorName, postDate) {
 
     return '';
 });
+
+function authorContributionLevel(level, highlighted = false) {
+    var isHighlighted = highlighted ? 'author-contribution-level-highlighted' : ''
+    return `<div class="author-contribution-level author-contribution-level-${level} ${isHighlighted}">
+                <span>Beginner</span>
+                <span>Advanced</span>
+                <span>Expert</span>
+            </div>`
+}
 
 function authorAcademies(author, authorName) {
     var isWsa = author[1].academies.wsa;
@@ -137,17 +161,17 @@ function authorAcademies(author, authorName) {
 
     if (wsaTpl && ftaTpl) {
         return `<ul class="author-academies">
-                      <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
-                      <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
-                    </ul>`;
+                  <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
+                  <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
+                </ul>`;
     } else if (wsaTpl) {
         return `<ul class="author-academies">
-                      <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
-                    </ul>`;
+                  <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
+                </ul>`;
     } else if (ftaTpl) {
         return `<ul class="author-academies">
-                      <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
-                    </ul>`;
+                  <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
+                </ul>`;
     }
     return '';
 }
