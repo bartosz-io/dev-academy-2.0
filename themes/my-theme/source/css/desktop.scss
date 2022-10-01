@@ -35,26 +35,6 @@
     font-size: 1.6rem;
   }
 
-  .author-info-left {
-    padding-right: 7rem;
-  }
-
-  .author-info-right {
-    padding-left: 7rem;
-    padding-top: 3rem;
-
-    &:before {
-      content: '';
-      width: .1rem;
-      height: 100%;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: $light-300;
-    }
-  }
-
   .button {
     font-size: 1.6rem;
 
@@ -309,7 +289,42 @@
 
   .author-info-right {
     flex-basis: 60%;
-    padding-left: 2rem;
+    padding-top: 0;
+  }
+
+  .author-socials {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-bottom: 0;
+  }
+
+  .author-bio .author-name {
+    margin-top: 4rem;
+  }
+
+  .author-info {
+    padding-bottom: 5rem;
+  }
+
+  .author-image {
+    max-width: 42rem;
+  }
+
+  .author-skills .author-contribution-level {
+    width: 82%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .author-stats {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .author-stat + .author-stat {
+    padding-top: 0;
+    padding-left: 18rem;
   }
 }
 

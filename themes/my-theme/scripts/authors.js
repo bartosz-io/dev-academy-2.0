@@ -40,12 +40,23 @@ hexo.extend.generator.register('author', function(locals) {
         var slug = author[1].slug.trim();
         var authorPosts = locals.posts.filter(post => post.author === author[0]);
         var level = authorPosts.length > 4 ? 'expert' : authorPosts.length > 1 ? 'advanced' : 'beginner';
+        var completedCourses = 0;
+
+        if (author[1].academies.fta) {
+            completedCourses++;
+        }
+
+        if (author[1].academies.wsa) {
+            completedCourses++;
+        }
+
         var authorData = {
             name: author[0],
             ...author[1],
             posts: authorPosts,
             postsCount: authorPosts.length,
-            level: level
+            level: level,
+            completedCourses: completedCourses
         };
 
         routes.push({

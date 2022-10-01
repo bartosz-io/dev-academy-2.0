@@ -85,22 +85,34 @@
 
   span {
     line-height: 2.8rem;
+    position: relative;
 
     &:before {
       content: '';
+      display: block;
       width: 100%;
       height: .6rem;
       background-color: $light-200;
       margin-bottom: .5rem;
     }
 
-    &:before {
+    &:after {
+      content: '';
       display: block;
+      width: 5.4rem;
+      height: 5.4rem;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-top: -2rem;
+      margin-left: -2rem;
+      filter: blur(4.5rem);
+      border-radius: 20rem;
+      background: $teal-800;
     }
 
     &:first-child {
-      &:before,
-      &:after {
+      &:before {
         border-top-left-radius: .4rem;
         border-bottom-left-radius: .4rem;
       }
@@ -169,6 +181,10 @@
   span {
     &:before {
       height: 1.6rem;
+    }
+
+    &:after {
+      display: none;
     }
 
     &:first-child {
@@ -360,38 +376,14 @@
     }
   }
 
-  h2 {
-    font-size: $font-size-28;
-    font-weight: 600;
-    color: $dark-350;
-  }
-
   .author-contribution-level {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
   }
 }
 
 .author-joined {
   color: $navy-800;
   font-size: $font-size-18;
-}
-
-.author-articles-count {
-  background-color: $light-175;
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border-radius: .3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: $light-650;
-
-  span {
-    font-size: 2.4rem;
-    margin-right: .5rem;
-    color: $dark-100;
-  }
 }
 
 .author-info {
@@ -415,7 +407,6 @@
   padding: 3rem 0;
   text-align: center;
   background-color: $light-200;
-  margin-bottom: 5rem;
 
   .container {
     &:before,
@@ -425,9 +416,55 @@
   }
 }
 
+.author-stats-wrapper {
+  padding: 5rem 0;
+  background-color: $light-200;
+}
+
+.author-stats {
+  display: flex;
+  flex-direction: column;
+  color: $dark-350;
+}
+
+.author-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  + .author-stat {
+    padding-top: 3rem;
+  }
+}
+
+.author-stat-count {
+  font-size: $font-size-36;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+.author-stat-text {
+  font-size: $font-size-16;
+}
+
+.author-skills {
+  padding: 6rem 0 5rem;
+
+  h2 {
+    font-size: $font-size-28;
+    font-weight: 600;
+    color: $dark-350;
+    margin-bottom: 5rem;
+  }
+}
+
+.author-posts h3 {
+  font-size: $font-size-36;
+}
+
 .author-socials {
   display: flex;
-  padding-bottom: 3rem;
+  padding-bottom: 5rem;
 
   li {
     padding-right: 1.5rem;
@@ -516,7 +553,7 @@
   font-size: $font-size-14;
   font-weight: 700;
   border-radius: 5rem;
-  padding: .8rem 1.6rem;
+  padding: .8rem 2.5rem;
   text-transform: uppercase;
 }
 
