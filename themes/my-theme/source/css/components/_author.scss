@@ -1,9 +1,5 @@
 @import '../variables';
 
-.authors-header {
-  padding-top: 2rem;
-}
-
 .authors-list {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -568,4 +564,76 @@
   border-radius: 100%;
   border: .3rem solid $light-100;
   filter: drop-shadow(0 .4rem 5rem rgba(0, 67, 86, 0.2));
+}
+
+.authors-header {
+  padding-top: 5rem;
+  font-size: $font-size-46;
+}
+
+.authors-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-bottom: 5rem;
+
+  img {
+    max-width: 20rem;
+  }
+}
+
+.authors-reviews-number {
+  font-weight: 700;
+  font-size: $font-size-22;
+  padding-bottom: 1rem;
+}
+
+.authors-target-info {
+  p {
+    font-size: $font-size-18;
+  }
+}
+
+.authors-figures-wrapper {
+  background-color: $light-200;
+  padding: 5rem 0;
+}
+
+.authors-figures {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 4rem;
+  grid-row-gap: 4rem;;
+}
+
+.authors-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.authors-figure-text {
+  text-align: center;
+}
+
+.authors-figure-number {
+  font-size: $font-size-36;
+  font-weight: 700;
+}
+
+.authors-join-us {
+  padding-top: 5rem;
+
+  h2 {
+    font-size: $font-size-36;
+    letter-spacing: 0;
+
+    span {
+      color: $indigo-600;
+    }
+  }
+
+  p {
+    font-size: $font-size-15;
+  }
 }

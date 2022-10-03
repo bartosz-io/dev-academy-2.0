@@ -596,6 +596,29 @@
     transform: translateX(-50%);
     right: auto;
   }
+
+  .authors-target {
+    display: flex;
+    align-items: center;
+  }
+
+  .authors-reviews {
+    padding-bottom: 0;
+    padding-left: 10rem;
+  }
+
+  .authors-target-info p {
+    padding-bottom: 8rem;
+  }
+
+  .authors-figures {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .authors-join-us {
+    padding-top: 7rem;
+    text-align: center;
+  }
 }
 
 @media (min-width: 1180px) {

@@ -1,7 +1,53 @@
-<div class="container">
-    <div class="authors">
-        <h1 class="authors-header">Expert Authors</h1>
-        <p>We are contstantly growing and attracting incredible experts, to share with us outstanding expertise and knowledge.</p>
+<div class="authors">
+    <div class="container">
+        <div class="authors-target">
+            <div class="authors-target-info">
+                <h2 class="authors-header border border-light border-large">Who are we?</h2>
+                <p>We have been operating in the market for x years. During this time we have built a global community with the goal of continuous improvement.
+                    The technology industry is looking for talented people and offers plenty of opportunities. Trust us. We know how it works.</p>
+            </div>
+            <div class="authors-reviews">
+                <div class="authors-reviews-number">(385 reviews)</div>
+                <img src="<%- url_for('/img/authors-reviews-trustpilot.png') %>" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="authors-figures-wrapper">
+        <div class="container">
+            <div class="authors-figures">
+                <div class="authors-figure">
+                    <span class="authors-figure-number">3</span>
+                    <span class="authors-figure-text">in the Google results list</span>
+                </div>
+                <div class="authors-figure">
+                    <span class="authors-figure-number">823</span>
+                    <span class="authors-figure-text">Completed Courses</span>
+                </div>
+                <div class="authors-figure">
+                    <span class="authors-figure-number">7M</span>
+                    <span class="authors-figure-text">participants' articles</span>
+                </div>
+                <div class="authors-figure">
+                    <span class="authors-figure-number">+6,118</span>
+                    <span class="authors-figure-text">Subscribers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="authors-join-us">
+            <h2>Join us and make a difference in <span>just one month!</span></h2>
+            <p>Choose the option that suits you best. Remember - we are open to you and your suggestions.</p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
         <div class="pills">
             <div class="pill" data-spec="all">All Experts</div>
             <% config.authors_specs.forEach(function(spec){ var specName; %>
