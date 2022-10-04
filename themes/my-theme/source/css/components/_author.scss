@@ -716,3 +716,54 @@
 .author-list-wrapper {
   padding: 5rem 0;
 }
+
+.authors-ready-wrapper {
+  background-color: $light-200;
+  padding: 8rem 0;
+}
+
+.authors-collaboration-logos-desktop {
+  display: none;
+}
+
+.authors-ready-header {
+  font-size: $font-size-46;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.authors-ready-left {
+  font-size: $font-size-18;
+}
+
+.authors-ready-right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.authors-ready-image {
+  text-align: center;
+
+  img {
+    border-radius: .8rem;
+  }
+}
+
+.authors-ready-image-text {
+  font-weight: 600;
+  font-size: $font-size-16;
+}
+
+.authors-collaboration {
+  text-align: center;
+  padding: 9rem 0;
+
+  h5 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: $font-size-18;
+    margin-bottom: 4rem;
+    letter-spacing: 0;
+  }
+}

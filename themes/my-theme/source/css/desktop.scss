@@ -31,6 +31,10 @@
     padding-left: 3rem;
     padding-top: 0;
   }
+
+  .authors-ready-right {
+    display: flex;
+  }
 }
 
 @media (min-width: 768px) {
@@ -332,6 +336,14 @@
 
   .author-box-actions {
     align-items: flex-end;
+  }
+
+  .authors-collaboration-logos-desktop {
+    display: inline-flex;
+  }
+
+  .authors-collaboration-logos-mobile {
+    display: none;
   }
 }
 
@@ -673,6 +685,24 @@
 
   .authors-list {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .authors-ready {
+    display: flex;
+  }
+
+  .authors-ready-image {
+    img {
+      min-width: 20rem;
+    }
+  }
+
+  .authors-ready-left {
+    padding-right: 10rem;
+  }
+
+  .authors-ready-wrapper {
+    padding-bottom: 5rem;
   }
 }
 
