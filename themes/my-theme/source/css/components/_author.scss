@@ -637,3 +637,54 @@
     font-size: $font-size-15;
   }
 }
+
+.authors-boxes-wrapper {
+  background-color: $light-200;
+}
+
+.author-box {
+  padding: 5rem 0;
+
+  h3 {
+    font-size: $font-size-28;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: $font-size-22;
+
+    &:first-of-type {
+      padding-top: 2rem;
+    }
+  }
+
+  small {
+    color: $green-500;
+    font-size: $font-size-22;
+    font-weight: 500;
+  }
+}
+
+.author-box-actions {
+  display: flex;
+  flex-direction: column;
+
+  .button + .button {
+    margin-top: 1.5rem;
+  }
+}
+
+.authors-list-header {
+  color: $dark-350;
+  font-size: $font-size-46;
+  letter-spacing: 0;
+
+  span {
+    color: $indigo-600;
+  }
+}
+
+.author-list-wrapper {
+  padding: 5rem 0;
+}

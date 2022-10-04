@@ -326,6 +326,10 @@
     padding-top: 0;
     padding-left: 18rem;
   }
+
+  .author-box-actions {
+    align-items: flex-end;
+  }
 }
 
 @media (min-width: 992px) {
@@ -618,6 +622,36 @@
   .authors-join-us {
     padding-top: 7rem;
     text-align: center;
+  }
+
+  .author-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+  }
+
+  .authors-boxes-wrapper {
+    background-color: transparent;
+  }
+
+  .author-box {
+    background-color: $light-200;
+    padding: 5rem 2.5rem;
+    border-radius: .8rem;
+  }
+
+  .author-box-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .button + .button {
+      margin-top: 0;
+      margin-left: 1.5rem;
+    }
+  }
+
+  .author-list-wrapper {
+    padding-top: 8rem;
   }
 }
 

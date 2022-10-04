@@ -40,59 +40,79 @@
             <p>Choose the option that suits you best. Remember - we are open to you and your suggestions.</p>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div class="container">
-        <div class="pills">
-            <div class="pill" data-spec="all">All Experts</div>
-            <% config.authors_specs.forEach(function(spec){ var specName; %>
-            <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
-            <div class="pill pill-<%- spec %> pill-inactive" data-spec="<%- spec %>"><%- specName %> Expert</div>
-            <% }) %>
+    <div class="authors-boxes-wrapper">
+        <div class="container">
+            <div class="author-boxes">
+                <div class="author-box">
+                    <h3>Become an expert</h3>
+                    <p>Are you ready to improve your competence every day and bring help to others to make a difference in their careers? Buy the perfect course for you, improve your skills, look for new solutions, write articles, teach others.</p>
+                    <p>Sound interesting?</p>
+                    <div class="author-box-actions">
+                        <a href="/" class="button button-secondary">Join us via DM</a>
+                        <a href="/" class="button button-primary">See available courses</a>
+                    </div>
+                </div>
+                <div class="author-box">
+                    <h3>Join the team by writing articles</h3>
+                    <small>special offer for students</small>
+                    <p>Are you a pupil or student and can't afford our course? Are you a young, ambitious person and want to share your knowledge with other people? We know how it is...</p>
+                    <p>Fill out the form and we will get back to you!</p>
+                    <div class="author-box-actions">
+                        <a href="/" class="button button-success">Apply via form</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="authors-list">
-            <% page.authors.forEach(function(author){ %>
-                <article class="author">
-                    <header class="author-header">
-                        <div class="author-header-left">
-                            <img src="<%- author.image %>" alt="<%- author.name %>">
-                        </div>
-                        <div class="author-header-bio">
-                            <h3 class="author-name"><%- author.name %></h3>
-                            <%- author_academies(author.name) %>
-                            <div class="author-specs">
-                                <% author.specs.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
+    </div>
+    <div class="container">
+        <div class="author-list-wrapper">
+            <h3 class="authors-list-header">Meet our <span>Elite Editorial Team</span></h3>
+            <div class="pills">
+                <div class="pill" data-spec="all">All Experts</div>
+                <% config.authors_specs.forEach(function(spec){ var specName; %>
+                <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
+                <div class="pill pill-<%- spec %> pill-inactive" data-spec="<%- spec %>"><%- specName %> Expert</div>
+                <% }) %>
+            </div>
+            <div class="authors-list">
+                <% page.authors.forEach(function(author){ %>
+                    <article class="author">
+                        <header class="author-header">
+                            <div class="author-header-left">
+                                <img src="<%- author.image %>" alt="<%- author.name %>">
+                            </div>
+                            <div class="author-header-bio">
+                                <h3 class="author-name"><%- author.name %></h3>
+                                <%- author_academies(author.name) %>
+                                <div class="author-specs">
+                                    <% author.specs.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
+                                </div>
+                            </div>
+                        </header>
+                        <div class="author-contribution">
+                            <div class="author-line-header">Contribution level</div>
+                            <div class="author-contribution-count">
+                                <% if (author.level === 'expert') { %>Expert<% } else if (author.level === 'advanced') { %>Advanced Contributor<% } else { %>Beginner<% } %>
+                                - <%- author.postsCount %>&nbsp;<% if (author.postsCount > 1) { %>Articles<% } else { %>Article<% } %>
+                            </div>
+                            <div class="author-contribution-level author-contribution-level-<%- author.level%>">
+                                <span>Beginner</span>
+                                <span>Advanced Contributor</span>
+                                <span>Expert</span>
                             </div>
                         </div>
-                    </header>
-                    <div class="author-contribution">
-                        <div class="author-line-header">Contribution level</div>
-                        <div class="author-contribution-count">
-                            <% if (author.level === 'expert') { %>Expert<% } else if (author.level === 'advanced') { %>Advanced Contributor<% } else { %>Beginner<% } %>
-                            - <%- author.postsCount %>&nbsp;<% if (author.postsCount > 1) { %>Articles<% } else { %>Article<% } %>
+                        <div class="author-latest">
+                            <div class="author-line-header">Latest articles</div>
+                            <div class="author-latest-articles">
+                                <% author.posts.sort('date', 'desc').each(function(post, index){ %>
+                                    <% if (index === 0 || index === 1) { %><a href="<%- post.path %>" class="author-latest-article"><%- post.title %></a><% } %>
+                                <% }); %>
+                            </div>
                         </div>
-                        <div class="author-contribution-level author-contribution-level-<%- author.level%>">
-                            <span>Beginner</span>
-                            <span>Advanced Contributor</span>
-                            <span>Expert</span>
-                        </div>
-                    </div>
-                    <div class="author-latest">
-                        <div class="author-line-header">Latest articles</div>
-                        <div class="author-latest-articles">
-                            <% author.posts.sort('date', 'desc').each(function(post, index){ %>
-                                <% if (index === 0 || index === 1) { %><a href="<%- post.path %>" class="author-latest-article"><%- post.title %></a><% } %>
-                            <% }); %>
-                        </div>
-                    </div>
-                    <a class="author-more" href="/authors/<%- author.slug %>">See more</a>
-                </article>
-            <% }) %>
+                        <a class="author-more" href="/authors/<%- author.slug %>">See more</a>
+                    </article>
+                <% }) %>
+            </div>
         </div>
     </div>
 </div>
