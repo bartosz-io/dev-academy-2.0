@@ -7,7 +7,7 @@
 
                 <div class="article-details">
                     <div class="article-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <img src="<%- url_for('/img/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.author %>">
+                        <img src="<%- url_for('/img/authors/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.author %>">
                         <div class="article-author-info">
                             <a href="<%- author_url(post.author) %>" class="article-author-name"><span itemprop="name"><%- post.author %></span></a>
                             <%- author_academies(post.author) %>

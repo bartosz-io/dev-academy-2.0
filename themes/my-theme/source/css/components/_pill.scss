@@ -79,18 +79,24 @@
 
 .pill-react {
   border-color: $teal-200;
-  background: $light-100;
+  background: $teal-200;
+  color: $light-100;
 
   &:before {
+    width: 2rem;
+    height: 1.8rem;
     background: url('/img/icons/react.png') no-repeat;
   }
 }
 
 .pill-vue {
   border-color: $green-400;
-  background: $light-100;
+  background: $green-400;
+  color: $light-100;
 
   &:before {
+    width: 2rem;
+    height: 1.7rem;
     background: url('/img/icons/vue.png') no-repeat;
   }
 }
