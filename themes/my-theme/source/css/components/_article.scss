@@ -228,3 +228,21 @@
     color: $indigo-600;
   }
 }
+
+.post-idea {
+  text-align: center;
+  background-color: $light-200;
+  border-radius: .8rem;
+  padding: 5rem 0;
+  margin-bottom: 8rem;
+  margin-top: 4rem;
+}
+
+.post-idea-header {
+  font-size: $font-size-22;
+  font-weight: 400;
+  color: $navy-800;
+  letter-spacing: 0;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

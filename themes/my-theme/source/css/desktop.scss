@@ -19,6 +19,10 @@
       }
     }
   }
+
+  .post-idea-header {
+    font-size: $font-size-24;
+  }
 }
 
 @media (min-width: 630px) {
@@ -344,6 +348,12 @@
 
   .authors-collaboration-logos-mobile {
     display: none;
+  }
+
+  .post-idea {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
