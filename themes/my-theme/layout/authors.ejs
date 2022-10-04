@@ -78,38 +78,23 @@
                 <% page.authors.forEach(function(author){ %>
                     <article class="author">
                         <header class="author-header">
-                            <div class="author-header-left">
-                                <img src="<%- author.image %>" alt="<%- author.name %>">
-                            </div>
-                            <div class="author-header-bio">
+                            <img src="<%- author.image %>" alt="<%- author.name %>">
+                            <a href="/authors/<%- author.slug %>" class="author-header-link">
                                 <h3 class="author-name"><%- author.name %></h3>
-                                <%- author_academies(author.name) %>
-                                <div class="author-specs">
-                                    <% author.specs.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
-                                </div>
+                            </a>
+                            <%- author_academies(author.name) %>
+                            <!-- Do not remove below author specs. They are hidden and needed for filtering -->
+                            <div class="author-specs">
+                                <% author.specs.forEach(function(spec){ %><span class="author-spec author-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
                             </div>
                         </header>
                         <div class="author-contribution">
-                            <div class="author-line-header">Contribution level</div>
-                            <div class="author-contribution-count">
-                                <% if (author.level === 'expert') { %>Expert<% } else if (author.level === 'advanced') { %>Advanced Contributor<% } else { %>Beginner<% } %>
-                                - <%- author.postsCount %>&nbsp;<% if (author.postsCount > 1) { %>Articles<% } else { %>Article<% } %>
-                            </div>
-                            <div class="author-contribution-level author-contribution-level-<%- author.level%>">
+                            <div class="author-contribution-level author-contribution-level-highlighted author-contribution-level-thin author-contribution-level-<%- author.level%>">
                                 <span>Beginner</span>
-                                <span>Advanced Contributor</span>
+                                <span>Advanced</span>
                                 <span>Expert</span>
                             </div>
                         </div>
-                        <div class="author-latest">
-                            <div class="author-line-header">Latest articles</div>
-                            <div class="author-latest-articles">
-                                <% author.posts.sort('date', 'desc').each(function(post, index){ %>
-                                    <% if (index === 0 || index === 1) { %><a href="<%- post.path %>" class="author-latest-article"><%- post.title %></a><% } %>
-                                <% }); %>
-                            </div>
-                        </div>
-                        <a class="author-more" href="/authors/<%- author.slug %>">See more</a>
                     </article>
                 <% }) %>
             </div>

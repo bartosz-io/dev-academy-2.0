@@ -4,15 +4,36 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 3rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: 5rem;
 }
 
 .author {
-  background: $light-150;
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.25);
-  border-radius: .3rem;
-  padding: 2rem;
+  background: $light-100;
+  box-shadow: 0 0 5rem rgba(0, 67, 86, 0.08);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  border: .1rem solid $light-125;
+
+  .author-contribution {
+    padding-bottom: 0;
+  }
+
+  .author-contribution-level {
+    font-size: $font-size-12;
+
+    span:after {
+      display: none;
+    }
+
+    &.author-contribution-level-highlighted {
+      &.author-contribution-level-beginner span:nth-child(1),
+      &.author-contribution-level-advanced span:nth-child(2),
+      &.author-contribution-level-expert span:nth-child(3) {
+        font-size: $font-size-14;
+      }
+    }
+  }
 }
 
 .author-header {
@@ -20,16 +41,47 @@
   border-radius: 0.3rem;
   padding-bottom: 2rem;
   flex-direction: column;
+  align-items: center;
+
+  img {
+    max-width: 13rem;
+    border-radius: 50%;
+    margin-bottom: 2.5rem;
+  }
+
+  .author-academies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      padding-bottom: .5rem;
+    }
+
+    a {
+      color: $navy-800;
+
+      &:hover {
+        color: $teal-300;
+      }
+    }
+  }
 }
 
-.author-header-left {
-  position: relative;
-  flex-shrink: 0;
-  flex-basis: 12rem;
+.author-header-link {
+  color: $teal-300;
+
+  &:hover {
+    color: $teal-300;
+    text-decoration: underline;
+  }
 }
 
 .author-name {
   margin-bottom: .5rem;
+  letter-spacing: 0;
+  font-weight: 600;
+  font-size: $font-size-22;
 }
 
 .author-description {
@@ -38,35 +90,14 @@
   font-size: $font-size-18;
 }
 
-.author-header-bio {
-  padding-top: 1rem;
-}
-
-.author-line-header {
-  text-transform: uppercase;
-  color: $dark-700;
-  font-size: 1.5rem;
-  border-bottom: .1rem solid $light-300;
-  margin-bottom: 2rem;
-}
-
-.author-more {
-  text-transform: uppercase;
-  margin-top: 1rem;
-  font-size: 1.8rem;
-  color: $teal-400;
+.author-header {
+  .author-specs {
+    display: none;
+  }
 }
 
 .author-contribution {
   padding-bottom: 3rem;
-}
-
-.author-contribution-count {
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: .5rem;
-  padding-top: 1rem;
 }
 
 .author-contribution-level {
@@ -207,15 +238,11 @@
   }
 }
 
-.author-latest-article {
-  font-weight: 700;
-  color: $dark-100;
-  display: block;
-  margin-bottom: 1rem;
-
-  &:hover {
-    color: $dark-100;
-    text-decoration: underline;
+.author-contribution-level-thin {
+  span {
+    &:before {
+      height: .6rem;
+    }
   }
 }
 
@@ -679,6 +706,7 @@
   color: $dark-350;
   font-size: $font-size-46;
   letter-spacing: 0;
+  margin-bottom: 6rem;
 
   span {
     color: $indigo-600;
