@@ -8,11 +8,13 @@ tags: [React, Security]
 id: react-Security-best-practices
 relatedPost: react-xss
 ---
+
 {% image_fw 1.78 banner.png "React Security Best Practices" %}
 
 In this article, we'll discuss some of the best practices for security when using React in your web applications. We'll cover topics such as how to avoid malicious code injections, avoid memory leaks, and more. By following these best practices, you can help keep your React-based web application safe and secure.
 
 ## Table of Contents
+
 <!-- toc -->
 
 ## React and Security Vulnerabilities
@@ -21,11 +23,11 @@ When it comes to building web applications, security should always be one of the
 
 Most vulnerabilities can be avoided by following a few rules general to almost all frameworks such as
 
-* keeping sensitive data encrypted as a rule, unless explicitly required otherwise
-* not uploading your .env files to your git repository
-* following the rule of least privilege where applicable
-* keeping libraries up to date and checked
-* don't make using libraries the first resort for everything
+- keeping sensitive data encrypted as a rule, unless explicitly required otherwise
+- not uploading your .env files to your git repository
+- following the rule of least privilege where applicable
+- keeping libraries up to date and checked
+- don't make using libraries the first resort for everything
 
 I recommend taking a look at this article about [Vue Security Best Practices](https://dev-academy.com/vue-security-best-practices/). Many of the concepts are relevant irrespective of your preferred framework.
 
@@ -42,18 +44,18 @@ One can't mention React Security without mentioning the aptly named dangerouslyS
 Let's say you would like the user to leave comments below your articles, but you would also prefer them to express themselves with common font managing options. The simple answer is to allow directly inserting HTML:
 
 ```jsx
-    return (<p dangerouslySetInnerHTML={{__html: input}}></p>);
+return <p dangerouslySetInnerHTML={{ __html: input }}></p>;
 ```
 
 As the name suggests, the use of this property is discouraged, and for good reason. The user could very well provide a seemingly suitable input that triggers adverse effects intended to hijack your web app.
 
 ```jsx
-    <h1>Dear Blog Owner</h1> 
-    <p>I have been reading your blog for A <b>Very</b> long time and hope you don't take it personally when I inject my Alert into your website.</p> 
+    <h1>Dear Blog Owner</h1>
+    <p>I have been reading your blog for A <b>Very</b> long time and hope you don't take it personally when I inject my Alert into your website.</p>
     <img src="null.png" onerror="alert('I support this blogger');" />
 ```
 
-The above input will produce an alert commonly used to demonstrate XSS (Cross-site scripting) as a possibility. Learn more about XSS [here](https://dev-academy.com/react-xss/#dangerouslysethtml).
+The above input will produce an alert commonly used to demonstrate XSS (Cross-site scripting) as a possibility. Learn [more about XSS](https://dev-academy.com/react-xss/#dangerouslysethtml).
 
 ### How to negate it
 
@@ -62,8 +64,8 @@ These types of scenarios can easily be avoided by limiting direct interaction wi
 Most XSS-related attacks can be completely and easily avoided by opting to only use **JSX (data binding syntax)** or **TSX** for TypeScript users. React will automatically escape values to defend against XSS attacks.
 
 ```jsx
-    let someData = 'I am safe from XSS'
-    return <div>{someData}</div>
+let someData = 'I am safe from XSS';
+return <div>{someData}</div>;
 ```
 
 You can still use dangerouslySetInnerHTML, but you will need to make use of a library that can scrub the user input of any potentially malicious code. One such library is **DOMpurify**, which can be installed using:
@@ -75,8 +77,8 @@ You can still use dangerouslySetInnerHTML, but you will need to make use of a li
 and used:
 
 ```jsx
-    import purify from "dompurify";
-    <div dangerouslySetInnerHTML={{ __html:purify.sanitize(input) }} />
+import purify from 'dompurify';
+<div dangerouslySetInnerHTML={{ __html: purify.sanitize(input) }} />;
 ```
 
 > Output encoding is the process of ensuring that data returned by your application is properly encoded so that it cannot be misinterpreted by browsers or other applications. This helps to prevent cross-site scripting (XSS) attacks.
@@ -100,12 +102,11 @@ Fortunately, a few services exist that review and detect security issues within 
 XML attacks are when a malicious agent injects XML code into a vulnerable program and makes a request for potentially privileged data from a server.
 
 ```html
-    <?xml version="1.0" encoding="utf-8"?>
-    <!DOCTYPE xml[
-    <!ENTITY file SYSTEM "file:///etc/paswrd" ]>
-    <div>
-      <title>&file</title>
-    </div>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml[ <!ENTITY file SYSTEM "file:///etc/paswrd" ]>
+<div>
+  <title>&file</title>
+</div>
 ```
 
 A simple explanation is, that a hacker sends an XML query containing the payload to the server, and the server sends the input values to the database which then responds with the requested data which the hacker now has access.
@@ -146,18 +147,18 @@ Under certain conditions, this code will produce a warning indicating a memory l
 This can be avoided by **unsubscribing** from async functions after use. The preferred method of doing this, when doing an API request, is by using an AbortController.
 
 ```javascript
-    useEffect(() => {
-      const abortController = new AbortController();
-    
-      (async () => {
-        const result = await fetch('example.com', {
-          signal: abortController.signal,
-        });
-        // do something with result
-      })();
-    
-      return () => abortController.abort();
-    }, []);
+useEffect(() => {
+  const abortController = new AbortController();
+
+  (async () => {
+    const result = await fetch('example.com', {
+      signal: abortController.signal,
+    });
+    // do something with result
+  })();
+
+  return () => abortController.abort();
+}, []);
 ```
 
 It is necessary to note that although it is always a good idea to avoid all coding practices that invoke unintended side effects, in most modern frameworks and software, issues like these can be detected early and generally won't have much of an impact or use case on its own.
