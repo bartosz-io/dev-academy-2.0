@@ -1,6 +1,6 @@
 ---
 title: Avoid XSS Attacks 🗡️ in Vue
-author: Mauricio Matias C.
+contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn Vue XSS modern best practices and methods to prevent cross-site scripting attacks in Vue (JavaScript) applications. 🔒
 date: 2022-07-13

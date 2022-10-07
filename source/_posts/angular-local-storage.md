@@ -1,6 +1,6 @@
 ---
 title: Managing Local Storage in Angular 📦
-author: Hugo Noro
+contributor: Hugo Noro
 avatar: hugo-noro.png
 description: Learn how to use local storage the right way in Angular applications.
 date: 2022-02-09

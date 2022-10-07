@@ -19,7 +19,7 @@
     margin-bottom: 1rem;
   }
 
-  .author-academies {
+  .contributor-academies {
     display: flex;
     flex-direction: column;
     list-style-type: none;
@@ -51,7 +51,7 @@
   border-radius: 50%;
 }
 
-.article-author {
+.article-contributor {
   display: flex;
   align-items: center;
   padding-bottom: 2rem;
@@ -69,13 +69,13 @@
   flex-direction: column;
 }
 
-.article-author-info {
+.article-contributor-info {
   display: flex;
   flex-direction: column;
   padding-left: 1.5rem;
 }
 
-.article-author-name {
+.article-contributor-name {
   font-weight: 600;
   font-size: $font-size-16;
   color: $light-200;

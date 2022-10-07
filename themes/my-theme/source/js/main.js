@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', function() {
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
-    authors();
+    contributors();
 });
 
 function loadConvertKit() {
@@ -211,11 +211,11 @@ function relatedPosts() {
     }
 }
 
-function authors() {
-    var authorsContainer =  document.querySelector('.authors');
+function contributors() {
+    var contributorsContainer =  document.querySelector('.contributors');
 
-    if (authorsContainer) {
-        var pillsContainer = authorsContainer.querySelector('.pills');
+    if (contributorsContainer) {
+        var pillsContainer = contributorsContainer.querySelector('.pills');
 
         pillsContainer.addEventListener('click', function(event) {
             const spec = event.target.getAttribute('data-spec');
@@ -226,18 +226,18 @@ function authors() {
 
                 event.target.classList.remove(pillInactiveClass);
 
-                var authors = authorsContainer.querySelectorAll('.author');
+                var contributors = contributorsContainer.querySelectorAll('.contributor');
 
                 if (spec === 'all') {
-                    authors.forEach((author) => author.style.display = 'block');
+                    contributors.forEach((contributor) => contributor.style.display = 'block');
                 } else {
-                    authors.forEach((author) => author.style.display = 'none');
+                    contributors.forEach((contributor) => contributor.style.display = 'none');
 
-                    authorsContainer.querySelectorAll('.author-specs').forEach(function(specs) {
-                        let a = specs.querySelector('.author-spec-' + spec);
+                    contributorsContainer.querySelectorAll('.contributor-specs').forEach(function(specs) {
+                        let a = specs.querySelector('.contributor-spec-' + spec);
 
                         if (a) {
-                            a.closest('.author').style.display = 'block';
+                            a.closest('.contributor').style.display = 'block';
                         }
                     })
                 }

@@ -1,6 +1,6 @@
 ---
 title: React XSS 🐛 Cross-site scripting prevention
-author: Vlad Ataman
+contributor: Vlad Ataman
 avatar: vlad-ataman.png
 description: Learn React XSS modern best practices and methods to prevent cross-site scripting attacks in React (JavaScript) applications. 🔒
 date: 2022-07-08

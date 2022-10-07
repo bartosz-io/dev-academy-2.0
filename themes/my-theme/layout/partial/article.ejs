@@ -6,11 +6,11 @@
                 <link itemprop="url" href="<%- page.permalink %>">
 
                 <div class="article-details">
-                    <div class="article-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <img src="<%- url_for('/img/authors/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.author %>">
-                        <div class="article-author-info">
-                            <a href="<%- author_url(post.author) %>" class="article-author-name"><span itemprop="name"><%- post.author %></span></a>
-                            <%- author_academies(post.author) %>
+                    <div class="article-contributor" itemprop="contributor" itemscope itemtype="https://schema.org/Person">
+                        <img src="<%- url_for('/img/contributors/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.contributor %>">
+                        <div class="article-contributor-info">
+                            <a href="<%- contributor_url(post.contributor) %>" class="article-contributor-name"><span itemprop="name"><%- post.contributor %></span></a>
+                            <%- contributor_academies(post.contributor) %>
                         </div>
                     </div>
                     <div class="article-meta">
@@ -38,8 +38,8 @@
                 <%- partial('post/share') %>
                 <%- partial('post/disqus') %>
 
-                <h2 class="border border-light">Author</h2>
-                <%- author_info(post.author, post.date) %>
+                <h2 class="border border-light">Contributor</h2>
+                <%- contributor_info(post.contributor, post.date) %>
             </div>
         </div>
     </article>

@@ -1,6 +1,6 @@
 ---
 title: CSRF protection in an Angular application 🔐 - How to implement?
-author: Peter D. Mobley
+contributor: Peter D. Mobley
 link: https://geogram.com
 avatar: peter-mobley.jpg
 description: Learn how to implement Cross-site Request Forgery (CSRF) Protection in Angular.

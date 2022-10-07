@@ -1,6 +1,6 @@
 ---
 title: Angular Input Syntax
-author: Bartosz Pietrucha
+contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: 3 simple and practical ways of passing values to Angular inputs.
 date: 2019-09-16 15:53:06
