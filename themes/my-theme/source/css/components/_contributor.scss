@@ -52,7 +52,6 @@
   .contributor-academies {
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     li {
       padding-bottom: .5rem;
@@ -414,7 +413,6 @@
 
   .contributor-academies {
     padding-top: 2.5rem;
-    text-align: center;
 
     li {
       font-size: $font-size-18;
