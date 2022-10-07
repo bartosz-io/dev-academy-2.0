@@ -1,0 +1,33 @@
+.search {
+  position: relative;
+}
+
+.search-input-wrapper {
+  position: relative;
+}
+
+.search-input {
+  appearance: none;
+  border-radius: 5rem;
+  background: $light-200;
+  color: $dark-350;
+  padding: 1.5rem 1.5rem 1.5rem 6rem;
+  font-size: $font-size-16;
+  width: 100%;
+  min-width: 31rem;
+
+  &:hover {
+    &::placeholder {
+      color: $teal-300;
+    }
+
+    color: $teal-300;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.9rem;
+  left: 2rem;
+}

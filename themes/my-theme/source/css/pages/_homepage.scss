@@ -1,0 +1,22 @@
+.academy-author-wrapper {
+  background-color: $light-200;
+  padding: 5rem 0;
+}
+
+.academy-author {
+
+}
+
+.academy-author-image {
+  max-width: 26rem;
+}
+
+.academy-author-text-header {
+  font-size: $font-size-36;
+  font-weight: 400;
+  letter-spacing: .1rem;
+
+  span {
+    font-weight: 700;
+  }
+}

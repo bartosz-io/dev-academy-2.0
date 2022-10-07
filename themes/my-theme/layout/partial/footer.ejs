@@ -1,8 +1,48 @@
 <footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div><span class="icofont-copyright"></span><%- date(Date.now(), 'YYYY') %> Dev-Academy.com</div>
-            <ul class="footer-navigation">
+    <div class="footer-navigation">
+        <div class="container">
+            <ul class="footer-socials">
+                <li><a href="<%- url_for('/') %>" target="_blank" rel="noopener noreferrer" aria-label="Go to the facebook"><img src="<%- url_for('/img/icons/facebook-2.svg') %>" alt=""></a></li>
+                <li><a href="<%- url_for('/') %>" target="_blank" rel="noopener noreferrer" aria-label="Go to the twitter"><img src="<%- url_for('/img/icons/twitter.svg') %>" alt=""></a></li>
+            </ul>
+            <div class="footer-navigation-columns">
+                <div class="footer-navigation-column">
+                    <h4 class="border">Contact</h4>
+                    <ul>
+                        <li><a href=""><img src="<%- url_for('/img/icons/email.svg') %>" alt=""> bartosz.io</a></li>
+                        <li><a href=""><img src="<%- url_for('/img/icons/location.svg') %>" alt=""> PL, Wrocław</a></li>
+                    </ul>
+                </div>
+                <div class="footer-navigation-column">
+                    <h4 class="border">Academy ⭐</h4>
+                    <ul>
+                        <li><a href="">Web security academy</a></li>
+                        <li><a href="">Fullstack testing academy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-navigation-column">
+                    <h4 class="border">All courses</h4>
+                    <ul>
+                        <li><a href="">Free web e2e testing course</a></li>
+                        <li><a href="">Fullstack role-based</a></li>
+                        <li><a href="">Web security fundamentals course</a></li>
+                    </ul>
+                </div>
+                <div class="footer-navigation-column">
+                    <h4 class="border">Blog</h4>
+                    <ul>
+                        <li><a href="">Angular</a></li>
+                        <li><a href="">Architecture</a></li>
+                        <li><a href="">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-privacy">
+        <div class="container">
+            <div class="footer-copyright"><span class="icofont-copyright"></span><%- date(Date.now(), 'YYYY') %> Dev-Academy.com</div>
+            <ul class="footer-privacy-navigation">
                 <li><a href="<%- url_for('/terms') %>">Terms and Conditions</a></li>
                 <li><a href="<%- url_for('/privacy') %>">Privacy</a></li>
             </ul>

@@ -7,6 +7,7 @@
   bottom: 4rem;
   z-index: $z-index-100;
   display: none;
+  box-sizing: border-box;
 
   &.visible {
     display: block;
@@ -15,29 +16,25 @@
 
 .related-post {
   display: flex;
+  align-items: center;
   position: relative;
-  padding: 2rem 2rem 1.5rem;
-  border-radius: .5rem;
-  background-color: $dark-400;
+  padding: 2rem 1.5rem;
+  border-radius: .8rem;
+  background-color: $navy-250;
   color: $light-150;
   box-shadow: 0 .1rem .4rem $dark-500;
 
-  &:hover {
-    .related-post-title {
-      color: $light-150;
-    }
+  figure {
+    display: none;
   }
-}
 
-.related-post-image {
-  min-width: 8rem;
-  width: 8rem;
-  border-radius: .4rem;
-}
+  .button {
+    display: none;
+  }
 
-.related-post-header {
-  display: flex;
-  align-items: center;
+  &:hover {
+    color: $light-150;
+  }
 }
 
 .related-post-meta {
@@ -48,31 +45,31 @@
   padding-left: 1rem;
 }
 
-.related-post-time,
 .related-post-next {
-  color: $light-700;
+  color: $light-750;
   font-size: 1.3rem;
-}
-
-.related-post-author {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: $light-300;
+  line-height: 2.2rem;
+  font-weight: 500;
+  letter-spacing: .025rem;
 }
 
 .related-post-title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2.4rem;
   margin: 0;
-}
-
-.related-post-next {
-  padding-top: 1rem;
 }
 
 .related-post-close {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: -2.5rem;
+  right: 0;
   font-size: 2.5rem;
-  color: $light-700;
+  color: $light-400;
+  width: 5rem;
+  height: 5rem;
+  background: $navy-600;
+  line-height: 5rem;
+  text-align: center;
+  border-radius: 50%;
 }

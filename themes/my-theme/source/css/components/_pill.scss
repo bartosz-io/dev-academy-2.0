@@ -7,17 +7,20 @@
 
 .pill {
   display: flex;
-  padding: .8rem 1.8rem .7rem;
-  font-size: 1.5rem;
-  color: $white;
-  background-color: $dark-100;
+  align-items: center;
+  padding: 0 2.5rem;
+  font-size: $font-size-14;
+  font-weight: 600;
+  height: 4rem;
+  color: $light-100;
+  background-color: $dark-350;
   text-align: center;
-  border-radius: .4rem;
-  line-height: 1.9rem;
+  border: .1rem solid $dark-350;
+  border-radius: 1.6rem;
   transition: $transition-time opacity $transition-type;
-  margin-right: 1.3rem;
-  margin-bottom: 1.3rem;
-  text-transform: capitalize;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
 
   &:hover {
     opacity: 1;
@@ -29,52 +32,82 @@
 .pill-nodejs,
 .pill-react,
 .pill-vue,
+.pill-html,
 .pill-javascript {
+  color: $navy-400;
+
   &:before {
     content: '';
-    width: 2rem;
-    height: 2rem;
     display: inline-flex;
-    margin-right: .7rem;
+    margin-right: 1rem;
+  }
+}
+
+.pill-html {
+  border-color: $orange;
+  background: $light-100;
+
+  &:before {
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url('/img/icons/html.png') no-repeat;
   }
 }
 
 .pill-angular {
-  background-color: $pink-200;
+  border-color: $pink-200;
+  background: $light-100;
 
   &:before {
+    width: 2.4rem;
+    height: 2.4rem;
     background: url('/img/icons/angular.png') no-repeat;
   }
 }
 
 .pill-nodejs {
+  border-color: $purple-100;
   background-color: $purple-100;
+  color: $light-100;
 
   &:before {
+    width: 2.4rem;
+    height: 2.4rem;
     background: url('/img/icons/nodejs.png') no-repeat;
   }
 }
 
 .pill-react {
-  background-color: $teal-200;
+  border-color: $teal-200;
+  background: $teal-200;
+  color: $light-100;
 
   &:before {
+    width: 2rem;
+    height: 1.8rem;
     background: url('/img/icons/react.png') no-repeat;
   }
 }
 
 .pill-vue {
-  background-color: $green-400;
+  border-color: $green-400;
+  background: $green-400;
+  color: $light-100;
 
   &:before {
+    width: 2rem;
+    height: 1.7rem;
     background: url('/img/icons/vue.png') no-repeat;
   }
 }
 
 .pill-javascript {
-  background-color: $yellow-400;
+  border-color: $yellow-400;
+  background: $light-100;
 
   &:before {
+    width: 2.4rem;
+    height: 2rem;
     background: url('/img/icons/javascript.png') no-repeat;
   }
 }

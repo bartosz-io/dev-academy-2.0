@@ -11,9 +11,12 @@
                     </figure>
                     <header>
                         <h2 class="post-title"><%- post.title %></h2>
-                        <time class="post-time" datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'D MMM') %></time>
+                        <time class="post-time" datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'D MMMM YYYY') %></time>
                     </header>
                 </a>
+                <footer>
+                    <%- list_tags(post.tags, {style: 'list', show_count: false}) %>
+                </footer>
             </div>
         </article>
     <% }) %>

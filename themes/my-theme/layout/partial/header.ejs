@@ -1,23 +1,51 @@
 <header class="header">
-    <div class="header-title">
-        <a href="<%- url_for('/') %>"><img src="<%- url_for('/img/dev-academy-logo.png') %>" width="60" height="49" alt="Dev Academy Logo" class="header-logo"></a>
-        <div>
-            <a href="<%- url_for('/') %>" id="logo-text">Dev Academy</a>
+    <% if (config.banners.top_banner){ %>
+        <%- partial('banners/banner-top-navigation') %>
+    <% } %>
+    <div class="container">
+        <div class="header-bar">
+            <div class="header-title">
+                <a href="<%- url_for('/') %>" class="header-logo">
+                    <img src="<%- url_for('/img/dev-academy-logo.png') %>" width="34" height="34" alt="Dev Academy Logo">
+                    <span>Dev Academy</span>
+                </a>
+            </div>
+            <a class="button button-primary header-bar-start" href="/">Start here!</a>
+            <button class="header-nav-toggle" aria-label="Click here to open the mobile menu">
+                <img class="header-nav-toggle-menu" src="<%- url_for('/img/icons/menu.svg') %>" width="24" height="24" alt=""></span>
+                <img class="header-nav-toggle-close" src="<%- url_for('/img/icons/close.svg') %>" width="24" height="24" alt=""></span>
+            </button>
         </div>
-    </div>
-    <div class="header-menu">
-        <nav class="header-nav">
-            <ul>
-                <li class="header-nav-item-courses"><a class="header-nav-link header-nav-link-highlighted" href="https://courses.dev-academy.com" rel="nofollow">All Courses 🤓</a></li>
-                <li><a class="header-nav-link" href="<%- url_for('/authors') %>">Authors</a></li>
-                <li><a class="header-nav-link" href="https://shop.dev-academy.com/">Merch 👖</a></li>
-                <li><a class="header-nav-link" href="https://www.youtube.com/channel/UCcJutJNPZVG5sbp_xaTmKEw">YouTube</a></li>
-                <li><a class="header-nav-link" href="https://tuesday.websecurity-academy.com" rel="nofollow">WS-Tuesday 📆</a></li>
+        <div class="header-menu">
+            <nav class="header-nav">
+                <ul>
+                    <li class="header-nav-start"><a class="button button-primary" href="/">Start here!</a></li>
+                    <li class="header-nav-submenu">
+                        <a class="header-nav-link header-nav-link-submenu" href="#">⭐ Academy</a>
+                        <div class="header-nav-link-content">
+                            <span class="header-nav-link-header border border-light border-small">Academy</span>
+                            <ul>
+                                <li>
+                                    <a class="header-nav-link" href="https://fullstack-testing.com/" rel="nofollow">Web security Academy</a>
+                                    <div class="header-nav-link-description">Lorem ipsum</div>
+                                </li>
+                                <li>
+                                    <a class="header-nav-link" href="https://websecurity-academy.com/" rel="nofollow">Fullstack testing Academy</a>
+                                    <div class="header-nav-link-description">Lorem ipsum</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="header-nav-link" href="https://courses.dev-academy.com" rel="nofollow">Courses</a></li>
+                    <li><a class="header-nav-link" href="<%- url_for('/blog') %>">Blog</a></li>
+                    <li><a class="header-nav-link" href="<%- url_for('/authors') %>">Authors</a></li>
+                </ul>
+            </nav>
+            <ul class="header-socials">
+                <li><a class="header-social-link" href="https://www.youtube.com/channel/UCcJutJNPZVG5sbp_xaTmKEw" rel="nofollow"><img src="<%- url_for('/img/icons/youtube.svg') %>" width="29" height="29" alt=""></a></li>
+                <li><a class="header-social-link" href="" rel="nofollow"><img src="<%- url_for('/img/icons/instagram.svg') %>" width="29" height="29" alt=""></a></li>
+                <li><a class="header-social-link" href="" rel="nofollow"><img src="<%- url_for('/img/icons/facebook.svg') %>" width="15" height="29" alt=""></a></li>
             </ul>
-        </nav>
-        <a class="header-nav-link header-nav-link-highlighted header-nav-link-mobile" href="https://courses.dev-academy.com" rel="nofollow">All Courses 🤓</a>
-        <button class="header-nav-toggle" aria-label="Click here to open the mobile menu">
-            <span class="icofont-navigation-menu"></span>
-        </button>
+        </div>
     </div>
 </header>
