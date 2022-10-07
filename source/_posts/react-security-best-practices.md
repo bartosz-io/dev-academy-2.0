@@ -1,6 +1,6 @@
 ---
 title: React Security – Best Practices
-author: Gert J. Oberholzer
+contributor: Gert J. Oberholzer
 avatar: kobus-oberholzer.png
 description: A brief overview of some of the security risks associated with working on a React JS project and how to avoid them.
 date: 2022-09-22
