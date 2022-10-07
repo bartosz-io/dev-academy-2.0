@@ -359,3 +359,16 @@ contributors:
       github: https://github.com/sookah
       linkedin: https://www.linkedin.com/in/saujan-ghimire/
       twitter: https://twitter.com/saunghimire
+  "Gert J. Oberholzer":
+    slug: kobus-oberholzer
+    desc: Gert is a Junior full-stack software engineer. He is passionate about teaching and more about learning.
+    specs: [javascript, react, c#]
+    image: /img/kobus-oberholzer.png
+    motto: A hidden flaw never remains hidden.
+    joined: 22 Sept 2022
+    academies:
+      wsa: true
+      fta: false
+    socials:
+      github: https://github.com/ElHefe3
+      linkedin: https://www.linkedin.com/in/kobus-oberholzer-308990139/
