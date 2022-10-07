@@ -1,6 +1,6 @@
 ---
 title: Angular User Login and Registration Guide (Cookies and JWT)
-author: Bartosz Pietrucha
+contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 date: 2021-02-18
 tags: [Angular, Security]

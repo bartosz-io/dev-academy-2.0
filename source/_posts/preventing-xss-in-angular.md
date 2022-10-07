@@ -1,6 +1,6 @@
 ---
 title: Angular XSS prevention 🔐 Modern best practices
-author: Christoph Jürgens
+contributor: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Learn Angular XSS modern best practices and methods to prevent cross-site scripting attacks in Angular (JavaScript) applications. 🔒
 date: 2021-11-27

@@ -1,6 +1,6 @@
 ---
 title: Angular Guard for Role-Based Access Control
-author: A M Sanjeev
+contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn about Angular Guard, AuthService, AuthGuard Implementation, and Routing Module Implementations and create a simple Angular app with user and admin roles and role-based authorization.
 date: 2022-09-11

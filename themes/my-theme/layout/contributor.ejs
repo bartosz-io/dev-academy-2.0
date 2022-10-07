@@ -1,0 +1,60 @@
+<div class="contributor-container-space"></div>
+<section class="contributor-bio">
+    <div class="container">
+            <div class="contributor-info">
+                <div class="contributor-info-left">
+                    <img src="<%- page.contributor.image %>" class="contributor-image" alt="<%- page.contributor.name %>">
+                    <%- contributor_academies(page.contributor.name) %>
+                </div>
+                <div class="contributor-info-right">
+                    <span class="contributor-profession contributor-profession-badge"><%- page.contributor.level %></span>
+                    <h1 class="contributor-name border border-large border-light"><%- page.contributor.name %></h1>
+                    <div class="contributor-joined">Active contributor since <%- date(page.contributor.joined, 'MMMM Do, YYYY') %></div>
+                    <div class="contributor-description"><%- page.contributor.desc %></div>
+                    <ul class="contributor-socials">
+                        <% if (page.contributor.socials.site) { %><li><a href="<%- page.contributor.socials.site %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-site"></a></li><% } %>
+                        <% if (page.contributor.socials.linkedin) { %><li><a href="<%- page.contributor.socials.linkedin %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-github"></a></li><% } %>
+                        <% if (page.contributor.socials.twitter) { %><li><a href="<%- page.contributor.socials.twitter %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-twitter"></a></li><% } %>
+                        <% if (page.contributor.socials.github) { %><li><a href="<%- page.contributor.socials.github %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-linkedin"></a></li><% } %>
+                    </ul>
+                </div>
+            </div>
+    </div>
+    <div class="contributor-motto">
+        <div class="container"><%- page.contributor.motto %></div>
+    </div>
+
+    <div class="contributor-skills">
+        <div class="container">
+            <h2>Skills and achievements</h2>
+            <%- contributor_contribution_level(page.contributor.name) %>
+            <div class="pills">
+                <% page.contributor.specs.forEach(function(spec) {  %>
+                    <div class="pill pill-<%- spec %>" data-spec="<%- spec %>"><%- spec %> Expert</div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+
+    <div class="contributor-stats-wrapper">
+        <div class="container">
+            <div class="contributor-stats">
+                <div class="contributor-stat">
+                    <span class="contributor-stat-count">⭐ ️<%- page.contributor.completedCourses %></span>
+                    <span class="contributor-stat-text">Courses Completed</span>
+                </div>
+                <div class="contributor-stat">
+                    <span class="contributor-stat-count"><%- page.contributor.postsCount %></span>
+                    <span class="contributor-stat-text">Blog articles</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="contributor-posts">
+            <h3 class="border border-light border-large">contributor's articles</h3>
+            <%- partial('partial/posts', {posts: page.contributor.posts}) %>
+        </div>
+    </div>
+</section>

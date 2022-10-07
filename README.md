@@ -15,12 +15,12 @@ hexo.extend.filter.register('after_generate', function () {
 # Related post
 - Każdy post powinien posiadać unikalne pole id. Aby dodać powiązany post, dodajemy jego id w polu relatedPost.
 
-# Authors
-- Pole **authors_specs** to dostępne specjalizacje, które nadawane są autorom w ich polu **specs**. Dzięki temu polu również generowany jest filter na stronie autorów.
+# contributors
+- Pole **contributors_specs** to dostępne specjalizacje, które nadawane są autorom w ich polu **specs**. Dzięki temu polu również generowany jest filter na stronie autorów.
 - Przykład dodania nowego autora:
 ```
-authors_specs: [nodejs, angular]
-authors:
+contributors_specs: [nodejs, angular]
+contributors:
     "Bartosz Pietrucha":
         slug: bartosz-pietrucha
         desc: This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description.

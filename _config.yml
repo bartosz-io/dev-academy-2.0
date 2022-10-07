@@ -7,7 +7,7 @@ title: Dev-Academy.com - Web security | Testing & automation | Application archi
 subtitle:
 description: 'Next-level in web development with angular, nodejs and more. Dev Academy is the place for full stack web developers where you will learn best practices.'
 keywords: 'angular, rxjs, reactive, node, software architecture, testing, frontend, backend, fullstack web development'
-author: Bartosz Pietrucha
+contributor: Bartosz Pietrucha
 language: en
 timezone: ''
 
@@ -218,17 +218,17 @@ image_minifier:
 
 # site banners, custom templates
 banners:
-  top_banner: true
-  article_side_banner: true
+  top_banner: false
+  article_side_banner: false
 
-# site authors, custom generator
-authors_specs: [nodejs, angular, vue, react]
-authors:
+# site contributors, custom generator
+contributors_specs: [nodejs, angular, vue, react]
+contributors:
   "Bartosz Pietrucha":
     slug: bartosz-pietrucha
     desc: Bartosz is the founder of Dev Academy blog and courses. He has been coding since 13 yo and holds Master Degree in computer science. He loves to grow and see others grow thanks to the work he does. Occassional conference speaker.
     specs: [nodejs, angular]
-    image: /img/authors/bartosz-large.png
+    image: /img/contributors/bartosz-large.png
     motto: I very much believe in learning almost every day. Exploring the surrounding world is the most exciting thing we could ever do.
     joined: 1 May 2019
     academies:
@@ -243,7 +243,7 @@ authors:
     slug: christoph-juergens
     desc: Christoph is a software engineer and technical lead with a soft spot for web security. He is particularly interested in working with cutting-edge technologies to create clean, well-designed code for building high-quality applications.
     specs: [javascript, typescript, nodejs, angular, nestjs, flutter]
-    image: /img/authors/christoph-juergens.jpg
+    image: /img/contributors/christoph-juergens.jpg
     motto: First, solve the problem. Then, write the code.
     joined: 27 Nov 2021
     academies:
@@ -258,7 +258,7 @@ authors:
     slug: hugo-noro
     desc: Hugo is a Senior Software Engineer with a background in fullstack development within the .NET techstack. He has a Masters in computer engineering and started specialing in Angular since 2016. Quality over quantity is the everyday motto.
     specs: [javascript, typescript, angular, nodejs]
-    image: /img/authors/hugo-noro.png
+    image: /img/contributors/hugo-noro.png
     motto: Quality over quantity should always be a priority.
     joined: 11 Dec 2021
     academies:
@@ -273,7 +273,7 @@ authors:
     slug: peter-mobley
     desc: Peter D. Mobley is the founder and CEO of Geogram, an innovative advertising and design firm that uses technology to advance clients' annual revenue and generate growth from $10 million to over $100 million annually. As an expert in branding, Mr. Mobley has driven growth for Fortune Global 5000 companies including BYD - Build Your Dreams, within an 18-month period, from $15 million to over $600 million in orders in North America's transportation electrification markets.
     specs: [javascript, angular, go, nodejs, html]
-    image: /img/authors/peter-mobley.jpg
+    image: /img/contributors/peter-mobley.jpg
     motto: Most people have a misconception of branding when developing a marketing and advertising campaigns; They mistakenly focus on 'features and benefits' instead of focusing on how the product or service makes the person 'feel'. The idea here is not to get consumers to buy, but to get fans to share. Once that happens, everything else seems to fall into place.
     joined: 23 Feb 2022
     academies:
@@ -288,7 +288,7 @@ authors:
     slug: viktors-garkavijs
     # desc:
     specs: [angular]
-    image: /img/authors/viktors-garkavijs.jpg
+    image: /img/contributors/viktors-garkavijs.jpg
     motto: I very much believe in learning.
     joined: 8 Apr 2022
     academies:
@@ -303,7 +303,7 @@ authors:
     slug: vlad-ataman
     desc: Vlad is a Middle Software Engineer with a background in full-stack and mobile development with JS tech stack. Also, he has a Master's degree in computer science and started his career in 2017.
     specs: [javascript, nodejs, react]
-    image: /img/authors/vlad-ataman.png
+    image: /img/contributors/vlad-ataman.png
     motto: Only hard work and core can make you better.
     joined: 1 Jul 2022
     academies:
@@ -318,7 +318,7 @@ authors:
     slug: mauricio-matias
     desc: Mauricio is passionate about building and design (mixing hardware and software). He loves and follows the Open Source and Free Software initiatives. Occasionally he instructs programming and shares his day-to-day tech experiences as Software Developer through talks. He is currently an active member of a tech community called "HackLab BrickHeads Cochabamba".
     specs: [javascript, vue, nodejs, python]
-    image: /img/authors/mauricio-matias.jpeg
+    image: /img/contributors/mauricio-matias.jpeg
     motto: Make it good, make it with love, keep it simple.
     joined: 10 Jul 2022
     academies:
@@ -333,7 +333,7 @@ authors:
     slug: a-m-sanjeev
     desc: A computer science and engineering student at FET, Gurukula Kangri (Deemed to be University) Haridwar, Uttarakhand, India. He likes Web development and Content writing. Currently working as Web Development Teaching Assistant for Pupilfirst.
     specs: [javascript, node, angular, ruby]
-    image: /img/authors/a-m-sanjeev.jpg
+    image: /img/contributors/a-m-sanjeev.jpg
     motto: Do it now. Sometimes 'later' becomes 'never'.
     joined: 10 Jul 2022
     academies:
@@ -348,7 +348,7 @@ authors:
     slug: saujan-ghimire
     desc: Saujan is founder and tech lead at I-IKIGAI. With an Electro-Mechanical Engineering degree, he is now also a self taught dev bringing software to realtime IoT systems.
     specs: [javascript, node, angular]
-    image: /img/authors/saujan-ghimire.jpg
+    image: /img/contributors/saujan-ghimire.jpg
     motto: The only thing constant is Change, keep adapting, keep exploring!
     joined: 01 Feb 2020
     academies:

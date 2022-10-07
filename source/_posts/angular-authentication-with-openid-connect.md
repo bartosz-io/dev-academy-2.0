@@ -1,6 +1,6 @@
 ---
 title: Angular Authentication 👨‍🦱 with OpenID Connect (OIDC)
-author: Viktors Garkavijs
+contributor: Viktors Garkavijs
 link: https://mixefy.jp
 avatar: viktors-garkavijs.jpg
 description: Learn how to quickly setup simple authentication with OpenID Connect in Angular application.

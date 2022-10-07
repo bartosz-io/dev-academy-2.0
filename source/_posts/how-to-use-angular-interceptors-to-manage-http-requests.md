@@ -1,6 +1,6 @@
 ---
 title: Angular Interceptors to Manage HTTP Requests ⚡
-author: Hugo Noro
+contributor: Hugo Noro
 avatar: hugo-noro.png
 description: Learn how to use Angular interceptors to manage HTTP requests including JWT authorization 🔑, caching and logging.
 date: 2021-12-11
