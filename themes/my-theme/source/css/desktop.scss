@@ -381,12 +381,12 @@
     padding-top: 10.5rem;
   }
 
-  .header-top {
+  .bar-top {
     height: 5rem;
     flex-direction: row;
   }
 
-  .header-top-text {
+  .bar-top-text {
     display: flex;
     padding-bottom: 0;
 
@@ -395,15 +395,16 @@
     }
   }
 
-  .header-top-counter {
+  .bar-top-counter {
     padding: 0 2rem;
   }
 
-  .b-header-top {
+  .b-bar-top {
     padding-top: 15.5rem;
 
     .header {
-      height: 15.5rem;
+      height: 10.5rem;
+      top: 5rem;
     }
 
     .article-share {
