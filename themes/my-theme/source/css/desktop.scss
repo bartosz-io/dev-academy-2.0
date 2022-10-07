@@ -618,7 +618,7 @@
 
   .related-posts {
     width: 80rem;
-    left: calc(50% + 2rem);
+    left: calc(50%);
     transform: translateX(-50%);
     right: auto;
   }
@@ -762,6 +762,10 @@
       .container {
         width: 84rem;
       }
+    }
+
+    .related-posts {
+      left: calc(50% + 2rem);
     }
   }
 }
