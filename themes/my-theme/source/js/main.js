@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', function() {
     loadConvertKit();
     relatedPosts();
     contributors();
+    setActiveTagPill();
 });
 
 function loadConvertKit() {
@@ -243,5 +244,19 @@ function contributors() {
                 }
             }
         })
+    }
+}
+
+function setActiveTagPill() {
+    var tagList = document.querySelector('.tag-list');
+
+    if (tagList) {
+        var pathName = location.pathname;
+
+        let tag = tagList.querySelector(`[href="${pathName}"]`);
+
+        if (tag) {
+            tag.classList.add('active');
+        }
     }
 }
