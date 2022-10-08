@@ -14,6 +14,7 @@ In this guide, we will design and implement **a complete solution for user authe
 
 Apart from the frontend implementation of our use cases, we will compare **different approaches for performing user authentication** used in today's Web. We will discuss distinct scenarios for application deployment and find an appropriate and most secure approach for our needs. By the end of this tutorial you will have a simple yet adaptable Angular login example, that you could tweak to your specific needs. The code will be written for Angular 2+ and relevant to all newer versions (including Angular 11), but the discussed concepts also apply for AngularJS authentication.
 
+## Table of Contents
 <!-- toc -->
 
 ## Application structure and solution design

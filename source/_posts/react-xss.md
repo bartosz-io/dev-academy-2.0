@@ -13,6 +13,7 @@ published: true
 
 XSS attacks or cross-site scripting is a type of attack in which malicious code is injected into a web page and then executed. This malicious code can steal your cookies, modify the content or take control of an entire webpage.
 
+## Table of Contents
 <!-- toc -->
 
 ## Attacks

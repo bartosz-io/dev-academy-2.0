@@ -14,6 +14,7 @@ This article is the second part of our "Preventing XSS in Angular" series. In th
 
 This article teaches you how to use Content Security Policy to prevent untrusted code from being loaded and executed in your Angular application.
 
+## Table of Contents
 <!-- toc -->
 
 {% img "cyber-risks-everywhere.png" "Security risks everywhere" "lazy" %}

@@ -20,8 +20,7 @@ Building scalable software is a challenging task. When we think about scalabilit
 
 {% image 800px "bullets.png" "Angular Architecture Patterns and Best Practices" %}
 
-## Table of contents
-
+## Table of Contents
 <!-- toc -->
 
 ## Problems of scalability in front-end

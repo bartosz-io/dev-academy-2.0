@@ -14,6 +14,7 @@ Something usual in software development is to give a high priority to the implem
 
 Today we will learn how to prevent, mitigate, and secure our web applications from the cross-site scripting (XSS) attack vector, one of the most trivial, usual, and dangerous in the world of web applications.
 
+## Table of Contents
 <!-- toc -->
 
 When a cross-site scripting vulnerability is exploited, basically anything is possible. To give you an idea of how dangerous can be this attack, you can check the following malicious actions an attacker can perform in a result of XSS exploitation:

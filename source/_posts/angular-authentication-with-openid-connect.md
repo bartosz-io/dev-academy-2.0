@@ -19,6 +19,7 @@ OpenID Connect (OIDC) allows the developers to avoid manually implementing user 
 
 In this blog post, we will briefly review what OIDC is, what flows it has, and which OIDC flow you should use for Single Page Applications. After that, we'll apply the theory in practice by implementing a simple [login functionality](/angular-user-login-and-registration-guide-cookies-and-jwt/) in an Angular application using Google as an Identity Provider (IP). We will show how easy it is to add OIDC to Angular apps using one of the most popular OIDC client libraries.
 
+## Table of Contents
 <!-- toc -->
 
 ## Introduction

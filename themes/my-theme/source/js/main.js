@@ -1,12 +1,20 @@
 window.addEventListener('DOMContentLoaded', function() {
-    if (this.isTablet()) {
+    if (isTablet()) {
         stickyNavigation();
     } else {
         mobileNavigation();
     }
 
-    if (this.isTablet()) {
+    if (isTablet()) {
         loadOdometer();
+    }
+
+    if (isPostPage() && isLaptop()) {
+        cloneArticleTOC();
+    }
+
+    if (isTagPage()) {
+        setActiveTagPill();
     }
 
     cookieConsent();
@@ -14,7 +22,6 @@ window.addEventListener('DOMContentLoaded', function() {
     loadConvertKit();
     relatedPosts();
     contributors();
-    setActiveTagPill();
 });
 
 function loadConvertKit() {
@@ -78,6 +85,18 @@ function isTablet() {
     return window.innerWidth > 991;
 }
 
+function isLaptop() {
+    return window.innerWidth > 1279;
+}
+
+function isTagPage() {
+    return document.body.classList.contains('tag-page');
+}
+
+function isPostPage() {
+    return document.body.classList.contains('post-page');
+}
+
 function mobileNavigation() {
     var toggle = document.querySelector('.header-nav-toggle');
     var menu = document.querySelector('.header-nav');
@@ -130,22 +149,21 @@ function mobileNavigation() {
 
 function stickyNavigation() {
     var lastScrollY = 0;
-    var header = document.querySelector('.header');
     var headerStickyClass = 'header-sticky';
     var headerStickyOutClass = 'header-sticky-out';
 
     window.addEventListener('scroll', function(event) {
         if (lastScrollY < window.scrollY) {
             if (window.scrollY > 500) {
-                header.classList.remove(headerStickyClass);
-                header.classList.add(headerStickyOutClass);
+                document.body.classList.remove(headerStickyClass);
+                document.body.classList.add(headerStickyOutClass);
             }
         } else {
             if (window.scrollY > 500) {
-                header.classList.add(headerStickyClass);
-                header.classList.remove(headerStickyOutClass);
+                document.body.classList.add(headerStickyClass);
+                document.body.classList.remove(headerStickyOutClass);
             } else {
-                header.classList.remove(headerStickyOutClass);
+                document.body.classList.remove(headerStickyOutClass);
             }
         }
 
@@ -257,6 +275,20 @@ function setActiveTagPill() {
 
         if (tag) {
             tag.classList.add('active');
+        }
+    }
+}
+
+function cloneArticleTOC() {
+    var toc = document.querySelector('.article-content .toc');
+    var asideToc = document.getElementById('article-toc');
+
+    if (asideToc) {
+        if (toc) {
+            asideToc.appendChild(toc.cloneNode(true));
+        } else {
+            asideToc.remove();
+            document.body.classList.add('post-no-toc');
         }
     }
 }

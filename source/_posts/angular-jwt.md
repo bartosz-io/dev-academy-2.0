@@ -18,8 +18,7 @@ In this article, you will learn:
 * how to intercept HTTP calls, adding an Access Token as it is required by the server
 * why we need a Refresh Token and how to use it transparently for the user
 
-## Table of contents
-
+## Table of Contents
 <!-- toc -->
 
 ## Application setup

@@ -1,3 +1,5 @@
+@import '../mixins';
+
 .article {
   ol,
   ul {
@@ -116,21 +118,23 @@
 
 .article-content-wrapper {
   padding-top: 2rem;
-}
-
-.article-content {
-  overflow: hidden;
-
-  > ul,
-  > ol {
-    margin-bottom: 6rem;
-  }
 
   ul,
   ol {
     li {
       padding-top: .5rem;
     }
+  }
+}
+
+.article-content {
+  @include tocScrollMarginTop(10rem);
+
+  overflow: hidden;
+
+  > ul,
+  > ol {
+    margin-bottom: 6rem;
   }
 
   picture:first-of-type img {
@@ -245,4 +249,8 @@
   letter-spacing: 0;
   margin-top: 1rem;
   margin-bottom: 2rem;
+}
+
+.article-toc {
+  display: none;
 }

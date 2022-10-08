@@ -19,6 +19,7 @@ But using only secure passwords is insufficient nowadays as phishing attacks are
 
 In this article we will reverse-engineer and describe how we manage to request and verify one-time passwords in [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-otp-post) training application [budget-angular](https://github.com/bartosz-io/budget-angular). We will discuss 2FA, time-based one-time passwords as well as how to use Angular to request OTP verification.
 
+## Table of Contents
 <!-- toc -->
 
 ## Introduction to 2-Factor Authentication

@@ -42,4 +42,8 @@
   .header {
     top: 10rem;
   }
+
+  .article-content {
+    @include tocScrollMarginTop(20rem);
+  }
 }

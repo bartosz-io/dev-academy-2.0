@@ -12,6 +12,7 @@ relatedPost: angular-rxjs
 
 In this article, we will take a look at CORS issues in Angular application, what it is, when it occurs, and how to tackle them. We will also look at how to configure local and remote scenarios to support CORS. The accompanying code is also provided on [Github](https://github.com/sookah/ninWiki).
 
+## Table of Contents
 <!-- toc -->
 
 ## CORS: Cross-Origin Resource Sharing
