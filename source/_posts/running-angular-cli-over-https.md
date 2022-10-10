@@ -1,6 +1,6 @@
 ---
 title: Running Angular CLI over HTTPS
-author: A M Sanjeev
+contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn how to have a trusted self-signed certificate and serve your Angular application via HTTPS locally.
 date: 2022-10-10
