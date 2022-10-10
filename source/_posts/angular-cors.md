@@ -1,6 +1,6 @@
 ---
 title: Angular CORS Guide 🛠️ Fixing errors
-author: Saujan Ghimire
+contributor: Saujan Ghimire
 avatar: saujan-ghimire.jpg
 description: Learn how to fix CORS (cross-origin resource sharing) issues in Angular.
 date: 2022-08-05

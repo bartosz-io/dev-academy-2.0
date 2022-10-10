@@ -1,37 +1,47 @@
 <div class="article-wrapper">
     <article class="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
         <header class="article-header">
-            <h1 itemprop="name"><%- page.title %></h1>
-            <link itemprop="url" href="<%- page.permalink %>">
+            <div class="container">
+                <h1 itemprop="name" class="border border-light border-small"><%- page.title %></h1>
+                <link itemprop="url" href="<%- page.permalink %>">
 
-            <div class="article-details">
-                <div class="article-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <img src="<%- url_for('/img/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.author %>">
-                    <div class="article-author-info">
-                        <a href="<%- author_url(post.author) %>"><span class="article-author-name"><span itemprop="name"><%- post.author %></span></span></a>
-                        <%- author_academies(post.author) %>
+                <div class="article-details">
+                    <div class="article-contributor" itemprop="contributor" itemscope itemtype="https://schema.org/Person">
+                        <img src="<%- url_for('/img/contributors/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.contributor %>">
+                        <div class="article-contributor-info">
+                            <a href="<%- contributor_url(post.contributor) %>" class="article-contributor-name"><span itemprop="name"><%- post.contributor %></span></a>
+                            <%- contributor_academies(post.contributor) %>
+                        </div>
                     </div>
-                </div>
-                <div class="article-meta">
-                    <time class="article-date" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, null) %></time>
-                    <%- partial('partial/post/tags') %>
+                    <div class="article-meta">
+                        <%- partial('partial/post/tags') %>
+                        <time class="article-date" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, null) %></time>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <div class="article-content" itemprop="description">
-            <%- page.content %>
+        <div class="container">
+            <div class="article-content-wrapper">
+                <div class="article-content" itemprop="description">
+                    <%- page.content %>
+                </div>
+                <% if (config.banners.article_side_banner) {%>
+                    <%- partial('banners/banner_article_sidebar', {post: post}) %>
+                <% } %>
+            </div>
         </div>
 
-        <footer class="article-footer">
-            <%- partial('post/tags') %>
-        </footer>
 
-        <%- author_info(post.author, post.date) %>
+        <div class="article-footer-wrapper">
+            <div class="container">
+                <%- partial('post/share') %>
+                <%- partial('post/disqus') %>
 
+                <h2 class="border border-light">Contributor</h2>
+                <%- contributor_info(post.contributor, post.date) %>
+            </div>
+        </div>
     </article>
 
-    <%- partial('post/share') %>
 </div>
-
-<%- partial('post/disqus') %>

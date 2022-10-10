@@ -1,6 +1,6 @@
 ---
 title: 'RxJS switchMap, concatMap, mergeMap, exhaustMap'
-author: Bartosz Pietrucha
+contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: Efficient implementation of higher-order observables. Understanding of flattening strategies in switchMap, concatMap, mergeMap and exhaustMap.
 date: 2019-06-01

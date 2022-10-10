@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded', function() {
-    if (!this.isTablet()) {
-        navigation();
+    if (this.isTablet()) {
+        stickyNavigation();
+    } else {
+        mobileNavigation();
     }
 
     if (this.isTablet()) {
@@ -11,7 +13,7 @@ window.addEventListener('DOMContentLoaded', function() {
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
-    authors();
+    contributors();
 });
 
 function loadConvertKit() {
@@ -75,12 +77,13 @@ function isTablet() {
     return window.innerWidth > 991;
 }
 
-function navigation() {
+function mobileNavigation() {
     var toggle = document.querySelector('.header-nav-toggle');
     var menu = document.querySelector('.header-nav');
     var openMsg = 'Click here to open the mobile menu';
     var closeMsg = 'Click here to close the mobile menu';
     var activeClass = 'active';
+    var submenuClass = 'header-nav-link-submenu';
 
     if (toggle && menu) {
         toggle.addEventListener('click', function(event) {
@@ -95,7 +98,12 @@ function navigation() {
 
         menu.addEventListener('click', function(event) {
            if (event.target.nodeName === 'A') {
-               close();
+               if (event.target.classList.contains(submenuClass)) {
+                   event.preventDefault();
+                   event.target.classList.toggle(activeClass);
+               } else {
+                   close();
+               }
            }
         });
     }
@@ -117,6 +125,31 @@ function navigation() {
         toggle.classList.remove(activeClass);
         toggle.setAttribute('aria-label', openMsg);
     }
+}
+
+function stickyNavigation() {
+    var lastScrollY = 0;
+    var header = document.querySelector('.header');
+    var headerStickyClass = 'header-sticky';
+    var headerStickyOutClass = 'header-sticky-out';
+
+    window.addEventListener('scroll', function(event) {
+        if (lastScrollY < window.scrollY) {
+            if (window.scrollY > 500) {
+                header.classList.remove(headerStickyClass);
+                header.classList.add(headerStickyOutClass);
+            }
+        } else {
+            if (window.scrollY > 500) {
+                header.classList.add(headerStickyClass);
+                header.classList.remove(headerStickyOutClass);
+            } else {
+                header.classList.remove(headerStickyOutClass);
+            }
+        }
+
+        lastScrollY = window.scrollY;
+    }, {passive: true});
 }
 
 function cookieConsent() {
@@ -178,11 +211,11 @@ function relatedPosts() {
     }
 }
 
-function authors() {
-    var authorsContainer =  document.querySelector('.authors');
+function contributors() {
+    var contributorsContainer =  document.querySelector('.contributors');
 
-    if (authorsContainer) {
-        var pillsContainer = authorsContainer.querySelector('.pills');
+    if (contributorsContainer) {
+        var pillsContainer = contributorsContainer.querySelector('.pills');
 
         pillsContainer.addEventListener('click', function(event) {
             const spec = event.target.getAttribute('data-spec');
@@ -193,18 +226,18 @@ function authors() {
 
                 event.target.classList.remove(pillInactiveClass);
 
-                var authors = authorsContainer.querySelectorAll('.author');
+                var contributors = contributorsContainer.querySelectorAll('.contributor');
 
                 if (spec === 'all') {
-                    authors.forEach((author) => author.style.display = 'block');
+                    contributors.forEach((contributor) => contributor.style.display = 'block');
                 } else {
-                    authors.forEach((author) => author.style.display = 'none');
+                    contributors.forEach((contributor) => contributor.style.display = 'none');
 
-                    authorsContainer.querySelectorAll('.author-specs').forEach(function(specs) {
-                        let a = specs.querySelector('.author-spec-' + spec);
+                    contributorsContainer.querySelectorAll('.contributor-specs').forEach(function(specs) {
+                        let a = specs.querySelector('.contributor-spec-' + spec);
 
                         if (a) {
-                            a.closest('.author').style.display = 'block';
+                            a.closest('.contributor').style.display = 'block';
                         }
                     })
                 }

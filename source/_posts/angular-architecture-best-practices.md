@@ -1,6 +1,6 @@
 ---
 title: Angular Architecture Patterns and Best Practices (that help to scale)
-author: Bartosz Pietrucha
+contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: Complete guide of Angular architecture best practices. High-level abstraction layers, unidirectional data flow, reactive state management and modular design.
 date: 2019-07-02

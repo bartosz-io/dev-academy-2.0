@@ -1,6 +1,6 @@
 ---
 title: Vue Security Best Practices 💎
-author: Mauricio Matias C.
+contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn Vue modern best practices and methods to keep your Vue application (JavaScript) secure. 🔒
 date: 2022-07-25

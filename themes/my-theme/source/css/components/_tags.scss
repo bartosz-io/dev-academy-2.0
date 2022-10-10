@@ -1,12 +1,41 @@
-.tag-list {
+ul.tag-list {
   display: flex;
+  list-style-type: none;
   flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem 0 3rem;
+  margin-bottom: 0;
+  padding-left: 0;
+
+  .tag-list-item:last-of-type {
+    margin-right: 0;
+  }
 }
 
 .tag-list-link {
-  padding: 1rem 1.5rem;
-  font-weight: 700;
-  display: inline-block;
+  background-color: $light-125;
+  font-size: $font-size-16;
+  border-radius: 5rem;
+  padding: .5rem 2rem;
+  color: $navy-400;
+  display: inline-flex;
+  transition: background-color $transition-time $transition-type
+              color $transition-time $transition-type;
+
+  &:hover {
+    color: $teal-300;
+  }
+}
+
+.tag-list-item {
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag-list-all {
+  padding-top: 2.5rem;
+  padding-bottom: 5.5rem;
+
+  .tag-list-item {
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
 }

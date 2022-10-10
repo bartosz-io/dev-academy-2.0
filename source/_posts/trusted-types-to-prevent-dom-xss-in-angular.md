@@ -1,6 +1,6 @@
 ---
 title: Trusted Types to prevent DOM XSS 🤝 in Angular
-author: Christoph Jürgens
+contributor: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Learn how to secure Angular applications with Trusted Types to put an end to DOM XSS vulnerabilities.
 date: 2022-03-08

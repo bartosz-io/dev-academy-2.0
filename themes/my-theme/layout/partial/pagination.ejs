@@ -1,9 +1,10 @@
 <% if (page.total > 1){ %>
     <nav class="pagination">
         <%- paginator({
-            prev_text: "<span class='icofont-curved-double-left'></span> Prev",
-            next_text: "Next <span class='icofont-curved-double-right'></span>",
-            escape: false
+            prev_text: "<span class='prev-icon'></span>",
+            next_text: "<span class='next-icon'></span>",
+            escape: false,
+            force_prev_next: true
         }) %>
     </nav>
 <% } %>

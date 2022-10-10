@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/authors"
+  to = "/contributors"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/author/*"
+  to = "/contributor/:splat"
+  status = 301
+  force = true

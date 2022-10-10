@@ -1,6 +1,6 @@
 ---
 title: Vue Router Best Practices
-author: Mauricio Matias C.
+contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn modern Vue best practices with vue-router to build reliable and well-designed route navigation.
 date: 2022-09-02
