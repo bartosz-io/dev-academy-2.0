@@ -801,6 +801,24 @@
     }
   }
 
+  .post-no-toc {
+    .article-toc {
+      display: none;
+    }
+
+    .article-content-wrapper .container {
+      width: 84rem;
+      transform: none;
+    }
+
+    &.b-article-sidebar {
+      .article-content-wrapper .container {
+        width: 105rem;
+        transform: translateX(10.5rem);
+      }
+    }
+  }
+
   .article-toc {
     display: flex;
     position: sticky;
@@ -867,6 +885,15 @@
   .b-article-sidebar {
     .article-content-wrapper .container {
       width: 134rem;
+    }
+  }
+
+  .post-no-toc {
+    &.b-article-sidebar {
+      .article-content-wrapper .container {
+        width: 109rem;
+        transform: translateX(12.5rem);
+      }
     }
   }
 
