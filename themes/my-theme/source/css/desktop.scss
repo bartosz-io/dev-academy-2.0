@@ -381,6 +381,16 @@
 
   body {
     padding-top: $header-height-desktop;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: $header-height-desktop;
+      background-color: $navy-400;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 
   .bar-top {
