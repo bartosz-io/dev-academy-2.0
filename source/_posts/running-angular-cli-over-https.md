@@ -52,11 +52,11 @@ ng serve is a dedicated development server that comes preinstalled with the Angu
 
 ## Steps to run your local application over HTTPS
 
-1.  ### **Create a Certificate**
+1.  ### Create a Certificate
     
     Initially and mainly You must first create and trust self-signed certificates on your local workstation before using HTTPS with your application.
     
-2.  ### **Angular CLI**
+2.  ### Angular CLI
     
     The Angular CLI must be informed after your certificate has been created and trusted. This can be done using either config file settings or command-line options.
     
@@ -78,7 +78,7 @@ So, the command to enable SSL would look like the following:
       --ssl-cert "ssl/localhost.crt" \
       --ssl-key "ssl/localhost.key"
 
-## Angular 6 requires you to define the following parameters: --ssl-cert and --ssl-key.
+## Since Angular 6
 
 1.      ng serve —-ssl true
     
@@ -139,4 +139,4 @@ It's crucial to remember that this setup is only meant for local development. Us
 
 The next step will be to learn how to generate and install the certificate, as well as how to use config files to inform angular CLI about our certificate.
 
-Click [here](https://dev-academy.com/angular-otp-verification/) to learn about 2FA, time-based one-time passwords, and how to use Angular to request OTP verification. Click [here](https://dev-academy.com/angular-router-guard-rbac/) to learn about Angular Guard, AuthService, AuthGuard Implementation, and Routing Module Implementation.
+Learn about 2FA, time-based one-time passwords, and how to use Angular to request [OTP verification](https://dev-academy.com/angular-otp-verification/). Learn about Angular Guard, AuthService, AuthGuard Implementation, and [Routing Module Implementation](https://dev-academy.com/angular-router-guard-rbac/).
