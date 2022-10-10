@@ -205,16 +205,18 @@ function relatedPosts() {
 
     if (relatedPostsContainer) {
         var relatedPosts = relatedPostsContainer.querySelectorAll('.related-post');
+        var commentsButton = document.getElementById('show-comments');
         var visibleClass = 'visible';
 
-        if (!relatedPosts.length) {
+        if (!relatedPosts.length && !commentsButton) {
             return;
         }
 
         document.addEventListener('scroll', function() {
-            var isHalfPage = window.scrollY > (document.body.offsetHeight - window.innerHeight) * 0.8;
+            var OFFSET = 1500;
+            var reachedCommentsSection = window.scrollY + OFFSET > commentsButton.offsetTop;
 
-            if (isHalfPage) {
+            if (reachedCommentsSection) {
                 relatedPostsContainer.classList.add(visibleClass);
             } else {
                 relatedPostsContainer.classList.remove(visibleClass);
