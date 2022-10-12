@@ -703,6 +703,21 @@
   .article-content {
     @include tocScrollMarginTop(2.5rem);
   }
+
+  .academy-contributor {
+    display: flex;
+    align-items: center;
+  }
+
+  .academy-contributor-image {
+    flex-basis: 26rem;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .academy-contributor-text {
+    padding-left: 4rem;
+  }
 }
 
 @media (min-width: 1180px) {
