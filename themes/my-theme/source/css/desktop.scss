@@ -401,6 +401,16 @@
       top: 0;
       left: 0;
     }
+
+    &.post-page {
+      &:before {
+        height: calc(#{$header-height-desktop} + 30rem);
+      }
+
+      main {
+        position: relative;
+      }
+    }
   }
 
   .bar-top {
