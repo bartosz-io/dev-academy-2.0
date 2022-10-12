@@ -22,7 +22,7 @@ body {
   line-height: 1.6;
   color: $font-color;
   font-family: $font-family;
-  background-color: $light-100;
+  background-color: $navy-400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: 7rem;
@@ -109,6 +109,10 @@ h4,
 h5,
 h6 {
   font-size: $font-size-20;
+}
+
+main {
+  background-color: $light-100;
 }
 
 code {
