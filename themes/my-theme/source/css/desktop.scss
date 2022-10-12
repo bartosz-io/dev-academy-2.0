@@ -357,6 +357,16 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .academy-destination-info-boxes {
+    display: flex;
+    justify-content: center;
+
+    .info-box {
+      width: 33rem;
+      flex-shrink: 0;
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -718,6 +728,12 @@
   .academy-contributor-text {
     padding-left: 4rem;
   }
+
+  .academy-destination p {
+    text-align: center;
+    width: 85%;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 1180px) {
@@ -757,6 +773,28 @@
 
   .contributors-ready-wrapper {
     padding-bottom: 5rem;
+  }
+
+  .academy-destination-info-boxes {
+    flex-direction: column;
+
+    .info-box {
+      margin-bottom: 0;
+
+      + .info-box {
+        margin-top: 5rem;
+      }
+    }
+  }
+
+  .academy-destination-info-center {
+    display: inline-flex;
+  }
+
+  .academy-destination-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

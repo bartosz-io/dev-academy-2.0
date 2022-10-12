@@ -757,6 +757,10 @@
   text-align: center;
   padding: 9rem 0;
 
+  figure {
+    display: inline-flex;
+  }
+
   h5 {
     text-transform: uppercase;
     font-weight: 400;

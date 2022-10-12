@@ -37,3 +37,22 @@
   max-width: 19.1rem;
   margin-top: 1rem;
 }
+
+.academy-destination-info-center {
+  display: none;
+}
+
+.academy-destination {
+  padding: 8rem 0 4rem;
+
+  h2 {
+    font-size: $font-size-36;
+    line-height: 4.4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  p {
+    line-height: 2.4rem;
+  }
+}

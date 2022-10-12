@@ -124,8 +124,18 @@
     <div class="container">
         <div class="contributors-collaboration">
             <h5>Our dev academy team works with</h5>
-            <img class="contributors-collaboration-logos-mobile" src="<%- url_for('/img/logos-mobile.png') %>" alt="">
-            <img class="contributors-collaboration-logos-desktop" src="<%- url_for('/img/logos-desktop.png') %>" alt="">
+            <figure>
+                <picture>
+                    <source srcset="<%- url_for('/img/logos-mobile.png') %>" type="image/webp">
+                    <img class="contributors-collaboration-logos-mobile" src="<%- url_for('/img/logos-mobile.png') %>" alt="">
+                </picture>
+            </figure>
+            <figure>
+                <picture>
+                    <source srcset="<%- url_for('/img/logos-desktop.png') %>" type="image/webp">
+                    <img class="contributors-collaboration-logos-desktop" src="<%- url_for('/img/logos-desktop.png') %>" alt="">
+                </picture>
+            </figure>
         </div>
     </div>
 </div>
