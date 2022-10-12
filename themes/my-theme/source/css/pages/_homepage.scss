@@ -56,3 +56,29 @@
     line-height: 2.4rem;
   }
 }
+
+.academy-courses-wrapper {
+  background-color: $light-125;
+  padding: 7rem 0 9rem;
+
+  h2 {
+    font-size: $font-size-36;
+    line-height: 4.4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    line-height: 2.4rem;
+  }
+}
+
+.academy-course-image {
+  display: inline-flex;
+}
+
+.academy-course {
+  background-color: $light-100;
+  padding: 1.5rem;
+}
