@@ -1,16 +1,19 @@
 window.addEventListener('DOMContentLoaded', function() {
     if (isTablet()) {
         stickyNavigation();
+        loadOdometer();
     } else {
         mobileNavigation();
     }
 
-    if (isTablet()) {
-        loadOdometer();
-    }
+    if (isLaptop()) {
+        if (isPostPage()) {
+            cloneArticleTOC();
+        }
 
-    if (isPostPage() && isLaptop()) {
-        cloneArticleTOC();
+        if (isIndexPage()) {
+            animateInfoBoxes();
+        }
     }
 
     if (isTagPage()) {
@@ -95,6 +98,10 @@ function isTagPage() {
 
 function isPostPage() {
     return document.body.classList.contains('post-page');
+}
+
+function isIndexPage() {
+    return document.body.classList.contains('index-page');
 }
 
 function mobileNavigation() {
@@ -292,5 +299,39 @@ function cloneArticleTOC() {
             asideToc.remove();
             document.body.classList.add('post-no-toc');
         }
+    }
+}
+
+function animateInfoBoxes() {
+    var destinationInfo = document.querySelector('.academy-destination-info');
+
+    if (!destinationInfo) {
+        return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                addAnimation();
+                observer.disconnect();
+            }
+        })
+    });
+
+    var section = document.querySelector('.contributors-collaboration');
+
+    if (section) {
+        observer.observe(section);
+    }
+
+    function addAnimation() {
+        var infoBoxes = destinationInfo.querySelectorAll('.info-box');
+        var halfSecond = 500;
+
+        infoBoxes.forEach(function(infoBox, index) {
+            setTimeout(function() {
+                infoBox.classList.add(index > 1 ? 'animation-fade-in-right' : 'animation-fade-in-left')
+            }, index * halfSecond);
+        });
     }
 }
