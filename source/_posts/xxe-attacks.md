@@ -1,6 +1,6 @@
 ---
 title: XXE Attacks
-author: Gert J. Oberholzer
+contributor: Gert J. Oberh
 avatar: kobus-oberholzer.png
 description: A summary on external entity injections, how they are used in an attack and how to prevent most of them
 date: 2022-10-13
