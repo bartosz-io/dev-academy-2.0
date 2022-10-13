@@ -36,8 +36,10 @@ To demonstrate the different ways XXR attacks work, let's set a scene. A booking
 
 A very basic way XXE payloads can be used is to retrieve files from the server. Let's say the original usage of XML file was to retrieve information on a booking made by a client like so:
 
+    ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <bookingId>23</bookingId>
+    ```
 
 We can adjust this XML data to retrieve files we specify and let it return the results.
 
