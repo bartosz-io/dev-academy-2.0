@@ -1,5 +1,8 @@
 <aside class="article-sidebar">
     <div class="article-sidebar-content">
+        <% if (post.bannerImage) {%>
+            <img src="<%- post.bannerImage %>" alt="">
+        <% } %>
         <% if (post.bannerHeader) {%>
             <h4 class="article-sidebar-header"><%- post.bannerHeader %></h4>
         <% } %>
