@@ -367,6 +367,50 @@
       flex-shrink: 0;
     }
   }
+
+  .academy-course {
+    display: flex;
+    padding: 2rem 2.5rem;
+    justify-content: space-between;
+    align-items: center;
+
+    &.academy-course-promo {
+      &:before {
+        top: -1.5rem;
+        right: -1.5rem;
+      }
+    }
+  }
+
+  .academy-course-info-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .academy-course-text {
+    padding-left: 2rem;
+  }
+
+  .academy-course-image {
+    margin-bottom: 0;
+  }
+
+  .academy-course-info-right {
+    margin-top: 0;
+  }
+
+  .academy-course-price {
+    padding-right: 2rem;
+  }
+
+  .academy-courses-button {
+    display: flex;
+    justify-content: center;
+
+    .button {
+      display: inline-flex;
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -723,6 +767,14 @@
     text-align: center;
     width: 85%;
     margin: 0 auto;
+  }
+
+  .academy-course-price {
+    padding-right: 4rem;
+  }
+
+  .academy-course-price-old {
+    padding-right: 1.4rem;
   }
 }
 

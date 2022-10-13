@@ -80,5 +80,103 @@
 
 .academy-course {
   background-color: $light-100;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 1rem;
+  border: .1rem solid $indigo-150;
+  border-radius: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  &.academy-course-promo {
+    position: relative;
+
+    &:before {
+      content: 'promo!';
+      display: inline-flex;
+      font-size: $font-size-16;
+      color: $light-100;
+      border-radius: 5rem;
+      background-color: $green-500;
+      padding: .8rem 1.6rem;
+      position: absolute;
+      top: 2.5rem;
+      right: 1.5rem;
+      line-height: 120%;
+    }
+
+    .academy-course-info-right {
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.academy-course-image {
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+
+  picture {
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  img {
+    width: 10.4rem;
+    height: 5.4rem;
+  }
+}
+
+.academy-course-info-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.academy-course-text-header {
+  font-size: $font-size-18;
+  line-height: 120%;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+}
+
+.academy-course-text {
+  a {
+    color: $dark-350;
+
+    &:hover {
+      color: $teal-300;
+    }
+  }
+}
+
+.academy-course-text-content {
+  font-size: $font-size-14;
+  line-height: 1.8rem;
+}
+
+.academy-course-arrow {
+  padding: .5rem 1rem;
+}
+
+.academy-course-price-old {
+  text-decoration: line-through;
+  color: $light-500;
+  padding-right: .4rem;
+}
+
+.academy-course-price {
+  font-size: $font-size-16;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.academy-course-price-current {
+  font-weight: 600;
+}
+
+.academy-courses-button {
+  padding-top: 2.5rem;
+
+  .button {
+    display: flex;
+  }
 }
