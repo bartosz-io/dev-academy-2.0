@@ -881,17 +881,26 @@
   }
 
   .article-sidebar-content {
-    background-color: $light-400;
     border-radius: .8rem;
-    height: 30rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 2rem;
     text-align: center;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+  }
+
+  .article-sidebar-header {
+    font-size: 2rem;
+  }
+  
+  .article-sidebar-subheader {
+    font-size: 1.5rem;
+  }
+
+  .article-sidebar-img {
+    margin-bottom: 20px;
   }
 
   .b-article-sidebar {
