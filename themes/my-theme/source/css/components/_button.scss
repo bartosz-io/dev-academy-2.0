@@ -44,7 +44,7 @@
   }
 }
 
-.button-success {
+.button-green {
   background-color: $green-500;
 
   &:hover {
@@ -61,11 +61,11 @@
   width: 100%;
 }
 
-.button-twitter {
-  background: $teal-100;
+.button-blue {
+  background: $teal-300;
 
   &:hover {
-    background-color: $teal-200;
+    background-color: $teal-800;
   }
 }
 

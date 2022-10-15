@@ -57,8 +57,12 @@
   }
 }
 
-.academy-courses-wrapper {
+.academy-courses-wrapper, {
   background-color: $light-125;
+}
+
+.academy-courses-wrapper,
+.academy-user-goals-wrapper {
   padding: 7rem 0 9rem;
 
   h2 {
@@ -179,4 +183,230 @@
   .button {
     display: flex;
   }
+}
+
+.academy-user-goals {
+  display: flex;
+  justify-content: center;
+  column-gap: 1.5rem;
+}
+
+.academy-user-goal-image {
+  opacity: 0.5;
+  transition: opacity $transition-time $transition-type;
+}
+
+.academy-user-goal {
+  flex-basis: 100%;
+  max-width: 25rem;
+
+  h3 {
+    font-size: $font-size-14;
+    letter-spacing: 0;
+    color: $navy-800;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    min-height: 5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 1rem;
+    position: relative;
+    transition: color $transition-time $transition-type;
+
+    &:after {
+      content: '';
+      width: 100%;
+      display: flex;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border-radius: 3rem;
+      height: .3rem;
+      background-color: $navy-800;
+      transition: background-color $transition-time $transition-type;
+    }
+  }
+
+  &[data-academy="web-security-academy"] {
+    &.active {
+      h3 {
+        color: $indigo-600;
+
+        &:after {
+          background-color: $indigo-600;
+        }
+      }
+    }
+  }
+
+  &[data-academy="dev-academy"] {
+    &.active {
+      h3 {
+        color: $teal-300;
+
+        &:after {
+          background-color: $teal-300;
+        }
+      }
+    }
+  }
+
+  &[data-academy="testing-academy"] {
+    &.active {
+      h3 {
+        color: $green-500;
+
+        &:after {
+          background-color: $green-500;
+        }
+      }
+    }
+  }
+
+  &.active {
+    .academy-user-goal-image {
+      opacity: 1;
+      transform: scale(1.2) translateY(1rem);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &:not(.active) {
+      .academy-user-goal-image {
+        opacity: 1;
+      }
+
+      &[data-academy="web-security-academy"] {
+        h3 {
+          color: $indigo-600;
+
+          &:after {
+            background-color: $indigo-600;
+          }
+        }
+      }
+
+      &[data-academy="dev-academy"] {
+        h3 {
+          color: $teal-300;
+
+          &:after {
+            background-color: $teal-300;
+          }
+        }
+      }
+
+      &[data-academy="testing-academy"] {
+        h3 {
+          color: $green-500;
+
+          &:after {
+            background-color: $green-500;
+          }
+        }
+      }
+    }
+  }
+}
+
+.academy-user-goal-content {
+  display: none;
+  padding-top: 6rem;
+  flex-direction: column;
+
+  &.active {
+    display: flex;
+  }
+
+
+  &[data-academy="web-security-academy"] {
+    .academy-user-goal-content-header-motive {
+        color: $indigo-600;
+    }
+
+    .academy-user-goal-content-subheader {
+      color: $indigo-600;
+    }
+  }
+
+  &[data-academy="testing-academy"] {
+    .border:after {
+      background-color: $green-500;
+    }
+
+    .academy-user-goal-content-header-motive {
+      color: $green-500;
+    }
+
+    .academy-user-goal-content-subheader {
+      color: $green-500;
+    }
+  }
+
+  &[data-academy="dev-academy"] {
+    .border:after {
+      background-color: $teal-300;
+    }
+
+    .academy-user-goal-content-header-motive {
+      color: $teal-300;
+    }
+
+    .academy-user-goal-content-subheader {
+      color: $teal-300;
+    }
+  }
+}
+
+.academy-user-goal-info-image {
+  margin-bottom: 2rem;
+}
+
+.academy-user-goal-content-header {
+  font-size: $font-size-36;
+  letter-spacing: 0;
+  margin-bottom: 2rem;
+
+  &:after {
+    opacity: .2;
+  }
+}
+
+.academy-user-goal-content-subheader {
+  font-size: $font-size-32;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin-bottom: 2rem;
+}
+
+.academy-user-goals-content {
+  .academy-user-goal-content-text {
+    text-align: left;
+  }
+}
+
+.academy-user-goal-content-text {
+  font-size: $font-size-16;
+}
+
+.academy-user-goal-join {
+  padding-top: 1.5rem;
+
+  .button {
+    width: 100%;
+  }
+}
+
+.academy-user-goal-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.academy-user-goal-info-boxes {
+  width: 100%;
 }

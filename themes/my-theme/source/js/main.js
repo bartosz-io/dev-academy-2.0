@@ -25,6 +25,7 @@ window.addEventListener('DOMContentLoaded', function() {
     loadConvertKit();
     relatedPosts();
     contributors();
+    userGoals();
 });
 
 function loadConvertKit() {
@@ -333,5 +334,37 @@ function animateInfoBoxes() {
                 infoBox.classList.add(index > 1 ? 'animation-fade-in-right' : 'animation-fade-in-left')
             }, index * halfSecond);
         });
+    }
+}
+
+function userGoals() {
+    var academies = document.querySelectorAll('.academy-user-goal');
+    var academiesContent = document.querySelectorAll('.academy-user-goal-content');
+    var activeClass = 'active';
+    var academyTypeString = 'data-academy';
+
+    if (academies && academiesContent) {
+        academies.forEach(function(academy) {
+            academy.addEventListener('click', function(event) {
+                var academyType = event.currentTarget.getAttribute(academyTypeString);
+
+                academies.forEach((function(academy) {
+                    academy.classList.remove(activeClass);
+                }));
+
+                academiesContent.forEach((function(academyContent) {
+                    var academyContentType = academyContent.getAttribute(academyTypeString);
+
+                    academyContent.classList.remove(activeClass);
+
+                    if (academyContentType === academyType) {
+                        academyContent.classList.add(activeClass);
+                    }
+                }));
+
+                academy.classList.add(activeClass);
+            })
+        });
+
     }
 }

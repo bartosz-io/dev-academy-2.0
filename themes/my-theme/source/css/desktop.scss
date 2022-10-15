@@ -416,6 +416,38 @@
   .academy-courses-wrapper {
     padding: 10rem 0;
   }
+
+  .academy-user-goal h3 {
+    font-size: $font-size-16;
+  }
+
+  .academy-user-goals {
+    column-gap: 2rem;
+  }
+
+  .academy-user-goal-content {
+    padding-top: 8rem;
+  }
+
+  .academy-user-goal-join {
+    display: flex;
+    justify-content: flex-end;
+
+    .button {
+      width: auto;
+    }
+  }
+
+  .academy-user-goal-info-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .info-box {
+      width: 33rem;
+      flex-shrink: 0;
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -781,6 +813,23 @@
   .academy-course-price-old {
     padding-right: 1.4rem;
   }
+
+  .academy-user-goal-info {
+    flex-direction: row;
+  }
+
+  .academy-user-goal-info-boxes {
+    justify-content: flex-end;
+
+    .info-box {
+      width: 100%;
+    }
+  }
+
+  .academy-user-goal-info-image {
+    flex-shrink: 0;
+    margin-right: 2rem;
+  }
 }
 
 @media (min-width: 1180px) {
@@ -900,7 +949,7 @@
   }
 
   .article-sidebar-img {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
 
   .b-article-sidebar {
@@ -990,7 +1039,7 @@
     display: none;
   }
 
-  .info-box {
+  .academy-destination-info-boxes .info-box {
     visibility: hidden;
   }
 }
