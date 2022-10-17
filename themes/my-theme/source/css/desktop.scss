@@ -448,6 +448,38 @@
       flex-shrink: 0;
     }
   }
+
+  .slider-arrows {
+    display: flex;
+  }
+
+  .slider-arrow-left,
+  .slider-arrow-right {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-100;
+    border: .1rem solid $indigo-150;
+    border-radius: .4rem;
+    position: absolute;
+    bottom: -.8rem;
+    transition: background-color $transition-time $transition-type;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $indigo-150;
+    }
+  }
+
+  .slider-arrow-left {
+    left: 0;
+  }
+
+  .slider-arrow-right {
+    right: 0;
+  }
 }
 
 @media (min-width: 992px) {

@@ -1,0 +1,46 @@
+.slider {
+  position: relative;
+}
+
+.slider-items {
+  display: flex;
+  column-gap: 2.5rem;
+}
+
+.slider-item {
+  display: none;
+  flex-basis: 100%;
+
+  &.visible {
+    display: flex;
+  }
+}
+
+.slider-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding-top: 6rem;
+
+  div {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background-color: $indigo-150;
+    transition: background-color $transition-time $transition-type;
+
+    &.active {
+      background-color: $indigo-600;
+    }
+
+    &:hover:not(.active) {
+      cursor: pointer;
+      background-color: $indigo-600;
+    }
+  }
+}
+
+.slider-arrows {
+  display: none;
+}

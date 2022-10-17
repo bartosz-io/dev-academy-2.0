@@ -438,3 +438,37 @@
 .academy-user-goal-info-boxes {
   width: 100%;
 }
+
+.academy-feedback-wrapper {
+  background-color: $light-200;
+  padding: 7rem 0 9rem;
+
+  h2 {
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    line-height: 2.4rem;
+  }
+}
+
+.academy-feedback {
+  box-shadow: 0 .5rem 5rem rgba(0, 67, 86, 0.08);
+  border-radius: .8rem;
+  min-height: 20rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: $light-100;
+
+  img {
+    display: flex;
+  }
+}
