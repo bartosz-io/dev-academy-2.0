@@ -441,7 +441,7 @@
 
 .academy-feedback-wrapper {
   background-color: $light-200;
-  padding: 7rem 0 9rem;
+  padding: 9rem 0 10rem;
 
   h2 {
     font-size: 3.6rem;
@@ -471,4 +471,8 @@
   img {
     display: flex;
   }
+}
+
+.academy-community {
+  padding: 10rem 0;
 }
