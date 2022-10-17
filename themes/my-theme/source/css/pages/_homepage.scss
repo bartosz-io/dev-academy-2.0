@@ -191,20 +191,17 @@
   column-gap: 1.5rem;
 }
 
-.academy-user-goal-image {
-  opacity: 0.5;
-  transition: opacity $transition-time $transition-type;
-}
-
 .academy-user-goal {
   flex-basis: 100%;
   max-width: 25rem;
+  opacity: .5;
+  transition: opacity $transition-time $transition-type;
 
   h3 {
     font-size: $font-size-14;
     letter-spacing: 0;
     color: $navy-800;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 2rem;
     min-height: 5rem;
     display: flex;
@@ -229,8 +226,18 @@
     }
   }
 
-  &[data-academy="web-security-academy"] {
-    &.active {
+  &.active {
+    opacity: 1;
+
+    h3 {
+      font-weight: 600;
+    }
+
+    .academy-user-goal-image {
+      transform: scale(1.2) translateY(1rem);
+    }
+
+    &[data-academy="web-security-academy"] {
       h3 {
         color: $indigo-600;
 
@@ -238,23 +245,13 @@
           background-color: $indigo-600;
         }
       }
-    }
-  }
 
-  &[data-academy="dev-academy"] {
-    &.active {
-      h3 {
-        color: $teal-300;
-
-        &:after {
-          background-color: $teal-300;
-        }
+      .academy-user-goal-image:after {
+        background-color: $indigo-600;
       }
     }
-  }
 
-  &[data-academy="testing-academy"] {
-    &.active {
+    &[data-academy="testing-academy"] {
       h3 {
         color: $green-500;
 
@@ -262,13 +259,25 @@
           background-color: $green-500;
         }
       }
-    }
-  }
 
-  &.active {
-    .academy-user-goal-image {
-      opacity: 1;
-      transform: scale(1.2) translateY(1rem);
+      .academy-user-goal-image:after {
+        background-color: $green-500;
+      }
+    }
+
+    &[data-academy="dev-academy"] {
+      h3 {
+        color: $teal-300;
+
+
+        &:after {
+          background-color: $teal-300;
+        }
+      }
+
+      .academy-user-goal-image:after {
+        background-color: $teal-300;
+      }
     }
   }
 
@@ -276,9 +285,7 @@
     cursor: pointer;
 
     &:not(.active) {
-      .academy-user-goal-image {
-        opacity: 1;
-      }
+      opacity: 1;
 
       &[data-academy="web-security-academy"] {
         h3 {
@@ -310,6 +317,27 @@
         }
       }
     }
+  }
+}
+
+.academy-user-goal-image {
+  &:after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -25%;
+    margin-left: -25%;
+    filter: blur(4.5rem);
+    border-radius: 20rem;
+  }
+
+  picture {
+    position: relative;
+    z-index: $z-index-100;
   }
 }
 
