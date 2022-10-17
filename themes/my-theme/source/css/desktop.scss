@@ -806,6 +806,36 @@
     margin: 0 auto;
   }
 
+  .academy-courses {
+    display: flex;
+    column-gap: 2.5rem;
+  }
+
+  .academy-course {
+    flex-basis: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .academy-course-info-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .academy-course-image {
+    margin-bottom: 1.5rem;
+  }
+
+  .academy-course-info-right {
+    margin-top: 1.5rem;
+    align-self: flex-end;
+  }
+
+  .academy-course-text {
+    padding-left: 0;
+  }
+
   .academy-course-price {
     padding-right: 4rem;
   }
