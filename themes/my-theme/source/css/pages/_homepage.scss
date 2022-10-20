@@ -488,3 +488,23 @@
     margin-bottom: 2rem;
   }
 }
+
+.academy-special-offer {
+  background-color: $light-250;
+  padding: 3rem 0;
+  border-radius: .8rem;
+  display: flex;
+  justify-content: center;
+
+  figure {
+    display: inline-flex;
+  }
+
+  a {
+    display: inline-flex;
+  }
+}
+
+.academy-special-offer-wrapper {
+  padding-bottom: 6rem;
+}
