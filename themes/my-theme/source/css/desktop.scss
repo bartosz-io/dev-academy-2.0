@@ -438,6 +438,14 @@
 
   .academy-user-goal-content {
     padding-top: 8rem;
+
+    &.academy-user-goal-content-with-chip {
+      padding-top: 8rem;
+
+      .chip {
+        top: 7rem;
+      }
+    }
   }
 
   .academy-user-goal-join {

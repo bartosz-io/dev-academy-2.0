@@ -344,11 +344,21 @@
   display: none;
   padding-top: 6rem;
   flex-direction: column;
+  position: relative;
 
   &.active {
     display: flex;
   }
 
+  &.academy-user-goal-content-with-chip {
+    padding-top: 15rem;
+  }
+
+  .chip {
+    position: absolute;
+    right: 0;
+    top: 6rem;
+  }
 
   &[data-academy="web-security-academy"] {
     .academy-user-goal-content-header-motive {
