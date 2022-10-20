@@ -5,11 +5,14 @@
 
 .footer-socials {
   display: flex;
-  padding: 4rem 0;
 
   li + li {
-    padding-left: 2.5rem;
+    padding-left: 1rem;
   }
+}
+
+.footer-navigation {
+  padding-top: 6rem;
 }
 
 .footer-navigation-column {
@@ -43,6 +46,12 @@
 
       + li {
         padding-top: .5rem;
+      }
+    }
+
+    &.footer-socials {
+      li + li {
+        padding-top: 0;
       }
     }
   }
