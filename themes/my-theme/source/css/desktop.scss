@@ -565,6 +565,7 @@
     position: fixed;
     height: $header-height-desktop;
     transition: all 0.3s ease-in-out;
+    display: flex;
 
     .container {
       display: flex;
@@ -587,7 +588,6 @@
 
   .header-menu {
     display: flex;
-    padding: 2.5rem 0;
   }
 
   .header-nav-toggle {
