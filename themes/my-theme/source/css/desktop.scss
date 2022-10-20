@@ -394,6 +394,11 @@
 
   .academy-course-image {
     margin-bottom: 0;
+
+    img {
+      width: 10.4rem;
+      height: 5.4rem;
+    }
   }
 
   .academy-course-info-right {
@@ -864,6 +869,11 @@
 
   .academy-course-image {
     margin-bottom: 1.5rem;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   .academy-course-info-right {
