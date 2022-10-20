@@ -475,4 +475,16 @@
 
 .academy-community {
   padding: 10rem 0;
+
+  h2 {
+    text-transform: uppercase;
+    font-size: $font-size-46;
+  }
+}
+
+.academy-community-buttons {
+  .button {
+    display: flex;
+    margin-bottom: 2rem;
+  }
 }

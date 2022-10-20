@@ -480,6 +480,13 @@
   .slider-arrow-right {
     right: 0;
   }
+
+  .academy-community-buttons {
+    .button {
+      display: inline-flex;
+      margin-right: 2rem;
+    }
+  }
 }
 
 @media (min-width: 992px) {
