@@ -26,6 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: 7rem;
+  overflow-x: hidden;
 
   ::selection {
     color: $light-200;

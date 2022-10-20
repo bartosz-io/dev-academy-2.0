@@ -479,6 +479,27 @@
     text-transform: uppercase;
     font-size: $font-size-46;
   }
+
+  .container {
+    position: relative;
+  }
+}
+
+.academy-community-left {
+  position: relative;
+  z-index: $z-index-100;
+}
+
+.academy-community-bulb-image {
+  position: absolute;
+  left: -20rem;
+  top: 15rem;
+}
+
+.academy-community-image {
+  position: relative;
+  right: -4rem;
+  margin-bottom: 4rem;
 }
 
 .academy-community-buttons {

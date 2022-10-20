@@ -24,6 +24,12 @@
   .post-idea-header {
     font-size: $font-size-24;
   }
+
+  .academy-community-bulb-image {
+    position: absolute;
+    left: -20rem;
+    top: 3rem;
+  }
 }
 
 @media (min-width: 630px) {
@@ -492,6 +498,11 @@
       margin-right: 2rem;
     }
   }
+
+  .academy-community-image {
+    max-width: 50rem;
+    right: auto;
+  }
 }
 
 @media (min-width: 992px) {
@@ -909,6 +920,16 @@
     flex-shrink: 0;
     margin-right: 2rem;
   }
+
+  .academy-community-left {
+    width: 55%;
+  }
+
+  .academy-community-image {
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
 }
 
 @media (min-width: 1180px) {
@@ -1162,5 +1183,10 @@
 
   .article-toc {
     flex-basis: 23rem;
+  }
+
+  .academy-community-image {
+    top: -5rem;
+    left: 120%;
   }
 }
