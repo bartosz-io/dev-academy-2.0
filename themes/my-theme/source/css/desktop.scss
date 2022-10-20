@@ -1121,6 +1121,12 @@
   .academy-destination-info-boxes .info-box {
     visibility: hidden;
   }
+
+  .academy-special-offer-wrapper {
+    .chip {
+      top: 3rem;
+    }
+  }
 }
 
 @media (min-width: 1366px) {

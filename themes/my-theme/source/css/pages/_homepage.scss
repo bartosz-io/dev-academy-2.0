@@ -506,4 +506,29 @@
 
 .academy-special-offer-wrapper {
   padding-bottom: 6rem;
+  position: relative;
+
+  .chip {
+    position: absolute;
+    top: -6rem;
+    left: 0;
+  }
+}
+
+.academy-special-offer-link {
+  position: relative;
+
+  .button {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    .button {
+      color: $indigo-600;
+      background-color: $indigo-150;
+    }
+  }
 }

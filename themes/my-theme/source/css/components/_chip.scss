@@ -1,0 +1,37 @@
+.chip {
+  font-size: $font-size-20;
+  line-height: 1.2;
+  font-weight: 600;
+  padding: 1.8rem 5rem;
+  text-transform: uppercase;
+  z-index: $z-index-100;
+}
+
+.chip-primary {
+  background-color: $indigo-600;
+  color: $light-100;
+}
+
+.chip-secondary {
+  background-color: $light-250;
+  color: $navy-600;
+}
+
+.chip-black {
+  background-color: $dark-350;
+  color: $light-100;
+}
+
+.chip-rounded {
+  border-radius: 5rem;
+}
+
+.chip-rounded-right {
+  border-top-right-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+}
+
+.chip-rounded-left {
+  border-top-left-radius: 5rem;
+  border-bottom-left-radius: 5rem;
+}
