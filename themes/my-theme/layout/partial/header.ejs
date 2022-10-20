@@ -1,4 +1,4 @@
-<% if (config.banners.top_banner){ %>
+<% if (config.banners.top_banner && is_post()){ %>
     <%- partial('banners/banner-top') %>
 <% } %>
 

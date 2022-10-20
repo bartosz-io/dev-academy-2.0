@@ -13,7 +13,7 @@
 <%
   var bodyClasses = '';
   if (page.thankYouPage) {bodyClasses += 'thank-you '}
-  if (config.banners.top_banner) { bodyClasses += 'b-bar-top '}
+  if (config.banners.top_banner && is_post()) { bodyClasses += 'b-bar-top '}
   if (config.banners.article_side_banner) { bodyClasses += 'b-article-sidebar '}
   if (is_post()) { bodyClasses += 'post-page '}
   if (is_tag()) { bodyClasses += 'tag-page ' }
