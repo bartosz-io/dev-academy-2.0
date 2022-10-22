@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function() {
     if (isTablet()) {
         stickyNavigation();
-        loadOdometer();
+        // loadOdometer();
     } else {
         mobileNavigation();
     }
