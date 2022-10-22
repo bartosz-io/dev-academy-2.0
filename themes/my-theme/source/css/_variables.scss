@@ -87,11 +87,11 @@ $light-600: #9A99AD;
 $light-750: #A0A3BD;
 $light-800: #bbb;
 $light-850: #C7DDFF;
+$light-900: #d7d3ef;
 
 
 $light-650: #828282;
 $light-700: #999;
-$light-900: #adadad;
 
 // - Teal
 $teal-100: #1b95e0;
@@ -162,3 +162,5 @@ $top-bar-height-desktop: 5rem;
 $top-bar-height-mobile: 10rem;
 $header-height-desktop: 9rem;
 $sidebar-offset: 16rem;
+
+$gradient: linear-gradient(95.08deg, $teal-350 2.49%, $indigo-700 97.19%);

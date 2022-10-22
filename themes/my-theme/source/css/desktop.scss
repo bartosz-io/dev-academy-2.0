@@ -189,7 +189,7 @@
 
   .related-post-date {
     font-size: $font-size-13;
-    color: $light-750;
+    color: $light-900;
     font-weight: 500;
     letter-spacing: .025rem;
   }
@@ -1030,6 +1030,7 @@
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 21rem;
+    width: 21rem;
     padding-left: 4rem;
   }
 
@@ -1187,6 +1188,7 @@
 
   .article-sidebar {
     flex-basis: 25rem;
+    width: 25rem;
   }
 
   .article-toc {
@@ -1196,5 +1198,19 @@
   .academy-community-image {
     top: -5rem;
     left: 120%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .b-article-sidebar {
+    .related-posts {
+      left: auto;
+    }
+  }
+
+  .related-posts {
+    max-width: 65rem;
+    right: 4rem;
+    transform: none;
   }
 }
