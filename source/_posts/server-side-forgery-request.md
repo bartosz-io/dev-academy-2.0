@@ -4,7 +4,7 @@ contributor: Gerome Grignon
 avatar: gerome-grignon.png
 description: Learn how a simple URL can attack your back-end and bypass your server-side security
 date: 2022-10-09
-tags: [SSRF, Security]
+tags: [Security]
 id: server-side-request-forgery
 relatedPost: xxe-attacks
 ---
