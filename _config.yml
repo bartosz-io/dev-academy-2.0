@@ -372,3 +372,18 @@ contributors:
     socials:
       github: https://github.com/ElHefe3
       linkedin: https://www.linkedin.com/in/kobus-oberholzer-308990139/
+  "Gerome Grignon":
+    slug: gerome-grignon
+    desc: Gerome is a web developer at SFEIR. He is an open source enthusiast and a contributor to the Angular community.
+    specs: [ typescript, angular, nestjs ]
+    image: /img/gerome-grignon.png
+    motto: Never stop learning!
+    joined: 23 Oct 2022
+    academies:
+      wsa: true
+      fta: true
+    socials:
+      site: https://gerome.dev/
+      twitter: https://twitter.com/GeromeGrignon
+      github: https://github.com/geromegrignon
+      linkedin: https://www.linkedin.com/in/gerome-grignon/
