@@ -563,3 +563,29 @@
     }
   }
 }
+
+.academy-benefits {
+  padding: 7rem 0 15rem;
+
+  h2 {
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: $font-size-24;
+  }
+
+  p {
+    line-height: 2.4rem;
+  }
+}
+
+.academy-benefits-image {
+  display: inline-flex;
+
+  picture {
+    display: inline-flex;
+  }
+}

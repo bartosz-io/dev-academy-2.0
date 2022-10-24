@@ -1,0 +1,35 @@
+.list {
+  li {
+    position: relative;
+    padding-left: 3.8rem;
+    padding-bottom: 1.5rem;
+    font-size: $font-size-15;
+    letter-spacing: .075rem;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: .9rem;
+      top: .6rem;
+      transform: rotate(45deg);
+      width: 0.6rem;
+      height: 1rem;
+      border-bottom: .2rem solid $light-200;
+      border-right: .2rem solid $light-200;
+      z-index: $z-index-100;
+    }
+
+    &:after {
+      content: '';
+      background-color: black;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: inline-flex;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+    }
+  }
+}
