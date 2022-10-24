@@ -589,3 +589,42 @@
     display: inline-flex;
   }
 }
+
+.academy-blog {
+  background-color: $light-200;
+  padding: 8rem 0 10rem;
+
+  h2 {
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  p {
+    line-height: 2.4rem;
+    text-align: center;
+  }
+
+  .post-title {
+    padding-bottom: 3rem;
+    text-align: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-bottom: 0;
+    padding-top: 2rem;
+  }
+
+  .post {
+    box-shadow: none;
+  }
+
+  .post-content header {
+    padding: 0;
+  }
+}
+
+.academy-blog-link {
+  display: flex;
+  justify-content: center;
+}
