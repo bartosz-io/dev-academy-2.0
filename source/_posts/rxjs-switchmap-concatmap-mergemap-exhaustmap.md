@@ -4,7 +4,7 @@ contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: Efficient implementation of higher-order observables. Understanding of flattening strategies in switchMap, concatMap, mergeMap and exhaustMap.
 date: 2019-06-01
-tags: [Angular, RxJS]
+tags: [angular, rxjs]
 id: angular-rxjs
 relatedPost: angular-interceptors
 ---

@@ -4,7 +4,7 @@ contributor: Gert J. Oberholzer
 avatar: kobus-oberholzer.png
 description: A summary on external entity injections, how they are used in an attack and how to prevent most of them
 date: 2022-10-13
-tags: [XML, Security]
+tags: [xml, security]
 id: xxe-attacks
 relatedPost: react-xss
 ---

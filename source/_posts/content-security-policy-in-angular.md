@@ -4,7 +4,7 @@ contributor: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Protect Angular apps with Content Security Policy (CSP) against security vulnerabilities in Angular (JavaScript) applications. ⚔️
 date: 2022-01-21
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-csp
 relatedPost: trusted-types
 ---

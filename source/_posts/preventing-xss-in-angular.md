@@ -4,7 +4,7 @@ contributor: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Learn Angular XSS modern best practices and methods to prevent cross-site scripting attacks in Angular (JavaScript) applications. 🔒
 date: 2021-11-27
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-xss
 relatedPost: angular-csp
 ---

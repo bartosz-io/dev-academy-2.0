@@ -5,7 +5,7 @@ link: https://geogram.com
 avatar: peter-mobley.jpg
 description: Learn how to implement Cross-site Request Forgery (CSRF) Protection in Angular.
 date: 2022-02-23
-tags: [Angular, Security]
+tags: [angular, security]
 id: csrf-protection
 relatedPost: angular-xss
 ---

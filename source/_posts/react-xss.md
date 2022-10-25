@@ -4,7 +4,7 @@ contributor: Vlad Ataman
 avatar: vlad-ataman.png
 description: Learn React XSS modern best practices and methods to prevent cross-site scripting attacks in React (JavaScript) applications. 🔒
 date: 2022-07-08
-tags: [React, Security]
+tags: [react, security]
 id: react-xss
 relatedPost: angular-xss
 published: true

@@ -4,7 +4,7 @@ contributor: Saujan Ghimire
 avatar: saujan-ghimire.jpg
 description: Learn how to fix CORS (cross-origin resource sharing) issues in Angular.
 date: 2022-08-05
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-cors
 relatedPost: angular-rxjs
 ---

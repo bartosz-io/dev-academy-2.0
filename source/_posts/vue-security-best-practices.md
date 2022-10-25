@@ -4,7 +4,7 @@ contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn Vue modern best practices and methods to keep your Vue application (JavaScript) secure. 🔒
 date: 2022-07-25
-tags: [Vue, Security]
+tags: [vue, security]
 id: vue-security-best-practices
 relatedPost: vue-xss
 ---

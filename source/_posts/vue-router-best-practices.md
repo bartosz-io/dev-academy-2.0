@@ -4,7 +4,7 @@ contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn modern Vue best practices with vue-router to build reliable and well-designed route navigation.
 date: 2022-09-02
-tags: [Vue, Routing]
+tags: [vue, routing]
 id: vue-router-best-practices
 relatedPost: vue-xss, vue-security-best-practices
 ---

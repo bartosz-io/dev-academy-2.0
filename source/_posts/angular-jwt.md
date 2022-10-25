@@ -1,6 +1,6 @@
 ---
 title: Angular JWT Authorization with Refresh Token and Http Interceptor
-tags: [Angular, Security]
+tags: [angular, security]
 contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: Understanding of restricting access to the given parts in Angular application by using router guards and intercepting HTTP calls. Explanation why we need refresh tokens.

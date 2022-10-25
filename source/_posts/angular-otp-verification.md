@@ -4,7 +4,7 @@ contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn how to request and verify one-time passwords in Angular application improving the security of your authentication system.
 date: 2022-07-25
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-otp
 relatedPost: user-login-and-registration
 bannerHeader: 'Building OTP?'

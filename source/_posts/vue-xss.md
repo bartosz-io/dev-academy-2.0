@@ -4,7 +4,7 @@ contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn Vue XSS modern best practices and methods to prevent cross-site scripting attacks in Vue (JavaScript) applications. 🔒
 date: 2022-07-13
-tags: [Vue, Security]
+tags: [vue, security]
 id: vue-xss
 relatedPost: angular-xss
 ---
