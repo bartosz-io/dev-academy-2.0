@@ -510,6 +510,21 @@
     max-width: 50rem;
     right: auto;
   }
+
+  .academy-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .academy-hero-left {
+    flex: 1 1 55rem;
+    padding-top: 10rem;
+  }
+
+  .academy-hero-right {
+  }
+
 }
 
 @media (min-width: 992px) {
