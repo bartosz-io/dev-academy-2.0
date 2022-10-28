@@ -75,6 +75,10 @@
   }
 }
 
+.header-nav-link-active {
+  color: $hover;
+}
+
 .header-nav-link-submenu {
   position: relative;
   padding-left: 0;
