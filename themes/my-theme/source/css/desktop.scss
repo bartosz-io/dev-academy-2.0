@@ -30,6 +30,11 @@
     left: -20rem;
     top: 3rem;
   }
+
+  .academy-hero-right-image {
+    width: 38rem;
+    bottom: -18rem;
+  }
 }
 
 @media (min-width: 630px) {
@@ -45,6 +50,11 @@
 
   .contributors-ready-right {
     display: flex;
+  }
+
+  .academy-hero-right-image {
+    width: 47rem;
+    bottom: -26rem;
   }
 }
 
@@ -515,16 +525,34 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 0;
   }
 
   .academy-hero-left {
-    flex: 1 1 55rem;
+    flex: 0 1 41rem;
     padding-top: 10rem;
   }
 
   .academy-hero-right {
+    flex: 1 1 0;
+    justify-content: flex-end;
   }
 
+  .academy-trustpilot-image {
+    padding-top: 0;
+  }
+
+  .academy-hero-right-image {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+
+  .academy-hero {
+    .formkit-submit {
+      margin-bottom: 0;
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -971,6 +999,20 @@
   .academy-benefits-details-list {
     padding-right: 4rem;
   }
+
+  .academy-hero-left {
+    flex-basis: 50rem;
+  }
+
+  .academy-hero-wave {
+    top: 92%;
+  }
+
+  .academy-hero-right-image {
+    position: relative;
+    left: auto;
+    top: 5rem;
+  }
 }
 
 @media (min-width: 1180px) {
@@ -1036,6 +1078,10 @@
 
   .academy-benefits-details {
     padding: 7rem;
+  }
+
+  .academy-hero-right {
+    flex: 0 1 auto;
   }
 }
 
@@ -1194,6 +1240,10 @@
       top: 3rem;
     }
   }
+
+  .academy-trustpilot {
+    padding-top: 12rem;
+  }
 }
 
 @media (min-width: 1366px) {
@@ -1236,6 +1286,15 @@
     top: -5rem;
     left: 120%;
   }
+
+  .academy-hero-right-image {
+    max-width: 66rem;
+    top: 8rem;
+  }
+
+  .academy-hero-wave {
+    top: 78%;
+  }
 }
 
 @media (min-width: 1536px) {
@@ -1249,5 +1308,54 @@
     max-width: 65rem;
     right: 4rem;
     transform: none;
+  }
+
+  .academy-hero-wave {
+    top: 76%;
+  }
+
+  .academy-hero-right-image {
+    top: 11rem;
+  }
+
+  .academy-trustpilot {
+    padding-top: 7rem;
+  }
+}
+
+@media (min-width: 1860px) {
+  .academy-hero-wave {
+    top: 69%;
+  }
+
+  .academy-trustpilot {
+    padding-top: 12rem;
+  }
+}
+
+@media (min-width: 2000px) {
+  .academy-hero-wave {
+    top: 66%;
+  }
+}
+
+@media (min-width: 2200px) {
+  .academy-hero-wave {
+    top: 63%;
+  }
+}
+
+@media (min-width: 2560px) {
+  .academy-hero-wave {
+    top: 58%;
+  }
+
+  .academy-hero {
+    position: relative;
+    top: 3rem;
+  }
+
+  .academy-trustpilot {
+    padding: 15rem 0 10rem;
   }
 }

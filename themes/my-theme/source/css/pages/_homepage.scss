@@ -635,6 +635,8 @@
 }
 
 .academy-hero {
+  padding-bottom: 9rem;
+
   h1 {
     font-size: $font-size-46;
     line-height: 120%;
@@ -722,17 +724,23 @@
 
 .academy-hero-right-image {
   max-width: 60rem;
-  width: 100%;
+  width: 34rem;
+  position: absolute;
+  bottom: -16rem;
+  left: 50%;
+  z-index: $z-index-100;
+  transform: translateX(-50%);
 }
 
 .academy-trustpilot-image {
   max-width: 30rem;
   width: 100%;
+  padding-top: 9rem;
 }
 
 .academy-trustpilot {
   position: relative;
   z-index: $z-index-100;
   padding-bottom: 8rem;
-  padding-top: 20vw;
+  padding-top: 9rem;
 }
