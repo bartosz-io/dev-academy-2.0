@@ -38,7 +38,7 @@
                         </div>
                     </li>
                     <li><a class="header-nav-link" href="https://courses.dev-academy.com" rel="nofollow">Courses</a></li>
-                    <li><a class="header-nav-link <%- is_current('/blog') ? 'header-nav-link-active' : '' %>" href="<%- url_for('/blog') %>">Blog</a></li>
+                    <li><a class="header-nav-link <%- is_current('/blog') || is_post() ? 'header-nav-link-active' : '' %>" href="<%- url_for('/blog') %>">Blog</a></li>
                     <li><a class="header-nav-link <%- is_current('/contributors') ? 'header-nav-link-active' : '' %>" href="<%- url_for('/contributors') %>">Contributors</a></li>
                 </ul>
             </nav>
