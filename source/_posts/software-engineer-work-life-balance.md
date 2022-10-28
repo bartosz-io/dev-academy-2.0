@@ -20,17 +20,11 @@ Family is another crucial part of life that, if not given the time required, cou
 Then how do we, as software engineers, balance our work life? It bundles up to several deliberate actions geared towards preventing a clash or overlap in both. After almost getting crushed and damaged with nonchalance towards my work-life balance, I figured out deliberate things I needed to do to maintain my creativity and be at the top of the game. Below are 7 things that I believe will help you maintain a proper work-life balance:
 
 1. Understand the concept of time and time management
-
 2. Prioritise your tasks.
-
 3. Migrate from todo to calendar
-
 4. Implementing some basic ethics in your personal life
-
 5. Communication is important for a healthy work-life balance
-
 6. Knowing that everything is not about you
-
 7. Software engineers should plan ahead of time
 
 ### 1\. Understand the concept of time and time management
