@@ -66,3 +66,56 @@
     padding: 1rem 2rem;
   }
 }
+
+.ck-visible {
+  .seva-overlay {
+    display: block !important;
+    position: static;
+    opacity: 1;
+    max-width: 100% !important;
+    z-index: $z-index-100;
+    background: transparent;
+  }
+
+  .seva-overlay [data-format="modal"],
+  .formkit-overlay [data-format="modal"] {
+    display: block !important;
+  }
+
+  .seva-modal .formkit-close,
+  .formkit-modal .formkit-close {
+    display: none;
+  }
+
+  .formkit-modal {
+    margin: 0 !important;
+    min-width: auto;
+    max-width: none !important;
+    opacity: 1;
+    background-color: transparent;
+  }
+
+  .formkit-guarantee {
+    display: none;
+  }
+
+  .formkit-column-header {
+    display: none;
+  }
+
+  .formkit-column-body {
+    padding: 0;
+  }
+
+  .formkit-subheader {
+    display: none;
+  }
+
+  .formkit-input {
+    border-radius: .8rem;
+  }
+
+  .formkit-field {
+    margin-bottom: 1.5rem;
+  }
+}
