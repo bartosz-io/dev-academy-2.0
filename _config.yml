@@ -387,3 +387,18 @@ contributors:
       twitter: https://twitter.com/GeromeGrignon
       github: https://github.com/geromegrignon
       linkedin: https://www.linkedin.com/in/gerome-grignon/
+  "Afolayan Stephen":
+    slug: afolayan-stephen
+    desc: Stephen is an experienced community organizer and an aspiring DevRel. He recently find a spark for React/React Native and he is passionate about learning, sharing, and collaboration.
+    specs: [ community, react, react-native ]
+    image: /img/contributors/afolayan-stephen.png
+    motto: Nothing grows in a land where you plant nothing, except weeds. Plant good seeds!
+    joined: 28 Oct 2022
+    academies:
+      wsa: false
+      fta: true
+    socials:
+      site: https://jilh.netlify.app
+      twitter: https://twitter.com/isayjilh
+      github: https://github.com/jilh
+      linkedin: https://www.linkedin.com/in/jilh
