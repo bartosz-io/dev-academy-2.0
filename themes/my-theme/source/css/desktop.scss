@@ -553,6 +553,25 @@
       margin-bottom: 0;
     }
   }
+
+  .short-mail-wrapper {
+    .short-mail-img {
+      display: inline-flex;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      max-width: 35rem;
+      margin: 0;
+    }
+
+    .short-mail {
+      padding: 7rem;
+    }
+
+    .short-mail-content {
+      width: 40rem;
+    }
+  }
 }
 
 @media (min-width: 992px) {
