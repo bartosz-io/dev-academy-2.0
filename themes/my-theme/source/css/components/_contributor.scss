@@ -95,6 +95,16 @@
   }
 }
 
+.contributor-hidden {
+  display: none;
+}
+
+.contributor-load-more {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
 .contributor-contribution {
   padding-bottom: 3rem;
 }

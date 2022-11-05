@@ -72,8 +72,9 @@
                 <% }) %>
             </div>
             <div class="contributors-list">
-                <% page.contributors.forEach(function(contributor){ %>
-                    <article class="contributor">
+                <% page.contributors.forEach(function(contributor, index){ var hiddenClass; %>
+                    <% if (index > 8) { hiddenClass = 'contributor-hidden' } %>
+                    <article class="contributor <%- hiddenClass %>">
                         <header class="contributor-header">
                             <img src="<%- contributor.image %>" alt="<%- contributor.name %>">
                             <a href="/contributors/<%- contributor.slug %>" class="contributor-header-link">
@@ -94,6 +95,9 @@
                         </div>
                     </article>
                 <% }) %>
+            </div>
+            <div class="contributor-load-more">
+                <button class="button button-primary" id="contributor-load-more">Load more</button>
             </div>
         </div>
     </div>

@@ -249,12 +249,23 @@ function contributors() {
 
     if (contributorsContainer) {
         var pillsContainer = contributorsContainer.querySelector('.pills');
+        var loadMoreButton = contributorsContainer.querySelector('#contributor-load-more');
+        var contributorHiddenClass = 'contributor-hidden';
+        var buttonHiddenClass = 'button-hidden';
+        var contributorsPerPage = 9;
+        var filterName;
 
         pillsContainer.addEventListener('click', function(event) {
             const spec = event.target.getAttribute('data-spec');
+
             if (spec) {
                 var pills = pillsContainer.querySelectorAll('.pill');
                 var pillInactiveClass = 'pill-inactive';
+
+                filterName = spec;
+
+                loadMoreButton.classList.remove(buttonHiddenClass);
+
                 pills.forEach((pill) => pill.classList.add(pillInactiveClass));
 
                 event.target.classList.remove(pillInactiveClass);
@@ -262,20 +273,62 @@ function contributors() {
                 var contributors = contributorsContainer.querySelectorAll('.contributor');
 
                 if (spec === 'all') {
-                    contributors.forEach((contributor) => contributor.style.display = 'block');
-                } else {
-                    contributors.forEach((contributor) => contributor.style.display = 'none');
+                    contributors.forEach((contributor, index) => {
+                        contributor.classList.remove(contributorHiddenClass);
 
-                    contributorsContainer.querySelectorAll('.contributor-specs').forEach(function(specs) {
-                        let a = specs.querySelector('.contributor-spec-' + spec);
-
-                        if (a) {
-                            a.closest('.contributor').style.display = 'block';
+                        if (index >= contributorsPerPage) {
+                            contributor.classList.add(contributorHiddenClass);
                         }
-                    })
+                    });
+                } else {
+                    contributors.forEach((contributor) => contributor.classList.add(contributorHiddenClass));
+
+                    var foundContributors = contributorsContainer.querySelectorAll(`.contributor-specs .contributor-spec-${spec}`);
+
+                    if (foundContributors) {
+                        foundContributors.forEach(function(foundSpec, index) {
+                            if (index < contributorsPerPage) {
+                                foundSpec.closest('.contributor').classList.remove(contributorHiddenClass);
+                            }
+                        });
+
+                        if (foundContributors.length > contributorsPerPage) {
+                            loadMoreButton.classList.remove(buttonHiddenClass);
+                        } else {
+                            loadMoreButton.classList.add(buttonHiddenClass);
+                        }
+                    }
                 }
             }
-        })
+        });
+
+        loadMoreButton.addEventListener('click', function() {
+            let hiddenContributors;
+
+            if (filterName === 'all') {
+                hiddenContributors = contributorsContainer.querySelectorAll(`.${contributorHiddenClass}`);
+            } else {
+                let specName = filterName && filterName !== 'all' ? ` .contributor-spec-${filterName}` : '';
+                let filteredSpecs = contributorsContainer.querySelectorAll(`.${contributorHiddenClass}${specName}`);
+                let found = [];
+
+                filteredSpecs.forEach(function(spec) {
+                    found.push(spec.closest('.contributor'));
+                });
+
+                hiddenContributors = found;
+            }
+
+            if (hiddenContributors.length <= contributorsPerPage) {
+                loadMoreButton.classList.add(buttonHiddenClass);
+            }
+
+            hiddenContributors.forEach(function(contributor, index) {
+                if (index < contributorsPerPage) {
+                    contributor.classList.remove(contributorHiddenClass);
+                }
+            });
+        });
     }
 }
 
