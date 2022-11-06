@@ -706,6 +706,7 @@
   .header-nav-link {
     padding: 1.5rem;
     border: 0;
+    font-size: $font-size-14;
   }
 
   .header-nav-link-submenu {
@@ -761,7 +762,7 @@
     margin-left: 1rem;
 
     li {
-      margin: 0 1rem;
+      margin: 0 .7rem;
       display: flex;
       align-items: center;
     }
@@ -827,6 +828,10 @@
 
   .header-nav-start {
     display: flex;
+
+    .button {
+      font-size: $font-size-15;
+    }
   }
 
   .article-share-list {
@@ -1262,6 +1267,18 @@
 
   .academy-trustpilot {
     padding-top: 12rem;
+  }
+
+  .header-socials li {
+    margin: 0 1rem;
+  }
+
+  .header-nav-start .button {
+    font-size: $font-size-16;
+  }
+
+  .header-nav-link {
+    font-size: $font-size-15;
   }
 }
 
