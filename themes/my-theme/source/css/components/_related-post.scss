@@ -10,12 +10,13 @@
   box-sizing: border-box;
 
   &.visible {
-    display: block;
+    display: flex;
   }
 }
 
 .related-post {
   display: flex;
+  flex-grow: 1;
   align-items: center;
   position: relative;
   padding: 2rem 1.5rem;
