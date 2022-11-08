@@ -76,7 +76,7 @@
                     <% if (index > 8) { hiddenClass = 'contributor-hidden' } %>
                     <article class="contributor <%- hiddenClass %>">
                         <header class="contributor-header">
-                            <img src="<%- contributor.image %>" alt="<%- contributor.name %>">
+                            <img src="<%- contributor.image %>" alt="<%- contributor.name %>" loading="lazy" width="130" height="130">
                             <a href="/contributors/<%- contributor.slug %>" class="contributor-header-link">
                                 <h3 class="contributor-name"><%- contributor.name %></h3>
                             </a>

@@ -4,7 +4,7 @@ contributor: Afolayan Stephen
 avatar: afolayan-stephen.png
 description: Learn how to achieve work life balance as a software engineer
 date: 2022-10-28
-tags: [Career]
+tags: [career]
 id: work-life-balance
 relatedPost: 
 ---
