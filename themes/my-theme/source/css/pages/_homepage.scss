@@ -1,6 +1,6 @@
 .academy-contributor-wrapper {
   background-color: $light-200;
-  padding: 5rem 0 7rem;
+  padding: 25rem 0 7rem;
 }
 
 .academy-contributor-image {
@@ -691,15 +691,19 @@
   transform: translateX(-50%);
 }
 
-.academy-trustpilot-image {
-  max-width: 30rem;
-  width: 100%;
-  padding-top: 9rem;
-}
-
 .academy-trustpilot {
+  padding-bottom: 3rem;
   position: relative;
   z-index: $z-index-100;
-  padding-bottom: 8rem;
-  padding-top: 9rem;
+}
+
+.academy-trustpilot-image {
+  max-width: 20rem;
+  width: 100%;
+}
+
+.academy-trustpilot-score {
+  color: $light-175;
+  font-size: $font-size-14;
+  padding-top: 1rem;
 }

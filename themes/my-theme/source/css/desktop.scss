@@ -56,6 +56,10 @@
     width: 47rem;
     bottom: -26rem;
   }
+
+  .academy-contributor-wrapper {
+    padding-top: 35rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -538,10 +542,6 @@
     justify-content: flex-end;
   }
 
-  .academy-trustpilot-image {
-    padding-top: 0;
-  }
-
   .academy-hero-right-image {
     position: static;
     transform: none;
@@ -571,6 +571,10 @@
     .short-mail-content {
       width: 40rem;
     }
+  }
+
+  .academy-contributor-wrapper {
+    padding-top: 25rem;
   }
 }
 
@@ -1029,10 +1033,6 @@
     flex-basis: 50rem;
   }
 
-  .academy-hero-wave {
-    top: 92%;
-  }
-
   .academy-hero-right-image {
     position: relative;
     left: auto;
@@ -1107,6 +1107,10 @@
 
   .academy-hero-right {
     flex: 0 1 auto;
+  }
+
+  .academy-hero-wave {
+    top: 89%;
   }
 }
 
@@ -1266,10 +1270,6 @@
     }
   }
 
-  .academy-trustpilot {
-    padding-top: 12rem;
-  }
-
   .header-socials li {
     margin: 0 1rem;
   }
@@ -1328,10 +1328,6 @@
     max-width: 66rem;
     top: 8rem;
   }
-
-  .academy-hero-wave {
-    top: 78%;
-  }
 }
 
 @media (min-width: 1536px) {
@@ -1348,51 +1344,38 @@
   }
 
   .academy-hero-wave {
-    top: 76%;
+    top: 82%;
   }
 
-  .academy-hero-right-image {
-    top: 11rem;
-  }
-
-  .academy-trustpilot {
-    padding-top: 7rem;
+  .academy-contributor-wrapper {
+    padding-top: 30rem;
   }
 }
 
 @media (min-width: 1860px) {
   .academy-hero-wave {
-    top: 69%;
-  }
-
-  .academy-trustpilot {
-    padding-top: 12rem;
+    top: 75%;
   }
 }
 
 @media (min-width: 2000px) {
   .academy-hero-wave {
-    top: 66%;
+    top: 72%;
   }
 }
 
 @media (min-width: 2200px) {
   .academy-hero-wave {
-    top: 63%;
+    top: 68%;
   }
 }
 
 @media (min-width: 2560px) {
   .academy-hero-wave {
-    top: 58%;
+    top: 64%;
   }
 
-  .academy-hero {
-    position: relative;
-    top: 3rem;
-  }
-
-  .academy-trustpilot {
-    padding: 15rem 0 10rem;
+  .academy-contributor-wrapper {
+    padding-top: 35rem;
   }
 }
