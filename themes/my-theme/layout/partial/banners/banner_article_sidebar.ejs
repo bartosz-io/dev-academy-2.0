@@ -1,0 +1,21 @@
+<aside class="article-sidebar">
+    <div class="article-sidebar-content">
+        <% if (post.bannerImage) {%>
+            <img src="<%- post.bannerImage %>" alt="">
+        <% } %>
+        <% if (post.bannerHeader) {%>
+            <h4 class="article-sidebar-header"><%- post.bannerHeader %></h4>
+        <% } %>
+        <% if (post.bannerSubheader) {%>
+            <h5 class="article-sidebar-subheader"><%- post.bannerSubheader %></h5>
+        <% } else { %>
+        <h5 class="article-sidebar-header">Join 8-week 🔥 massive learning!</h5>
+        <% } %>
+        <img class="article-sidebar-img" src="/img/fta.png" loading="lazy" alt="FTA">
+        <% if (post.bannerUrl) {%>
+            <a href="<%- post.bannerUrl %>" class="article-sidebar-header button button-primary button-small">Check it out!</a>
+        <% } else { %>
+            <a href="https://fullstack-testing.com/?ck=5ccf0adf58" class="article-sidebar-header button button-primary button-small">Save your spot!</a>
+        <% } %>
+    </div>
+</aside>

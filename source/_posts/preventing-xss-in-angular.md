@@ -1,10 +1,10 @@
 ---
 title: Angular XSS prevention 🔐 Modern best practices
-author: Christoph Jürgens
+contributor: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Learn Angular XSS modern best practices and methods to prevent cross-site scripting attacks in Angular (JavaScript) applications. 🔒
 date: 2021-11-27
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-xss
 relatedPost: angular-csp
 ---
@@ -16,6 +16,7 @@ Cross-Site Scripting (XSS) is probably one of the most common and most dangerous
 
 In short, once an attacker achieves exploiting an XSS vulnerability, it mostly means _game over_. The whole web app can be considered entirely compromised. When it comes to XSS attacks, the victim is the user and not the application.
 
+## Table of Contents
 <!-- toc -->
 
 Luckily most modern front-end frameworks like Angular come with built-in defense mechanisms against XSS. However, that does not mean your application is automatically perfectly secure.

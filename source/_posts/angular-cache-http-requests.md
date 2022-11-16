@@ -1,10 +1,10 @@
 ---
 title: How to cache HTTP requests in Angular
-author: Bartosz Pietrucha
+contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: A better understanding of caching HTTP requests in Angular by using rxjs shareReplay.
 date: 2019-09-14 16:28:16
-tags: [Angular, RxJS, "Knowledge Pill"]
+tags: [angular, rxjs, "knowledge pill"]
 id: angular-cache
 relatedPost: angular-bundle-analysis
 ---

@@ -1,10 +1,10 @@
 ---
 title: Vue Security Best Practices 💎
-author: Mauricio Matias C.
+contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn Vue modern best practices and methods to keep your Vue application (JavaScript) secure. 🔒
 date: 2022-07-25
-tags: [Vue, Security]
+tags: [vue, security]
 id: vue-security-best-practices
 relatedPost: vue-xss
 ---
@@ -13,6 +13,7 @@ relatedPost: vue-xss
 
 Hi, #VueFriend! In this post, we cover security best practices around the Vue ecosystem (in a nutshell). Security issues are always related to the development process, putting at risk the most valuable asset, the end user information. To avoid this kind of scenario, we have some best practices to improve the security in your single-page applications, web pages, web apps, or other builds with Vue. Let's get started!.
 
+## Table of Contents
 <!-- toc -->
 
 ## `v-if` vs `v-show`, they don't have the same logic

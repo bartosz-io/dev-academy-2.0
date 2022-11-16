@@ -1,3 +1,9 @@
-<%- partial('partial/tags') %>
-<%- partial('partial/posts', {posts: page.posts}) %>
-<%- partial('partial/pagination') %>
+<div class="container">
+    <h2 class="posts-listing-header border border-light border-large"><span>Discover posts</span> by our elite team!</h2>
+    <!-- TODO Algolia search -->
+    <!-- <%- partial('partial/search') %> -->
+    <%- partial('partial/tags') %>
+    <%- partial('partial/posts', {posts: page.posts}) %>
+    <%- partial('partial/pagination') %>
+    <%- partial('partial/post-idea') %>
+</div>

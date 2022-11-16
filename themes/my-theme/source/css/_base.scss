@@ -22,28 +22,26 @@ body {
   line-height: 1.6;
   color: $font-color;
   font-family: $font-family;
-  background-color: $light-100;
+  background-color: $navy-400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 7rem;
+  overflow-x: hidden;
 
   ::selection {
     color: $light-200;
     background: $dark-300;
   }
-
-  @media (max-width: 768px) {
-    padding-bottom: 55px;
-  }
 }
 
 a {
   display: inline;
-  color: $teal-400;
+  color: $teal-300;
   transition: color $transition-time $transition-type;
   word-break: break-word;
 
   &:hover {
-    color: $teal-600;
+    color: $hover;
   }
 }
 
@@ -63,19 +61,15 @@ a {
   text-align: right;
 }
 
-main {
-  padding-top: 6rem;
-  min-height: calc(100vh - 34rem);
-}
-
 picture {
   display: flex;
   flex-direction: column;
 }
 
 p {
-  padding-bottom: $size-24;
-  line-height: 2.6rem;
+  padding-bottom: $size-48;
+  line-height: 2.8rem;
+  letter-spacing: .075rem;
 }
 
 .bold,
@@ -96,15 +90,16 @@ h5,
 h6 {
   line-height: 1.3;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  letter-spacing: .1rem;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: $font-size-32;
 }
 
 h2 {
-  font-size: 2.3rem;
+  font-size: $font-size-24;
 }
 
 h3 {
@@ -117,24 +112,45 @@ h6 {
   font-size: $font-size-20;
 }
 
+main {
+  background-color: $light-100;
+}
+
 code {
   overflow-wrap: break-word;
   padding: .1rem .3rem;
-  font-size: $font-size-14;
+  font-size: inherit;
   background: $light-200;
   border-radius: .2rem;
   color: $dark-500;
 }
 
 blockquote {
-  font-family: $font-family-georgia;
-  font-size: $font-size-18;
-  margin: 1rem 1rem 3rem;
-  border-left: .5rem solid $teal-300;
-  padding-left: 1rem;
+  font-size: $font-size-16;
+  margin: 0 0 6rem;
+  padding: 1rem 0 1rem 3rem;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: .4rem;
+    background-color: $indigo-150;
+    display: flex;
+    height: 100%;
+    border-radius: 4rem;
+  }
 
   p {
-    line-height: 3rem;
     padding-bottom: 0;
   }
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  appearance:none;
 }

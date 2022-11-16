@@ -19,29 +19,55 @@ $size-768: 76.8rem;
 
 // Font sizes
 $font-size-12: 1.2rem;
+$font-size-13: 1.3rem;
 $font-size-14: 1.4rem;
+$font-size-15: 1.5rem;
 $font-size-16: 1.6rem;
 $font-size-18: 1.8rem;
 $font-size-20: 2rem;
 $font-size-22: 2.2rem;
 $font-size-24: 2.4rem;
+$font-size-28: 2.8rem;
 $font-size-30: 3rem;
+$font-size-32: 3.2rem;
 $font-size-34: 3.4rem;
+$font-size-36: 3.6rem;
+$font-size-46: 4.6rem;
 $font-size-48: 4.8rem;
 $font-size-56: 5.6rem;
 $font-size-100: 10rem;
 
 // Fonts
 $font-family-ico: 'IcoFont';
-$font-family: 'Roboto', sans-serif;
+$font-family: 'Poppins', sans-serif;
 $font-family-monospace: 'Source Code Pro', monospace;
-$font-family-georgia: Georgia, 'Times New Roman', serif;
 
 // Colors
+$primary: #610BEF;
+$secondary: #130B37;
+$hover: #8DE9FF;
+
+// - Primary indigo
+$indigo-100: #BFBEFC;
+$indigo-150: #CBCEFF;
+$indigo-400: $primary;
+$indigo-600: #4700AB;
+$indigo-650: #381f7a;
+$indigo-700: #7B52D1;
+
+// - Secondary navy
+$navy-300: #0A0521;
+$navy-250: #14142A;
+$navy-400: $secondary;
+$navy-500: #14142B;
+$navy-600: #262338;
+$navy-800: #4E4B66;
+
 // - Primary dark
 $dark-100: #000;
 $dark-200: #151515;
 $dark-300: #181818;
+$dark-350: #1F1D2E;
 $dark-400: #212121;
 $dark-500: #2e2e2e;
 $dark-600: #333842;
@@ -49,29 +75,38 @@ $dark-700: #4F4F4F;
 
 // - Light
 $light-100: #fff;
-$light-150: #f9f9f9;
 $light-175: #f3f3f3;
-$light-200: #ededed;
-$light-200: #e1e1e1;
-$light-300: #d4d4d4;
-$light-500: #8d8d8d;
-$light-600: #767676;
+
+$light-125: #EBECFE;
+$light-150: #EFF0F7;
+$light-200: #F7F7FC;
+$light-250: #e8ebf7;
+$light-300: #FCFCFC;
+$light-400: #D9D9D9;
+$light-500: #A0A3BD;
+$light-600: #9A99AD;
+$light-750: #A0A3BD;
+$light-800: #bbb;
+$light-850: #C7DDFF;
+$light-900: #d7d3ef;
+
+
 $light-650: #828282;
 $light-700: #999;
-$light-800: #bbb;
-$light-900: #adadad;
 
 // - Teal
 $teal-100: #1b95e0;
 $teal-200: #2186c3;
 $teal-300: #3ba4fe;
+$teal-350: #77A8F1;
 $teal-400: #256fbe;
 $teal-600: #00acff;
 $teal-700: #2F80ED;
+$teal-800: #7EB2FF;
 
 // - Pink
 $pink-100: #e91e63;
-$pink-200: #d33067;
+$pink-200: #B52E31;
 $pink-300: #ff2b70;
 $pink-400: #ff548d;
 
@@ -83,13 +118,17 @@ $yellow: #f6df4b;
 $yellow-100: #FEFCBF;
 $yellow-200: #FAF089;
 $yellow-300: #F6E05E;
-$yellow-400: #ECC94B;
+$yellow-400: #F7DF1E;
+
+// orange
+$orange: #F16529;
 
 // green
 $green-100: #C6F6D5;
 $green-200: #9AE6B4;
 $green-300: #68D391;
 $green-400: #48BB78;
+$green-500: #07942E;
 
 $twitter: #1da1f2;
 $facebook: #66679d;
@@ -118,3 +157,11 @@ $transition-default: $transition-time all $transition-type;
 
 // Container gap
 $container-gap: 2rem;
+
+// Layout settings
+$top-bar-height-desktop: 5rem;
+$top-bar-height-mobile: 10rem;
+$header-height-desktop: 8rem;
+$sidebar-offset: 16rem;
+
+$gradient: linear-gradient(95.08deg, $teal-350 2.49%, $indigo-700 97.19%);

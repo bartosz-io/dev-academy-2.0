@@ -1,10 +1,10 @@
 ---
 title: Angular Architecture Patterns and Best Practices (that help to scale)
-author: Bartosz Pietrucha
+contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: Complete guide of Angular architecture best practices. High-level abstraction layers, unidirectional data flow, reactive state management and modular design.
 date: 2019-07-02
-tags: [Angular, Architecture]
+tags: [angular, architecture]
 id: angular-architecture
 relatedPost: user-login-and-registration
 ---
@@ -20,8 +20,7 @@ Building scalable software is a challenging task. When we think about scalabilit
 
 {% image 800px "bullets.png" "Angular Architecture Patterns and Best Practices" %}
 
-## Table of contents
-
+## Table of Contents
 <!-- toc -->
 
 ## Problems of scalability in front-end

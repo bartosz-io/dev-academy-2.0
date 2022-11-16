@@ -1,10 +1,10 @@
 ---
 title: Angular Guard for Role-Based Access Control
-author: A M Sanjeev
+contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn about Angular Guard, AuthService, AuthGuard Implementation, and Routing Module Implementations and create a simple Angular app with user and admin roles and role-based authorization.
 date: 2022-09-11
-tags: [Angular, Security, Routing]
+tags: [angular, security, routing]
 id: angular-router-guard-rbac
 relatedPost: vue-router-best-practices
 ---
@@ -18,8 +18,7 @@ In this article, we'll create a simple Angular app with user and admin roles and
 
 The **_/admin_** route is accessible to only admins. The user can access the application's **_/user_** route if they log in as a user from the login page. As a guest, he can only view the **_/home_** page; he cannot use the **_/admin_** page or **_/user_** routes. We can restrict access to **_/admin_** or **_/user_** routes. The authentication service will be used by the login component to log in to the application. If the user is already logged in as an admin or user, he will be taken to the **_/home_** page.
 
-### **In this Article**
-
+## Table of Contents
 <!-- toc -->
 
 ## Introduction

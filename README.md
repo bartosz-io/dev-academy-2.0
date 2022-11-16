@@ -15,12 +15,12 @@ hexo.extend.filter.register('after_generate', function () {
 # Related post
 - Każdy post powinien posiadać unikalne pole id. Aby dodać powiązany post, dodajemy jego id w polu relatedPost.
 
-# Authors
-- Pole **authors_specs** to dostępne specjalizacje, które nadawane są autorom w ich polu **specs**. Dzięki temu polu również generowany jest filter na stronie autorów.
+# contributors
+- Pole **contributors_specs** to dostępne specjalizacje, które nadawane są autorom w ich polu **specs**. Dzięki temu polu również generowany jest filter na stronie autorów.
 - Przykład dodania nowego autora:
 ```
-authors_specs: [nodejs, angular]
-authors:
+contributors_specs: [nodejs, angular]
+contributors:
     "Bartosz Pietrucha":
         slug: bartosz-pietrucha
         desc: This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description. This is bartosz pietrucha description.
@@ -37,3 +37,12 @@ authors:
           twitter: https://www.linkedin.com/in/bpietrucha/
           github: https://www.linkedin.com/in/bpietrucha/
 ```
+
+# Banery
+- Pole **banners** pozwala na włączenie poszczególnych banerów, posiadające już określone wysokości i szerokości, których nie powinno się modyfikować bez RWD.
+  - **top_banner**: true | false. Wyświetla baner nad nawigacją. 150px (15rem) height na mobile i 50px (5rem) na desktopie. Klasa dodawana do body: *b-header-top*
+  - **article_side_banner**: true | false. Wyświetla boczny baner przy każdym z poście. 300px (30rem) height i 250px (35rem) width na desktopie przy min-width: 1390px. Niżej nie wyświetlany. Klasa dodawana do body: *b-article-sidebar*". Możliwość konfiguracji we frontmatterze pod każdym postem:
+    - bannerHeader: string - Wyświetla główny nagłówek.
+    - bannerSubheader: string - Wyświetla kolejny nagłówek w banerze.
+    - bannerUrl: string (url) - Adres url (hiperłącze), które jest przyczepione do linku.
+    - bannerImage: string (url) - Adres url zdjęcia np. /img/my-image.png

@@ -6,14 +6,17 @@
                     <figure>
                         <picture>
                             <source srcset="<%- url_for(post.path) %>large_banner.webp" type="image/webp">
-                            <img class="post-image" src="<%- url_for(post.path) %>large_banner.png" alt="<%- url_for(post.title) %>">
+                            <img class="post-image" src="<%- url_for(post.path) %>large_banner.png" loading="lazy" alt="<%- url_for(post.title) %>">
                         </picture>
                     </figure>
                     <header>
                         <h2 class="post-title"><%- post.title %></h2>
-                        <time class="post-time" datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'D MMM') %></time>
+                        <time class="post-time" datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'D MMMM YYYY') %></time>
                     </header>
                 </a>
+                <footer>
+                    <%- list_tags(post.tags, {style: 'list', show_count: false}) %>
+                </footer>
             </div>
         </article>
     <% }) %>

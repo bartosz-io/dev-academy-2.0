@@ -1,10 +1,10 @@
 ---
 title: Angular Interceptors to Manage HTTP Requests ⚡
-author: Hugo Noro
+contributor: Hugo Noro
 avatar: hugo-noro.png
 description: Learn how to use Angular interceptors to manage HTTP requests including JWT authorization 🔑, caching and logging.
 date: 2021-12-11
-tags: [Angular, Security, Architecture]
+tags: [angular, security, architecture]
 id: angular-interceptors
 relatedPost: angular-architecture
 ---
@@ -14,6 +14,7 @@ Angular as a framework provides us with a significant number of tools and capabi
 
 I will briefly describe what Angular HTTP Interceptors are and how they work. I will then provide some common usages with implementation examples and discuss some advantages of using interceptors on your app. This article assumes that the reader already has some Angular experience and is comfortable around the most common and basic notions. These will not be explained in detail since they are not in the scope of this document.
 
+## Table of Contents
 <!-- toc -->
 
 ## What is an Angular interceptor, after all?

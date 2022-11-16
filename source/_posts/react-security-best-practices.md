@@ -1,10 +1,10 @@
 ---
 title: React Security – Best Practices
-author: Gert J. Oberholzer
+contributor: Gert J. Oberholzer
 avatar: kobus-oberholzer.png
 description: A brief overview of some of the security risks associated with working on a React JS project and how to avoid them.
 date: 2022-09-22
-tags: [React, Security]
+tags: [react, security]
 id: react-Security-best-practices
 relatedPost: react-xss
 ---
@@ -53,7 +53,7 @@ As the name suggests, the use of this property is discouraged, and for good reas
     <img src="null.png" onerror="alert('I support this blogger');" />
 ```
 
-The above input will produce an alert commonly used to demonstrate XSS (Cross-site scripting) as a possibility. Learn more about XSS [here](https://dev-academy.com/react-xss/#dangerouslysethtml).
+The above input will produce an alert commonly used to demonstrate XSS (Cross-site scripting) as a possibility. Learn [more about React XSS](https://dev-academy.com/react-xss/#dangerouslysethtml).
 
 ### How to negate it
 

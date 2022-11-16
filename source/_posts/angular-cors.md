@@ -1,10 +1,10 @@
 ---
 title: Angular CORS Guide 🛠️ Fixing errors
-author: Saujan Ghimire
+contributor: Saujan Ghimire
 avatar: saujan-ghimire.jpg
 description: Learn how to fix CORS (cross-origin resource sharing) issues in Angular.
 date: 2022-08-05
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-cors
 relatedPost: angular-rxjs
 ---
@@ -12,6 +12,7 @@ relatedPost: angular-rxjs
 
 In this article, we will take a look at CORS issues in Angular application, what it is, when it occurs, and how to tackle them. We will also look at how to configure local and remote scenarios to support CORS. The accompanying code is also provided on [Github](https://github.com/sookah/ninWiki).
 
+## Table of Contents
 <!-- toc -->
 
 ## CORS: Cross-Origin Resource Sharing

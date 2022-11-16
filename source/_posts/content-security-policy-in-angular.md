@@ -1,10 +1,10 @@
 ---
 title: Protect Angular apps with ⚔️ Content Security Policy
-author: Christoph Jürgens
+contributor: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Protect Angular apps with Content Security Policy (CSP) against security vulnerabilities in Angular (JavaScript) applications. ⚔️
 date: 2022-01-21
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-csp
 relatedPost: trusted-types
 ---
@@ -14,6 +14,7 @@ This article is the second part of our "Preventing XSS in Angular" series. In th
 
 This article teaches you how to use Content Security Policy to prevent untrusted code from being loaded and executed in your Angular application.
 
+## Table of Contents
 <!-- toc -->
 
 {% img "cyber-risks-everywhere.png" "Security risks everywhere" "lazy" %}

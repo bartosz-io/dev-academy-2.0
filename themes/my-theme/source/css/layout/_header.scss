@@ -1,14 +1,31 @@
 .header {
-  min-height: 6rem;
-  background-color: $dark-400;
-  padding: 0 2rem;
-  display: flex;
-  flex-direction: column;
+  background-color: $navy-400;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: $z-index-300;
+}
+
+.header-bar {
+  position: relative;
+  display: flex;
+  min-height: 7rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  display: inline-flex;
+
+  img {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
+  span {
+    display: none;
+  }
 }
 
 .header-title {
@@ -22,58 +39,127 @@
   }
 }
 
+.header-socials,
+.header-nav-link-header,
+.header-nav-link-description {
+  display: none;
+}
+
 .header-nav {
   display: none;
-  padding: 3rem 0 1rem;
-
-  &.active {
-    display: flex;
-  }
-}
-
-.header-nav-link {
-  color: $light-500;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 1rem 0;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: $light-300;
-  }
-}
-
-.header-nav-link-highlighted {
-  color: $pink-400;
-
-  &:hover {
-    color: $pink-100;
-  }
-}
-
-.header-nav-toggle {
-  position: fixed;
-  top: 1.2rem;
-  right: 2rem;
-  color: $light-700;
-  font-size: 3rem;
+  padding: 1rem 0 2.5rem;
 
   &.active {
     display: block;
-    top: 1.2rem;
 
-    .icofont-navigation-menu:before {
-      content: '\eee4';
+    + .header-socials {
+      display: flex;
+      justify-content: center;
     }
   }
 }
 
-.header-nav-item-courses {
+.header-nav-link {
+  color: $light-200;
+  font-weight: 600;
+  font-size: $font-size-15;
+  transition: color 0.3s ease;
+  letter-spacing: .075rem;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  display: flex;
+  position: relative;
+  border-bottom: .1rem solid $light-600;
+
+  &:hover {
+    color: $hover;
+  }
+}
+
+.header-nav-link-active {
+  color: $hover;
+}
+
+.header-nav-link-submenu {
+  position: relative;
+  padding-left: 0;
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.4rem;
+    background-repeat: no-repeat;
+    background-image: url('/img/icons/chevron-down.svg');
+  }
+
+  &.active {
+    border-bottom: 0;
+
+    + .header-nav-link-content {
+      display: block;
+    }
+
+    &:after {
+      width: 2.4rem;
+      background-image: url('/img/icons/chevron-up.svg');
+    }
+  }
+}
+
+.header-socials {
+  margin-bottom: 2.5rem;
+
+  li {
+    margin: 0 1.5rem;
+  }
+}
+
+.header-social-link {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+  background-color: $dark-350;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-nav-link-content,
+.header-nav-toggle-close {
   display: none;
 }
 
-.header-nav-link-mobile {
-  position: fixed;
-  top: 1rem;
-  right: 8rem;
+.header-nav-toggle {
+  max-height: 2.4rem;
+
+  &.active {
+    .header-nav-toggle-menu {
+      display: none;
+    }
+
+    .header-nav-toggle-close {
+      display: flex;
+    }
+  }
+}
+
+.header-nav-link-content {
+  padding-left: 1.5rem;
+  border-bottom: .1rem solid $light-600;
+
+  .header-nav-link {
+    border-bottom: 0;
+  }
+}
+
+.header-nav-start {
+  display: none;
+}
+
+.header-bar-start {
+  position: absolute;
+  right: 5.5rem;
+  top: 1.3rem;
 }

@@ -1,15 +1,16 @@
 ---
 title: Managing Local Storage in Angular 📦
-author: Hugo Noro
+contributor: Hugo Noro
 avatar: hugo-noro.png
 description: Learn how to use local storage the right way in Angular applications.
 date: 2022-02-09
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-local-storage
 relatedPost: angular-rxjs
 ---
 {% image_fw 1.78 "banner.png" "Managing Local Storage in Angular" %}
 
+## Table of Contents
 <!-- toc -->
 
 ## Local Storage, a brief introduction

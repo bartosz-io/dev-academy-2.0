@@ -1,10 +1,10 @@
 ---
 title: Vue Router Best Practices
-author: Mauricio Matias C.
+contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn modern Vue best practices with vue-router to build reliable and well-designed route navigation.
 date: 2022-09-02
-tags: [Vue, Routing]
+tags: [vue, routing]
 id: vue-router-best-practices
 relatedPost: vue-xss, vue-security-best-practices
 ---
@@ -17,6 +17,7 @@ Hi #VueFriend, in this article we cover best practices around routing in Vue, ar
 
 When your Vue app grows is inevitable to make crucial routing decisions. We have prepared some examples for you and a lot of suggestions, remember, not exists the best choice. It is about balance and tradeoffs. Well, let's play our cards.
 
+## Table of Contents
 <!-- toc -->
 
 Routing is all about flows and information. Think of some streets and avenues in your country. When urban planning politics does not exist, the traffic is horrible, and the accessibility is not the best. In consequence, life is hard. The same could happen on our Vue Apps and lead to dangerous scenarios and bad user experiences. To avoid "dangerous scenarios" check out our related [security article with Vue](https://dev-academy.com/vue-security-best-practices/).

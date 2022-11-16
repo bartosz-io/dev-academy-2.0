@@ -1,0 +1,145 @@
+<div class="contributors">
+    <div class="container">
+        <div class="contributors-target">
+            <div class="contributors-target-info">
+                <h2 class="contributors-header border border-light border-large">Who are we?</h2>
+                <p>Our contributors are graduates of Dev Academy courses and programs. They took the journeys of in-depth learning in Academies, but it was not enought for them. They dediced to go further and share what they have learned.</p>
+            </div>
+            <!-- TODO replace TrustPilot with Ninja -->
+            <!-- <div class="contributors-reviews">
+                <div class="contributors-reviews-number">(385 reviews)</div>
+                <img src="<%- url_for('/img/contributors-reviews-trustpilot.png') %>" loading="lazy" alt="">
+            </div> -->
+        </div>
+    </div>
+    <div class="contributors-figures-wrapper">
+        <div class="container">
+            <div class="contributors-figures">
+                <div class="contributors-figure">
+                    <span class="contributors-figure-number">+170 000</span>
+                    <span class="contributors-figure-text">Views yearly</span>
+                </div>
+                <div class="contributors-figure">
+                    <span class="contributors-figure-number">+6000</span>
+                    <span class="contributors-figure-text">Subscribers</span>
+                </div>
+                <div class="contributors-figure">
+                    <span class="contributors-figure-number">+1600</span>
+                    <span class="contributors-figure-text">Courses students</span>
+                </div>
+                <div class="contributors-figure">
+                    <span class="contributors-figure-number">+10</span>
+                    <span class="contributors-figure-text">Contributors</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="contributors-join-us">
+            <h2>Join us and make a difference in <span>just one month!</span></h2>
+            <p>Choose the option that suits you best. Remember - we are open to you and your suggestions.</p>
+        </div>
+    </div>
+    <div class="contributors-boxes-wrapper">
+        <div class="container">
+            <div class="contributor-boxes">
+                <div class="contributor-box">
+                    <h3>Become an expert</h3>
+                    <p>Join one of the courses or programs, improve your skills, look for new solutions and <b>write articles with our editorial team</b> to go beyond by teaching others.</p>
+                    <div class="contributor-box-actions">
+                        <a href="https://courses.dev-academy.com/" class="button button-primary">See available courses</a>
+                    </div>
+                </div>
+                <div class="contributor-box">
+                    <h3>Exchange articles for membership</h3>
+                    <small>special offer for students</small>
+                    <p>Are you a <b>student and can't afford our programs</b>? We are looking for ambitious developers that prefer to contribute by writing in exchange for Academy memberships!</p>
+                    <div class="contributor-box-actions">
+                        <a onclick="alert('Coming soon!');" class="button button-green">Apply via form</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="contributor-list-wrapper">
+            <h3 class="contributors-list-header">Meet our <span>Elite Editorial Team</span></h3>
+            <div class="pills">
+                <div class="pill" data-spec="all">All Experts</div>
+                <% config.contributors_specs.forEach(function(spec){ var specName; %>
+                <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
+                <div class="pill pill-<%- spec %> pill-inactive" data-spec="<%- spec %>"><%- specName %> Expert</div>
+                <% }) %>
+            </div>
+            <div class="contributors-list">
+                <% page.contributors.forEach(function(contributor, index){ var hiddenClass; %>
+                    <% if (index > 8) { hiddenClass = 'contributor-hidden' } %>
+                    <article class="contributor <%- hiddenClass %>">
+                        <header class="contributor-header">
+                            <img src="<%- contributor.image %>" alt="<%- contributor.name %>" loading="lazy" width="130" height="130">
+                            <a href="/contributors/<%- contributor.slug %>" class="contributor-header-link">
+                                <h3 class="contributor-name"><%- contributor.name %></h3>
+                            </a>
+                            <%- contributor_academies(contributor.name) %>
+                            <!-- Do not remove below contributor specs. They are hidden and needed for filtering -->
+                            <div class="contributor-specs">
+                                <% contributor.specs.forEach(function(spec){ %><span class="contributor-spec contributor-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
+                            </div>
+                        </header>
+                        <div class="contributor-contribution">
+                            <div class="contributor-contribution-level contributor-contribution-level-highlighted contributor-contribution-level-thin contributor-contribution-level-<%- contributor.level%>">
+                                <span>Beginner</span>
+                                <span>Advanced</span>
+                                <span>Expert</span>
+                            </div>
+                        </div>
+                    </article>
+                <% }) %>
+            </div>
+            <div class="contributor-load-more">
+                <button class="button button-primary" id="contributor-load-more">Load more</button>
+            </div>
+        </div>
+    </div>
+    <div class="contributors-ready-wrapper">
+        <div class="container">
+            <div class="contributors-ready">
+                <div class="contributors-ready-left">
+                    <h4 class="contributors-ready-header border border-large border-light">Ready to join us?</h4>
+                    <p>Dev Acaedmy been operating in the market since 2020. During this time we have built a global community with the goal of continuous improvement. Join Dev Academy as a contributor!</p>
+                </div>
+                <div class="contributors-ready-right">
+                    <div class="contributors-ready-image">
+                        <img src="<%- url_for('/img/joseph.jpg') %>" alt="">
+                        <div class="contributors-ready-image-text">Joseph, USA</div>
+                    </div>
+                    <div class="contributors-ready-image">
+                        <img src="<%- url_for('/img/oscar.jpg') %>" alt="">
+                        <div class="contributors-ready-image-text">Oscar, UK</div>
+                    </div>
+                    <div class="contributors-ready-image">
+                        <img src="<%- url_for('/img/ioannis.jpg') %>" alt="">
+                        <div class="contributors-ready-image-text">Ioannis, Greece</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="contributors-collaboration">
+            <h5>Our dev academy team works with</h5>
+            <figure>
+                <picture>
+                    <source srcset="<%- url_for('/img/logos-mobile.png') %>" type="image/webp">
+                    <img class="contributors-collaboration-logos-mobile" src="<%- url_for('/img/logos-mobile.png') %>" loading="lazy" alt="">
+                </picture>
+            </figure>
+            <figure>
+                <picture>
+                    <source srcset="<%- url_for('/img/logos-desktop.png') %>" type="image/webp">
+                    <img class="contributors-collaboration-logos-desktop" src="<%- url_for('/img/logos-desktop.png') %>" loading="lazy" alt="">
+                </picture>
+            </figure>
+        </div>
+    </div>
+</div>
