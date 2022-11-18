@@ -7,6 +7,8 @@ date: 2022-09-22
 tags: [react, security]
 id: react-Security-best-practices
 relatedPost: react-xss
+bannerHeader: 'Is your React application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "React Security Best Practices" %}
 

@@ -7,6 +7,8 @@ date: 2021-12-11
 tags: [angular, security, architecture]
 id: angular-interceptors
 relatedPost: angular-architecture
+bannerHeader: 'Is your interceptor implementation secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 "banner.png" "How To Use Angular Interceptors to Manage HTTP Requests" %}
 

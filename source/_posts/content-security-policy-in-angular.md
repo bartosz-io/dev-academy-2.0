@@ -7,6 +7,8 @@ date: 2022-01-21
 tags: [angular, security]
 id: angular-csp
 relatedPost: trusted-types
+bannerHeader: 'Is your Angular application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "Content Security Policy Angular" %}
 

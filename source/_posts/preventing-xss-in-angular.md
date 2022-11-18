@@ -7,6 +7,8 @@ date: 2021-11-27
 tags: [angular, security]
 id: angular-xss
 relatedPost: angular-csp
+bannerHeader: 'Is your Angular application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "Preventing XSS in Angular" %}
 

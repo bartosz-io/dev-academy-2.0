@@ -7,8 +7,8 @@ date: 2022-07-25
 tags: [angular, security]
 id: angular-otp
 relatedPost: user-login-and-registration
-bannerHeader: 'Building OTP?'
-bannerSubheader: 'Learn how to test it properly with Academy!'
+bannerHeader: 'Is your OTP implementation secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "Angular OTP Verification" %}
 

@@ -7,6 +7,8 @@ date: 2022-07-25
 tags: [vue, security]
 id: vue-security-best-practices
 relatedPost: vue-xss
+bannerHeader: 'Is your Vue application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 
 {% image_fw 1.78 banner.png "Vue Security Best Practices" %}
