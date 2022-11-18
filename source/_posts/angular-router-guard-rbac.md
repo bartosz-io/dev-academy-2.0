@@ -127,6 +127,8 @@ After resolving the data, resolve will pass the component a datatype T. Learn mo
 
 The **_CanActivate_** guard will now be used in this article to safeguard the router's link. We could utilize **_CanActivateChild_**, in the same way, to simply add role-based protection for our router.
 
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
+
 ## What Is AuthService?
 
 To offer details about the user's login status and roles, we will develop an Auth service. It's just a straightforward simulation for logging in and receiving jobs. Although we will learn more about Angular Guard for RBAC Driven by JWT in the following article. So, here we have:

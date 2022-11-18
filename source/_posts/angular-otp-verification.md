@@ -40,6 +40,8 @@ The login process typically consists of two steps. The first stage involves ente
 
 However, since we used the RxJS `retryWhen()` operator in this particular case of Angular OTP verification, we would reject the login request with the error message `OTP REQUIRED` when the user tries to log in with their email address and password. Since we already know the user's email and password, when the error message appears and the user provides a valid OTP input, RxJS `retryWhen()` will attempt to log the user in again using their email, password, and OTP.
 
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
+
 ``` typescript Angular/src/app/auth/containers/login/login.component.ts
 login() {
   const loginRequest: LoginRequest = {
@@ -182,3 +184,5 @@ The budget-angular training application's otpcomponent dialog's complete source 
 ## The next steps
 
 The next thing we will learn is how everything is put into practice and how the Node.js backend validates the OTP. To learn more about OAuth/OIDC, construct a secure role-based enterprise-grade authorization, and implement other topics related to full-stack web security, visit our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-otp-post).
+
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}

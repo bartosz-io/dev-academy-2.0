@@ -211,7 +211,7 @@ Since the ID tokens are usually signed with a private key, the users of ID token
 
 Next, let's do some practice. We'll create a GCP project, and configure it for OIDC.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Create a GCP project and enable OAuth2
 

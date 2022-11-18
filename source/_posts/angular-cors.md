@@ -60,6 +60,8 @@ The article will allow you to tackle CORS issues on your own, by showing how to:
 * Setup CORS in your Angular application to fetch remote data successfully
 * How to setup backend to allow for remote requests
 
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
+
 ### Project Structure
 
 #### Front-end

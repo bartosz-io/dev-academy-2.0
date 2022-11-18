@@ -69,7 +69,8 @@ To enable Angular CSRF protection in an application three things need to happen:
 
 The entire process of sending HTML forms over HTTP requests (for example; sending a POST request to the application server) has always been insecure; this is nothing new. This is why we have CSRF (Cross-Site Request Forgery) protection. And it's really easy to implement, too!
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
+
 
 Let's Implement CSRF Protection in Angular using CSRF tokens
 ------------------------------------------------------------

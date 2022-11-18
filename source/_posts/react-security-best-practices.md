@@ -81,6 +81,8 @@ and used:
 
 > Output encoding is the process of ensuring that data returned by your application is properly encoded so that it cannot be misinterpreted by browsers or other applications. This helps to prevent cross-site scripting (XSS) attacks.
 
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
+
 ## Arbitrary Code Execution
 
 ACE Vulnerabilities are flaws in systems that allow bad agents to execute their malicious script on a victim's computer. One such flaw is the infamous Zip Slip.

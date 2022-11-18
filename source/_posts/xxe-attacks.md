@@ -59,6 +59,8 @@ This is considered an **in-band** attack as the vector of attack is clear and th
 
 Blind attacks are when there are some forms of security measures in place that would prevent you from directly requesting privileged information. There is however still a potential attack surface that is just more hidden, by doing a bind attack you may potentially stumble upon a server response in the shape of an error message that reveals more information than intended, an example would be if the parser's error response is disclosing local files which the attacker can choose to infiltrate.
 
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
+
 ### Denial of service attack
 
 If the attention is not necessary to retrieve data but to deny service, maybe a popular band is performing and the bad actor wants to have a peaceful stay by preventing other potential guests from booking.
