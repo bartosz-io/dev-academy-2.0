@@ -7,8 +7,8 @@ date: 2022-07-25
 tags: [angular, security]
 id: angular-otp
 relatedPost: user-login-and-registration
-bannerHeader: 'Building OTP?'
-bannerSubheader: 'Learn how to test it properly with Academy!'
+bannerHeader: 'Is your OTP implementation secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "Angular OTP Verification" %}
 
@@ -39,6 +39,8 @@ The Time-based One-Time Password (TOTP) is a one-time passcode that is widely us
 The login process typically consists of two steps. The first stage involves entering our email address and password; the second stage involves OTP input; and finally, we are logged in.
 
 However, since we used the RxJS `retryWhen()` operator in this particular case of Angular OTP verification, we would reject the login request with the error message `OTP REQUIRED` when the user tries to log in with their email address and password. Since we already know the user's email and password, when the error message appears and the user provides a valid OTP input, RxJS `retryWhen()` will attempt to log the user in again using their email, password, and OTP.
+
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
 
 ``` typescript Angular/src/app/auth/containers/login/login.component.ts
 login() {
@@ -182,3 +184,5 @@ The budget-angular training application's otpcomponent dialog's complete source 
 ## The next steps
 
 The next thing we will learn is how everything is put into practice and how the Node.js backend validates the OTP. To learn more about OAuth/OIDC, construct a secure role-based enterprise-grade authorization, and implement other topics related to full-stack web security, visit our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-otp-post).
+
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}

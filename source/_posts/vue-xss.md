@@ -86,6 +86,8 @@ export default {
 </script>
 ```
 
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
+
 Can you guess what kind of XSS vulnerability we exploit? Exactly, Reflected XSS. The victim opens this link, so their browser does the rest. However, the URL is somewhat long and gives you tons of information to infer what it will perform. Attackers do not use this URL directly. Attackers commonly find a way to mask it under a shortener or insert it behind a `<a>` tag on someone else's web page.
 
 ### Preventing XSS 🛡️

@@ -170,6 +170,8 @@ export default router;
 
 Note that the first child has the path set as a void string, which means that the `/product/:id` will be handled by this specific route and not by the parent. This process will be repeated as many times as you want.
 
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
+
 ### Programmatic Navigation
 
 Aside from using `<router-link>` component on the template side (declarative form), we can do this programmatically using the router's instance methods. Remember: Inside a Vue instance, you can use the router instance as `$router`. And you call it as `this.$router.push`.
@@ -501,6 +503,8 @@ First, we have a **Global Guard** to check if the user is authenticated. If not 
 Second, we have a **Per-route Guard** to verify if the user has permission as a writer.
 
 And the **In-component Guard** is used at the `ProfileView.vue` as an analytics service to track the user moves.
+
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Lazy load, speed up your app
 

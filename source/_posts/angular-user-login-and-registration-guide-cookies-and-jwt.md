@@ -69,8 +69,6 @@ I believe that it is very important to understand the fundamental differences be
 
 > **WARNING:** Whenever you are using any kind of authorization token that you store in `LocalStorage` or `IndexedDB` (so it's accessible by JavaScript code) you are exposing the token to be hijacked via cross-site scripting attack. However, there are valid mitigation techniques, like [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), [Subresource integrity](https://developer.mozilla.org/pl/docs/Web/Security/Subresource_Integrity), and built-in frameworks' sanitization mechanisms, that (when applied properly!) reduce that risk to a negligible degree. That being said that risk is real, so you should pay enough attention to those security issues.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
-
 ## Detailed implementation
 
 ### Login feature
@@ -102,6 +100,8 @@ Let's start with the UI part - login component template. Our approach for user a
 ```
 
 Now the question is: how to take input values from the user to execute the login? To link the HTML form and input elements in the view with the component code we can utilize some directives from the Reactive Forms module. By using [FormGroupDirective](https://angular.io/api/forms/FormGroupDirective) in this way `[formGroup]="loginForm"`, we are telling Angular that there is a property `loginForm` in the component that should hold an instance of that form. We are using `FormBuilder` to create email and password instances of `FormControl`. Email control is also equipped with a built-in email validator.
+
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
 
 ``` typescript
 @Component({
@@ -532,7 +532,7 @@ export class ForRolesDirective {
 
 Remember that the directive needs to be declared in an Angular module. In our case, we are declaring it in `AuthModule` and exporting it to be available to the outside world.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ### Protecting routes
 

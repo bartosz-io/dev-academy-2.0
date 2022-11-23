@@ -153,6 +153,26 @@
     max-width: 100%;
   }
 
+  .review-screen {
+    border-radius: 10px;
+    flex-direction: row;
+    background: $gradient;
+    padding: 3rem;
+
+    margin-bottom: 3rem;
+
+    .review-screen-img {
+      border: 1px solid $light-700;
+      margin: 0 2rem 0 0;
+    }
+
+    .review-screen-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
   .related-post {
     display: flex;
     padding: 1rem 5rem 1rem 1rem;
@@ -1167,10 +1187,12 @@
   
   .article-sidebar-subheader {
     font-size: 1.5rem;
+    color: $indigo-600;
   }
 
   .article-sidebar-img {
     margin-bottom: 2rem;
+    border-radius: 10px;
   }
 
   .b-article-sidebar {

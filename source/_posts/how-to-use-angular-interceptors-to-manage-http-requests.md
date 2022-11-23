@@ -7,6 +7,8 @@ date: 2021-12-11
 tags: [angular, security, architecture]
 id: angular-interceptors
 relatedPost: angular-architecture
+bannerHeader: 'Is your interceptor implementation secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 "banner.png" "How To Use Angular Interceptors to Manage HTTP Requests" %}
 
@@ -61,8 +63,6 @@ It's crucial to understand that once the order of execution of this chain is est
 
 Why is it so essential to understand this? Because they will consistently execute the request in the same order, they were configured. This could make a big difference when thinking about what order should be used to avoid surprises when expecting a detailed response and receiving a different one because the interceptor that executed it before in the chain already transformed it.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
-
 ## How to implement it?
 
 Now that we have a basic idea of an interceptor and its primary purpose, it's time to talk about implementation. How to implement an Angular HTTP interceptor? I will be showing a few examples of the most common use cases, such as adding custom HTTP headers, caching, logging, and error handling.
@@ -104,7 +104,9 @@ One of the most common use cases for interceptors is handling auth requests. Thi
 
 The examples provided are, of course, using mocked examples of security tokens. The main goal is to show the reader how to implement auth interceptors by adding custom headers to the requests. In this scenario, we will be adding an authorization token. The examples discussed below should be easily adaptable to a real-world application with a proper authentication system.
 
-If you are interested in learning more about **authorization and building secure Web applications** consider joining our flagship online program [WebSecurity Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-http-interceptors-post). It will teach you everything you need to know in that area.
+If you are interested in learning more about **authorization and building secure Web applications** consider joining our flagship online program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-http-interceptors-post). It will teach you everything you need to know in that area.
+
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
 
 ### Basic Authentication
 
@@ -313,7 +315,7 @@ else {
   
 For the scope of this example, if the error status code is not 401, we throw the error up to potentially be caught by a dedicated error interceptor.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ### Caching Interceptor
 

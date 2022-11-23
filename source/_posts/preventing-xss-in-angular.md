@@ -7,6 +7,8 @@ date: 2021-11-27
 tags: [angular, security]
 id: angular-xss
 relatedPost: angular-csp
+bannerHeader: 'Is your Angular application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "Preventing XSS in Angular" %}
 
@@ -86,7 +88,7 @@ On the other hand, the sanitize method removes potentially dangerous elements, s
 
 The main difference between interpolated and innerHTML code is the behaviour of data interpreted. Property binding helps us bind values to an HTML element's target property but use interpolation to show any data in the template like strings, numbers, dates, arrays, etc. Angular will sanitize and escape untrusted values for you.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Possible Angular XSS pitfalls
 

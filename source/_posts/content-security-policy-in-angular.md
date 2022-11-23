@@ -7,6 +7,8 @@ date: 2022-01-21
 tags: [angular, security]
 id: angular-csp
 relatedPost: trusted-types
+bannerHeader: 'Is your Angular application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "Content Security Policy Angular" %}
 
@@ -97,7 +99,7 @@ The _media-src_ directive states trusted origins of audio and video, for example
 media-src videos.dev-academy.com;
 ```
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 #### More CSP directives
 

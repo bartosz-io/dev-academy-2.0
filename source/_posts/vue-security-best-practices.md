@@ -7,6 +7,8 @@ date: 2022-07-25
 tags: [vue, security]
 id: vue-security-best-practices
 relatedPost: vue-xss
+bannerHeader: 'Is your Vue application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 
 {% image_fw 1.78 banner.png "Vue Security Best Practices" %}
@@ -97,6 +99,8 @@ To fix this security issue you can replace `v-show` with `v-if` as the following
 ```
 
 Replacing `v-show` for `v-if` solves the issue? Not really. It depends on how many levels/layers of security are in your Vue app. The `v-show` and `v-if` Vue directives have their specific use cases, check this [link](https://vuejs.org/api/built-in-directives.html#v-show). Use them wisely.
+
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
 
 ## Complex formatting shouldn't be welcome on template expressions (Keep it simple)
 
@@ -316,12 +320,12 @@ As we mentioned XSS can be achieved in many ways, but generally, bad user input 
 Some of the best practices around are:
 
 * Avoid using DOM directly or use it wisely.
-
 * Sanitize html tags, if you need to reflect some string with HTML content inside, you can use libraries like [vue-3-sanitize](https://www.npmjs.com/package/vue-3-sanitize), [vue-sanitize](https://www.npmjs.com/package/vue-sanitize), or [sanitize-html](https://github.com/apostrophecms/sanitize-html) to sanitize it.
-
 * Forms, URLs, and every input data, in general, must be validated before its use (the validation must be carried out both in the frontend and in the backend). A nice library that can help you to fulfill this task is [Yup](https://www.npmjs.com/package/yup).
 
 > Inputs are the best door
+
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Your user doesn't need tons of response details, but your attacker will thank you
 
