@@ -15,27 +15,22 @@ relatedPost: angular-cors
 
 ## Introduction
 
-The Web has evolved into a platform for much of the world's communication over the last 25 years, whether it's information sharing, community building, commerce, education, social networking, or underpinning applications. The Web's trustworthiness has become critical to its success in meeting these needs. If a person can't trust that they're communicating with the intended party, they can't use the Web to shop safely; if they can't trust that Web-delivered news hasn't been tampered with in transit, they won't trust it as much. If a person is unsure that they are only communicating with the intended recipients, they may avoid social networking.
+Web trust is now necessary to meet all of these objectives because the Web has evolved into a platform for a large portion of global communication, whether it is information sharing, community building, commerce, education, social networking, or supporting applications. If a person can't be certain they're communicating with the right person online, they can't shop safely, and they can't trust the news as much if they're not certain it wasn't tampered with while in transit. If someone is unsure if they are only interacting with the intended recipients, they might avoid social networking. Until recently, HTTPS was only employed by a small number of websites, and usually only during times when money was exchanged. However, because all online activity can now be regarded as sensitive, it has become so essential to daily life.
 
-Previously, HTTPS was only used on a few websites, and usually only when financial transactions occurred. However, it has recently become clear that nearly all Web activity can be considered sensitive, as it now plays such a central role in everyday life.
+Web security has also shown to be highly deceptive. The strength of the Web platform we are designing can easily be utilised against the user if an attacker can change content as it is being transmitted (or the site they are using).
+A hacker may also be able to obtain data that a website may have saved from earlier visits. If this also contains a persistent grant of access to privileged APIs like geolocation or media capture, the attacker will have unrestricted access to those resources.
 
-At the same time, Web security has proven to be quite subtle. If an attacker can modify content while it is in transit, the power of the Web platform we are defining can easily be used against the user (or the site they are using).
+Notably, both "simple" website users and those who utilise more complex, interactive sites are subject to these risks.
+Furthermore, even if the content being accessed seems harmless, if confidentiality is compromised, something as simple as an image request made "in the clear" (i.e., unencrypted) might give an attacker information about what the user is doing and pave the way for other attacks.
 
-An attacker can also gain access to information that a site may have saved from previous visits. If this includes a persistent grant of access to privileged APIs such as geolocation or media capture, the attacker will be able to access those resources without any prior authorization.
+This leads us to the conclusion that server integrity and authentication are fundamental conditions for the continued success of the Web.
 
-Notably, these risks exist for "plain" Web site users and those who use more sophisticated, interactive sites.
+Furthermore, even though it's not always technically necessary, maintaining confidentiality is often necessary. We should also think of privacy as being crucial to the continued success of the Web because its significance may only be understood in hindsight.
 
-Furthermore, if confidentiality is lost, something as simple as an image request "in the clear" (i.e., unencrypted) can provide an attacker with information about what the user is doing, opening the door to further attacks – even if the content being accessed appears innocuous.
+Web security has evolved into one of the main objectives for browser developers throughout time. The provision of a private and secure communication channel is at the forefront of this effort. Confidentiality, integrity, and authenticity must all be guaranteed by a secure channel, and this can only be done by encrypting the message.
+The foundation of a secure web is HTTPS. To ensure a secure connection for your users and your website, it encrypts practically all data transmitted between a client and a web service. Many new browser features, including geolocation and service workers, are only accessible in a secure setting since HTTPS has grown to be so crucial. [Check this out for the full list.](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts#:~:text=Current%20features%20available%20only%20in%20secure%20contexts%201,Media%20Extensions%208%20Generic%20Sensor%20API%20More%20items)
 
-This leads us to the conclusion that server authentication and integrity are fundamental requirements for the Web's continued success.
-
-Furthermore, while not always strictly necessary, confidentiality is frequently required. Because the importance of privacy may only be realized in retrospect, we should also consider it critical to the Web's continued success.
-
-Over time, one of the primary goals for browser developers has become web security. At the forefront of this endeavor is the provision of a private and secure channel of communication. A secure channel must ensure confidentiality, integrity, and authenticity, which can only be achieved by encrypting the communication.
-
-HTTPS is a critical component of a secure web. It encrypts nearly all information sent between a client and a web service, ensuring a secure connection for both your users and your website. HTTPS has become so important that many new browser features (for example, geolocation and service workers) are only available in a secure context. [Check this out for the full list.](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts#:~:text=Current%20features%20available%20only%20in%20secure%20contexts%201,Media%20Extensions%208%20Generic%20Sensor%20API%20More%20items)
-
-Maintaining self-signed certificates when running [localhost](http://localhost) applications over HTTPS can be a pain. A stumbling block that must be overcome in certain situations where a secure connection is required.
+When using localhost applications over HTTPS, maintaining self-signed certificates can be difficult. a challenge that needs to be overcome when a secure connection is necessary in some circumstances.
 
 Here are a few examples of such situations:
 
