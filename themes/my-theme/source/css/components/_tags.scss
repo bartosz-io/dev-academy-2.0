@@ -20,6 +20,16 @@ ul.tag-list {
   transition: background-color $transition-time $transition-type
               color $transition-time $transition-type;
 
+  &.active {
+    background-color: #130B37;
+    color: $light-100;
+    transition: none;
+
+    &:hover {
+      color: $light-100;
+    }
+  }
+
   &:hover {
     color: $teal-300;
   }
@@ -38,4 +48,8 @@ ul.tag-list {
     margin-right: 2rem;
     margin-bottom: 2rem;
   }
+}
+
+.tags-wrapper {
+  margin-bottom: 8rem;
 }

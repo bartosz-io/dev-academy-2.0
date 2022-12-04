@@ -5,7 +5,7 @@ link: https://mixefy.jp
 avatar: viktors-garkavijs.jpg
 description: Learn how to quickly setup simple authentication with OpenID Connect in Angular application.
 date: 2022-04-08
-tags: [Angular, Security, OIDC]
+tags: [angular, security, oidc]
 id: angular-oidc
 relatedPost: user-login-and-registration
 ---
@@ -19,6 +19,7 @@ OpenID Connect (OIDC) allows the developers to avoid manually implementing user 
 
 In this blog post, we will briefly review what OIDC is, what flows it has, and which OIDC flow you should use for Single Page Applications. After that, we'll apply the theory in practice by implementing a simple [login functionality](/angular-user-login-and-registration-guide-cookies-and-jwt/) in an Angular application using Google as an Identity Provider (IP). We will show how easy it is to add OIDC to Angular apps using one of the most popular OIDC client libraries.
 
+## Table of Contents
 <!-- toc -->
 
 ## Introduction
@@ -210,7 +211,7 @@ Since the ID tokens are usually signed with a private key, the users of ID token
 
 Next, let's do some practice. We'll create a GCP project, and configure it for OIDC.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Create a GCP project and enable OAuth2
 

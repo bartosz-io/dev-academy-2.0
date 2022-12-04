@@ -4,9 +4,11 @@ contributor: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Protect Angular apps with Content Security Policy (CSP) against security vulnerabilities in Angular (JavaScript) applications. ⚔️
 date: 2022-01-21
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-csp
 relatedPost: trusted-types
+bannerHeader: 'Is your Angular application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "Content Security Policy Angular" %}
 
@@ -14,6 +16,7 @@ This article is the second part of our "Preventing XSS in Angular" series. In th
 
 This article teaches you how to use Content Security Policy to prevent untrusted code from being loaded and executed in your Angular application.
 
+## Table of Contents
 <!-- toc -->
 
 {% img "cyber-risks-everywhere.png" "Security risks everywhere" "lazy" %}
@@ -96,7 +99,7 @@ The _media-src_ directive states trusted origins of audio and video, for example
 media-src videos.dev-academy.com;
 ```
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 #### More CSP directives
 

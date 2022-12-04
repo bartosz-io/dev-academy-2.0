@@ -1,3 +1,5 @@
+@import '../mixins';
+
 .article {
   ol,
   ul {
@@ -79,6 +81,7 @@
   font-weight: 600;
   font-size: $font-size-16;
   color: $light-200;
+  padding-bottom: .5rem;
 }
 
 .article-meta {
@@ -116,21 +119,23 @@
 
 .article-content-wrapper {
   padding-top: 2rem;
-}
-
-.article-content {
-  overflow: hidden;
-
-  > ul,
-  > ol {
-    margin-bottom: 6rem;
-  }
 
   ul,
   ol {
     li {
       padding-top: .5rem;
     }
+  }
+}
+
+.article-content {
+  @include tocScrollMarginTop(10rem);
+
+  overflow: hidden;
+
+  > ul,
+  > ol {
+    margin-bottom: 6rem;
   }
 
   picture:first-of-type img {
@@ -234,8 +239,11 @@
   background-color: $light-200;
   border-radius: .8rem;
   padding: 5rem 0;
-  margin-bottom: 8rem;
   margin-top: 4rem;
+}
+
+.post-idea-wrapper {
+  padding-bottom: 8rem;
 }
 
 .post-idea-header {
@@ -245,4 +253,8 @@
   letter-spacing: 0;
   margin-top: 1rem;
   margin-bottom: 2rem;
+}
+
+.article-toc {
+  display: none;
 }

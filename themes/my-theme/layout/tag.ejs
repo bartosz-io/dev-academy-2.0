@@ -1,5 +1,8 @@
-<div class="container">
-    <%- partial('partial/tags') %>
-    <%- partial('partial/posts', {posts: page.posts}) %>
-    <%- partial('partial/pagination') %>
+<div class="tags-wrapper">
+    <div class="container">
+        <h2 class="posts-listing-header border border-light border-large"><span>Discover posts</span> by our elite team!</h2>
+        <%- partial('partial/tags') %>
+        <%- partial('partial/posts', {posts: page.posts}) %>
+        <%- partial('partial/pagination') %>
+    </div>
 </div>

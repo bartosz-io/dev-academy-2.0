@@ -4,7 +4,7 @@ contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: A thorough analysis of angular bundle with webpack analyzer to better understand what's the weight of specific parts in the application.
 date: 2019-09-15 16:11:55
-tags: [Angular, "Knowledge Pill"]
+tags: [angular, "knowledge pill"]
 id: angular-bundle-analysis
 relatedPost: angular-input-syntax
 ---

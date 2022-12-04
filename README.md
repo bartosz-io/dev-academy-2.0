@@ -45,3 +45,4 @@ contributors:
     - bannerHeader: string - Wyświetla główny nagłówek.
     - bannerSubheader: string - Wyświetla kolejny nagłówek w banerze.
     - bannerUrl: string (url) - Adres url (hiperłącze), które jest przyczepione do linku.
+    - bannerImage: string (url) - Adres url zdjęcia np. /img/my-image.png

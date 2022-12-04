@@ -1,0 +1,27 @@
+.info-box {
+  border-radius: 1.2rem;
+  box-shadow: 0 0 7.2rem rgba(0, 0, 0, 0.04);
+  background-color: $light-200;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.info-box-icon {
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+  background-color: $dark-350;
+  border-radius: .8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-size-22;
+}
+
+.info-box-text {
+  padding-left: 2rem;
+  font-size: $font-size-16;
+  line-height: 2.2rem;
+}

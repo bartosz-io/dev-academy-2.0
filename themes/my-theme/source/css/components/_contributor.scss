@@ -52,7 +52,6 @@
   .contributor-academies {
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     li {
       padding-bottom: .5rem;
@@ -94,6 +93,16 @@
   .contributor-specs {
     display: none;
   }
+}
+
+.contributor-hidden {
+  display: none;
+}
+
+.contributor-load-more {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .contributor-contribution {
@@ -414,7 +423,6 @@
 
   .contributor-academies {
     padding-top: 2.5rem;
-    text-align: center;
 
     li {
       font-size: $font-size-18;
@@ -758,6 +766,10 @@
 .contributors-collaboration {
   text-align: center;
   padding: 9rem 0;
+
+  figure {
+    display: inline-flex;
+  }
 
   h5 {
     text-transform: uppercase;

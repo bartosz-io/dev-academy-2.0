@@ -4,7 +4,7 @@ contributor: Vlad Ataman
 avatar: vlad-ataman.png
 description: Learn React XSS modern best practices and methods to prevent cross-site scripting attacks in React (JavaScript) applications. 🔒
 date: 2022-07-08
-tags: [React, Security]
+tags: [react, security]
 id: react-xss
 relatedPost: angular-xss
 published: true
@@ -13,6 +13,7 @@ published: true
 
 XSS attacks or cross-site scripting is a type of attack in which malicious code is injected into a web page and then executed. This malicious code can steal your cookies, modify the content or take control of an entire webpage.
 
+## Table of Contents
 <!-- toc -->
 
 ## Attacks

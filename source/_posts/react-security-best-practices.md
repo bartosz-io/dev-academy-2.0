@@ -4,9 +4,11 @@ contributor: Gert J. Oberholzer
 avatar: kobus-oberholzer.png
 description: A brief overview of some of the security risks associated with working on a React JS project and how to avoid them.
 date: 2022-09-22
-tags: [React, Security]
+tags: [react, security]
 id: react-Security-best-practices
 relatedPost: react-xss
+bannerHeader: 'Is your React application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "React Security Best Practices" %}
 
@@ -80,6 +82,8 @@ and used:
 ```
 
 > Output encoding is the process of ensuring that data returned by your application is properly encoded so that it cannot be misinterpreted by browsers or other applications. This helps to prevent cross-site scripting (XSS) attacks.
+
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Arbitrary Code Execution
 

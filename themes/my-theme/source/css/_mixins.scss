@@ -3,3 +3,16 @@
 @mixin transition($prop) {
   transition: $transition-time $prop $transition-type;
 }
+
+@mixin tocScrollMarginTop($offset) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    span[id] {
+      scroll-margin-top: $offset;
+    }
+  }
+}

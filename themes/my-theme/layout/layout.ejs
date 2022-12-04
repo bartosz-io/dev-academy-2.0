@@ -10,10 +10,16 @@
     <%- partial('partial/head/og') %>
     <% if (is_tag() || page.thankYouPage) { %> <meta name="robots" content="noindex"> <% } %>
 </head>
-<body class="
-        <% if (page.thankYouPage) {%> thank-you<% } %>
-        <% if (config.banners.top_banner) {%> b-header-top<% } %>
-        <% if (config.banners.article_side_banner) {%> b-article-sidebar<% } %>">
+<%
+  var bodyClasses = '';
+  if (page.thankYouPage) {bodyClasses += 'thank-you '}
+  if (config.banners.top_banner && is_post()) { bodyClasses += 'b-bar-top '}
+  if (config.banners.article_side_banner) { bodyClasses += 'b-article-sidebar '}
+  if (is_post()) { bodyClasses += 'post-page '}
+  if (is_tag()) { bodyClasses += 'tag-page ' }
+  if (is_current('/')) { bodyClasses += 'index-page ' }
+%>
+<body class="<%- bodyClasses %>">
 
 <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THK2B8H" height="0" width="0" style="display:none;visibility:hidden"></iframe>

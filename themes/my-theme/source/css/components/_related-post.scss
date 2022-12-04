@@ -10,17 +10,38 @@
   box-sizing: border-box;
 
   &.visible {
-    display: block;
+    display: flex;
+  }
+}
+
+.review-screen {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background: $gradient;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+
+  .review-screen-img {
+    border: 1px solid $light-700;
+    margin: 0 0 1rem 0;
+  }
+
+  .button {
+    margin-top: 1rem;
   }
 }
 
 .related-post {
   display: flex;
+  flex-grow: 1;
   align-items: center;
   position: relative;
   padding: 2rem 1.5rem;
   border-radius: .8rem;
-  background-color: $navy-250;
+  background: $gradient;
   color: $light-150;
   box-shadow: 0 .1rem .4rem $dark-500;
 
@@ -46,7 +67,7 @@
 }
 
 .related-post-next {
-  color: $light-750;
+  color: $light-900;
   font-size: 1.3rem;
   line-height: 2.2rem;
   font-weight: 500;

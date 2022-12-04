@@ -1,7 +1,8 @@
+<% if (config.banners.top_banner && is_post()){ %>
+    <%- partial('banners/banner-top') %>
+<% } %>
+
 <header class="header">
-    <% if (config.banners.top_banner){ %>
-        <%- partial('banners/banner-top-navigation') %>
-    <% } %>
     <div class="container">
         <div class="header-bar">
             <div class="header-title">
@@ -12,8 +13,8 @@
             </div>
             <a class="button button-primary header-bar-start" href="/">Start here!</a>
             <button class="header-nav-toggle" aria-label="Click here to open the mobile menu">
-                <img class="header-nav-toggle-menu" src="<%- url_for('/img/icons/menu.svg') %>" width="24" height="24" alt=""></span>
-                <img class="header-nav-toggle-close" src="<%- url_for('/img/icons/close.svg') %>" width="24" height="24" alt=""></span>
+                <img class="header-nav-toggle-menu" src="<%- url_for('/img/icons/menu.svg') %>" width="24" height="24" alt="">
+                <img class="header-nav-toggle-close" src="<%- url_for('/img/icons/close.svg') %>" width="24" height="24" alt="">
             </button>
         </div>
         <div class="header-menu">
@@ -37,15 +38,32 @@
                         </div>
                     </li>
                     <li><a class="header-nav-link" href="https://courses.dev-academy.com" rel="nofollow">Courses</a></li>
-                    <li><a class="header-nav-link" href="<%- url_for('/blog') %>">Blog</a></li>
-                    <li><a class="header-nav-link" href="<%- url_for('/contributors') %>">Contributors</a></li>
+                    <li><a class="header-nav-link <%- is_current('/blog') || is_post() ? 'header-nav-link-active' : '' %>" href="<%- url_for('/blog') %>">Blog</a></li>
+                    <li><a class="header-nav-link <%- is_current('/contributors') ? 'header-nav-link-active' : '' %>" href="<%- url_for('/contributors') %>">Contributors</a></li>
                 </ul>
             </nav>
             <ul class="header-socials">
-                <li><a class="header-social-link" href="https://www.youtube.com/channel/UCcJutJNPZVG5sbp_xaTmKEw" rel="nofollow"><img src="<%- url_for('/img/icons/youtube.svg') %>" width="29" height="29" alt=""></a></li>
-                <!-- TODO DISCORD -->
-                <!-- <li><a class="header-social-link" href="" rel="nofollow"><img src="<%- url_for('/img/icons/instagram.svg') %>" width="29" height="29" alt=""></a></li> -->
-                <li><a class="header-social-link" href="https://www.facebook.com/DevAcademyCom/" rel="nofollow"><img src="<%- url_for('/img/icons/facebook.svg') %>" width="15" height="29" alt=""></a></li>
+                <li>
+                    <a class="header-social-link" href="https://www.youtube.com/channel/UCcJutJNPZVG5sbp_xaTmKEw" rel="nofollow" aria-label="Go to Dev Academy Youtube channel">
+                        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28.7111 8.69978C28.7111 8.69978 28.4279 6.70037 27.5557 5.82244C26.4512 4.66697 25.2164 4.66131 24.65 4.59334C20.5945 4.29881 14.5057 4.29881 14.5057 4.29881H14.4943C14.4943 4.29881 8.40547 4.29881 4.35 4.59334C3.78359 4.66131 2.54883 4.66697 1.44434 5.82244C0.57207 6.70037 0.294531 8.69978 0.294531 8.69978C0.294531 8.69978 0 11.0504 0 13.3953V15.5929C0 17.9379 0.288867 20.2885 0.288867 20.2885C0.288867 20.2885 0.57207 22.2879 1.43867 23.1658C2.54316 24.3213 3.99316 24.2816 4.63887 24.4062C6.96113 24.6271 14.5 24.6951 14.5 24.6951C14.5 24.6951 20.5945 24.6838 24.65 24.3949C25.2164 24.3269 26.4512 24.3213 27.5557 23.1658C28.4279 22.2879 28.7111 20.2885 28.7111 20.2885C28.7111 20.2885 29 17.9435 29 15.5929V13.3953C29 11.0504 28.7111 8.69978 28.7111 8.69978ZM11.5037 18.2607V10.1101L19.3371 14.1996L11.5037 18.2607Z" fill="#FFFFFF"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-social-link" href="https://discord.gg/tXrGY7ca43" rel="nofollow" aria-label="Go to Dev Academy Discord">
+                        <svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.317 1.51312C18.7873 0.812761 17.147 0.296769 15.4319 0.00123971C15.4007 -0.00446392 15.3695 0.00978976 15.3534 0.0382978C15.1424 0.412697 14.9087 0.901132 14.7451 1.28504C12.9004 1.00947 11.0652 1.00947 9.25832 1.28504C9.09465 0.892598 8.85248 0.412697 8.64057 0.0382978C8.62449 0.0107409 8.59328 -0.00351276 8.56205 0.00123971C6.84791 0.295825 5.20756 0.811817 3.67693 1.51312C3.66368 1.51882 3.65233 1.52833 3.64479 1.54067C0.533392 6.17893 -0.31895 10.7032 0.0991801 15.1713C0.101072 15.1932 0.11337 15.2141 0.130398 15.2274C2.18321 16.7317 4.17171 17.6449 6.12328 18.2502C6.15451 18.2597 6.18761 18.2483 6.20748 18.2226C6.66913 17.5936 7.08064 16.9303 7.43348 16.2328C7.4543 16.1919 7.43442 16.1435 7.39186 16.1273C6.73913 15.8802 6.1176 15.579 5.51973 15.2369C5.47244 15.2094 5.46865 15.1419 5.51216 15.1096C5.63797 15.0155 5.76382 14.9176 5.88396 14.8188C5.90569 14.8007 5.93598 14.7969 5.96153 14.8083C9.88928 16.5977 14.1415 16.5977 18.023 14.8083C18.0485 14.796 18.0788 14.7998 18.1015 14.8178C18.2216 14.9167 18.3475 15.0155 18.4742 15.1096C18.5177 15.1419 18.5149 15.2094 18.4676 15.2369C17.8697 15.5856 17.2482 15.8802 16.5945 16.1264C16.552 16.1425 16.533 16.1919 16.5538 16.2328C16.9143 16.9293 17.3258 17.5926 17.7789 18.2217C17.7978 18.2483 17.8319 18.2597 17.8631 18.2502C19.8241 17.6449 21.8126 16.7317 23.8654 15.2274C23.8834 15.2141 23.8948 15.1941 23.8967 15.1723C24.3971 10.0066 23.0585 5.51946 20.3482 1.54162C20.3416 1.52833 20.3303 1.51882 20.317 1.51312ZM8.02002 12.4507C6.8375 12.4507 5.86313 11.3674 5.86313 10.037C5.86313 8.70664 6.8186 7.62336 8.02002 7.62336C9.23087 7.62336 10.1958 8.71615 10.1769 10.037C10.1769 11.3674 9.22141 12.4507 8.02002 12.4507ZM15.9947 12.4507C14.8123 12.4507 13.8379 11.3674 13.8379 10.037C13.8379 8.70664 14.7933 7.62336 15.9947 7.62336C17.2056 7.62336 18.1705 8.71615 18.1516 10.037C18.1516 11.3674 17.2056 12.4507 15.9947 12.4507Z" fill="#FFFFFF"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-social-link" href="https://www.facebook.com/DevAcademyCom/" rel="nofollow" aria-label="Go to Dev Academy Facebook">
+                        <svg width="15" height="29" viewBox="0 0 15 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.07388 29V15.3924H0.5V10.493H4.07388V6.30822C4.07388 3.01983 6.18498 0 11.0494 0C13.0189 0 14.4753 0.190095 14.4753 0.190095L14.3606 4.76531C14.3606 4.76531 12.8753 4.75075 11.2545 4.75075C9.50031 4.75075 9.21926 5.56464 9.21926 6.91548V10.493H14.5L14.2702 15.3924H9.21926V29H4.07388Z" fill="#FFFFFF"/>
+                        </svg>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

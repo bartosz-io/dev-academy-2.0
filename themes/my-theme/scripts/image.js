@@ -68,3 +68,18 @@ hexo.extend.tag.register('banner_ad', function (args) {
     <img src="/img/${assetPath}" alt="" loading="lazy">
   </a>`;
 });
+
+hexo.extend.tag.register('review_screen', function (args) {
+  var assetPath = args[0];
+  var targetUrl = args[1];
+
+  return `<div aria-label="Web Security Academy">
+    <div class="review-screen">
+      <img class="review-screen-img" src="/img/${assetPath}" alt="" loading="lazy">
+      <div class="review-screen-content">
+        <div>Discover why thousands of developers love to learn at <b>Web Security Academy</b> ♥️</div>
+        <a class="button button-primary" href="${targetUrl}">Learn more</a>
+      </div>
+    </div>
+  </div>`;
+});

@@ -12,10 +12,10 @@
                     <div class="contributor-joined">Active contributor since <%- date(page.contributor.joined, 'MMMM Do, YYYY') %></div>
                     <div class="contributor-description"><%- page.contributor.desc %></div>
                     <ul class="contributor-socials">
-                        <% if (page.contributor.socials.site) { %><li><a href="<%- page.contributor.socials.site %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-site"></a></li><% } %>
-                        <% if (page.contributor.socials.linkedin) { %><li><a href="<%- page.contributor.socials.linkedin %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-github"></a></li><% } %>
-                        <% if (page.contributor.socials.twitter) { %><li><a href="<%- page.contributor.socials.twitter %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-twitter"></a></li><% } %>
-                        <% if (page.contributor.socials.github) { %><li><a href="<%- page.contributor.socials.github %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-linkedin"></a></li><% } %>
+                        <% if (page.contributor.socials.site) { %><li><a href="<%- page.contributor.socials.site %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-site" aria-label="Go to the contributor's page"></a></li><% } %>
+                        <% if (page.contributor.socials.linkedin) { %><li><a href="<%- page.contributor.socials.linkedin %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-github" aria-label="Go to the contributor's github"></a></li><% } %>
+                        <% if (page.contributor.socials.twitter) { %><li><a href="<%- page.contributor.socials.twitter %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-twitter" aria-label="Go to the contributor's twitter"></a></li><% } %>
+                        <% if (page.contributor.socials.github) { %><li><a href="<%- page.contributor.socials.github %>" target="_blank" rel="nofollow noopener" class="contributor-social-icon contributor-social-icon-linkedin" aria-label="Go to the contributor's linkedin"></a></li><% } %>
                     </ul>
                 </div>
             </div>

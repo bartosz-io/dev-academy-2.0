@@ -3,13 +3,8 @@
   font-size: $font-size-13;
 }
 
-.footer-socials {
-  display: flex;
-  padding: 4rem 0;
-
-  li + li {
-    padding-left: 2.5rem;
-  }
+.footer-navigation {
+  padding-top: 6rem;
 }
 
 .footer-navigation-column {
@@ -44,6 +39,12 @@
       + li {
         padding-top: .5rem;
       }
+    }
+  }
+
+  .footer-navigation-contact {
+    li {
+      padding-bottom: 0;
     }
   }
 }
@@ -85,4 +86,11 @@
   font-weight: 600;
   font-size: $font-size-15;
   padding-bottom: .5rem;
+}
+
+.footer-navigation-contact {
+  svg {
+    width: 2.2rem;
+    margin-right: 1rem;
+  }
 }

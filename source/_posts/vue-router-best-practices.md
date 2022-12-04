@@ -4,7 +4,7 @@ contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn modern Vue best practices with vue-router to build reliable and well-designed route navigation.
 date: 2022-09-02
-tags: [Vue, Routing]
+tags: [vue, routing]
 id: vue-router-best-practices
 relatedPost: vue-xss, vue-security-best-practices
 ---
@@ -17,6 +17,7 @@ Hi #VueFriend, in this article we cover best practices around routing in Vue, ar
 
 When your Vue app grows is inevitable to make crucial routing decisions. We have prepared some examples for you and a lot of suggestions, remember, not exists the best choice. It is about balance and tradeoffs. Well, let's play our cards.
 
+## Table of Contents
 <!-- toc -->
 
 Routing is all about flows and information. Think of some streets and avenues in your country. When urban planning politics does not exist, the traffic is horrible, and the accessibility is not the best. In consequence, life is hard. The same could happen on our Vue Apps and lead to dangerous scenarios and bad user experiences. To avoid "dangerous scenarios" check out our related [security article with Vue](https://dev-academy.com/vue-security-best-practices/).
@@ -168,6 +169,8 @@ export default router;
 ```
 
 Note that the first child has the path set as a void string, which means that the `/product/:id` will be handled by this specific route and not by the parent. This process will be repeated as many times as you want.
+
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
 
 ### Programmatic Navigation
 
@@ -500,6 +503,8 @@ First, we have a **Global Guard** to check if the user is authenticated. If not 
 Second, we have a **Per-route Guard** to verify if the user has permission as a writer.
 
 And the **In-component Guard** is used at the `ProfileView.vue` as an analytics service to track the user moves.
+
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Lazy load, speed up your app
 

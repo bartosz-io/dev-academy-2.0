@@ -3,7 +3,7 @@ title: Angular User Login and Registration Guide (Cookies and JWT)
 contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 date: 2021-02-18
-tags: [Angular, Security]
+tags: [angular, security]
 description: A complete guide to user login and registration with using JWT. A hands-on, detailed and secure implementation in the application.
 id: user-login-and-registration
 relatedPost: angular-xss
@@ -14,6 +14,7 @@ In this guide, we will design and implement **a complete solution for user authe
 
 Apart from the frontend implementation of our use cases, we will compare **different approaches for performing user authentication** used in today's Web. We will discuss distinct scenarios for application deployment and find an appropriate and most secure approach for our needs. By the end of this tutorial you will have a simple yet adaptable Angular login example, that you could tweak to your specific needs. The code will be written for Angular 2+ and relevant to all newer versions (including Angular 11), but the discussed concepts also apply for AngularJS authentication.
 
+## Table of Contents
 <!-- toc -->
 
 ## Application structure and solution design
@@ -68,8 +69,6 @@ I believe that it is very important to understand the fundamental differences be
 
 > **WARNING:** Whenever you are using any kind of authorization token that you store in `LocalStorage` or `IndexedDB` (so it's accessible by JavaScript code) you are exposing the token to be hijacked via cross-site scripting attack. However, there are valid mitigation techniques, like [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), [Subresource integrity](https://developer.mozilla.org/pl/docs/Web/Security/Subresource_Integrity), and built-in frameworks' sanitization mechanisms, that (when applied properly!) reduce that risk to a negligible degree. That being said that risk is real, so you should pay enough attention to those security issues.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
-
 ## Detailed implementation
 
 ### Login feature
@@ -101,6 +100,8 @@ Let's start with the UI part - login component template. Our approach for user a
 ```
 
 Now the question is: how to take input values from the user to execute the login? To link the HTML form and input elements in the view with the component code we can utilize some directives from the Reactive Forms module. By using [FormGroupDirective](https://angular.io/api/forms/FormGroupDirective) in this way `[formGroup]="loginForm"`, we are telling Angular that there is a property `loginForm` in the component that should hold an instance of that form. We are using `FormBuilder` to create email and password instances of `FormControl`. Email control is also equipped with a built-in email validator.
+
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
 
 ``` typescript
 @Component({
@@ -531,7 +532,7 @@ export class ForRolesDirective {
 
 Remember that the directive needs to be declared in an Angular module. In our case, we are declaring it in `AuthModule` and exporting it to be available to the outside world.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ### Protecting routes
 

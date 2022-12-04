@@ -4,7 +4,7 @@ contributor: Bartosz Pietrucha
 avatar: bartosz-pietrucha.jpg
 description: Complete guide of Angular architecture best practices. High-level abstraction layers, unidirectional data flow, reactive state management and modular design.
 date: 2019-07-02
-tags: [Angular, Architecture]
+tags: [angular, architecture]
 id: angular-architecture
 relatedPost: user-login-and-registration
 ---
@@ -20,8 +20,7 @@ Building scalable software is a challenging task. When we think about scalabilit
 
 {% image 800px "bullets.png" "Angular Architecture Patterns and Best Practices" %}
 
-## Table of contents
-
+## Table of Contents
 <!-- toc -->
 
 ## Problems of scalability in front-end
@@ -155,7 +154,7 @@ When it comes to the state, the abstraction layer makes our components independe
 
 Having this kind abstraction gives us a lot of flexibility and allows to change the way we manage state not even touching the presentation layer. It's even possible to seamlessly migrate to a real-time backend like Firebase, making our application **real-time**. I personally like to start with BehaviorSubjects to manage the state. If later, at some point in the development of the system, there is a need to use something else, with this kind of architecture, it is very easy to refactor.
 
-{% banner_ad "wsf_bundle.gif" "https://courses.dev-academy.com/p/web-security-fundamentals" %}
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
 
 #### Synchronization strategy
 
@@ -299,7 +298,7 @@ Whenever any model value change in our application, Angular [change detection sy
 
 As we know from previous chapters, there is the core layer above the presentation layer, where our application logic is implemented. There are the services and providers that operate on our data. What if we apply the same principle of data manipulation on that level? We can place the application data (the state) in one place "above" the components and propagate the values down to the components via Observable streams (Redux and NgRx call this place a store). The state can be propagated to multiple components and displayed in multiple places, but never modified locally. The change may come only "from above" and the components below only "reflect" the current state of the system. This gives us the important system's property mentioned before - **data consistency** - and the state object becomes **the single source of truth**. Practically speaking, we can *display* the same data in multiple places and not be afraid that the values would differ.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 Our state object exposes the methods for the services in our core layer to manipulate the state. Whenever there is a need to change the state, it can happen only by calling a method on the state object (or dispatching an action in case of using NgRx). Then, the change is propagated "down", via streams, the to presentation layer (or any other service). This way, our state management is *reactive*. Moreover, with this approach, we also increase the level of predictability in our system, because of strict rules of manipulating and sharing the application state. Below you can find a code snippet modeling the state with BehaviorSubjects.
 

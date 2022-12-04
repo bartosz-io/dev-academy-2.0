@@ -4,9 +4,11 @@ contributor: Christoph Jürgens
 avatar: christoph-juergens.jpg
 description: Learn Angular XSS modern best practices and methods to prevent cross-site scripting attacks in Angular (JavaScript) applications. 🔒
 date: 2021-11-27
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-xss
 relatedPost: angular-csp
+bannerHeader: 'Is your Angular application REALLY secure? 🧐'
+bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 {% image_fw 1.78 banner.png "Preventing XSS in Angular" %}
 
@@ -16,6 +18,7 @@ Cross-Site Scripting (XSS) is probably one of the most common and most dangerous
 
 In short, once an attacker achieves exploiting an XSS vulnerability, it mostly means _game over_. The whole web app can be considered entirely compromised. When it comes to XSS attacks, the victim is the user and not the application.
 
+## Table of Contents
 <!-- toc -->
 
 Luckily most modern front-end frameworks like Angular come with built-in defense mechanisms against XSS. However, that does not mean your application is automatically perfectly secure.
@@ -85,7 +88,7 @@ On the other hand, the sanitize method removes potentially dangerous elements, s
 
 The main difference between interpolated and innerHTML code is the behaviour of data interpreted. Property binding helps us bind values to an HTML element's target property but use interpolation to show any data in the template like strings, numbers, dates, arrays, etc. Angular will sanitize and escape untrusted values for you.
 
-{% banner_ad "wsf_bundle.gif" "https://dev-academy.teachable.com/p/web-security-fundamentals" %}
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Possible Angular XSS pitfalls
 
