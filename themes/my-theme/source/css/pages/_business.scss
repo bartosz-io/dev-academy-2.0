@@ -1,0 +1,50 @@
+.business-hero {
+  padding-top: 5rem;
+
+  h1 {
+    font-size: 4.6rem;
+    line-height: 120%;
+    padding: 2.4rem 0;
+    margin-bottom: 0;
+    color: $dark-350;
+  }
+
+  p {
+    font-size: $font-size-18;
+    line-height: 120%;
+    color: $dark-350;
+    padding-bottom: 2.5rem;
+  }
+}
+
+.business-hero-left {
+  small {
+    display: flex;
+    font-size: $font-size-16;
+    line-height: 120%;
+    color: $green-500;
+    opacity: .7;
+
+    svg {
+      margin-right: 1.5rem;
+    }
+  }
+
+  .button {
+    display: flex;
+    height: 5.5rem;
+    width: 100%;
+
+    svg {
+      margin-left: 2.4rem;
+    }
+
+    + .button {
+      margin-top: 2.4rem;
+    }
+  }
+}
+
+.business-hero-actions {
+  padding: 2.5rem 0 5rem;
+}

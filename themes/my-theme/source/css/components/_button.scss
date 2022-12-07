@@ -44,6 +44,16 @@
   }
 }
 
+.button-tertiary {
+  background-color: $light-200;
+  color: $indigo-600;
+
+  &:hover {
+    color: $light-300;
+    background-color: $indigo-600;
+  }
+}
+
 .button-green {
   background-color: $green-500;
 
@@ -54,6 +64,14 @@
 
 .button-large {
   padding: 1.5rem 3rem;
+}
+
+.button-fs-large {
+  font-size: $font-size-18;
+}
+
+.button-thin {
+  font-weight: 500;
 }
 
 .button-block {
