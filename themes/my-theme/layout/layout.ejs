@@ -27,6 +27,7 @@
 
 <% if (page.layout === 'landing')  {%>
     <%- body %>
+    <%- partial('partial/footer', {}, {caches: true}) %>
 <% } else { %>
     <%- partial('partial/header', {}, {caches: true}) %>
     <main>
