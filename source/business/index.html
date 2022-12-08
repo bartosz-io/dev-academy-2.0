@@ -3,7 +3,35 @@ title: Dev Academy B2B
 layout: landing
 ---
 <header class="header">
-    <div class="container"></div>
+    <div class="container">
+        <div class="header-bar">
+            <div class="header-title">
+                <a href="/business>" class="header-logo">
+                    <img src="/img/dev-academy-logo.png" width="34" height="34" alt="Dev Academy Logo">
+                    <span>
+                        Dev Academy
+                        <span>business</span>
+                    </span>
+                </a>
+            </div>
+            <a class="button button-primary header-bar-start" href="/">Ask for demo</a>
+            <button class="header-nav-toggle" aria-label="Click here to open the mobile menu">
+                <img class="header-nav-toggle-menu" src="/img/icons/menu.svg" width="24" height="24" alt="">
+                <img class="header-nav-toggle-close" src="/img/icons/close.svg" width="24" height="24" alt="">
+            </button>
+        </div>
+        <div class="header-menu">
+            <nav class="header-nav">
+                <ul>
+                    <li class="header-nav-start"><a class="button button-primary" href="/">Ask for demo</a></li>
+                    <li><a class="header-nav-link" href="#offer">What we offer?</a></li>
+                    <li><a class="header-nav-link" href="#plans">Plans</a></li>
+                    <li><a class="header-nav-link" href="#methodology">Methodology</a></li>
+                    <li><a class="header-nav-link" href="/">Go to Dev Academy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </header>
 <main class="business">
     <div class="business-hero-section">
@@ -27,7 +55,7 @@ layout: landing
                                 <path d="M18.6668 1.66656L1.55566 18.7777M18.6668 1.66656L8.44455 1.44434M18.6668 1.66656L18.889 10.9999" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </a>
-                        <a href="/" class="button button-tertiary button-thin button-fs-large">Check out plans</a>
+                        <a href="#offer" class="button button-tertiary button-thin button-fs-large">Check out plans</a>
                     </div>
                 </div>
                 <div class="business-hero-right">
@@ -80,7 +108,7 @@ layout: landing
             </div>
         </div>
     </div>
-    <div class="business-offer-section">
+    <div class="business-offer-section" id="offer">
         <div class="container">
             <div class="business-offer">
                 <h2 class="business-offer-header">What else we can offer to your team?</h2>
