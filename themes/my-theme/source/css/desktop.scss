@@ -1184,6 +1184,20 @@
   .business-hero-right {
     flex-basis: 60rem;
   }
+
+  .business-feedback {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .business-feedback-left {
+    padding-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .business-feedback-right {
+    padding-left: 11rem;
+  }
 }
 
 @media (min-width: 1280px) {

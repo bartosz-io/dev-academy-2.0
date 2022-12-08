@@ -82,3 +82,33 @@
 .business-hero-image-gradient {
   display: none;
 }
+
+.business-feedback-section {
+  background-color: $light-200;
+  padding: 5rem 0;
+}
+
+.business-feedback-quote {
+  color: $secondary;
+  font-size: $font-size-22;
+  font-style: italic;
+  line-height: 120%;
+  padding-bottom: 5rem;
+}
+
+.business-feedback-left {
+  padding-bottom: 5rem;
+}
+
+.business-feedback-person-details {
+  font-size: $font-size-18;
+}
+
+.business-feedback-person-name {
+  font-weight: 600;
+  color: $navy-800;
+}
+
+.business-feedback-person-desc {
+  color: $navy-800;
+}
