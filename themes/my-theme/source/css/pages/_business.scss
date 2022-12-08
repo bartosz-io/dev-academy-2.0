@@ -180,6 +180,7 @@
   border-radius: 50%;
   position: relative;
   margin-bottom: 2.4rem;
+  box-shadow: 0 0 2rem rgba(138, 80, 230, 0.05);
 
   img {
     position: absolute;
@@ -201,4 +202,7 @@
 
 .business-offer-box-desc {
   padding-bottom: 0;
+  font-size: $font-size-18;
+  line-height: 120%;
+  color: $dark-350;
 }
