@@ -621,6 +621,16 @@
     position: relative;
     z-index: $z-index-100;
   }
+
+  .business-performance-cards {
+    display: flex;
+    gap: 10rem;
+    justify-content: center;
+  }
+
+  .business-performance-card {
+    flex-basis: 31rem;
+  }
 }
 
 @media (min-width: 992px) {
@@ -1105,6 +1115,10 @@
   .business-hero-right {
     flex-shrink: 0;
     flex-basis: 50rem;
+  }
+
+  .business-performance-cards {
+    gap: 20rem;
   }
 }
 
