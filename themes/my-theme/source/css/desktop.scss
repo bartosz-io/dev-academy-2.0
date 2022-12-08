@@ -635,6 +635,10 @@
   .business-performance-card {
     flex-basis: 31rem;
   }
+
+  .business-offer .slider-items {
+    flex-direction: row;
+  }
 }
 
 @media (min-width: 992px) {
@@ -1411,6 +1415,16 @@
 
   .business-offer-boxes {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .business-offer {
+    .slider-items {
+      display: grid;
+    }
+
+    .slider-pagination {
+      display: none;
+    }
   }
 }
 
