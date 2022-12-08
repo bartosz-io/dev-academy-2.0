@@ -107,8 +107,18 @@
   padding-bottom: 5rem;
 }
 
+.business-feedback-person {
+  display: flex;
+  align-items: flex-start;
+}
+
+.business-feedback-person-image {
+  filter: drop-shadow(0 .4rem 2.5rem rgba(0, 0, 0, 0.15));
+}
+
 .business-feedback-person-details {
   font-size: $font-size-18;
+  padding-left: 1.2rem;
 }
 
 .business-feedback-person-name {
