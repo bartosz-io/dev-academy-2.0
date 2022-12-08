@@ -9,6 +9,7 @@ layout: landing
     <div class="business-hero-section">
         <div class="container">
             <div class="business-hero">
+                <img class="business-hero-image-gradient" src="/img/business/radial-gradient.png" loading="lazy" alt="">
                 <div class="business-hero-left">
                     <small>
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,12 +31,15 @@ layout: landing
                     </div>
                 </div>
                 <div class="business-hero-right">
-                    <figure>
-                        <picture>
-                            <source srcset="/img/business/dev-academy-business.png" type="image/webp">
-                            <img class="business-hero-right-image" src="/img/business/dev-academy-business.png" loading="lazy" alt="Dev Academy Business">
-                        </picture>
-                    </figure>
+                    <picture>
+                        <source media="(min-width: 992px)" srcset="/img/business/dev-academy-business.png" />
+                        <img class="business-hero-main-image" src="/img/business/business-lady.png" alt="Dev Academy Business">
+                    </picture>
+                    <div class="business-hero-images">
+                        <img class="business-hero-image" src="/img/business/instructors.png" loading="lazy" alt="">
+                        <img class="business-hero-image" src="/img/business/spent-hours.png" loading="lazy" alt="">
+                        <img class="business-hero-image" src="/img/business/trust-score.png" loading="lazy" alt="">
+                    </div>
                 </div>
             </div>
         </div>

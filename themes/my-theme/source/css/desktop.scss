@@ -596,6 +596,31 @@
   .academy-contributor-wrapper {
     padding-top: 25rem;
   }
+
+  .business-hero {
+    position: relative;
+
+    p {
+      max-width: 49rem;
+    }
+  }
+
+  .business-hero-actions {
+    width: 29rem;
+  }
+
+  .business-hero-image-gradient {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: -2rem;
+  }
+
+  .business-hero-left,
+  .business-hero-right {
+    position: relative;
+    z-index: $z-index-100;
+  }
 }
 
 @media (min-width: 992px) {
@@ -1058,6 +1083,29 @@
     left: auto;
     top: 5rem;
   }
+
+  .business-hero-images {
+    display: none;
+  }
+
+  .business-hero {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5rem;
+  }
+
+  .business-hero-main-image {
+    max-width: 60rem;
+  }
+
+  .business-hero-left {
+    padding-right: 1rem;
+  }
+
+  .business-hero-right {
+    flex-shrink: 0;
+    flex-basis: 50rem;
+  }
 }
 
 @media (min-width: 1180px) {
@@ -1131,6 +1179,10 @@
 
   .academy-hero-wave {
     top: 89%;
+  }
+
+  .business-hero-right {
+    flex-basis: 60rem;
   }
 }
 

@@ -48,3 +48,37 @@
 .business-hero-actions {
   padding: 2.5rem 0 5rem;
 }
+
+
+.business-hero-right {
+  text-align: center;
+
+  picture {
+    align-items: center;
+  }
+}
+
+.business-hero-images {
+  position: relative;
+  top: -5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.business-hero-main-image {
+  max-width: 30rem;
+  width: 100%;
+  filter: drop-shadow(0 .4rem 2rem rgba(30, 2, 74, 0.25));
+}
+
+.business-hero-image {
+  box-shadow: -.4rem -.4rem 4.4rem rgba(0, 0, 0, 0.08), .4rem .4rem 4.4rem rgba(71, 0, 171, 0.08);
+  border-radius: .8rem;
+}
+
+.business-hero-image-gradient {
+  display: none;
+}
