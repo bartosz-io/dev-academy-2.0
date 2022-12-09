@@ -675,6 +675,10 @@
       display: flex;
     }
   }
+
+  .business-resources {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 992px) {
@@ -1525,6 +1529,10 @@
 
   .business-methodology-right .business-methodology-content {
     padding-right: 10rem;
+  }
+
+  .business-resources {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

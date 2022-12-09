@@ -489,7 +489,7 @@
 }
 
 .business-methodology-section {
-  padding: 7rem 0;
+  padding-top: 7rem;
   background-color: $light-200;
 }
 
@@ -549,7 +549,7 @@
   }
 }
 
-.business-methodology-link {
+.business-link {
   font-weight: 700;
   font-size: $font-size-16;
   line-height: 2.8rem;
@@ -562,4 +562,39 @@
 
 .business-methodologies-footpath-image {
   display: none;
+}
+
+.business-resources-section {
+  padding: 7rem 0 9rem;
+}
+
+.business-resources {
+  display: grid;
+  gap: 4rem;
+}
+
+.business-resources-section-header {
+  font-weight: 700;
+  font-size: $font-size-40;
+  line-height: 140%;
+  color: $dark-350;
+  margin: 0;
+  padding-bottom: 5rem;
+  letter-spacing: 0;
+}
+
+.business-resource-header {
+  font-size: $font-size-20;
+  font-weight: 700;
+  line-height: 2.9rem;
+  color: $dark-350;
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+  letter-spacing: 0;
+}
+
+.business-resource-desc {
+  font-size: inherit;
+  color: $dark-100;
+  padding-bottom: 1rem;
 }
