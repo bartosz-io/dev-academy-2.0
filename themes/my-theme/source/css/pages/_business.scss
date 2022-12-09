@@ -29,7 +29,7 @@
     display: flex;
     font-size: $font-size-16;
     line-height: 120%;
-    color: $green-500;
+    color: $green-600;
     opacity: .7;
 
     svg {
@@ -296,7 +296,7 @@
 
   &[data-plan="testing"] {
     .business-plan-content-header {
-      color: $green-500;
+      color: $green-600;
     }
   }
 }
@@ -317,6 +317,15 @@
   .business-plan-content-offer,
   .business-plan-content-benefits {
     color: $light-100;
+  }
+
+  .business-plan-content-benefits li span {
+    color: $green-350;
+  }
+
+  .business-plan-content-benefits li:after,
+  .business-plan-content-benefits li:before {
+    background-color: $green-350;
   }
 }
 
@@ -440,7 +449,7 @@
 }
 
 .business-plan-content-offer-info {
-  color: $green-500;
+  color: $green-600;
   font-size: $font-size-16;
   line-height: 120%;
   padding-bottom: 2.4rem;
@@ -467,7 +476,7 @@
       content: '';
       display: flex;
       position: absolute;
-      background: $green-500;
+      background: $green-600;
     }
 
     &:before {
@@ -485,7 +494,7 @@
     }
 
     span {
-      color: $green-500;
+      color: $green-600;
     }
   }
 }
@@ -559,7 +568,7 @@
   font-weight: 700;
   font-size: $font-size-16;
   line-height: 2.8rem;
-  color: $teal-500;
+  color: $teal-400;
 
   span {
     text-decoration: underline;
