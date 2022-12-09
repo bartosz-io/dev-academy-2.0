@@ -1149,6 +1149,21 @@
       }
     }
   }
+
+  .business-plans-options {
+    display: none;
+  }
+
+  .business-plan-content {
+    display: flex;
+  }
+
+  .business-plans-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    column-gap: 1.5rem;
+  }
 }
 
 @media (min-width: 1180px) {
@@ -1240,6 +1255,10 @@
 
   .business-feedback-right {
     padding-left: 11rem;
+  }
+
+  .business-plan-content {
+    padding: 5rem 4rem 5rem;
   }
 }
 

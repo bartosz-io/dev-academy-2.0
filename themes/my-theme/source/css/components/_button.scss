@@ -62,6 +62,17 @@
   }
 }
 
+.button-white {
+  background-color: $light-100;
+  color: $indigo-600;
+  border: .1rem solid $indigo-600;
+
+  &:hover {
+    color: $light-300;
+    background-color: $indigo-600;
+  }
+}
+
 .button-large {
   padding: 1.5rem 3rem;
 }

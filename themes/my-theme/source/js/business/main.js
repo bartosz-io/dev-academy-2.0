@@ -1,9 +1,17 @@
 window.addEventListener('DOMContentLoaded', function() {
     slider();
+
+    if (!this.isTablet()) {
+        businessPlans();
+    }
 });
 
 function isLaptop() {
     return window.innerWidth > 1279;
+}
+
+function isTablet() {
+    return window.innerWidth > 991;
 }
 
 function slider() {
@@ -118,5 +126,37 @@ function slider() {
                 item.classList.remove(visibleClass);
             }
         });
+    }
+}
+
+function businessPlans() {
+    var plans = document.querySelectorAll('.business-plan-option');
+    var plansContent = document.querySelectorAll('.business-plan-content');
+    var activeClass = 'active';
+    var planTypeString = 'data-plan';
+
+    if (plans && plansContent) {
+        plans.forEach(function(plan) {
+            plan.addEventListener('click', function(event) {
+                var academyType = event.currentTarget.getAttribute(planTypeString);
+
+                plans.forEach((function(plan) {
+                    plan.classList.remove(activeClass);
+                }));
+
+                plansContent.forEach((function(planContent) {
+                    var academyContentType = planContent.getAttribute(planTypeString);
+
+                    planContent.classList.remove(activeClass);
+
+                    if (academyContentType === academyType) {
+                        planContent.classList.add(activeClass);
+                    }
+                }));
+
+                plan.classList.add(activeClass);
+            })
+        });
+
     }
 }
