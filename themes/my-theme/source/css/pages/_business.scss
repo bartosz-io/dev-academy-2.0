@@ -79,6 +79,7 @@
   max-width: 30rem;
   width: 100%;
   filter: drop-shadow(0 .4rem 2rem rgba(30, 2, 74, 0.25));
+  aspect-ratio: 200/187;
 }
 
 .business-hero-image {
@@ -93,6 +94,11 @@
 .business-feedback-section {
   background-color: $light-200;
   padding: 7rem 0;
+}
+
+.business-feedback-image {
+  aspect-ratio: 4.457;
+  height: auto;
 }
 
 .business-feedback-quote {
