@@ -639,6 +639,42 @@
   .business-offer .slider-items {
     flex-direction: row;
   }
+
+  .business-methodology-figure img {
+    max-width: 50rem;
+  }
+
+  .business-methodology-right {
+    text-align: right;
+
+    .business-methodology-top {
+      justify-content: flex-end;
+
+      h3 .new-line {
+        justify-content: flex-end;
+      }
+    }
+
+    .business-methodology-figure picture {
+      align-items: flex-end;
+    }
+
+    .business-methodology-image {
+      order: 1;
+      margin-left: 1.6rem;
+      margin-right: 0;
+      transform: scaleX(-1);
+    }
+  }
+
+  .business-methodology-top h3 {
+    font-size: $font-size-40;
+    line-height: 6rem;
+
+    .new-line {
+      display: flex;
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -1164,6 +1200,43 @@
     align-items: center;
     column-gap: 1.5rem;
   }
+
+  .business-methodologies-footpath-image {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .business-methodology-figure {
+    padding-bottom: 0;
+  }
+
+  .business-methodology {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: $z-index-100;
+  }
+
+  .business-methodologies {
+    position: relative;
+  }
+
+  .business-methodology-content {
+    padding-left: 4rem;
+  }
+
+  .business-methodology-right {
+    .business-methodology-figure {
+      order: 1;
+    }
+
+    .business-methodology-content {
+      padding-right: 4rem;
+    }
+  }
 }
 
 @media (min-width: 1180px) {
@@ -1444,6 +1517,14 @@
     .slider-pagination {
       display: none;
     }
+  }
+
+  .business-methodology-content {
+    padding-left: 10rem;
+  }
+
+  .business-methodology-right .business-methodology-content {
+    padding-right: 10rem;
   }
 }
 

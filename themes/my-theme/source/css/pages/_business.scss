@@ -185,7 +185,6 @@
   }
 }
 
-
 .business-offer-header {
   letter-spacing: 0;
   font-size: $font-size-40;
@@ -239,28 +238,37 @@
   padding: 7rem 0;
 }
 
-.business-plans-header {
+%common-header-styles {
   text-align: center;
   color: $dark-100;
   font-size: $font-size-40;
   line-height: 120%;
   letter-spacing: 0;
+  margin-bottom: 0;
+  padding-bottom: 3rem;
+}
+
+.business-plans-header {
+  @extend %common-header-styles;
   max-width: 42rem;
   margin: 0 auto;
-  padding-bottom: 3rem;
 }
 
 .business-plans-header-highlight {
   color: $indigo-600;
 }
 
-.business-plans-desc {
-  max-width: 42rem;
+%common-paragraph-styles {
   margin: 0 auto;
   font-size: $font-size-18;
   line-height: 120%;
   color: $dark-100;
   text-align: center;
+  max-width: 42rem;
+}
+
+.business-plans-desc {
+  @extend %common-paragraph-styles;
 }
 
 .business-plan-content {
@@ -474,4 +482,84 @@
       color: $green-500;
     }
   }
+}
+
+.business-methodology {
+  padding-bottom: 7rem;
+}
+
+.business-methodology-section {
+  padding: 7rem 0;
+  background-color: $light-200;
+}
+
+.business-methodology-header {
+  @extend %common-header-styles;
+}
+
+.business-methodology-header-highlight {
+  color: $indigo-600;
+}
+
+.business-methodology-desc {
+  @extend %common-paragraph-styles;
+  padding-bottom: 7rem;
+}
+
+.business-methodology-top {
+  display: flex;
+  align-items: center;
+  padding-bottom: 2rem;
+
+  h3 {
+    color: $dark-100;
+    font-size: $font-size-30;
+    line-height: 130%;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0;
+  }
+}
+
+.business-methodology-image {
+  width: 12rem;
+  height: 12rem;
+  margin-right: 1.6rem;
+
+  &[src$="meditation.png"] {
+    width: 12.6rem;
+  }
+}
+
+.business-methodology-figure {
+  padding-bottom: 2rem;
+
+  img {
+    border-radius: 1.6rem;
+    filter: drop-shadow(0 .4rem 12.4rem rgba(138, 80, 230, 0.1));
+  }
+}
+
+.business-methodology-content {
+  p {
+    color: $dark-100;
+    font-size: $font-size-18;
+    line-height: 120%;
+    padding-bottom: 3rem;
+  }
+}
+
+.business-methodology-link {
+  font-weight: 700;
+  font-size: $font-size-16;
+  line-height: 2.8rem;
+  color: $teal-500;
+
+  span {
+    text-decoration: underline;
+  }
+}
+
+.business-methodologies-footpath-image {
+  display: none;
 }
