@@ -29,7 +29,7 @@
     display: flex;
     font-size: $font-size-16;
     line-height: 120%;
-    color: $green-600;
+    color: $indigo-600;
     opacity: .7;
 
     svg {
@@ -85,6 +85,7 @@
 .business-hero-image {
   box-shadow: -.4rem -.4rem 4.4rem rgba(0, 0, 0, 0.08), .4rem .4rem 4.4rem rgba(71, 0, 171, 0.08);
   border-radius: .8rem;
+  height: auto;
 }
 
 .business-hero-image-gradient {
@@ -97,7 +98,6 @@
 }
 
 .business-feedback-image {
-  aspect-ratio: 4.457;
   height: auto;
 }
 
@@ -550,6 +550,7 @@
   padding-bottom: 2rem;
 
   img {
+    height: auto;
     border-radius: 1.6rem;
     filter: drop-shadow(0 .4rem 12.4rem rgba(138, 80, 230, 0.1));
   }
