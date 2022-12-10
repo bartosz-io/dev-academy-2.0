@@ -29,7 +29,9 @@
 <% if (page.layout === 'landing')  {%>
     <%- body %>
     <%- partial('partial/footer', {}, {caches: true}) %>
+    <%- partial('partial/cookie-consent', {}, {caches: true}) %>
     <script src="<%- url_for('/js/core.js') %>" defer></script>
+    <script src="<%- url_for('/js/gtm.js') %>" defer></script>
 <% } else { %>
     <%- partial('partial/header', {}, {caches: true}) %>
     <main>

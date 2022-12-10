@@ -17,7 +17,6 @@ window.addEventListener('DOMContentLoaded', function() {
         setActiveTagPill();
     }
 
-    cookieConsent();
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
@@ -101,35 +100,6 @@ function isPostPage() {
 
 function isIndexPage() {
     return document.body.classList.contains('index-page');
-}
-
-function cookieConsent() {
-    var key = 'cookie-consent';
-    var hiddenClass = 'hidden';
-    var cookie =  document.querySelector('.cookie-consent')
-
-    if (localStorage.getItem(key)) {
-        if (cookie) {
-            cookie.style.display = 'none';
-        }
-    } else {
-        var button = document.getElementById(key);
-
-        if (cookie) {
-            cookie.style.display = 'block';
-        }
-
-        if (button) {
-            button.addEventListener('click', function() {
-                localStorage.setItem(key, 'true');
-                cookie.classList.add(hiddenClass);
-
-                setTimeout(function() {
-                    cookie.style.display = 'none';
-                }, 300);
-            });
-        }
-    }
 }
 
 function relatedPosts() {
