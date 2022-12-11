@@ -10,7 +10,7 @@
 .header-bar {
   position: relative;
   display: flex;
-  min-height: 7rem;
+  min-height: $header-height-mobile;
   justify-content: space-between;
   align-items: center;
 }

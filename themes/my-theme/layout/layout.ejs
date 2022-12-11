@@ -18,6 +18,7 @@
   if (is_post()) { bodyClasses += 'post-page '}
   if (is_tag()) { bodyClasses += 'tag-page ' }
   if (is_current('/')) { bodyClasses += 'index-page ' }
+  if (is_current('/start')) { bodyClasses += 'start-page ' }
   if (is_current('/business')) { bodyClasses += 'landing-business ' }
 %>
 <body class="<%- bodyClasses %>">
