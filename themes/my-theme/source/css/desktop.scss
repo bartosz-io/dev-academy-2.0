@@ -183,14 +183,6 @@
       flex-shrink: 0;
       flex-basis: 14rem;
     }
-
-    .button {
-      font-size: $font-size-14;
-      width: 9rem;
-      border-radius: .4rem;
-      display: block;
-      text-align: center;
-    }
   }
 
   .related-post-image {
@@ -199,7 +191,7 @@
   }
 
   .related-post-header {
-    padding: 0 2rem;
+    padding-left: 2rem;
     flex-grow: 1;
   }
 
@@ -1360,7 +1352,7 @@
   }
 
   .related-posts {
-    max-width: 55rem;
+    max-width: 50rem;
     right: 4rem;
     transform: none;
   }
