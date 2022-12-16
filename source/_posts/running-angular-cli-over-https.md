@@ -4,12 +4,11 @@ contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn how to have a trusted self-signed certificate and serve your Angular application via HTTPS locally.
 date: 2022-12-11
-tags: [Angular, Security]
+tags: [angular, security]
 id: angular-cli-https
 relatedPost: angular-cors
 ---
 {% image_fw 1.78 banner.png "Running Angular CLI over HTTPS" %}
-
 
 <!-- toc -->
 
