@@ -34,7 +34,7 @@ We need to understand how the **Same-origin Policy**, [Content Security Policy](
 
 ### Step 2: Prevent common security vulnerabilities
 
-The second step is to understand common yet still very serious security vulnerabilities. And there are proven strategies and ways to prevent them, if you are aware of them, **OWASP Top 10** is a project by a non-profit organization, OWASP, that is trying to gather this information in one place.
+The second step is to understand common yet still very serious security vulnerabilities. There are proven strategies and ways to prevent these well-known vulnerabilities. **OWASP Top 10** is a project by a non-profit organization, [OWASP](https://owasp.org), that is trying to gather common security risks in one place.
 
 OWASP Top 10 lists the **10 most important security issues** regarding web applications. For example, one of those common issues may be [cross-site scripting](/preventing-xss-in-angular/), which is deadly when it comes to its consequences and how it actually makes it possible to break the application. Imagine that you have an attacker, a hacker, and a vulnerable website. It can be any website that has something more than just plain text like an online shop, some social network platform, or something that makes some actual business. If an attacker is able to inject (through many different ways) **some malicious code** into the secure context of the website that code may steal cookies or even execute queries on behalf of the logged user. Think of an online shop and a script that can make some purchases. Generally speaking, if an application is vulnerable to cross-site scripting it allows the execution of an arbitrary code that the user may not be aware of that.
 
@@ -42,7 +42,7 @@ Other common vulnerabilities are **cross-site request forgery** or [server-side 
 
 ### Step 3: Choose a proper authentication architecture
 
-During the development process software architects and the team need to decide about **authentication architecture**. When deciding on the right authentication architecture for your application, cookie-session and JWT token are two popular options. Cookie-session is used to identify an individual user's request, making it possible to differentiate amongst a pool of users. JWT tokens utilize cryptography to provide a secure way of transferring data between two systems while also keeping the user's identity confidential.
+During the development process software architects and the team need to decide about **authentication architecture**. When deciding on the right authentication architecture for your application, cookie-session and JWT token are two popular options. Cookie-session is used to identify an individual user's request, making it possible to differentiate amongst a pool of users. JWT tokens utilize cryptography to provide a secure way of transferring data between two systems in a stateless fashion.
 
 Both cookie sessions and JWT tokens have their own advantages and drawbacks that you should consider before choosing a proper authentication architecture for your application. Depending on factors such as scalability and security requirements, one of these architectures might be more suitable than the other. The decision about proper session management in the application is usually a trade-off between security, technical feasibility, business requirements, and user experience.
 
@@ -65,9 +65,9 @@ The fourth step is to implement a secure role-based, permission-based authorizat
 
 To make our systems ultra-secure we need **additional layers of security**, like two-factor authentication. In order for a user to authenticate providing just the password is not enough. There must be something on top of the username and password pair, which is called the second factor. It might be an additional [time-based one-time password](/angular-otp-verification/), iris scan, fingerprint scan, or other unique property.
 
-Login throttling can prevent brute force attacks, dictionary attacks, and credential stuffing attacks. If the system does not prevent excessive password trials to impersonate the user, this creates a serious attack vector.
+Login throttling can prevent *brute force attacks*, *dictionary attacks*, and *credential stuffing attacks*. If the system does not prevent excessive password trials to impersonate the user, this creates a serious attack vector. Storing users' passwords securely with hashing and salting is also extremely crucial in case of a data breach.
 
-Hackers are smart, they use different techniques in order to break the system. Having **user input validation and sanitization** is absolutely necessary not only on the front-end side but also on the server side especially. We need to make sure that whatever the backend receives is always considered unsafe before further processing.
+Hackers are smart, they use different techniques in order to break the system. Having **user input validation and sanitization** is absolutely necessary not only on the front-end side but on the server side especially. We need to make sure that whatever the backend receives is always considered unsafe before further processing.
 
 Secure code is not just about programming. We also need to remember about the surrounding infrastructure not to mention using a secure connection via HTTPS.
 
@@ -85,6 +85,6 @@ The last step is to test your security. Doing a comprehensive code review is not
 
 ## Why you should consider investing in secure coding
 
-In these seven steps explained we just scratched the surface of the best practices of modern web application security. [Web Security Academy](https://websecurity-academy.com) provides **a complete training program** in form of an online course with Q&A meetings and trainer's support. It provides the knowledge and skills required by development teams to design and implement secure web applications. Included programming tasks and challenges help learn the concepts in practice. Students finish the program **familiar with a lot of security risks** and know how to implement secure solutions to mitigate security threats. The entire training experience rises security awareness in the software development process.
+In these seven steps explained we just scratched the surface of the best practices of modern web application security. [Web Security Academy](https://websecurity-academy.com) provides **a complete training program** in form of an online course with Q&A meetings and trainer's support. It provides the knowledge and skills required by development teams to design and implement secure web applications. Included programming tasks and challenges help to learn the concepts in practice. Students finish the program **familiar with different security risks** and know how to implement secure solutions to mitigate security threats. The entire training experience rises security awareness in the software development process.
 
 The implementation examples in the program use Angular and Node (with TypeScript), but the underlying **concepts are applicable to any web stack**. Java, Python, or C# teams can easily participate in the training as secure programming tactics are general. Secure coding training educates teams on how to design and write code in such a way that it is not vulnerable to malicious attacks.
