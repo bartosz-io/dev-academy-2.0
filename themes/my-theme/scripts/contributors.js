@@ -19,7 +19,7 @@ hexo.extend.generator.register('contributors', function(locals) {
             postsCount: contributorPosts.length,
             level: level
         };
-    });
+    }).sort((c1, c2) => c2.postsCount - c1.postsCount);
 
     return {
         path: 'contributors/index.html',
