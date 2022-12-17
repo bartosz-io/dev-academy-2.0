@@ -596,6 +596,7 @@
 .contributor-image {
   max-width: 30rem;
   width: 100%;
+  height: auto;
   border-radius: 100%;
   border: .3rem solid $light-100;
   filter: drop-shadow(0 .4rem 5rem rgba(0, 67, 86, 0.2));
@@ -732,6 +733,10 @@
 
 .contributors-collaboration-logos-desktop {
   display: none;
+}
+
+.contributors-collaboration-logos-mobile {
+  height: auto;
 }
 
 .contributors-ready-header {
