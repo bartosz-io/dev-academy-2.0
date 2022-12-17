@@ -717,8 +717,9 @@
 }
 
 .academy-trustpilot-image {
-  max-width: 20rem;
   width: 100%;
+  height: auto;
+  max-height: 5rem;
 }
 
 .academy-trustpilot-score {
