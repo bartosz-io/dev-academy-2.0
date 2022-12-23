@@ -323,6 +323,8 @@ Some of the best practices around are:
 * Sanitize html tags, if you need to reflect some string with HTML content inside, you can use libraries like [vue-3-sanitize](https://www.npmjs.com/package/vue-3-sanitize), [vue-sanitize](https://www.npmjs.com/package/vue-sanitize), or [sanitize-html](https://github.com/apostrophecms/sanitize-html) to sanitize it.
 * Forms, URLs, and every input data, in general, must be validated before its use (the validation must be carried out both in the frontend and in the backend). A nice library that can help you to fulfill this task is [Yup](https://www.npmjs.com/package/yup).
 
+You can also check our write-up covering [secure programming training](/secure-coding-training) with actionable advice on building secure Web applications.
+
 > Inputs are the best door
 
 {% review_screen "review_2.png" "https://websecurity-academy.com" %}

@@ -16,7 +16,7 @@ This article is the third part of our &quot;Preventing XSS in Angular&quot; seri
 
 Trusted Types is a web platform defence mechanism that can help to stop XSS vulnerabilities in our Angular application. We will learn how Trusted Types can stop the emergence of DOM XSS vulnerabilities and discuss how to configure Trusted Types in Angular.
 
-If you are interested in learning more about **building secure Web applications** consider joining our flagship online program [WebSecurity Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-trusted-types). It will teach you everything you need to know in that area with the support of our international community 😁.
+If you are interested in learning more about **building secure Web applications** consider joining our flagship online program [WebSecurity Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-trusted-types). It will teach you everything you need to know in that area with the support of our international community 😁. Some of the actionable advice is also available in our [secure development training](/secure-coding-training) article.
 
 ## Table of Contents
 <!-- toc -->

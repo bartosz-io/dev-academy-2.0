@@ -11,7 +11,7 @@ relatedPost: angular-xss
 
 {% image_fw 1.78 banner.png "Preventing XSS in Vue" %}
 
-Something usual in software development is to give a high priority to the implementation of functionalities over other aspects such as security. Mainly when the development team, company, or others do not have an active culture of secure development, they are putting at risk the most valuable asset for companies and their users... the information. Of course not information is created equal, but when confidencial information is revealed, this most often creates a huge demage, both financially and reputationally.
+Something usual in software development is to give a high priority to the implementation of functionalities over other aspects such as security. Mainly when the development team, company, or others do not have an active culture of [secure development](/secure-coding-training), they are putting at risk the most valuable asset for companies and their users... the information. Of course not information is created equal, but when confidencial information is revealed, this most often creates a huge demage, both financially and reputationally.
 
 Today we will learn how to prevent, mitigate, and secure our web applications from the cross-site scripting (XSS) attack vector, one of the most trivial, usual, and dangerous in the world of web applications.
 

@@ -70,4 +70,4 @@ Photo by [FLY:D](https://unsplash.com/@flyd2069) on [Unsplash](https://unsplash.
 
 Without solid web security, server-side request forgery can be tricky to identify. It explains why it joined the top 10 OWASP listing about widespread web security vulnerabilities.
 
-Join the [Web Security Academy](https://websecurity-academy.com) to learn how to protect your apps!
+Join the [Web Security Academy](https://websecurity-academy.com) to learn how to protect your applications and study the tips covered in [secure coding training](/secure-coding-training).

@@ -212,9 +212,7 @@ Several ACAO header directive types exist and thus the origin should be properly
 {% img "acao.png" "ACAO" "lazy" %}
 
 * `\*`: Use this to allow any origin and without any credentials. This will throw an error if we try to access it with credentials. Avoid using wildcards in internal networks, trusting network configuration alone to protect internal resources is not sufficient when internal browsers can access untrusted external domains.
-
 * `<origin>`: Specify a single domain that is allowed access, only allow trusted sites.
-
 * `null`: Typically used in a sandbox where the request is coming from a file on a user's computer rather than from a hosted web page. It is advised to avoid using this header directive due to security concerns.
 
 Setting the origin to a custom domain (which can be set as a list as well), modifies the ACAO header.
@@ -246,3 +244,5 @@ CORS is browser-side only and is not a substitute for server-side security polic
 We can use proxies like Nginx or load balancers like (AWS Coludfront) as alternatives, and provide an extra layer of configuration but this is beyond the scope of this article.
 
 You now have more idea on how Angular handles cross-origin resource sharing and how to fix your cors issue via the angular CLI and your API backend. Hope you got the CORS confidence boost for the shiny web application you develop! Until next time.
+
+If you are interested in learning more about **building secure Web applications** consider joining our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-cors). It will teach you everything you need to know in that area. ⭐ Some of the actionable tips are also covered in our [secure coding training](/secure-coding-training) article.

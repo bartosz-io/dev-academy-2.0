@@ -313,4 +313,4 @@ We can protect our routes based on our role using the scenario above. This artic
 
 ## The next steps
 
-This was a straightforward angular application to put into action. Although we will learn more about Angular Guard for Role-Based Access Control (RBAC) Driven by JWT in the following article. Visit our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-router-guard-rbac-post).
+This was a straightforward angular application to put into action. Although we will learn more about Angular Guard for Role-Based Access Control (RBAC) Driven by JWT in the following article. Visit our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-router-guard-rbac-post). Moreover, some of the actionable tips are described in our [secure programming training](/secure-coding-training) write-up. Don't miss it!
