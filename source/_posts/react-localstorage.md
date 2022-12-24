@@ -6,9 +6,8 @@ description: Learn how to use localStorage and React with examples and make your
 date: 2022-12-22
 tags: [react]
 id: react-localstorage
-relatedPost: [react-security-best-practices, react-xss]
+relatedPost: react-security-best-practices
 ---
-
 {% image_fw 1.78 banner.png "React localStorage" %}
 
 Hi, React developers! Today, we will learn how to store data using `localStorage`, and some uses of it to mix up in your React App. So, when do we need to use local storage? The short and simple answer is for data persistence, but it doesn't mean that all your app's data should persist. We need some criteria to store portions of information.
@@ -18,7 +17,7 @@ Hi, React developers! Today, we will learn how to store data using `localStorage
 
 ## localStorage
 
-The `localStorage` is the read-only property of the window interface for storing data across browser sessions (in other words, browser storage). The `localStorage` API is compatible with many modern browsers, is one of two ways to store data locally (client side), and the maximum volume of information that `localStorage` stores are 5 MB. The other one is `sessionStorage`. It only stores data while the session is active. Otherwise, `localStorage` doesn't have an expiration date even if the browser is closed or the OS reboots. That is the magic power of `localStorage`, and that's what we talk about today.
+The `localStorage` is the read-only property of the `window` interface for storing data across browser sessions (in other words, browser storage). The `localStorage` API is compatible with many modern browsers, is one of two ways to store data locally (client side), and the maximum volume of information that `localStorage` stores are 5 MB. The other one is `sessionStorage`. It only stores data while the session is active. Otherwise, `localStorage` doesn't have an expiration date even if the browser is closed or the OS reboots. That is the magic power of `localStorage`, and that's what we talk about today.
 
 Another way to store some portions of information only to mention is the cookies. It works otherwise, stores less data, and could introduce a bunch of vulnerabilities in your app if you use it without security practices (for that, we have the [Web Security Academy](https://websecurity-academy.com/) to learn all about it).
 
@@ -106,7 +105,7 @@ delete localStorage.counter;
 localStorage.clear();
 ```
 
-`removeItem` and clear are different. `removeItem` removes a key-value pair, and `clear` removes all the data inside `localStorage`.
+`removeItem()` and `clear()` are different. `removeItem()` removes a key-value pair, and `clear()` removes all the data inside `localStorage`.
 
 In the next section, we will learn the step-by-step use of `localStorage` in a React application.
 
@@ -251,13 +250,13 @@ export default function HookMode(){
 
 {% img "hook_example.png" "Hook react component, react localstorage, hook style" "lazy" %}
 
-See how the code reduces a lot and how we can reuse the hook (many times as we need).
+The amount of code was reduced significantly, and we can reuse the hook (many times as we need).
 
 ### Miscellaneous Usages
 
-To finish this implementation section. We have a miscellaneous use of `localStorage`. Usually, the data from `localStorage` is accessible, and every user can see it as plain text (because it is string based), but if we need to hide it from users, there is a way to encrypt it. We need to use the [encrypt-storage](https://github.com/michelonsouza/encrypt-storage) library.
+To finish this implementation section. We have a miscellaneous use of `localStorage`. Usually, the data from `localStorage` is accessible, and every user can see it as plain text (because it is string-based), but if we need to hide it from users, there is a way to encrypt it. We need to use the [encrypt-storage](https://github.com/michelonsouza/encrypt-storage) library.
 
-Before we need to configure that encrypted storage, for that create a new js file like this:
+Before, we need to configure that encrypted storage, for that create a new `.js` file like this:
 
 ```js
 import { EncryptStorage } from 'encrypt-storage'
@@ -356,7 +355,7 @@ export default function SecureHookMode(){
 }
 ```
 
-Use the `developer tools` go to Application>Local Storage tool and check the `localStorage`. The stored data is currently encrypted 😎 and is prefixed with our selected prefix (`enc` in this case).
+Use the developer tools of your browser (Brave in this case), go to "Application > Local Storage" tool, and check the `localStorage` The stored data is currently encrypted 😎 and is prefixed with our selected prefix (`enc` in this case).
 
 {% img "devtools_localstorage.png" "Secure hook example, react secure localstorage, hook style" "lazy" %}
 
