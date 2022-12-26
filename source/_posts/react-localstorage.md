@@ -17,7 +17,7 @@ Hi, React developers! Today, we will learn how to store data using `localStorage
 
 ## localStorage
 
-The `localStorage` is the read-only property of the `window` interface for storing data across browser sessions (in other words, browser storage). The `localStorage` API is compatible with many modern browsers, is one of two ways to store data locally (client side), and the maximum volume of information that `localStorage` stores are 5 MB. The other one is `sessionStorage`. It only stores data while the session is active. Otherwise, `localStorage` doesn't have an expiration date even if the browser is closed or the OS reboots. That is the magic power of `localStorage`, and that's what we talk about today.
+The `localStorage` is the read-only property of the `window` object for storing data across browser sessions (in other words, browser storage). The `localStorage` API is compatible with many modern browsers, is one of two ways to store data locally (client side), and the maximum volume of information that `localStorage` stores are 5 MB. The other one is `sessionStorage`. It only stores data while the session is active. Otherwise, `localStorage` doesn't have an expiration date even if the browser is closed or the OS reboots. That is the magic power of `localStorage`, and that's what we talk about today.
 
 Another way to store some portions of information only to mention is the cookies. It works otherwise, stores less data, and could introduce a bunch of vulnerabilities in your app if you use it without security practices (for that, we have the [Web Security Academy](https://websecurity-academy.com/) to learn all about it).
 
@@ -355,7 +355,7 @@ export default function SecureHookMode(){
 }
 ```
 
-Use the developer tools of your browser (Brave in this case), go to "Application > Local Storage" tool, and check the `localStorage` The stored data is currently encrypted 😎 and is prefixed with our selected prefix (`enc` in this case).
+Use the developer tools of your browser (Brave in this case), go to *Application* > *Local Storage* tool, and check the `localStorage`. The stored data is currently encrypted 😎 and is prefixed with our selected prefix (`enc` in this case).
 
 {% img "devtools_localstorage.png" "Secure hook example, react secure localstorage, hook style" "lazy" %}
 
