@@ -29,6 +29,8 @@ The procedure for configuring a local web server to serve content over HTTPS var
 
 `ng serve` command provides a dedicated development server that comes preinstalled with the Angular CLI. The ng serve command is used to build and serve the application. If there are changes, it rebuilds the application.
 
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
+
 ## Steps to run a local application over HTTPS
 
 ### 1. Create a certificate
