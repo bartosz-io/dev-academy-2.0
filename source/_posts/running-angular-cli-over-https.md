@@ -33,7 +33,7 @@ The procedure for configuring a local web server to serve content over HTTPS var
 
 ### 1. Create a certificate
 
-Initially and mainly You must first create and trust self-signed certificates on your local workstation before using HTTPS with your application.
+Initially and mainly you must first create and trust self-signed certificates on your local workstation before using HTTPS with your application.
     
 ### 2. Use Angular CLI
 
@@ -81,7 +81,7 @@ ng serve \
 The two most common issues are as follows:
 
 - The browser does not trust our certificate and we receive a warning.
-- Loop disconnect and restart.
+- Loop disconnects and restarts.
 
 ### Not trusted certificate authority
     
@@ -99,7 +99,7 @@ All we need is for our browser to trust our certificate to solve all of our prob
 
 Now as you have a trusted self-signed certificate, you must be able to serve your Angular application via HTTPS locally.
 
-It's crucial to remember that this setup is only meant for local development. Use certificates signed by a reputable Certificate Authority for applications that are accessible to the general public. Today, a great resource for this is Let's Encrypt.
+It's crucial to remember that this setup is only meant for local development. Use certificates signed by a reputable Certificate Authority for applications that are accessible to the general public. Today, a great resource for this is [Let's Encrypt](https://letsencrypt.org/).
 
 ## The next steps
 
