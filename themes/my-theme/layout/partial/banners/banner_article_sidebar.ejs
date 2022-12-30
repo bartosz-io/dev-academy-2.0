@@ -1,21 +1,12 @@
 <aside class="article-sidebar">
     <div class="article-sidebar-content">
-        <% if (post.bannerImage) {%>
-            <img src="<%- post.bannerImage %>" alt="">
-        <% } %>
-        <% if (post.bannerHeader) {%>
-            <h4 class="article-sidebar-header"><%- post.bannerHeader %></h4>
-        <% } %>
-        <% if (post.bannerSubheader) {%>
-            <h5 class="article-sidebar-subheader"><%- post.bannerSubheader %></h5>
-        <% } else { %>
-        <h5 class="article-sidebar-header">Secret steps 🤫 to secure Web apps!</h5>
-        <% } %>
-        <img class="article-sidebar-img" src="/img/hacker.png" loading="lazy" alt="FTA">
-        <% if (post.bannerUrl) {%>
-            <a href="<%- post.bannerUrl %>" class="article-sidebar-header button button-primary button-small">Check it out!</a>
-        <% } else { %>
-            <a href="https://websecurity-academy.com/?utm_source=blog&utm_medium=organic&utm_campaign=sidebar" class="article-sidebar-header button button-primary button-small">Learn more!</a>
-        <% } %>
+        <img src="<%- url_for('/img/contributors/') %><%- post.avatar %>" class="article-sidebar-avatar" itemprop="image" alt="<%- post.contributor %>">
+        <div class="article-sidebar-contributor-info">
+            <a href="<%- contributor_url(post.contributor) %>" class="article-sidebar-contributor-name"><span itemprop="name"><%- post.contributor %></span></a>
+            <span class="contributor-profession-badge"><%- contributor_level(post.contributor) %></span>
+            <div class="contributor-academies">
+                <%- contributor_academies(post.contributor) %>
+            </div>
+        </div>
     </div>
 </aside>

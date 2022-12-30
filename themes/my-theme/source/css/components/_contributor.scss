@@ -345,12 +345,36 @@
     line-height: 1.9rem;
   }
 
-  a {
+  .article-sidebar & {
+    span {
+      color: $dark-200;
+    }
+    a {
+      color: $teal-300;
+      text-decoration: underline;
+      font-weight: bold;
+      font-style: italic;
+
+      &:hover {
+        color: $hover;
+      }
+    }
+  }
+
+  a, span {
+    color: $highlight;
+  }
+
+  span {
     color: $light-150;
 
-    &:hover {
-      color: $hover;
+    .contributor-bio & {
+      color: $dark-200;
     }
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 }
 
@@ -586,6 +610,13 @@
   border-radius: 5rem;
   padding: .8rem 2.5rem;
   text-transform: uppercase;
+
+  .article-sidebar & {
+    display: inline-block;
+    padding: 4px 16px;
+    font-size: 12px;
+    margin-bottom: 1rem;
+  }
 }
 
 .contributor-container-space {
