@@ -10,7 +10,7 @@ hexo.extend.generator.register('contributors', function(locals) {
 
     let contributors = configcontributors.map(function(contributor) {
         var contributorPosts = locals.posts.filter(post => post.contributor === contributor[0]);
-        var level = contributorPosts.length > ADVANCED_MAX ? 'expert' : contributorPosts.length > BEGINNER_MAX ? 'advanced' : 'beginner';
+        var level = contributorLevel(contributorPosts.length);
 
         return {
             name: contributor[0],
@@ -42,7 +42,7 @@ hexo.extend.generator.register('contributor', function(locals) {
     configcontributors.forEach(function(contributor) {
         var slug = contributor[1].slug.trim();
         var contributorPosts = locals.posts.filter(post => post.contributor === contributor[0]);
-        var level = contributorPosts.length > ADVANCED_MAX ? 'expert' : contributorPosts.length > BEGINNER_MAX ? 'advanced' : 'beginner';
+        var level = contributorLevel(contributorPosts.length);
         var completedCourses = 0;
 
         if (contributor[1].academies.fta) {
@@ -114,7 +114,7 @@ hexo.extend.helper.register('contributor_contribution_level', function(contribut
 
     if (contributor) {
         var contributorPosts = hexo.locals.get('posts').filter(post => post.contributor === contributor[0]);
-        var level = contributorPosts.length > ADVANCED_MAX ? 'expert' : contributorPosts.length > BEGINNER_MAX ? 'advanced' : 'beginner';
+        var level = contributorLevel(contributorPosts.length);
 
         return contributorContributionLevel(level, true);
     }
@@ -133,7 +133,7 @@ hexo.extend.helper.register('contributor_info', function(contributorName) {
 
     if (contributor) {
         var contributorPosts = hexo.locals.get('posts').filter(post => post.contributor === contributor[0]);
-        var level = contributorPosts.length > 4 ? 'expert' : contributorPosts.length > 1 ? 'advanced' : 'beginner';
+        var level = contributorLevel(contributorPosts.length);
         var profession = contributorName === 'Bartosz Pietrucha' ? 'Founder' : 'Contributor';
 
         return `<div class="contributor-short-info">
@@ -153,6 +153,22 @@ hexo.extend.helper.register('contributor_info', function(contributorName) {
     return '';
 });
 
+hexo.extend.helper.register('contributor_level', function(contributorName) {
+    var configcontributors = Object.entries(this.config.contributors);
+
+    if (!configcontributors.length) {
+        return '/';
+    }
+
+    var contributor = configcontributors.find(contributor => contributor[0] === contributorName);
+
+    if (contributor) {
+        var contributorPosts = hexo.locals.get('posts').filter(post => post.contributor === contributor[0]);
+        return contributorLevel(contributorPosts.length);
+    }
+    return '';
+});
+
 function contributorContributionLevel(level, highlighted = false) {
     var isHighlighted = highlighted ? 'contributor-contribution-level-highlighted' : ''
     return `<div class="contributor-contribution-level contributor-contribution-level-${level} ${isHighlighted}">
@@ -162,29 +178,32 @@ function contributorContributionLevel(level, highlighted = false) {
             </div>`
 }
 
+function contributorLevel(numberOfPosts) {
+    return numberOfPosts > ADVANCED_MAX ? 'expert' : numberOfPosts > BEGINNER_MAX ? 'advanced' : 'beginner';
+}
+
 function contributorAcademies(contributor, contributorName) {
     var isWsa = contributor[1].academies.wsa;
     var isFta = contributor[1].academies.fta;
     var isFounder = contributorName === 'Bartosz Pietrucha';
 
-    var wsaTplFounder = '🎖️ Web Security Academy founder';
-    var ftaTplFounder = '🎖️ Fullstack Testing Academy founder';
-
-    var wsaTpl = isFounder ? wsaTplFounder : isWsa ? '🏅 Web Security Academy member' : '';
-    var ftaTpl = isFounder ? ftaTplFounder : isFta ? '🏅 Fullstack Testing Academy member' : '' ;
+    var wsaTpl = isWsa ? 'Web Security Academy' : '';
+    var ftaTpl = isFta ? 'Fullstack Testing Academy' : '' ;
+    var role = isFounder ? 'founder' : 'member';
+    var badge = isFounder ? '🎖️' : '🏅';
 
     if (wsaTpl && ftaTpl) {
         return `<ul class="contributor-academies">
-                  <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
-                  <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
+                  <li>${badge} <a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a> <span>${role}</span></li>
+                  <li>${badge} <a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a> <span>${role}</span></li>
                 </ul>`;
     } else if (wsaTpl) {
         return `<ul class="contributor-academies">
-                  <li><a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a></li>
+                  <li>${badge} <a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a> <span>${role}</span></li>
                 </ul>`;
     } else if (ftaTpl) {
         return `<ul class="contributor-academies">
-                  <li><a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a></li>
+                  <li>${badge} <a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a> <span>${role}</span></li>
                 </ul>`;
     }
     return '';

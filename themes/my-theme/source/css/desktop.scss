@@ -1148,6 +1148,7 @@
   }
 
   .article-sidebar {
+    margin-top: 50rem;
     position: sticky;
     top: 12rem;
     height: 100%;
@@ -1172,6 +1173,12 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+  }
+
+  .article-sidebar-avatar {
+    width: 130px;
+    border-radius: 100%;
+    margin-bottom: 2rem;
   }
 
   .article-sidebar-header {
@@ -1228,6 +1235,7 @@
   .article-toc {
     display: flex;
     position: sticky;
+    margin-top: 50rem;
     top: 12rem;
     height: calc(100vh - #{$sidebar-offset});
     overflow-y: auto;
