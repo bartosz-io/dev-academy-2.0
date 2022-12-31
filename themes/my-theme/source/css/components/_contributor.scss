@@ -368,7 +368,7 @@
   span {
     color: $light-150;
 
-    .contributor-bio & {
+    .contributor-bio &, .contributor-header & {
       color: $dark-200;
     }
   }
