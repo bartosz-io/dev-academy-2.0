@@ -1,3 +1,15 @@
+---
+title: Build a To-Do Application with React and Firebase
+contributor: Deji Adesoga
+avatar: deji-adesoga.png
+description: Learn how to use build a CRUD application by using React and Firebase 9.
+date: 2023-01-12
+tags: [react]
+id: react-firebase
+relatedPost: react-localstorage
+---
+
+
 # Build a To-Do Application with React and Firebase
 
 To-do applications are one of the ways you can use to manage a set of tasks. As developers, learning how to build a to-do application will also help to understand certain concepts one of which includes an understanding of how to build a CRUD(Create, Read, Update and Delete) application.

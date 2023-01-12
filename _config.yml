@@ -404,10 +404,10 @@ contributors:
       linkedin: https://www.linkedin.com/in/jilh
 "Deji Adesoga":
     slug: desoga
-    desc: Deji Software Developer who loves making content for the web development community. He has written articles in several publications on Medium, Freecodecamp, Dzone, Dev.To, e.t.c. He also has a YouTube channel where he teaches JavaScript technologies which include React, Angular, and Node..
+    desc: Deji Software Developer who loves making content for the web development community. He has written articles in several publications on Medium, Freecodecamp, Dzone, Dev.To, e.t.c. He also has a YouTube channel where he teaches JavaScript technologies which include React, Angular, and Node.
     specs: [JavaScript, React, Angular, Node]
-    image: deji-adesoga.png
-    motto: Nothing grows in a land where you plant nothing, except weeds. Plant good seeds!
+    image: /img/contributors/deji-adesoga.png
+    motto: If your mind can conceive it, and your heart can believe it, then you can achieve it.
     joined: 8 May 2021
     academies:
       wsa: false
