@@ -17,22 +17,7 @@ To-do applications are one of the ways you can use to manage a set of tasks. As 
 In this article, you will learn how to build a to-do web app by making use of React.js and Firebase Database.
 
 ## **Table of Contents**
-
-- [Prerequisites](#prerequisites)
-- [How to Create the Firebase Project](#how-to-setup-the-firebase-project)
-- [Creating the Firestore Database](#creating-the-firestore-database)
-- [How to Create the React Project](#how-to-create-the-react-project)
-- [Setting up the Project Structure](#setting-up-the-project-structure)
-- [How to Integrate Firebase in React](#how-to-integrate-firebase-in-react)
-- [Integrate Bootstrap 5 into React](#integrate-bootstrap-5-into-react)
-- [Designing the User Interface](#designing-the-user-interface)
-- [Adding Data to the Firestore in React](#adding-data-to-the-firestore-in-react)
-- [Fetching Data from the Firestore in React](#fetching-data-from-the-firestore-in-react)
-- [Deleting Data from the Firestore in React](#deleting-data-from-the-firestore-in-react)
-- [Updating Data in the Firestore in React](#updating-data-in-the-firestore-in-react)
-- [How to Integrate the Checkbox Functionality](#how-to-integrate-the-checkbox-functionality)
-- [How to order Data by Timestamp in Firebase](#how-to-order-data-by-timestamp-in-firebase)
-- [Conclusion](#conclusion)
+<!-- toc -->
 
 Watch the video version of this article below, or on my [YouTube channel](https://www.youtube.com/watch?v=dXy4qXEk_lA&t=908s)
 
@@ -43,9 +28,7 @@ width="560" height="315" src="https://www.youtube.com/embed/dXy4qXEk_lA" title="
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-
 - [VS Code](https://code.visualstudio.com/download)
-
 - [Firebase Console](https://console.firebase.google.com/)
 
 To install the **npm** packages needed for this React application such as Firebase, you need to have Node.js downloaded.
@@ -58,21 +41,17 @@ The Firebase Console serves as the backend as a service database that helps us t
 
 To set up firebase, you head to the [firebase console](https://console.firebase.google.com) website and create a new project by using your Google account. Once you are logged into firebase you will see an existing project, you can click on the **add project** button, as seen below.
 
-![Firebase project page](https://images.surferseo.art/861eb5cf-e338-4e11-96f8-4d4598f0609d.png)
-*Firebase  console dashboard*
+{% img "recent-projects.png" "Firebase console dashboard" "lazy" %}
 
 After clicking on the add project button, we get navigated to a new page which requires 3 steps before the firebase project is created:
 
 - The first step requires us to name the firebase project, which we will call **todo**.
-
 - The second step asks if we want to enable Google Analytics, you should disable it by using the toggle button.
-
 - Finally, we can now click on the **create project** button.
 
 Once the project is created, we click on the continue button which navigates us to the next screen, which is now our default firebase project dashboard.
 
-![Firebase project dashboard](https://images.surferseo.art/976ed8ad-8e8a-463a-8729-a671a45e3b94.png)
-*Firebase dashboard*
+{% img "dashboard-landing.png" "Firebase dashboard" "lazy" %}
 
 We have now completed the creation of a new Firebase project.
 
@@ -115,11 +94,8 @@ We can now begin the set up of the React application.
 To set up the architecture of our React project, you can implement the steps below:
 
 - In the **src** directory, create two folders named **components** and **services.**
-
 - The components folder will contain two new document files. The first js file is called **Todo.js**, while the second file is called **EditTodo.js**.
-
 - In the services folder, create a js file called **firebase.config.js**. This file will contain the configuration of the firebase which we can export to different components.
-
 - Finally, still within the **src** directory, we head to the **App.js** file. Here, we clear the boilerplate inside of the `div` with the `className` of *App* and then import the **Todo.js** component as seen in the following lines of code:
 
 ```javascript
@@ -156,13 +132,11 @@ Furthermore, you need to grab the project configuration settings from the fireba
 
 Scroll to the bottom of the page and select the web icon as shown below:
 
-![Web icon for firebase project settings](https://images.surferseo.art/9d942c65-5251-4a40-be92-d3341f242da2.png)
-*Web icon for firebase project settings*
+{% img "project-settings.png" "Web icon for firebase project settings" "lazy" %}
 
 Once the web icon gets selected, a new page shows up asking you to give the app a nickname. You can proceed to call it **todo** or any other word you prefer, then click on **register app**. Firebase will now generate the firebase configuration settings, which contains the apikey, storage bucket, auth domain, project id, app id, e.t.c as seen below:
 
-![Firebase config settings](https://images.surferseo.art/7d0e5025-9baf-4372-bc76-586301a074ea.png)
-*Firebase config settings*
+{% img "firebase-config.png" "Firebase config settings" "lazy" %}
 
 We can now grab this and paste it inside our **firebase.config.js** file:
 
@@ -438,8 +412,7 @@ The final part of our design is in the `EditTodo.js` file. The `EditTodo.js` fil
 
 The design for the application is now complete. If you run the command `npm start` in the terminal and the code compiles, you should see the result below in the browser:
 
-![Complete page design](https://images.surferseo.art/349cd142-b9a9-4817-9c74-1af21feab79f.gif)
-*Complete page design*
+{% img "page.png" "Complete page design" "lazy" %}
 
 ## Adding Data to the Firestore in React
 
@@ -450,9 +423,7 @@ To implement the Add data functionality in our todo application, we start by imp
  ```
 
 • A `Collection` is a folder that contains **Documents** and Data. All the data saved on our Todo application will be saved in a Collection called *Todos*, which we will create soon.
-
 • `addDoc` is a high-level method used to add data to a Collection.
-
 • The `serverTimestamp` contains the values of both time and date values for each Document in a Collection.
 
 We then need to import the **firebase.config.js** file in our **Todo.js** file to allow us to have access to the firebase methods:
@@ -477,14 +448,10 @@ Next, we create two variables using the `useState` hook:
 
 - The first thing we did here is to import the useState hook in React:
   `import React, { useState } from 'react'`
-
 - Then we created a getter and a setter called `createTodo` and `setCreateTodo` respectively.
-
 To proceed, we move to the modal created within the JSX and implement the next couple of things:
-
 - Within the form tag, we create an `onSubmit` event handler called `submitTodo`.
   `<form className="d-flex" onSubmit={submitTodo}>`
-
 - In the input tag within the form tag, we create an `onChange` event handler that allows us to get the value typed inside of the form:
 
  ```javascript
@@ -512,19 +479,15 @@ The final implementation we need to make before adding data to the database beco
  ```
 
 - Above, we made the `submitTodo` variable asynchronous by making use of the `async/await` keyword in `JavaScript`.
-
 - We then created a parameter in the arrow function called `e`, which serves as an event. This ensures we are able to make use of the `e.preventDefault()` method which prevents the form from reloading after submission.
-
 - Next within the `try/catch` block, we call the `addDoc` method which takes two arguments. The first argument is the `collectionRef` variable we created previously, while the second argument contains the object to be passed into the **firestore** database.
 
   These objects include the **todo** values inside of the input field, the **checkbox** value which is currently set as false, and then the **timestamp** in which the todo was created in the database.
-
 - We then make use of the `window.location.reload()` function in `JavaScript` to refresh the form upon successful submission, while making use of catch to handle the error.
 
 With this, we can now create a new **todo** and view it in our database.
 
-![Creating the Todo](https://res.cloudinary.com/dz4tt9omp/image/upload/v1672879454/condition.gif)
-*Creating the Todo*
+{% img "condition.gif" "Creating the Todo" "lazy" %}
 
 ## Fetching Data from the Firestore in React
 
@@ -558,13 +521,9 @@ The data can now be fetched inside of the `useEffect` hook:
  ```
 
 - Inside the `useEffect` hook, we created a variable called `getTodo` that takes in an asynchronous arrow function.
-
 - Then we called the `getDocs` method from Firebase. The `getDocs` method requires an argument, so we pass in the `collectionRef`.The `getDocs` returns a promise which we need to chain to using `.then`.
-
 - The promise returns an array that we need to map through to access the required data from the database, which are the **todo** list items as well as the `id`.
-
 - The `todoData` variable holds the data coming from the database. To have access to the data in our JSX, we will then put the `todoData` as an argument in our setter which is called `setTodo`.
-
 - We then proceed to handle the error in case there is any using the catch keyword before we finally call the `getTodo` function to initialize it on page load.
 
 Now that we have access to our data from the database, we need to make it visible on the page. The data we have comes in form of an array and we need to loop through it in the **HTML** file. This will be done within the `div` with the `className` of `todo-list` as seen below:
@@ -598,9 +557,7 @@ Now that we have access to our data from the database, we need to make it visibl
  ```
 
 • In the code above, we call the `todos` getter that contains our data which comes in an array format.
-
 • Next, we make use of the map array method to loop through the data, restructured the data by making use of curly brackets `{}`, and then extract the `todos` as well as the `id`.
-
 • Finally, we called the `key` attribute in React, pass in the `id` so as enable React to track the data loaded on the page. The static text beside the `&nbsp;` also gets cleared before replacing it with the todo data.
 
 We can now proceed to save our changes.
@@ -631,11 +588,8 @@ Next, we create a function called `deleteTodo`:
  ```
 
 - Within the `try` block, we start by displaying a prompt to the user if they want to proceed to delete the Todo.
-
 - We then create a new variable called `documentRef`. We then call the `doc` method which requires 3 arguments which are the firebase service, the collection name as well as the `todo id` that we want to delete.
-
 - Next, we call the `deleteDoc` method from firestore and then pass in the `documentRef` as an argument. This will enable the specific todo to be deleted from the database. Once this is done, we refresh the page by calling the `window.location.reload();` function.
-
 - We then use the `catch` block to handle any possible error by login into the console.
 
 Now that our delete function is ready, all we have to do is to initialize it inside our delete button as seen below:
@@ -695,11 +649,8 @@ Inside the `EditTodo.js`, we extract the data by making use of curly brackets `{
 We then make the necessary imports required to update the data, which include the following React and firebase terms:
 
 - `useState` (React Hook)
-
 - `db` (The Firebase Service instance)
-
 - `doc` (The Firestore Document reference)
-
 - `updateDoc` (Used to update a Document inside of a Collection)
 
 The extracted data can now be set in state using the `useState` hook:
@@ -728,13 +679,9 @@ Next, we create the function that implements the update todo:
  ```
 
 - Above, we created a variable called `updateTodo`, which holds the asynchronous arrow function.
-
 - Next, we called the `e.preventDefault()`, to prevent the form from reloading.
-
 - Then we create a `try/catch` block. Within the `try` block, we create a variable called `todoDocument`. This variable holds document reference which requires 3 arguments(`db`, `todo`, `id`). With this, we are able to update a specific todo from the firebase database using its `id`.
-
 - In the next line, we call the `updateDoc` method that updates data in the firestore. This method takes two arguments. The first argument is the `todoDocument`, while the second is the updated todos text value which was the getter that was created earlier in the `useState` hook.
-
 - Lastly, we refresh the page when the request is successful or display an error on the console if one occurs.
 
 There are two implementations left to do. One is making the modal dynamic, while the other is calling our update data function in the **JSX**.
@@ -765,7 +712,6 @@ To make the modal dynamic, we need to change the values of the `id` in the **JSX
  ```
 
 - We begin by replacing the static text in the `data-bs-target` attribute called `#exampleModal`, with the dynamic `id` coming from the firestore.
-
 - Within our modal, we replace the static id called `id="exampleModal"`, with the `id` from our firestore. The modal is now dynamic.
 
 Next, to update the data, we need to call the `setTodos` setter inside the input field using the `onChange` event handler in React:
@@ -780,7 +726,6 @@ Next, to update the data, we need to call the `setTodos` setter inside the input
  ```
 
 - The `defaultValue` helps to refill the form with the existing **todo** in the database.
-
 - The `onChange` event handler helps to get the values of the input field and save it into the `setTodos` setter.
 
 Finally, we can call the `updateTodo` function inside our submit button:
@@ -850,9 +795,7 @@ We proceed to configure the input field used for our checkbox by using the follo
  ```
 
 - Above we use the `defaultChecked` attribute to set the default value of the checkbox coming from the firestore which is a Boolean.
-
 - Next, we pass in the `id` into the name attribute.
-
 - Using the `onChange` event handler, we set the event and the todo data into a function called `checkHandler`, which we will create and configure below:
 
  ```javascript
@@ -871,9 +814,7 @@ We proceed to configure the input field used for our checkbox by using the follo
  ```
 
 - The summary of the above function helps to track the state of a specific checkbox when checked and unchecked by using the `findIndex` method in JavaScript.
-
 - We then create a variable called `newState`. This variable makes use of the `slice()` and `splice()` methods in JavaScript. The `slice()` method helps us to return the selected checkbox(s) in the array, as a new array, while the `splice()` method helps us to save only elements that were checked into the array.
-
 - Next, we then save the newly modified array into the `setTodo` setter before we return data using the return keyword.
 
 The final step we need to take is to save the selected checkbox values in the database. We will do this by, making use of the [runTransaction](https://firebase.google.com/docs/firestore/manage-data/transactions) method in JavaScript. The `runTransaction` method will be called within the `checkHandler` function:
@@ -897,13 +838,10 @@ The final step we need to take is to save the selected checkbox values in the da
  ```
 
 - The first thing we need to do is import runTransaction from `firebase/firestore`.
-
 - We then checked the database if the particular document being queried exists or not. If it doesn't exist we throw a message that says "**Document does not exist!**".
-
 - If the document exists, we call the `transaction.update` method and then pass in the value of the `isChecked` variable which then updates it in the firestore database.
 
-![Gif showing runTransaction in action](https://res.cloudinary.com/dz4tt9omp/image/upload/v1672928536/runtransaction.gif)
-*Gif showing runTransaction in action*
+{% img "runtransaction.gif" "Gif showing runTransaction in action" "lazy" %}
 
 ## How to order Data by Timestamp in Firebase
 
@@ -944,8 +882,7 @@ We then need to clear the static date value inside of the italics`(<li></li>)` t
 
 With this, we have the result below:
 
-![Results showing the todo by timestamp as well as the dates created](https://images.surferseo.art/b3aad5ba-cafa-4a4f-94fd-265151260c18.png)
-*Results showing the todo by timestamp as well as the dates created*
+{% img "query.png" "Results showing the todo by timestamp as well as the dates created" "lazy" %}
 
 ## Conclusion
 
