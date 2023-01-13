@@ -55,8 +55,7 @@ To contribute with some article, follow the next steps:
 12. If you have images, you need to create a directory called `source/_posts/csurf-vulnerability` (as your article Markdown .md file), and add them here, @bartosz-io will give you a `banner.png` file to paste into this directory.
 13. The markdown file that you already paste needs some treatments.
     - Run [Markdown lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) in your preferable IDE
-    - places the images in `source/_posts/csurf-vulnerability` (folder name == your article slug)
-    - apply the changes described below 👇
+    - Apply the changes described below: 👇
 
 - Change the `h2` heading style from:
 
