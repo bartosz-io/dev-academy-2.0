@@ -14,7 +14,7 @@ The importance of secure coding training is often underestimated. While most dev
 
 <!-- toc -->
 
-> At Dev Academy, we teach developers **the art of secure coding** via [Web Security Academy](https://websecurity-academy.com), which is one of our flagship courses! 🔥 Participants receive **video-based lessons along with assignments** about web application security from a software developers' perspective. They participate in **live Q&A sessions** and take an active part in the online community of our students. Each training module is concise and focuses on the most important best practices.
+> At Dev Academy, we teach developers **the art of secure coding** via [Web Security Academy](https://websecurity-academy.com), which is one of our flagship courses! 🔥 Participants receive **video-based lessons along with assignments** about web application security from a software developers' perspective. They participate in **live Q&A sessions** and take an active part in the online community of our students.
 
 ## What is secure coding and why is it important
 
