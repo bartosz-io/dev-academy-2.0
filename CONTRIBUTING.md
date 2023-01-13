@@ -68,7 +68,7 @@ to:
 ## Vanilla JavaScript Style
 ```
 
-- After that, add a table of contents (only copy this  code at some good nice on your article):
+- After that, add a table of contents (only paste this code into some good place in your article):
 
 ```md
 ## Table of Contents
