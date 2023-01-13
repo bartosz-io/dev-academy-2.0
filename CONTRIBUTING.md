@@ -82,7 +82,7 @@ to:
 ![simple react component, single logic example](https://images.surferseo.art/5b6d9719-266f-4f93-a999-44d81fc570cf.png)
 ```
 
-To this format (the large message will be the `alt` property of the `<img>` HTML tag when the blog will be at production):
+to this format (the large message will be the `alt` property of the `<img>` HTML tag when the blog will be at production):
 
 ```md
 {% img "simple_example.png" "simple react component, single logic example" "lazy" %}
