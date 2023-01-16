@@ -59,10 +59,10 @@ We have now completed the creation of a new Firebase project.
 
 Inside the firebase dashboard, on the left-hand panel, we take the following steps:
 
-- Click on the **Build** dropdown.
-- Within the **Build** dropdown, select **Firestore Database**, this displays a page where we can click on the **Create database** button.
-- Next, a modal pops up asking if we want **Production mode** or **Test mode**. You can choose Test mode since the app is currently in the development stage.
-- The next step asks for where we want our Cloud Firestore to be located, you can choose the location closest to your area due to the possibility of latency.
+• Click on the **Build** dropdown.
+• Within the **Build** dropdown, select **Firestore Database**, this displays a page where we can click on the **Create database** button.
+• Next, a modal pops up asking if we want **Production mode** or **Test mode**. You can choose Test mode since the app is currently in the development stage.
+• The next step asks for where we want our Cloud Firestore to be located, you can choose the location closest to your area due to the possibility of latency.
 
 Once we click on enable, we get redirected to the **Cloud Firestore** page which will currently have an empty Collection.
 
@@ -419,9 +419,9 @@ To implement the Add data functionality in our todo application, we start by imp
   import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
  ```
 
-- A `Collection` is a folder that contains **Documents** and Data. All the data saved on our Todo application will be saved in a Collection called *Todos*, which we will create soon.
-- `addDoc` is a high-level method used to add data to a Collection.
-- The `serverTimestamp` contains the values of both time and date values for each Document in a Collection.
+• A `Collection` is a folder that contains **Documents** and Data. All the data saved on our Todo application will be saved in a Collection called *Todos*, which we will create soon.
+• `addDoc` is a high-level method used to add data to a Collection.
+• The `serverTimestamp` contains the values of both time and date values for each Document in a Collection.
 
 We then need to import the **firebase.config.js** file in our **Todo.js** file to allow us to have access to the firebase methods:
 
@@ -444,12 +444,12 @@ Next, we create two variables using the `useState` hook:
  ```
 
 - The first thing we did here is to import the useState hook in React:
-  `import React, { useState } from 'react'`
+  `import React, { useState } from 'react'`.
 - Then we created a getter and a setter called `createTodo` and `setCreateTodo` respectively.
 To proceed, we move to the modal created within the JSX and implement the next couple of things:
-- Within the form tag, we create an `onSubmit` event handler called `submitTodo`.
+1. Within the form tag, we create an `onSubmit` event handler called `submitTodo`.
   `<form className="d-flex" onSubmit={submitTodo}>`
-- In the input tag within the form tag, we create an `onChange` event handler that allows us to get the value typed inside of the form:
+2. In the input tag within the form tag, we create an `onChange` event handler that allows us to get the value typed inside of the form:
 
  ```javascript
   onChange={(e) => setCreateTodo(e.target.value)}`
@@ -478,12 +478,9 @@ The final implementation we need to make before adding data to the database beco
 - Above, we made the `submitTodo` variable asynchronous by making use of the `async/await` keyword in `JavaScript`.
 - We then created a parameter in the arrow function called `e`, which serves as an event. This ensures we can make use of the `e.preventDefault()` method which prevents the form from reloading after submission.
 - Next within the `try/catch` block, we call the `addDoc` method which takes two arguments. The first argument is the `collectionRef` variable we created previously, while the second argument contains the object to be passed into the **firestore** database.
-
-  These objects include the **todo** values inside of the input field, the **checkbox** value which is currently set as false, and then the **timestamp** in which the todo was created in the database.
+These objects include the **todo** values inside of the input field, the **checkbox** value which is currently set as false, and then the **timestamp** in which the todo was created in the database.
 - We then make use of the `window.location.reload()` function in `JavaScript` to refresh the form upon successful submission while making use of catch to handle the error.
-
 With this, we can now create a new **todo** and view it in our database.
-
 {% img "condition.gif" "Creating the Todo" "lazy" %}
 
 ## Fetching Data from the Firestore in React
@@ -553,9 +550,9 @@ Now that we have access to our data from the database, we need to make it visibl
                     )}
  ```
 
-- In the code above, we call the `todos` getter that contains our data which comes in an array format.
-- Next, we make use of the map array method to loop through the data, restructured the data by making use of curly brackets `{}`, and then extract the `todos` as well as the `id`.
-- Finally, we called the `key` attribute in React, and pass in the `id` so as enable React to track the data loaded on the page. The static text beside the `&nbsp;` also gets cleared before replacing it with the todo data.
+• In the code above, we call the `todos` getter that contains our data which comes in an array format.
+• Next, we make use of the map array method to loop through the data, restructured the data by making use of curly brackets `{}`, and then extract the `todos` as well as the `id`.
+• Finally, we called the `key` attribute in React, and pass in the `id` so as enable React to track the data loaded on the page. The static text beside the `&nbsp;` also gets cleared before replacing it with the todo data.
 
 We can now proceed to save our changes.
 
