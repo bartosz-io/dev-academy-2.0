@@ -447,9 +447,9 @@ Next, we create two variables using the `useState` hook:
   `import React, { useState } from 'react'`.
 - Then we created a getter and a setter called `createTodo` and `setCreateTodo` respectively.
 To proceed, we move to the modal created within the JSX and implement the next couple of things:
-1. Within the form tag, we create an `onSubmit` event handler called `submitTodo`.
+  - Within the form tag, we create an `onSubmit` event handler called `submitTodo`.
   `<form className="d-flex" onSubmit={submitTodo}>`
-2. In the input tag within the form tag, we create an `onChange` event handler that allows us to get the value typed inside of the form:
+  - In the input tag within the form tag, we create an `onChange` event handler that allows us to get the value typed inside of the form:
 
  ```javascript
   onChange={(e) => setCreateTodo(e.target.value)}`
