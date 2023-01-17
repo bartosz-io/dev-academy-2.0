@@ -128,7 +128,7 @@ In Template Driven Forms, we focus on the actions and validations by using direc
 
 3.  Now add the following code in the sample.ts file
     
-    ``` export class Sample {
+        ``` export class Sample {
         constructor( public id: number,
         public name: string,
         public power: string,
