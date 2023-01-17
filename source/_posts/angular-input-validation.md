@@ -145,7 +145,7 @@ In Template Driven Forms, we focus on the actions and validations by using direc
 5.  Add the following code to the sample-form.component.ts file.
     
 
-    import { Component } from '@angular/core';
+    ``` import { Component } from '@angular/core';
     import { Sample } from '../sample';
     @Component({
     selector: 'app-sample-form',
@@ -157,11 +157,11 @@ In Template Driven Forms, we focus on the actions and validations by using direc
     onSubmit() { this.submitted = true; }
     get diagnostic() { return JSON.stringify(this.model); }
     }
+    ```
 
 6.  Add the following code to the app.component.html
     
-
-    <div class="container">
+    ``` <div class="container">
     <h1>Sample Form</h1>
     <form>
     
@@ -177,6 +177,7 @@ In Template Driven Forms, we focus on the actions and validations by using direc
     
     </form>
     </div>
+    ```
 
 ![](https://images.surferseo.art/03903235-e9b4-411f-bd24-897bfa2a0474.png)
 
