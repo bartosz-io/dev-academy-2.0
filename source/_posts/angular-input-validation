@@ -1,8 +1,18 @@
-Angular Input Validation
-========================
+---
+title: Running Angular CLI over HTTPS
+contributor: A M Sanjeev
+avatar: a-m-sanjeev.jpg
+description: Learn how to  create and validate Angular Forms.
+date: 2023-01-18
+tags: [angular]
+id: angular-input-validation
+relatedPost: user-login-and-registration
+---
 
-Introduction
-------------
+
+<!-- toc -->
+
+## Introduction
 
 With the help of Angular, an open-source Javascript framework, the creation of dynamic web apps has become significantly easier. We can use HTML as a template language to make the program more clear and understandable. Angular requires very less coding because of its data binding and dependency injection capabilities. It is compatible with all server technologies.
 
