@@ -367,7 +367,3 @@ You can easily develop your validator function, as we did for the template-drive
 ## Conclusion
 
 The most popular language for developing dynamic applications is Angular. Even you can construct forms that have appropriate validation. The user can complete all the fields while security is maintained. In this article, we looked at Template-Driven and Reactive forms, two different approaches to handling user inputs. We completed the process of adding validation to both kinds of forms. Finally, in addition to the built-in validators, we also created our validator function and included it.
-
-## The next steps
-
-As we can see, Angular has impressive support for forms and offers some hidden capabilities that are helpful for form validation. You may learn more about angular [here](https://dev-academy.com/contributors/a-m-sanjeev/).
