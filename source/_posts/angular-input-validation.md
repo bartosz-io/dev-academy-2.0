@@ -108,8 +108,7 @@ In Template Driven Forms, we focus on the actions and validations by using direc
 
 1.  Open app.module.ts and import FormsModule from '@angular/forms'
     
-
-    import {NgModule} from '@angular/core';
+    ``` import {NgModule} from '@angular/core';
     import {FormsModule} from '@angular/forms';
     import {BrowserModule} from '@angular/platform-browser';
     import {AppComponent} from './app.component';
@@ -119,21 +118,23 @@ In Template Driven Forms, we focus on the actions and validations by using direc
     providers: [],
     bootstrap: [AppComponent]})
     export class AppModule { }
+    ```
 
 2.  Use the next command to create a class.
     
-        ng class generate Sample
+    ``` ng class generate Sample ```
     
     ![](https://images.surferseo.art/8c55e008-a056-4022-be4f-87accbc7a7c9.png)
 
 3.  Now add the following code in the sample.ts file
     
-        export class Sample {
+    ``` export class Sample {
         constructor( public id: number,
         public name: string,
         public power: string,
         ) { }
         } 
+        ```
     
 4.  Use this terminal command to create a SampleForm component.
     
