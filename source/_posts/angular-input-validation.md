@@ -26,8 +26,7 @@ It may have a negative impact if we process the user's input before verifying, a
 
 Javascript is commonly used to validate HTML forms, but it necessitates a lot of coding. Because of Angular's full-featured framework status, it is a strong supporter of user input validation and the display of validation messages. It enables us to use various built-in validators as well as create our custom validators.
 
-Angular forms
--------------
+## Angular forms
 
 Forms can be simple or complicated. It is entirely up to the form's creator how many fields they want to include, as there is no limit to the number of input fields that can be included in a form. Now, the input fields can have one or more login validations. The form module is responsible for connecting the form field to the component class.
 
@@ -62,8 +61,7 @@ There are two ways to design these control objects. We can define a few directiv
 
 If we want more control over our form, we can formally create control objects. These are examples of reactive forms.
 
-Some setups
------------
+## Some setups
 
 1.  Check the Node version that is currently installed on your system. Run the command below.
     
@@ -104,8 +102,7 @@ Some setups
 
 We're now ready to begin.
 
-Template driven forms
----------------------
+## Template driven forms
 
 In Template Driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
 
@@ -189,8 +186,7 @@ _When using ngModel, we must either declare the FormControl as "standalone" in n
 
 _Additionally, FormsModule must be added to the array of imports in app.module.ts_
 
-Validation in Template-driven forms
------------------------------------
+## Validation in Template-driven forms
 
 Angular has a few built-in validators to verify common use cases. If we want the validations to use built-in validators, we would need to apply validation attributes to every form field. These validation attributes are identical to the common HTML5 validation attributes like \`required\`, \`minlength\`, \`pattern\`, etc. Angular offers a few directives to match these characteristics with the validator methods listed in the Angular framework.
 
@@ -220,8 +216,7 @@ We can use the [Validators API](https://angular.io/api/forms/Validators) to refe
 
 ![](https://images.surferseo.art/a7a87cc7-174d-4f21-9c3e-0c3afe51f561.png)
 
-The custom validator in Template-driven forms
----------------------------------------------
+## The custom validator in Template-driven forms
 
 There are use cases that the built-in validators can't always help us validate. Then we must develop a unique validator function. The code listed below can be used to define a validator function that implements the ValidatorFn interface.
 
@@ -254,8 +249,7 @@ Anywhere in the function, we can add our custom validator. For examples
         }
     }
 
-Reactive forms
---------------
+## Reactive forms
 
 In reactive forms, we explicitly create FormControl objects in that template's component. The method will be the same for creating reactive forms. Thus, we will only see the code. Here, within the component of that template, we will specifically build a FormControl object. The HTML form without the ngModel directive is shown below.
 
@@ -294,8 +288,7 @@ We will now link these FormControl objects to the HTML form's fields.
 
 You must include ReactiveFormsModule in your main module, app.module.ts, to use reactive forms.
 
-Validation in reactive forms
-----------------------------
+## Validation in reactive forms
 
 Reactive forms don't employ HTML5 validation attributes or the ngModel directive. When creating the FormControl objects in the component, you must specify the validators. For the FormControl class, you can use the following syntax:
 
@@ -353,8 +346,7 @@ Now, we can return to the template and provide the validation messages: 
         </div>
         <form>
 
-Custom validator for reactive forms
------------------------------------
+## Custom validator for reactive forms
 
 You can easily develop your validator function, as we did for the template-driven form. The same unique validator function is being used in this instance.
 
@@ -370,12 +362,10 @@ You can easily develop your validator function, as we did for the template-drive
     ]), 
     }) 
 
-Conclusion
-----------
+## Conclusion
 
 The most popular language for developing dynamic applications is Angular. Even you can construct forms that have appropriate validation. The user can complete all the fields while security is maintained. In this article, we looked at Template-Driven and Reactive forms, two different approaches to handling user inputs. We completed the process of adding validation to both kinds of forms. Finally, in addition to the built-in validators, we also created our validator function and included it.
 
-The next steps
---------------
+## The next steps
 
 As we can see, Angular has impressive support for forms and offers some hidden capabilities that are helpful for form validation. You may learn more about angular [here](https://dev-academy.com/contributors/a-m-sanjeev/).
