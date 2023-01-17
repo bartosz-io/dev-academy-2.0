@@ -138,7 +138,7 @@ In Template Driven Forms, we focus on the actions and validations by using direc
 4.  Use this terminal command to create a SampleForm component.
     
 
-    ng generate component SampleForm
+    ``` ng generate component SampleForm ```
 
 ![](https://images.surferseo.art/095f3f55-de5e-4786-86ca-d22cb8951f12.png)
 
