@@ -71,15 +71,15 @@ Once we click on enable, we get redirected to the **Cloud Firestore** page which
 We are going to create a new React project by making use of CRA ([Create-React-App](https://create-react-app.dev/docs/getting-started)). Since we have **node.js** installed, we can run the following commands:
 
 ```properties
-    npm i create-react-app
+npm i create-react-app
 ```
 
 Once the installation of CRA is complete, we can now create a new React project with the following command below:
 
 ```properties
-    npm init react-app todo
-    cd todo
-    code .
+npm init react-app todo
+cd todo
+code .
 ```
 
 We have now created a new React project called **todo**, navigated into the project directory, and opened the project in Visual Studio Code.
@@ -96,19 +96,19 @@ To set up the architecture of our React project, you can implement the steps bel
 - Finally, still within the **src** directory, we head to the **App.js** file. Here, we clear the boilerplate inside of the `div` with the `className` of *App* and then import the **Todo.js** component as seen in the following lines of code:
 
 ```javascript
-  import './App.css';
-  import Todo from './components/Todo';
+import './App.css';
+import Todo from './components/Todo';
 
   function App() {
-  return (
-  <div className="App">
-  <Todo />
-  </div>
+   return (
+   <div className="App">
+   <Todo />
+   </div>
   );
-  }
+}
 
-  export default App;
-  ```
+export default App;
+```
 
 With the above, we now have the basic structure of our React project set up.
 
@@ -121,9 +121,9 @@ To add the firebase web SDK to our new app, the first thing we need to do is run
 Next, you open up the **firebase.config.js** file inside of the **services** folder and then use the following imports to configure firebase into the React app:
 
 ```javascript
-    import { initializeApp } from "firebase/app";
-    import { getFirestore } from "firebase/firestore";
- ```
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+```
 
 Furthermore, you need to grab the project configuration settings from the firebase dashboard. On the left-hand panel of the dashboard, click on project overview and select project settings.
 
@@ -137,41 +137,41 @@ Once the web icon gets selected, a new page shows up asking you to give the app 
 
 We can now grab this and paste it inside our **firebase.config.js** file:
 
- ```javascript
-    import { initializeApp } from "firebase/app";
-    import { getFirestore } from "firebase/firestore";
+```javascript
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyC5u80wO6iaPl8E9auM0IRXliYGKyDQHfU",
-      authDomain: "todo-b74fc.firebaseapp.com",
-      projectId: "todo-b74fc",
-      storageBucket: "todo-b74fc.appspot.com",
-      messagingSenderId: "872116099545",
-      appId: "1:872116099545:web:9bb66d12ca15f2f39521c8"
-    };
- ```
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyC5u80wO6iaPl8E9auM0IRXliYGKyDQHfU",
+    authDomain: "todo-b74fc.firebaseapp.com",
+    projectId: "todo-b74fc",
+    storageBucket: "todo-b74fc.appspot.com",
+    messagingSenderId: "872116099545",
+    appId: "1:872116099545:web:9bb66d12ca15f2f39521c8"
+};
+```
 
 The final step needed to complete the firebase configuration is to initialize firebase by making use of the config variable and then export it so it becomes available in all our components, as seen in the following lines of code:
 
- ```javascript
-    import { initializeApp } from "firebase/app";
-    import { getFirestore } from "firebase/firestore";
+```javascript
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
-    // Your web app's Firebase configuration
-    const config = {
-      apiKey: "AIzaSyC5u80wO6iaPl8E9auM0IRXliYGKyDQHfU",
-      authDomain: "todo-b74fc.firebaseapp.com",
-      projectId: "todo-b74fc",
-      storageBucket: "todo-b74fc.appspot.com",
-      messagingSenderId: "872116099545",
-      appId: "1:872116099545:web:9bb66d12ca15f2f39521c8"
+  // Your web app's Firebase configuration
+  const config = {
+    apiKey: "AIzaSyC5u80wO6iaPl8E9auM0IRXliYGKyDQHfU",
+    authDomain: "todo-b74fc.firebaseapp.com",
+    projectId: "todo-b74fc",
+    storageBucket: "todo-b74fc.appspot.com",
+    messagingSenderId: "872116099545",
+    appId: "1:872116099545:web:9bb66d12ca15f2f39521c8"
     };
 
-    const app = initializeApp(config);
+  const app = initializeApp(config);
 
-    export const db = getFirestore(app);
- ```
+export const db = getFirestore(app);
+```
 
 With this, our firebase configuration is successfully created and we do not need to make use of any other firebase services.
 
@@ -181,14 +181,12 @@ To integrate Bootstrap 5 you will need to head over to the [Bootstrap 5](https:/
 
 In the **index.html** file, we can paste the *CDN* links for both the **CSS** and **JavaScript** within the head section. With that we should have the result below:
 
- ```html
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"crossorigin="anonymous">
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-      </script>
- ```
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+```
 
 Now we have access to all Bootstrap 5 classes across our components.
 
@@ -196,142 +194,140 @@ Now we have access to all Bootstrap 5 classes across our components.
 
 To implement the design for the React project you will start by clearing the boilerplate code inside of the **App.css** file. You can now proceed to open the **index.css** file and then paste the following styles:
 
- ```css
-    body{
-      margin-top:20px;
-      background: #f8f8f8;
-    }
+```css
+body{
+  margin-top:20px;
+  background: #f8f8f8;
+}
 
-    .todo-list {
-      margin: 10px 0
-    }
+.todo-list {
+   margin: 10px 0
+}
 
-    .todo-list .todo-item {
-      padding: 15px;
-      margin: 5px 0;
-      border-radius: 0;
-    }
+.todo-list .todo-item {
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 0;
+}
 
-    div.checker {
-      width: 18px;
-      height: 18px
-    }
+div.checker {
+  width: 18px;
+  height: 18px
+}
 
-    div.checker input{
-      width: 18px;
-      height: 18px
-    }
+div.checker input{
+  width: 18px;
+  height: 18px
+}
 
-     div.checker {
-      display: inline-block;
-      vertical-align: middle;
-    }
+div.checker {
+  display: inline-block;
+  vertical-align: middle;
+}
 
-    .done {
-      text-decoration: line-through;
-    }
- ```
+.done {
+  text-decoration: line-through;
+}
+```
 
 Above, what we did was ensure all the elements that will be displayed on the browser are properly arranged.
 
 Next, proceed to the **Todo.js** file and paste the code below within the return statement of the jsx:
 
- ```javascript
-    import React from 'react'
+```javascript
+import React from 'react'
 
-    const Todo = () => {
-    return (
-    <>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="card card-white">
-                  <div className="card-body">
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#addModal"
-                      type="button"
-                      className="btn btn-info">Add Todo
-                    </button>
+const Todo = () => {
+return (
+<>
+ <div className="container">
+  <div className="row">
+    <div className="col-md-12">
+      <div className="card card-white">
+        <div className="card-body">
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#addModal"
+            type="button"
+            className="btn btn-info">Add Todo
+          </button>
 
 
-                    <div className="todo-list">
-                      <div className="todo-item">
-                        <hr />
-                        <span>
-                          <div className="checker" >
-                            <span className="" >
-                              <input
-                                type="checkbox"
-                              />
-                            </span>
-                          </div>
-                          &nbsp; Go hard or Go Home<br />
-                          <i>10/11/2022</i>
-                        </span>
-                        <span className=" float-end mx-3">
-                          <EditTodo /></span>
-                        <button
-                          type="button"
-                          className="btn btn-danger float-end"
-
-                        >Delete</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <div className="todo-list">
+      <div className="todo-item">
+        <hr />
+        <span>
+          <div className="checker" >
+            <span className="" >
+              <input
+                type="checkbox"
+              />
+            </span>
+          </div>
+          &nbsp; Go hard or Go Home<br />
+          <i>10/11/2022</i>
+        </span>
+        <span className=" float-end mx-3">
+          <EditTodo /></span>
+        <button
+          type="button"
+          className="btn btn-danger float-end">Delete
+        </button>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          {/* Modal */}
-              <div
-                  className="modal fade"
-                  id="addModal"
-                  tabIndex="-1"
-                  aria-labelledby="addModalLabel"
-                  aria-hidden="true">
-            <div className="modal-dialog">
-              <form className="d-flex">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5
-                    className="modal-title"
-                    id="addModalLabel">
-                    Add Todo
-                  </h5>
-                  <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close">
-                  </button>
-             </div>
-               <div className="modal-body">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Add a Todo"
-                    />
-                  </div>
-                  <div className="modal-footer">
-                    <button
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal">Close
-                    </button>
+  {/* Modal */}
+  <div
+   className="modal fade"
+   id="addModal"
+   tabIndex="-1"
+   aria-labelledby="addModalLabel"
+   aria-hidden="true">
+  <div className="modal-dialog">
+  <form className="d-flex">
+    <div className="modal-content">
+      <div className="modal-header">
+  <h5
+   className="modal-title"
+   id="addModalLabel">
+   Add Todo
+  </h5>
+  <button
+     type="button"
+     className="btn-close"
+     data-bs-dismiss="modal"
+     aria-label="Close">
+  </button>
+  </div>
+  <div className="modal-body">
+    <input
+      type="text"
+      className="form-control"
+      placeholder="Add a Todo"
+    />
+  </div>
+  <div className="modal-footer">
+  <button
+    className="btn btn-secondary"
+    data-bs-dismiss="modal">Close
+  </button>
 
-                    <button className="btn btn-primary">Create Todo</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+  <button className="btn btn-primary">Create Todo</button>
           </div>
-        </>
-      )
-    }
-
-    export default Todo
- ```
+        </div>
+      </form>
+    </div>
+  </div>
+</>
+  )
+}
+export default Todo
+```
 
 In the above code:
 
@@ -339,73 +335,73 @@ In the above code:
 
 The final part of our design is in the `EditTodo.js` file. The `EditTodo.js` file will only contain the modal that allows us to edit each **todo** list item. The code can be seen below:
 
- ```javascript
-    import React from 'react'
+```javascript
+import React from 'react'
 
-    const EditTodo = () => {
+ const EditTodo = () => {
 
-    return (
-        <>
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Edit Todo
-          </button>
+  return (
+  <>
+    <button
+      type="button"
+      className="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Edit Todo
+    </button>
 
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabIndex="-1"
-            aria-labelledby="editLabel"
-            aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5
-                    className="modal-title"
-                     id="editLabel">
-                Update Todo Details
-                  </h5>
-                  <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close">
-                  </button>
-                </div>
-                <div className="modal-body">
+  <div
+      className="modal fade"
+      id="exampleModal"
+      tabIndex="-1"
+      aria-labelledby="editLabel"
+      aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5
+              className="modal-title"
+               id="editLabel">
+          Update Todo Details
+            </h5>
+    <button
+        type="button"
+        className="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close">
+    </button>
+  </div>
+    <div className="modal-body">
 
-                  <form className="d-flex">
-                    <input
-                      type="text"
-                      className="form-control"
-                    />
-                  </form>
+    <form className="d-flex">
+      <input
+        type="text"
+        className="form-control"
+      />
+    </form>
 
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal">Close
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                  >Update Todo</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
+  </div>
+  <div className="modal-footer">
+     <button
+       type="button"
+       className="btn btn-secondary"
+       data-bs-dismiss="modal">Close
+     </button>
+      <button
+        type="button"
+        className="btn btn-primary"
+      >Update Todo</button>
+  </div>
+        </div>
+      </div>
+  </div>
+</>
       )
-    }
+}
 
-    export default EditTodo
- ```
+export default EditTodo
+```
 
 The design for the application is now complete. If you run the command `npm start` in the terminal and the code compiles, you should see the result below in the browser:
 
@@ -416,8 +412,8 @@ The design for the application is now complete. If you run the command `npm star
 To implement the Add data functionality in our todo application, we start by importing some modules from `firebase/firestore` which can be seen below:
 
 ```javascript
-  import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
- ```
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+```
 
 • A `Collection` is a folder that contains **Documents** and Data. All the data saved on our Todo application will be saved in a Collection called *Todos*, which we will create soon.
 • `addDoc` is a high-level method used to add data to a Collection.
@@ -425,23 +421,23 @@ To implement the Add data functionality in our todo application, we start by imp
 
 We then need to import the **firebase.config.js** file in our **Todo.js** file to allow us to have access to the firebase methods:
 
- ```javascript
-  import { db } from '../services/firebase.config'
- ```
+```javascript
+import { db } from '../services/firebase.config'
+```
 
 Using the import from our **firebase.config.js** file, we can now instantiate a reference to our Collection:
 
- ```javascript
-  const collectionRef = collection(db, 'todo');
- ```
+```javascript
+const collectionRef = collection(db, 'todo');
+```
 
 - As seen in the code above, we created a variable called `collectionRef`. The `collectionRef` variable takes in the collection method. This method has two arguments. The first argument called `db` references the firebase service, while the second argument will create a new Collection called **todo**, which will contain all necessary **Documents** created.
 
 Next, we create two variables using the `useState` hook:
 
- ```javascript
-      const [createTodo, setCreateTodo] = useState("")
- ```
+```javascript
+const [createTodo, setCreateTodo] = useState("")
+```
 
 - The first thing we did here is to import the useState hook in React:
   `import React, { useState } from 'react'`.
@@ -451,29 +447,29 @@ To proceed, we move to the modal created within the JSX and implement the next c
   `<form className="d-flex" onSubmit={submitTodo}>`
   - In the input tag within the form tag, we create an `onChange` event handler that allows us to get the value typed inside of the form:
 
- ```javascript
-  onChange={(e) => setCreateTodo(e.target.value)}`
- ```
+```javascript
+onChange={(e) => setCreateTodo(e.target.value)}`
+```
 
 The final implementation we need to make before adding data to the database becomes functional is to configure the `onSubmit` event handler previously created. The code for this can be seen below:
 
- ```javascript
-      //Add Todo Handler
-      const submitTodo = async (e) => {
-        e.preventDefault();
+```javascript
+  //Add Todo Handler
+const submitTodo = async (e) => {
+  e.preventDefault();
 
-        try {
-          await addDoc(collectionRef, {
-            todo: createTodo,
-            isChecked: false,
-            timestamp: serverTimestamp()
-          })
-          window.location.reload();
-        } catch (err) {
-          console.log(err);
-        }
-      }
- ```
+  try {
+    await addDoc(collectionRef, {
+      todo: createTodo,
+      isChecked: false,
+      timestamp: serverTimestamp()
+    })
+    window.location.reload();
+  } catch (err) {
+    console.log(err);
+  }
+}
+```
 
 - Above, we made the `submitTodo` variable asynchronous by making use of the `async/await` keyword in `JavaScript`.
 - We then created a parameter in the arrow function called `e`, which serves as an event. This ensures we can make use of the `e.preventDefault()` method which prevents the form from reloading after submission.
@@ -487,32 +483,32 @@ With this, we can now create a new **todo** and view it in our database.
 
 To fetch the data from the Firestore in Firebase, we need to make two importation in our **Todo.js** file. These include the `useEffect` hook in React and the `getDocs` from `firebase/firestore`:
 
- ```javascript
-    import React, { useState, useEffect } from 'react'
-    import { collection, addDoc, serverTimestamp, getDocs } from 'firebase/firestore'
- ```
+```javascript
+import React, { useState, useEffect } from 'react'
+import { collection, addDoc, serverTimestamp, getDocs } from 'firebase/firestore'
+```
 
 We then need to create the setter(`setTodo`) and getter(`todos`) variables to help us access the data from the Firestore:
 
- ```javascript
-  const [todos, setTodo] = useState([])
- ```
+```javascript
+const [todos, setTodo] = useState([])
+```
 
 The data can now be fetched inside of the `useEffect` hook:
 
- ```javascript
-      useEffect(() => {
-        const getTodo = async () => {
-          await getDocs(collectionRef).then((todo) => {
-            let todoData = todo.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-            setTodo(todoData)
-          }).catch((err) => {
-            console.log(err);
-          })
-        }
-        getTodo()
-      }, [])
- ```
+```javascript
+useEffect(() => {
+const getTodo = async () => {
+  await getDocs(collectionRef).then((todo) => {
+    let todoData = todo.docs.map((doc) => ({ ...doc.data(), id: did }))
+    setTodo(todoData)
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+getTodo()
+}, [])
+```
 
 - Inside the `useEffect` hook, we created a variable called `getTodo` that takes in an asynchronous arrow function.
 - Then we called the `getDocs` method from Firebase. The `getDocs` method requires an argument, so we pass in the `collectionRef`.The `getDocs` returns a promise which we need to chain to using `.then`.
@@ -522,33 +518,32 @@ The data can now be fetched inside of the `useEffect` hook:
 
 Now that we have access to our data from the database, we need to make it visible on the page. The data we have comes in form of an array and we need to loop through it in the **HTML** file. This will be done within the `div` with the `className` of `todo-list` as seen below:
 
- ```javascript
-    {todos.map(({ todo, id }) =>
-                      <div className="todo-list" key={id}>
-                        <div className="todo-item">
-                          <hr />
-                          <span>
-                            <div className="checker" >
-                              <span className="" >
-                                <input
-                                  type="checkbox"
-                                />
-                              </span>
-                            </div>
-                            &nbsp;{todo}<br />
-                            <i>10/11/2022</i>
-                          </span>
-                          <span className=" float-end mx-3">
-                            <EditTodo /></span>
-                          <button
-                            type="button"
-                            className="btn btn-danger float-end"
-
-                          >Delete</button>
-                        </div>
-                      </div>
-                    )}
- ```
+```javascript
+{todos.map(({ todo, id }) =>
+  <div className="todo-list" key={id}>
+    <div className="todo-item">
+      <hr />
+      <span>
+        <div className="checker" >
+          <span className="" >
+            <input
+              type="checkbox"
+            />
+          </span>
+        </div>
+        &nbsp;{todo}<br />
+        <i>10/11/2022</i>
+      </span>
+      <span className=" float-end mx-3">
+        <EditTodo /></span>
+    <button
+      type="button"
+      className="btn btn-danger float-end">Delete
+    </button>
+    </div>
+  </div>
+)}
+```
 
 • In the code above, we call the `todos` getter that contains our data which comes in an array format.
 • Next, we make use of the map array method to loop through the data, restructured the data by making use of curly brackets `{}`, and then extract the `todos` as well as the `id`.
@@ -560,26 +555,26 @@ We can now proceed to save our changes.
 
 To implement the delete functionality, we need to import two firestore functions which are `doc`, and `deleteDoc`.
 
- ```javascript
-  import { collection, addDoc, serverTimestamp, getDocs, doc, deleteDoc } from 'firebase/firestore'
- ```
+```javascript
+import { collection, addDoc, serverTimestamp, getDocs, doc, deleteDoc } from 'firebase/firestore'
+```
 
 Next, we create a function called `deleteTodo`:
 
- ```javascript
-      //Delete Handler
-      const deleteTodo = async (id) => {
-        try {
-          window.confirm("Are you sure you want to delete this Todo?")
-          const documentRef = doc(db, "todo", id);
-          await deleteDoc(documentRef)
-          window.location.reload();
-        } catch (err) {
-          console.log(err);
-        }
-      }
+```javascript
+   //Delete Handler
+const deleteTodo = async (id) => {
+ try {
+    window.confirm("Are you sure you want to delete this Todo?")
+    const documentRef = doc(db, "todo", id);
+    await deleteDoc(documentRef)
+    window.location.reload();
+    } catch (err) {
+    console.log(err);
+  }
+}
 
- ```
+```
 
 - Within the `try` block, we start by displaying a prompt to the user if they want to proceed to delete the Todo.
 - We then create a new variable called `documentRef`. We then call the `doc` method which requires 3 arguments which are the firebase service, the collection name as well as the `todo id` that we want to delete.
@@ -588,14 +583,14 @@ Next, we create a function called `deleteTodo`:
 
 Now that our delete function is ready, all we have to do is to initialize it inside our delete button as seen below:
 
- ```javascript
-     <button
-             type="button"
-             className="btn btn-danger float-end"
-             onClick={() => deleteTodo(id)}
-             >Delete
-    </button>
- ```
+```javascript
+<button
+    type="button"
+    className="btn btn-danger float-end"
+    onClick={() => deleteTodo(id)}
+      >Delete
+</button>
+```
 
 - All we did was make use of the `onClick` event handler to call the `deleteTodo()` function anytime a specific todo is deleted. It should also be noted that the `id` parameter passed inside of the function was made accessible to us in the documentRef variable we created earlier.
 
@@ -603,42 +598,42 @@ Now that our delete function is ready, all we have to do is to initialize it ins
 
 To implement the functionality to update data, we need to pass the data coming from the database as props to our `EditTodo.js` component:
 
- ```javascript
-     {todos.map(({ todo, id }) =>
-                      <div className="todo-list" key={id}>
-                        <div className="todo-item">
-                          <hr />
-                          <span>
-                            <div className="checker" >
-                              <span className="" >
-                                <input
-                                  type="checkbox"
-                                />
-                              </span>
-                            </div>
-                            &nbsp;{todo}<br />
-                            <i>10/11/2022</i>
-                          </span>
-                          <span className=" float-end mx-3">
-                            <EditTodo todo={todo} id={id} />
-                          </span>
-                          <button
-                            type="button"
-                            className="btn btn-danger float-end"
-                            onClick={() => deleteTodo(id)}
-                          >Delete</button>
-                        </div>
-                      </div>
-                    )}
- ```
+```javascript
+{todos.map(({ todo, id }) =>
+   <div className="todo-list" key={id}>
+     <div className="todo-item">
+       <hr />
+       <span>
+         <div className="checker" >
+           <span className="" >
+             <input
+               type="checkbox"
+             />
+           </span>
+         </div>
+         &nbsp;{todo}<br />
+         <i>10/11/2022</i>
+       </span>
+       <span className=" float-end mx-3">
+         <EditTodo todo={todo} id={id} />
+       </span>
+       <button
+         type="button"
+         className="btn btn-danger float-end"
+         onClick={() => deleteTodo(id)}
+       >Delete</button>
+     </div>
+   </div>
+)}
+```
 
 We passed both the `todo` data as well as the `id` as props and it now becomes accessible in the `EditTodo.js` file.
 
 Inside the `EditTodo.js`, we extract the data by making use of curly brackets `{}`:
 
- ```javascript
-    const EditTodo = ({ todo, id }) => {
- ```
+```javascript
+const EditTodo = ({ todo, id }) => {
+```
 
 We then make the necessary imports required to update the data, which include the following React and firebase terms:
 
@@ -649,28 +644,28 @@ We then make the necessary imports required to update the data, which include th
 
 The extracted data can now be set in state using the `useState` hook:
 
- ```javascript
-    const [todos, setTodos] = useState([todo])
- ```
+```javascript
+const [todos, setTodos] = useState([todo])
+```
 
 - As seen above, we created new variables called `todos`, `setTodos`, and then set the initial value in the `useState` to the `todo` data coming from the database.
 
 Next, we create the function that implements the update todo:
 
- ```javascript
-      const updateTodo = async (e) => {
-        e.preventDefault()
-        try {
-          const todoDocument = doc(db, "todo", id);
-          await updateDoc(todoDocument, {
-            todo: todos
-          });
-          window.location.reload();
-        } catch (err) {
-          console.log(err);
-        }
-      }
- ```
+```javascript
+const updateTodo = async (e) => {
+  e.preventDefault()
+  try {
+    const todoDocument = doc(db, "todo", id);
+    await updateDoc(todoDocument, {
+      todo: todos
+    });
+    window.location.reload();
+  } catch (err) {
+    console.log(err);
+  }
+}
+```
 
 - Above, we created a variable called `updateTodo`, which holds the asynchronous arrow function.
 - Next, we called the `e.preventDefault()`, to prevent the form from reloading.
@@ -682,63 +677,63 @@ There are two implementations left to do. One is making the modal dynamic, while
 
 To make the modal dynamic, we need to change the values of the `id` in the **JSX**, so we add the following code:
 
- ```javascript
-     <button
-            type="button"
-            className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target={`#id${id}`}      >
-            Edit Todo
-          </button>
+```javascript
+<button
+  type="button"
+  className="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target={`#id${id}`}      >
+  Edit Todo
+</button>
 
-          <div
-            className="modal fade"
-            id={`id${id}`}
-            tabIndex="-1"
-            aria-labelledby="editLabel"
-            aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="editLabel">Update Todo Details</h5>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
- ```
+<div
+  className="modal fade"
+  id={`id${id}`}
+  tabIndex="-1"
+  aria-labelledby="editLabel"
+  aria-hidden="true">
+  <div className="modal-dialog">
+  <div className="modal-content">
+  <div className="modal-header">
+  <h5 className="modal-title" id="editLabel">Update Todo Details</h5>
+  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+```
 
 - We begin by replacing the static text in the `data-bs-target` attribute called `#exampleModal`, with the dynamic `id` coming from the firestore.
 - Within our modal, we replace the static id called `id="exampleModal"`, with the `id` from our firestore. The modal is now dynamic.
 
 Next, to update the data, we need to call the `setTodos` setter inside the input field using the `onChange` event handler in React:
 
- ```javascript
-     <input
-            type="text"
-            className="form-control"
-            defaultValue={todo}
-            onChange={e => setTodos(e.target.value)}
-    />
- ```
+```javascript
+<input
+  type="text"
+  className="form-control"
+  defaultValue={todo}
+  onChange={e => setTodos(e.target.value)}
+/>
+```
 
 - The `defaultValue` helps to refill the form with the existing **todo** in the database.
 - The `onChange` event handler helps to get the values of the input field and save it into the `setTodos` setter.
 
 Finally, we can call the `updateTodo` function inside our submit button:
 
- ```javascript
-     <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={e => updateTodo(e)}
-                  >Update Todo</button>
-     </div>
- ```
+```javascript
+<div className="modal-footer">
+  <button
+    type="button"
+    className="btn btn-secondary"
+    data-bs-dismiss="modal">
+    Close
+  </button>
+  <button
+    type="button"
+    className="btn btn-primary"
+    onClick={e => updateTodo(e)}
+  >Update Todo</button>
+</div>
+```
 
 - As seen above, we can now successfully update a specific todo using the `onClick` event handler in React.
 
@@ -746,55 +741,55 @@ Finally, we can call the `updateTodo` function inside our submit button:
 
 To begin the checkbox implementation, we will create a variable using the useState hook:
 
- ```javascript
-      const [checked, setChecked] = useState([]);
- ```
+```javascript
+const [checked, setChecked] = useState([]);
+```
 
 Next, we pass the data from the firestore into the setter called `setChecked` inside of the useEffect:
 
- ```javascript
-     useEffect(() => {
-        const getTodo = async () => {
-          await getDocs(collectionRef).then((todo) => {
-            let todoData = todo.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-            setTodo(todoData)
-            setChecked(todoData)
-          }).catch((err) => {
-            console.log(err);
-          })
-        }
-        getTodo()
-      }, [])
- ```
+```javascript
+useEffect(() => {
+  const getTodo = async () => {
+  await getDocs(collectionRef).then((todo) => {
+     let todoData = todo.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+     setTodo(todoData)
+     setChecked(todoData)
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  getTodo()
+}, [])
+```
 
 In the JSX, we will extract the `isChecked` value in the database and use it to conditionally set the CSS class used to `line-through` a specific todo which signifies the todo is done as seen below:
 
- ```javascript
-      {todos.map(({ todo, id, isChecked }) =>
-                   <div className="todo-list" key={id}>
-                   <div className="todo-item">
-                   <hr />
-                   <span className={`${isChecked === true ? 'done' : ''}`}>
- ```
+```javascript
+{todos.map(({ todo, id, isChecked }) =>
+ <div className="todo-list" key={id}>
+ <div className="todo-item">
+ <hr />
+ <span className={`${isChecked === true ? 'done' : ''}`}>
+```
 
 We proceed to configure the input field used for our checkbox by using the following code:
 
- ```javascript
-    <input
-        type="checkbox"
-        defaultChecked={isChecked}
-        name={id}
-        onChange={(event) => checkHandler(event, todo)}
-    />
- ```
+```javascript
+<input
+    type="checkbox"
+    defaultChecked={isChecked}
+    name={id}
+    onChange={(event) => checkHandler(event, todo)}
+/>
+```
 
 - Above we use the `defaultChecked` attribute to set the default value of the checkbox coming from the firestore which is a Boolean.
 - Next, we pass the `id` into the name attribute.
 - Using the `onChange` event handler, we set the event and the todo data into a function called `checkHandler`, which we will create and configure below:
 
- ```javascript
+```javascript
   //Checkbox Handler
-  const checkHandler = async (event, todo) => {
+const checkHandler = async (event, todo) => {
   setChecked(state => {
   const indexToUpdate = state.findIndex(checkBox => checkBox.id.toString() === event.target.name);
   let newState = state.slice()
@@ -804,8 +799,8 @@ We proceed to configure the input field used for our checkbox by using the follo
   })
   setTodo(newState)
   return newState
-  });
- ```
+});
+```
 
 - The summary of the above function helps to track the state of a specific checkbox when checked and unchecked by using the `findIndex` method in JavaScript.
 - We then create a variable called `newState`. This variable makes use of the `slice()` and `splice()` methods in JavaScript. The `slice()` method helps us to return the selected checkbox(s) in the array, as a new array, while the `splice()` method helps us to save only elements that were checked into the array.
@@ -813,23 +808,23 @@ We proceed to configure the input field used for our checkbox by using the follo
 
 The final step we need to take is to save the selected checkbox values in the database. We will do this by, making use of the [runTransaction](https://firebase.google.com/docs/firestore/manage-data/transactions) method in JavaScript. The `runTransaction` method will be called within the `checkHandler` function:
 
- ```javascript
-      // Persisting the checked value
-        try {
-          const docRef = doc(db, "todo", event.target.name);
-          await runTransaction(db, async (transaction) => {
-            const todoDoc = await transaction.get(docRef);
-            if (!todoDoc.exists()) {
-              throw "Document does not exist!";
-            }
-            const newValue = !todoDoc.data().isChecked;
-            transaction.update(docRef, { isChecked: newValue });
-          });
-          console.log("Transaction successfully committed!");
-        } catch (error) {
-          console.log("Transaction failed: ", error);
-        }
- ```
+```javascript
+ // Persisting the checked value
+try {
+  const docRef = doc(db, "todo", event.target.name);
+  await runTransaction(db, async (transaction) => {
+    const todoDoc = await transaction.get(docRef);
+    if (!todoDoc.exists()) {
+      throw "Document does not exist!";
+    }
+    const newValue = !todoDoc.data().isChecked;
+    transaction.update(docRef, { isChecked: newValue });
+  });
+  console.log("Transaction successfully committed!");
+} catch (error) {
+  console.log("Transaction failed: ", error);
+}
+```
 
 - The first thing we need to do is import runTransaction from `firebase/firestore`.
 - We then checked the database if the particular document being queried exists or not. If it doesn't exist we throw a message that says "**Document does not exist!**".
@@ -843,34 +838,34 @@ To order the data in our firestore database, the first thing to do is to clear a
 
 We then need to import two methods from `firebase/firestore` called `orderBy` and query by using the following imports:
 
- ```javascript
-  import { collection, addDoc, serverTimestamp, getDocs, doc, deleteDoc, runTransaction, orderBy, query } from 'firebase/firestore'
- ```
+```javascript
+import { collection, addDoc, serverTimestamp, getDocs, doc, deleteDoc, runTransaction, orderBy, query } from 'firebase/firestore'
+```
 
 - The `orderBy` method helps to sort the data coming from the database in either ascending, descending, or timestamp in which the data was created. In our case, we will be making use of the latter, while the query method as the name implies allows us to query data from the database.
 
 Next, within the `useEffect`, we will remove the `collectionRef` we passed as a parameter into the `getDocs` method and replace it with a newly created query variable as seen below:
 
- ```javascript
-  const q = query(collectionRef, orderBy('timestamp'))
+```javascript
+const q = query(collectionRef, orderBy('timestamp'))
           await getDocs(q).then((todo) =>{
- ```
+```
 
 - Above, we create a variable called `q`, which uses the `orderBy` method to sort the data by the in which they were created. We then pass this variable to the `getDocs` method that gets the data from the Database.
 
 To conclude this project, we will display the date and time on which the todo was created on the browser:
 
- ```javascript
-    {todos.map(({ todo, id, isChecked, timestamp }) =>
- ```
+```javascript
+{todos.map(({ todo, id, isChecked, timestamp }) =>
+```
 
 - We begin by extracting the `timestamp` value from the database.
 
 We then need to clear the static date value inside of the italics`(<li></li>)` tag:
 
- ```javascript
-     <i>{new Date(timestamp.seconds * 1000).toLocaleString()}</i>
- ```
+```javascript
+<i>{new Date(timestamp.seconds * 1000).toLocaleString()}</i>
+```
 
 - We created a Date object and then get the seconds from the `timestamp` while multiplying it by `1000`. This is because `JavaScript` works with time in `milliseconds`. We then proceed to use the `toLocaleString()` method to return the date object as a string.
 
