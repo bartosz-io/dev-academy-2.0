@@ -63,7 +63,11 @@
   height: auto;
 }
 
-.academy-courses-wrapper, {
+.academy-ninja-levitation {
+  animation: levitation 5s ease-in-out infinite;
+}
+
+.academy-courses-wrapper {
   background-color: $light-125;
 }
 
@@ -242,6 +246,10 @@
 
     .academy-user-goal-image {
       transform: scale(1.2) translateY(1rem);
+    }
+
+    & .academy-user-goal-image {
+      animation: levitation 5s ease-in-out infinite;
     }
 
     &[data-academy="web-security-academy"] {
@@ -726,4 +734,19 @@
   color: $light-175;
   font-size: $font-size-14;
   padding-top: 1rem;
+}
+
+@keyframes levitation {
+  0% {
+    filter: drop-shadow(0 5px 15px 0px rgba(0,0,0,0.6));
+    transform: translatey(0px);
+  }
+  50% {
+    filter: drop-shadow(0 25px 15px 0px rgba(0,0,0,0.2));
+    transform: translatey(-13px);
+  }
+  100% {
+    filter: drop-shadow(0 5px 15px 0px rgba(0,0,0,0.6));
+    transform: translatey(0px);
+  }
 }
