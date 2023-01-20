@@ -2,7 +2,7 @@
 title: Build a To-Do Application with React and Firebase
 contributor: Deji Adesoga
 avatar: deji-adesoga.png
-description: Learn how to use build a CRUD application by using React and Firebase 9.
+description: Learn how to use build a To-Do application by using React and Firebase 9.
 date: 2023-01-12
 tags: [react]
 id: react-firebase
@@ -12,7 +12,7 @@ relatedPost: react-localstorage
 
 # Build a To-Do Application with React and Firebase
 
-To-do applications are one of the ways you can use to manage a set of tasks. As developers, learning how to build a to-do application will also help to understand certain concepts one of which includes an understanding of how to build a CRUD(Create, Read, Update and Delete) application.
+To-do applications are one of the ways you can use to manage a set of tasks. As developers, learning how to build a to-do application will also help to understand certain concepts one of which includes an understanding of how to build a To-do application.
 
 In this article, you will learn how to build a to-do web app by making use of React.js and Firebase Database.
 
@@ -44,25 +44,19 @@ To set up firebase, you head to the [firebase console](https://console.firebase.
 {% img "recent-projects.png" "Firebase console dashboard" "lazy" %}
 
 After clicking on the add project button, we get navigated to a new page which requires 3 steps before the firebase project is created:
-
 - The first step requires us to name the firebase project, which we will call **todo**.
 - The second step asks if we want to enable Google Analytics, you should disable it by using the toggle button.
 - Finally, we can now click on the **create project** button.
-
 Once the project is created, we click on the continue button which navigates us to the next screen, which is now our default firebase project dashboard.
-
 {% img "dashboard-landing.png" "Firebase dashboard" "lazy" %}
-
 We have now completed the creation of a new Firebase project.
 
 ## Creating the Firestore Database
-
 Inside the firebase dashboard, on the left-hand panel, we take the following steps:
-
-• Click on the **Build** dropdown.
-• Within the **Build** dropdown, select **Firestore Database**, this displays a page where we can click on the **Create database** button.
-• Next, a modal pops up asking if we want **Production mode** or **Test mode**. You can choose Test mode since the app is currently in the development stage.
-• The next step asks for where we want our Cloud Firestore to be located, you can choose the location closest to your area due to the possibility of latency.
+- Click on the **Build** dropdown.
+- Within the **Build** dropdown, select **Firestore Database**, this displays a page where we can click on the **Create database** button.
+- Next, a modal pops up asking if we want **Production mode** or **Test mode**. You can choose Test mode since the app is currently in the development stage.
+- The next step asks for where we want our Cloud Firestore to be located, you can choose the location closest to your area due to the possibility of latency.
 
 Once we click on enable, we get redirected to the **Cloud Firestore** page which will currently have an empty Collection.
 
@@ -415,9 +409,9 @@ To implement the Add data functionality in our todo application, we start by imp
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 ```
 
-• A `Collection` is a folder that contains **Documents** and Data. All the data saved on our Todo application will be saved in a Collection called *Todos*, which we will create soon.
-• `addDoc` is a high-level method used to add data to a Collection.
-• The `serverTimestamp` contains the values of both time and date values for each Document in a Collection.
+- A `Collection` is a folder that contains **Documents** and Data. All the data saved on our Todo application will be saved in a Collection called *Todos*, which we will create soon.
+- `addDoc` is a high-level method used to add data to a Collection.
+- The `serverTimestamp` contains the values of both time and date values for each Document in a Collection.
 
 We then need to import the **firebase.config.js** file in our **Todo.js** file to allow us to have access to the firebase methods:
 
@@ -545,9 +539,9 @@ Now that we have access to our data from the database, we need to make it visibl
 )}
 ```
 
-• In the code above, we call the `todos` getter that contains our data which comes in an array format.
-• Next, we make use of the map array method to loop through the data, restructured the data by making use of curly brackets `{}`, and then extract the `todos` as well as the `id`.
-• Finally, we called the `key` attribute in React, and pass in the `id` so as enable React to track the data loaded on the page. The static text beside the `&nbsp;` also gets cleared before replacing it with the todo data.
+- In the code above, we call the `todos` getter that contains our data which comes in an array format.
+- Next, we make use of the map array method to loop through the data, restructured the data by making use of curly brackets `{}`, and then extract the `todos` as well as the `id`.
+- Finally, we called the `key` attribute in React, and pass in the `id` so as enable React to track the data loaded on the page. The static text beside the `&nbsp;` also gets cleared before replacing it with the todo data.
 
 We can now proceed to save our changes.
 
@@ -875,6 +869,6 @@ With this, we have the result below:
 
 ## Conclusion
 
-You have now completed the tutorial! You now know the basics of how to create a CRUD todo application using React and Firebase Database. Now you can proceed to build your own web app from scratch and then integrate additional functionalities like firebase login and sign-in, Firebase tools, firebase deploy, and other firebase services into your React application.
+You have now completed the tutorial! You now know the basics of how to create a To-do application using React and Firebase Database. Now you can proceed to build your own web app from scratch and then integrate additional functionalities like firebase login and sign-in, Firebase tools, firebase deploy, and other firebase services into your React application.
 
 Also, the link to the complete source code of this article can be found on this [Github](https://github.com/desoga10/react-fire-todo) repository.
