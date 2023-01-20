@@ -1,5 +1,5 @@
 ---
-title: Angular Input Validation
+title: Input Validation in Angular
 contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn how to  create and validate Angular Forms.
@@ -7,9 +7,10 @@ date: 2023-01-18
 tags: [angular, security]
 id: angular-input-validation
 relatedPost: user-login-and-registration
+bannerHeader: 'Input validation in Angular'
 ---
 
-
+## Table of Contents
 <!-- toc -->
 
 ## Introduction
@@ -18,7 +19,7 @@ With the help of Angular, an open-source Javascript framework, the creation of d
 
 Angular's ability to convert static HTML into dynamic HTML is one of its most important characteristics. Because of the capabilities and components that it already possesses, it is referred to as an HTML extension.
 
-The way a dynamic website handles the dynamic data entered by the user is one of its key characteristics. Forms are primarily used in this case. We can easily create these forms with Angular. We must validate the accuracy of the user's input when using forms. Form validations can be used to attain this. Angular has an excellent capability for validating user inputs and displaying error messages or alerts on the screen when deploying an application. It also has built-in validators to help with the verification process.
+The way a dynamic website handles the dynamic data entered by the user is one of its key characteristics. Forms are primarily used in this case. We can easily create these forms with Angular. We must validate the accuracy of the user's input when using forms. Form validations can be used to attain this. Angular has an excellent capability for validating user inputs and displaying error message or alerts on the screen when deploying an application. It also has built-in validators to help with the verification process.
 
 Forms are used when we wish to collect data from website visitors. Forms are used every day, for example, to register, log in to a website, place orders, and so on.
 
@@ -95,7 +96,6 @@ If we want more control over our form, we can formally create control objects. T
     
         ng serve
     
-    ![](https://images.surferseo.art/064295e2-7a21-4313-8c41-7c5a731215da.png)
 8.  Now check to see whether it's working by opening your browser to [http://localhost:4200/](http://localhost:4200/)
     
     ![](https://images.surferseo.art/96b20658-bb06-4e90-b93f-e3727a2752bd.png)
@@ -106,87 +106,57 @@ We're now ready to begin.
 
 In Template Driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
 
-1.  Open app.module.ts and import FormsModule from '@angular/forms'
+1.  All of the components that are being created are located in the src/app folder. We can add another component inside of this one by using the command given below.
     
-    ``` import {NgModule} from '@angular/core';
-    import {FormsModule} from '@angular/forms';
-    import {BrowserModule} from '@angular/platform-browser';
-    import {AppComponent} from './app.component';
-    import {SampleFormComponent} from './sample-form/sample-form.component';
-    @NgModule({imports: [BrowserModule,FormsModule],
-    declarations: [AppComponent,SampleFormComponent],
-    providers: [],
-    bootstrap: [AppComponent]})
-    export class AppModule { }
-    ```
-
-2.  Use the next command to create a class.
+        ng g c component_name
     
-    ``` ng class generate Sample ```
-    
-    ![](https://images.surferseo.art/8c55e008-a056-4022-be4f-87accbc7a7c9.png)
-
-3.  Now add the following code in the sample.ts file
-    
-    ``` export class Sample {
-    constructor( public id: number,
-    public name: string,
-    public power: string,
-    ) { }
-    } 
-    ```
-    
-4.  Use this terminal command to create a SampleForm component.
+    Here I've named my component as demo-form.
     
 
-    ``` ng generate component SampleForm ```
+Our newly created component will now show up once we have completed this. More component files are included in this component as \`.ts, .html, and css\` files.
 
-![](https://images.surferseo.art/095f3f55-de5e-4786-86ca-d22cb8951f12.png)
-
-5.  Add the following code to the sample-form.component.ts file.
+2.  We'll now access the component.html file and call the component tag we just made. This is done in order to integrate the created component into our application. In the case of our project here, it will be:
     
-
-    ``` import { Component } from '@angular/core';
-    import { Sample } from '../sample';
-    @Component({
-    selector: 'app-sample-form',
-    templateUrl: './sample-form.component.html',
-    styleUrls: ['./sample-form.component.css']
-    })
-    export class SampleFormComponent {
-    submitted = false;
-    onSubmit() { this.submitted = true; }
-    get diagnostic() { return JSON.stringify(this.model); }
-    }
-    ```
-
-6.  Add the following code to the app.component.html
+        <app-demo-form></app-demo-form>
     
-    ``` <div class="container">
-    <h1>Sample Form</h1>
-    <form>
+    ![](https://images.surferseo.art/e9327bfe-9da1-48d1-b691-05809321d7c3.png)
+3.  Now Open app.module.ts and import FormsModule from '@angular/forms' also call it in imports.
     
-    <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" required>
+        import { FormsModule } from '@angular/forms';
     
-    <label for="email">Enter your e-mail id : </label>
-    <input type="email" class="form-control" id="email" required>
-    </div>
+          imports: [
+            BrowserModule,
+            AppRoutingModule,
+            FormsModule
+          ]
     
-    <button type="submit" class="btn btn-success">Submit</button>
+4.  Let's now create the form. Add the following code to demo-form.component to create the form.
     
-    </form>
-    </div>
-    ```
-
-![](https://images.surferseo.art/03903235-e9b4-411f-bd24-897bfa2a0474.png)
-
-Our basic form is now complete, and we can use the terminal's "ng serve" command to launch it.
+        <div class="container">
+        <h1>Demo Form</h1>
+        <form>
+        
+        <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required>
+        
+        <label for="email">Enter your e-mail id : </label>
+        <input type="email" class="form-control" id="email" required>
+        </div>
+        
+        <button type="submit" class="btn btn-success">Submit</button>
+        
+        </form>
+        </div>
+    
+    Our basic form is now complete, and we can use the terminal's "ng serve" command to launch it.
+    
 
 _When using ngModel, we must either declare the FormControl as "standalone" in ngModelOptions or specify the name attribute to stop Angular from producing an error._
 
 _Additionally, FormsModule must be added to the array of imports in app.module.ts_
+
+![](https://images.surferseo.art/e406e5f5-d36d-4a3a-b58c-83a0cce44de5.png)
 
 ## Validation in Template-driven forms
 
@@ -196,27 +166,126 @@ Every time a FormControl's value changes by performing validation, Angular displ
 
 Now, let's say we wanted to add the following validations:
 
-1.  The name and email fields both have the required attribute; if one of these fields is left blank, we want to show some validation messages.
+1.  The name field has the required attribute; if this field is left blank, we want to show some error message.
     
 2.  The minimum and maximum character lengths for the value in the Name field should be 5 and 30, respectively. if not followed, we want to show validation messages.
-    
-3.  We want to display an error message if the email contains spaces.
     
 
 For this, we must add the proper validation characteristics and export ngModel to a local template variable for each form control where we wish to add validation.
 
+By appending ngModel to all input tags, we can import all of the specific ng contents into our form.
+
+But how will we know whether or not the contents have been imported?
+
+*   Open the browser and inspect the input tag for this. You'll notice that a class called ngcontent and a few other ng classes have been added, indicating that Angular has identified our demo-form.
+    
+    ![](https://images.surferseo.art/d775eeb0-2fea-4f73-8fef-62f4566a322f.png)
+
+Now that our form has been submitted, the submit method and a method called form method should both be called.
+
+*   We will do this by including the following code in our \`form tag\`.
+    
+         (ngSubmit)="submit()"
+    
+    ![](https://images.surferseo.art/f9910021-8600-4907-95ee-982b1dc00e7e.png)
+    
+*   then, using the following code, we'll define this submit method in our demo-form.component.ts file:
+    
+        import { Component } from '@angular/core';
+        
+        @Component({
+          selector: 'app-demo-form',
+          templateUrl: './demo-form.component.html',
+          styleUrls: ['./demo-form.component.css']
+        })
+        export class DemoFormComponent {
+        submit(){
+          console.log("Form Submitted!");
+        }
+        }
+    
+
+Now, this method will be called each time we click the submit button. This can be verified in the console. The console displays **"Form Submitted!"** when we click the submit button.
+
+Let's add the login id to this as well, so that when you click the submit button, control will transfer to the \`submit(login)\` function and you can view the information that we entered.
+
+*   For this add the following code in demo-form-component.html
+    
+        <form #userlogin = "ngForm" (ngSubmit)="submit(userlogin)" >
+    
+*   then, add the following code in demo-form-component.ts
+    
+        export class DemoFormComponent {
+        submit(userlogin: any){
+          console.log("Form Submitted!", userlogin);
+        }
+    
+    _Note: When we submit and inspect our form, we will see that callback functions have been called._
+    
+    ![](https://images.surferseo.art/6b89bb91-484e-4ae0-ae88-6d66e89447eb.png)
+    
+    Here we can see details about the field's state, including whether it has been **touched** or not, whether it is **clean** or **dirty**, and information about all of FormGroup's properties (**valid**, **invalid**, **pending**, etc.). These are some of the things that we need to keep in mind when implementing form validation.
+    
+
+As we can see from the screenshot above, there were numerous objects, such as valid and invalid, when we examined our form. We're going to alter that now and use those objects as leverage. We are expected to include a template variable for that.
+
+1.  For this, we are going to add \`#variable ="ngModel"\` to our input fields. Here I've named our \`variable\` as \`name\`.
+    
+
     <input type="text" class="form-control" id="name"
         required maxlength="30" minlength="5"
         ngModel name="name" #name="ngModel">
+
+2.  It now informs our users about the form and what is considered invalid input. We'll add the following code to \`demo-form.component.html\` after creating a div class under the \`input\` tag.
+    
+        <div class="container">
+          <h1>Demo Form</h1>
+          <form #userlogin="ngForm" (ngSubmit)="submit(userlogin)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                required
+                maxlength="30"
+                minlength="5"
+                ngModel
+                name="name"
+                #name="ngModel"
+              />
+        
+              <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                <div *ngIf="name.hasError('required')">Name is required</div>
+        
+                <div *ngIf="name.hasError('minlength')">
+                  Name must be at least 5 characters long
+                </div>
+        
+                <div *ngIf="name.hasError('maxlength')">
+                  Name cannot be more than 30 characters long
+                </div>
+              </div>
+              <label for="email">Enter your e-mail id : </label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+                ngModel
+              />
+            </div>
+        
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
+        </div>
+        
     
 
-The built-in validators \`required\`, \`minlength\`, and \`maxlength\` are used in the example above.
+![](https://images.surferseo.art/5fe2eb1f-728b-4648-b0cc-d9b309e08019.png)
 
-We can use the [Validators API](https://angular.io/api/forms/Validators) to refer to a complete list of Angular's built-in validators.
-
-![](https://images.surferseo.art/350b18fb-60ed-4c73-b8a4-730c48ff841e.png)
-
-![](https://images.surferseo.art/a7a87cc7-174d-4f21-9c3e-0c3afe51f561.png)
+![](https://images.surferseo.art/811557d7-fab6-40d5-b1db-7109cb05295f.png)
 
 ## The custom validator in Template-driven forms
 
@@ -240,7 +309,7 @@ Anywhere in the function, we can add our custom validator. For examples
 
     import { ValidationErrors, AbstractControl } from '@angular/forms';
     
-    export class SampleFormValidators {
+    export class DemoFormValidators {
         static emailShouldBeValid(control: AbstractControl): ValidationErrors | null {
             if ((control.value as string).indexOf(' ') >= 0) {
                 return { shouldNotHaveSpaces: true }
@@ -305,7 +374,7 @@ Reactive forms don't employ HTML5 validation attributes or the ngModel directive
 
 You must send it to the relevant ValidatorFn if you want to add FormControl's built-in validator methods.
 
-The built-in validators \`required\`, \`minLength\`, and \`maxLength\` ere applied to the example below.
+The built-in validators \`required\`, \`minLength\`, and \`maarength\` ere applied to the example below.
 
     registrationForm = new FormGroup({ 
     'name': new FormControl('Enter name', [ 
@@ -367,3 +436,7 @@ You can easily develop your validator function, as we did for the template-drive
 ## Conclusion
 
 The most popular language for developing dynamic applications is Angular. Even you can construct forms that have appropriate validation. The user can complete all the fields while security is maintained. In this article, we looked at Template-Driven and Reactive forms, two different approaches to handling user inputs. We completed the process of adding validation to both kinds of forms. Finally, in addition to the built-in validators, we also created our validator function and included it.
+
+## The next steps
+
+As we can see, Angular has excellent form support and some hidden features that are useful for form validation. Learn more about Angular and about 2FA, time-based one-time passwords, and [how to request OTP](https://dev-academy.com/angular-otp-verification/) verification using Angular. Discover how to use Angular Guard, AuthService, AuthGuard Implementation, and [Routing Module Implementation](https://dev-academy.com/angular-router-guard-rbac/) and how to serve your [Angular application via HTTPS locally](https://dev-academy.com/running-angular-cli-over-https/).
