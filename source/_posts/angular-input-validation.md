@@ -1,10 +1,10 @@
 ---
-title: Running Angular CLI over HTTPS
+title: Angular Input Validation
 contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn how to  create and validate Angular Forms.
 date: 2023-01-18
-tags: [angular]
+tags: [angular, security]
 id: angular-input-validation
 relatedPost: user-login-and-registration
 ---
