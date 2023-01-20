@@ -65,7 +65,8 @@ hexo.extend.generator.register('contributor', function(locals) {
         routes.push({
             path: 'contributors/' + slug + '/index.html',
             data: {
-                contributor: contributorData
+                contributor: contributorData,
+                title: contributor[0] + ' | Dev-Academy.com contributor'
             },
             layout: 'contributor'
         })
