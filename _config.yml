@@ -343,7 +343,7 @@ contributors:
       # site:
       github: https://github.com/AMSANJEEV28
       linkedin: https://www.linkedin.com/mwlite/in/a-m-sanjeev-456431207
-      # twitter: 
+      # twitter:
   "Saujan Ghimire":
     slug: saujan-ghimire
     desc: Saujan is founder and tech lead at I-IKIGAI. With an Electro-Mechanical Engineering degree, he is now also a self taught dev bringing software to realtime IoT systems.
@@ -402,3 +402,18 @@ contributors:
       twitter: https://twitter.com/isayjilh
       github: https://github.com/jilh
       linkedin: https://www.linkedin.com/in/jilh
+  "Deji Adesoga":
+    slug: desoga
+    desc: Deji Software Developer who loves making content for the web development community. He has written articles in several publications on Medium, Freecodecamp, Dzone, Dev.To, e.t.c. He also has a YouTube channel where he teaches JavaScript technologies which include React, Angular, and Node.
+    specs: [JavaScript, React, Angular, Node]
+    image: /img/contributors/deji-adesoga.png
+    motto: If your mind can conceive it, and your heart can believe it, then you can achieve it.
+    joined: 1 Jan 2023
+    academies:
+      wsa: false
+      fta: false
+    socials:
+      site: https://thecodeangle.com/
+      twitter: https://twitter.com/home
+      github: https://github.com/desoga10
+      linkedin: https://www.linkedin.com/in/desoga/
