@@ -222,7 +222,6 @@ Now that our form has been submitted, the submit method and a method called form
       console.log('Form Submitted!');
     }
     }
-
     ```
 
 Now, this method will be called each time we click the submit button. This can be verified in the console. The console displays **"Form Submitted!"** when we click the submit button.
@@ -255,8 +254,17 @@ As we can see from the screenshot above, there were numerous objects, such as **
 1.  For this, we are going to add `#variable ="ngModel"` to our input fields. Here I've named our `variable` as `name`.
     
     ```
-    <input type="text" class="form-control" id="name" required maxlength="30" minlength="5" ngModel name="name"
-  #name="ngModel" />
+    <input
+     type="text"
+     class="form-control"
+     id="name"
+     required
+     maxlength="30"
+     minlength="5"
+     ngModel
+     name="name"
+     #name="ngModel"
+    />
     ```
 
 2.  It now informs our users about the form and what is considered invalid input. We'll add the following code to `demo-form.component.html` after creating a div under the `input` tag.
@@ -288,7 +296,6 @@ As we can see from the screenshot above, there were numerous objects, such as **
        <button type="submit" class="btn btn-success">Submit</button>
       </form>
     </div>
-
     ```
 
 {% img "validation1.png" "Angular Demo Form with Validations" "lazy" %}
