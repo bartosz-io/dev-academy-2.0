@@ -108,7 +108,7 @@ In Template Driven Forms, we focus on the actions and validations by using direc
 
 1.  All of the components that are being created are located in the src/app folder. We can add another component inside of this one by using the command given below.
     
-        ng g c component_name
+    ``` ng g c component_name ```
     
     Here I've named my component as demo-form.
     
@@ -117,18 +117,19 @@ Our newly created component will now show up once we have completed this. More c
 
 2.  We'll now access the component.html file and call the component tag we just made. This is done in order to integrate the created component into our application. In the case of our project here, it will be:
     
-        <app-demo-form></app-demo-form>
+    ``` <app-demo-form></app-demo-form> ```
     
     ![](https://images.surferseo.art/e9327bfe-9da1-48d1-b691-05809321d7c3.png)
 3.  Now Open app.module.ts and import FormsModule from '@angular/forms' also call it in imports.
     
-        import { FormsModule } from '@angular/forms';
+    ``` import { FormsModule } from '@angular/forms';
     
           imports: [
             BrowserModule,
             AppRoutingModule,
             FormsModule
           ]
+          ```
     
 4.  Let's now create the form. Add the following code to demo-form.component to create the form.
     
