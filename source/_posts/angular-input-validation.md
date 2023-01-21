@@ -65,59 +65,59 @@ If we want more control over our form, we can formally create control objects. T
 
 ## Some setups
 
-1.  Check the Node version that is currently installed on your system. Run the command below.
+1. Check the Node version that is currently installed on your system. Run the command below.
     
-    ```
-    node --version
-    ```
+```
+node --version
+```
     
-    {% img "node-version.png" "Check Node Version" "lazy" %}
+{% img "node-version.png" "Check Node Version" "lazy" %}
     
-2.  Use the following command to see what version of npm is currently installed.
+2. Use the following command to see what version of npm is currently installed.
     
-    ```
-    npm --version
-    ```
+```
+npm --version
+```
     
-    {% img "npm-version.png" "Check npm Version" "lazy" %}
+{% img "npm-version.png" "Check npm Version" "lazy" %}
 
-3.  Now use the following terminal command to install the most recent version of Angular. Here, the "-g" flag designates a global installation of the package.
+3. Now use the following terminal command to install the most recent version of Angular. Here, the "-g" flag designates a global installation of the package.
     
-    ```
-    npm install -g npm@8.12.2
-    ```
+```
+npm install -g npm@8.12.2
+```
     
-    {% img "npm-install.png" "Install latest npm version" "lazy" %}
+{% img "npm-install.png" "Install latest npm version" "lazy" %}
 
-4.  Once the above command has been properly executed, a new version of Angular CLI will be made available. We can check our updated versions of the Angular CLI with the command below:
+4. Once the above command has been properly executed, a new version of Angular CLI will be made available. We can check our updated versions of the Angular CLI with the command below:
     
-    ```
-    ng v
-    ```
+```
+ng v
+```
     
-    {% img "ng-v.png" "Check Updated Version" "lazy" %}
+{% img "ng-v.png" "Check Updated Version" "lazy" %}
 
-5.  We'll now start a new project, "new project."
+5. We'll now start a new project, "new project."
     
-    ```
-    ng new new_project
-    ```
+```
+ng new new_project
+```
     
-    {% img "ng new new-project.png" "Start new project" "lazy" %}
+{% img "ng new new-project.png" "Start new project" "lazy" %}
 
-6.  Now open VS Code and select the newly created folder.
+6. Now open VS Code and select the newly created folder.
     
-    {% img "vscode.png" "Open and Select newly created folder in VS Code" "lazy" %}
+{% img "vscode.png" "Open and Select newly created folder in VS Code" "lazy" %}
 
-7.  Now run the following command in the terminal to see if the main program is functioning properly at this point.
+7. Now run the following command in the terminal to see if the main program is functioning properly at this point.
     
-    ```
-    ng serve
-    ```
+```
+ng serve
+```
     
 8.  Now check to see whether it's working by opening your browser to [http://localhost:4200/](http://localhost:4200/)
     
-    {% img "localhost 4200.png" "localhost 4200" "lazy" %}
+{% img "localhost 4200.png" "localhost 4200" "lazy" %}
     
 We're now ready to begin.
 
