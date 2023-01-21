@@ -73,22 +73,30 @@ If we want more control over our form, we can formally create control objects. T
     ![node --version  >v18.13.0](https://images.surferseo.art/d6f425d2-3cae-4477-b0f3-85f6b45518bd.png)
 2.  Use the following command to see what version of npm is currently installed.
     
-    ``` npm --version ```
+    ```
+    npm --version
+    ```
     
     ![npm --version  >8.19.3](https://images.surferseo.art/a6c05b96-9249-460c-85d3-c3749770dc9b.png)
 3.  Now use the following terminal command to install the most recent version of Angular. Here, the "-g" flag designates a global installation of the package.
     
-    ``` npm install -g npm@8.12.2 ```
+    ```
+    npm install -g npm@8.12.2
+    ```
     
     ![sudo npm install -g npm@8.12.2](https://images.surferseo.art/f030ac43-7721-4e3f-a712-68a0f4d14846.png)
 4.  Once the above command has been properly executed, a new version of Angular CLI will be made available. We can check our updated versions of the Angular CLI with the command below:
     
-    ``` ng v ```
+    ```
+    ng v
+    ```
     
     ![ng v](https://images.surferseo.art/4e1c467e-0a87-4772-a1c8-4de331cec514.png)
 5.  We'll now start a new project, "new project."
     
-    ``` ng new new_project ```
+    ```
+    ng new new_project
+    ```
     
     ![ng new new_project](https://images.surferseo.art/ec080f86-2b11-4aa5-b4f2-6007f0cba86e.png)
 6.  Now open VS Code and select the newly created folder.
@@ -96,7 +104,9 @@ If we want more control over our form, we can formally create control objects. T
     ![](https://images.surferseo.art/83f1e217-ef89-4bb1-bee7-ce0204b41217.png)
 7.  Now run the following command in the terminal to see if the main program is functioning properly at this point.
     
-    ``` ng serve ```
+    ```
+    ng serve
+    ```
     
 8.  Now check to see whether it's working by opening your browser to [http://localhost:4200/](http://localhost:4200/)
     
@@ -110,7 +120,9 @@ In Template Driven Forms, we focus on the actions and validations by using direc
 
 1.  All of the components that are being created are located in the src/app folder. We can add another component inside of this one by using the command given below.
     
-    ``` ng g c component_name ```
+    ```
+    ng g c component_name
+    ```
     
     Here I've named my component as demo-form.
     
@@ -119,22 +131,26 @@ Our newly created component will now show up once we have completed this. More c
 
 2.  We'll now access the component.html file and call the component tag we just made. This is done in order to integrate the created component into our application. In the case of our project here, it will be:
     
-    ``` <app-demo-form></app-demo-form> ```
+    ```
+    <app-demo-form></app-demo-form>
+    ```
     
     ![](https://images.surferseo.art/e9327bfe-9da1-48d1-b691-05809321d7c3.png)
 3.  Now Open app.module.ts and import FormsModule from '@angular/forms' also call it in imports.
     
-    ``` import { FormsModule } from '@angular/forms';
+    ```
+    import { FormsModule } from '@angular/forms';
     
           imports: [
             BrowserModule,
             AppRoutingModule,
             FormsModule
           ]
-          ```
+    ```
     
 4.  Let's now create the form. Add the following code to demo-form.component to create the form.
     
+        ```
         <div class="container">
         <h1>Demo Form</h1>
         <form>
@@ -151,6 +167,7 @@ Our newly created component will now show up once we have completed this. More c
         
         </form>
         </div>
+        ```
     
     Our basic form is now complete, and we can use the terminal's "ng serve" command to launch it.
     
