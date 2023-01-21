@@ -2,7 +2,7 @@
 title: Input Validation in Angular
 contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
-description: Learn how to  create and validate Angular Forms.
+description: Learn how to create and validate Angular Forms.
 date: 2023-01-18
 tags: [angular, security]
 id: angular-input-validation
@@ -45,11 +45,11 @@ After the form is created in the component class, HTML elements are hooked to it
 
 An Angular form is similar to an HTML form with a few additional features. We require a FormControl class object for each form field (_input, radio, search, submit, etc_.). These FormControl objects provide information about the fields. Its value, whether or not the value is valid, what validation errors exist, and so on.
 
-It also provides information about the field's condition, such as whether it has been _touched_ or is _untouched_, whether it is _pristine_ or _dirty_.
+It also provides information about the field's condition, such as whether it has been **touched** or is **untouched**, whether it is **pristine** or **dirty**.
 
 A FormGroup is an array of FormControl objects. At least one FormGroup is present in every Angular form. Multiple FormGroups are possible, and they can be useful in a variety of situations, such as managing the personal information and professional information sections of a user registration form separately.
 
-FormControl has access to all of FormGroup's properties (_valid_, _invalid_, _pending_, etc.). For example, if all FormControl instances are valid, the valid attribute will return true.
+FormControl has access to all of FormGroup's properties (**valid**, **invalid**, **pending**, etc.). For example, if all FormControl instances are valid, the **valid** attribute will return _true_.
 
 To provide validation to an Angular form, two things are required:
 
@@ -113,7 +113,7 @@ In Template Driven Forms, we focus on the actions and validations by using direc
     Here I've named my component as demo-form.
     
 
-Our newly created component will now show up once we have completed this. More component files are included in this component as \`.ts, .html, and css\` files.
+Our newly created component will now show up once we have completed this. More component files are included in this component as `.ts`, `.html`, and `css` files.
 
 2.  We'll now access the component.html file and call the component tag we just made. This is done in order to integrate the created component into our application. In the case of our project here, it will be:
     
@@ -160,9 +160,9 @@ _Additionally, FormsModule must be added to the array of imports in app.module.t
 
 ## Validation in Template-driven forms
 
-Angular has a few built-in validators to verify common use cases. If we want the validations to use built-in validators, we would need to apply validation attributes to every form field. These validation attributes are identical to the common HTML5 validation attributes like \`required\`, \`minlength\`, \`pattern\`, etc. Angular offers a few directives to match these characteristics with the validator methods listed in the Angular framework.
+Angular has a few built-in validators to verify common use cases. If we want the validations to use built-in validators, we would need to apply validation attributes to every form field. These validation attributes are identical to the common HTML5 validation attributes like `required`, `minlength`, `pattern`, etc. Angular offers a few directives to match these characteristics with the validator methods listed in the Angular framework.
 
-Every time a FormControl's value changes by performing validation, Angular displays a list of validation problems. The status is valid if the list is empty; otherwise, it is invalid.
+Every time a FormControl's value changes by performing validation, Angular displays a list of validation problems. The status is **valid** if the list is empty; otherwise, it is **invalid**.
 
 Now, let's say we wanted to add the following validations:
 
@@ -183,7 +183,7 @@ But how will we know whether or not the contents have been imported?
 
 Now that our form has been submitted, the submit method and a method called form method should both be called.
 
-*   We will do this by including the following code in our \`form tag\`.
+*   We will do this by including the following code in our `form` tag.
     
          (ngSubmit)="submit()"
     
@@ -207,7 +207,7 @@ Now that our form has been submitted, the submit method and a method called form
 
 Now, this method will be called each time we click the submit button. This can be verified in the console. The console displays **"Form Submitted!"** when we click the submit button.
 
-Let's add the login id to this as well, so that when you click the submit button, control will transfer to the \`submit(login)\` function and you can view the information that we entered.
+Let's add the login id to this as well, so that when you click the submit button, control will transfer to the `submit(login)` function and you can view the information that we entered.
 
 *   For this add the following code in demo-form-component.html
     
@@ -227,16 +227,16 @@ Let's add the login id to this as well, so that when you click the submit button
     Here we can see details about the field's state, including whether it has been **touched** or not, whether it is **clean** or **dirty**, and information about all of FormGroup's properties (**valid**, **invalid**, **pending**, etc.). These are some of the things that we need to keep in mind when implementing form validation.
     
 
-As we can see from the screenshot above, there were numerous objects, such as valid and invalid, when we examined our form. We're going to alter that now and use those objects as leverage. We are expected to include a template variable for that.
+As we can see from the screenshot above, there were numerous objects, such as **valid** and **invalid**, when we examined our form. We're going to alter that now and use those objects as leverage. We are expected to include a template variable for that.
 
-1.  For this, we are going to add \`#variable ="ngModel"\` to our input fields. Here I've named our \`variable\` as \`name\`.
+1.  For this, we are going to add `#variable ="ngModel"` to our input fields. Here I've named our `variable` as `name`.
     
 
     <input type="text" class="form-control" id="name"
         required maxlength="30" minlength="5"
         ngModel name="name" #name="ngModel">
 
-2.  It now informs our users about the form and what is considered invalid input. We'll add the following code to \`demo-form.component.html\` after creating a div class under the \`input\` tag.
+2.  It now informs our users about the form and what is considered invalid input. We'll add the following code to `demo-form.component.html` after creating a div under the `input` tag.
     
         <div class="container">
           <h1>Demo Form</h1>
@@ -301,7 +301,7 @@ The ValidationErrors object must include at least one key-value pair:
         [key: string]: any;
     };
 
-The key, which should be a string, is used to indicate the sort of validation issue, such as \`invalidEmail\`, \`required\`, \`minlength\`, etc. The value, which can be anything, is used to provide extra details about the validation problem.
+The key, which should be a string, is used to indicate the sort of validation issue, such as `invalidEmail`, `required`, `minlength`, etc. The value, which can be anything, is used to provide extra details about the validation problem.
 
 For the aforementioned example, we want to create a unique validation function that checks to see if the email contains no spaces.
 
@@ -374,7 +374,7 @@ Reactive forms don't employ HTML5 validation attributes or the ngModel directive
 
 You must send it to the relevant ValidatorFn if you want to add FormControl's built-in validator methods.
 
-The built-in validators \`required\`, \`minLength\`, and \`maarength\` ere applied to the example below.
+The built-in validators `required`, `minLength`, and `maxlength` ere applied to the example below.
 
     registrationForm = new FormGroup({ 
     'name': new FormControl('Enter name', [ 
@@ -387,7 +387,7 @@ The built-in validators \`required\`, \`minLength\`, and \`maarength\` ere appli
 
 The component would require the import of Validators.
 
-As you may have seen, we do not employ the validation properties as Template-driven forms do. We employ the appropriate \`ValidatorFn\`, such as \`Validators.minLength(5)\`, \`Validators.required\`, etc.
+As you may have seen, we do not employ the validation properties as Template-driven forms do. We employ the appropriate `ValidatorFn`, such as `Validators.minLength(5)`, `Validators.required`, etc.
 
 Now, we can return to the template and provide the validation messages: 
 
