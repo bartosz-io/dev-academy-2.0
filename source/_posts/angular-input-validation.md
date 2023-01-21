@@ -9,6 +9,8 @@ id: angular-input-validation
 relatedPost: user-login-and-registration
 bannerHeader: 'Input validation in Angular'
 ---
+{% image_fw 1.78 banner.png "Input Validation in Angular" %}
+
 
 ## Table of Contents
 <!-- toc -->
@@ -70,38 +72,45 @@ If we want more control over our form, we can formally create control objects. T
     node --version
     ```
     
-    ![node --version  >v18.13.0](https://images.surferseo.art/d6f425d2-3cae-4477-b0f3-85f6b45518bd.png)
+    {% img "node-version.png" "Check Node Version" "lazy" %}
+    
+    
 2.  Use the following command to see what version of npm is currently installed.
     
     ```
     npm --version
     ```
     
-    ![npm --version  >8.19.3](https://images.surferseo.art/a6c05b96-9249-460c-85d3-c3749770dc9b.png)
+    {% img "npm-version.png" "Check npm Version" "lazy" %}
+
 3.  Now use the following terminal command to install the most recent version of Angular. Here, the "-g" flag designates a global installation of the package.
     
     ```
     npm install -g npm@8.12.2
     ```
     
-    ![sudo npm install -g npm@8.12.2](https://images.surferseo.art/f030ac43-7721-4e3f-a712-68a0f4d14846.png)
+    {% img "npm-install.png" "Install latest npm version" "lazy" %}
+
 4.  Once the above command has been properly executed, a new version of Angular CLI will be made available. We can check our updated versions of the Angular CLI with the command below:
     
     ```
     ng v
     ```
     
-    ![ng v](https://images.surferseo.art/4e1c467e-0a87-4772-a1c8-4de331cec514.png)
+    {% img "ng-v.png" "Check Updated Version" "lazy" %}
+
 5.  We'll now start a new project, "new project."
     
     ```
     ng new new_project
     ```
     
-    ![ng new new_project](https://images.surferseo.art/ec080f86-2b11-4aa5-b4f2-6007f0cba86e.png)
+    {% img "ng new new-project.png" "Start new project" "lazy" %}
+
 6.  Now open VS Code and select the newly created folder.
     
-    ![](https://images.surferseo.art/83f1e217-ef89-4bb1-bee7-ce0204b41217.png)
+    {% img "vscode.png" "Open and Select newly created folder in VS Code" "lazy" %}
+
 7.  Now run the following command in the terminal to see if the main program is functioning properly at this point.
     
     ```
@@ -110,7 +119,8 @@ If we want more control over our form, we can formally create control objects. T
     
 8.  Now check to see whether it's working by opening your browser to [http://localhost:4200/](http://localhost:4200/)
     
-    ![](https://images.surferseo.art/96b20658-bb06-4e90-b93f-e3727a2752bd.png)
+    {% img "localhost 4200.png" "localhost 4200" "lazy" %}
+    
 
 We're now ready to begin.
 
@@ -135,7 +145,8 @@ Our newly created component will now show up once we have completed this. More c
     <app-demo-form></app-demo-form>
     ```
     
-    ![](https://images.surferseo.art/e9327bfe-9da1-48d1-b691-05809321d7c3.png)
+    {% img "appcomponent.png" "Add codes to appcomponent.html" "lazy" %}
+
 3.  Now Open app.module.ts and import FormsModule from '@angular/forms' also call it in imports.
     
     ```
@@ -176,7 +187,7 @@ _When using ngModel, we must either declare the FormControl as "standalone" in n
 
 _Additionally, FormsModule must be added to the array of imports in app.module.ts_
 
-![](https://images.surferseo.art/e406e5f5-d36d-4a3a-b58c-83a0cce44de5.png)
+{% img "demoform.png" "Angular Demo Form" "lazy" %}
 
 ## Validation in Template-driven forms
 
@@ -199,7 +210,7 @@ But how will we know whether or not the contents have been imported?
 
 *   Open the browser and inspect the input tag for this. You'll notice that a class called ngcontent and a few other ng classes have been added, indicating that Angular has identified our demo-form.
     
-    ![](https://images.surferseo.art/d775eeb0-2fea-4f73-8fef-62f4566a322f.png)
+    {% img "ngcontent.png" "ng classes in form" "lazy" %}
 
 Now that our form has been submitted, the submit method and a method called form method should both be called.
 
@@ -209,8 +220,9 @@ Now that our form has been submitted, the submit method and a method called form
     (ngSubmit)="submit()"
     ```
     
-    ![](https://images.surferseo.art/f9910021-8600-4907-95ee-982b1dc00e7e.png)
-    
+    {% img "formngsubmit.png" "ngSubmit" "lazy" %}
+
+
 *   then, using the following code, we'll define this submit method in our demo-form.component.ts file:
     
     ```
@@ -249,7 +261,7 @@ Let's add the login id to this as well, so that when you click the submit button
     
     _Note: When we submit and inspect our form, we will see that callback functions have been called._
     
-    ![](https://images.surferseo.art/6b89bb91-484e-4ae0-ae88-6d66e89447eb.png)
+    {% img "inspectform.png" "callback functions in form" "lazy" %}
     
     Here we can see details about the field's state, including whether it has been **touched** or not, whether it is **clean** or **dirty**, and information about all of FormGroup's properties (**valid**, **invalid**, **pending**, etc.). These are some of the things that we need to keep in mind when implementing form validation.
     
@@ -312,9 +324,10 @@ As we can see from the screenshot above, there were numerous objects, such as **
 
     ```
 
-![](https://images.surferseo.art/5fe2eb1f-728b-4648-b0cc-d9b309e08019.png)
+{% img "validation1.png" "Angular Demo Form with Validations" "lazy" %}
 
-![](https://images.surferseo.art/811557d7-fab6-40d5-b1db-7109cb05295f.png)
+{% img "validation2.png" "Angular Demo Form with Validations" "lazy" %}
+
 
 ## The custom validator in Template-driven forms
 
