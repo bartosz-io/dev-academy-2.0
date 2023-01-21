@@ -59,7 +59,6 @@ To provide validation to an Angular form, two things are required:
     
 *   Each field in the form is assigned a FormControl object.
     
-
 There are two ways to design these control objects. We can define a few directives in the form's template, and Angular will create the controls from the base.  The term "template-driven forms" refers to forms created in this manner.
 
 If we want more control over our form, we can formally create control objects. These are examples of reactive forms.
@@ -73,7 +72,6 @@ If we want more control over our form, we can formally create control objects. T
     ```
     
     {% img "node-version.png" "Check Node Version" "lazy" %}
-    
     
 2.  Use the following command to see what version of npm is currently installed.
     
@@ -121,12 +119,11 @@ If we want more control over our form, we can formally create control objects. T
     
     {% img "localhost 4200.png" "localhost 4200" "lazy" %}
     
-
 We're now ready to begin.
 
-## Template driven forms
+## Template-Driven forms
 
-In Template Driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
+In Template-Driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
 
 1.  All of the components that are being created are located in the src/app folder. We can add another component inside of this one by using the command given below.
     
@@ -135,8 +132,6 @@ In Template Driven Forms, we focus on the actions and validations by using direc
     ```
     
     Here I've named my component as demo-form.
-    
-
 Our newly created component will now show up once we have completed this. More component files are included in this component as `.ts`, `.html`, and `css` files.
 
 2.  We'll now access the component.html file and call the component tag we just made. This is done in order to integrate the created component into our application. In the case of our project here, it will be:
@@ -144,7 +139,6 @@ Our newly created component will now show up once we have completed this. More c
     ```
     <app-demo-form></app-demo-form>
     ```
-    
     {% img "appcomponent.png" "Add codes to appcomponent.html" "lazy" %}
 
 3.  Now Open app.module.ts and import FormsModule from '@angular/forms' also call it in imports.
@@ -182,9 +176,7 @@ Our newly created component will now show up once we have completed this. More c
     
     Our basic form is now complete, and we can use the terminal's "ng serve" command to launch it.
     
-
 _When using ngModel, we must either declare the FormControl as "standalone" in ngModelOptions or specify the name attribute to stop Angular from producing an error._
-
 _Additionally, FormsModule must be added to the array of imports in app.module.ts_
 
 {% img "demoform.png" "Angular Demo Form" "lazy" %}
@@ -193,27 +185,20 @@ _Additionally, FormsModule must be added to the array of imports in app.module.t
 
 Angular has a few built-in validators to verify common use cases. If we want the validations to use built-in validators, we would need to apply validation attributes to every form field. These validation attributes are identical to the common HTML5 validation attributes like `required`, `minlength`, `pattern`, etc. Angular offers a few directives to match these characteristics with the validator methods listed in the Angular framework.
 
-Every time a FormControl's value changes by performing validation, Angular displays a list of validation problems. The status is **valid** if the list is empty; otherwise, it is **invalid**.
-
-Now, let's say we wanted to add the following validations:
+Every time a FormControl's value changes by performing validation, Angular displays a list of validation problems. The status is **valid** if the list is empty; otherwise, it is **invalid**. Now, let's say we wanted to add the following validations:
 
 1.  The name field has the required attribute; if this field is left blank, we want to show some error message.
     
 2.  The minimum and maximum character lengths for the value in the Name field should be 5 and 30, respectively. if not followed, we want to show validation messages.
-    
 
-For this, we must add the proper validation characteristics and export ngModel to a local template variable for each form control where we wish to add validation.
-
-By appending ngModel to all input tags, we can import all of the specific ng contents into our form.
-
+For this, we must add the proper validation characteristics and export ngModel to a local template variable for each form control where we wish to add validation. By appending ngModel to all input tags, we can import all of the specific ng contents into our form.
 But how will we know whether or not the contents have been imported?
 
 *   Open the browser and inspect the input tag for this. You'll notice that a class called ngcontent and a few other ng classes have been added, indicating that Angular has identified our demo-form.
     
     {% img "ngcontent.png" "ng classes in form" "lazy" %}
-
+    
 Now that our form has been submitted, the submit method and a method called form method should both be called.
-
 *   We will do this by including the following code in our `form` tag.
     
     ```
@@ -221,7 +206,6 @@ Now that our form has been submitted, the submit method and a method called form
     ```
     
     {% img "formngsubmit.png" "ngSubmit" "lazy" %}
-
 
 *   then, using the following code, we'll define this submit method in our demo-form.component.ts file:
     
@@ -265,7 +249,6 @@ Let's add the login id to this as well, so that when you click the submit button
     
     Here we can see details about the field's state, including whether it has been **touched** or not, whether it is **clean** or **dirty**, and information about all of FormGroup's properties (**valid**, **invalid**, **pending**, etc.). These are some of the things that we need to keep in mind when implementing form validation.
     
-
 As we can see from the screenshot above, there were numerous objects, such as **valid** and **invalid**, when we examined our form. We're going to alter that now and use those objects as leverage. We are expected to include a template variable for that.
 
 1.  For this, we are going to add `#variable ="ngModel"` to our input fields. Here I've named our `variable` as `name`.
@@ -280,46 +263,30 @@ As we can see from the screenshot above, there were numerous objects, such as **
         
     ```
     <div class="container">
-    <h1>Demo Form</h1>
-    <form #userlogin="ngForm" (ngSubmit)="submit(userlogin)">
-    <div class="form-group">
-    <label for="name">Name</label>
-    <input
-    type="text"
-    class="form-control"
-    id="name"
-    required
-    maxlength="30"
-    minlength="5"
-    ngModel
-    name="name"
-    #name="ngModel"
-    />
+      <h1>Demo Form</h1>
+      <form #userlogin="ngForm" (ngSubmit)="submit(userlogin)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" required maxlength="30" minlength="5" ngModel name="name"
+            #name="ngModel" />
 
-    <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
-    <div *ngIf="name.hasError('required')">Name is required</div>
+          <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+            <div *ngIf="name.hasError('required')">Name is required</div>
 
-    <div *ngIf="name.hasError('minlength')">
-    Name must be at least 5 characters long
-    </div>
-    
-    <div *ngIf="name.hasError('maxlength')">
-    Name cannot be more than 30 characters long
-    </div>
-    </div>
-    <label for="email">Enter your e-mail id : </label>
-    <input
-    type="email"
-    class="form-control"
-    id="email"
-    name="email"
-    required
-    ngModel
-    />
-    </div>
+            <div *ngIf="name.hasError('minlength')">
+              Name must be at least 5 characters long
+            </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+            <div *ngIf="name.hasError('maxlength')">
+              Name cannot be more than 30 characters long
+            </div>
+          </div>
+          <label for="email">Enter your e-mail id : </label>
+          <input type="email" class="form-control" id="email" name="email" required ngModel />
+        </div>
+
+       <button type="submit" class="btn btn-success">Submit</button>
+      </form>
     </div>
 
     ```
@@ -328,14 +295,13 @@ As we can see from the screenshot above, there were numerous objects, such as **
 
 {% img "validation2.png" "Angular Demo Form with Validations" "lazy" %}
 
-
 ## The custom validator in Template-driven forms
 
 There are use cases that the built-in validators can't always help us validate. Then we must develop a unique validator function. The code listed below can be used to define a validator function that implements the ValidatorFn interface.
 
 ```
 interface ValidatorFn {
-(control: AbstractControl): ValidationErrors | null
+  (control: AbstractControl): ValidationErrors | null
 }
 ```
 
@@ -343,15 +309,14 @@ The ValidationErrors object must include at least one key-value pair:
 
 ```
 type ValidationErrors = {
-[key: string]: any;
+  [key: string]: any;
 };
 ```
 
 The key, which should be a string, is used to indicate the sort of validation issue, such as `invalidEmail`, `required`, `minlength`, etc. The value, which can be anything, is used to provide extra details about the validation problem.
 
 For the aforementioned example, we want to create a unique validation function that checks to see if the email contains no spaces.
-
-Anywhere in the function, we can add our custom validator. For examples
+Anywhere in the function, we can add our custom validator. For examples:
 
 ```
 import { ValidationErrors, AbstractControl } from '@angular/forms';
@@ -375,11 +340,11 @@ In reactive forms, we explicitly create FormControl objects in that template's c
 ```
 <div class="form-group">
   <label for="name">Name</label>
-  <input type="text" class="form-control" id="name">
+  <input type="text" class="form-control" id="name" />
 </div>
 <div class="form-group">
   <label for="username">Username</label>
-  <input type="text" class="form-control" id="username">
+  <input type="text" class="form-control" id="username" />
 </div>
 ```
 
@@ -397,18 +362,16 @@ More information on FormGroup can be found in the [Angular docs](https://angular
 We will now link these FormControl objects to the HTML form's fields.
 
 ```
-<form [formGroup]="registrationForm"> 
-<div class="form-group"> 
-<label for="name">Name</label> 
-<input type="text" class="form-control" id="name" 
-[formControlName]="name"> 
-</div> 
-<div class="form-group"> 
-<label for="username">Username</label> 
-<input type="text" class="form-control" id="username" 
-[formControlName]="username"> 
-</div> 
-<form> 
+<form [formGroup]="registrationForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" [formControlName]="name">
+  </div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" [formControlName]="username">
+  </div>
+<form>
 ```
 
 You must include ReactiveFormsModule in your main module, app.module.ts, to use reactive forms.
@@ -428,18 +391,18 @@ class FormControl extends AbstractControl {
 ```
 
 You must send it to the relevant ValidatorFn if you want to add FormControl's built-in validator methods.
-
 The built-in validators `required`, `minLength`, and `maxlength` ere applied to the example below.
 
 ```
-registrationForm = new FormGroup({ 
-'name': new FormControl('Enter name', [ 
-Validators.required, 
-Validators.minLength(5), 
-Validators.maxLength(30) 
-]), 
-'username': new FormControl('', Validators.required), 
-}) 
+registrationForm = new FormGroup({
+  name: new FormControl('Enter name', [
+    Validators.required,
+    Validators.minLength(5),
+    Validators.maxLength(30),
+  ]),
+  username: new FormControl('', Validators.required),
+});
+
 ```
 
 The component would require the import of Validators.
@@ -451,34 +414,33 @@ Now, we can return to the template and provide the validation messages: 
 ```
 <form [formGroup]="userRegistrationForm">
 
-<div class="form-group">
-<label for="name">Enter Name</label>
-<input type="text" class="form-control" id="name"
-[formControlName]="name">
+  <div class="form-group">
+    <label for="name">Enter Name</label>
+    <input type="text" class="form-control" id="name" [formControlName]="name">
 
-<div *ngIf="userRegistrationForm.get('name').invalid && (userRegistrationForm.get('name').dirty || userRegistrationForm.get('name').touched)"
-class="alert alert-danger">
+    <div
+      *ngIf="userRegistrationForm.get('name').invalid && (userRegistrationForm.get('name').dirty || userRegistrationForm.get('name').touched)"
+      class="alert alert-danger">
 
-<div *ngIf="userRegistrationForm.get('name').errors.required">
-Name required.
-</div>
-<div *ngIf="userRegistrationForm.get('name').errors.minlength">
-Name length is limited to maximum 30 characters.
-</div>
-<div *ngIf="userRegistrationForm.get('name').errors.minlength">
-Name length is limited to minimum 5 characters.
-</div>
+      <div *ngIf="userRegistrationForm.get('name').errors.required">
+        Name required.
+      </div>
+      <div *ngIf="userRegistrationForm.get('name').errors.minlength">
+        Name length is limited to maximum 30 characters.
+      </div>
+      <div *ngIf="userRegistrationForm.get('name').errors.minlength">
+        Name length is limited to minimum 5 characters.
+      </div>
 
-</div>
-</div>
+    </div>
+  </div>
 
-<div class="form-group">
-<label for="username">Username</label>
-<input type="text" class="form-control" id="username"
-[formControlName]="username">
-</div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" [formControlName]="username">
+  </div>
 
-<form>
+  <form>
 ```
 
 ## Custom validator for reactive forms
@@ -486,17 +448,17 @@ Name length is limited to minimum 5 characters.
 You can easily develop your validator function, as we did for the template-driven form. The same unique validator function is being used in this instance.
 
 ```
-registrationForm = new FormGroup({ 
-'name': new FormControl('Enter your name', [ 
-Validators.required, 
-Validators.minLength(5), 
-Validators.maxLength(30) 
-]), 
-'email': new FormControl('', [ 
-Validators.required, 
-UserRegistrationFormValidators.emailShouldBeValid 
-]), 
-})
+registrationForm = new FormGroup({
+  name: new FormControl('Enter your name', [
+    Validators.required,
+    Validators.minLength(5),
+    Validators.maxLength(30),
+  ]),
+  email: new FormControl('', [
+    Validators.required,
+    UserRegistrationFormValidators.emailShouldBeValid,
+  ]),
+});
 ```
 
 ## Conclusion
