@@ -266,55 +266,55 @@ As we can see from the screenshot above, there were numerous objects, such as **
 
 2.  It now informs our users about the form and what is considered invalid input. We'll add the following code to `demo-form.component.html` after creating a div under the `input` tag.
         
-        ```
-        <div class="container">
-        <h1>Demo Form</h1>
-        <form #userlogin="ngForm" (ngSubmit)="submit(userlogin)">
-        <div class="form-group">
-        <label for="name">Name</label>
-        <input
-        type="text"
-        class="form-control"
-        id="name"
-        required
-        maxlength="30"
-        minlength="5"
-        ngModel
-        name="name"
-        #name="ngModel"
-        />
+    ```
+    <div class="container">
+    <h1>Demo Form</h1>
+    <form #userlogin="ngForm" (ngSubmit)="submit(userlogin)">
+    <div class="form-group">
+    <label for="name">Name</label>
+    <input
+    type="text"
+    class="form-control"
+    id="name"
+    required
+    maxlength="30"
+    minlength="5"
+    ngModel
+    name="name"
+    #name="ngModel"
+    />
 
-        <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
-        <div *ngIf="name.hasError('required')">Name is required</div>
+    <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+    <div *ngIf="name.hasError('required')">Name is required</div>
 
-        <div *ngIf="name.hasError('minlength')">
-        Name must be at least 5 characters long
-        </div>
+    <div *ngIf="name.hasError('minlength')">
+    Name must be at least 5 characters long
+    </div>
+    
+    <div *ngIf="name.hasError('maxlength')">
+    Name cannot be more than 30 characters long
+    </div>
+    </div>
+    <label for="email">Enter your e-mail id : </label>
+    <input
+    type="email"
+    class="form-control"
+    id="email"
+    name="email"
+    required
+    ngModel
+    />
+    </div>
 
-        <div *ngIf="name.hasError('maxlength')">
-        Name cannot be more than 30 characters long
-        </div>
-        </div>
-        <label for="email">Enter your e-mail id : </label>
-        <input
-        type="email"
-        class="form-control"
-        id="email"
-        name="email"
-        required
-        ngModel
-        />
-        </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    </div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-        </div>
+    ```
 
-        ```
+![](https://images.surferseo.art/5fe2eb1f-728b-4648-b0cc-d9b309e08019.png)
 
-        ![](https://images.surferseo.art/5fe2eb1f-728b-4648-b0cc-d9b309e08019.png)
-
-        ![](https://images.surferseo.art/811557d7-fab6-40d5-b1db-7109cb05295f.png)
+![](https://images.surferseo.art/811557d7-fab6-40d5-b1db-7109cb05295f.png)
 
 ## The custom validator in Template-driven forms
 
