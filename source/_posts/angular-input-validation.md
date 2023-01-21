@@ -320,19 +320,19 @@ As we can see from the screenshot above, there were numerous objects, such as **
 
 There are use cases that the built-in validators can't always help us validate. Then we must develop a unique validator function. The code listed below can be used to define a validator function that implements the ValidatorFn interface.
 
-    ```
-    interface ValidatorFn {
-        (control: AbstractControl): ValidationErrors | null
-    }
-    ```
+```
+interface ValidatorFn {
+(control: AbstractControl): ValidationErrors | null
+}
+```
 
 The ValidationErrors object must include at least one key-value pair:
 
-    ```
-    type ValidationErrors = {
-        [key: string]: any;
-    };
-    ```
+```
+type ValidationErrors = {
+[key: string]: any;
+};
+```
 
 The key, which should be a string, is used to indicate the sort of validation issue, such as `invalidEmail`, `required`, `minlength`, etc. The value, which can be anything, is used to provide extra details about the validation problem.
 
@@ -340,20 +340,20 @@ For the aforementioned example, we want to create a unique validation function t
 
 Anywhere in the function, we can add our custom validator. For examples
 
-    ```
-    import { ValidationErrors, AbstractControl } from '@angular/forms';
+```
+import { ValidationErrors, AbstractControl } from '@angular/forms';
     
-    export class DemoFormValidators {
-        static emailShouldBeValid(control: AbstractControl): ValidationErrors | null {
-            if ((control.value as string).indexOf(' ') >= 0) {
-                return { shouldNotHaveSpaces: true }
-            }
-    
-            // Return null if there is no validation error.
-            return null;
+export class DemoFormValidators {
+    static emailShouldBeValid(control: AbstractControl): ValidationErrors | null {
+        if ((control.value as string).indexOf(' ') >= 0) {
+            return { shouldNotHaveSpaces: true }
         }
+    
+        // Return null if there is no validation error.
+        return null;
     }
-    ```
+}
+```
 
 ## Reactive forms
 
