@@ -359,44 +359,44 @@ export class DemoFormValidators {
 
 In reactive forms, we explicitly create FormControl objects in that template's component. The method will be the same for creating reactive forms. Thus, we will only see the code. Here, within the component of that template, we will specifically build a FormControl object. The HTML form without the ngModel directive is shown below.
 
-    ```
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name">
-    </div>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username">
-    </div>
-    ```
+```
+<div class="form-group">
+  <label for="name">Name</label>
+  <input type="text" class="form-control" id="name">
+</div>
+<div class="form-group">
+  <label for="username">Username</label>
+  <input type="text" class="form-control" id="username">
+</div>
+```
 
 For each field in the component, FormGroup and FormControls will be specifically created.
 
-    ```
-    form = new FormGroup({
-        'name': new FormControl(),
-        'username': new FormControl(),
-    })
-    ```
+```
+form = new FormGroup({
+    'name': new FormControl(),
+    'username': new FormControl(),
+})
+```
 
 More information on FormGroup can be found in the [Angular docs](https://angular.io/api/forms/FormGroup).
 
 We will now link these FormControl objects to the HTML form's fields.
 
-    ```
-    <form [formGroup]="registrationForm"> 
-    <div class="form-group"> 
-    <label for="name">Name</label> 
-    <input type="text" class="form-control" id="name" 
-    [formControlName]="name"> 
-    </div> 
-    <div class="form-group"> 
-    <label for="username">Username</label> 
-    <input type="text" class="form-control" id="username" 
-    [formControlName]="username"> 
-    </div> 
-    <form> 
-    ```
+```
+<form [formGroup]="registrationForm"> 
+<div class="form-group"> 
+<label for="name">Name</label> 
+<input type="text" class="form-control" id="name" 
+[formControlName]="name"> 
+</div> 
+<div class="form-group"> 
+<label for="username">Username</label> 
+<input type="text" class="form-control" id="username" 
+[formControlName]="username"> 
+</div> 
+<form> 
+```
 
 You must include ReactiveFormsModule in your main module, app.module.ts, to use reactive forms.
 
@@ -404,31 +404,30 @@ You must include ReactiveFormsModule in your main module, app.module.ts, to use 
 
 Reactive forms don't employ HTML5 validation attributes or the ngModel directive. When creating the FormControl objects in the component, you must specify the validators. For the FormControl class, you can use the following syntax:
 
-    ```
-    class FormControl extends AbstractControl {
-        constructor(formState: any = null, validatorOrOpts?: ValidatorFn | 		    
-        AbstractControlOptions | ValidatorFn[], asyncValidator?: 
-        AsyncValidatorFn | AsyncValidatorFn[])
+```
+class FormControl extends AbstractControl {
+    constructor(formState: any = null, validatorOrOpts?: ValidatorFn | 		    
+    AbstractControlOptions | ValidatorFn[], asyncValidator?: 
+    AsyncValidatorFn | AsyncValidatorFn[])
     
-        // code here
-    
-    }
-    ```
+    // code here
+}
+```
 
 You must send it to the relevant ValidatorFn if you want to add FormControl's built-in validator methods.
 
 The built-in validators `required`, `minLength`, and `maxlength` ere applied to the example below.
 
-    ```
-    registrationForm = new FormGroup({ 
-    'name': new FormControl('Enter name', [ 
-    Validators.required, 
-    Validators.minLength(5), 
-    Validators.maxLength(30) 
-    ]), 
-    'username': new FormControl('', Validators.required), 
-    }) 
-    ```
+```
+registrationForm = new FormGroup({ 
+'name': new FormControl('Enter name', [ 
+Validators.required, 
+Validators.minLength(5), 
+Validators.maxLength(30) 
+]), 
+'username': new FormControl('', Validators.required), 
+}) 
+```
 
 The component would require the import of Validators.
 
@@ -436,51 +435,56 @@ As you may have seen, we do not employ the validation properties as Template-dri
 
 Now, we can return to the template and provide the validation messages: 
 
-    ```
-    <form [formGroup]="userRegistrationForm">
-        <div class="form-group">
-          <label for="name">Enter Name</label>
-          <input type="text" class="form-control" id="name"
-                 [formControlName]="name">
-          <div *ngIf="userRegistrationForm.get('name').invalid && (userRegistrationForm.get('name').dirty || userRegistrationForm.get('name').touched)"
-            class="alert alert-danger">
-            <div *ngIf="userRegistrationForm.get('name').errors.required">
-               Name required.
-            </div>
-            <div *ngIf="userRegistrationForm.get('name').errors.minlength">
-                Name length is limited to maximum 30 characters.
-            </div>
-            <div *ngIf="userRegistrationForm.get('name').errors.minlength">
-                Name length is limited to minimum 5 characters.
-            </div>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username"
-                 [formControlName]="username">
-        </div>
-        <form>
-    ```
+```
+<form [formGroup]="userRegistrationForm">
+
+<div class="form-group">
+<label for="name">Enter Name</label>
+<input type="text" class="form-control" id="name"
+[formControlName]="name">
+
+<div *ngIf="userRegistrationForm.get('name').invalid && (userRegistrationForm.get('name').dirty || userRegistrationForm.get('name').touched)"
+class="alert alert-danger">
+
+<div *ngIf="userRegistrationForm.get('name').errors.required">
+Name required.
+</div>
+<div *ngIf="userRegistrationForm.get('name').errors.minlength">
+Name length is limited to maximum 30 characters.
+</div>
+<div *ngIf="userRegistrationForm.get('name').errors.minlength">
+Name length is limited to minimum 5 characters.
+</div>
+
+</div>
+</div>
+
+<div class="form-group">
+<label for="username">Username</label>
+<input type="text" class="form-control" id="username"
+[formControlName]="username">
+</div>
+
+<form>
+```
 
 ## Custom validator for reactive forms
 
 You can easily develop your validator function, as we did for the template-driven form. The same unique validator function is being used in this instance.
 
-    ```
-    registrationForm = new FormGroup({ 
-    'name': new FormControl('Enter your name', [ 
-    Validators.required, 
-    Validators.minLength(5), 
-    Validators.maxLength(30) 
-    ]), 
-    'email': new FormControl('', [ 
-    Validators.required, 
-    UserRegistrationFormValidators.emailShouldBeValid 
-    ]), 
-    })
-    ```
+```
+registrationForm = new FormGroup({ 
+'name': new FormControl('Enter your name', [ 
+Validators.required, 
+Validators.minLength(5), 
+Validators.maxLength(30) 
+]), 
+'email': new FormControl('', [ 
+Validators.required, 
+UserRegistrationFormValidators.emailShouldBeValid 
+]), 
+})
+```
 
 ## Conclusion
 
