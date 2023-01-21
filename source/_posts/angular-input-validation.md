@@ -66,7 +66,8 @@ If we want more control over our form, we can formally create control objects. T
 
 1.  Check the Node version that is currently installed on your system. Run the command below.
     
-    ``` node --version ```
+    ``` node --version
+    ```
     
     ![node --version  >v18.13.0](https://images.surferseo.art/d6f425d2-3cae-4477-b0f3-85f6b45518bd.png)
 2.  Use the following command to see what version of npm is currently installed.
