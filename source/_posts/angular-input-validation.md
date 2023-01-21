@@ -157,20 +157,20 @@ Our newly created component will now show up once we have completed this. More c
     
     ```
     <div class="container">
-    <h1>Demo Form</h1>
-    <form>
-        
-    <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" required>
-        
-    <label for="email">Enter your e-mail id : </label>
-    <input type="email" class="form-control" id="email" required>
-    </div>
-        
-    <button type="submit" class="btn btn-success">Submit</button>
-        
-    </form>
+      <h1>Demo Form</h1>
+      <form>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" required>
+
+          <label for="email">Enter your e-mail id : </label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+      </form>
     </div>
     ```
     
@@ -211,17 +211,18 @@ Now that our form has been submitted, the submit method and a method called form
     
     ```
     import { Component } from '@angular/core';
-        
+
     @Component({
-    selector: 'app-demo-form',
-    templateUrl: './demo-form.component.html',
-    styleUrls: ['./demo-form.component.css']
+      selector: 'app-demo-form',
+      templateUrl: './demo-form.component.html',
+      styleUrls: ['./demo-form.component.css'],
     })
     export class DemoFormComponent {
-    submit(){
-    console.log("Form Submitted!");
+    submit() {
+      console.log('Form Submitted!');
     }
     }
+
     ```
 
 Now, this method will be called each time we click the submit button. This can be verified in the console. The console displays **"Form Submitted!"** when we click the submit button.
@@ -254,9 +255,8 @@ As we can see from the screenshot above, there were numerous objects, such as **
 1.  For this, we are going to add `#variable ="ngModel"` to our input fields. Here I've named our `variable` as `name`.
     
     ```
-    <input type="text" class="form-control" id="name"
-        required maxlength="30" minlength="5"
-        ngModel name="name" #name="ngModel">
+    <input type="text" class="form-control" id="name" required maxlength="30" minlength="5" ngModel name="name"
+  #name="ngModel" />
     ```
 
 2.  It now informs our users about the form and what is considered invalid input. We'll add the following code to `demo-form.component.html` after creating a div under the `input` tag.
