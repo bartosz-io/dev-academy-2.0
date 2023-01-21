@@ -151,22 +151,22 @@ Our newly created component will now show up once we have completed this. More c
 4.  Let's now create the form. Add the following code to demo-form.component to create the form.
     
     ```
-        <div class="container">
-        <h1>Demo Form</h1>
-        <form>
+    <div class="container">
+    <h1>Demo Form</h1>
+    <form>
         
-        <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required>
+    <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" required>
         
-        <label for="email">Enter your e-mail id : </label>
-        <input type="email" class="form-control" id="email" required>
-        </div>
+    <label for="email">Enter your e-mail id : </label>
+    <input type="email" class="form-control" id="email" required>
+    </div>
         
-        <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Submit</button>
         
-        </form>
-        </div>
+    </form>
+    </div>
     ```
     
     Our basic form is now complete, and we can use the terminal's "ng serve" command to launch it.
@@ -205,25 +205,28 @@ Now that our form has been submitted, the submit method and a method called form
 
 *   We will do this by including the following code in our `form` tag.
     
-         (ngSubmit)="submit()"
+    ```
+    (ngSubmit)="submit()"
+    ```
     
     ![](https://images.surferseo.art/f9910021-8600-4907-95ee-982b1dc00e7e.png)
     
 *   then, using the following code, we'll define this submit method in our demo-form.component.ts file:
     
-        import { Component } from '@angular/core';
+    ```
+    import { Component } from '@angular/core';
         
-        @Component({
-          selector: 'app-demo-form',
-          templateUrl: './demo-form.component.html',
-          styleUrls: ['./demo-form.component.css']
-        })
-        export class DemoFormComponent {
-        submit(){
-          console.log("Form Submitted!");
-        }
-        }
-    
+    @Component({
+    selector: 'app-demo-form',
+    templateUrl: './demo-form.component.html',
+    styleUrls: ['./demo-form.component.css']
+    })
+    export class DemoFormComponent {
+    submit(){
+    console.log("Form Submitted!");
+    }
+    }
+    ```
 
 Now, this method will be called each time we click the submit button. This can be verified in the console. The console displays **"Form Submitted!"** when we click the submit button.
 
@@ -231,14 +234,18 @@ Let's add the login id to this as well, so that when you click the submit button
 
 *   For this add the following code in demo-form-component.html
     
-        <form #userlogin = "ngForm" (ngSubmit)="submit(userlogin)" >
+    ```
+    <form #userlogin = "ngForm" (ngSubmit)="submit(userlogin)" >
+    ```
     
 *   then, add the following code in demo-form-component.ts
     
-        export class DemoFormComponent {
-        submit(userlogin: any){
-          console.log("Form Submitted!", userlogin);
-        }
+    ```
+    export class DemoFormComponent {
+    submit(userlogin: any){
+      console.log("Form Submitted!", userlogin);
+    }
+    ```
     
     _Note: When we submit and inspect our form, we will see that callback functions have been called._
     
@@ -251,55 +258,59 @@ As we can see from the screenshot above, there were numerous objects, such as **
 
 1.  For this, we are going to add `#variable ="ngModel"` to our input fields. Here I've named our `variable` as `name`.
     
-
+    ```
     <input type="text" class="form-control" id="name"
         required maxlength="30" minlength="5"
         ngModel name="name" #name="ngModel">
+    ```
 
 2.  It now informs our users about the form and what is considered invalid input. We'll add the following code to `demo-form.component.html` after creating a div under the `input` tag.
     
-        <div class="container">
-          <h1>Demo Form</h1>
-          <form #userlogin="ngForm" (ngSubmit)="submit(userlogin)">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                required
-                maxlength="30"
-                minlength="5"
-                ngModel
-                name="name"
-                #name="ngModel"
-              />
-        
-              <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
-                <div *ngIf="name.hasError('required')">Name is required</div>
-        
-                <div *ngIf="name.hasError('minlength')">
-                  Name must be at least 5 characters long
-                </div>
-        
-                <div *ngIf="name.hasError('maxlength')">
-                  Name cannot be more than 30 characters long
-                </div>
-              </div>
-              <label for="email">Enter your e-mail id : </label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                required
-                ngModel
-              />
-            </div>
-        
-            <button type="submit" class="btn btn-success">Submit</button>
-          </form>
+    ```
+    <div class="container">
+  <h1>Demo Form</h1>
+  <form #userlogin="ngForm" (ngSubmit)="submit(userlogin)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        maxlength="30"
+        minlength="5"
+        ngModel
+        name="name"
+        #name="ngModel"
+      />
+
+      <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+        <div *ngIf="name.hasError('required')">Name is required</div>
+
+        <div *ngIf="name.hasError('minlength')">
+          Name must be at least 5 characters long
         </div>
+
+        <div *ngIf="name.hasError('maxlength')">
+          Name cannot be more than 30 characters long
+        </div>
+      </div>
+      <label for="email">Enter your e-mail id : </label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        required
+        ngModel
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+     
+    ```
         
     
 
@@ -311,15 +322,19 @@ As we can see from the screenshot above, there were numerous objects, such as **
 
 There are use cases that the built-in validators can't always help us validate. Then we must develop a unique validator function. The code listed below can be used to define a validator function that implements the ValidatorFn interface.
 
+    ```
     interface ValidatorFn {
         (control: AbstractControl): ValidationErrors | null
     }
+    ```
 
 The ValidationErrors object must include at least one key-value pair:
 
+    ```
     type ValidationErrors = {
         [key: string]: any;
     };
+    ```
 
 The key, which should be a string, is used to indicate the sort of validation issue, such as `invalidEmail`, `required`, `minlength`, etc. The value, which can be anything, is used to provide extra details about the validation problem.
 
@@ -327,6 +342,7 @@ For the aforementioned example, we want to create a unique validation function t
 
 Anywhere in the function, we can add our custom validator. For examples
 
+    ```
     import { ValidationErrors, AbstractControl } from '@angular/forms';
     
     export class DemoFormValidators {
@@ -339,11 +355,13 @@ Anywhere in the function, we can add our custom validator. For examples
             return null;
         }
     }
+    ```
 
 ## Reactive forms
 
 In reactive forms, we explicitly create FormControl objects in that template's component. The method will be the same for creating reactive forms. Thus, we will only see the code. Here, within the component of that template, we will specifically build a FormControl object. The HTML form without the ngModel directive is shown below.
 
+    ```
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name">
@@ -352,18 +370,22 @@ In reactive forms, we explicitly create FormControl objects in that template's c
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username">
     </div>
+    ```
 
 For each field in the component, FormGroup and FormControls will be specifically created.
 
+    ```
     form = new FormGroup({
         'name': new FormControl(),
         'username': new FormControl(),
     })
+    ```
 
 More information on FormGroup can be found in the [Angular docs](https://angular.io/api/forms/FormGroup).
 
 We will now link these FormControl objects to the HTML form's fields.
 
+    ```
     <form [formGroup]="registrationForm"> 
     <div class="form-group"> 
     <label for="name">Name</label> 
@@ -376,6 +398,7 @@ We will now link these FormControl objects to the HTML form's fields.
     [formControlName]="username"> 
     </div> 
     <form> 
+    ```
 
 You must include ReactiveFormsModule in your main module, app.module.ts, to use reactive forms.
 
@@ -383,6 +406,7 @@ You must include ReactiveFormsModule in your main module, app.module.ts, to use 
 
 Reactive forms don't employ HTML5 validation attributes or the ngModel directive. When creating the FormControl objects in the component, you must specify the validators. For the FormControl class, you can use the following syntax:
 
+    ```
     class FormControl extends AbstractControl {
         constructor(formState: any = null, validatorOrOpts?: ValidatorFn | 		    
         AbstractControlOptions | ValidatorFn[], asyncValidator?: 
@@ -391,11 +415,13 @@ Reactive forms don't employ HTML5 validation attributes or the ngModel directive
         // code here
     
     }
+    ```
 
 You must send it to the relevant ValidatorFn if you want to add FormControl's built-in validator methods.
 
 The built-in validators `required`, `minLength`, and `maxlength` ere applied to the example below.
 
+    ```
     registrationForm = new FormGroup({ 
     'name': new FormControl('Enter name', [ 
     Validators.required, 
@@ -404,6 +430,7 @@ The built-in validators `required`, `minLength`, and `maxlength` ere applied to 
     ]), 
     'username': new FormControl('', Validators.required), 
     }) 
+    ```
 
 The component would require the import of Validators.
 
@@ -411,6 +438,7 @@ As you may have seen, we do not employ the validation properties as Template-dri
 
 Now, we can return to the template and provide the validation messages: 
 
+    ```
     <form [formGroup]="userRegistrationForm">
         <div class="form-group">
           <label for="name">Enter Name</label>
@@ -436,11 +464,13 @@ Now, we can return to the template and provide the validation messages: 
                  [formControlName]="username">
         </div>
         <form>
+    ```
 
 ## Custom validator for reactive forms
 
 You can easily develop your validator function, as we did for the template-driven form. The same unique validator function is being used in this instance.
 
+    ```
     registrationForm = new FormGroup({ 
     'name': new FormControl('Enter your name', [ 
     Validators.required, 
@@ -451,7 +481,8 @@ You can easily develop your validator function, as we did for the template-drive
     Validators.required, 
     UserRegistrationFormValidators.emailShouldBeValid 
     ]), 
-    }) 
+    })
+    ```
 
 ## Conclusion
 
