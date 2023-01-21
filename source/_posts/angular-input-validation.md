@@ -125,54 +125,51 @@ We're now ready to begin.
 
 In Template-Driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
 
-1.  All of the components that are being created are located in the src/app folder. We can add another component inside of this one by using the command given below.
+1. All of the components that are being created are located in the src/app folder. We can add another component inside of this one by using the command given below.
     
-    ```
-    ng g c component_name
-    ```
+```
+ng g c component_name
+```
     
-    Here I've named my component as demo-form.
-Our newly created component will now show up once we have completed this. More component files are included in this component as `.ts`, `.html`, and `css` files.
+    Here I've named my component as demo-form. 
+    Our newly created component will now show up once we have completed this. More component files are included in this component as `.ts`, `.html`, and `css` files.
 
-2.  We'll now access the component.html file and call the component tag we just made. This is done in order to integrate the created component into our application. In the case of our project here, it will be:
+2. We'll now access the component.html file and call the component tag we just made. This is done in order to integrate the created component into our application. In the case of our project here, it will be:
     
-    ```
-    <app-demo-form></app-demo-form>
-    ```
-    {% img "appcomponent.png" "Add codes to appcomponent.html" "lazy" %}
+```
+<app-demo-form></app-demo-form>
+```
+{% img "appcomponent.png" "Add codes to appcomponent.html" "lazy" %}
 
-3.  Now Open app.module.ts and import FormsModule from '@angular/forms' also call it in imports.
+3. Now Open app.module.ts and import FormsModule from '@angular/forms' also call it in imports.
     
-    ```
-    import { FormsModule } from '@angular/forms';
+```
+import { FormsModule } from '@angular/forms';
+
+imports: [BrowserModule, AppRoutingModule, FormsModule];
+
+```
     
-          imports: [
-            BrowserModule,
-            AppRoutingModule,
-            FormsModule
-          ]
-    ```
+4. Let's now create the form. Add the following code to demo-form.component to create the form.
     
-4.  Let's now create the form. Add the following code to demo-form.component to create the form.
-    
-    ```
-    <div class="container">
-      <h1>Demo Form</h1>
-      <form>
+```
+<div class="container">
+  <h1>Demo Form</h1>
+  <form>
 
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" required>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required>
 
-          <label for="email">Enter your e-mail id : </label>
-          <input type="email" class="form-control" id="email" required>
-        </div>
-
-        <button type="submit" class="btn btn-success">Submit</button>
-
-      </form>
+      <label for="email">Enter your e-mail id : </label>
+      <input type="email" class="form-control" id="email" required>
     </div>
-    ```
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+</div>
+```
     
     Our basic form is now complete, and we can use the terminal's "ng serve" command to launch it.
     
@@ -187,67 +184,67 @@ Angular has a few built-in validators to verify common use cases. If we want the
 
 Every time a FormControl's value changes by performing validation, Angular displays a list of validation problems. The status is **valid** if the list is empty; otherwise, it is **invalid**. Now, let's say we wanted to add the following validations:
 
-1.  The name field has the required attribute; if this field is left blank, we want to show some error message.
+1. The name field has the required attribute; if this field is left blank, we want to show some error message.
     
-2.  The minimum and maximum character lengths for the value in the Name field should be 5 and 30, respectively. if not followed, we want to show validation messages.
+2. The minimum and maximum character lengths for the value in the Name field should be 5 and 30, respectively. if not followed, we want to show validation messages.
 
 For this, we must add the proper validation characteristics and export ngModel to a local template variable for each form control where we wish to add validation. By appending ngModel to all input tags, we can import all of the specific ng contents into our form.
 But how will we know whether or not the contents have been imported?
 
-*   Open the browser and inspect the input tag for this. You'll notice that a class called ngcontent and a few other ng classes have been added, indicating that Angular has identified our demo-form.
+* Open the browser and inspect the input tag for this. You'll notice that a class called ngcontent and a few other ng classes have been added, indicating that Angular has identified our demo-form.
     
-    {% img "ngcontent.png" "ng classes in form" "lazy" %}
+{% img "ngcontent.png" "ng classes in form" "lazy" %}
     
 Now that our form has been submitted, the submit method and a method called form method should both be called.
-*   We will do this by including the following code in our `form` tag.
+* We will do this by including the following code in our `form` tag.
     
-    ```
-    (ngSubmit)="submit()"
-    ```
+```
+(ngSubmit)="submit()"
+```
     
-    {% img "formngsubmit.png" "ngSubmit" "lazy" %}
+{% img "formngsubmit.png" "ngSubmit" "lazy" %}
 
-*   then, using the following code, we'll define this submit method in our demo-form.component.ts file:
+* then, using the following code, we'll define this submit method in our demo-form.component.ts file:
     
-    ```
-    import { Component } from '@angular/core';
+```
+import { Component } from '@angular/core';
 
-    @Component({
-      selector: 'app-demo-form',
-      templateUrl: './demo-form.component.html',
-      styleUrls: ['./demo-form.component.css'],
-    })
-    export class DemoFormComponent {
-    submit() {
-      console.log('Form Submitted!');
-    }
-    }
-    ```
+@Component({
+  selector: 'app-demo-form',
+  templateUrl: './demo-form.component.html',
+  styleUrls: ['./demo-form.component.css'],
+})
+export class DemoFormComponent {
+  submit() {
+    console.log('Form Submitted!');
+  }
+}
+```
 
 Now, this method will be called each time we click the submit button. This can be verified in the console. The console displays **"Form Submitted!"** when we click the submit button.
 
 Let's add the login id to this as well, so that when you click the submit button, control will transfer to the `submit(login)` function and you can view the information that we entered.
 
-*   For this add the following code in demo-form-component.html
+* For this add the following code in demo-form-component.html
     
-    ```
-    <form #userlogin = "ngForm" (ngSubmit)="submit(userlogin)" >
-    ```
+```
+<form #userlogin = "ngForm" (ngSubmit)="submit(userlogin)" >
+```
     
-*   then, add the following code in demo-form-component.ts
+* then, add the following code in demo-form-component.ts
     
-    ```
-    export class DemoFormComponent {
-    submit(userlogin: any){
-      console.log("Form Submitted!", userlogin);
-    }
-    ```
+```
+export class DemoFormComponent {
+submit(userlogin: any){
+  console.log("Form Submitted!", userlogin);
+}
+```
     
-    _Note: When we submit and inspect our form, we will see that callback functions have been called._
+  _Note: When we submit and inspect our form, we will see that callback functions have been called._
     
-    {% img "inspectform.png" "callback functions in form" "lazy" %}
+{% img "inspectform.png" "callback functions in form" "lazy" %}
     
-    Here we can see details about the field's state, including whether it has been **touched** or not, whether it is **clean** or **dirty**, and information about all of FormGroup's properties (**valid**, **invalid**, **pending**, etc.). These are some of the things that we need to keep in mind when implementing form validation.
+  Here we can see details about the field's state, including whether it has been **touched** or not, whether it is **clean** or **dirty**, and information about all of FormGroup's properties (**valid**, **invalid**, **pending**, etc.). These are some of the things that we need to keep in mind when implementing form validation.
     
 As we can see from the screenshot above, there were numerous objects, such as **valid** and **invalid**, when we examined our form. We're going to alter that now and use those objects as leverage. We are expected to include a template variable for that.
 
