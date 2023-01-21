@@ -150,7 +150,7 @@ Our newly created component will now show up once we have completed this. More c
     
 4.  Let's now create the form. Add the following code to demo-form.component to create the form.
     
-        ```
+    ```
         <div class="container">
         <h1>Demo Form</h1>
         <form>
@@ -167,7 +167,7 @@ Our newly created component will now show up once we have completed this. More c
         
         </form>
         </div>
-        ```
+    ```
     
     Our basic form is now complete, and we can use the terminal's "ng serve" command to launch it.
     
