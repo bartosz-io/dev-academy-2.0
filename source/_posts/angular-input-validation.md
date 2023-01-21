@@ -409,7 +409,6 @@ registrationForm = new FormGroup({
   ]),
   username: new FormControl('', Validators.required),
 });
-
 ```
 
 The component would require the import of Validators.
