@@ -120,6 +120,8 @@ ng serve
     
 We're now ready to begin.
 
+{% review_screen "review_1.png" "https://websecurity-academy.com" %}
+
 ## Template-Driven forms
 
 In Template-Driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
@@ -376,6 +378,8 @@ We will now link these FormControl objects to the HTML form's fields.
 ```
 
 You must include ReactiveFormsModule in your main module, app.module.ts, to use reactive forms.
+
+{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Validation in reactive forms
 
