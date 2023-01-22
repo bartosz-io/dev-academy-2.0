@@ -11,7 +11,6 @@ bannerHeader: 'Input validation in Angular'
 ---
 {% image_fw 1.78 banner.png "Input Validation in Angular" %}
 
-
 ## Table of Contents
 <!-- toc -->
 
@@ -136,23 +135,22 @@ Our newly created component will now show up once we have completed this. More c
 
 2. We'll now access the component.html file and call the component tag we just made. This is done in order to integrate the created component into our application. In the case of our project here, it will be:
     
-```
+```html
 <app-demo-form></app-demo-form>
 ```
 {% img "appcomponent.png" "Add codes to appcomponent.html" "lazy" %}
 
 3. Now Open app.module.ts and import FormsModule from '@angular/forms' also call it in imports.
     
-```
+```typescript
 import { FormsModule } from '@angular/forms';
 
 imports: [BrowserModule, AppRoutingModule, FormsModule];
-
 ```
     
 4. Let's now create the form. Add the following code to demo-form.component to create the form.
     
-```
+```html
 <div class="container">
   <h1>Demo Form</h1>
   <form>
@@ -173,8 +171,7 @@ imports: [BrowserModule, AppRoutingModule, FormsModule];
     
 Our basic form is now complete, and we can use the terminal's "ng serve" command to launch it.
     
-_When using ngModel, we must either declare the FormControl as "standalone" in ngModelOptions or specify the name attribute to stop Angular from producing an error._
-_Additionally, FormsModule must be added to the array of imports in app.module.ts_
+> When using ngModel, we must either declare the FormControl as "standalone" in ngModelOptions or specify the name attribute to stop Angular from producing an error. Additionally, FormsModule must be added to the array of imports in app.module.ts
 
 {% img "demoform.png" "Angular Demo Form" "lazy" %}
 
@@ -198,7 +195,7 @@ But how will we know whether or not the contents have been imported?
 Now that our form has been submitted, the submit method and a method called form method should both be called.
 * We will do this by including the following code in our `form` tag.
     
-```
+```html
 (ngSubmit)="submit()"
 ```
     
@@ -206,7 +203,7 @@ Now that our form has been submitted, the submit method and a method called form
 
 * then, using the following code, we'll define this submit method in our demo-form.component.ts file:
     
-```
+```typescript
 import { Component } from '@angular/core';
 
 @Component({
@@ -227,13 +224,13 @@ Let's add the login id to this as well, so that when you click the submit button
 
 * For this add the following code in demo-form-component.html
     
-```
+```html
 <form #userlogin = "ngForm" (ngSubmit)="submit(userlogin)" >
 ```
     
 * then, add the following code in demo-form-component.ts
     
-```
+```typescript
 export class DemoFormComponent {
 submit(userlogin: any){
   console.log("Form Submitted!", userlogin);
@@ -250,23 +247,23 @@ As we can see from the screenshot above, there were numerous objects, such as **
 
 1. For this, we are going to add `#variable ="ngModel"` to our input fields. Here I've named our `variable` as `name`.
     
-```
+```html
 <input
-type="text"
-class="form-control"
-id="name"
-required
-maxlength="30"
-minlength="5"
-ngModel
-name="name"
-#name="ngModel"
+  type="text"
+  class="form-control"
+  id="name"
+  required
+  maxlength="30"
+  minlength="5"
+  ngModel
+  name="name"
+  #name="ngModel"
 />
 ```
 
 2. It now informs our users about the form and what is considered invalid input. We'll add the following code to `demo-form.component.html` after creating a div under the `input` tag.
         
-```
+```html
 <div class="container">
   <h1>Demo Form</h1>
   <form #userlogin="ngForm" (ngSubmit)="submit(userlogin)">
@@ -303,7 +300,7 @@ name="name"
 
 There are use cases that the built-in validators can't always help us validate. Then we must develop a unique validator function. The code listed below can be used to define a validator function that implements the ValidatorFn interface.
 
-```
+```typescript
 interface ValidatorFn {
   (control: AbstractControl): ValidationErrors | null
 }
@@ -311,7 +308,7 @@ interface ValidatorFn {
 
 The ValidationErrors object must include at least one key-value pair:
 
-```
+```typescript
 type ValidationErrors = {
   [key: string]: any;
 };
@@ -322,7 +319,7 @@ The key, which should be a string, is used to indicate the sort of validation is
 For the aforementioned example, we want to create a unique validation function that checks to see if the email contains no spaces.
 Anywhere in the function, we can add our custom validator. For examples:
 
-```
+```typescript
 import { ValidationErrors, AbstractControl } from '@angular/forms';
     
 export class DemoFormValidators {
@@ -341,7 +338,7 @@ export class DemoFormValidators {
 
 In reactive forms, we explicitly create FormControl objects in that template's component. The method will be the same for creating reactive forms. Thus, we will only see the code. Here, within the component of that template, we will specifically build a FormControl object. The HTML form without the ngModel directive is shown below.
 
-```
+```html
 <div class="form-group">
   <label for="name">Name</label>
   <input type="text" class="form-control" id="name" />
@@ -354,10 +351,10 @@ In reactive forms, we explicitly create FormControl objects in that template's c
 
 For each field in the component, FormGroup and FormControls will be specifically created.
 
-```
+```typescript
 form = new FormGroup({
-    'name': new FormControl(),
-    'username': new FormControl(),
+  'name': new FormControl(),
+  'username': new FormControl(),
 })
 ```
 
@@ -365,7 +362,7 @@ More information on FormGroup can be found in the [Angular docs](https://angular
 
 We will now link these FormControl objects to the HTML form's fields.
 
-```
+```html
 <form [formGroup]="registrationForm">
   <div class="form-group">
     <label for="name">Name</label>
@@ -384,7 +381,7 @@ You must include ReactiveFormsModule in your main module, app.module.ts, to use 
 
 Reactive forms don't employ HTML5 validation attributes or the ngModel directive. When creating the FormControl objects in the component, you must specify the validators. For the FormControl class, you can use the following syntax:
 
-```
+```typescript
 class FormControl extends AbstractControl {
     constructor(formState: any = null, validatorOrOpts?: ValidatorFn | 		    
     AbstractControlOptions | ValidatorFn[], asyncValidator?: 
@@ -394,10 +391,9 @@ class FormControl extends AbstractControl {
 }
 ```
 
-You must send it to the relevant ValidatorFn if you want to add FormControl's built-in validator methods.
-The built-in validators `required`, `minLength`, and `maxlength` ere applied to the example below.
+You must send it to the relevant ValidatorFn if you want to add FormControl's built-in validator methods. The built-in validators `required`, `minLength`, and `maxlength` ere applied to the example below.
 
-```
+```typescript
 registrationForm = new FormGroup({
   name: new FormControl('Enter name', [
     Validators.required,
@@ -414,7 +410,7 @@ As you may have seen, we do not employ the validation properties as Template-dri
 
 Now, we can return to the template and provide the validation messages: 
 
-```
+```html
 <form [formGroup]="userRegistrationForm">
 
   <div class="form-group">
@@ -450,7 +446,7 @@ Now, we can return to the template and provide the validation messages: 
 
 You can easily develop your validator function, as we did for the template-driven form. The same unique validator function is being used in this instance.
 
-```
+```typescript
 registrationForm = new FormGroup({
   name: new FormControl('Enter your name', [
     Validators.required,
