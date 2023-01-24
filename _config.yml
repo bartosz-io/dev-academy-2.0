@@ -218,7 +218,7 @@ image_minifier:
 
 # site banners, custom templates
 banners:
-  top_banner: true
+  top_banner: false
   article_side_banner: true
 
 # site contributors, custom generator
