@@ -61,7 +61,6 @@
 
 .article-date {
   color: $light-200;
-  text-transform: uppercase;
   font-weight: 600;
   font-size: $font-size-14;
 }
@@ -209,6 +208,10 @@
   font-size: $font-size-14;
   display: flex;
   padding-top: .8rem;
+
+  span {
+    padding-right: .6rem;
+  }
 }
 
 .post-title {
