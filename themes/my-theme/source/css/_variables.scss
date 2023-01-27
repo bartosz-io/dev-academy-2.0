@@ -32,6 +32,7 @@ $font-size-30: 3rem;
 $font-size-32: 3.2rem;
 $font-size-34: 3.4rem;
 $font-size-36: 3.6rem;
+$font-size-40: 4rem;
 $font-size-46: 4.6rem;
 $font-size-48: 4.8rem;
 $font-size-56: 5.6rem;
@@ -62,6 +63,7 @@ $navy-250: #14142A;
 $navy-400: $secondary;
 $navy-500: #14142B;
 $navy-600: #262338;
+$navy-700: #292929;
 $navy-800: #4E4B66;
 
 // - Primary dark
@@ -101,6 +103,7 @@ $teal-200: #2186c3;
 $teal-300: #3ba4fe;
 $teal-350: #77A8F1;
 $teal-400: #256fbe;
+$teal-500: #4DA0FD;
 $teal-600: #00acff;
 $teal-700: #2F80ED;
 $teal-800: #7EB2FF;
@@ -128,8 +131,10 @@ $orange: #F16529;
 $green-100: #C6F6D5;
 $green-200: #9AE6B4;
 $green-300: #68D391;
+$green-350: #60D186;
 $green-400: #48BB78;
 $green-500: #07942E;
+$green-600: #048127;
 
 $twitter: #1da1f2;
 $facebook: #66679d;
@@ -147,6 +152,7 @@ $z-index-500: 500;
 
 // Alerts
 $danger: #DC4B4B;
+$success: $green-500;
 
 // Box shadows
 $box-shadow: 0 -2px 6px hsla(220, 47%, 48%, .15);
@@ -163,6 +169,7 @@ $container-gap: 2rem;
 $top-bar-height-desktop: 5rem;
 $top-bar-height-mobile: 10rem;
 $header-height-desktop: 8rem;
+$header-height-mobile: 7rem;
 $sidebar-offset: 16rem;
 
 $gradient: linear-gradient(95.08deg, $teal-350 2.49%, $indigo-700 97.19%);

@@ -60,6 +60,10 @@
   .academy-contributor-wrapper {
     padding-top: 35rem;
   }
+
+  .business-offer-boxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 768px) {
@@ -589,6 +593,100 @@
   .academy-contributor-wrapper {
     padding-top: 25rem;
   }
+
+  .business-hero {
+    position: relative;
+
+    p {
+      max-width: 49rem;
+    }
+  }
+
+  .business-hero-actions {
+    width: 29rem;
+  }
+
+  .business-hero-image-gradient {
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    left: -7rem;
+  }
+
+  .business-hero-left,
+  .business-hero-right {
+    position: relative;
+    z-index: $z-index-100;
+  }
+
+  .business-performance-cards {
+    display: flex;
+    gap: 10rem;
+    justify-content: center;
+  }
+
+  .business-performance-card {
+    flex-basis: 31rem;
+  }
+
+  .business-offer .slider-items {
+    flex-direction: row;
+  }
+
+  .business-methodology-figure img {
+    max-width: 50rem;
+  }
+
+  .business-methodology-right {
+    text-align: right;
+
+    .business-methodology-top {
+      justify-content: flex-end;
+
+      h3 .new-line {
+        justify-content: flex-end;
+      }
+    }
+
+    .business-methodology-figure picture {
+      align-items: flex-end;
+    }
+
+    .business-methodology-image {
+      order: 1;
+      margin-left: 1.6rem;
+      margin-right: 0;
+      transform: scaleX(-1);
+    }
+  }
+
+  .business-methodology-top h3 {
+    font-size: $font-size-40;
+    line-height: 6rem;
+
+    .new-line {
+      display: flex;
+    }
+  }
+
+  .business-resources {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dev-academy-start-actions {
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .dev-academy-start-action {
+    border-radius: .8rem;
+    flex-basis: 42rem;
+
+    + .dev-academy-start-action {
+      padding-top: 2rem;
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -1051,6 +1149,114 @@
     left: auto;
     top: 5rem;
   }
+
+  .business-hero-images {
+    display: none;
+  }
+
+  .business-hero {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5rem;
+  }
+
+  .business-hero-main-image {
+    max-width: 60rem;
+  }
+
+  .business-hero-left {
+    padding-right: 1rem;
+  }
+
+  .business-hero-right {
+    flex-shrink: 0;
+    flex-basis: 50rem;
+  }
+
+  .business-performance-cards {
+    gap: 20rem;
+  }
+
+  .landing-business {
+    .header-logo span {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      line-height: 1.6rem;
+
+      span {
+        padding-left: 0;
+        color: $green-350;
+        letter-spacing: .2rem;
+      }
+    }
+
+    .header-nav ul li:last-child {
+      .header-nav-link {
+        padding-right: 0;
+      }
+    }
+  }
+
+  .business-plans-options {
+    display: none;
+  }
+
+  .business-plan-content {
+    display: flex;
+  }
+
+  .business-plans-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    column-gap: 1.5rem;
+  }
+
+  .business-methodologies-footpath-image {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .business-methodology-figure {
+    padding-bottom: 0;
+  }
+
+  .business-methodology {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: $z-index-100;
+  }
+
+  .business-methodologies {
+    position: relative;
+  }
+
+  .business-methodology-content {
+    padding-left: 4rem;
+  }
+
+  .business-methodology-right {
+    .business-methodology-figure {
+      order: 1;
+    }
+
+    .business-methodology-content {
+      padding-right: 4rem;
+    }
+  }
+
+  .start-page main {
+    min-height: calc(100vh - #{$header-height-desktop});
+  }
+
+  .dev-academy-start {
+    padding-bottom: $header-height-desktop;
+  }
 }
 
 @media (min-width: 1180px) {
@@ -1124,6 +1330,28 @@
 
   .academy-hero-wave {
     top: 89%;
+  }
+
+  .business-hero-right {
+    flex-basis: 60rem;
+  }
+
+  .business-feedback {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .business-feedback-left {
+    padding-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .business-feedback-right {
+    padding-left: 11rem;
+  }
+
+  .business-plan-content {
+    padding: 5rem 4rem 5rem;
   }
 }
 
@@ -1303,6 +1531,32 @@
 
   .header-nav-link {
     font-size: $font-size-15;
+  }
+
+  .business-offer-boxes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .business-offer {
+    .slider-items {
+      display: grid;
+    }
+
+    .slider-pagination {
+      display: none;
+    }
+  }
+
+  .business-methodology-content {
+    padding-left: 10rem;
+  }
+
+  .business-methodology-right .business-methodology-content {
+    padding-right: 10rem;
+  }
+
+  .business-resources {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

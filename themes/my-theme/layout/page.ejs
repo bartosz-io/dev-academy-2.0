@@ -1,9 +1,13 @@
-<% if (is_current('/')) {%>
+<% if (page.layout === 'landing') {%>
     <%- page.content %>
 <% } else { %>
-    <div class="container">
-        <article class="article article-page">
-            <%- page.content %>
-        </article>
-    </div>
+    <% if (is_current('/')) {%>
+        <%- page.content %>
+    <% } else { %>
+        <div class="container">
+            <article class="article article-page">
+                <%- page.content %>
+            </article>
+        </div>
+    <% } %>
 <% } %>
