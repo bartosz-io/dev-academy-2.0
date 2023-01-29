@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function() {
         setActiveTagPill();
     }
 
-    cookieConsent();
+    // cookieConsent();
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
