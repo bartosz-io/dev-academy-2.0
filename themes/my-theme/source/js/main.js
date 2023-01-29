@@ -183,35 +183,6 @@ function stickyNavigation() {
     }, {passive: true});
 }
 
-function cookieConsent() {
-    var key = 'cookie-consent';
-    var hiddenClass = 'hidden';
-    var cookie =  document.querySelector('.cookie-consent')
-
-    if (localStorage.getItem(key)) {
-        if (cookie) {
-            cookie.style.display = 'none';
-        }
-    } else {
-        var button = document.getElementById(key);
-
-        if (cookie) {
-            cookie.style.display = 'block';
-        }
-
-        if (button) {
-            button.addEventListener('click', function() {
-                localStorage.setItem(key, 'true');
-                cookie.classList.add(hiddenClass);
-
-                setTimeout(function() {
-                    cookie.style.display = 'none';
-                }, 300);
-            });
-        }
-    }
-}
-
 function relatedPosts() {
     var relatedPostsContainer = document.querySelector('.related-posts');
 
