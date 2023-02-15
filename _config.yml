@@ -417,3 +417,20 @@ contributors:
       twitter: https://twitter.com/home
       github: https://github.com/desoga10
       linkedin: https://www.linkedin.com/in/desoga/
+  "Saurabh Ghatnekar":
+    slug: saurabh-ghatnekar
+    desc: Saurabh is a Full Stack Developer. He is passionate about learning and sharing knowledge. He is a contributor to the React and JS community.
+    specs: [javascript, react, nodejs, mongodb, express, AWS]
+    image: /img/contributors/saurabh-ghatnekar.png
+    motto: "Code as if the person who maintains your code is a psychopath who knows where you live."
+    joined: 1 Dev 2022
+    academies:
+      wsa: true
+      fta: true
+    socials:
+        site: https://saurabh.works/
+        twitter: https://twitter.com/saurabh_works
+        github: https://github.com/saurabhghatnekar
+        linkedin: https://www.linkedin.com/in/saurabhghatnekar/
+
+
