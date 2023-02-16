@@ -84,7 +84,7 @@ Custom input validation provides greater control over the data being entered by 
 
 ## Understanding Regex Patterns
 
-Regex simply refers to 'Regular expressions'. These are common patterns in the text we regularly encounter on the web such as emails, user names, and passwords. We ensure text variables contain the right sequence of characters or adhere to particular rules by comparing those text variables to a regex pattern, similar to how the input types are validated by the DOM.
+Regex simply refers to 'Regular expressions'. These are common patterns in the text we regularly encounter on the web such as emails, user names, and passwords. We ensure text variables contain the right sequence of characters or adhere to particular rules by comparing those text variables to a regex pattern, similar to how the input types are validated by the DOM. [RegexOne](https://regexone.com) offers a great step by step explanation about the regex syntax and how it works.
 
 {% img "regex-pattern.png" "Regex Pattern" "lazy" %}
 
