@@ -104,9 +104,9 @@ Although within certain development environments, such as companies with risk-av
 
 ### YUP & Fomik
 
-YUP and Formik are popular libraries for input validation in React applications. Both libraries make it easier to handle and validate form data, making it more convenient for developers to create forms that meet the requirements of their applications.
+[YUP](https://github.com/jquense/yup) and [Formik](https://github.com/jaredpalmer/formik) are popular libraries for input validation in React applications. Both libraries make it easier to handle and validate form data, making it more convenient for developers to create forms that meet the requirements of their applications.
 
-YUP is a JavaScript object schema validation library that allows developers to define the shape and types of their form data. YUP makes it easy to validate data in real-time by providing a simple and intuitive API for defining validation rules. For example, a rule can be created to enforce that a specific field is required or that its value must match a certain pattern.
+YUP is a JavaScript object schema validation library that allows developers to define the shape and types of their form data. This makes it easy to validate data in real-time by providing a simple and intuitive API for defining validation rules. For example, a rule can be created to enforce that a specific field is required or that its value must match a certain pattern.
 
 Formik, on the other hand, is a popular form handling library that helps developers create forms in React quickly and easily. Formik provides an intuitive way to manage form state and handle events, such as form submissions. One of its key features is its built-in support for YUP, which means that you can use YUP to validate your forms directly from within Formik.
 
@@ -114,6 +114,7 @@ To use YUP and Formik together, simply install both libraries and import them in
 
 In conclusion, YUP and Formik make it easier for developers to handle and validate form data in their React applications. By using these libraries, developers can create forms that are easy to maintain and have robust validation logic that ensures the data entered by users is accurate and meets the requirements of the application.
 
+Visit YUP on [GitHub](https://github.com/jquense/yup) and Formik on their [website](https://formik.org/) for more information.
 
 ## Conclusion
 
