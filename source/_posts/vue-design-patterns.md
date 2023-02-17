@@ -5,7 +5,7 @@ avatar: mauricio-matias.jpeg
 description: Learn modern Vue 3 design patterns to make the best architectural decisions. Are you reinventing the wheel? 🧐.
 date: 2023-02-18
 tags: [vue, design-patterns, patterns, vue-3]
-id: vue-router-best-practices
+id: vue-design-patterns
 relatedPost: vue-security-best-practices
 bannerHeader: 'Are you reinventing the wheel? 🧐'
 bannerSubheader: 'Learn the secrets of well-designed Web apps!'
@@ -16,19 +16,18 @@ What's up, #VueFriends? It's time for another Vue article. Today we will put int
 ## Table of contents
 <!-- toc -->
 
-
 ## Why do we need design patterns?
 A design pattern is a general, reusable solution to a commonly occurring problem within a given context in software design. That's the purpose of design patterns, maybe you may find the solution to a given problem on your own, but today I want to show you some easier ways in Vue 😎.
 
 
 ## Builder Pattern
-If exists something cannot be missing in a web app, it is the forms, forms everywhere! Forms are boring and more if there is no way to generate them programmatically. It's a common mistake to write files/components like **UserForm.vue**, **ContactForm.vue**, **LoginForm.vue**, and others with a similar logic inside.
+If exists something cannot be missing in a web app, it is the forms, forms everywhere! Forms are boring and more if there is no way to generate them programmatically. It's a common mistake to write files/components like `UserForm.vue`, `ContactForm.vue`, `LoginForm.vue`, and others with a similar logic inside.
 
-That's OK if your application has few forms, but what happens if your application has more than 20 or 100 forms? 😵. With some time, even naming them tends to get harder and harder. Think about the above scenario. How times do you write the <input> element, validations, styles, and bindings? So, don't pray more 😀 here is the Builder Pattern!
+That's OK if your application has few forms, but what happens if your application has more than 20 or 100 forms? 😵. With some time, even naming them tends to get harder and harder. Think about the above scenario. How times do you write the `<input>` element, validations, styles, and bindings? So, don't pray more 😀 here is the Builder Pattern!
 
 Builder is a creational design pattern that allows you to build complex object step by step. These patterns produce different types and representations of an object using the same construction code. Think about our case: we need to construct a form builder. Forms have many fields and submit button (maybe a cancel button too). One field means one kind of input, label, and error message. All fields have this structure and have an order.
 
-First, we need to create the **FormBuilder** object as follows.
+First, we need to create the `FormBuilder` object as follows.
 
 ```ts
     import { defineComponent, h, type VNode } from "vue";
@@ -79,7 +78,7 @@ First, we need to create the **FormBuilder** object as follows.
     }
 ```
 
-We need some structure to put all the fields in order. An array is enough (we are using Typescript, this approach adds more code). The method **addField,** as its name says, only has the task of putting an object Field to the fields array. The magic happens in the **build** method. It defines a new Vue instance with all our fields well structured. So, what is the **FormFactory** task? It's responsible for structuring and creating the form (many kinds of forms). Here is the code:
+We need some structure to put all the fields in order. An array is enough (we are using Typescript, this approach adds more code). The method `addField`, as its name says, only has the task of putting an object Field to the fields array. The magic happens in the `build` method. It defines a new Vue instance with all our fields well structured. So, what is the `FormFactory` task? It's responsible for structuring and creating the form (many kinds of forms). Here is the code:
 
 ```ts
     <template>
@@ -219,7 +218,7 @@ We need some structure to put all the fields in order. An array is enough (we ar
     </style>
 ```
 
-Excuses for my ugly CSS, but that's not the point. Maybe it isn't the ideal Form Builder, but it's useful. The more complex your form type, the more complex your form builder will be. Now you have a Form Builder, which you can use to create forms in each view, but we have one step more, the **FormDirector.** It has the task of structuring our forms in a single file with verbose methods, like **makeLoginForm()**, **makeSignUpForm()**, **makeShopForm()**, and more. Here is our **FormDirector.ts**.
+Excuses for my ugly CSS, but that's not the point. Maybe it isn't the ideal Form Builder, but it's useful. The more complex your form type, the more complex your form builder will be. Now you have a Form Builder, which you can use to create forms in each view, but we have one step more, the `FormDirector`. It has the task of structuring our forms in a single file with verbose methods, like `makeLoginForm()`, `makeSignUpForm()`, `makeShopForm()`, and more. Here is our `FormDirector.ts`.
 
 ```ts
     import VInput from "@/components/form/VInput.vue";
@@ -258,7 +257,7 @@ Excuses for my ugly CSS, but that's not the point. Maybe it isn't the ideal Form
     }
 ```
 
-To validate our forms, we are using the [zod](https://zod.dev/) library. As we can see, **makeLoginForm()** uses the Form Builder class to create a new app form with a detailed description of each field.
+To validate our forms, we are using the [zod](https://zod.dev/) library. As we can see, `makeLoginForm()` uses the Form Builder class to create a new app form with a detailed description of each field.
 
 > Code:  [vue design pattern repository](https://github.com/cr0wg4n/vue-design-patterns), execute, and go to **/builder-pattern** route 😎.
 
@@ -439,9 +438,9 @@ So, it's time to implement the code, first the **Business Logic Component**:
     export default store;
 ```
 
-The **todo.ts** is a Vuex store definition with an API call inside. Disponible to any component which needs the list of to-dos.
+The `todo.ts` is a Vuex store definition with an API call inside. Disponible to any component which needs the list of to-dos.
 
-The **Presentational Component** called **VList.vue** looks like this.
+The **Presentational Component** called `VList.vue` looks like this.
 
 ```ts
     // File: VList.vue
@@ -538,21 +537,21 @@ There is another interesting design pattern. When we start with Vue, most of us 
 
 ![This image was adapted from vuejs.org official documentation](https://images.surferseo.art/2de27b38-1387-4120-93af-7260be68041c.png)
 
-Ideally, the **OptionList** component should only render **OptionItem**, but with this approach, it contains **visualizationPreferences** as one of its props. It can still work without much trouble, but what if you must go through many components to get to the **component** that will use that property? Many of those components don't need a new prop, only to fit with one **component** at the bottom of the hierarchy (a child component).
+Ideally, the `OptionList` component should only render `OptionItem`, but with this approach, it contains `visualizationPreferences` as one of its props. It can still work without much trouble, but what if you must go through many components to get to the **component** that will use that property? Many of those components don't need a new prop, only to fit with one **component** at the bottom of the hierarchy (a child component).
 
 ![props drilling, anti-pattern](https://images.surferseo.art/11cc09cc-5eda-46bb-87ae-568d639ab642.png)
 
-That problem is known as **props drilling** (an anti-pattern). Fortunately, Vue has the solution build-in with its **provide()** and **inject()** features, better known as dependency injection.
+That problem is known as **props drilling** (an anti-pattern). Fortunately, Vue has the solution build-in with its `provide()` and `inject()` features, better known as dependency injection.
 
 ![Using the provide/inject feature from Vue](https://images.surferseo.art/476e761d-7964-49aa-8123-c73a8ebb7ffb.png)
 
 As we can see in the image above, **Provide** gets the data and is responsible for passing it when it is needed to be **Injected** in all the components down the hierarchy (in this case **OptionItem**).
 
-The following case shows a list of cards (with a title and image inside). We need to change the card appearance using **provide** and **inject**. Those cards have four styles: rounded, squared borders, and dark and light themes. This pattern is ideal for implementing more cards along the same behavior.
+The following case shows a list of cards (with a title and image inside). We need to change the card appearance using `provide()` and `inject()`. Those cards have four styles: rounded, squared borders, and dark and light themes. This pattern is ideal for implementing more cards along the same behavior.
 
 ![Provide/Inject design pattern example, vue patterns](https://images.surferseo.art/4e7f5a27-a5ed-4b0d-8c59-4aef1e9b299c.png)
 
-So, to implement this feature, we need to create the image structure in the code, beginning with **OptionItem.vue**.
+So, to implement this feature, we need to create the image structure in the code, beginning with `OptionItem.vue`.
 
 ```ts
     // File: OptionItem.vue
@@ -608,13 +607,13 @@ So, to implement this feature, we need to create the image structure in the code
     </style>
 ```
 
-**OptionItem.vue** pretends to be a card with a title and a random image inside.
+`OptionItem.vue` pretends to be a card with a title and a random image inside.
 
 ![OptionItem.vue  Component](https://images.surferseo.art/c81fc151-0300-4752-8fa5-0aabd666fb3e.png)
 
-The **setup()** uses the **inject()** method to retrieve (inject) the data from the **provider()** method, to be used in **OptionContainer.vue** (two components above in the hierarchy). 
+The `setup()` uses the `inject()` method to retrieve (inject) the data from the `provider()` method, to be used in `OptionContainer.vue` (two components above in the hierarchy). 
 
-To inject that data inside the component, we need a key. In this case, **VISUALIZATION\_PREFERENCES** is an **InjectionKey.** Its use makes sense with Typescript. It allows you to define a key name and structure for a specific data structure. The **VISUALIZATION\_PREFERENCES** is in the **OptionSymbols.ts** file for re-usability purposes.
+To inject that data inside the component, we need a key. In this case, `VISUALIZATION\_PREFERENCES` is an `InjectionKey`. Its use makes sense with Typescript. It allows you to define a key name and structure for a specific data structure. The `VISUALIZATION\_PREFERENCES` is in the `OptionSymbols.ts` file for re-usability purposes.
 
 ```ts
     // File: OptionSymbols.ts
@@ -631,7 +630,7 @@ To inject that data inside the component, we need a key. In this case, **VISUAL
     > = Symbol("visualizationPreferences");
 ```
 
-The next component implemented is **OptionList.vue**, which works as a Presentational Component (only renders every **OptionItem** component if it has the necessary data, it is only a dummy component).
+The next component implemented is `OptionList.vue`, which works as a Presentational Component (only renders every **OptionItem** component if it has the necessary data, it is only a dummy component).
 
 ```ts
     // File: OptionList.vue
@@ -661,7 +660,7 @@ The next component implemented is **OptionList.vue**, which works as a Presenta
     </script>
 ```
 
-Now, the **OptionContainer.vue** is the Provider. It contains the data to pass to **OptionItem.vue** through the **provide()** method, as we can see below.
+Now, the `OptionContainer.vue` is the Provider. It contains the data to pass to `OptionItem.vue` through the `provide()` method, as we can see below.
 
 ```ts
     // File: OptionContainer.vue
@@ -711,7 +710,7 @@ Now, the **OptionContainer.vue** is the Provider. It contains the data to pass
     </script>
 ```
 
-The code is large (this is the script part only). The **provide()** method receives the same **VISUALIZATION\_PREFERENCES** seen previously as the first parameter, and the data to be injected as a second parameter (we are using **computed()** to turn reactive that data).
+The code is large (this is the script part only). The `provide()` method receives the same `VISUALIZATION\_PREFERENCES` seen previously as the first parameter, and the data to be injected as a second parameter (we are using `computed()` to turn reactive that data).
 
 Many people use this pattern without the reactive feature, but it is great to have.
 
@@ -720,7 +719,7 @@ Many people use this pattern without the reactive feature, but it is great to ha
 ## Composables
 If you are coming from React, this reactive pattern could be familiar. Yes, we are talking about **hooks**, but in Vue, they are called "Composables"; hooks and composables are component patterns. According to the [official documentation](https://vuejs.org/guide/reusability/composables.html) of Vue, a "composable" is a function that leverages Vue's Composition API to encapsulate and reuse stateful logic. Stateful logic involves a managing state that changes over time.
 
-Let's take advantage of the previous example explained in the Adapter Pattern. We have the class **CookiesAdapter** which wraps the **js-cookie** library. CookiesAdapter could be used directly in our code, but now we will add state and covert to a Composable, to see the cookies' body reactively.
+Let's take advantage of the previous example explained in the Adapter Pattern. We have the class `CookiesAdapter` which wraps the [js-cookie](https://github.com/js-cookie/js-cookie) library. `CookiesAdapter` could be used directly in our code, but now we will add state and covert to a Composable, to see the cookies' body reactively.
 
 ```ts
     // File: useCookies.ts
@@ -765,7 +764,7 @@ Let's take advantage of the previous example explained in the Adapter Pattern. W
     }
 ```
 
-The **ref()** method is a function that gives reactivity to a variable, **cookies.** In this case, when we talk about composables, we are directly talking about state and action exposure. This composable exposes three actions: **get()**, **set()**, and **remove()**; those do the same thing as the **CookiesAdapter** methods but are necessary to share through components as a composable, the same with **cookies** which is the general state of our Cookies. The trick behind the **update()** method synchronizes the **cookies'** state every time an action is called.
+The `ref()` method is a function that gives reactivity to a variable, `cookies`. In this case, when we talk about composables, we are directly talking about state and action exposure. This composable exposes three actions: `get()`, `set()`, and `remove()`; those do the same thing as the `CookiesAdapter` methods but are necessary to share through components as a composable, the same with `cookies` which is the general state of our Cookies. The trick behind the `update()` method synchronizes the cookies' state every time an action is called.
 
 Now, we can use it everywhere.
 
@@ -840,7 +839,7 @@ Many people use this pattern without the reactive feature, but it is great to ha
 
 
 ## State Management Pattern
-State management is a crucial part of our web apps. In Vue, we have two great libraries to handle the state. To explain those libraries, we have the following case: We want to show to-do items in a list, to-do items retrieved from an open API ([https://jsonplaceholder.typicode.com/todos](https://jsonplaceholder.typicode.com/todos)). Similar to the case exposed in the Container Pattern section, we will reuse the **VList.vue** component. Now, we only need to think about how to use both state management libraries.
+State management is a crucial part of our web apps. In Vue, we have two great libraries to handle the state. To explain those libraries, we have the following case: We want to show to-do items in a list, to-do items retrieved from an open API ([https://jsonplaceholder.typicode.com/todos](https://jsonplaceholder.typicode.com/todos)). Similar to the case exposed in the Container Pattern section, we will reuse the `VList.vue` component. Now, we only need to think about how to use both state management libraries.
 
 
 ### Vuex/Pinia
@@ -988,7 +987,7 @@ The Pinia version looks like this.
     </script>
 ```
 
-Both work well, but the superficial differences are few. But Pinia hides something really interesting. We are using Pinia as a Composable. Remember, the principal mission of this pattern is to manage and expose the state in a good way. Naturally, Pinia does that and fits in. but the Pinia approach has another advantage, Type friendly. We don't need to point specific stores, actions, mutations, getters, or others via strings (a non-type friend); it happens in Vuex. In the past, that detail always caused me problems with the code. Instead, in Pinia, each state, action, or getter will be accessible directly from the source as a **useStoreSomething().** Pinia is the new by-default state management library for Vue. We recommend using it belong the composition API.
+Both work well, but the superficial differences are few. But Pinia hides something really interesting. We are using Pinia as a Composable. Remember, the principal mission of this pattern is to manage and expose the state in a good way. Naturally, Pinia does that and fits in. but the Pinia approach has another advantage, Type friendly. We don't need to point specific stores, actions, mutations, getters, or others via strings (a non-type friend); it happens in Vuex. In the past, that detail always caused me problems with the code. Instead, in Pinia, each state, action, or getter will be accessible directly from the source as a `useStoreSomething()`. Pinia is the new by-default state management library for Vue. We recommend using it belong the composition API.
 
 > Code:  [vue design pattern repository](https://github.com/cr0wg4n/vue-design-patterns), execute, and go to **/store-management-pattern** route 😎.
 
