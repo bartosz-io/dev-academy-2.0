@@ -397,8 +397,7 @@ To take this pattern advantage, think of this file as three parts:
     
 *   **Container component** handles the interaction of the presentational component and the business logic component. In our case, this component calls some method to get the To-Dos' information and will pass that data on to the presentational component as props.
     
-
-![Container pattern schema](https://images.surferseo.art/f2d222d4-114c-4987-9a99-3fb26f3dcac5.png)
+{% img "0-composition-pattern.png" "Container pattern schema" "lazy" %}
 
 So, it's time to implement the code, first the **Business Logic Component**:
 
@@ -535,21 +534,21 @@ Finally, the Container Component has the principal mission of calling the data f
 ## Provide/Inject Pattern
 There is another interesting design pattern. When we start with Vue, most of us make the mistake of passing information through props between multiple components, as the image shows.
 
-![This image was adapted from vuejs.org official documentation](https://images.surferseo.art/2de27b38-1387-4120-93af-7260be68041c.png)
+{% img "1-props-drilling.png" "This image was adapted from vuejs.org official documentation" "lazy" %}
 
 Ideally, the `OptionList` component should only render `OptionItem`, but with this approach, it contains `visualizationPreferences` as one of its props. It can still work without much trouble, but what if you must go through many components to get to the **component** that will use that property? Many of those components don't need a new prop, only to fit with one **component** at the bottom of the hierarchy (a child component).
 
-![props drilling, anti-pattern](https://images.surferseo.art/11cc09cc-5eda-46bb-87ae-568d639ab642.png)
+{% img "2-props-drilling-complete.png" "props drilling, anti-pattern" "lazy" %}
 
 That problem is known as **props drilling** (an anti-pattern). Fortunately, Vue has the solution build-in with its `provide()` and `inject()` features, better known as dependency injection.
 
-![Using the provide/inject feature from Vue](https://images.surferseo.art/476e761d-7964-49aa-8123-c73a8ebb7ffb.png)
+{% img "3-provide-inject.png" "Using the provide/inject feature from Vue" "lazy" %}
 
 As we can see in the image above, **Provide** gets the data and is responsible for passing it when it is needed to be **Injected** in all the components down the hierarchy (in this case **OptionItem**).
 
 The following case shows a list of cards (with a title and image inside). We need to change the card appearance using `provide()` and `inject()`. Those cards have four styles: rounded, squared borders, and dark and light themes. This pattern is ideal for implementing more cards along the same behavior.
 
-![Provide/Inject design pattern example, vue patterns](https://images.surferseo.art/4e7f5a27-a5ed-4b0d-8c59-4aef1e9b299c.png)
+{% img "4-visualization-preferences.png" "Provide/Inject design pattern example, vue patterns" "lazy" %}
 
 So, to implement this feature, we need to create the image structure in the code, beginning with `OptionItem.vue`.
 
@@ -609,7 +608,7 @@ So, to implement this feature, we need to create the image structure in the code
 
 `OptionItem.vue` pretends to be a card with a title and a random image inside.
 
-![OptionItem.vue  Component](https://images.surferseo.art/c81fc151-0300-4752-8fa5-0aabd666fb3e.png)
+{% img "5-card.png" "OptionItem.vue Component" "lazy" %}
 
 The `setup()` uses the `inject()` method to retrieve (inject) the data from the `provider()` method, to be used in `OptionContainer.vue` (two components above in the hierarchy). 
 
@@ -833,7 +832,7 @@ Now, we can use it everywhere.
 
 Many people use this pattern without the reactive feature, but it is great to have.
 
-![cookie editor with Vue, ui components (Composables pattern)](https://images.surferseo.art/3949fdd0-07cf-467d-8647-f616075db535.png)
+{% img "6-composable-example.png" "cookie editor with Vue, ui components (Composables pattern)" "lazy" %}
 
 > Code:  [vue design pattern repository](https://github.com/cr0wg4n/vue-design-patterns), execute, and go to **/composable-pattern** route 😎.
 
