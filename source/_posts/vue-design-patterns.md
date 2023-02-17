@@ -11,6 +11,8 @@ bannerHeader: 'Are you reinventing the wheel? 🧐'
 bannerSubheader: 'Learn the secrets of well-designed Web apps!'
 ---
 
+{% image_fw 1.78 "banner.png" "Vue Desing Patterns banner" %}
+
 What's up, #VueFriends? It's time for another Vue article. Today we will put into practice some vue design patterns dispersed on the Internet, but in this case, we pick some of the most useful to apply together with our beloved and great framework. Let's go!
 
 ## Table of contents
@@ -391,11 +393,11 @@ It works well, but what happens if we need to test this component all in one fil
 
 To take this pattern advantage, think of this file as three parts:
 
-*   **Presentational component**, this component only has the task of receiving data through props, event bus, injection, state management system, or another to present this data visually.
+*   **Presentational Component**, this component only has the task of receiving data through props, event bus, injection, state management system, or another to present this data visually.
     
 *   **Business Logic Component/file** has the task of fetching the data from somewhere (APIs commonly) to share with any component or file which needs it. It acts like an action administrator of all the actions registered on the presentational component.
     
-*   **Container component** handles the interaction of the presentational component and the business logic component. In our case, this component calls some method to get the To-Dos' information and will pass that data on to the presentational component as props.
+*   **Container Component** handles the interaction of the presentational component and the business logic component. In our case, this component calls some method to get the To-Dos' information and will pass that data on to the presentational component as props.
     
 {% img "0-composition-pattern.png" "Container pattern schema" "lazy" %}
 
@@ -995,4 +997,4 @@ Writing this article was a big challenge for me. I hope these examples and guide
 
 I don't want to say goodbye without first recommending the Lachlan Miller's [book](https://lachlan-miller.me/design-patterns-for-vuejs) called "Design Pattern for Vue.js. A Test-driven Approach to maintainable Applications" which inspired me to write this article and the magnificent [conference](https://youtu.be/RF1bbhRw9sg) of Jacob Schatz (you will find more advanced patterns with Vue).
 
-As we mentioned earlier, all the code is available [here](https://github.com/cr0wg4n/vue-design-patterns). Clone, execute, and enjoy it. Says goodbye, your friend [@cr0wg4n](https://twitter.com/cr0wg4n).
+As we mentioned earlier, all the code is available [here](https://github.com/cr0wg4n/vue-design-patterns). Clone, execute, and enjoy it. Says goodbye, your #VuenFriend [@cr0wg4n](https://twitter.com/cr0wg4n).
