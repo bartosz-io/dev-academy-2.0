@@ -4,7 +4,7 @@ Modifier and its value are optional.  More information you can find in main [REA
 Data attribute:
 - data-ph='{block}__{element}\_{modifier}_{value}'
 
-## All devices
+## All resolutions
 ### General
 - header__logo
 - nav__link_academies
@@ -52,6 +52,23 @@ Data attribute:
 - academy-blog-item__link_second
 - academy-blog-item__link_third
 - academy-blog__link
+
+### Contributors
+- contributor-box__link_courses
+- contributor-box__link_membership
+- contributors-load-more__button
+
+### Blog
+- post-idea__link
+
+### Dynamic inserts
+- tag__link_{tagName}
+- tag-post__link_{tagName}
+- tag-blog-post__link_{tagName}
+- page__link_{pageNumber}
+- page-next__link
+- page-prev__link
+
 # Desktop
 ### General
 - header__start-button_desktop

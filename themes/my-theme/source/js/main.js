@@ -25,6 +25,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     // cookieConsent();
+    addPostHogDynamicInserts();
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
@@ -531,5 +532,46 @@ function slider() {
                 item.classList.remove(visibleClass);
             }
         });
+    }
+}
+
+function addPostHogDynamicInserts() {
+    addTagListLinkInserts();
+    addPaginationLinkInserts();
+
+    function addTagListLinkInserts() {
+        var tagListLinkClass = '.tag-list .tag-list-link';
+        var mainTagList = document.querySelectorAll('.tag-list-all ' + tagListLinkClass);
+        var postTagList = document.querySelectorAll('.post ' + tagListLinkClass);
+        var blogPostTagList = document.querySelectorAll('.article-meta ' + tagListLinkClass);
+
+        addDataAttributes(mainTagList, 'tag');
+        addDataAttributes(postTagList, 'tag-post');
+        addDataAttributes(blogPostTagList, 'tag-blog-post');
+    }
+
+    function addPaginationLinkInserts() {
+        var paginationLinks = document.querySelectorAll('.pagination a.page-number');
+        var prevLink = document.querySelector('.pagination a.prev');
+        var nextLink = document.querySelector('.pagination a.next');
+        addDataAttributes(paginationLinks, 'page');
+        addDataAttribute(prevLink, 'page-prev__link');
+        addDataAttribute(nextLink, 'page-next__link');
+    }
+
+    function addDataAttributes(nodes, prefix) {
+        if (nodes) {
+            nodes.forEach(function(tagLink) {
+                var linkName = tagLink.textContent.trim().replace(/ /g,'-');
+                var phInsert = prefix + '__link_' + linkName;
+                tagLink.setAttribute('data-ph', phInsert);
+            });
+        }
+    }
+
+    function addDataAttribute(node, customName) {
+        if (node) {
+            node.setAttribute('data-ph', customName);
+        }
     }
 }
