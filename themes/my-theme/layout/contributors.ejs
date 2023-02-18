@@ -77,10 +77,10 @@
                     <article class="contributor <%- hiddenClass %>">
                         <header class="contributor-header">
                             <img src="<%- contributor.image %>" alt="<%- contributor.name %>" loading="lazy" width="130" height="130">
-                            <a href="/contributors/<%- contributor.slug %>" class="contributor-header-link">
+                            <a href="/contributors/<%- contributor.slug %>" data-ph="article-sidebar-contributor__link_fullname" class="contributor-header-link">
                                 <h3 class="contributor-name"><%- contributor.name %></h3>
                             </a>
-                            <%- contributor_academies(contributor.name) %>
+                            <%- contributor_academies(contributor.name, 'item') %>
                             <!-- Do not remove below contributor specs. They are hidden and needed for filtering -->
                             <div class="contributor-specs">
                                 <% contributor.specs.forEach(function(spec){ %><span class="contributor-spec contributor-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>

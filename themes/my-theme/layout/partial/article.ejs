@@ -9,8 +9,8 @@
                     <div class="article-contributor" itemprop="contributor" itemscope itemtype="https://schema.org/Person">
                         <img src="<%- url_for('/img/contributors/') %><%- post.avatar %>" class="article-avatar" itemprop="image" alt="<%- post.contributor %>">
                         <div class="article-contributor-info">
-                            <a href="<%- contributor_url(post.contributor) %>" class="article-contributor-name"><span itemprop="name"><%- post.contributor %></span></a>
-                            <%- contributor_academies(post.contributor) %>
+                            <a href="<%- contributor_url(post.contributor) %>" data-ph="article-header-contributor__link_fullname" class="article-contributor-name"><span itemprop="name"><%- post.contributor %></span></a>
+                            <%- contributor_academies(post.contributor, 'article-header') %>
                         </div>
                     </div>
                     <div class="article-meta">

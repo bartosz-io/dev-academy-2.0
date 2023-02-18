@@ -2,10 +2,10 @@
     <div class="article-sidebar-content">
         <img src="<%- url_for('/img/contributors/') %><%- post.avatar %>" class="article-sidebar-avatar" itemprop="image" alt="<%- post.contributor %>">
         <div class="article-sidebar-contributor-info">
-            <a href="<%- contributor_url(post.contributor) %>" class="article-sidebar-contributor-name"><span itemprop="name"><%- post.contributor %></span></a>
+            <a href="<%- contributor_url(post.contributor) %>" data-ph="article-sidebar-contributor__link_fullname" class="article-sidebar-contributor-name"><span itemprop="name"><%- post.contributor %></span></a>
             <span class="contributor-profession-badge"><%- contributor_level(post.contributor) %></span>
             <div class="contributor-academies">
-                <%- contributor_academies(post.contributor) %>
+                <%- contributor_academies(post.contributor, 'article-sidebar') %>
             </div>
         </div>
     </div>

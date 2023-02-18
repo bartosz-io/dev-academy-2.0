@@ -30,7 +30,12 @@ Data attribute:
 - footer-nav__link_privacy_terms
 - footer-nav__link_privacy_policy
 - footer-nav__link_privacy_cookies
-- banner-top__link (optional)
+
+Optional:
+
+- subscribe__button_ws-checklist
+- subscribe__button_short-mailing
+- banner-top__link
 
 ### Homepage
 - hero__button
@@ -57,9 +62,34 @@ Data attribute:
 - contributor-box__link_courses
 - contributor-box__link_membership
 - contributors-load-more__button
+- item-contributor-academies__link_wsa
+- item-contributor-academies__link_fta
+- item-contributor__link_fullname
+
+## Contributor
 
 ### Blog
 - post-idea__link
+
+### Blog post
+- article-header-contributor__link_fullname
+- article-header-contributor-academies__link_wsa
+- article-header-contributor-academies__link_fta
+- article-footer-contributor__link_fullname
+- article-footer-contributor__link_discover
+- article-footer-contributor-academies__link_wsa
+- article-footer-contributor-academies__link_fta
+- subscribe-for-more__link
+- show-comments__button
+- article-sidebar-contributor__link_fullname
+- article-sidebar-contributor-academies__link_wsa
+- article-sidebar-contributor-academies__link_fta
+
+Optional:
+
+- review-screen__link
+- banner-ad__link
+- custom-subscribe__link
 
 ### Dynamic inserts
 - tag__link_{tagName}
@@ -77,5 +107,3 @@ Data attribute:
 ### General
 - header__start-button_mobile
 - header-nav-toggle__button
-
-# !!MISSING CK ACTIONS!

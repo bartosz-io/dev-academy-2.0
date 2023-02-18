@@ -14,22 +14,6 @@
   }
 }
 
-.review-screen {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  background: $gradient;
-  margin-bottom: 3rem;
-  padding: 1rem;
-  color: white;
-  text-align: center;
-
-  .review-screen-img {
-    border: 1px solid $light-700;
-    margin: 0 0 1rem 0;
-  }
-}
-
 .related-post {
   display: flex;
   flex-grow: 1;
