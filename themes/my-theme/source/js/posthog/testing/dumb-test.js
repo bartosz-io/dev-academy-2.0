@@ -3,6 +3,7 @@ posthog.onFeatureFlags(function() {
 
     if (posthog.getFeatureFlag('cta') === 'test') {
         console.log('Overriding');
+        // window.DESKTOP_STICKY_HEADER = true; TODO for testing header A/B this will be removed in the future
         var navStartBtn = document.querySelector('.header-nav .header-nav-start .button');
 
         if (navStartBtn) {
