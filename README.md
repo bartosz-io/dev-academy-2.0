@@ -46,3 +46,18 @@ contributors:
     - bannerSubheader: string - Wyświetla kolejny nagłówek w banerze.
     - bannerUrl: string (url) - Adres url (hiperłącze), które jest przyczepione do linku.
     - bannerImage: string (url) - Adres url zdjęcia np. /img/my-image.png
+
+# Posthog
+### Konwencja
+Konwencja nazewnicza do nadawania atrybutów (identyfikatorów) dla posthoga do eventów oraz A/B testów. Block oraz element są wymagane. Modyfikator oraz wartość jest opcjonalna. Konwencja taka sama jak w BEMie z wyjątkiem wymaganego elementu. Nie stylujemy nigdy po tych atrybutach.
+- data-ph='{block}__{element}\_{modifier}_{value}'
+
+Czyli na przykład:
+- data-ph='header__logo'
+- data-ph='nav__link_courses'
+- data-ph='nav__link_academies_wsa'
+- data-ph='footer-nav__link_contact_linkedin'
+
+### Blokowanie przechwytywania danych
+- Dodanie klasy *ph-no-capture* zablokuje danych element.
+- Ustawienie *autocapture: false* w konfiguracji zablokuje całkowicie wszystkie przechwycenia.
