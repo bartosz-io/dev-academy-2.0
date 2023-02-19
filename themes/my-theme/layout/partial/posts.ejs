@@ -6,7 +6,7 @@
                     <figure>
                         <picture>
                             <source srcset="<%- url_for(post.path) %>large_banner.webp" type="image/webp">
-                            <img class="post-image" src="<%- url_for(post.path) %>large_banner.png" loading="lazy" alt="<%- url_for(post.title) %>">
+                            <img class="post-image" src="<%- url_for(post.path) %>large_banner.png" loading="lazy" alt="<%- post.title %>">
                         </picture>
                     </figure>
                     <header>
