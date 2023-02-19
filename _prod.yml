@@ -1,0 +1,3 @@
+# Production environment variables
+posthog: true
+generate_webp_images: true
