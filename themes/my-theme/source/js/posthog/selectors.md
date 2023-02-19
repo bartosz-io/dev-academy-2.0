@@ -66,7 +66,13 @@ Optional:
 - item-contributor-academies__link_fta
 - item-contributor__link_fullname
 
-## Contributor
+### Contributor
+- contributor-social__link_website
+- contributor-social__link_github
+- contributor-social__link_twitter
+- contributor-social__link_linkedin
+- single-contributor-academies__link_wsa
+- single-contributor-academies__link_fta
 
 ### Blog
 - post-idea__link
@@ -95,9 +101,12 @@ Optional:
 - tag__link_{tagName}
 - tag-post__link_{tagName}
 - tag-blog-post__link_{tagName}
+- tag-contributor-post__link_{tagName}
 - page__link_{pageNumber}
 - page-next__link
 - page-prev__link
+- post__link_{blogPostName}
+- contributor-post__link_{blogPostName}
 
 # Desktop
 ### General

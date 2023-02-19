@@ -536,18 +536,22 @@ function slider() {
 }
 
 function addPostHogDynamicInserts() {
+    var DATA_PH_ATTR = 'data-ph';
+
     addTagListLinkInserts();
     addPaginationLinkInserts();
 
     function addTagListLinkInserts() {
         var tagListLinkClass = '.tag-list .tag-list-link';
         var mainTagList = document.querySelectorAll('.tag-list-all ' + tagListLinkClass);
-        var postTagList = document.querySelectorAll('.post ' + tagListLinkClass);
+        var postTagList = document.querySelectorAll('.posts-wrapper .post ' + tagListLinkClass);
         var blogPostTagList = document.querySelectorAll('.article-meta ' + tagListLinkClass);
+        var contributorPostsTagList = document.querySelectorAll('.contributor-posts ' + tagListLinkClass);
 
         addDataAttributes(mainTagList, 'tag');
         addDataAttributes(postTagList, 'tag-post');
         addDataAttributes(blogPostTagList, 'tag-blog-post');
+        addDataAttributes(contributorPostsTagList, 'tag-contributor-post');
     }
 
     function addPaginationLinkInserts() {
@@ -564,14 +568,14 @@ function addPostHogDynamicInserts() {
             nodes.forEach(function(tagLink) {
                 var linkName = tagLink.textContent.trim().replace(/ /g,'-');
                 var phInsert = prefix + '__link_' + linkName;
-                tagLink.setAttribute('data-ph', phInsert);
+                tagLink.setAttribute(DATA_PH_ATTR, phInsert);
             });
         }
     }
 
     function addDataAttribute(node, customName) {
         if (node) {
-            node.setAttribute('data-ph', customName);
+            node.setAttribute(DATA_PH_ATTR, customName);
         }
     }
 }
