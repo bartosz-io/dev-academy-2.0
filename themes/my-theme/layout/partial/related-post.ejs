@@ -5,7 +5,7 @@
                 <figure>
                     <picture>
                         <source srcset="<%- url_for(post.path) %>small_banner.webp" type="image/webp">
-                        <img class="related-post-image" src="<%- url_for(post.path) %>small_banner.png" alt="<%- url_for(post.title) %>">
+                        <img class="related-post-image" src="<%- url_for(post.path) %>small_banner.png" alt="<%- post.title %>">
                     </picture>
                 </figure>
                 <div class="related-post-header">
