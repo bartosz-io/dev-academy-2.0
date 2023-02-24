@@ -515,9 +515,7 @@ Finally, the Container Component has the principal mission of calling the data f
     import TodoList from "./VList.vue";
     
     export default defineComponent({
-      components: {
-        TodoList,
-      },
+      components: { TodoList },
       setup() {
         const todoStore = useStore();
         todoStore.dispatch("todo/getList");
@@ -676,6 +674,7 @@ Now, the `OptionContainer.vue` is the Provider. It contains the data to pass t
     } from "./OptionSymbols";
     
     export default defineComponent({
+      components: { OptionList },
       setup() {
         const preferences = reactive<VisualizationPreferences>({
           borders: "square",
@@ -701,12 +700,8 @@ Now, the `OptionContainer.vue` is the Provider. It contains the data to pass t
           borders: computed(() => preferences.borders),
         });
     
-        return {
-          data,
-          preferences,
-        };
+        return { data, preferences };
       },
-      components: { OptionList },
     });
     </script>
 ```
@@ -756,12 +751,7 @@ Let's take advantage of the previous example explained in the Adapter Pattern. W
         update();
       };
     
-      return {
-        cookies,
-        get,
-        set,
-        remove,
-      };
+      return { cookies, get, set, remove };
     }
 ```
 
@@ -809,17 +799,7 @@ Now, we can use it everywhere.
         const value = ref("");
         const keys = computed(() => Object.keys(cookies.value));
     
-        return {
-          key,
-          value,
-          keys,
-          selectedKey,
-          // useCookies
-          get,
-          set,
-          remove,
-          cookies,
-        };
+        return { key, value, keys, selectedKey, get, set, remove, cookies };
       },
     });
     </script>
@@ -927,9 +907,7 @@ The unique difference is that Pinia doesn't need to define mutations. We need a 
     import TodoList from "./VList.vue";
     
     export default defineComponent({
-      components: {
-        TodoList,
-      },
+      components: { TodoList },
       setup() {
         const todoStore = useStore();
         todoStore.dispatch("todo/getList");
