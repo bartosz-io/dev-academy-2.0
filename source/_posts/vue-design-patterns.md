@@ -316,7 +316,7 @@ In this case, we are using the [js-cookie](https://github.com/js-cookie/js-cook
 
 If one day we will need to replace the 3rd party library or add more features, it will be fast, and many parts of your code won't be affected by this change, as we can see in the following schematic image.
 
-{% img "00-adapter-pattern.jpg" "Adapter pattern schema" "lazy" %}
+{% img "adapter-pattern.jpg" "Adapter pattern schema" "lazy" %}
 
 Let's think about another situation: You have an extensive web application with dozens of elements from some UI material library/framework (like Vuetify). Tomorrow, the business requirements change to adopt Quasar because of the long-term support. You have picked some elements from Vuetify, and now it's time to change it 😨. But this scenario happens and could be acceptable, but as time goes on, technologies improve, and again a change is needed. What tedious work. The solution? Create your adapter input😎.
 
@@ -401,7 +401,7 @@ To take this pattern advantage, think of this file as three parts:
     
 *   **Container Component** handles the interaction of the presentational component and the business logic component. In our case, this component calls some method to get the To-Dos' information and will pass that data on to the presentational component as props.
     
-{% img "0-composition-pattern.png" "Container pattern schema" "lazy" %}
+{% img "composition-pattern.jpg" "Container pattern schema" "lazy" %}
 
 So, it's time to implement the code, first the **Business Logic Component**:
 
@@ -536,21 +536,21 @@ Finally, the Container Component has the principal mission of calling the data f
 ## Provide/Inject Pattern
 There is another interesting design pattern. When we start with Vue, most of us make the mistake of passing information through props between multiple components, as the image shows.
 
-{% img "1-props-drilling.png" "This image was adapted from vuejs.org official documentation" "lazy" %}
+{% img "props-drilling.png" "This image was adapted from vuejs.org official documentation" "lazy" %}
 
 Ideally, the `OptionList` component should only render `OptionItem`, but with this approach, it contains `visualizationPreferences` as one of its props. It can still work without much trouble, but what if you must go through many components to get to the **component** that will use that property? Many of those components don't need a new prop, only to fit with one **component** at the bottom of the hierarchy (a child component).
 
-{% img "2-props-drilling-complete.png" "props drilling, anti-pattern" "lazy" %}
+{% img "props-drilling-complete.png" "props drilling, anti-pattern" "lazy" %}
 
 That problem is known as **props drilling** (an anti-pattern). Fortunately, Vue has the solution build-in with its `provide()` and `inject()` features, better known as dependency injection.
 
-{% img "3-provide-inject.png" "Using the provide/inject feature from Vue" "lazy" %}
+{% img "provide-inject.png" "Using the provide/inject feature from Vue" "lazy" %}
 
 As we can see in the image above, **Provide** gets the data and is responsible for passing it when it is needed to be **Injected** in all the components down the hierarchy (in this case **OptionItem**).
 
 The following case shows a list of cards (with a title and image inside). We need to change the card appearance using `provide()` and `inject()`. Those cards have four styles: rounded, squared borders, and dark and light themes. This pattern is ideal for implementing more cards along the same behavior.
 
-{% img "4-visualization-preferences.png" "Provide/Inject design pattern example, vue patterns" "lazy" %}
+{% img "visualization-preferences.png" "Provide/Inject design pattern example, vue patterns" "lazy" %}
 
 So, to implement this feature, we need to create the image structure in the code, beginning with `OptionItem.vue`.
 
@@ -610,11 +610,11 @@ So, to implement this feature, we need to create the image structure in the code
 
 `OptionItem.vue` pretends to be a card with a title and a random image inside.
 
-{% img "5-card.png" "OptionItem.vue Component" "lazy" %}
+{% img "card.png" "OptionItem.vue Component" "lazy" %}
 
 The `setup()` uses the `inject()` method to retrieve (inject) the data from the `provider()` method, to be used in `OptionContainer.vue` (two components above in the hierarchy). 
 
-To inject that data inside the component, we need a key. In this case, `VISUALIZATION\_PREFERENCES` is an `InjectionKey`. Its use makes sense with Typescript. It allows you to define a key name and structure for a specific data structure. The `VISUALIZATION\_PREFERENCES` is in the `OptionSymbols.ts` file for re-usability purposes.
+To inject that data inside the component, we need a key. In this case, `VISUALIZATION_PREFERENCES` is an `InjectionKey`. Its use makes sense with Typescript. It allows you to define a key name and structure for a specific data structure. The `VISUALIZATION_PREFERENCES` is in the `OptionSymbols.ts` file for re-usability purposes.
 
 ```ts
     // File: OptionSymbols.ts
@@ -708,7 +708,7 @@ Now, the `OptionContainer.vue` is the Provider. It contains the data to pass t
     </script>
 ```
 
-The code is large (this is the script part only). The `provide()` method receives the same `VISUALIZATION\_PREFERENCES` seen previously as the first parameter, and the data to be injected as a second parameter (we are using `computed()` to turn reactive that data).
+The code is large (this is the script part only). The `provide()` method receives the same `VISUALIZATION_PREFERENCES` seen previously as the first parameter, and the data to be injected as a second parameter (we are using `computed()` to turn reactive that data).
 
 Many people use this pattern without the reactive feature, but it is great to have.
 
@@ -816,7 +816,7 @@ Now, we can use it everywhere.
 
 Many people use this pattern without the reactive feature, but it is great to have.
 
-{% img "6-composable-example.png" "cookie editor with Vue, ui components (Composables pattern)" "lazy" %}
+{% img "composable-example.png" "cookie editor with Vue, ui components (Composables pattern)" "lazy" %}
 
 This cookie composable is cool, but if you don't want to reinvent the wheel, the Vue ecosystem has many composition functions on the hand of [VueUse](https://vueuse.org/) and [vue-composable](https://pikax.me/vue-composable) libraries.
 
