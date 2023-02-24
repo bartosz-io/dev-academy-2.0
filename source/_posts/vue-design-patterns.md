@@ -818,6 +818,8 @@ Many people use this pattern without the reactive feature, but it is great to ha
 
 {% img "6-composable-example.png" "cookie editor with Vue, ui components (Composables pattern)" "lazy" %}
 
+This cookie composable is cool, but if you don't want to reinvent the wheel, the Vue ecosystem has many composition functions on the hand of [VueUse](https://vueuse.org/) and [vue-composable](https://pikax.me/vue-composable) libraries.
+
 > Code:  [vue design pattern repository](https://github.com/cr0wg4n/vue-design-patterns), execute, and go to **/composable-pattern** route 😎.
 
 
