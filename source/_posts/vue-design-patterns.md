@@ -314,7 +314,9 @@ In this case, we are using the [js-cookie](https://github.com/js-cookie/js-cook
     }    
 ```
 
-If one day we will need to replace the 3rd party library or add more features, it will be fast, and many parts of your code won't be affected by this change.
+If one day we will need to replace the 3rd party library or add more features, it will be fast, and many parts of your code won't be affected by this change, as we can see in the following schematic image.
+
+{% img "00-adapter-pattern.jpg" "Adapter pattern schema" "lazy" %}
 
 Let's think about another situation: You have an extensive web application with dozens of elements from some UI material library/framework (like Vuetify). Tomorrow, the business requirements change to adopt Quasar because of the long-term support. You have picked some elements from Vuetify, and now it's time to change it 😨. But this scenario happens and could be acceptable, but as time goes on, technologies improve, and again a change is needed. What tedious work. The solution? Create your adapter input😎.
 
