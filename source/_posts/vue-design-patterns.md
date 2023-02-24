@@ -80,7 +80,13 @@ First, we need to create the `FormBuilder` object as follows.
     }
 ```
 
-We need some structure to put all the fields in order. An array is enough (we are using Typescript, this approach adds more code). The method `addField`, as its name says, only has the task of putting an object Field to the fields array. The magic happens in the `build` method. It defines a new Vue instance with all our fields well structured. So, what is the `FormFactory` task? It's responsible for structuring and creating the form (many kinds of forms). Here is the code:
+We need some structure to put all the fields in order. An array is enough (we are using Typescript, this approach adds more code). The method `addField`, as its name says, only has the task of putting an object Field to the fields array. The magic happens in the `build` method. It defines a new Vue instance with all our fields well structured. 
+
+Up to here, what we want is similar to the following schematic image. 
+
+{% img "builder-pattern.jpg" "Builder pattern schema" "lazy" %}
+
+Let's continue, What is the `FormFactory` task? It's responsible for structuring the form (many kinds of forms). Here is the code:
 
 ```ts
     <template>
