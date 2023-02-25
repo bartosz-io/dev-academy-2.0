@@ -15,6 +15,8 @@ relatedPost: angular-xss
 ## Table of Contents
 <!-- toc -->
 
+**UPDATE:** This article was updated Feb. 25, 2023 to include information on CSURF Package Vulnerability. For those who have implimented a CSRF prevention method using CSURF, a popular Node.js CSRF protection middleware, please read on to understand this vulnerability and what to do to avoid it. 
+
 ## A little Introduction
 
 For those of you who have been working with the Angular framework throughout the last few years, you DEFINITELY know how much it has changed since — dare I say it — the old "AngularJS" days. That was back when the term "framework" was barely a term when it came to the client-side of the web.
@@ -159,7 +161,35 @@ Instead of using the CSURF npm package, you should use the following implimentat
 
 There is a big difference between the proper implementations of CSRF protection on stateful servers, where you have access to memory to store the state, and stateless services where you might use container instances or a serverless architecture. 
 
-For implementation of CSRF Protection on a stateful system, you will need to use the Synchronizer Token Pattern. The CSRF Token is generated server-side for this pattern along with a session id. **For the Synchronised Token Pattern, CSRF tokens should not be transmitted using cookies.** 
+To prevent CSRF attacks, two popular methods are the Synchronized Token Pattern (STP) and the Double Submit Cookie Method (DSCM). Here's a brief comparison of the two approaches:
+
+1. Synchronized Token Pattern (STP):
+The STP is typically used on stateful servers, where the server maintains some session state for each user. The server generates a unique, unpredictable token for each session and embeds it in every HTML form that requires protection against CSRF. When a user submits a form, the token is included in the form data, and the server validates it against the token stored in the session. If the tokens match, the request is considered valid; otherwise, it is rejected.
+
+   *Advantages of STP:*
+   - Provides strong protection against CSRF attacks.
+   - Token generation and validation is easy to implement.
+
+   *Disadvantages of STP:*
+   - Requires maintaining session state on the server, which can be difficult to scale in large, distributed systems.
+   - Can be vulnerable to session fixation attacks if the token is not properly regenerated after a user logs in.
+
+2. Double Submit Cookie Method (DSCM):
+The DSCM is typically used on stateless servers, where there is no session state maintained. In this approach, the server sets a secure, http-only cookie with a random value on the user's browser when they log in. Then, the server includes the same value in a hidden form field on every protected form. When the user submits the form, the server validates that the value of the cookie matches the value of the form field.
+
+   *Advantages of DSCM:*
+   - Doesn't require maintaining session state on the server, making it easier to scale.
+   - Can be implemented on any web server or programming language.
+
+   *Disadvantages of DSCM:*
+   - Slightly weaker protection than STP since an attacker could potentially steal the cookie value using a different attack, such as XSS (Cross-Site Scripting), however this is remedied by implementing a rotating secret for each request. 
+   - Cookie values can be intercepted and modified in transit, potentially leading to CSRF attacks. 
+
+Overall, both STP and DSCM are effective methods for preventing CSRF attacks, but the choice between the two largely depends on the architecture of your web application.
+
+### Stateful Implementation of CSRF Protection
+
+For implementation of CSRF Protection on a stateful system, you will need to use the Synchronizer Token Pattern. The CSRF Token is generated server-side for this pattern along with a session id. **For the Synchronized Token Pattern, CSRF tokens should not be transmitted using cookies.** 
 
 When the client receives the CSRF token from the server, there are two options to use for the server to validate that the request is legitimate. 
 1. Client passes the CSRF token as a hidden field through a form post request to the API endpoint. 
@@ -170,8 +200,6 @@ Inserting the CSRF token in the custom HTTP request header via JavaScript is con
 One resource you should have at your finger-tips is the OWASP Cheat Sheet covering in detail both options. 
 (OWASP Cross-site Request Forgery Prevention Cheat Sheet)[https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html]
 
-### Stateful Implementation of CSRF Protection
-
 The following is an example of the implementation of these methods in NodeJS. The proper way to implement this protection is to use Synchronised Token Pattern. The user makes a GET request to the '/csrf-token' API endpoint and then when the user fills out the form, using angular form control and form builder, submits the data to the server via a POST request at the '/process' API endpoint.
 
 You can view the full implementation on Github:
@@ -179,7 +207,7 @@ You can view the full implementation on Github:
 
 For the server-side code:
 ``` typescript
-/// Use Express
+// Use Express
 var express = require("express");
 var session = require("express-session")
 // Use body-parser
@@ -270,7 +298,7 @@ app.all('*', jsonParser, function(req, res, next){
 app.get("/csrf-token", (req, res) => {
     // send the token to the client
     var csrfToken = getTokenFromState(req)
-    return res.send({csrfToken: csrfToken});
+    return res.json({csrfToken: csrfToken});
 });
 
 // Add the csrfSynchronisedProtection
@@ -303,6 +331,8 @@ For the server-side code:
 ``` typescript
 //Stateless Server Configuration
 
+//Stateless Server Configuration
+
 // Use Express
 var express = require("express");
 var session = require("express-session")
@@ -332,10 +362,12 @@ var jsonParser = bodyParser.json()
 // In production, ensure you're using cors and helmet and have proper configuration.
 const { invalidCsrfTokenError, generateToken, doubleCsrfProtection } =
   doubleCsrf({
-    getSecret: (req) => req.secret,
+    getSecret: (req) => {
+      req.secret; // A function that returns the secret for the request
+    },
     secret: CSRF_SECRET,
     cookieName: CSRF_COOKIE_NAME,
-    cookieOptions: { sameSite: true, secure: true, signed: true }, // not ideal for production, development only
+    cookieOptions: { sameSite: true, secure: true, signed: true},
     size: 128,
     ignoredMethods: ["GET", "HEAD", "OPTIONS"],
     getTokenFromRequest: (req) => req.headers["app-csrf-token"], // A function that returns the token from the request
