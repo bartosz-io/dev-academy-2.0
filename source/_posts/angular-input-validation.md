@@ -114,7 +114,7 @@ ng new new_project
 ng serve
 ```
     
-8. Now check to see whether it's working by opening your browser to [http://localhost:4200/](http://localhost:4200/)
+8. Now check to see whether it's working by opening your browser to `http://localhost:4200/`.
     
 {% img "localhost 4200.png" "localhost 4200" "lazy" %}
     
