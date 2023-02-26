@@ -90,9 +90,22 @@ Regex simply refers to 'Regular expressions'. These are common patterns in the t
 
 You can learn more about regular expressions from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
-<!--Similar to when we made sure the user inputs the right type of values, we want to be able to check if the email input as a whole is correct and if the passwords and user names adhere to particular rules-->
+Let's explore the regex pattern for an email some more:
 
-<!--Image of regex diagram-->
+```txt
+    '/' = start and end of a regex pattern
+    '^' = only match if this ('[\w.%+-]+') belongs to the start of a string
+    '[\w.%+-]' = matches any alphanumeric value or '%', '+' and '-'
+    ' @' = matches '@'
+    '[\w-]+\.' = matches any alphanumeric value or '-' followed by '.'. 
+                 Since a period is a reserved character in regex, 
+                 '\' is used to escape it and indicate it as literal
+    '{2,}' = indicates these ([\w]) characters needs to be present at least twice
+    '$' = this indicates that no characters may follow in order for the string to be deemed a match
+    'i' = this after the end '/' indicates the string is case sensitive; either all values need to be uppercase or lowercase
+```
+
+Keep in mind that matching emails in all specific use cases are not this simple and can in fact be much more complex. [This](http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html) is a complete version of the email regex. The example above will cover most use cases, but I urge you to study the syntax to ensure it suits your specific use case.
 
 ## Error handling
 
