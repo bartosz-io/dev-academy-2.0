@@ -47,7 +47,7 @@
                     <h3>Become an expert</h3>
                     <p>Join one of the courses or programs, improve your skills, look for new solutions and <b>write articles with our editorial team</b> to go beyond by teaching others.</p>
                     <div class="contributor-box-actions">
-                        <a href="https://courses.dev-academy.com/" class="button button-primary">See available courses</a>
+                        <a href="https://courses.dev-academy.com/" class="button button-primary" data-ph="contributor-box__link_courses">See available courses</a>
                     </div>
                 </div>
                 <div class="contributor-box">
@@ -55,7 +55,7 @@
                     <small>special offer for students</small>
                     <p>Are you a <b>student and can't afford our programs</b>? We are looking for ambitious developers that prefer to contribute by writing in exchange for Academy memberships!</p>
                     <div class="contributor-box-actions">
-                        <a onclick="alert('Coming soon!');" class="button button-green">Apply via form</a>
+                        <a onclick="alert('Coming soon!');" class="button button-green" data-ph="contributor-box__link_membership">Apply via form</a>
                     </div>
                 </div>
             </div>
@@ -77,10 +77,10 @@
                     <article class="contributor <%- hiddenClass %>">
                         <header class="contributor-header">
                             <img src="<%- contributor.image %>" alt="<%- contributor.name %>" loading="lazy" width="130" height="130">
-                            <a href="/contributors/<%- contributor.slug %>" class="contributor-header-link">
+                            <a href="/contributors/<%- contributor.slug %>" data-ph="item-contributor__link_fullname" class="contributor-header-link">
                                 <h3 class="contributor-name"><%- contributor.name %></h3>
                             </a>
-                            <%- contributor_academies(contributor.name) %>
+                            <%- contributor_academies(contributor.name, 'item') %>
                             <!-- Do not remove below contributor specs. They are hidden and needed for filtering -->
                             <div class="contributor-specs">
                                 <% contributor.specs.forEach(function(spec){ %><span class="contributor-spec contributor-spec-<%- spec %>" title="<%- spec %> expert"></span><% }); %>
@@ -97,7 +97,7 @@
                 <% }) %>
             </div>
             <div class="contributor-load-more">
-                <button class="button button-primary" id="contributor-load-more">Load more</button>
+                <button class="button button-primary" id="contributor-load-more"  data-ph="contributors-load-more__button">Load more</button>
             </div>
         </div>
     </div>
@@ -106,7 +106,7 @@
             <div class="contributors-ready">
                 <div class="contributors-ready-left">
                     <h4 class="contributors-ready-header border border-large border-light">Ready to join us?</h4>
-                    <p>Dev Acaedmy been operating in the market since 2020. During this time we have built a global community with the goal of continuous improvement. Join Dev Academy as a contributor!</p>
+                    <p>Dev Academy been operating in the market since 2020. During this time we have built a global community with the goal of continuous improvement. Join Dev Academy as a contributor!</p>
                 </div>
                 <div class="contributors-ready-right">
                     <div class="contributors-ready-image">

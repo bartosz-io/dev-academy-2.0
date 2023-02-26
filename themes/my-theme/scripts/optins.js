@@ -1,5 +1,7 @@
-function formKit(uid, show) {
+function formKit(uid, show, modifier) {
     var image = show ? `<img class="optin-img" src="/img/optins/web-security-checklist.jpg" alt="Web Security Checlist" loading="lazy">` : '';
+    var postHogInsert = 'subscribe__button_' + modifier;
+
     return `<div class="optin">
                 <div class="optin-wrapper">
                    ${image}
@@ -26,7 +28,7 @@ function formKit(uid, show) {
                                         <div class="formkit-field">
                                             <input class="formkit-input" name="email_address" aria-label="Your email address" placeholder="Your e-mail address" required="" type="email">
                                         </div>
-                                        <button data-element="submit" class="formkit-submit formkit-submit button button-primary button-large button-block">
+                                        <button data-element="submit" data-ph="${postHogInsert}" class="formkit-submit formkit-submit button button-primary button-large button-block">
                                             <span>Subscribe 💪🏻</span>
                                         </button>
                                     </div>
@@ -41,7 +43,7 @@ function formKit(uid, show) {
 
 
 hexo.extend.tag.register('ws_checklist', function () {
-    return `<div class="ws-optin">${formKit('test-id-1234', true)}</div>`;
+    return `<div class="ws-optin">${formKit('test-id-1234', true, 'ws-checklist')}</div>`;
 });
 
 hexo.extend.tag.register('short_mailing', function () {
@@ -57,7 +59,7 @@ hexo.extend.tag.register('short_mailing', function () {
                             <li>Every monday you will get a knowledge pill to read with your coffee</li>
                             <li>Learn about the most important Web security principle that dictates how browsers run the websites</li>
                         </ul>
-                        <div class="short-mail-optin">${formKit('test2-id-1234', false)}</div>
+                        <div class="short-mail-optin">${formKit('test2-id-1234', false, 'short-mailing')}</div>
                     </div>
                     <img class="short-mail-img" src="/img/optins/newsletter-join.png" alt="Dev Academy Newsletter" loading="lazy">
                 </div>

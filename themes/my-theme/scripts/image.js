@@ -64,7 +64,7 @@ hexo.extend.tag.register('banner_ad', function (args) {
   var assetPath = args[0];
   var targetUrl = args[1];
 
-  return `<a class="course-image" href="${targetUrl}" rel="nofollow" aria-label="Dev Academy courses">
+  return `<a class="course-image" href="${targetUrl}" rel="nofollow" data-ph="banner__link" aria-label="Dev Academy courses">
     <img src="/img/${assetPath}" alt="" loading="lazy">
   </a>`;
 });
@@ -78,7 +78,7 @@ hexo.extend.tag.register('review_screen', function (args) {
       <img class="review-screen-img" src="/img/${assetPath}" alt="" loading="lazy">
       <div class="review-screen-content">
         <div>Discover why thousands of developers love to learn at <b>Web Security Academy</b> ♥️</div>
-        <a class="button button-primary" href="${targetUrl}">Learn more</a>
+        <a class="button button-primary" href="${targetUrl}" data-ph="review-screen__link">Learn more</a>
       </div>
     </div>
   </div>`;

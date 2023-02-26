@@ -2,7 +2,7 @@
     <% posts.each(function(post, i){ %>
         <article class="post">
             <div class="post-content">
-                <a href="<%- post.path %>">
+                <a href="<%- post.path %>" <%- post_ph_attr(post.path, ph_prefix) %>>
                     <figure>
                         <picture>
                             <source srcset="<%- url_for(post.path) %>large_banner.webp" type="image/webp">
