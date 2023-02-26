@@ -5,7 +5,10 @@ const minimatch = require('minimatch');
 const streamToArray = require('stream-to-array');
 
 hexo.extend.filter.register('after_generate', function () {
-  // return true; // uncomment this line during development
+  if (!this.config.generate_webp_images) {
+    return;
+  }
+
   var route = this.route;
 
   var routes = route.list().filter(function(path) {
