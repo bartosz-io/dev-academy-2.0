@@ -1,10 +1,10 @@
 ---
-title: React Input Validation
+title: React Input Validation ✅ (easy to use)
 contributor: Gert J. Oberholzer
 avatar: kobus-oberholzer.png
-description: How to setup input validation that is both easy to use and secure
+description: How to setup a robust input validation in React that is both easy to use and extremely secure
 date: 2023-02-13
-tags: [react, validation]
+tags: [react, security]
 id: react-input-validation
 relatedPost: react-security-best-practices
 ---
