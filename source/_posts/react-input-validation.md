@@ -6,7 +6,7 @@ description: How to setup input validation that is both easy to use and secure
 date: 2023-02-13
 tags: [react, validation]
 id: react-input-validation
-relatedPost: react-Security-best-practices
+relatedPost: react-security-best-practices
 ---
 
 {% img "banner.png" "React Input Validation" "lazy" %}
