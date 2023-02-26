@@ -94,7 +94,7 @@ Optional:
 Optional:
 
 - review-screen__link
-- banner-ad__link
+- banner__link
 - custom-subscribe__link
 
 ### Dynamic inserts
