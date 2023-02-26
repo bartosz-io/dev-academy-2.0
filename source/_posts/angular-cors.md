@@ -86,7 +86,7 @@ Let us call the HTTP method `getVillages` in our API service. The method uses th
 
 > To know more on the RxJs operators for HTTP requests view the article by Dev Academy at [https://dev-academy.com/rxjs-switchmap-concatmap-mergemap-exhaustmap/](https://dev-academy.com/rxjs-switchmap-concatmap-mergemap-exhaustmap/)
 
-However, when you run `ng serve --open` and view the frontend application's home page ([http://localhost:4200](http://localhost:4200)), the request is unable to fetch the list of the villages. On the Dev debug console you can see the Cross-Origin Request Blocked (CORB) error which blocked the request.
+However, when you run `ng serve --open` and view the frontend application's home page on `http://localhost:4200`, the request is unable to fetch the list of the villages. On the Dev debug console you can see the Cross-Origin Request Blocked (CORB) error which blocked the request.
 
 {% img "ninwiki-cors.png" "NinWiki CORS" "lazy" %}
 
