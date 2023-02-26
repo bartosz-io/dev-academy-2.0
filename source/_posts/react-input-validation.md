@@ -9,7 +9,7 @@ id: react-input-validation
 relatedPost: react-security-best-practices
 ---
 
-{% img "banner.png" "React Input Validation" "lazy" %}
+{% image_fw 1.78 banner.png "React Input Validation" %}
 
 Input validation is a critical component of any web application. It helps ensure that the data entered by users is accurate, complete, and meets the requirements of the application. Without proper input validation, applications can be vulnerable to security threats such as SQL injection and [cross-site scripting (XSS)](https://dev-academy.com/react-xss/) attacks. Input validation also improves the user experience by catching errors early on in the data entry process and providing clear, helpful error messages. This helps users understand what information is required and ensures that they provide accurate data, reducing the need for manual intervention and improving the overall efficiency of the application. In this article we will be focusing mainly on client side input validations and what a developer can do to create a safe and easy-to-use environment for their users.
 
