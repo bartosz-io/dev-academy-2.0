@@ -6,12 +6,19 @@
                     <figure>
                         <picture>
                             <source srcset="<%- url_for(post.path) %>large_banner.webp" type="image/webp">
-                            <img class="post-image" src="<%- url_for(post.path) %>large_banner.png" loading="lazy" alt="<%- url_for(post.title) %>">
+                            <img class="post-image" src="<%- url_for(post.path) %>large_banner.png" loading="lazy" alt="<%- post.title %>">
                         </picture>
                     </figure>
                     <header>
                         <h2 class="post-title"><%- post.title %></h2>
-                        <time class="post-time" datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'D MMMM YYYY') %></time>
+                        <div class="post-time">
+                            <% if (post.dateModified) {%>
+                                <span>Updated</span>
+                                <time datetime="<%= date_xml(post.dateModified) %>"><%= date(post.dateModified, 'D MMMM YYYY') %></time>
+                            <% } else { %>
+                                <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'D MMMM YYYY') %></time>
+                            <% } %>
+                        </div>
                     </header>
                 </a>
                 <footer>

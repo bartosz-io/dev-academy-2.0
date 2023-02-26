@@ -15,15 +15,12 @@
 }
 
 .related-post {
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
   position: relative;
-  padding: 2rem 1.5rem;
   border-radius: .8rem;
   background: $gradient;
   color: $light-150;
   box-shadow: 0 .1rem .4rem $dark-500;
+  width: 100%;
 
   figure {
     display: none;
@@ -32,6 +29,13 @@
   &:hover {
     color: $light-150;
   }
+}
+
+.related-post-inner {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  padding: 2rem 1.5rem;
 }
 
 .related-post-meta {
@@ -55,6 +59,7 @@
   font-weight: 700;
   line-height: 2.4rem;
   margin: 0;
+  color: $light-150;
 }
 
 .related-post-close {

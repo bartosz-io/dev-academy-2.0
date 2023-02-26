@@ -1,3 +1,14 @@
+/**
+ * Global variables
+ * */
+
+window.DESKTOP_STICKY_HEADER = false;
+
+
+/**
+ * Scripts initialization
+ * */
+
 window.addEventListener('DOMContentLoaded', function() {
     if (isTablet()) {
         stickyNavigation();
@@ -166,6 +177,10 @@ function stickyNavigation() {
     var headerStickyOutClass = 'header-sticky-out';
 
     window.addEventListener('scroll', function(event) {
+        if (window.DESKTOP_STICKY_HEADER) {
+            return;
+        }
+
         if (lastScrollY < window.scrollY) {
             if (window.scrollY > 500) {
                 document.body.classList.remove(headerStickyClass);
