@@ -15,7 +15,7 @@ relatedPost: angular-xss
 ## Table of Contents
 <!-- toc -->
 
-**UPDATE:** This article was updated Feb. 25, 2023 to include information on CSURF Package Vulnerability. For those who have implimented a CSRF prevention method using CSURF, a popular Node.js CSRF protection middleware, please read on to understand this vulnerability and what to do to avoid it. 
+**UPDATE:** This article was updated to include information on CSURF Package Vulnerability. For those who have implemented a CSRF prevention method using CSURF, a popular Node.js CSRF protection middleware, please read on to understand this vulnerability and what to do to avoid it. 
 
 ## A little Introduction
 
@@ -66,7 +66,7 @@ To enable Angular CSRF protection in an application three things need to happen:
 3) All browsers implement the _same origin policy,_ so that only code from the website on which cookies are set can read the cookie named xsrf token.
 
 
-{% img "CSRF-token-cookie-example.png" "CSRF protection implimentation" "lazy" %}
+{% img "CSRF-token-cookie-example.png" "CSRF protection implementation" "lazy" %}
 
 
 The entire process of sending HTML forms over HTTP requests (for example; sending a POST request to the application server) has always been insecure; this is nothing new. This is why we have CSRF (Cross-Site Request Forgery) protection. And it's really easy to implement, too!
@@ -153,9 +153,9 @@ Finally, the last security flag that should be set in the cookie is a maxAge. Th
 
 ##### CSURF Package Vulnerability
 
-For those who have implimented a CSRF prevention method using CSURF, a popular Node.js CSRF protection middleware, there has been a rediscovered vulnerability. The `cookie: true` flag set is the trouble, and in short, an attacker can use cookie tossing (setting a cookie from a subdomain) to use a valid (and signed) pair of cookies (_csrf + token) to bypass the anti-csrf mechanism. This vulnerability is not present when `cookie: false` is set; however in abundance of caution the package author has depricated this module. 
+For those who have implemented a CSRF prevention method using CSURF, a popular Node.js CSRF protection middleware, there has been a rediscovered vulnerability. The `cookie: true` flag set is the trouble, and in short, an attacker can use cookie tossing (setting a cookie from a subdomain) to use a valid (and signed) pair of cookies (_csrf + token) to bypass the anti-csrf mechanism. This vulnerability is not present when `cookie: false` is set; however in abundance of caution the package author has depricated this module. 
 
-Instead of using the CSURF npm package, you should use the following implimentation on the server. 
+Instead of using the CSURF npm package, you should use the following implementation on the server. 
 
 ## Implementation of CSRF Protection
 
@@ -322,7 +322,7 @@ Lastly, a good practice is to keep user logs for requests coming into your serve
 
 ### Stateless Implementation of CSRF Protection
 
-The following is an example of the implementation of these methods in NodeJS. Remember that the proper way to impliment this protection for stateless is to use the "double submit cookie method". The user makes a GET request to the '/csrf-token' API endpoint and then when the user fills out the form, using angular form control and form builder, submits the data to the server via a POST request at the '/protected_endpoint' API endpoint.
+The following is an example of the implementation of these methods in NodeJS. Remember that the proper way to implement this protection for stateless is to use the "double submit cookie method". The user makes a GET request to the '/csrf-token' API endpoint and then when the user fills out the form, using angular form control and form builder, submits the data to the server via a POST request at the '/protected_endpoint' API endpoint.
 
 You can view the full implementation on Github:
 (CSRF Protection for Angular Tutorial)[https://github.com/geogramdotcom/csrf-angular-tutorial]
