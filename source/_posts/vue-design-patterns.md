@@ -215,7 +215,7 @@ Let's continue, What is the `FormFactory` task? It's responsible for structuri
     </script>
 ```
 
-Excuses for my ugly CSS, but that's not the point. Maybe it isn't the ideal Form Builder, but it's useful. The more complex your form type, the more complex your form builder will be. Now you have a Form Builder, which you can use to create forms in each view, but we have one step more, the `FormDirector`. It has the task of structuring our forms in a single file with verbose methods, like `makeLoginForm()`, `makeSignUpForm()`, `makeShopForm()`, and more. Here is our `FormDirector.ts`.
+Maybe it isn't the ideal Form Builder, but it's useful. The more complex your form type, the more complex your form builder will be. Now you have a Form Builder, which you can use to create forms in each view, but we have one step more, the `FormDirector`. It has the task of structuring our forms in a single file with verbose methods, like `makeLoginForm()`, `makeSignUpForm()`, `makeShopForm()`, and more. Here is our `FormDirector.ts`.
 
 ```ts FormDirector.ts
     import VInput from "@/components/form/VInput.vue";
