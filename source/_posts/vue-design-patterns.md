@@ -21,7 +21,6 @@ What's up, #VueFriends? It's time for another Vue article. Today we will put int
 ## Why do we need design patterns?
 A design pattern is a general, reusable solution to a commonly occurring problem within a given context in software design. That's the purpose of design patterns, maybe you may find the solution to a given problem on your own, but today I want to show you some easier ways in Vue 😎.
 
-
 ## Builder Pattern
 If exists something cannot be missing in a web app, it is the forms, forms everywhere! Forms are boring and more if there is no way to generate them programmatically. It's a common mistake to write files/components like `UserForm.vue`, `ContactForm.vue`, `LoginForm.vue`, and others with a similar logic inside.
 
@@ -259,7 +258,6 @@ To validate our forms, we are using the [zod](https://zod.dev/) library. As we
 
 > Code:  [vue design pattern repository](https://github.com/cr0wg4n/vue-design-patterns), execute, and go to **/builder-pattern** route 😎.
 
-
 ## Adapter Pattern
 The adapter pattern is a structural design pattern also known as "Wrapper". This pattern allows the interfacing of an existing class used as another interface, like something in the middle of a connection. The perfect real-world example is when you go to another country, you realize that the power plug is different. So, you will need an adapter to get power. That's the magic.
 
@@ -313,7 +311,6 @@ If one day we will need to replace the 3rd party library or add more features, i
 {% img "adapter-pattern.jpg" "Adapter pattern schema" "lazy" %}
 
 Let's think about another situation: You have an extensive web application with dozens of elements from some UI material library/framework (like Vuetify). Tomorrow, the business requirements change to adopt Quasar because of the long-term support. You have picked some elements from Vuetify, and now it's time to change it 😨. But this scenario happens and could be acceptable, but as time goes on, technologies improve, and again a change is needed. What tedious work. The solution? Create your adapter input😎.
-
 
 ## Container/Presentational Pattern
 Maybe you are using this design pattern right now, it's simple, and that's the point. Vue and other modern frameworks have two parts where you can put the code, the presentational layer and the business logic layer. Those are known as concerns, and generally isn't convenient to mix them up, but it doesn't mean that one can't use the other, and this is where Container or Presentational Pattern lands.
@@ -465,7 +462,6 @@ Finally, the Container Component has the principal mission of calling the data f
 ```
 
 > Code:  [vue design pattern repository](https://github.com/cr0wg4n/vue-design-patterns), execute, and go to **/container-pattern** route 😎.
-
 
 ## Provide/Inject Pattern
 There is another interesting design pattern. When we start with Vue, most of us make the mistake of passing information through props between multiple components, as the image shows.
@@ -733,10 +729,8 @@ This cookie composable is cool, but if you don't want to reinvent the wheel, the
 
 > Code:  [vue design pattern repository](https://github.com/cr0wg4n/vue-design-patterns), execute, and go to **/composable-pattern** route 😎.
 
-
 ## State Management Pattern
 State management is a crucial part of our web apps. In Vue, we have two great libraries to handle the state. To explain those libraries, we have the following case: We want to show to-do items in a list, to-do items retrieved from an open API ([https://jsonplaceholder.typicode.com/todos](https://jsonplaceholder.typicode.com/todos)). Similar to the case exposed in the Container Pattern section, we will reuse the `VList.vue` component. Now, we only need to think about how to use both state management libraries.
-
 
 ### Vuex/Pinia
 Accordingly, with the official [documentation](https://vuex.vuejs.org/) of Vuex, it serves as a centralized store for all component in an application, with rules ensuring the state, which can be mutated predictably. The following code shows a Vuex store configured to manage to-dos.
@@ -882,4 +876,4 @@ Writing this article was a big challenge for me. I hope these examples and guide
 
 I don't want to say goodbye without first recommending the Lachlan Miller's [book](https://lachlan-miller.me/design-patterns-for-vuejs) called "Design Pattern for Vue.js. A Test-driven Approach to maintainable Applications" which inspired me to write this article and the magnificent [conference](https://youtu.be/RF1bbhRw9sg) of Jacob Schatz (you will find more advanced patterns with Vue).
 
-As we mentioned earlier, all the code is available [here](https://github.com/cr0wg4n/vue-design-patterns). Clone, execute, and enjoy it. Says goodbye, your #VuenFriend [@cr0wg4n](https://twitter.com/cr0wg4n).
+As we mentioned earlier, all the code is available [here](https://github.com/cr0wg4n/vue-design-patterns). Clone, execute, and enjoy it. Says goodbye, your #VueFriend [@cr0wg4n](https://twitter.com/cr0wg4n).
