@@ -214,16 +214,6 @@ Let's continue, What is the `FormFactory` task? It's responsible for structuri
       },
     });
     </script>
-    
-    <style scoped>
-    .error {
-      color: rgb(242, 96, 96);
-    }
-    .label {
-      color: gray;
-      padding-right: 10px;
-    }
-    </style>
 ```
 
 Excuses for my ugly CSS, but that's not the point. Maybe it isn't the ideal Form Builder, but it's useful. The more complex your form type, the more complex your form builder will be. Now you have a Form Builder, which you can use to create forms in each view, but we have one step more, the `FormDirector`. It has the task of structuring our forms in a single file with verbose methods, like `makeLoginForm()`, `makeSignUpForm()`, `makeShopForm()`, and more. Here is our `FormDirector.ts`.
@@ -365,32 +355,6 @@ It's time to imagine another scenario: You need a list of To-Do items. The easy 
       },
     });
     </script>
-    
-    <style scoped>
-    .todo {
-      margin: 0.5rem;
-      border-radius: 0.5rem;
-      background-color: rgb(224, 224, 224);
-      color: black;
-      padding: 0.5rem;
-    }
-    
-    .todo:hover {
-      scale: 1.1;
-    }
-    
-    .todo__title {
-      color: rgb(216, 55, 55);
-    }
-    .todo__title--completed {
-      text-decoration: line-through;
-      color: rgb(106, 163, 21);
-    }
-    
-    .todo__completed {
-      float: right;
-    }
-    </style>    
 ```
 
 It works well, but what happens if we need to test this component all in one file the business logic layer (call to an API) is mixed with the presentational layer, so there is no way to reuse something and extract to test, sooner than later this type of code will need a refactoring. So, the Container Pattern helps us to decouple the presentational and business logic layer and turns to a testable application.
@@ -470,32 +434,6 @@ The **Presentational Component** called `VList.vue` looks like this.
       },
     });
     </script>
-    
-    <style scoped>
-    .todo {
-      margin: 0.5rem;
-      border-radius: 0.5rem;
-      background-color: rgb(224, 224, 224);
-      color: black;
-      padding: 0.5rem;
-    }
-    
-    .todo:hover {
-      scale: 1.1;
-    }
-    
-    .todo__title {
-      color: rgb(216, 55, 55);
-    }
-    .todo__title--completed {
-      text-decoration: line-through;
-      color: rgb(106, 163, 21);
-    }
-    
-    .todo__completed {
-      float: right;
-    }
-    </style>
 ```
 
 No matter the source, the data enters through props to display a list of beautiful To-Dos ✨.
@@ -596,10 +534,6 @@ So, to implement this feature, we need to create the image structure in the code
       },
     });
     </script>
-    
-    <style scoped>
-    /* styles doesn't matter for now */
-    </style>
 ```
 
 `OptionItem.vue` pretends to be a card with a title and a random image inside.
@@ -789,13 +723,6 @@ Now, we can use it everywhere.
       },
     });
     </script>
-    
-    <style scoped>
-    input,
-    button {
-      margin: 5px;
-    }
-    </style>
 ```
 
 Many people use this pattern without the reactive feature, but it is great to have.
