@@ -135,7 +135,7 @@ Nothing is worse than going through all the effort to secure your website with a
 
 ##### Cookie Security; HttpOnly flag
 
-To block the potential liability of Javascript accessing the cookie and user data there is a flag that can be implemented to prevent this type of attack. The “HttpOnly” flag is used to block Javascript from accessing cookies from the client-side so if an attacker was to succeed in injecting some javascript it wouldn't be able to read any of the cookies.
+To block the potential liability of Javascript accessing the cookie and user data there is a flag that can be implemented to prevent this type of attack. The `HttpOnly` flag is used to block Javascript from accessing cookies from the client-side so if an attacker was to succeed in injecting some javascript it wouldn't be able to read any of the cookies.
 
 Regardless of any precautions made to harden the website security the attacker wouldn't be able to access any cookies, thus limiting the attack vectors.
 
@@ -189,7 +189,9 @@ Overall, both STP and DSCM are effective methods for preventing CSRF attacks, bu
 
 ### Stateful Implementation of CSRF Protection
 
-For implementation of CSRF Protection on a stateful system, you will need to use the Synchronizer Token Pattern. The CSRF Token is generated server-side for this pattern along with a session id. **For the Synchronized Token Pattern, CSRF tokens should not be transmitted using cookies.** 
+For implementation of CSRF Protection on a stateful system, you will need to use the Synchronizer Token Pattern. The CSRF Token is generated server-side for this pattern along with a session id. 
+
+**For the Synchronized Token Pattern, CSRF tokens should not be transmitted using cookies.** 
 
 When the client receives the CSRF token from the server, there are two options to use for the server to validate that the request is legitimate. 
 1. Client passes the CSRF token as a hidden field through a form post request to the API endpoint. 
@@ -207,10 +209,8 @@ You can view the full implementation on Github:
 
 For the server-side code:
 ``` typescript
-// Use Express
 var express = require("express");
 var session = require("express-session")
-// Use body-parser
 var bodyParser = require("body-parser");
 // Use csrf-sync for CSRF Protection
 var { csrfSync } = require("csrf-sync");
@@ -331,12 +331,8 @@ For the server-side code:
 ``` typescript
 //Stateless Server Configuration
 
-//Stateless Server Configuration
-
-// Use Express
 var express = require("express");
 var session = require("express-session")
-// Use body-parser and cookie-parser
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 // Use csrf-csrf for CSRF Protection using Double Submit Cookie Pattern)
