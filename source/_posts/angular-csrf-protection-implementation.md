@@ -59,7 +59,7 @@ The best way to stop CSRF attacks for Angular apps is using the default synchron
 
 To enable Angular CSRF protection in an application three things need to happen:
 
-1) Every XHR request sent out has to include a custom HTTP header with a specific name and value; this can also be coupled with the user's session id token called "double submit cookie method". Be wary of this implementation however since it is known to have vulnerabilities when you don't control all the sub-domains of the origin. This Double Submit Cookie Method should also only be used by a stateless application where, for example, you might be hosting your server as a container on Google Cloud Run or Amazon AWS Elastic instances. (See below for stateful implimentation of CSRF Protection)
+1) Every XHR request sent out has to include a custom HTTP header with a specific name and value; this can also be coupled with the user's session id token called "double submit cookie method". Be wary of this implementation however since it is known to have vulnerabilities when you don't control all the sub-domains of the origin. This Double Submit Cookie Method should also only be used by a stateless application where, for example, you might be hosting your server as a container on Google Cloud Run or Amazon AWS Elastic instances. (See below for stateful implementation of CSRF Protection)
 
 2) The server checks for the presence of that header and makes sure the request header value matches what was sent on the client-side, otherwise we will know its a malicious request
 
