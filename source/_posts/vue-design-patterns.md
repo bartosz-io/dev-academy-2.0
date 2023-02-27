@@ -31,7 +31,7 @@ Builder is a creational design pattern that allows you to build complex object s
 
 First, we need to create the `FormBuilder` object as follows.
 
-```ts
+```ts FormBuilder.ts
     import { defineComponent, h, type VNode } from "vue";
     import FormFactory from "./FormFactory.vue";
     
@@ -88,7 +88,7 @@ Up to here, what we want is similar to the following schematic image.
 
 Let's continue, What is the `FormFactory` task? It's responsible for structuring the form (many kinds of forms). Here is the code:
 
-```ts
+```ts FormFactory.vue
     <template>
       <form action="" @submit.prevent="submit">
         <div v-for="(field, index) in fields" :key="field.name">
@@ -228,7 +228,7 @@ Let's continue, What is the `FormFactory` task? It's responsible for structuri
 
 Excuses for my ugly CSS, but that's not the point. Maybe it isn't the ideal Form Builder, but it's useful. The more complex your form type, the more complex your form builder will be. Now you have a Form Builder, which you can use to create forms in each view, but we have one step more, the `FormDirector`. It has the task of structuring our forms in a single file with verbose methods, like `makeLoginForm()`, `makeSignUpForm()`, `makeShopForm()`, and more. Here is our `FormDirector.ts`.
 
-```ts
+```ts FormDirector.ts
     import VInput from "@/components/form/VInput.vue";
     import type FormBuilder from "./FormBuilder";
     import z from "zod";
@@ -277,9 +277,7 @@ A typical use case is to wrap a 3rd party library, which is used everywhere in y
 
 In this case, we are using the [js-cookie](https://github.com/js-cookie/js-cookie) library to interact directly with our Cookies, which is simple and lightweight. The adapter looks like this.
 
-```ts
-    // File: CookiesAdapter.ts
-    
+```ts CookiesAdapter.ts
     import Cookies from "js-cookie";
     
     export interface CookieOptions {
@@ -332,9 +330,7 @@ Maybe you are using this design pattern right now, it's simple, and that's the p
 
 It's time to imagine another scenario: You need a list of To-Do items. The easy way is to create a Vue SFC (Single File Component) to show all of them, something like this.
 
-```ts
-    // File: TodoList.vue
-    
+```ts TodoList.vue
     <template>
       <div class="todo" v-for="(todo, index) in todos.slice(0, 10)" :key="index">
         <span :class="['todo__title', todo.completed && 'todo__title--completed']">
@@ -411,9 +407,7 @@ To take this pattern advantage, think of this file as three parts:
 
 So, it's time to implement the code, first the **Business Logic Component**:
 
-```ts
-    // File: todo.ts
-    
+```ts todo.ts
     import type { StoreOptions } from "vuex";
     
     export interface Todo {
@@ -451,9 +445,7 @@ The `todo.ts` is a Vuex store definition with an API call inside. Disponible t
 
 The **Presentational Component** called `VList.vue` looks like this.
 
-```ts
-    // File: VList.vue
-    
+```ts VList.vue
     <template>
       <div class="todo" v-for="(item, index) in data.slice(0, 10)" :key="index">
         <span :class="['todo__title', item.completed && 'todo__title--completed']">
@@ -510,9 +502,7 @@ No matter the source, the data enters through props to display a list of beautif
 
 Finally, the Container Component has the principal mission of calling the data from the Business Logic Component and passing the to-do data to display to the Presentational Component. Here is the code.
 
-```ts
-    // File: TodoContainer.vue
-    
+```ts TodoContainer.vue
     <template>
       <TodoList :data="data" />
     </template>
@@ -560,9 +550,7 @@ The following case shows a list of cards (with a title and image inside). We nee
 
 So, to implement this feature, we need to create the image structure in the code, beginning with `OptionItem.vue`.
 
-```ts
-    // File: OptionItem.vue
-    
+```ts OptionItem.vue
     <template>
       <div
         class="option"
@@ -622,9 +610,7 @@ The `setup()` uses the `inject()` method to retrieve (inject) the data from 
 
 To inject that data inside the component, we need a key. In this case, `VISUALIZATION_PREFERENCES` is an `InjectionKey`. Its use makes sense with Typescript. It allows you to define a key name and structure for a specific data structure. The `VISUALIZATION_PREFERENCES` is in the `OptionSymbols.ts` file for re-usability purposes.
 
-```ts
-    // File: OptionSymbols.ts
-    
+```ts OptionSymbols.ts
     import type { InjectionKey } from "vue";
     
     export interface VisualizationPreferences {
@@ -639,9 +625,7 @@ To inject that data inside the component, we need a key. In this case, `VISUALI
 
 The next component implemented is `OptionList.vue`, which works as a Presentational Component (only renders every **OptionItem** component if it has the necessary data, it is only a dummy component).
 
-```ts
-    // File: OptionList.vue
-    
+```ts OptionList.vue
     <template>
       <div v-for="({ title, image }, index) in data" :key="index">
         <OptionItem :title="title" :image="image" />
@@ -669,9 +653,7 @@ The next component implemented is `OptionList.vue`, which works as a Presentati
 
 Now, the `OptionContainer.vue` is the Provider. It contains the data to pass to `OptionItem.vue` through the `provide()` method, as we can see below.
 
-```ts
-    // File: OptionContainer.vue
-    
+```ts OptionContainer.vue
     <script lang="ts">
     import { computed, defineComponent, provide, reactive } from "vue";
     import type { OptionProps } from "./OptionItem.vue";
@@ -725,9 +707,7 @@ If you are coming from React, this reactive pattern could be familiar. Yes, we a
 
 Let's take advantage of the previous example explained in the Adapter Pattern. We have the class `CookiesAdapter` which wraps the [js-cookie](https://github.com/js-cookie/js-cookie) library. `CookiesAdapter` could be used directly in our code, but now we will add state and covert to a Composable, to see the cookies' body reactively.
 
-```ts
-    // File: useCookies.ts
-    
+```ts useCookies.ts
     import { ref, type Ref } from "vue";
     import CookiesAdapter from "./CookiesAdapter";
     import type CookieOptions from "./CookiesAdapter";
@@ -767,9 +747,7 @@ The `ref()` method is a function that gives reactivity to a variable, `cooki
 
 Now, we can use it everywhere.
 
-```ts
-    // File: ComposablePatternView.vue
-    
+```ts ComposablePatternView.vue
     <template>
       <h4>Add Cookies</h4>
       <input type="text" name="key" v-model="key" placeholder="Introduce a key" />
@@ -836,9 +814,7 @@ State management is a crucial part of our web apps. In Vue, we have two great li
 ### Vuex/Pinia
 Accordingly, with the official [documentation](https://vuex.vuejs.org/) of Vuex, it serves as a centralized store for all component in an application, with rules ensuring the state, which can be mutated predictably. The following code shows a Vuex store configured to manage to-dos.
 
-```ts
-    // File: todo.ts
-
+```ts todo.ts
     import type { StoreOptions } from "vuex";
     import type { Todo, TodoStoreProps } from "../types/todo";
     
@@ -872,9 +848,7 @@ Accordingly, with the official [documentation](https://vuex.vuejs.org/) of Vue
 
 In contrast, we have the same implementation but powered by Pinia.
 
-```ts
-    // File: todo.ts
-
+```ts todo.ts
     import type { Todo } from "./../types/todo";
     import { defineStore } from "pinia";
     
@@ -903,9 +877,7 @@ In contrast, we have the same implementation but powered by Pinia.
 
 The unique difference is that Pinia doesn't need to define mutations. We need a new component and use the to-do store implemented above with Vuex.
 
-```ts
-    // File: VuexTodoList.vue
-
+```ts VuexTodoList.vue
     <template>
       <TodoList :data="data" />
       <button @click="addTodo">Add Todo</button>
@@ -941,9 +913,7 @@ The unique difference is that Pinia doesn't need to define mutations. We need a 
 
 The Pinia version looks like this.
 
-```ts
-    // File: PiniaTodoList.vue
-
+```ts PiniaTodoList.vue
     <template>
       <TodoList :data="todoList" />
       <button @click="addTodo">Add Todo</button>
