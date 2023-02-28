@@ -90,6 +90,8 @@ Optional:
 - article-sidebar-contributor__link_fullname
 - article-sidebar-contributor-academies__link_wsa
 - article-sidebar-contributor-academies__link_fta
+- related-post__link
+- related-post__close-button
 
 Optional:
 
