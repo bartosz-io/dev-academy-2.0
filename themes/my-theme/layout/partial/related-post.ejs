@@ -2,7 +2,7 @@
     <% site.posts.each(function(post){ %>
         <% if (post.id === currentPost.relatedPost)  {%>
             <div class="related-post">
-                <a href="<%- post.path %>" class="related-post-inner">
+                <a href="<%- post.path %>" class="related-post-inner" data-ph="related-post__link">
                     <figure>
                         <picture>
                             <source srcset="<%- url_for(post.path) %>small_banner.webp" type="image/webp">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </a>
-                <button type="button" class="icofont-close related-post-close"></button>
+                <button type="button" class="icofont-close related-post-close" data-ph="related-post__close-button"></button>
             </div>
         <% } %>
     <% }) %>
