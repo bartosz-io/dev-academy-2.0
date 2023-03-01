@@ -65,10 +65,10 @@
         <div class="contributor-list-wrapper">
             <h3 class="contributors-list-header">Meet our <span>Elite Editorial Team</span></h3>
             <div class="pills">
-                <div class="pill" data-spec="all">All Experts</div>
+                <button type="button" class="pill" data-spec="all">All Experts</button>
                 <% config.contributors_specs.forEach(function(spec){ var specName; %>
                 <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
-                <div class="pill pill-<%- spec %> pill-inactive" data-spec="<%- spec %>"><%- specName %> Expert</div>
+                <button type="button" class="pill pill-<%- spec %> pill-inactive" data-spec="<%- spec %>"><%- specName %> Expert</button>
                 <% }) %>
             </div>
             <div class="contributors-list">
