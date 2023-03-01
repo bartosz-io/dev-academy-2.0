@@ -4,7 +4,7 @@ contributor: Mauricio Matias C.
 avatar: mauricio-matias.jpeg
 description: Learn modern Vue 3 design patterns to make the best architectural decisions. Are you reinventing the wheel? 🧐.
 date: 2023-02-27
-tags: [vue, architecture, design-patterns]
+tags: [vue, architecture, "design patterns"]
 id: vue-design-patterns
 relatedPost: vue-security-best-practices
 bannerHeader: 'Are you reinventing the wheel? 🧐'
