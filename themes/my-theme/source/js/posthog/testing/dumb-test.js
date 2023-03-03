@@ -1,18 +1,24 @@
 if (window.posthog) {
     posthog.onFeatureFlags(function() {
-        posthog.feature_flags.override({cta: 'test'});
-
-        if (posthog.getFeatureFlag('cta') === 'test') {
-            console.log('Overriding');
-            window.DESKTOP_STICKY_HEADER = true; // TODO for testing header A/B this will be removed in the future
-            var navStartBtn = document.querySelector('.header-nav .header-nav-start .button');
-
-            if (navStartBtn) {
-                navStartBtn.textContent = 'Go here!';
-            }
-        } else {
-            console.warn('A/B failed');
-        }
+        // window.DESKTOP_STICKY_HEADER = true;
+        sidebarWSALinkABTest();
     });
 }
 
+function sidebarWSALinkABTest() {
+    var articleSidebar = document.querySelector('.article .article-sidebar');
+
+    if (posthog.getFeatureFlag('blog-post-sidebar_wsa') === 'test') {
+        console.warn('Starting test flag');
+
+        if (articleSidebar) {
+            articleSidebar.classList.add('article-sidebar--dark');
+        }
+    }
+
+    if (articleSidebar) {
+        articleSidebar.classList.remove('hidden');
+    }
+
+    console.warn('End testing');
+}
