@@ -61,6 +61,10 @@ a {
   text-align: right;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 picture {
   display: flex;
   flex-direction: column;
