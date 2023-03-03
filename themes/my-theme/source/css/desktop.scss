@@ -615,12 +615,12 @@
     padding-top: $header-height-desktop;
   }
 
-  .bar-top {
+  .main-banner {
     height: 5rem;
     flex-direction: row;
   }
 
-  .bar-top-text {
+  .main-banner-text {
     display: flex;
     padding-bottom: 0;
 
@@ -629,15 +629,15 @@
     }
   }
 
-  .bar-top-counter {
+  .main-banner-counter {
     padding: 0 2rem;
   }
 
   .b-bar-top {
-    padding-top: calc(#{$header-height-desktop} + #{$top-bar-height-desktop});
+    padding-top: calc(#{$header-height-desktop} + #{$main-bar-height-desktop});
 
     .header {
-      top: $top-bar-height-desktop;
+      top: $main-bar-height-desktop;
     }
 
     .article-share {
@@ -649,12 +649,29 @@
     }
 
     .article-toc {
-      top: calc(12rem + #{$top-bar-height-desktop});
-      height: calc(100vh - #{$sidebar-offset} - #{$top-bar-height-desktop});
+      top: calc(12rem + #{$main-bar-height-desktop});
+      height: calc(100vh - #{$sidebar-offset} - #{$main-bar-height-desktop});
     }
 
     .article-sidebar {
-      top: calc(12rem + #{$top-bar-height-desktop});
+      top: calc(12rem + #{$main-bar-height-desktop});
+    }
+  }
+
+  .b-bar-bottom {
+    padding-bottom: $main-bar-height-desktop;
+
+    .article-content {
+      @include tocScrollMarginTop(2.5rem);
+    }
+
+    .article-toc {
+      top: 12rem;
+      height: calc(100vh - #{$sidebar-offset});
+    }
+
+    .article-sidebar {
+      top: 12rem;
     }
   }
 

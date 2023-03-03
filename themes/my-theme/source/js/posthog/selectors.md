@@ -35,7 +35,7 @@ Optional:
 
 - subscribe__button_ws-checklist
 - subscribe__button_short-mailing
-- banner-top__link
+- main_banner__link
 
 ### Homepage
 - hero__button

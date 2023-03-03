@@ -1,4 +1,4 @@
-.bar-top {
+.main-banner {
   background: $gradient2;
   font-size: $font-size-16;
   display: flex;
@@ -15,18 +15,18 @@
   z-index: $z-index-400;
 }
 
-.bar-top-text {
+.main-banner-text {
   color: $light-100;
   font-weight: 600;
   padding-bottom: .5rem;
 }
 
-.bar-top-counter {
+.main-banner-counter {
   color: $light-200;
   padding-right: 1rem;
 }
 
-.bar-top-link {
+.main-banner-link {
   color: $hover;
   text-decoration: underline;
   font-weight: 600;
@@ -40,10 +40,23 @@
   padding-top: 17rem;
 
   .header {
-    top: 10rem;
+    top: $top-bar-height-mobile;
   }
 
   .article-content {
     @include tocScrollMarginTop(20rem);
+  }
+}
+
+.b-bar-bottom {
+  padding-bottom: $top-bar-height-mobile;
+
+  .main-banner {
+    top: auto;
+    bottom: 0;
+  }
+
+  .article-content {
+    @include tocScrollMarginTop(10rem);
   }
 }
