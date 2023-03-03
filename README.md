@@ -40,7 +40,7 @@ contributors:
 
 # Banery
 - Pole **banners** pozwala na włączenie poszczególnych banerów, posiadające już określone wysokości i szerokości, których nie powinno się modyfikować bez RWD.
-  - **main_banner**: 'top' | 'bottom' | 'none'. Wyświetla baner nad nawigacją. 150px (15rem) height na mobile i 50px (5rem) na desktopie. Klasa dodawana do body: *b-header-top*
+  - **main_banner**: 'top' | 'bottom'. Wyświetla baner nad nawigacją. 150px (15rem) height na mobile i 50px (5rem) na desktopie. Klasa dodawana do body: *b-bar-top* | *b-bar-bottom*
   - **article_side_banner**: true | false. Wyświetla boczny baner przy każdym z poście. 300px (30rem) height i 250px (35rem) width na desktopie przy min-width: 1390px. Niżej nie wyświetlany. Klasa dodawana do body: *b-article-sidebar*". Możliwość konfiguracji we frontmatterze pod każdym postem:
     - bannerHeader: string - Wyświetla główny nagłówek.
     - bannerSubheader: string - Wyświetla kolejny nagłówek w banerze.
