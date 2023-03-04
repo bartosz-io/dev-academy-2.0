@@ -59,4 +59,8 @@
   .article-content {
     @include tocScrollMarginTop(10rem);
   }
+
+  .related-posts {
+    bottom: 12rem;
+  }
 }
