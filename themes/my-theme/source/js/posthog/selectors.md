@@ -92,6 +92,9 @@ Optional:
 - article-sidebar-contributor-academies__link_fta
 - related-post__link
 - related-post__close-button
+- article-share_facebook
+- article-share_twitter
+- article-share_disqus
 
 Optional:
 
