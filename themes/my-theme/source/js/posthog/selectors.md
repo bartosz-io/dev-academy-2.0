@@ -65,6 +65,11 @@ Optional:
 - item-contributor-academies__link_wsa
 - item-contributor-academies__link_fta
 - item-contributor__link_fullname
+- experts_all
+- experts_nodejs
+- experts_angular
+- experts_vue
+- experts_react
 
 ### Contributor
 - contributor-social__link_website
