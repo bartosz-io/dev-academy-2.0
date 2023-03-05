@@ -417,3 +417,15 @@ contributors:
       twitter: https://twitter.com/home
       github: https://github.com/desoga10
       linkedin: https://www.linkedin.com/in/desoga/
+  "Łukasz Fajger":
+    slug: lukasz-fajger
+    desc: Front-end dev with a crazy attention to detail and wide range of skills. Enjoys helping others achieve their goals.
+    specs: [angular, nodejs]
+    image: /img/contributors/lukasz-fajger.jpg
+    motto: Quality over quantity
+    joined: 01 Jan 2023
+    academies:
+      wsa: true
+      fta: true
+    socials:
+      linkedin: https://www.linkedin.com/in/lukasfajger/
