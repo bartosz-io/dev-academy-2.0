@@ -420,10 +420,10 @@ contributors:
   "Saurabh Ghatnekar":
     slug: saurabh-ghatnekar
     desc: Saurabh is a Full Stack Developer. He is passionate about learning and sharing knowledge. He is a contributor to the React and JS community.
-    specs: [javascript, react, nodejs, mongodb, express, AWS]
+    specs: [javascript, react, nodejs, mongodb, express, aws]
     image: /img/contributors/saurabh-ghatnekar.png
     motto: "Code as if the person who maintains your code is a psychopath who knows where you live."
-    joined: 1 Dev 2022
+    joined: 1 Dec 2022
     academies:
       wsa: true
       fta: true

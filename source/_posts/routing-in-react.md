@@ -7,9 +7,9 @@ date: 2023-02-17
 tags: [react, routing]
 id: routing-in-react
 relatedPost:
-bannerHeader:
-bannerSubheader:
 ---
+{% image_fw 1.78 banner.png "Routing in React" %}
+
 # Routing in React
 
 ## Table of Contents
