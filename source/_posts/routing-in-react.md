@@ -6,7 +6,7 @@ description: Learn how to use React Router to create a single-page application w
 date: 2023-02-17
 tags: [react, routing]
 id: routing-in-react
-relatedPost:
+relatedPost: [react, routing]
 ---
 {% image_fw 1.78 banner.png "Routing in React" %}
 
@@ -353,8 +353,7 @@ and the URL.
 
 **useNavigate**: This hook returns a function that can be used to navigate to different routes in the application.
 
-React router and Redux
-----------------------
+## React router and Redux
 
 While React Router is used for handling routing in a React application, it can be used with Redux, a state management
 library, to manage the application's state.
@@ -371,7 +370,7 @@ npm install react-router react-router-dom react-router-redux --save
 Next, you will need to set up your Redux store and configure the react-router-redux middleware:
 
 ```javascript
-    import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {routerReducer, routerMiddleware} from 'react-router-redux';
 
 // Create a history of your choosing (we're using a browser history in this case)
@@ -409,8 +408,6 @@ With these changes, the router's state will now be managed by the Redux store, a
 dispatch navigation actions using the Redux dispatch function.
 
 ## Frequently Encountered Issues
-
---------------------------------
 
 There are a few common issues that you may encounter when using React Router:
 
