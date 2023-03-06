@@ -1,7 +1,7 @@
 ---
 title: Routing in React 🚀
 contributor: Saurabh Ghatnekar
-avatar:
+avatar:saurabh-ghatnekar.png
 description: Learn how to use React Router to create a single-page application with multiple routes.
 date: 2023-02-17
 tags: [react, routing]
@@ -11,26 +11,6 @@ relatedPost:
 {% image_fw 1.78 banner.png "Routing in React" %}
 
 # Routing in React
-
-## Table of Contents
-
-    I. Introduction 
-    	A. Definition of Routing 
-    II. React Router 
-    	A. Overview 
-    	B. Installation 
-    	C. Usage
-    III. React Router Components 
-    	A. BrowserRouter 
-    	B. Route 
-    	C. Link and NavLink 
-    	D. Nested Routes
-    IV. React Router with Redux 
-    	A. Overview 
-    	B. Usage
-    V. Conclusion 
-    	A. Frequently Encountered Issues
-    	B. Summary of Routing in React
 
 ## Introduction
 
