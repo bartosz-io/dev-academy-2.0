@@ -100,6 +100,7 @@ Optional:
 - article-share_facebook
 - article-share_twitter
 - article-share_disqus
+- article-sidebar__download-pdf
 
 Optional:
 
