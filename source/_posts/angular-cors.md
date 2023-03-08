@@ -7,6 +7,7 @@ date: 2022-08-05
 tags: [angular, security]
 id: angular-cors
 relatedPost: angular-rxjs
+bannerHeader: 'Is your Angular application secure? 🧐'
 ---
 {% image_fw 1.78 "banner.png" "Angular CORS Guide 🛠️ Fixing errors" %}
 
