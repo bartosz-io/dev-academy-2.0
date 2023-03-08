@@ -7,6 +7,7 @@ date: 2023-02-27
 tags: [vue, architecture, "design patterns"]
 id: vue-design-patterns
 relatedPost: vue-security-best-practices
+bannerHeader: Is your Vue application SECURE?
 ---
 
 {% image_fw 1.78 "banner.png" "Vue Desing Patterns banner" %}
