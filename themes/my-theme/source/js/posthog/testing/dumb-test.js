@@ -1,7 +1,6 @@
 if (window.posthog) {
     posthog.onFeatureFlags(function() {
         // window.DESKTOP_STICKY_HEADER = true;
-        sidebarWSALinkABTest();
     });
 }
 
