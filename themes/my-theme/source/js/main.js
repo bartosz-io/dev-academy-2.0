@@ -42,7 +42,12 @@ window.addEventListener('DOMContentLoaded', function() {
     relatedPosts();
     contributors();
     userGoals();
+    adjustCookieBot();
 });
+
+function adjustCookieBot() {
+    document.getElementsByClassName('CybotCookiebotDialogBodyBottomWrapper')[0]?.remove();
+}
 
 function loadConvertKit() {
     var script = document.createElement('script');
