@@ -1,0 +1,21 @@
+@import '../variables';
+
+.list {
+  li {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+
+    &:before {
+      content: '';
+      width: .7rem;
+      height: .7rem;
+      border-radius: 50%;
+      background-color: $primary-100;
+      display: inline-block;
+      position: absolute;
+      top: .8rem;
+      left: 0;
+    }
+  }
+}
