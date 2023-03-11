@@ -1,0 +1,27 @@
+.teacher {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 3rem;
+
+  .list {
+    padding-top: 3rem;
+  }
+}
+
+.teacher-info {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 13rem;
+    height: 13rem;
+    margin-right: 2rem;
+    border-radius: 50%;
+  }
+}
+
+.teacher-info-title {
+  h3 {
+    margin-bottom: 1rem;
+  }
+}
