@@ -1,16 +1,19 @@
 ---
-title: Routing in React 🚀
+title: Routing in React
 contributor: Saurabh Ghatnekar
-avatar:saurabh-ghatnekar.png
+avatar: saurabh-ghatnekar.png
 description: Learn how to use React Router to create a single-page application with multiple routes.
 date: 2023-02-17
 tags: [react, routing]
 id: routing-in-react
-relatedPost:
+relatedPost: [react, routing]
 ---
 {% image_fw 1.78 banner.png "Routing in React" %}
 
 # Routing in React
+
+## Table of Contents
+<!-- toc -->
 
 ## Introduction
 
@@ -24,7 +27,7 @@ you can turn to that page and start reading. This is similar to how routing work
 
 The different stories in the book are like the different pages or components in a React app, and the table of contents
 is like a special tool that helps you move between them. When you click on a link in the table of contents, it takes you
-to the right page so you can see the story you want to read.
+to the right page you can see the story you want to read.
 
 ### React Router
 
@@ -62,7 +65,7 @@ rendered for each route. Here is a simple example of how this might look:
 import React from 'react';
 import {
     BrowserRouter as Router,
-    Switch,
+    Routes,
     Route,
     Link
 } from 'react-router-dom';
@@ -70,26 +73,32 @@ import {
 function App() {
     return (
         <Router>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
-                </ul>
-            </nav>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/contact">Contact</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div style={{padding:10}}>
+                <Routes>
+                <Route path={"/"} element={<Home/>}/>
+                <Route path={"/about"} element={<About/>}/>
+                <Route path={"/contact"} element={<Contact/>}/>
+            </Routes>
 
-            <Switch>
-                <Route exact path="/">
-                    <Home/>
-                </Route>
-                <Route path="/about">
-                    <About/>
-                </Route>
-            </Switch>
+            </div>
+
         </Router>
+
     );
 }
 
@@ -100,7 +109,13 @@ function Home() {
 function About() {
     return <h2>About</h2>;
 }
-  ```  
+
+function Contact() {
+    return <h2>Contact</h2>;
+}
+
+export default App;  
+```  
 
 In this example, we are using the **BrowserRouter** component provided by React Router to create a router for our
 application. The **Link** component is used to create links between different routes in the app, and the **Switch** and
@@ -251,12 +266,12 @@ const Home = ({props}) => {
 export default Home
 ```
 
-In this example, we have three routes defined: a home route, an about route, and a contact route. The home route uses a
+In this example, we have three routes defined: a home route, an About route, and a contact route. The home route uses a
 wildcard **path** prop (**/**) to match any path that starts with a **/**, while the about and contact routes use the *
 *exact** prop to specify that the path must be an exact match.
 
 If a user navigates to the **/**path, the home route will be rendered, typically with a home component. If the user
-navigates to the **/about** path, the about route will be rendered. And if the user navigates to the **/contact** path,
+navigates to the **/about** path, the About route will be rendered. And if the user navigates to the **/contact** path,
 the contact route will be rendered.
 
 What do you do if a user tries to access a route and none of the path matches with routes defined in the Routes
@@ -333,6 +348,142 @@ function Navbar() {
 
 ### Nested Routing
 
+In this section, we will learn how to create nested routes in a React application. Nested routes are routes that are
+nested inside other routes. For example, if you have a route for the home page, you might want to create a nested route
+for the about page, so that the about page is rendered inside the home page.
+
+To create nested routes, you need to use the **Routes** component. The **Routes** component is similar to the **Switch**
+component, but it allows you to create nested routes. Here's an example of how you might use the **Routes** component:
+```javascript
+//import react first
+import React from 'react';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link, useParams
+} from 'react-router-dom';
+
+function App() {
+    return (
+        <Router>
+            <div style={{background: "lightpink"}}>
+                <h1>Routing in React</h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/home">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/contact">Contact</Link>
+                        </li>
+                        <li>
+                            <Link to="/user">User</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div style={{padding: 10, background: "lightgreen"}}>
+                <Routes>
+                    <Route path={"/"} element={<Home/>}/>
+                    <Route path={"/about"} element={<About/>}/>
+                    <Route path={"/contact"} element={<Contact/>}/>
+                    <Route path={"/user/*"} element={<User/>}>
+                        <Route path="profile" element={<Profile/>}>
+                            <Route path=":id" element={<Profile/>}/>
+                        </Route>
+
+                        <Route path="account" element={<Account/>}>
+                            <Route path=":id" element={<Account/>}/>
+                        </Route>
+                    </Route>
+
+
+                </Routes>
+            </div>
+
+        </Router>
+
+    );
+}
+
+function Home() {
+    return <h2>Home</h2>;
+}
+
+function About() {
+    return <h2>About</h2>;
+}
+
+function Profile() {
+    let params = useParams();
+    console.log("Profile", params);
+    return (
+        params.id ?
+            <h2>User Profile for User: {params.id}</h2> :
+            <h2>Profile</h2>
+    );
+
+}
+
+function Account() {
+    let params = useParams();
+
+    return (
+        params.id ?
+            <h2>User Account for User: {params.id}</h2> :
+            <h2>Account</h2>
+    )
+}
+
+function User() {
+    return (
+        <>
+            <h2>User</h2>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to="profile">Profile</Link>
+                    </li>
+                    <li>
+                        <Link to="account">Account</Link>
+                    </li>
+                </ul>
+            </nav>
+            <Routes>
+                <Route path="profile" element={<Profile/>}/>
+                <Route path="profile/:id" element={<Profile/>}/>
+                <Route path="account" element={<Account/>}/>
+                <Route path="account/:id" element={<Account/>}/>
+            </Routes>
+        </>
+    );
+}
+
+function Contact() {
+    let params = useParams();
+    console.log(params);
+
+    return (
+        <>
+            <h2>Contact</h2>
+            <h3>{params.id}</h3>
+        </>
+    );
+}
+
+export default App;
+```
+Let's break down the code above:
+
+
+And that's it! You have now learned how to create nested routes in a React application.
+
+
 ### Hooks in React Router Dom
 
 **React router component library** provides a set of Hooks that allow functional components to access routing-related
@@ -353,8 +504,7 @@ and the URL.
 
 **useNavigate**: This hook returns a function that can be used to navigate to different routes in the application.
 
-React router and Redux
-----------------------
+## React router and Redux
 
 While React Router is used for handling routing in a React application, it can be used with Redux, a state management
 library, to manage the application's state.
@@ -371,7 +521,7 @@ npm install react-router react-router-dom react-router-redux --save
 Next, you will need to set up your Redux store and configure the react-router-redux middleware:
 
 ```javascript
-    import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {routerReducer, routerMiddleware} from 'react-router-redux';
 
 // Create a history of your choosing (we're using a browser history in this case)
@@ -409,8 +559,6 @@ With these changes, the router's state will now be managed by the Redux store, a
 dispatch navigation actions using the Redux dispatch function.
 
 ## Frequently Encountered Issues
-
---------------------------------
 
 There are a few common issues that you may encounter when using React Router:
 
