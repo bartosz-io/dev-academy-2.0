@@ -7,7 +7,7 @@ tags: [angular, performance]
 id: angular-signals
 date: 2023-03-05 15:57:37
 ---
-<!-- {% image_fw 1.78 banner.png "ALT text of the article" %}-->
+<!-- {% image_fw 1.78 angular-signals.png "Angular Signals" %}-->
 
 ## Table of Contents
 <!-- toc -->
