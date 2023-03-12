@@ -170,11 +170,11 @@ It is worth mentioning that `computed()` values are cached. They are updated onl
 const counter = signal(0);
 
 effect(() => {
-    console.log('Counter value ', this.counter());
-
-    if (this.counter() === 5) {
-        console.log('Counter value is equal 5!');
-    }
+   console.log('Counter value ', this.counter());
+   
+   if (this.counter() === 5) {
+      console.log('Counter value is equal 5!');
+   }
 });
 
 counter.set(1);
@@ -285,8 +285,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
 platformBrowserDynamic()
-        .bootstrapModule(AppModule, { ngZone: 'noop' })
-        .catch((err) => console.error(err));
+   .bootstrapModule(AppModule, { ngZone: 'noop' })
+   .catch((err) => console.error(err));
 ```
 
 At this point you must trigger change detection on your own. This requires comprehensive knowledge of change detection. If we would like to render our `name` now, we can trigger the change detection manually with `tick` or `detectchanges()`.
