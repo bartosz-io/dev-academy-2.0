@@ -1,0 +1,36 @@
+@import 'variables';
+
+[class^='icofont-'] {
+  font-family: $font-family-ico;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  line-height: 1;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.icofont-check-alt:before {
+  content: "\eed6";
+}
+
+.icofont-thin-down:before {
+  content: "\eac8";
+}
+
+.icofont-thin-up:before {
+  content: "\eacb";
+}
+
+.icofont-thin-left:before {
+  content: "\eac9";
+}
+
+.icofont-thin-right:before {
+  content: "\eaca";
+}

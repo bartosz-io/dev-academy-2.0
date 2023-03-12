@@ -1,0 +1,25 @@
+@import '../variables';
+
+.section {
+  padding: 6rem 0;
+}
+
+.section-gradient {
+  background: linear-gradient(101.25deg, $secondary-300 4.56%, $primary-100 95.44%);
+
+  h2 {
+    color: $light-100;
+  }
+}
+
+.section-grey {
+  background-color: $light-200;
+}
+
+.section-enrolment {
+  padding-bottom: 25rem;
+}
+
+.section-testimonials {
+  padding-top: 30rem;
+}

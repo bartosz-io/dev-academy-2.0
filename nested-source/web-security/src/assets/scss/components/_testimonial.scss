@@ -1,0 +1,45 @@
+@import '../variables';
+
+.testimonials {
+
+}
+
+.testimonial {
+  padding-bottom: 5rem;
+
+  p {
+    display: flex;
+    padding-left: 1.5rem;
+    padding-bottom: 0;
+    border-left: .2rem solid $primary-100;
+    line-height: 3rem;
+  }
+}
+
+.testimonial-author {
+  display: flex;
+  padding-top: 1.5rem;
+  align-items: center;
+
+  img {
+    max-width: 6.4rem;
+    border-radius: 50%;
+  }
+}
+
+.testimonial-author-name {
+  font-weight: bold;
+}
+
+.testimonial-author-info {
+  padding-left: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.testimonial-video {
+  padding-bottom: .5rem;
+}
+
+.testimonial-hidden {
+  display: none;
+}

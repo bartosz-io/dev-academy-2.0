@@ -1,14 +1,23 @@
-posthog.onFeatureFlags(function() {
-    posthog.feature_flags.override({cta: 'test'});
+if (window.posthog) {
+    posthog.onFeatureFlags(function() {
+        // window.DESKTOP_STICKY_HEADER = true;
+    });
+}
 
-    if (posthog.getFeatureFlag('cta') === 'test') {
-        console.log('Overriding');
-        var navStartBtn = document.querySelector('.header-nav .header-nav-start .button');
+function sidebarWSALinkABTest() {
+    var articleSidebar = document.querySelector('.article .article-sidebar');
 
-        if (navStartBtn) {
-            navStartBtn.textContent = 'Go here!';
+    if (posthog.getFeatureFlag('blog-post-sidebar_wsa') === 'test') {
+        console.warn('Starting test flag');
+
+        if (articleSidebar) {
+            articleSidebar.classList.add('article-sidebar--dark');
         }
-    } else {
-        console.warn('A/B failed');
     }
-});
+
+    if (articleSidebar) {
+        articleSidebar.classList.remove('hidden');
+    }
+
+    console.warn('End testing');
+}

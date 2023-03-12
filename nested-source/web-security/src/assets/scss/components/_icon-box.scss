@@ -1,0 +1,47 @@
+@import '../variables';
+
+.icon-box-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 3rem;
+  grid-row-gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.icon-box {
+  .icon {
+    width: 4.8rem;
+    height: 4.8rem;
+    background-color: $light-100;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+    box-shadow: .4rem .4rem 1.2rem rgb(0 0 0 / 10%), -.4rem -.4rem 1.2rem $light-100;
+
+    &.icon-tick:after {
+      content: '\eed6';
+    }
+
+    &:after,
+    svg {
+      font-family: $font-family-ico;
+      position: absolute;
+      margin-top: .1rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3.5rem;
+      color: $primary-100;
+    }
+
+    svg #icon {
+      fill: $primary-100;
+    }
+  }
+
+  p {
+    margin-top: 1rem;
+    line-height: 3rem;
+    padding-bottom: 0;
+  }
+}

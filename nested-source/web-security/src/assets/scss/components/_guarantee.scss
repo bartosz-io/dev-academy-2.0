@@ -1,0 +1,21 @@
+@import '../variables';
+
+.guarantee {
+  display: flex;
+  flex-direction: column;
+}
+
+.guarantee-image {
+  display: flex;
+  justify-content: center;
+}
+
+.guarantee-image svg #paint2_linear stop {
+  &:first-child {
+    stop-color: $secondary-300;
+  }
+
+  &:last-child {
+    stop-color: $primary-100;
+  }
+}
