@@ -2,7 +2,7 @@
 title: Angular Signals 🔥
 contributor: Łukasz Fajger
 avatar: lukasz-fajger.jpg
-description: This is description of the post added in meta description tag.
+description: A signal is a trackable value that changes over time. If the value of the signal changes, all related dependencies are automatically updated.
 tags: [angular, performance]
 id: angular-signals
 date: 2023-03-05 15:57:37
@@ -18,7 +18,7 @@ What if we could write even more performant applications in Angular without worr
 
 We all know that the unskillful use of change detection in Angular can lead to many consequences, primarily in terms of performance. I checked and tested how **Angular Signals** work and these granular updates are simply brilliant! 
 
-The best news? It’s actually not that complicated, and I can teach you them in the next few minutes!
+The best news? It’s not that complicated, and I can teach you them in the next few minutes!
 
 ## Angular Reactivity with Signals
 
@@ -42,7 +42,7 @@ Probably at the end of the year. Who knows, it can appear in Angular 16. It all 
 
 ### How to start using Signals?
 
-To get started and see how the signal works, you have to install the minimum version of next pre-release which is `16.0.0-next.0`. In this version Angular Signals have been added to the public API. As this is a prototype, it is not recommended using it in production for the time being.
+To get started and see how the signal works, you have to install the minimum version of the next pre-release which is `16.0.0-next.0`. In this version, Angular Signals have been added to the public API. As this is a prototype, it is not recommended to use it in production for the time being.
 
 1. If you already have an existing project, with the latest version of Angular then you can do an upgrade.
    ```
@@ -58,19 +58,19 @@ Once we have the latest pre-release version installed, it's time to find out wha
 
 ## The concept
 
-The main concept of signals in Angular is the ability to **granularly update component parts**. We don't want to render the whole component or its tree, but the exact small part of the component that has been changed. And this is why signals were introduced.
+The main concept of signals in Angular is the ability to **granularly update parts of the component**. We don't want to render the whole component or its tree, but the exact small part of the component that has been changed. And this is why signals were introduced.
 
 ### What is the Signal?
 
-Signal is not something new in Angular. The concept already exists in SolidJS, Preact or Vue.js. The inspiration was taken from SolidJS creator Ryan Carniato.
+A signal is not something new in Angular. The concept already exists in SolidJS, Preact, or Vue.js. The inspiration was taken from SolidJS creator Ryan Carniato.
 
-Signal is a **trackable value**. If the value of the signal changes, all related dependencies are automatically updated.
+The signal is a **trackable value**. If the value of the signal changes, all related dependencies are automatically updated.
 
 ```ts
 const counter = signal(0);
 ```
 
-It is an object consisting of a getter, setters and a value that changes over time. This "reactive" value is able to notify all interested consumers.
+It is an object consisting of a getter, setters, and a value that changes over time. This "reactive" value can notify all interested consumers.
 ### No side effects
 
 A signal is an argument-free function `() => T` that does not create side effects when we read its value. Why doesn't it create side effects? 
@@ -88,7 +88,7 @@ function increment() {
 * Impure function - function with one or more side effects.
 * Pure function - function without side effects.
 
-Perhaps more than once you have found yourself creating side effects using RxJS streams? I have to admit that it has happened to me e.g. in `tap` or `map` operators. Therefore, it is worth emphasising that signal is not a stream, but only a pure function. It does not create side effects, and its value is always available synchronously. However, it can lazily recalculate intermediate values.
+Perhaps more than once you have found yourself creating side effects using RxJS streams. I have to admit that it has happened to me e.g. in `tap` or `map` operators. Therefore, it is worth emphasizing that signal is not a stream, but only a pure function. It does not create side effects, and its value is always available synchronously. However, it can lazily recalculate intermediate values.
 
 ### How to change the Signal value?
 
@@ -114,7 +114,7 @@ mutate(mutatorFn: (value: T) => void): void;
     counter.update(value => value + 1);
     ```
 
-3. `mutate()` will mutate the current value internally and it is a sugar for `update()`. If we didn't want to do this: `users.update(users => [...users, newUser])`, then we can mutate if we really want. It's great for objects.
+3. `mutate()` will mutate the current value internally and it is a sugar for `update()`. If we didn't want to do this: `users.update(users => [...users, newUser])`, then we can mutate if we want. It's great for objects.
     ```ts
     const users = signal<User[])([]);
     
@@ -127,7 +127,7 @@ Keep in mind that each of the above methods will also notify each dependency and
 
 ### Equality function
 
-It is possible to optionally add an equality comparator function to the signal. This is to check newly supplied values whether they are the same, or different, compared to the current value.
+It is possible to optionally add an equality comparator function to the signal. This is to check newly supplied values and whether they are the same, or different, compared to the current value.
 
 ```ts
 const counter = signal(0, myEqualityFunction);
@@ -190,9 +190,9 @@ counter.set(5);
 // Counter value is equal 5!
 ```
 
-As you noticed, we were given the value `0` at the beginning. This is an initial value, given in the same way as `BehaviorSubject` in RxJS. Then we set the value 3 times and got final message that the value is equal to `5`. 
+As you noticed, we were given the value `0` at the beginning. This is an initial value, given in the same way as `BehaviorSubject` in RxJS. Then we set the value 3 times and got the final message that the value is equal to `5`. 
 
-Signal Effect behavses like "listener" that needs changing dependencies (signals). Then this function is called. This is the perfect place to perform other operations, calling methods etc.
+The Signal Effect behaves like a "listener" that needs changing dependencies (signals). Then this function is called. This is the perfect place to perform other operations, calling methods, etc.
 
 ## Example of Angular Signals
 If you already have the minimal version of `16.0.0-next.0` installed, go ahead and copy the example and test how Angular Signals work.
@@ -276,11 +276,11 @@ export class AppComponent implements OnInit {
 
 {% img "change-detection-strategy-default.png" "Default change detection" "lazy" %}
 
-Automatic change detection can lead to many problems if we write our application the wrong way, including impacting on the performance. Certain strategies and methodologies are usually used for this to create more performant and responsive applications. What if we wanted Angular to be able to run without Zone.js, so that it would not automatically update the application for us?
+Automatic change detection can lead to many problems if we write our application the wrong way, including impact on the performance. Certain strategies and methodologies are usually used for this to create more performant and responsive applications. What if we wanted Angular to be able to run without Zone.js so that it would not automatically update the application for us?
 
 ### Angular without Zone.js
 
-We are able to completely remove the Zone.js from our application. To do this, simply deactivate Zone.js and set `ngZone` to `noop` when boostrap the app.
+We can completely remove Zone.js from our application. To do this, simply deactivate Zone.js and set `ngZone` to `noop` when bootstrapping the app.
 
 ```ts main.ts
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -336,18 +336,18 @@ This seems like a great solution. So why didn't we have this in Angular before?
 
 {% img "tell-me-why.jpg" " " "lazy" %}
 
-Now we are able to write fully zoneless applications using **granular&nbsp;updates** of elements in the UI without re-rendering components. This opens the door to removing Zone.js from Angular altogether.
+Now we can write fully zoneless applications using **granular&nbsp;updates** of elements in the UI without re-rendering components. This opens the door to removing Zone.js from Angular altogether.
 
 What about `ChangeDetectionStrategy.OnPush`, which serves as a "smart change detection checker" that improves our application performance? Won't it be redundant when using signals?
 
 {% add_classes "OnPush change detection strategy" "center bold" %}
 {% img "change-detection-strategy-onpush.png" "OnPush change detection" "lazy" %}
 
-It seems that `OnPush` can be unnecessary. Why? Let's imagine that we don't have Zone.js and everywhere in the application we only have scattered signals and their dependencies that update themselves in a granular way. At this point, we don't really need to disable any components from dirty checking in the tree anymore like we did in the `OnPush` strategy. We use signals inside and outside the components. And that's it. Everything updates automatically.
+It seems that `OnPush` can be unnecessary. Why? Let's imagine that we don't have Zone.js and everywhere in the application we only have scattered signals and their dependencies that update themselves in a granular way. At this point, we don't need to disable any components from dirty checking in the tree anymore as we did in the `OnPush` strategy. We use signals inside and outside the components. And that's it. Everything updates automatically.
 
 ## Will Angular Signals replace RxJS?
 
-As we know Angular married RxJS from the very beginning. Rxjs is the core library that is responsible for reactivity in Angular. It is a really great library with which you can overcome many challenges easily and quickly. On top of that, it is very pleasant to write Angular code using:
+As we know Angular married RxJS from the very beginning. Rxjs is the core library that is responsible for reactivity in Angular. It is a great library with which you can overcome many challenges easily and quickly. On top of that, it is very pleasant to write Angular code using:
 
 * streams,
 * [cold & hot observables](https://courses.dev-academy.com/p/advanced-rxjs),
@@ -357,23 +357,23 @@ As we know Angular married RxJS from the very beginning. Rxjs is the core librar
 * [caching](http://localhost:4000/angular-cache-http-requests/)
 * and many more.
 
-We know Angular mainly uses RxJS so that we can easily deal with asynchronicity and data passing between components. By the way, if you need to learn about the advanced techniques of RxJS then I encourage you to take a look here at this course: *[Master advanced RxJS ☄️ techniques](https://courses.dev-academy.com/p/advanced-rxjs)*.
+We know Angular mainly uses RxJS, so we can easily deal with asynchronicity and data passing between components. By the way, if you need to learn about the advanced techniques of RxJS then I encourage you to take a look here at this course: *[Master advanced RxJS ☄️ techniques](https://courses.dev-academy.com/p/advanced-rxjs)*.
 
 {% add_classes "Will signals replace Rxjs in some way?" "bold" %}
 
 It seems so, but only on certain things. For example, let's consider the Subjects in RxJS. If we compare Angular Signals with Subjects, we can observe some key differences.
 1. **Much simpler than streams**
-   Simpler and more understandable code. It means it is easier getting into Angular and learning it. No need to learn RxJS at the start, just start using signals.
+   Simpler and more understandable code. It means it is easier to get into Angular and learn it. No need to learn RxJS at the start, just start using signals.
 
 2. **No need to handle subscription/unsubscription**
    Just like the `async` pipe in the template. You don't have to manually `unsubscribe`. This is what the Angular team said:
    
-   > Implicit, low overhead subscriptions
+   > Implicit, low-overhead subscriptions
 
 3. **Automatic propagation of changes in each dependency**
-   No need to trigger any updates in the code. That *reactive primitive* has a dependency tree that automatically synchronises itself.
+   No need to trigger any updates in the code. That *reactive primitive* has a dependency tree that automatically synchronizes itself.
 
-Overall, I don't think there is much to fear about Signals being able to displace RxJS totally. There is no basis for this. The Angular team has stated that they are going to *integrate Signals into RxJS*.
+Overall, I don't think there is much to fear about Signals being able to displace RxJS. There is no basis for this. The Angular team has stated that they are going to *integrate Signals into RxJS*.
 
 I think RxJS with Signals will be a great combination from which we will be able to benefit even more!
 
@@ -396,7 +396,7 @@ I think RxJS with Signals will be a great combination from which we will be able
 
 Of course, there are also downsides. I noticed there are not so many, but they are worth mentioning. For example:
 - calling methods in the template,
-- and big learning curve for newcomers if they want to use Signals and RxJS together.
+- and a big learning curve for newcomers if they want to use Signals and RxJS together.
 
 Regarding the calling methods in the template, I suppose they will manage that in the future. And it will not be a performance issue if change detection is reworked.
 
@@ -404,6 +404,6 @@ Regarding the calling methods in the template, I suppose they will manage that i
 
 We’re finally getting meaningful changes to the framework. Honestly, I’m looking forward to it, and I’m very excited. 🤩
 
-I think Signals will definitely enhance Angular and its performance. Signals will become the primary way we indicate that a value should trigger change detection, so we'll use them for every value in our application that changes. And they will also just be generally useful for reactive and declarative coding.
+I think Signals will enhance Angular and its performance. Signals will become the primary way we indicate that a value should trigger change detection, so we'll use them for every value in our application that changes. And they will also just be generally useful for reactive and declarative coding.
 
 But will Angular Signals be **a game changer**? Feel free to comment on this post below.
