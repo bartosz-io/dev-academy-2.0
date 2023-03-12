@@ -350,7 +350,7 @@ As we know Angular married RxJS from the very beginning. Rxjs is the core librar
 * subjects,
 * async pipes,
 * operators,
-* [caching](https://dev-academy.com/angular-cache-http-requests),
+* [caching](/angular-cache-http-requests),
 * and many more.
 
 We know Angular mainly uses RxJS, so we can easily deal with asynchronicity and data passing between components. By the way, if you need to learn about the advanced techniques of RxJS then I encourage you to take a look here at this course: *[Master advanced RxJS ☄️ techniques](https://courses.dev-academy.com/p/advanced-rxjs)*.
