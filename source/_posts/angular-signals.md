@@ -5,7 +5,7 @@ avatar: lukasz-fajger.jpg
 description: A signal is a trackable value that changes over time. If the value of the signal changes, all related dependencies are automatically updated.
 tags: [angular, performance]
 id: angular-signals
-date: 2023-03-05 15:57:37
+date: 2023-03-13
 ---
 <!-- {% image_fw 1.78 angular-signals.png "Angular Signals" %}-->
 
