@@ -111,7 +111,7 @@ to this format (the large message will be the `alt` property of the `<img>` HTML
 
 | Helper                                                  | Description                                                                                                  |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| {% add_classes "Text content" "center body" %}          | Creates paragraph with some extra classes. `arg[0]`- text, `arg[1]` - name of classes                        |
+| {% p_add_classes "Text content" "center body" %}        | Creates paragraph with some extra classes. `arg[0]`- text, `arg[1]` - name of classes                        |
 | {% img "my-image.png" "ALT text of the image" "lazy" %} | Creates an image. `arg[0]`- image path, `arg[1]` - ALT text of the image, `arg[2]` - value of lazy attribute |
 
 17. Before committing, ensure that the post meets these requirements:
