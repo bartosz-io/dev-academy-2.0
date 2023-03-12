@@ -107,7 +107,14 @@ to this format (the large message will be the `alt` property of the `<img>` HTML
 - inline with markdown ticks `let a = 20`
 - or as a block code by using three ticks and language name after (html, css, typescript, js, jsx, bash etc.). `\``typescript <<my-content>> ```
 
-16. Before committing, ensure that the post meets these requirements:
+16. These are available helpers that can be very useful during writing:
+
+| Helper                                                  | Description                                                                                                  |
+|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| {% add_classes "Text content" "center body" %}          | Creates paragraph with some extra classes. `arg[0]`- text, `arg[1]` - name of classes                        |
+| {% img "my-image.png" "ALT text of the image" "lazy" %} | Creates an image. `arg[0]`- image path, `arg[1]` - ALT text of the image, `arg[2]` - value of lazy attribute |
+
+17. Before committing, ensure that the post meets these requirements:
     > ### Technical requirements
     > - Validate your metadata in `_config.yml` and article front matter if everything is correct.
     > - Make sure you added your profile image in `themes/my-theme/source/img/contributors`.
@@ -135,7 +142,7 @@ to this format (the large message will be the `alt` property of the `<img>` HTML
     > - Article should always end with conclusion or summary (few sentences).
     > - Texts are not written, texts are designed. Design your post to be proud of what you have created!
 
-17. Save, commit and congratulations! 🥳 You are ready to open a PR and appear in the first results of the search engines.
+18. Save, commit and congratulations! 🥳 You are ready to open a PR and appear in the first results of the search engines.
     - open the GitHub PR conversation end examine the deploy preview
     - send the PR via Discord
 

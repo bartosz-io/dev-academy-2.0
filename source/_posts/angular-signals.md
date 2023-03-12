@@ -1,9 +1,9 @@
 ---
-title: Angular Signals
+title: Angular Signals 🔥
 contributor: Łukasz Fajger
 avatar: lukasz-fajger.jpg
 description: This is description of the post added in meta description tag.
-tags: [angular]
+tags: [angular, performance]
 id: angular-signals
 date: 2023-03-05 15:57:37
 ---
@@ -12,96 +12,398 @@ date: 2023-03-05 15:57:37
 ## Table of Contents
 <!-- toc -->
 
+{% image_fw 1.78 "banner.png" "Angular Signals" %}
+
+What if we could write even more performant applications in Angular without worrying about change detection? And what if we didn't want to render everything, but only the places that have exactly changed?
+
+We all know that the unskillful use of change detection in Angular can lead to many consequences, primarily in terms of performance. I checked and tested how **Angular Signals** work and these granular updates are simply brilliant! 
+
+The best news? It’s actually not that complicated, and I can teach you them in the next few minutes!
+
 ## Angular Reactivity with Signals
 
-The Angular team has been working for some time now to introduce signals as a **reactive primitive in Angular**.
+The Angular team has been working for some time now to introduce signals as a **reactive primitive in Angular**. They announced that their goal is:
 
-
-They [announced](https://github.com/angular/angular/discussions/49090) that their goal is:
 > to embrace fine-grained reactivity in the core of the framework.
 
-This means that a lot of changes are coming to the core framework and change detection. These will be fundamental changes that will make zone.js optional. Say&nbsp;what? Optional zone.js?
+This means that a lot of changes are coming to the core framework and change detection. These will be fundamental changes that will make Zone.js optional.
 
-{% img "say-what.png" "Alt title for the image" "lazy" %}
+{% img "optional-zonejs.jpg" "Optional Zone.js" "lazy" %}
 
-Yes, that's right. You won't need zone.js if you use signals. I dare say it looks like Angular wants to get rid of zone.js in the future. But we don't have to fear anything, because for the moment we will have backward compatibility with zone.js all the time.
 > We want to change the underlying change detection system for Angular.
 
-To get started and see how the signal works, you can install the `16.0.0-next.0` version of angular. As this is a prototype, it is not worth using it in production for the time being.
+Yes, that's right. You won't need Zone.js if you use signals. I dare say it looks like Angular wants to get rid of Zone.js in the future. But we don't have to fear anything, because for the moment we will have backward compatibility with Zone.js.
 
+### When will the Signals arrive in Angular?
 
-## Header 2
+Probably at the end of the year. Who knows, it can appear in Angular 16. It all depends on how the work on them is managed. More information you can be found [here](https://github.com/angular/angular/discussions/49090).
 
-Content...
+> We strongly believe that adding built-in reactivity to Angular is in the long term best interest of the framework and its users, and look forward to sharing more information about this project in the upcoming RFC.
 
-### Header 2.1
+### How to start using Signals?
 
-Content 2.1
+To get started and see how the signal works, you have to install the minimum version of next pre-release which is `16.0.0-next.0`. In this version Angular Signals have been added to the public API. As this is a prototype, it is not recommended using it in production for the time being.
 
-### Header 2.2
+1. If you already have an existing project, with the latest version of Angular then you can do an upgrade.
+   ```
+   ng update @angular/cli @angular/core --next
+   ```
 
-Content 2.2
+2. Or simply create a new project.
+   ```
+   npx @angular/cli@next new angular-signals
+   ```
 
-etc.
+Once we have the latest pre-release version installed, it's time to find out what signals are. You can also find an example of fully working code in this [section](#example-of-angular-signals). Let's get started!
 
-...
+## The concept
 
-## Summary
+The main concept of signals in Angular is the ability to **granularly update component parts**. We don't want to render the whole component or its tree, but the exact small part of the component that has been changed. And this is why signals were introduced.
 
-Here is the summary of the post. Add at least few sentences.
+### What is the Signal?
 
----
-Useful examples of markdown usage inside article. Remove this content later.
+Signal is not something new in Angular. The concept already exists in SolidJS, Preact or Vue.js. The inspiration was taken from SolidJS creator Ryan Carniato.
 
-### Image
-{% img "your-image.jpg" "Alt title for the image" "lazy" %}
+Signal is a **trackable value**. If the value of the signal changes, all related dependencies are automatically updated.
 
-### Code highlighting
-You can add any language you want, e.g. html, css, js, typescript, bash etc.
-```typescript
-@Component({
-  selector: 'categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
-})
-export class CategoriesComponent implements OnInit {
+```ts
+const counter = signal(0);
+```
 
+It is an object consisting of a getter, setters and a value that changes over time. This "reactive" value is able to notify all interested consumers.
+### No side effects
+
+A signal is an argument-free function `() => T` that does not create side effects when we read its value. Why doesn't it create side effects? 
+
+First, let's quickly understand what a side effect is. Side effect occurs when a function uses or relies on code from outside. This means that if you use external code in your function, you create a side effect. The example below is an impure function with one side effect.
+
+```ts
+let counter = 0;
+
+function increment() {
+    return counter++;
 }
 ```
 
-### Lists
+* Impure function - function with one or more side effects.
+* Pure function - function without side effects.
 
-#### Type 1
-First way:
-* expose methods for the components in which we:
-    * delegate logic execution to the core layer,
-    * decide about data synchronization strategy (optimistic vs. pessimistic),
-* expose streams of state for the components:
-    * pick one or more streams of UI state (and combine them if necessary),
-        * cache data from external API.
+Perhaps more than once you have found yourself creating side effects using RxJS streams? I have to admit that it has happened to me e.g. in `tap` or `map` operators. Therefore, it is worth emphasising that signal is not a stream, but only a pure function. It does not create side effects, and its value is always available synchronously. However, it can lazily recalculate intermediate values.
 
-Second way:
+### How to change the Signal value?
 
-- expose methods for the components in which we:
-    - delegate logic execution to the core layer,
-    - decide about data synchronization strategy (optimistic vs. pessimistic),
-- expose streams of state for the components:
-    - pick one or more streams of UI state (and combine them if necessary),
-    - cache data from external API.
+Let's say we want to change our value in a signal. We do this via a setter interface `SettableSignal<T>`, which has 3 methods.
 
-#### Type 2
-1. expose methods for the components in which we:
-    1. delegate logic execution to the core layer,
-    2. decide about data synchronization strategy (optimistic vs. pessimistic),
-2. expose streams of state for the components:
-    1. pick one or more streams of UI state (and combine them if necessary),
-    2. cache data from external API.
+```ts
+set(value: T): void;
+update(updateFn: (value: T) => T): void;
+mutate(mutatorFn: (value: T) => void): void;
+```
+
+1. `set()` will completely replace our value.
+
+    ```ts
+    const counter = signal(0);
+    counter.set(1);
+    ```
+
+2. `update()` will update the value of the signal based on its current (old) value.
+
+    ```ts
+    const counter = signal(0);
+    counter.update(value => value + 1);
+    ```
+
+3. `mutate()` will mutate the current value internally and it is a sugar for `update()`. If we didn't want to do this: `users.update(users => [...users, newUser])`, then we can mutate if we really want. It's great for objects.
+    ```ts
+    const users = signal<User[])([]);
+    
+    users.mutate(user => {
+        user.push({name: 'Lucas', age: 33});
+    });
+    ```
+
+Keep in mind that each of the above methods will also notify each dependency and its value where the signal was used.
+
+### Equality function
+
+It is possible to optionally add an equality comparator function to the signal. This is to check newly supplied values whether they are the same, or different, compared to the current value.
+
+```ts
+const counter = signal(0, myEqualityFunction);
+```
+
+`myEqualityFunction` is type of: `ValueEqualityFn<T> = (a: T, b: T) => boolean`
+
+If the function detects that 2 values are the same, the signal value is not updated and the propagation of all changes in the dependencies of this signal is blocked. This gives you more control over updates in your signal.
+
+### What is computed()?
+
+It is a function that creates a memoizing computed signal, which **returns a reactive value from an expression**.
+
+```ts
+const counter = signal(0);
+const isEqual = computed(() => counter() === 5);
+```
+
+`isEqual` calculates its value by using `computed()` from signal value. It automatically updates the result every time the value of the `counter` signal changes.
+
+The important thing to remember is that each signal reading within `computed()` is *treated as a dependency*, and it will be tracked in the dependency graph.
+
+```ts
+const counter = signal(0);
+const isEqual = computed(() => counter() === 5); // counter() first dependency
+const isOdd = computed(() => counter() % 2); // counter() second dependency
+```
+
+And if we now change the signal value e.g. with `.set()`, the changes will be propagated in all `computed` functions, where the signal reading `counter()` is located. These locations are dependencies.
+
+{% img "ohh-yea.jpg" " " "lazy" %}
+
+It is worth mentioning that `computed()` values are cached. They are updated only when it’s needed.
+
+### Signal Effects
+
+`effect()` is a tree-shakable side effect function that **triggers when a signal value changes**. All signal dependencies are captured inside the function. Then, if there is a change in the signal, the side effect function is re-executed.
+
+```ts
+const counter = signal(0);
+
+effect(() => {
+    console.log('Counter value ', this.counter());
+
+    if (this.counter() === 5) {
+        console.log('Counter value is equal 5!');
+    }
+});
 
 
-### Blockquote
-> #### My title
-> My paragraph
-> - first point
-> - second point
+counter.set(1);
+counter.set(2);
+counter.set(5);
 
-Check more on: https://www.markdownguide.org/basic-syntax/
+
+// Counter value 0
+// Counter value 1
+// Counter value 2
+// Counter value 5
+// Counter value is equal 5!
+```
+
+As you noticed, we were given the value `0` at the beginning. This is an initial value, given in the same way as `BehaviorSubject` in RxJS. Then we set the value 3 times and got final message that the value is equal to `5`. 
+
+Signal Effect behavses like "listener" that needs changing dependencies (signals). Then this function is called. This is the perfect place to perform other operations, calling methods etc.
+
+## Example of Angular Signals
+If you already have the minimal version of `16.0.0-next.0` installed, go ahead and copy the example and test how Angular Signals work.
+
+```ts
+import { Component, OnInit, computed, effect, signal } from '@angular/core';
+
+@Component({
+   selector: 'app-root',
+   template: `
+    <div>Count: {{ counter() }}</div>
+    <div>Odd: {{ isOdd() }}</div>
+    <div>Is equal to 5: {{ isEqual() }}</div>
+
+    <button (click)="increment()">Increment</button>
+    <button (click)="reset()">Reset</button>
+    <button (click)="decrement()">Decrement</button>
+  `,
+})
+export class AppComponent implements OnInit {
+   counter = signal(0);
+   isEqual = computed(() => this.counter() === 5);
+   isOdd = computed(() => this.counter() % 2);
+
+   ngOnInit() {
+      effect(() => {
+         console.log('Counter value', this.counter());
+
+         if (this.counter() === 5) {
+            console.log('Counter value is equal 5!');
+         }
+      });
+   }
+
+   increment() {
+      this.counter.update((value) => value + 1);
+   }
+
+   decrement() {
+      this.counter.update((value) => value - 1);
+   }
+
+   reset() {
+      this.counter.set(0);
+   }
+}
+```
+
+## Zoneless Angular
+
+By default, Angular change detection is run globally, where the entire component tree is checked from top to bottom. This is made possible by the Zone.js library, which captures all async events such as:
+
+* `setTimeout`,
+* event listeners,
+* requests,
+* and other. 
+
+How does this look in practice?
+
+```ts
+@Component({
+   selector: 'app-root',
+   template: 'Welcome {{name}}!'
+})
+export class AppComponent implements OnInit {
+   name!: string;
+
+   ngOnInit() {
+      setTimeout(() => {
+         this.name = 'Lucas';
+      }, 2000);
+   }
+}
+```
+
+1. Zone.js detects `setTimeout`.
+2. It gives a signal to run change detection automatically.
+3. Lastly, after two seconds we receive the result `Welcome Lucas!`.
+
+{% add_classes "Default change detection strategy" "center bold"%}
+
+{% img "change-detection-strategy-default.png" "Default change detection" "lazy" %}
+
+Automatic change detection can lead to many problems if we write our application the wrong way, including impacting on the performance. Certain strategies and methodologies are usually used for this to create more performant and responsive applications. What if we wanted Angular to be able to run without Zone.js, so that it would not automatically update the application for us?
+
+### Angular without Zone.js
+
+We are able to completely remove the Zone.js from our application. To do this, simply deactivate Zone.js and set `ngZone` to `noop` when boostrap the app.
+
+```ts main.ts
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+
+platformBrowserDynamic()
+        .bootstrapModule(AppModule, { ngZone: 'noop' })
+        .catch((err) => console.error(err));
+```
+
+At this point you must trigger change detection on your own. This requires comprehensive knowledge of change detection. If we would like to render our `name` now, we can trigger the change detection manually with `tick` or `detectchanges()`.
+
+```ts
+constructor(private cdr: ChangeDetectorRef,
+            private applicationRef: ApplicationRef) {}
+
+ngOnInit() {
+   setTimeout(() => {
+      this.name = 'Lucas';
+      this.cdr.detectChanges(); // runs change detection for the underlying component
+      // this.applicationRef.tick(); // runs application-wide change detection
+   })
+}
+```
+
+If you use `tick()` in development mode, then remember that it also performs a second change detection cycle to ensure that no further changes are detected.
+
+We did it! We have now a fully working **Angular Zoneless application** that is super performant. It runs change detection only where we need it.
+
+Unfortunately, the main disadvantage of this solution is that we have to manually use change detection in our application to see the changed state of the application. For this, we need to have some knowledge of when to trigger it.
+
+What if we did not have to manually trigger the change detection and Angular did it for us automatically, in addition to not re-rendering the entire template, only the exact places that were changed? This is why **Angular Signals** appeared.
+
+### Granular updates with Angular Signals
+
+With Angular Signals, there is no need to check the entire component tree and run change detection. Change detection will only be used on affected components and exactly where they have been changed.
+
+{% add_classes "Granular updates" "center bold" %}
+{% img "granular-update.png" "Granular update with Angular Signal" "lazy" %}
+
+Simply put, when the model changes, Angular will know exactly where and in which component to sync the UI without having to re-render the entire component or its tree.
+
+```ts counter.ts
+counter.set(1);	
+```
+
+```html counter.html
+<div>Count: {{ counter() }}</div> 
+// ‘Count: 1’, without re-rendering whole component
+```
+
+This seems like a great solution. So why didn't we have this in Angular before?
+
+{% img "tell-me-why.jpg" " " "lazy" %}
+
+Now we are able to write fully zoneless applications using **granular&nbsp;updates** of elements in the UI without re-rendering components. This opens the door to removing Zone.js from Angular altogether.
+
+What about `ChangeDetectionStrategy.OnPush`, which serves as a "smart change detection checker" that improves our application performance? Won't it be redundant when using signals?
+
+{% add_classes "OnPush change detection strategy" "center bold" %}
+{% img "change-detection-strategy-onpush.png" "OnPush change detection" "lazy" %}
+
+It seems that `OnPush` can be unnecessary. Why? Let's imagine that we don't have Zone.js and everywhere in the application we only have scattered signals and their dependencies that update themselves in a granular way. At this point, we don't really need to disable any components from dirty checking in the tree anymore like we did in the `OnPush` strategy. We use signals inside and outside the components. And that's it. Everything updates automatically.
+
+## Will Angular Signals replace RxJS?
+
+As we know Angular married RxJS from the very beginning. Rxjs is the core library that is responsible for reactivity in Angular. It is a really great library with which you can overcome many challenges easily and quickly. On top of that, it is very pleasant to write Angular code using:
+
+* streams,
+* [cold & hot observables](https://courses.dev-academy.com/p/advanced-rxjs),
+* subjects,
+* async pipes,
+* operators,
+* [caching](http://localhost:4000/angular-cache-http-requests/)
+* and many more.
+
+We know Angular mainly uses RxJS so that we can easily deal with asynchronicity and data passing between components. By the way, if you need to learn about the advanced techniques of RxJS then I encourage you to take a look here at this course: *[Master advanced RxJS ☄️ techniques](https://courses.dev-academy.com/p/advanced-rxjs)*.
+
+{% add_classes "Will signals replace Rxjs in some way?" "bold" %}
+
+It seems so, but only on certain things. For example, let's consider the Subjects in RxJS. If we compare Angular Signals with Subjects, we can observe some key differences.
+1. **Much simpler than streams**
+   Simpler and more understandable code. It means it is easier getting into Angular and learning it. No need to learn RxJS at the start, just start using signals.
+
+2. **No need to handle subscription/unsubscription**
+   Just like the `async` pipe in the template. You don't have to manually `unsubscribe`. This is what the Angular team said:
+   
+   > Implicit, low overhead subscriptions
+
+3. **Automatic propagation of changes in each dependency**
+   No need to trigger any updates in the code. That *reactive primitive* has a dependency tree that automatically synchronises itself.
+
+Overall, I don't think there is much to fear about Signals being able to displace RxJS totally. There is no basis for this. The Angular team has stated that they are going to *integrate Signals into RxJS*.
+
+I think RxJS with Signals will be a great combination from which we will be able to benefit even more!
+
+## Benefits of using Angular Signals
+
+- a new reactive primitive,
+- simplify the framework,
+- **granular updates**,
+- does not trigger side effects,
+- no need to handle `subscribe` and `unsubscribe`,
+- automatic and dynamic tracking of dependencies,
+- signal reads can't show inconsistent state,
+- advantage of using built-in `async` and `await` syntax,
+- integration with RxJS,
+- improved runtime performance,
+- improved debugging,
+- reducing application bundle size,
+- no need to learn RxJS for newcomers if they use only Signals,
+- and you can use them everywhere even outside the component class.
+
+Of course, there are also downsides. I noticed there are not so many, but they are worth mentioning. For example:
+- calling methods in the template,
+- and big learning curve for newcomers if they want to use Signals and RxJS together.
+
+Regarding the calling methods in the template, I suppose they will manage that in the future. And it will not be a performance issue if change detection is reworked.
+
+## Conclusion
+
+We’re finally getting meaningful changes to the framework. Honestly, I’m looking forward to it, and I’m very excited. 🤩
+
+I think Signals will definitely enhance Angular and its performance. Signals will become the primary way we indicate that a value should trigger change detection, so we'll use them for every value in our application that changes. And they will also just be generally useful for reactive and declarative coding.
+
+But will Angular Signals be **a game changer**? Feel free to comment on this post below.
