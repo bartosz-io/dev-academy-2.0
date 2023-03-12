@@ -7,12 +7,10 @@ tags: [angular, performance]
 id: angular-signals
 date: 2023-03-13
 ---
-<!-- {% image_fw 1.78 angular-signals.png "Angular Signals" %}-->
+{% image_fw 1.78 "banner.png" "Angular Signals" %}
 
 ## Table of Contents
 <!-- toc -->
-
-{% image_fw 1.78 "banner.png" "Angular Signals" %}
 
 What if we could write even more performant applications in Angular without worrying about change detection? And what if we didn't want to render everything, but only the exact places that have changed?
 
