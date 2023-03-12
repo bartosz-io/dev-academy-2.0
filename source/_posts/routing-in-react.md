@@ -37,9 +37,9 @@ your application and transitioning between them.
 
 Use create react app to quickly create a react app up and running.
 
-   ```bash
+```bash
 npx create-react-app my-app
-   ```
+```
 
 To get started with React Router, you will first need to install the react router package. You can **install React
 Router** from the public npm registry with either npm or yarn in your react application. You can use the following
@@ -115,7 +115,7 @@ function Contact() {
 }
 
 export default App;  
-```  
+```
 
 In this example, we are using the **BrowserRouter** component provided by React Router to create a router for our
 application. The **Link** component is used to create links between different routes in the app, and the **Switch** and
@@ -320,7 +320,7 @@ function Navbar() {
         </nav>
     );
 }
-  ```  
+```
 
 The **NavLink** component is similar to the **Link** component but has additional props that you can use to style the
 active link differently. For example, you can use the **activeClassName** prop to specify a class name that will be
@@ -344,7 +344,7 @@ function Navbar() {
         </nav>
     );
 }
- ```   
+```
 
 ### Nested Routing
 
@@ -478,11 +478,7 @@ function Contact() {
 
 export default App;
 ```
-Let's break down the code above:
-
-
 And that's it! You have now learned how to create nested routes in a React application.
-
 
 ### Hooks in React Router Dom
 
