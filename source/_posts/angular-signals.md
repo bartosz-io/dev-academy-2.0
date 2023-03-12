@@ -1,5 +1,5 @@
 ---
-title: Angular Signals 🔥 Reactive Power
+title: Angular Signals 💪 Reactive Powers
 contributor: Łukasz Fajger
 avatar: lukasz-fajger.jpg
 description: Angular signal is a trackable value that changes over time. If the value of the signal changes, all related dependencies are automatically updated.
