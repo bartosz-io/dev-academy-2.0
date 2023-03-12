@@ -243,7 +243,7 @@ export class AppComponent implements OnInit {
 
 By default, Angular change detection is run globally, where the entire component tree is checked from top to bottom. This is made possible by the Zone.js library, which captures all async events such as:
 
-* `setTimeout`,
+* setTimeout,
 * event listeners,
 * requests,
 * and other. 
@@ -292,19 +292,17 @@ platformBrowserDynamic()
 At this point you must trigger change detection on your own. This requires comprehensive knowledge of change detection. If we would like to render our `name` now, we can trigger the change detection manually with `tick` or `detectchanges()`.
 
 ```ts
-constructor(private cdr: ChangeDetectorRef,
-            private applicationRef: ApplicationRef) {}
+constructor(private cdr: ChangeDetectorRef) {}
 
 ngOnInit() {
    setTimeout(() => {
       this.name = 'Lucas';
-      this.cdr.detectChanges(); // runs change detection for the underlying component
-      // this.applicationRef.tick(); // runs application-wide change detection
+      // runs change detection for the underlying component
+      this.cdr.detectChanges();
    })
 }
 ```
-
-If you use `tick()` in development mode, then remember that it also performs a second change detection cycle to ensure that no further changes are detected.
+You can also use `tick()` instead of `detectChanges()`. It will run application-wide change detection. If you use `tick()` in development mode, then remember that it also performs a second change detection cycle to ensure that no further changes are detected.
 
 We did it! We have now a fully working **Angular Zoneless application** that is super performant. It runs change detection only where we need it.
 
