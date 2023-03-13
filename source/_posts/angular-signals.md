@@ -289,7 +289,7 @@ platformBrowserDynamic()
    .catch((err) => console.error(err));
 ```
 
-At this point you must trigger change detection on your own. This requires comprehensive knowledge of change detection. If we would like to render our `name` now, we can trigger the change detection manually with `tick` or `detectchanges()`.
+At this point you must trigger change detection on your own. This requires comprehensive knowledge of change detection. If we would like to render our `name` now, we can trigger the change detection manually with `detectChanges()`.
 
 ```ts
 constructor(private cdr: ChangeDetectorRef) {}
@@ -369,7 +369,7 @@ It seems so, but only on certain things. For example, let's consider the Subject
 3. **Automatic propagation of changes in each dependency**
    No need to trigger any updates in the code. That *reactive primitive* has a dependency tree that automatically synchronizes itself.
 
-Overall, I don't think there is much to fear about signals being able to displace RxJS. There is no basis for this. The Angular team has stated that they are going to *integrate signals into RxJS*.
+Overall, I don't think there is much to fear about signals being able to displace RxJS. There is no basis for this. The main power of RxJS is the operators. Moreover, the Angular team has stated that they are going to *integrate signals into RxJS*.
 
 I think RxJS with signals will be a great combination from which we will be able to benefit even more!
 
