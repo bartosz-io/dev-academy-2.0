@@ -1,0 +1,8 @@
+.parcel-cache
+node_modules
+dist
+.idea
+.deploy*/
+.DS_Store
+Thumbs.db
+*.log

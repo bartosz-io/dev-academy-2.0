@@ -1,0 +1,46 @@
+@import '../variables';
+
+$ab-testing-indigo-color: #b38eff;
+$ab-testing-indigo-box-shadow-color: #cab0ff;
+
+.article-sidebar--dark {
+  .article-sidebar-content {
+    border-radius: 0.5rem;
+    background: $secondary;
+    padding: 2rem 0;
+    box-shadow: 0 0 0 .7rem $ab-testing-indigo-box-shadow-color;
+  }
+
+  .article-sidebar-contributor-name {
+    color: $white;
+    margin: 0 .5rem .5rem;
+    display: inline-flex;
+    transition: none;
+  }
+
+  .contributor-academies {
+    padding: 0 0.5rem;
+
+    li {
+      margin-right: 0;
+      font-size: $font-size-15;
+    }
+
+    a {
+      color: $ab-testing-indigo-color;
+      text-decoration: none;
+      font-style: normal;
+      font-weight: 500;
+      transition: none;
+
+      &:hover {
+        color: $ab-testing-indigo-color;
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      color: $light-150;
+    }
+  }
+}

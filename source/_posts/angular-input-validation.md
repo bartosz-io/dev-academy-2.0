@@ -7,7 +7,6 @@ date: 2023-01-18
 tags: [angular, security]
 id: angular-input-validation
 relatedPost: user-login-and-registration
-bannerHeader: 'Input validation in Angular'
 ---
 {% image_fw 1.78 banner.png "Input Validation in Angular" %}
 
@@ -114,7 +113,7 @@ ng new new_project
 ng serve
 ```
     
-8. Now check to see whether it's working by opening your browser to [http://localhost:4200/](http://localhost:4200/)
+8. Now check to see whether it's working by opening your browser to `http://localhost:4200/`.
     
 {% img "localhost 4200.png" "localhost 4200" "lazy" %}
     

@@ -47,8 +47,11 @@
 
     <script src="<%- url_for('/js/main.js') %>" defer></script>
     <script src="<%- url_for('/js/gtm.js') %>" defer></script>
-    <script src="<%- url_for('/js/posthog/posthog.js') %>" defer></script>
-    <script src="<%- url_for('/js/posthog/testing/dumb-test.js') %>" defer></script>
+
+    <% if (config.posthog)  {%>
+        <script src="<%- url_for('/js/posthog/posthog.js') %>" defer></script>
+        <script src="<%- url_for('/js/posthog/testing/dumb-test.js') %>" defer></script>
+    <% } %>
 <% } %>
 </body>
 </html>

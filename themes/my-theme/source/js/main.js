@@ -1,3 +1,14 @@
+/**
+ * Global variables
+ * */
+
+window.DESKTOP_STICKY_HEADER = false;
+
+
+/**
+ * Scripts initialization
+ * */
+
 window.addEventListener('DOMContentLoaded', function() {
     if (isTablet()) {
         stickyNavigation();
@@ -25,6 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     // cookieConsent();
+    addPostHogDynamicInserts();
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
@@ -165,6 +177,10 @@ function stickyNavigation() {
     var headerStickyOutClass = 'header-sticky-out';
 
     window.addEventListener('scroll', function(event) {
+        if (window.DESKTOP_STICKY_HEADER) {
+            return;
+        }
+
         if (lastScrollY < window.scrollY) {
             if (window.scrollY > 500) {
                 document.body.classList.remove(headerStickyClass);
@@ -531,5 +547,50 @@ function slider() {
                 item.classList.remove(visibleClass);
             }
         });
+    }
+}
+
+function addPostHogDynamicInserts() {
+    var DATA_PH_ATTR = 'data-ph';
+
+    addTagListLinkInserts();
+    addPaginationLinkInserts();
+
+    function addTagListLinkInserts() {
+        var tagListLinkClass = '.tag-list .tag-list-link';
+        var mainTagList = document.querySelectorAll('.tag-list-all ' + tagListLinkClass);
+        var postTagList = document.querySelectorAll('.posts-wrapper .post ' + tagListLinkClass);
+        var blogPostTagList = document.querySelectorAll('.article-meta ' + tagListLinkClass);
+        var contributorPostsTagList = document.querySelectorAll('.contributor-posts ' + tagListLinkClass);
+
+        addDataAttributes(mainTagList, 'tag');
+        addDataAttributes(postTagList, 'tag-post');
+        addDataAttributes(blogPostTagList, 'tag-blog-post');
+        addDataAttributes(contributorPostsTagList, 'tag-contributor-post');
+    }
+
+    function addPaginationLinkInserts() {
+        var paginationLinks = document.querySelectorAll('.pagination a.page-number');
+        var prevLink = document.querySelector('.pagination a.prev');
+        var nextLink = document.querySelector('.pagination a.next');
+        addDataAttributes(paginationLinks, 'page');
+        addDataAttribute(prevLink, 'page-prev__link');
+        addDataAttribute(nextLink, 'page-next__link');
+    }
+
+    function addDataAttributes(nodes, prefix) {
+        if (nodes) {
+            nodes.forEach(function(tagLink) {
+                var linkName = tagLink.textContent.trim().replace(/ /g,'-');
+                var phInsert = prefix + '__link_' + linkName;
+                tagLink.setAttribute(DATA_PH_ATTR, phInsert);
+            });
+        }
+    }
+
+    function addDataAttribute(node, customName) {
+        if (node) {
+            node.setAttribute(DATA_PH_ATTR, customName);
+        }
     }
 }
