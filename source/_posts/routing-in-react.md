@@ -3,10 +3,10 @@ title: Routing in React
 contributor: Saurabh Ghatnekar
 avatar: saurabh-ghatnekar.png
 description: Learn how to use React Router to create a single-page application with multiple routes.
-date: 2023-02-17
+date: 2023-03-12
 tags: [react, routing]
 id: routing-in-react
-relatedPost: [react, routing]
+relatedPost: react-security-best-practices
 ---
 {% image_fw 1.78 banner.png "Routing in React" %}
 
@@ -17,48 +17,34 @@ relatedPost: [react, routing]
 
 ## Introduction
 
-
-Routing in React JS is a way for a computer program to help you move between different pages or sections in a reactjs
-web application. Imagine that you have a special book that has many stories inside. Each story has its own page, and the
-book has a table of contents at the beginning that lists all the stories.
-
-When you want to read a different story, you can use the table of contents to find the page number for that story. Then
-you can turn to that page and start reading. This is similar to how routing works in a React app.
-
-The different stories in the book are like the different pages or components in a React app, and the table of contents
-is like a special tool that helps you move between them. When you click on a link in the table of contents, it takes you
-to the right page you can see the story you want to read.
+Routing in react.js is a way for a computer program to help you move between different pages or sections in a reactjs web application. Imagine that you have a special book that has many stories inside. Each story has its own page, and the book has a table of contents at the beginning that lists all the stories.
+When you want to read a different story, you can use the table of contents to find the page number for that story. Then you can turn to that page and start reading. This is similar to how routing works in a React app.
+The different stories in the book are like the different pages or components in a React app, and the table of contents is like a special tool that helps you move between them. When you click on a link in the table of contents, it takes you to the right page you can see the story you want to read.
 
 ### React Router
 
-
-React Router enables "client-side routing". This module provides components to handle routing by defining the routes in
-your application and transitioning between them.
-
+React Router enables **client-side routing**. This module provides components to handle routing by defining the routes in your application and transitioning between them.
 Use create react app to quickly create a react app up and running.
 
 ```bash
 npx create-react-app my-app
 ```
 
-To get started with React Router, you will first need to install the react router package. You can **install React
-Router** from the public npm registry with either npm or yarn in your react application. You can use the following
-command to install react router using npm.
+To get started with React Router, you will first need to install the react router package. You can install React Router from the public npm registry with either npm or yarn in your react application.
+You can use the following command to install react router using npm.
 
 ```bash
 npm install react-router-dom
 ```
 
-Once the library is installed, you can import the components you want to use in your application. For example, to use
-the **BrowserRouter**, **Route**, **Link,** and other components, you can add the following statement to your code to
-import them from the **React router library**
+Once the library is installed, you can import the components you want to use in your application. For example, to use the BrowserRouter, Route, Link, and other components, you can add the following statement to your code to import them from the React router library
 
 ```bash
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 ```
 
-Then, you can use these components to define the routes in your application and specify which components should be
-rendered for each route. Here is a simple example of how this might look:
+Then, you can use these components to define the routes in your application and specify which components should be rendered for each route.
+Here is a simple example of how this might look:
 
 ```javascript
 //import react first
@@ -88,12 +74,12 @@ function App() {
                     </ul>
                 </nav>
             </div>
-            <div style={{padding:10}}>
+            <div style={{padding: 10}}>
                 <Routes>
-                <Route path={"/"} element={<Home/>}/>
-                <Route path={"/about"} element={<About/>}/>
-                <Route path={"/contact"} element={<Contact/>}/>
-            </Routes>
+                    <Route path={"/"} element={<Home/>}/>
+                    <Route path={"/about"} element={<About/>}/>
+                    <Route path={"/contact"} element={<Contact/>}/>
+                </Routes>
 
             </div>
 
@@ -117,24 +103,15 @@ function Contact() {
 export default App;  
 ```
 
-In this example, we are using the **BrowserRouter** component provided by React Router to create a router for our
-application. The **Link** component is used to create links between different routes in the app, and the **Switch** and
-**Route** components are used to define the individual routes and specify which components should be rendered when the
-app is at a particular route.
-
-When the user clicks on one of the links in the navigation, the router will update the URL and render the appropriate
-component for that route. This allows the user to navigate between different parts of the app and see the different
-components that make up the application.
+In this example, we are using the `BrowserRouter` component provided by React Router to create a router for our application. The `Link` component is used to create links between different routes in the app, and the `Switch` and`Route` components are used to define the individual routes and specify which components should be rendered when the app is at a particular route.
+When the user clicks on one of the links in the navigation, the router will update the URL and render the appropriate component for that route. This allows the user to navigate between different parts of the app and see the different components that make up the application.
 
 ## React Router Components
 
-
 ### BrowserRouter
 
-BrowserRouter is a component in the react-router-dom library that is used to provide routing functionality to a React
-app. It uses the HTML5 history API to keep the UI in sync with the URL, allowing the user to use the back and forward
-buttons in the browser and to bookmark a particular page.
-
+BrowserRouter is a component in the react-router-dom library that is used to provide routing functionality to a React app. 
+It uses the HTML5 history API to keep the UI in sync with the URL, allowing the user to use the back and forward buttons in the browser and to bookmark a particular page.
 Here is an example of how you might use the **BrowserRouter** component in a app:
 
 ```javascript
@@ -152,21 +129,12 @@ function App() {
 }
 ```
 
-In this example, the **BrowserRouter** component wraps up the entire app and provides the routing functionality to all
-of its child components. The **Route** components inside the **BrowserRouter** define specific paths that the app should
-render when the URL matches the given path.
+In this example, the **BrowserRouter** component wraps up the entire app and provides the routing functionality to all of its child components. The **Route** components inside the **BrowserRouter** define specific paths that the app should render when the URL matches the given path.
 
 ### Route
 
-The **Route** component in React Router is a way to define a specific route in your application that a user can navigate
-to. It is typically used within a **BrowserRouter** component to define the different routes that are available in your
-application. The **BrowserRouter**, sometimes imported as a Router component is a parent component while the Route is a
-child component.
-
-The **Route** component takes several props, including **exact**, which you can use to specify that a route should only
-match if the path is an exact match. This can be useful if you have multiple routes that have similar paths, and you
-want to ensure that the correct route is rendered based on the exact path that the user is trying to access.
-
+The `Route` component in React Router is a way to define a specific route in your application that a user can navigate to. It is typically used within a `BrowserRouter` component to define the different routes that are available in your application. The `BrowserRouter`, sometimes imported as a Router component is a parent component while the Route is a child component.
+The `Route` component takes several props, including **exact**, which you can use to specify that a route should only match if the path is an exact match. This can be useful if you have multiple routes that have similar paths, and you want to ensure that the correct route is rendered based on the exact path that the user is trying to access.
 Here's an example of how you might use the Route component with the exact prop:
 
 ```javascript
@@ -266,16 +234,9 @@ const Home = ({props}) => {
 export default Home
 ```
 
-In this example, we have three routes defined: a home route, an About route, and a contact route. The home route uses a
-wildcard **path** prop (**/**) to match any path that starts with a **/**, while the about and contact routes use the *
-*exact** prop to specify that the path must be an exact match.
-
-If a user navigates to the **/**path, the home route will be rendered, typically with a home component. If the user
-navigates to the **/about** path, the About route will be rendered. And if the user navigates to the **/contact** path,
-the contact route will be rendered.
-
-What do you do if a user tries to access a route and none of the path matches with routes defined in the Routes
-component?  
+In this example, we have three routes defined: a home route, an about route, and a contact route. The home route uses a wildcard **path** prop (**/**) to match any path that starts with a **/**, while the about and contact routes use the **exact** prop to specify that the path must be an exact match.
+If a user navigates to the /path, the home route will be rendered, typically with a home component. If the user navigates to the /about path, the About route will be rendered. And if the user navigates to the /contact path, the contact route will be rendered.
+What do you do if a user tries to access a route and none of the path matches with routes defined in the Routes component?  
 We use default route!
 
 ```javascript
@@ -284,24 +245,19 @@ We use default route!
 
 #### Note
 
-React Router v6 introduces a Routes component that is kind of like the Switch component, but a lot more powerful. The
-main advantages of Routes over Switch are:
+React Router v6 introduces a Routes component that is kind of like the Switch component, but a lot more powerful. The main advantages of Routes over Switch are:
 
-1. Within a <Routes>, every <Route> and <Link> is relative. This results in "Route path" and "Link to" code that is more
-   predictable and lighter.
+1. Within a `<Routes>`, every `<Route>` and `<Link>` is relative. This results in `Route path` and `Link to` code that is more predictable and lighter.
 
-2. Routes are chosen based on the best match instead of being traversed in order. This avoids bugs due to unreachable
-   routes because they were defined later in your Switch component.
+2. Routes are chosen based on the best match instead of being traversed in order. This avoids bugs due to unreachable routes because they were defined later in your Switch component.
 
 3. Routes may be nested in one place instead of being spread out in different react components.
 
 ### Link and NavLink
 
-The **Link** and **NavLink** components in React Router Dom are used to create links between different routes in your
-application. They work similarly to the element in HTML, but they use the **to** prop to specify the target route
-instead of the **href** attribute.
+The `Link` and `NavLink` components in React Router Dom are used to create links between different routes in your application. They work similarly to the element in HTML, but they use the **to** prop to specify the target route instead of the `href` attribute.
 
-Here's an example of how you might use the **Link** component:
+Here's an example of how you might use the `Link` component:
 
 ```javascript
 import {Link} from 'react-router-dom';
@@ -322,10 +278,7 @@ function Navbar() {
 }
 ```
 
-The **NavLink** component is similar to the **Link** component but has additional props that you can use to style the
-active link differently. For example, you can use the **activeClassName** prop to specify a class name that will be
-applied to the **NavLink** element when the route is active. Here's an example of how you might use the **NavLink**
-component:
+The `NavLink` component is similar to the `Link` component but has additional props that you can use to style the active link differently. For example, you can use the `activeClassName` prop to specify a class name that will be applied to the `NavLink` element when the route is active. Here's an example of how you might use the NavLink component:
 
 ```javascript
     import {NavLink} from 'react-router-dom';
@@ -348,12 +301,10 @@ function Navbar() {
 
 ### Nested Routing
 
-In this section, we will learn how to create nested routes in a React application. Nested routes are routes that are
-nested inside other routes. For example, if you have a route for the home page, you might want to create a nested route
-for the about page, so that the about page is rendered inside the home page.
+In this section, we will learn how to create nested routes in a React application. Nested routes are routes that are nested inside other routes. For example, if you have a route for the home page, you might want to create a nested route for the about page, so that the about page is rendered inside the home page.
 
-To create nested routes, you need to use the **Routes** component. The **Routes** component is similar to the **Switch**
-component, but it allows you to create nested routes. Here's an example of how you might use the **Routes** component:
+To create nested routes, you need to use the **Routes** component. The **Routes** component is similar to the **Switch** component, but it allows you to create nested routes. Here's an example of how you might use the **Routes** component:
+
 ```javascript
 //import react first
 import React from 'react';
@@ -478,37 +429,28 @@ function Contact() {
 
 export default App;
 ```
+
 And that's it! You have now learned how to create nested routes in a React application.
+
+#### Note: 
+React Router v6 allows use of `<Outlet>` component to render nested routes. This is a much cleaner way to render nested routes.
 
 ### Hooks in React Router Dom
 
-**React router component library** provides a set of Hooks that allow functional components to access routing-related
-information and perform routing actions.
-
+React router component library provides a set of Hooks that allow functional components to access routing-related information and perform routing actions.
 Here is a list of the hooks that are available in react-router-dom version 6:
-
-**useHistory**: This hook returns an object containing methods for navigating to different routes in the application,
-such as push, replace, and goBack.
-
-**useLocation**: This hook returns a location object containing information about the current location, such as the
-pathname and search query.
-
-**useParams**: This hook returns an object containing the dynamic parameters in the current URL.
-
-**useRouteMatch**: This hook returns an object containing information about the current route match, such as the path
-and the URL.
-
-**useNavigate**: This hook returns a function that can be used to navigate to different routes in the application.
+1. **useHistory**: This hook returns an object containing methods for navigating to different routes in the application, such as push, replace, and goBack.
+2. **useLocation**: This hook returns a location object containing information about the current location, such as the pathname and search query.
+3. **useParams**: This hook returns an object containing the dynamic parameters in the current URL.
+4. **useRouteMatch**: This hook returns an object containing information about the current route match, such as the path and the URL.
+5. **useNavigate**: This hook returns a function that can be used to navigate to different routes in the application.
 
 ## React router and Redux
 
-While React Router is used for handling routing in a React application, it can be used with Redux, a state management
-library, to manage the application's state.
+While React Router is used for handling routing in a React application, it can be used with Redux, a state management library, to manage the application's state.
+To use React Router with Redux, you will need to use the `react-router-redux` library, which allows you to bind the router's state to the Redux store.
 
-To use React Router with Redux, you will need to use the **react-router-redux** library, which allows you to bind the
-router's state to the Redux store.
-
-To get started, you will need to install both React Router and **react-router-redux**:
+To get started, you will need to install both `react-router-dom` and `react-router-redux`:
 
 ```bash
 npm install react-router react-router-dom react-router-redux --save
@@ -539,7 +481,7 @@ const store = createStore(
 );
 ```
 
-Then, you can use the ConnectedRouter component from react-router-redux to bind the router to your Redux store:
+Then, you can use the `ConnectedRouter` component from react-router-redux to bind the router to your Redux store:
 
 ```javascript
 import {ConnectedRouter} from 'react-router-redux';
@@ -551,40 +493,25 @@ import {ConnectedRouter} from 'react-router-redux';
 </Provider>
 ```
 
-With these changes, the router's state will now be managed by the Redux store, and you can access the router's state and
-dispatch navigation actions using the Redux dispatch function.
+With these changes, the router's state will now be managed by the Redux store, and you can access the router's state and dispatch navigation actions using the Redux dispatch function.
 
 ## Frequently Encountered Issues
 
 There are a few common issues that you may encounter when using React Router:
 
-1. **Route matching issues**: Make sure that your routes are correctly defined and nested. The router will only render
-   the first route that matches the current URL, so if you have multiple routes defined with the same path, only the
-   first one will be rendered.
+1. **Route matching issues**: Make sure that your routes are correctly defined and nested. The router will only render the first route that matches the current URL, so if you have multiple routes defined with the same path, only the first one will be rendered.
 
-2. **404 errors**: If you are using dynamic routes and the URL does not match any of your defined routes, the router
-   will render a "404" page. Make sure that you have a catch-all route defined that will match any URL that does not
-   match any of your other routes.
+2. **404 errors**: If you are using dynamic routes and the URL does not match any of your defined routes, the router will render a "404" page. Make sure that you have a catch-all route defined that will match any URL that does not match any of your other routes.
 
-3. **TypeScript errors**: If you are using TypeScript, you may encounter errors due to the types of the **history**
-   object not being correctly inferred. To fix this, you can use the **@types/react-router** package to provide the
-   correct types for React Router.
+3. **TypeScript errors**: If you are using TypeScript, you may encounter errors due to the types of the ``history`` object not being correctly inferred. To fix this, you can use the ``@types/react-router`` package to provide the correct types for React Router.
 
 4. **Server-side rendering issues**: If you are using server-side rendering with React Router, you may encounter issues
-   with the router's state not being properly hydrated on the client. To fix this, you can use the *
-   *react-router-dom/server** module to render the app on the server and pass the rendered HTML and the router's state
-   to the client.
+   with the router's state not being properly hydrated on the client. To fix this, you can use the ``react-router-dom/server`` module to render the app on the server and pass the rendered HTML and the router's state to the client.
 
-## Summary  
-React Router is a popular library for adding routing to a React application. It allows you to define routes and link to
-them, and it will handle rendering the correct components when the URL changes.
+## Summary
 
-To use React Router, you will need to install the **react-router-dom** library and wrap your application in a **Router**
-component. You can then define your routes using the **Route** component, and use the **Link** component to create links
-between your routes.
-
-React Router also provides a number of other components and features, such as route-level code splitting, server-side
-rendering, and support for location state and query parameters.
-
-You can use React Router with other libraries such as Redux to manage the application's state, or with TypeScript to add
-static type checking to your application.
+React Router is a popular library for adding routing to a React application. It allows you to define routes and link to them, and it will handle rendering the correct components when the URL changes.
+To use React Router, you will need to install the ``react-router-dom`` library and wrap your application in a ``Router``component. 
+You can then define your routes using the ``Route`` component, and use the ``Link`` component to create links between your routes.
+React Router also provides a number of other components and features, such as route-level code splitting, server-side rendering, and support for location state and query parameters.
+You can use React Router with other libraries such as Redux to manage the application's state, or with TypeScript to add static type checking to your application.
