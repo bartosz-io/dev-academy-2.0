@@ -47,196 +47,179 @@ Then, you can use these components to define the routes in your application and 
 Here is a simple example of how this might look:
 
 ```javascript
-//import react first
-import React from 'react';
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link
-} from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
-    return (
-        <Router>
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/about">About</Link>
-                        </li>
-                        <li>
-                            <Link to="/contact">Contact</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div style={{padding: 10}}>
-                <Routes>
-                    <Route path={"/"} element={<Home/>}/>
-                    <Route path={"/about"} element={<About/>}/>
-                    <Route path={"/contact"} element={<Contact/>}/>
-                </Routes>
-
-            </div>
-
-        </Router>
-
-    );
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div style={{ padding: 10 }}>
+        <Routes>
+          <Route path={"/"} element={<Home />} />
+          <Route path={"/about"} element={<About />} />
+          <Route path={"/contact"} element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 function Home() {
-    return <h2>Home</h2>;
+  return <h2>Home</h2>;
 }
 
 function About() {
-    return <h2>About</h2>;
+  return <h2>About</h2>;
 }
 
 function Contact() {
-    return <h2>Contact</h2>;
+  return <h2>Contact</h2>;
 }
 
-export default App;  
+export default App;
 ```
 
-In this example, we are using the `BrowserRouter` component provided by React Router to create a router for our application. The `Link` component is used to create links between different routes in the app, and the `Switch` and`Route` components are used to define the individual routes and specify which components should be rendered when the app is at a particular route.
-When the user clicks on one of the links in the navigation, the router will update the URL and render the appropriate component for that route. This allows the user to navigate between different parts of the app and see the different components that make up the application.
+{% img "home.png" "Default Path" "lazy" %} {% img "about.png" "About Path" "lazy" %} {% img "contact.png" "Contact Path" "lazy" %}
+
+In this example, we are using the `BrowserRouter` component provided by React Router to create a router for our application. The `Link` component is used to create links between different routes in the app, and the `Switch` and`Route` components are used to define the individual routes and specify which components should be rendered when the app is at a particular route. When the user clicks on one of the links in the navigation, the router will update the URL and render the appropriate component for that route. This allows the user to navigate between different parts of the app and see the different components that make up the application.
 
 ## React Router Components
 
 ### BrowserRouter
 
-BrowserRouter is a component in the react-router-dom library that is used to provide routing functionality to a React app. 
-It uses the HTML5 history API to keep the UI in sync with the URL, allowing the user to use the back and forward buttons in the browser and to bookmark a particular page.
+BrowserRouter is a component in the react-router-dom library that is used to provide routing functionality to a React app. It uses the HTML5 history API to keep the UI in sync with the URL, allowing the user to use the back and forward buttons in the browser and to bookmark a particular page.
 Here is an example of how you might use the **BrowserRouter** component in a app:
 
 ```javascript
-import {BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <div>
-                <Route exact path="/" component={Home}/>
-                <Route path="/about" component={About}/>
-            </div>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <div>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+      </div>
+    </BrowserRouter>
+  );
 }
+
 ```
 
 In this example, the **BrowserRouter** component wraps up the entire app and provides the routing functionality to all of its child components. The **Route** components inside the **BrowserRouter** define specific paths that the app should render when the URL matches the given path.
 
 ### Route
 
-The `Route` component in React Router is a way to define a specific route in your application that a user can navigate to. It is typically used within a `BrowserRouter` component to define the different routes that are available in your application. The `BrowserRouter`, sometimes imported as a Router component is a parent component while the Route is a child component.
-The `Route` component takes several props, including **exact**, which you can use to specify that a route should only match if the path is an exact match. This can be useful if you have multiple routes that have similar paths, and you want to ensure that the correct route is rendered based on the exact path that the user is trying to access.
+The `Route` component in React Router is a way to define a specific route in your application that a user can navigate to. It is typically used within a `BrowserRouter` component to define the different routes that are available in your application. The `BrowserRouter`, sometimes imported as a Router component is a parent component while the Route is a child component. The `Route` component takes several props, including `exact`, which you can use to specify that a route should only match if the path is an exact match. This can be useful if you have multiple routes that have similar paths, and you want to ensure that the correct route is rendered based on the exact path that the user is trying to access.
 Here's an example of how you might use the Route component with the exact prop:
 
 ```javascript
-//src components
-////import react first
-import React, {Component} from 'react';
-
-import logo from './logo.svg';
-import './App.css';
-
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/home.component";
 import About from "./components/about.component";
 import Contact from "./components/contact.component";
 import Navigation from "./components/navigation.component";
 
-//App component
 const App = () => {
-    return (
-        <BrowserRouter>
-            <Navigation/>
-            <Routes>//parent component for Route
-                <Route exact path="/" element={<Home/>}>//child component
-                    <Route path=":id" element={<Home/>}/>
-                </Route>
-
-                <Route path="/about" element={<About/>}/>
-                <Route path="/contact" element={<Contact/>}/>
-            </Routes>
-        </BrowserRouter>
-    );
-}
+  return (
+    <BrowserRouter>
+      <Navigation />
+      <Routes>
+        <Route exact path="/" element={<Home />}>
+          <Route path=":id" element={<Home />} />
+        </Route>
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;
-//import app in index or main file
+```
+Add the following code to the about.component.js file
 
-///about.component.jsx
-//import react first
+```javascript
 import React from "react";
 
 const About = () => {
-    console.log("About");
-    return (
-        <div>
-            <h1>About</h1>
-        </div>
-    );
+  console.log("About");
+  return (
+    <div>
+      <h1>About</h1>
+    </div>
+  );
 };
 
 export default About;
-//similarly you can create a react component for contact and use export default as follows
-//export default Contact;
+```
 
-///home.component.jsx
-import React, {Component, useEffect} from 'react';
-
-import {Link} from 'react-router-dom';
-import {Card, Grid, Paper} from "@mui/material";
-import {useParams} from "react-router-dom";
+Similarly, you can create a react component for contact and use export default as follows
+    
+```javascript
+import React, { Component, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Card, Grid, Paper } from "@mui/material";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export const userIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-//Home component
-const Home = ({props}) => {
-    const params = useParams();
-    console.log("params", params);
-    const [userId, setUserId] = React.useState();
+const Home = ({ props }) => {
+  const params = useParams();
+  console.log("params", params);
+  const [userId, setUserId] = React.useState();
 
-    useEffect(() => {
-        setUserId(params.id);
-    }, [params]);
+  useEffect(() => {
+    setUserId(params.id);
+  }, [params]);
 
-
-    return (
-        <Grid container flexWrap={"nowrap"} spacing={2}>
-            <Grid item xs={3}>
-                <Paper>
-                    <h2>Users</h2>
-                    {userIds.map(userId => (
-                        <Card key={userId}>
-                            <img src={`https://robohash.org/${userId}`} width={"100"} alt="user"/>
-                            <Link to={`/${userId}`}>User {userId}</Link>
-                        </Card>
-                    ))}
-                </Paper>
-
-            </Grid>
-            <Grid item xs={9}>
-                {userId ? <h1>User Id: {userId}</h1> : <h1>Select user</h1>
-                }
-            </Grid>
-        </Grid>
-    );
+  return (
+    <Grid container flexWrap={"nowrap"} spacing={2}>
+      <Grid item xs={3}>
+        <Paper>
+          <h2>Users</h2>
+          {userIds.map((userId) => (
+            <Card key={userId}>
+              <img
+                src={`https://robohash.org/${userId}`}
+                width={"100"}
+                alt="user"
+              />
+              <Link to={`/${userId}`}>User {userId}</Link>
+            </Card>
+          ))}
+        </Paper>
+      </Grid>
+      <Grid item xs={9}>
+        {userId ? <h1>User Id: {userId}</h1> : <h1>Select user</h1>}
+      </Grid>
+    </Grid>
+  );
 };
 
-export default Home
+export default Home;
 ```
 
-In this example, we have three routes defined: a home route, an about route, and a contact route. The home route uses a wildcard **path** prop (**/**) to match any path that starts with a **/**, while the about and contact routes use the **exact** prop to specify that the path must be an exact match.
-If a user navigates to the /path, the home route will be rendered, typically with a home component. If the user navigates to the /about path, the About route will be rendered. And if the user navigates to the /contact path, the contact route will be rendered.
-What do you do if a user tries to access a route and none of the path matches with routes defined in the Routes component?  
+In this example, we have three routes defined: a home route, an about route, and a contact route. The home route uses a wildcard **path** prop (**/**) to match any path that starts with a **/**, while the about and contact routes use the **exact** prop to specify that the path must be an exact match. If a user navigates to the /path, the home route will be rendered, typically with a home component. If the user navigates to the /about path, the About route will be rendered. And if the user navigates to the /contact path, the contact route will be rendered. What do you do if a user tries to access a route and none of the path matches with routes defined in the Routes component?  
 We use default route!
 
 ```javascript
@@ -260,43 +243,51 @@ The `Link` and `NavLink` components in React Router Dom are used to create links
 Here's an example of how you might use the `Link` component:
 
 ```javascript
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Navbar() {
-    return (
-        <nav>
-            {/* This link will navigate to the "/" route when clicked */}
-            <Link to="/">Home</Link>
+  return (
+    <nav>
+      {/* This link will navigate to the "/" route when clicked */}
+      <Link to="/">Home</Link>
 
-            {/* This link will navigate to the "/about" route when clicked */}
-            <Link to="/about">About</Link>
+      {/* This link will navigate to the "/about" route when clicked */}
+      <Link to="/about">About</Link>
 
-            {/* This link will navigate to the "/contact" route when clicked */}
-            <Link to="/contact">Contact</Link>
-        </nav>
-    );
+      {/* This link will navigate to the "/contact" route when clicked */}
+      <Link to="/contact">Contact</Link>
+    </nav>
+  );
 }
+
 ```
 
 The `NavLink` component is similar to the `Link` component but has additional props that you can use to style the active link differently. For example, you can use the `activeClassName` prop to specify a class name that will be applied to the `NavLink` element when the route is active. Here's an example of how you might use the NavLink component:
 
 ```javascript
-    import {NavLink} from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
-    return (
-        <nav>
-            {/* This link will navigate to the "/" route when clicked, and the "active" class will be applied when the route is active */}
-            <NavLink to="/" activeClassName="active">Home</NavLink>
+  return (
+    <nav>
+      {/* This link will navigate to the "/" route when clicked, and the "active" class will be applied when the route is active */}
+      <NavLink to="/" activeClassName="active">
+        Home
+      </NavLink>
 
-            {/* This link will navigate to the "/about" route when clicked, and the "active" class will be applied when the route is active */}
-            <NavLink to="/about" activeClassName="active">About</NavLink>
+      {/* This link will navigate to the "/about" route when clicked, and the "active" class will be applied when the route is active */}
+      <NavLink to="/about" activeClassName="active">
+        About
+      </NavLink>
 
-            {/* This link will navigate to the "/contact" route when clicked, and the "active" class will be applied when the route is active */}
-            <NavLink to="/contact" activeClassName="active">Contact</NavLink>
-        </nav>
-    );
+      {/* This link will navigate to the "/contact" route when clicked, and the "active" class will be applied when the route is active */}
+      <NavLink to="/contact" activeClassName="active">
+        Contact
+      </NavLink>
+    </nav>
+  );
 }
+
 ```
 
 ### Nested Routing
@@ -306,129 +297,123 @@ In this section, we will learn how to create nested routes in a React applicatio
 To create nested routes, you need to use the **Routes** component. The **Routes** component is similar to the **Switch** component, but it allows you to create nested routes. Here's an example of how you might use the **Routes** component:
 
 ```javascript
-//import react first
-import React from 'react';
+import React from "react";
 import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link, useParams
-} from 'react-router-dom';
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 
 function App() {
-    return (
-        <Router>
-            <div style={{background: "lightpink"}}>
-                <h1>Routing in React</h1>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/home">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/about">About</Link>
-                        </li>
-                        <li>
-                            <Link to="/contact">Contact</Link>
-                        </li>
-                        <li>
-                            <Link to="/user">User</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+  return (
+    <Router>
+      <div style={{ background: "lightpink" }}>
+        <h1>Routing in React</h1>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/user">User</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
-            <div style={{padding: 10, background: "lightgreen"}}>
-                <Routes>
-                    <Route path={"/"} element={<Home/>}/>
-                    <Route path={"/about"} element={<About/>}/>
-                    <Route path={"/contact"} element={<Contact/>}/>
-                    <Route path={"/user/*"} element={<User/>}>
-                        <Route path="profile" element={<Profile/>}>
-                            <Route path=":id" element={<Profile/>}/>
-                        </Route>
+      <div style={{ padding: 10, background: "lightgreen" }}>
+        <Routes>
+          <Route path={"/"} element={<Home />} />
+          <Route path={"/about"} element={<About />} />
+          <Route path={"/contact"} element={<Contact />} />
+          <Route path={"/user/*"} element={<User />}>
+            <Route path="profile" element={<Profile />}>
+              <Route path=":id" element={<Profile />} />
+            </Route>
 
-                        <Route path="account" element={<Account/>}>
-                            <Route path=":id" element={<Account/>}/>
-                        </Route>
-                    </Route>
-
-
-                </Routes>
-            </div>
-
-        </Router>
-
-    );
+            <Route path="account" element={<Account />}>
+              <Route path=":id" element={<Account />} />
+            </Route>
+          </Route>
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 function Home() {
-    return <h2>Home</h2>;
+  return <h2>Home</h2>;
 }
 
 function About() {
-    return <h2>About</h2>;
+  return <h2>About</h2>;
 }
 
 function Profile() {
-    let params = useParams();
-    console.log("Profile", params);
-    return (
-        params.id ?
-            <h2>User Profile for User: {params.id}</h2> :
-            <h2>Profile</h2>
-    );
-
+  let params = useParams();
+  return params.id ? (
+    <h2>User Profile for User: {params.id}</h2>
+  ) : (
+    <h2>Profile</h2>
+  );
 }
 
 function Account() {
-    let params = useParams();
+  let params = useParams();
 
-    return (
-        params.id ?
-            <h2>User Account for User: {params.id}</h2> :
-            <h2>Account</h2>
-    )
+  return params.id ? (
+    <h2>User Account for User: {params.id}</h2>
+  ) : (
+    <h2>Account</h2>
+  );
 }
 
 function User() {
-    return (
-        <>
-            <h2>User</h2>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="profile">Profile</Link>
-                    </li>
-                    <li>
-                        <Link to="account">Account</Link>
-                    </li>
-                </ul>
-            </nav>
-            <Routes>
-                <Route path="profile" element={<Profile/>}/>
-                <Route path="profile/:id" element={<Profile/>}/>
-                <Route path="account" element={<Account/>}/>
-                <Route path="account/:id" element={<Account/>}/>
-            </Routes>
-        </>
-    );
+  return (
+    <>
+      <h2>User</h2>
+      <nav>
+        <ul>
+          <li>
+            <Link to="profile">Profile</Link>
+          </li>
+          <li>
+            <Link to="account">Account</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="profile" element={<Profile />} />
+        <Route path="profile/:id" element={<Profile />} />
+        <Route path="account" element={<Account />} />
+        <Route path="account/:id" element={<Account />} />
+      </Routes>
+    </>
+  );
 }
 
 function Contact() {
-    let params = useParams();
-    console.log(params);
-
-    return (
-        <>
-            <h2>Contact</h2>
-            <h3>{params.id}</h3>
-        </>
-    );
+  let params = useParams();
+  return (
+    <>
+      <h2>Contact</h2>
+      <h3>{params.id}</h3>
+    </>
+  );
 }
 
 export default App;
 ```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/69zbTBC5Ydo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 And that's it! You have now learned how to create nested routes in a React application.
 
@@ -459,25 +444,20 @@ npm install react-router react-router-dom react-router-redux --save
 Next, you will need to set up your Redux store and configure the react-router-redux middleware:
 
 ```javascript
-import {createStore, combineReducers, applyMiddleware} from 'redux';
-import {routerReducer, routerMiddleware} from 'react-router-redux';
-
-// Create a history of your choosing (we're using a browser history in this case)
-import {createBrowserHistory} from 'history';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { routerReducer, routerMiddleware } from "react-router-redux";
+import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
 
-// Build the middleware for intercepting and dispatching navigation actions
 const middleware = routerMiddleware(history);
 
-// Add the reducer to your store on the `router` key
-// Also apply our middleware for navigating
 const store = createStore(
-    combineReducers({
-        router: routerReducer,
-        // Other reducers go here
-    }),
-    applyMiddleware(middleware)
+  combineReducers({
+    router: routerReducer,
+    // Other reducers go here
+  }),
+  applyMiddleware(middleware)
 );
 ```
 
@@ -487,9 +467,9 @@ Then, you can use the `ConnectedRouter` component from react-router-redux to bin
 import {ConnectedRouter} from 'react-router-redux';
 
 <Provider store={store}>
-    <ConnectedRouter history={history}>
-        <App/>
-    </ConnectedRouter>
+ <ConnectedRouter history={history}>
+  <App/>
+ </ConnectedRouter>
 </Provider>
 ```
 
