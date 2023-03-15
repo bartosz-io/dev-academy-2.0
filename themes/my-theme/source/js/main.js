@@ -340,7 +340,9 @@ function cloneArticleTOC() {
 
     if (asideToc) {
         if (toc) {
-            asideToc.appendChild(toc.cloneNode(true));
+            if (!asideToc.querySelector('.toc')) {
+                asideToc.appendChild(toc.cloneNode(true));
+            }
         } else {
             asideToc.remove();
             document.body.classList.add('post-no-toc');
