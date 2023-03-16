@@ -1,0 +1,76 @@
+.formkit-modal {
+  background-color: $light-200;
+  border-radius: 1rem;
+  max-width: 45rem !important;
+  width: 100% !important;
+}
+
+.formkit-column-header {
+  background-color: $primary-300;
+  padding: 6rem 3rem 3rem;
+  border-radius: 1rem 1rem 0 0;
+
+  h2 {
+    margin: 0;
+    color: $light-100;
+  }
+}
+
+.formkit-column-body {
+  padding: 3rem 3rem 1rem;
+}
+
+.formkit-subheader p {
+  padding-bottom: 0;
+}
+
+.formkit-input {
+  color: $dark-200;
+  border: .1rem solid $light-200;
+  border-radius: 2.4rem !important;
+  padding: 1.5rem 2rem;
+  width: 100%;
+}
+
+.formkit-field {
+  margin-bottom: 1rem;
+}
+
+.formkit-guarantee {
+  font-size: $font-size-12;
+
+  p {
+    line-height: 1.5;
+  }
+}
+
+.formkit-submit {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  width: 100%;
+  font-size: 1.6rem !important;
+  padding: 0.5rem !important;
+}
+
+.formkit-close {
+  position: absolute !important;
+  right: 1rem !important;
+  top: 1rem !important;
+  z-index: $z-index-300;
+}
+
+.formkit-alert-error {
+  color: $danger;
+  margin-bottom: 1rem;
+
+  li {
+    border: .1rem solid $danger;
+    background: #fde8e2;
+    border-radius: .4rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.formkit-form h2 {
+  font-size: 2.5rem !important;
+}

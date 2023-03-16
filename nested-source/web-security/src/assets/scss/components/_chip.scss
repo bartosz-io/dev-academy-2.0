@@ -1,0 +1,20 @@
+@import '../variables';
+
+.chip {
+  padding: .6rem 6rem;
+  border-radius: 4.8rem;
+  color: $dark-300;
+  background: $light-300;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+}
+
+.chip-pink {
+  padding: .8rem 2rem;
+  color: $primary-200;
+  border: .1rem solid $primary-100;
+  background-color: transparent;
+  font-size: 1.4rem;
+}

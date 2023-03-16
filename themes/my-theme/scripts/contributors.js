@@ -65,7 +65,8 @@ hexo.extend.generator.register('contributor', function(locals) {
         routes.push({
             path: 'contributors/' + slug + '/index.html',
             data: {
-                contributor: contributorData
+                contributor: contributorData,
+                title: contributor[0] + ' | Dev-Academy.com contributor'
             },
             layout: 'contributor'
         })
@@ -74,7 +75,7 @@ hexo.extend.generator.register('contributor', function(locals) {
     return routes;
 });
 
-hexo.extend.helper.register('contributor_academies', function(contributorName) {
+hexo.extend.helper.register('contributor_academies', function(contributorName, insertPrefix) {
     var configcontributors = Object.entries(this.config.contributors);
 
     if (!configcontributors.length) {
@@ -84,7 +85,7 @@ hexo.extend.helper.register('contributor_academies', function(contributorName) {
     var contributor = configcontributors.find(contributor => contributor[0] === contributorName);
 
     if (contributor) {
-        return contributorAcademies(contributor, contributorName);
+        return contributorAcademies(contributor, contributorName, insertPrefix);
     }
 
     return '';
@@ -141,11 +142,11 @@ hexo.extend.helper.register('contributor_info', function(contributorName) {
             <div class="contributor-short-info-desc">
                 <div class="contributor-short-info-header">
                     <div class="contributor-profession">${profession}</div>
-                    <h4><a href="${this.contributor_url(contributor[0])}">${contributor[0]}</a></h4>
+                    <h4><a href="${this.contributor_url(contributor[0])}" data-ph="item-contributor__link_fullname">${contributor[0]}</a></h4>
                 </div>
                 ${contributorContributionLevel(level)}
-                ${contributorAcademies(contributor, contributorName)}
-                <a href="${this.contributor_url(contributor[0])}" class="contributor-visit">Get to know me better</a>
+                ${contributorAcademies(contributor, contributorName, 'article-footer')}
+                <a href="${this.contributor_url(contributor[0])}" class="contributor-visit" data-ph="article-footer-contributor__link_discover">Get to know me better</a>
             </div>
         </div>`;
     }
@@ -182,7 +183,7 @@ function contributorLevel(numberOfPosts) {
     return numberOfPosts > ADVANCED_MAX ? 'expert' : numberOfPosts > BEGINNER_MAX ? 'advanced' : 'beginner';
 }
 
-function contributorAcademies(contributor, contributorName) {
+function contributorAcademies(contributor, contributorName, insertPrefix) {
     var isWsa = contributor[1].academies.wsa;
     var isFta = contributor[1].academies.fta;
     var isFounder = contributorName === 'Bartosz Pietrucha';
@@ -191,19 +192,21 @@ function contributorAcademies(contributor, contributorName) {
     var ftaTpl = isFta ? 'Fullstack Testing Academy' : '' ;
     var role = isFounder ? 'founder' : 'member';
     var badge = isFounder ? '🎖️' : '🏅';
+    var postHogInsertWSA = insertPrefix + '-contributor-academies__link_wsa';
+    var postHogInsertFTA = insertPrefix + '-contributor-academies__link_fta';
 
     if (wsaTpl && ftaTpl) {
         return `<ul class="contributor-academies">
-                  <li>${badge} <a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a> <span>${role}</span></li>
-                  <li>${badge} <a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a> <span>${role}</span></li>
+                  <li>${badge} <a href="https://websecurity-academy.com/" data-ph="${postHogInsertWSA}" rel="nofollow noopener" target="_blank">${wsaTpl}</a> <span>${role}</span></li>
+                  <li>${badge} <a href="https://fullstack-testing.com/" data-ph="${postHogInsertFTA}" rel="nofollow noopener" target="_blank">${ftaTpl}</a> <span>${role}</span></li>
                 </ul>`;
     } else if (wsaTpl) {
         return `<ul class="contributor-academies">
-                  <li>${badge} <a href="https://websecurity-academy.com/" rel="nofollow noopener" target="_blank">${wsaTpl}</a> <span>${role}</span></li>
+                  <li>${badge} <a href="https://websecurity-academy.com/" data-ph="${postHogInsertWSA}" rel="nofollow noopener" target="_blank">${wsaTpl}</a> <span>${role}</span></li>
                 </ul>`;
     } else if (ftaTpl) {
         return `<ul class="contributor-academies">
-                  <li>${badge} <a href="https://fullstack-testing.com/" rel="nofollow noopener" target="_blank">${ftaTpl}</a> <span>${role}</span></li>
+                  <li>${badge} <a href="https://fullstack-testing.com/" data-ph="${postHogInsertFTA}" rel="nofollow noopener" target="_blank">${ftaTpl}</a> <span>${role}</span></li>
                 </ul>`;
     }
     return '';

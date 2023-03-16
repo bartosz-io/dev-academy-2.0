@@ -37,6 +37,24 @@
   }
 }
 
+@keyframes boxShadow {
+  to {
+    box-shadow: 0 0 0 1.5rem rgba(0,0,0,.01);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: visible;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .animation-fade-in-left {
   visibility: visible !important;
   animation-name: fadeInLeft;

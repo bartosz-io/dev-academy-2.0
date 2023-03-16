@@ -9,7 +9,7 @@
   padding: $container-gap;
   transition: $transition-default;
   color: $light-200;
-  background-color: $dark-600;
+  background-color: #333842;
   border-radius: .5rem;
 
   .button {
@@ -18,8 +18,22 @@
     display: block;
   }
 
+  p {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
   &.hidden {
     opacity: 0;
     visibility: hidden;
+  }
+
+  a {
+    color: $light-500;
+    text-decoration: underline;
+
+    &:hover {
+      color: $light-100;
+    }
   }
 }

@@ -1,12 +1,16 @@
+<script async data-uid="5797b33c41" src="https://dev-academy.ck.page/5797b33c41/index.js"></script>
+
 <aside class="article-sidebar">
     <div class="article-sidebar-content">
-        <img src="<%- url_for('/img/contributors/') %><%- post.avatar %>" class="article-sidebar-avatar" itemprop="image" alt="<%- post.contributor %>">
-        <div class="article-sidebar-contributor-info">
-            <a href="<%- contributor_url(post.contributor) %>" class="article-sidebar-contributor-name"><span itemprop="name"><%- post.contributor %></span></a>
-            <span class="contributor-profession-badge"><%- contributor_level(post.contributor) %></span>
-            <div class="contributor-academies">
-                <%- contributor_academies(post.contributor) %>
-            </div>
-        </div>
+        <img class="article-sidebar-img" src="/img/checklist_preview.gif" loading="lazy">
+        <% if (post.bannerHeader) {%>
+            <h4 class="article-sidebar-header"><%- post.bannerHeader %></h4>
+        <% } else { %>
+            <h4 class="article-sidebar-header">FREE Web Application</br>Security Checklist ✅</h4>
+        <% } %>
+        <a data-ph="article-sidebar__download-pdf" data-formkit-toggle="5797b33c41" href="https://dev-academy.ck.page/5797b33c41" class="formkit-submit formkit-submit button button-primary button-block">
+            FREE Checklist
+        </a>
+        <h5 class="article-sidebar-subheader">"This checklist is brilliant. It helped us to <span>pass the security pentest.</span>" </br>- Alex, Web developer</h5>
     </div>
 </aside>

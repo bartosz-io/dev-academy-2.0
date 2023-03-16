@@ -20,7 +20,7 @@ The only requirement is to have any experience with the technology you will writ
 
 To contribute with some article, follow the next steps:
 
-1. Find a topic (in your preferable tech stack - Java, Node, Python, PHP, etc.) related to:
+1. Find a topic (in your preferable tech stack - Angular, React, Vue, Node.js,  etc.) related to:
     - web application security for developers
     - testing and automation (unit tests, DevOps, etc)
 2. Join Dev Academy [Discord](https://discord.com/invite/tXrGY7ca43) to become a contributor
@@ -51,9 +51,25 @@ To contribute with some article, follow the next steps:
 8. Use a FREE version of [Grammarly](https://www.grammarly.com/browser/chrome) for fix all the grammar issues while the content is still in `Surfer SEO`.
 9. Once you have done the article, go to tools and choose `Download content as HTML`.
 10. This project needs articles written in Markdown. So, you have to convert HTML to Markdown, go to this [page](https://codebeautify.org/html-to-markdown), and convert it.
-11. Go to the `source/_posts` directory path, create a readme file called as your article in the `kebab case format` (e.g. `source/_posts/csurf-vulnerability.md`), and copy the content of your converted article.
-12. If you have images, you need to create a directory called `source/_posts/csurf-vulnerability` (as your article Markdown .md file), and add them here, @bartosz-io will give you a `banner.png` file to paste into this directory.
-13. The markdown file that you already paste needs some treatments.
+11. Now you have two ways to create an article. First one is recommended.
+    - In the root of the project run npm task `npm run article --slug csurf-vulnerability`. Adjust the slug to the URL of your article after `--slug` argument. This is mandatory. Once done, a new article will be created with its contents together with a folder in `source/_posts`. Now you can copy your content inside auto-generated article.
+    - Or go to the `source/_posts` directory path, create a readme file called as your article in the `kebab case format` (e.g. `source/_posts/csurf-vulnerability.md`), and copy the content of your converted article. But you will be also forced to add a new folder for the assets of the article and front matter inside the article.
+12. You need to create a directory called `source/_posts/csurf-vulnerability` (as your article Markdown .md file). If you used `npm run article --slug csurf-vulnerability` you don't have to be worried about it. Add article images there. @bartosz-io will give you a main image of the post `banner.png` file to paste into this directory.
+13. Now it's the time to complete **front matter** inside the article. If you run `npm run article --slug csurf-vulnerability`, all the props are already there. You will only need to modify them. Otherwise, you will need to copy the front matter yourself, e.g. from below.
+```yml
+---
+title: What’s the problem with the CSURF package? # Title of the post, and also as a meta title
+contributor: Mauricio Matias C. # Your full name. This value must be same as in the `_config.yml`
+avatar: mauricio-matias.jpeg # Name of your profile picture (it comes from img/contributors)
+description: The csurf library has insecure design issues. What can we do? # Meta description
+date: 2022-11-24 # Date (YYYY-MM-DD)
+tags: [node, security] # Post tags, must be lowercase
+id: csurf-vulnerability # ID of the post, this is needed later for related posts (make sure this value is unique)
+relatedPost: vue-security-best-practices # Optional, but if you see a relation with other post you can add its id here
+---
+{% image_fw 1.78 banner.png "csurf vulnerability" %}
+```
+14. After you pasted and added your content into article, the markdown file that you already paste needs some treatments.
     - Run [Markdown lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) in your preferable IDE
     - Apply the changes described below: 👇
 
@@ -68,7 +84,7 @@ to:
 ## Vanilla JavaScript Style
 ```
 
-- After that, add a table of contents (only paste this code into some good place in your article):
+- After that, add a table of contents at the top of your article. If you run npm script before `npm run article`, then you can skip this step.
 
 ```md
 ## Table of Contents
@@ -87,24 +103,46 @@ to this format (the large message will be the `alt` property of the `<img>` HTML
 {% img "simple_example.png" "simple react component, single logic example" "lazy" %}
 ```
 
-- Finally, add your author, article, and banner metadata at the start of the file.
+15. Highlight your code by using only two ways:
+- inline with markdown ticks `let a = 20`
+- or as a block code by using three ticks and language name after (html, css, typescript, js, jsx, bash etc.). `\``typescript <<my-content>> ```
 
-```yaml
----
-title: What’s the problem with the CSURF package?
-contributor: John Doe
-avatar: john-doe.jpeg
-description: Your amazing description with relevant keywords
-date: 2023-12-31
-tags: [node, security] # lower case!
-id: csurf-vulnerability
-relatedPost: vue-security-best-practices
----
-{% image_fw 1.78 banner.png "csurf vulnerability" %}
-```
+16. These are available helpers that can be very useful during writing:
 
+| Helper                                                  | Description                                                                                                  |
+|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| {% p_add_classes "Text content" "center body" %}        | Creates paragraph with some extra classes. `arg[0]`- text, `arg[1]` - name of classes                        |
+| {% img "my-image.png" "ALT text of the image" "lazy" %} | Creates an image. `arg[0]`- image path, `arg[1]` - ALT text of the image, `arg[2]` - value of lazy attribute |
 
-14. Save, commit and congratulations! 🥳 You are ready to open a PR and appear in the first results of the search engines.
+17. Before committing, ensure that the post meets these requirements:
+    > ### Technical requirements
+    > - Validate your metadata in `_config.yml` and article front matter if everything is correct.
+    > - Make sure you added your profile image in `themes/my-theme/source/img/contributors`.
+    > - Avatar and your full name must match with _config.yml.
+    > - Add one tag name at least in metadata of the post.
+    > - Add `relatedPost` id to another post if you see some relation.
+    > - Do not forget about unique ID of your post.
+    > - Do not add these props to article metadata: `bannerHeader`, `bannerSubheader`.
+    > ### Article content requirements
+    > - The first element of the article's content is always the main image e.g. `{% image_fw 1.78 "banner.png" "The csurf vulnerability" %}`, provided by @bartosz-io to you.
+    > - Never add `lazy` attribute to the main first image.
+    > - Add always `lazy` attribute to every image in your post beside first one.
+    > - Never add `<h1>` header. You can only add `<h2>, <h3>, <h4>..` Add them neatly and in the correct order.
+    > - Add always introduction of the post (few sentences).
+    > - Article's content should contain at least **3 images**. They can be any presentational images like: infographics, illustration of a thesis, text cut out in a nice frame, quote, graphs, memes, screenshots. Be creative!
+    > - Make sure your images are readable and looks good on mobile.
+    > - Do not add too much external links.
+    > - If you add some items then use lists. Make also use of blockquotes, code formatters. More your can find [here](https://www.markdownguide.org/basic-syntax/). See also how other contributors write their posts.
+    > - Emphasize only keywords or something your really want to stress. Do not abuse it.
+    > - If you see possibility then link to other content and posts inside *dev-academy.com*
+    > - Try to fascinate others during reading, share your experiences in the posts.
+    > - Don't create long paragraphs.
+    > - Optimize your images. You can use online tools for that.
+    > - **Don't plagiarise or copy & paste** because we check the credibility of the articles in online tools.
+    > - Article should always end with conclusion or summary (few sentences).
+    > - Texts are not written, texts are designed. Design your post to be proud of what you have created!
+
+18. Save, commit and congratulations! 🥳 You are ready to open a PR and appear in the first results of the search engines.
     - open the GitHub PR conversation end examine the deploy preview
     - send the PR via Discord
 
