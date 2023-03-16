@@ -94,7 +94,7 @@ function Contact() {
 export default App;
 ```
 
-{% img "home.png" "Default Path" "lazy" %} {% img "about.png" "About Path" "lazy" %} {% img "contact.png" "Contact Path" "lazy" %}
+{% img "router.png" "Routing in React" %}
 
 In this example, we are using the `BrowserRouter` component provided by React Router to create a router for our application. The `Link` component is used to create links between different routes in the app, and the `Switch` and`Route` components are used to define the individual routes and specify which components should be rendered when the app is at a particular route. When the user clicks on one of the links in the navigation, the router will update the URL and render the appropriate component for that route. This allows the user to navigate between different parts of the app and see the different components that make up the application.
 
