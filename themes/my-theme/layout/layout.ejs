@@ -45,7 +45,7 @@
     <%- partial('partial/footer', {}, {caches: true}) %>
     <%- partial('partial/ck-form', {}, {caches: true}) %>
 
-    <script src="<%- url_for('/js/main.js') %>" defer></script>
+    <script src="<%- url_for('/js/main.js') %>" data-cookieconsent="ignore" defer></script>
     <script src="<%- url_for('/js/gtm.js') %>" defer></script>
 
     <% if (config.posthog)  {%>
