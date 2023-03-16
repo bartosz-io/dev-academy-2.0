@@ -9,7 +9,7 @@ window.DESKTOP_STICKY_HEADER = false;
  * Scripts initialization
  * */
 
-window.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     if (isTablet()) {
         stickyNavigation();
         // loadOdometer();
