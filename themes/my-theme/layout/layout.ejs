@@ -49,8 +49,8 @@
     <script src="<%- url_for('/js/gtm.js') %>" defer></script>
 
     <% if (config.posthog)  {%>
-        <script src="<%- url_for('/js/posthog/posthog.js') %>" defer></script>
-        <script src="<%- url_for('/js/posthog/testing/dumb-test.js') %>" defer></script>
+        <script src="<%- url_for('/js/posthog/posthog.js') %>" data-cookieconsent="ignore" defer></script>
+        <script src="<%- url_for('/js/posthog/testing/dumb-test.js') %>" data-cookieconsent="ignore" defer></script>
     <% } %>
 <% } %>
 </body>
