@@ -2,7 +2,7 @@
 title: Input Validation in Angular
 contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
-description: Learn how to  create and validate Angular Forms.
+description: Learn how to create and validate Angular Forms.
 date: 2023-01-18
 tags: [angular, security]
 id: angular-input-validation
@@ -102,9 +102,9 @@ If we want more control over our form, we can formally create control objects. T
 
 We're now ready to begin.
 
-## Template driven forms
+## Template-Driven forms
 
-In Template Driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
+In Template-driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
 
 1.  All of the components that are being created are located in the src/app folder. We can add another component inside of this one by using the command given below.
     
