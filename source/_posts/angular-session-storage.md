@@ -2,12 +2,10 @@
 title: Session Storage in Angular
 contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
-description: Learn how to create and validate Angular Forms.
+description: Learn about Angular Session Storage and how to use Session Storage in a simple Angular Project.
 date: 2023-03-17
 tags: [angular]
 id: angular-session-storage
-relatedPost: 
-bannerHeader: ''
 ---
 
 ## Table of Contents
@@ -42,54 +40,65 @@ Session Storage is an excellent way to improve the performance of your web appli
 ### Cookies
 
 Cookies are the most ancient and well-known mechanism. They are easy to use and are widely supported by browsers. They are, however, limited to 4KB of data and are frequently used to keep non-sensitive data, such as user preferences.
+
 ## Angular session storage
+
 Let's look at how to store, get, delete specific data, or remove all data in Angular's sessionStorage.
 
-API methods for working with key/value pair data are incorporated into session storage.
+API methods for working with _key/value_ pair data are incorporated into session storage.
 
 It should be noted that both key and value are string types, and if you want to keep a different data type, you must convert it to a string first.
 
 ### Saving Data using sessionStorage
 
-Create a dataSave() function in the `app.component.ts` file to store data in sessionStorage.
+Create a `dataSave()` function in the `app.component.ts` file to store data in sessionStorage.
 
-    dataSave(){
-    }
+```typescript
+dataSave(){
+}
+```
     
 Use `setItem` within the `dataSave()` function to keep the name in the sessionStorage.
 
 Syntax:
 
-    sessionStorage.setItem('key', 'value');
+```typescript
+sessionStorage.setItem('key', 'value');
+```
 
 Thus, this is how our `app.component.ts` will appear:
 
-    import { Component } from '@angular/core';
-    
-    @Component({
-      selector: 'app-root',
-      templateUrl: './app.component.html',
-      styleUrls: ['./app.component.css']
-    })
-    export class AppComponent {
-      title = 'new_project';
-    
-      dataSave(){
-        sessionStorage.setItem('name', 'Sanjeev');
-      }
-    }
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'new_project';
+
+  dataSave(){
+    sessionStorage.setItem('name', 'Sanjeev');
+  }
+}
+```
 
 Now, open the `app.component.html` file and add a button to the `dataSave()` function with a click event. As a result, the `app.component.html` file will look something like this.
 
-        &lt;h1&gt;Angular sessionStorage&lt;/h1&gt;
-        &lt;button (click)="dataSave()" &gt; Save data to sessionStorage&lt;/button&gt;
-![](https://images.surferseo.art/b826c09b-4a3f-4603-aff5-7a5e4df827e6.png)
+```html
+<h1>Angular sessionStorage</h1>
+<button (click)="dataSave()" > Save data to sessionStorage</button>
+```
+
+{% img "save-data.png" "Save Data in Angular Session Storage" "lazy" %}
 
 When you click the "Save data to sessionStorage" button, the key "name" and the value "Sanjeev" will be saved.
 
-This can be verified by inspecting the page and going to `application &gt; session storage`.
+This can be verified by inspecting the page and going to `application > session storage`.
 
-![](https://images.surferseo.art/3d7364f6-de1d-43ac-9155-140e20d98e81.png)
+{% img "session-storage.png" "Verify Saved Data in Angular Session Storage" "lazy" %}
 
 If we close the browser or this tab, the session data stored will be automatically cleared.
 
@@ -97,129 +106,167 @@ If we close the browser or this tab, the session data stored will be automatical
 
 We will add a `get()` function to our `app.component.ts` file to retrieve and display the data stored in session storage.
 
-    get(){
-    }
+```typescript
+get(){
+}
+```
 Within the `get()` function, we will use `getItem` to retrieve data from the sessionStorage based on the key.
 
 Syntax:
 
-    sessionStorage.getItem('key');
+```
+sessionStorage.getItem('key');
+```
+
 Thus, this is how our code in the `app.component.ts` will appear:
 
-    import { Component } from '@angular/core';
-    
-    @Component({
-      selector: 'app-root',
-      templateUrl: './app.component.html',
-      styleUrls: ['./app.component.css']
-    })
-    export class AppComponent {
-      title = 'new_project';
-    
-      dataSave(){
-        sessionStorage.setItem('name', 'Sanjeev');
-      }
-    
-      get(){
-        return sessionStorage.getItem('name');
-      }
-    }
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'new_project';
+
+  dataSave(){
+    sessionStorage.setItem('name', 'Sanjeev');
+  }
+
+  get(){
+    return sessionStorage.getItem('name');
+  }
+}
+```
+
 To display the data stored in session storage, add a `p` tag to the `app.component.html` file and call the `get` method within that `p` tag.
 
-    &lt;h1&gt;Angular sessionStorage&lt;/h1&gt;
-    &lt;button (click)="dataSave()"&gt;Save data to sessionStorage&lt;/button&gt;
-    &lt;p&gt;{{ get() }}&lt;/p&gt;
-![](https://images.surferseo.art/9a2abcdb-a4b0-41da-8ab1-22dfb7879e6f.png)
+```html
+<h1>Angular sessionStorage</h1>
+<button (click)="dataSave()">Save data to sessionStorage</button>
+<p>{{ get() }}</p>
+```
+
+{% img "view-data.png" "View Data in Angular Session Storage" "lazy" %}
 
 ### Deleting data based on key
 
 For deleting the data saved in session storage based on the key, first, we will create a `dataRemove()` function in the `app.component.ts` file.
 
-    dataRemove(){
-    }
+```typescript
+dataRemove(){
+}
+```
+
 Inside the `dataRemove()` function add `removeItem` to remove specific data from the sessionStorage based on key.
 
 Syntax:
 
-    localStorage.removeItem("key");
+```typescript
+localStorage.removeItem("key");
+```
+
 Thus, this is how `app.component.ts` will appear:
 
-      dataRemove(){
-        sessionStorage.removeItem('name');
-      }
+```typescript
+dataRemove(){
+  sessionStorage.removeItem('name');
+}
+```
+
 After this, add a button in `app.component.html` file that'll help us remove the stored data.
 
-    &lt;button (click)="dataRemove()"&gt;Remove data from sessionStorage&lt;/button&gt;
-![](https://images.surferseo.art/fbec3866-a2e1-424c-9429-7d0c4f945c0a.png)
+```html
+<button (click)="dataRemove()">Remove data from sessionStorage</button>
+```
+
+{% img "remove-data.png" "Remove Data in Angular Session Storage" "lazy" %}
 
 Note: To clarify things, you can store multiple data in session storage and then use this method to remove specific data.
 
 For example, I've added a few additional data to our session storage, and I'll specifically remove the data with key value as Name.
 
-    dataSave(){
-        sessionStorage.setItem('Name', 'Sanjeev');
-        sessionStorage.setItem('Country', 'India');
-        sessionStorage.setItem('Age', '22');
-      }
-      dataRemove(){
-        sessionStorage.removeItem('Name');
+```typescript
+dataSave(){
+    sessionStorage.setItem('Name', 'Sanjeev');
+    sessionStorage.setItem('Country', 'India');
+    sessionStorage.setItem('Age', '22');
+  }
+dataRemove(){
+    sessionStorage.removeItem('Name');
+```
 
 ### Delete all data from session storage
 
 For deleting all data from session storage first we'll create a `deleteAll()` function in the app.component.ts file.
 
-    deleteAll(){
-    }
+```typescript
+deleteAll(){
+}
+```
+
 Now in this function, we will use clear to delete all data from session storage.
 
 Syntax:
 
-      deleteAll(){
-        sessionStorage.clear();
-      }
+```typescript
+deleteAll(){
+  sessionStorage.clear();
+}
+```
+
 Now, add a button to clear all data in the app.component.html file with a click event.
 
-    &lt;button (click)="deleteAll()" &gt;Clear sessionStorage&lt;/button&gt;
-![](https://images.surferseo.art/4246c03f-bb4f-46ad-b31a-de6d9605ec67.png)
+```html
+<button (click)="deleteAll()" >Clear sessionStorage</button>
+```
+
+{% img "clear-data.png" "Clear All Data in Angular Session Storage" "lazy" %}
 
 In the end, our files will look like this:
 
 `app.component.ts` file
 
-    import { Component } from '@angular/core';
-    
-    @Component({
-      selector: 'app-root',
-      templateUrl: './app.component.html',
-      styleUrls: ['./app.component.css']
-    })
-    export class AppComponent {
-      title = 'new_project';
-    
-      dataSave(){
-        sessionStorage.setItem('name', 'Sanjeev');
-      }
-    
-      get(){
-        return sessionStorage.getItem('name');
-      }
-    
-      dataRemove(){
-        sessionStorage.removeItem('name');
-      }
-    
-      deleteAll(){
-        sessionStorage.clear();
-      }
-    }
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'new_project';
+
+  dataSave(){
+    sessionStorage.setItem('name', 'Sanjeev');
+  }
+
+  get(){
+    return sessionStorage.getItem('name');
+  }
+
+  dataRemove(){
+    sessionStorage.removeItem('name');
+  }
+
+  deleteAll(){
+    sessionStorage.clear();
+  }
+}
+```
     
 `app.component.html` file
 
-    &lt;h1&gt;Angular sessionStorage&lt;/h1&gt;
-    &lt;button (click)="dataSave()"&gt;Save data to sessionStorage&lt;/button&gt;
-    &lt;p&gt;{{ get() }}&lt;/p&gt;
-    &lt;button (click)="dataRemove()"&gt;Remove data from sessionStorage&lt;/button&gt;
-    &lt;button (click)="deleteAll()" &gt;Clear sessionStorage&lt;/button&gt;
+```html
+<h1>Angular sessionStorage</h1>
+<button (click)="dataSave()">Save data to sessionStorage</button>
+<p>{{ get() }}</p>
+<button (click)="dataRemove()">Remove data from sessionStorage</button>
+<button (click)="deleteAll()" >Clear sessionStorage</button>
+```
 
 ## Angular Local storage
 
