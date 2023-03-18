@@ -276,19 +276,27 @@ A localstorage object can be set, accessed, removed, or cleared with a single li
 
 A localstorage object can be set with a single line of javascript code, just like session storage.
 
-    localStorage.setItem("key", "value");
+```typescript
+localStorage.setItem("key", "value");
+```
 
 ### Retrieve data from localstorage
 
-    localStorage.getItem("key");
+```typescript
+localStorage.getItem("key");
+```
 
 ### Remove specific data from localstorage based on key
 
-    localStorage.getItem("key");
+```typescript
+localStorage.getItem("key");
+```
 
 ### Remove all data from localstorage
 
-    localStorage.getItem("key");
+```typescript
+localStorage.getItem("key");
+```
 
 ## Conclusion
 
