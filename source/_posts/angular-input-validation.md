@@ -119,15 +119,9 @@ ng serve
     
 We're now ready to begin.
 
-<<<<<<< HEAD
-## Template-Driven forms
-
-In Template-driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
-=======
 {% review_screen "review_1.png" "https://websecurity-academy.com" %}
 
 ## Template-Driven forms
->>>>>>> 3b03774f16fe1a723505802296e65b7835c1636b
 
 In Template-Driven Forms, we focus on the actions and validations by using directives and attributes in our template and letting it work behind the scenes. Everything happens in Template. The component class requires very little coding. The logic and controls are not defined in the component class here. It is utilized to build straightforward application forms.
 
