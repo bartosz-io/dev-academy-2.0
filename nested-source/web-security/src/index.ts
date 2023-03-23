@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
     moreTestimonials();
     cookieConsent();
     loadConvertKit();
-    loadTawk();
+    // loadTawk();
     loadGTM();
 
     if (IS_SCHEDULE) {
