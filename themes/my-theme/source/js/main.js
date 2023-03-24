@@ -2,7 +2,7 @@
  * Global variables
  * */
 
-window.DESKTOP_STICKY_HEADER = false;
+window.DESKTOP_STICKY_HEADER = true;
 
 
 /**
