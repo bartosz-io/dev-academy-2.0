@@ -1,5 +1,5 @@
 ---
-title: Angular Signals: Understanding a new Reactive Primitive
+title: "Angular Signals: Understanding a new Reactive Primitive"
 contributor: Łukasz Fajger
 avatar: lukasz-fajger.jpg
 description: Angular Signal is an observed trackable value that can change over time. When signal changes, all related dependencies are automatically updated. The reactive primitive contains the value, and get and set functions that are responsible for intercepting changes.
@@ -77,7 +77,7 @@ It is an object consisting of a getter, setters, and a value that changes over t
 
 A signal is an argument-free function `() => T` that does not create side effects when we read its value. Why doesn't it create side effects? 
 
-First, let's quickly understand what a side effect is. Side effect occurs when a function uses or relies on code from outside. This means that if you use external code in your function, you create a side effect. The example below is an impure function with one side effect.
+First, let's quickly understand what a side effect is. Side effect occurs when a function uses or relies on code from outside. This means that if you use external code in your function, you create a side effect. It creates unpredictable behavior and mutability in the code. The example below is an impure function with one side effect.
 
 ```ts
 let counter = 0;
