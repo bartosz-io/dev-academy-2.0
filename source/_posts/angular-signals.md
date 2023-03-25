@@ -1,8 +1,8 @@
 ---
-title: Angular Signals 📡 Native Reactivity (to scale performance)
+title: Angular Signals: Understanding a new Reactive Primitive
 contributor: Łukasz Fajger
 avatar: lukasz-fajger.jpg
-description: Angular signal is a trackable value that changes over time. If the value of the signal changes, all related dependencies are automatically updated.
+description: Angular Signal is an observed trackable value that can change over time. When signal changes, all related dependencies are automatically updated. The reactive primitive contains the value, and get and set functions that are responsible for intercepting changes.
 tags: [angular, performance]
 id: angular-signals
 date: 2023-03-13
