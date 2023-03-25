@@ -45,6 +45,9 @@
     <%- partial('partial/footer', {}, {caches: true}) %>
     <%- partial('partial/ck-form', {}, {caches: true}) %>
 
+    <!-- temporarily inject HelloBar here -->
+    <script src="https://my.hellobar.com/e6f37be779b7dad9006dc743a8219cd9b5547f98.js" data-cookieconsent="ignore" charset="utf-8" async="async"></script>
+
     <script src="<%- url_for('/js/main.js') %>" data-cookieconsent="ignore" defer></script>
     <script src="<%- url_for('/js/gtm.js') %>" defer></script>
 

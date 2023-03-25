@@ -81,6 +81,12 @@
   position: relative;
   top: -.4rem;
 
+  & div {
+    display: inline;
+    width: auto !important;
+    height: auto !important;
+  }
+
   &:before {
     content: '';
     margin: -.2rem .6rem -.2rem .4rem;

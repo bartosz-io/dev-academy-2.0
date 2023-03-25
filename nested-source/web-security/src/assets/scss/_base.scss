@@ -115,13 +115,17 @@ picture {
 }
 
 p {
-  padding-bottom: $size-24;
+  padding-bottom: 0;
   line-height: 3.2rem;
 }
 
 .bold,
 strong {
   font-weight: 700;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 img {

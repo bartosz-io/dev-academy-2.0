@@ -9,9 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     moreTestimonials();
-    cookieConsent();
     loadConvertKit();
-    loadTawk();
+    // loadTawk();
     loadGTM();
 
     if (IS_SCHEDULE) {
@@ -66,35 +65,6 @@ function fixedNavigation() {
         } else {
             nav.classList.remove(navFixedClass);
             document.body.classList.remove('nav-padding');
-        }
-    }
-}
-
-function cookieConsent() {
-    const key = 'cookie-consent';
-    const hiddenClass = 'hidden';
-    const cookie: HTMLElement =  document.querySelector('.cookie-consent')
-
-    if (localStorage.getItem(key)) {
-        if (cookie) {
-            cookie.style.display = 'none';
-        }
-    } else {
-        const button = document.getElementById(key);
-
-        if (cookie) {
-            cookie.style.display = 'block';
-        }
-
-        if (button) {
-            button.addEventListener('click', function() {
-                localStorage.setItem(key, 'true');
-                cookie.classList.add(hiddenClass);
-
-                setTimeout(function() {
-                    cookie.style.display = 'none';
-                }, 300);
-            });
         }
     }
 }

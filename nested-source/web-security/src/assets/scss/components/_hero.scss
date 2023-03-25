@@ -1,6 +1,7 @@
 @import '../variables';
 
 .hero {
+  margin-bottom: 80px;
   h1 {
     font-family: $font-family-teko;
     font-weight: 500;
@@ -24,7 +25,7 @@
     font-size: 1.8rem;
     line-height: 2.8rem;
     margin-top: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
   }
 
   .button {
@@ -33,7 +34,7 @@
 }
 
 .trust {
-  margin-bottom: 4rem;
+  margin-top: 4rem;
 }
 
 .trust-score {
@@ -44,7 +45,7 @@
   }
 }
 .confs {
-  padding: 5rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
 }
