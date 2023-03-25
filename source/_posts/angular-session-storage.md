@@ -2,7 +2,7 @@
 title: Session Storage in Angular
 contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
-description: Learn about Angular Session Storage and how to use Session Storage in a simple Angular Project.
+description: Learn how to use Session Storage Angular.
 date: 2023-03-17
 tags: [angular]
 id: angular-session-storage
@@ -13,52 +13,50 @@ id: angular-session-storage
 
 ## Introduction
 
-Local Storage, Session Storage, and Cookies are all terms that most of us are familiar with. But what are they exactly, what problems do they solve, and how do they differ? This article will explain what problems they solve, how they differ, as well as how to use sessionStorage in a simple Angular Project.
+Local storage, session storage, and cookies are all terms that most of us are familiar with. But what are they exactly, what problems do they solve, and how do they differ? This article will explain what problems they solve, how they differ, as well as how to use `sessionStorage` in a simple angular project.
 
-## What is Local Storage, Session Storage, or Cookies?
+## What is Local Storage, Session Storage, and Cookies
 
-Session storage and local storage in browsers allow us to store data alongside stateless HTTP requests. They are an alternative to cookie-based storage and have several applications in web development. Cookies are the most well-known and oldest mechanism.
-
-They all function similarly, but there are some key differences between them.
+Session storage and local storage in browsers allow us to store data alongside stateless HTTP requests. They are an alternative to cookie-based storage and have several applications in web development. Cookies are the most well-known and oldest mechanism. They all function similarly, but there are some key differences between them.
 
 Local and session storage is storage mechanisms provided by Web Storage API that you can use to store data on the client's computer. They allow a website to keep data on the browser and instruct the browser to access it later.
 
 Depending on your needs, you can store data either locally or temporarily in session storage. Even though these storage techniques are comparable to cookies, they do not give rise to the same privacy issues.
 
-### Local storage
+### Local Storage
 
-Most web applications now require user input, whether for a username, address, browser cache, or even a preference setting. This input is then typically routed to a server somewhere for processing and storage. What if your application needs to keep data locally on the user's computer? This is where Local Storage enters the picture. It is the most recent mechanism. Local storage is useful for storing data that a user will need later, such as offline data.
+Most web applications now require user input, whether for a username, address, browser cache, or even a preference setting. This input is then typically routed to a server somewhere for processing and storage. What if your application needs to keep data locally on the user's computer? This is where local storage enters the picture. It is the most recent mechanism. Local storage is useful for storing data that a user will need later, such as offline data.
 
-Local Storage stores data in key/value pairs. The key is analogous to the data's name, and the value is analogous to the data itself. To keep data in Local Storage, you must first generate a key. After that, you can store whatever data you want under that key.
+Local storage stores data in key-value pairs. The key is analogous to the data's name, and the value is analogous to the data itself. To keep data in local storage, you must first generate a key. After that, you can store whatever data you want under that key.
 
-### Session storage
+### Session Storage
 
 Session storage is similar to cookies in that data is only stored for the duration of the current session. When a user closes their browser or a tab, the web app clears the data and deletes any previously stored information. Session storage is useful for storing sensitive data, such as login credentials.
 
-Session Storage is an excellent way to improve the performance of your web applications by reducing the amount of data transferred between the client and server. It can also be used to store data more securely because the data is not stored in cookies where third-party sites can access it.
+Session storage is an excellent way to improve the performance of your web applications by reducing the amount of data transferred between the client and server. It can also be used to store data more securely because the data is not stored in cookies where third-party sites can access it.
 
 ### Cookies
 
-Cookies are the most ancient and well-known mechanism. They are easy to use and are widely supported by browsers. They are, however, limited to 4KB of data and are frequently used to keep non-sensitive data, such as user preferences.
+Cookies are small text files that are stored on a user's device by a website they visit. They are generated by the website's server and sent to the user's browser, where they are stored. Cookies store information about the user's interactions with the website, such as login credentials, user preferences, and shopping cart contents. Cookies are used for a variety of purposes, including authentication, personalization, tracking, and analytics.
 
-## Angular session storage
+## Angular Session Storage
 
-Let's look at how to store, get, delete specific data, or remove all data in Angular's sessionStorage.
+Let's look at how to store, get, delete specific data, or remove all data in angular's `sessionStorage`.
 
-API methods for working with _key/value_ pair data are incorporated into session storage.
+API methods for working with key/value pair data are incorporated into session storage.
 
 It should be noted that both key and value are string types, and if you want to keep a different data type, you must convert it to a string first.
 
-### Saving Data using sessionStorage
+### Saving data using sessionStorage
 
-Create a `dataSave()` function in the `app.component.ts` file to store data in sessionStorage.
+Create a `dataSave()` function in the `app.component.ts` file to store data in `sessionStorage`.
 
 ```typescript
 dataSave(){
 }
 ```
     
-Use `setItem` within the `dataSave()` function to keep the name in the sessionStorage.
+Use `setItem` within the `dataSave()` function to keep the name in the `sessionStorage`.
 
 Syntax:
 
@@ -92,13 +90,13 @@ Now, open the `app.component.html` file and add a button to the `dataSave()` fun
 <button (click)="dataSave()" > Save data to sessionStorage</button>
 ```
 
-{% img "save-data.png" "Save Data in Angular Session Storage" "lazy" %}
+{% img "save-data.png" "Save data in angular session storage" "lazy" %}
 
 When you click the "Save data to sessionStorage" button, the key "name" and the value "Sanjeev" will be saved.
 
 This can be verified by inspecting the page and going to `application > session storage`.
 
-{% img "session-storage.png" "Verify Saved Data in Angular Session Storage" "lazy" %}
+{% img "session-storage.png" "Verify saved data in angular session storage" "lazy" %}
 
 If we close the browser or this tab, the session data stored will be automatically cleared.
 
@@ -110,7 +108,7 @@ We will add a `get()` function to our `app.component.ts` file to retrieve and di
 get(){
 }
 ```
-Within the `get()` function, we will use `getItem` to retrieve data from the sessionStorage based on the key.
+Within the `get()` function, we will use `getItem` to retrieve data from the `sessionStorage` based on the key.
 
 Syntax:
 
@@ -149,7 +147,7 @@ To display the data stored in session storage, add a `p` tag to the `app.compone
 <p>{{ get() }}</p>
 ```
 
-{% img "view-data.png" "View Data in Angular Session Storage" "lazy" %}
+{% img "view-data.png" "View Data in angular session storage" "lazy" %}
 
 ### Deleting data based on key
 
@@ -160,7 +158,7 @@ dataRemove(){
 }
 ```
 
-Inside the `dataRemove()` function add `removeItem` to remove specific data from the sessionStorage based on key.
+Inside the `dataRemove()` function add `removeItem` to remove specific data from the `sessionStorage` based on key.
 
 Syntax:
 
@@ -182,9 +180,9 @@ After this, add a button in `app.component.html` file that'll help us remove the
 <button (click)="dataRemove()">Remove data from sessionStorage</button>
 ```
 
-{% img "remove-data.png" "Remove Data in Angular Session Storage" "lazy" %}
+{% img "remove-data.png" "Remove data in angular session storage" "lazy" %}
 
-Note: To clarify things, you can store multiple data in session storage and then use this method to remove specific data.
+> Note: To clarify things, you can store multiple data in session storage and then use this method to remove specific data.
 
 For example, I've added a few additional data to our session storage, and I'll specifically remove the data with key value as Name.
 
@@ -200,7 +198,7 @@ dataRemove(){
 
 ### Delete all data from session storage
 
-For deleting all data from session storage first we'll create a `deleteAll()` function in the app.component.ts file.
+For deleting all data from session storage first we'll create a `deleteAll()` function in the `app.component.ts` file.
 
 ```typescript
 deleteAll(){
@@ -217,19 +215,19 @@ deleteAll(){
 }
 ```
 
-Now, add a button to clear all data in the app.component.html file with a click event.
+Now, add a button to clear all data in the `app.component.html` file with a click event.
 
 ```html
 <button (click)="deleteAll()" >Clear sessionStorage</button>
 ```
 
-{% img "clear-data.png" "Clear All Data in Angular Session Storage" "lazy" %}
+{% img "clear-data.png" "Clear all data in angular session storage" "lazy" %}
 
 In the end, our files will look like this:
 
-`app.component.ts` file
 
-```typescript
+
+```typescript app.component.ts
 import { Component } from '@angular/core';
 
 @Component({
@@ -258,9 +256,7 @@ export class AppComponent {
 }
 ```
     
-`app.component.html` file
-
-```html
+```html app.component.html
 <h1>Angular sessionStorage</h1>
 <button (click)="dataSave()">Save data to sessionStorage</button>
 <p>{{ get() }}</p>
@@ -268,13 +264,13 @@ export class AppComponent {
 <button (click)="deleteAll()" >Clear sessionStorage</button>
 ```
 
-## Angular Local storage
+## Angular Local Storage
 
-A localstorage object can be set, accessed, removed, or cleared with a single line of code, just like session storage.
+A `localstorage` object can be set, accessed, removed, or cleared with a single line of code, just like session storage.
 
 ### Save data in localstorage
 
-A localstorage object can be set with a single line of javascript code, just like session storage.
+A `localstorag`e object can be set with a single line of javascript code, just like session storage.
 
 ```typescript
 localStorage.setItem("key", "value");
@@ -289,13 +285,21 @@ localStorage.getItem("key");
 ### Remove specific data from localstorage based on key
 
 ```typescript
+<<<<<<< HEAD
+localStorage.removeItem("key");
+=======
 localStorage.getItem("key");
+>>>>>>> 5e35348a96dba55443b74b175186b9d7e834d78e
 ```
 
 ### Remove all data from localstorage
 
 ```typescript
+<<<<<<< HEAD
+localStorage.clear();
+=======
 localStorage.getItem("key");
+>>>>>>> 5e35348a96dba55443b74b175186b9d7e834d78e
 ```
 
 ## Conclusion
@@ -304,4 +308,8 @@ We learned about local storage and session storage, and we built a simple applic
 
 ## The next steps
 
+<<<<<<< HEAD
+Learn more about angular and about 2FA, time-based one-time passwords, and [how to request OTP](https://dev-academy.com/angular-otp-verification/) verification using angular. Discover how to use Angular Guard, AuthService, AuthGuard Implementation, and [Routing Module Implementation](https://dev-academy.com/angular-router-guard-rbac/) and how to serve your [Angular application via HTTPS locally](https://dev-academy.com/running-angular-cli-over-https/).
+=======
 Learn more about Angular and about 2FA, time-based one-time passwords, and [how to request OTP](https://dev-academy.com/angular-otp-verification/) verification using Angular. Discover how to use Angular Guard, AuthService, AuthGuard Implementation, and [Routing Module Implementation](https://dev-academy.com/angular-router-guard-rbac/) and how to serve your [Angular application via HTTPS locally](https://dev-academy.com/running-angular-cli-over-https/).
+>>>>>>> 5e35348a96dba55443b74b175186b9d7e834d78e
