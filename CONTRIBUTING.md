@@ -137,6 +137,8 @@ to this format (the large message will be the `alt` property of the `<img>` HTML
     > - If you see possibility then link to other content and posts inside *dev-academy.com*
     > - Try to fascinate others during reading, share your experiences in the posts.
     > - Don't create long paragraphs.
+    > - Please use only `[A-Za-z0-9]`characters in headers.
+    > - You should never create the same article headers in page content.
     > - Optimize your images. You can use online tools for that.
     > - **Don't plagiarise or copy & paste** because we check the credibility of the articles in online tools.
     > - Article should always end with conclusion or summary (few sentences).

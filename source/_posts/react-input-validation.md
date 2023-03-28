@@ -115,7 +115,7 @@ When it comes to error handling, it is important to clearly indicate to the user
 
 Although within certain development environments, such as companies with risk-averse or security-aware policies you typically shy away from libraries wherever feasibly possible, a library that manages input validations might be a more suitable option.
 
-### YUP & Fomik
+### YUP and Fomik
 
 [YUP](https://github.com/jquense/yup) and [Formik](https://github.com/jaredpalmer/formik) are popular libraries for input validation in React applications. Both libraries make it easier to handle and validate form data, making it more convenient for developers to create forms that meet the requirements of their applications.
 

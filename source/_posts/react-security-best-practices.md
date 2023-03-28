@@ -57,7 +57,7 @@ As the name suggests, the use of this property is discouraged, and for good reas
 
 The above input will produce an alert commonly used to demonstrate XSS (Cross-site scripting) as a possibility. Learn [more about React XSS](https://dev-academy.com/react-xss/#dangerouslysethtml).
 
-### How to negate it
+### How to neutralize it
 
 These types of scenarios can easily be avoided by limiting direct interaction with the DOM. Fortunately using React, you don't directly interact with the DOM. Instead, you are interacting with a virtual DOM created by React, which is a memory-based copy of the real DOM. This is a side effect of how React works using components, as explained in React's tutorial [here](https://reactjs.org/tutorial/tutorial.html).
 
