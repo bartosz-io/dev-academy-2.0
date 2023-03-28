@@ -90,13 +90,13 @@ Now, open the `app.component.html` file and add a button to the `dataSave()` fun
 <button (click)="dataSave()" > Save data to sessionStorage</button>
 ```
 
-{% img "save-data.png" "Save data in angular session storage" "lazy" %}
+{% img "save-data.jpg" "Save data in angular session storage" "lazy" %}
 
 When you click the "Save data to sessionStorage" button, the key "name" and the value "Sanjeev" will be saved.
 
 This can be verified by inspecting the page and going to `application > session storage`.
 
-{% img "session-storage.png" "Verify saved data in angular session storage" "lazy" %}
+{% img "session-storage.jpg" "Verify saved data in angular session storage" "lazy" %}
 
 If we close the browser or this tab, the session data stored will be automatically cleared.
 
@@ -147,7 +147,7 @@ To display the data stored in session storage, add a `p` tag to the `app.compone
 <p>{{ get() }}</p>
 ```
 
-{% img "view-data.png" "View Data in angular session storage" "lazy" %}
+{% img "view-data.jpg" "View Data in angular session storage" "lazy" %}
 
 ### Deleting data based on key
 
@@ -180,7 +180,7 @@ After this, add a button in `app.component.html` file that'll help us remove the
 <button (click)="dataRemove()">Remove data from sessionStorage</button>
 ```
 
-{% img "remove-data.png" "Remove data in angular session storage" "lazy" %}
+{% img "remove-data.jpg" "Remove data in angular session storage" "lazy" %}
 
 > Note: To clarify things, you can store multiple data in session storage and then use this method to remove specific data.
 
@@ -221,7 +221,7 @@ Now, add a button to clear all data in the `app.component.html` file with a clic
 <button (click)="deleteAll()" >Clear sessionStorage</button>
 ```
 
-{% img "clear-data.png" "Clear all data in angular session storage" "lazy" %}
+{% img "clear-data.jpg" "Clear all data in angular session storage" "lazy" %}
 
 In the end, our files will look like this:
 
