@@ -88,7 +88,7 @@ Now, open the `app.component.html` file and add a button to the `dataSave()` fun
 
 ```html
 <h1>Angular sessionStorage</h1>
-<button (click)="dataSave()" > Save data to sessionStorage</button>
+<button (click)="dataSave()">Save data to sessionStorage</button>
 ```
 
 {% img "save-data.jpg" "Save data in angular session storage" "lazy" %}
