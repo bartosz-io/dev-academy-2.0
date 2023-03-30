@@ -2,18 +2,19 @@
 title: Session Storage in Angular
 contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
-description: Learn how to use Session Storage Angular.
+description: Learn how to use Session Storage in Angular.
 date: 2023-03-17
 tags: [angular]
 id: angular-session-storage
 ---
+{% image_fw 1.78 banner.png "Session Storage in Angular" %}
 
 ## Table of Contents
 <!-- toc -->
 
 ## Introduction
 
-Local storage, session storage, and cookies are all terms that most of us are familiar with. But what are they exactly, what problems do they solve, and how do they differ? This article will explain what problems they solve, how they differ, as well as how to use `sessionStorage` in a simple angular project.
+Local storage, session storage, and cookies are all terms that most of us are familiar with. But what are they exactly, what problems do they solve, and how do they differ? This article will explain what problems they solve, how they differ, as well as how to use `sessionStorage` in a simple Angular project.
 
 ## What is Local Storage, Session Storage, and Cookies
 
@@ -41,7 +42,7 @@ Cookies are small text files that are stored on a user's device by a website the
 
 ## Angular Session Storage
 
-Let's look at how to store, get, delete specific data, or remove all data in angular's `sessionStorage`.
+Let's look at how to store, get, delete specific data, or remove all data in Angular's `sessionStorage`.
 
 API methods for working with key/value pair data are incorporated into session storage.
 
@@ -204,7 +205,6 @@ For deleting all data from session storage first we'll create a `deleteAll()` fu
 deleteAll(){
 }
 ```
-
 Now in this function, we will use clear to delete all data from session storage.
 
 Syntax:
@@ -214,7 +214,6 @@ deleteAll(){
   sessionStorage.clear();
 }
 ```
-
 Now, add a button to clear all data in the `app.component.html` file with a click event.
 
 ```html
@@ -224,7 +223,6 @@ Now, add a button to clear all data in the `app.component.html` file with a clic
 {% img "clear-data.jpg" "Clear all data in angular session storage" "lazy" %}
 
 In the end, our files will look like this:
-
 ```typescript app.component.ts
 import { Component } from '@angular/core';
 
@@ -264,29 +262,29 @@ export class AppComponent {
 
 ## Angular Local Storage
 
-A `localstorage` object can be set, accessed, removed, or cleared with a single line of code, just like session storage.
+A `localStorage` object can be set, accessed, removed, or cleared with a single line of code, just like session storage.
 
-### Save data in localstorage
+### Save data in localStorage
 
-A `localstorage` object can be set with a single line of javascript code, just like session storage.
+A `localStorage` object can be set with a single line of javascript code, just like session storage.
 
 ```typescript
 localStorage.setItem("key", "value");
 ```
 
-### Retrieve data from localstorage
+### Retrieve data from localStorage
 
 ```typescript
 localStorage.getItem("key");
 ```
 
-### Remove specific data from localstorage based on key
+### Remove specific data from localStorage based on key
 
 ```typescript
 localStorage.removeItem("key");
 ```
 
-### Remove all data from localstorage
+### Remove all data from localStorage
 
 ```typescript
 localStorage.clear();
