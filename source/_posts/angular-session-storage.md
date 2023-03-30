@@ -112,7 +112,7 @@ Within the `get()` function, we will use `getItem` to retrieve data from the `se
 
 Syntax:
 
-```
+```typescript
 sessionStorage.getItem('key');
 ```
 
@@ -225,8 +225,6 @@ Now, add a button to clear all data in the `app.component.html` file with a clic
 
 In the end, our files will look like this:
 
-
-
 ```typescript app.component.ts
 import { Component } from '@angular/core';
 
@@ -270,7 +268,7 @@ A `localstorage` object can be set, accessed, removed, or cleared with a single 
 
 ### Save data in localstorage
 
-A `localstorag`e object can be set with a single line of javascript code, just like session storage.
+A `localstorage` object can be set with a single line of javascript code, just like session storage.
 
 ```typescript
 localStorage.setItem("key", "value");
@@ -285,21 +283,13 @@ localStorage.getItem("key");
 ### Remove specific data from localstorage based on key
 
 ```typescript
-<<<<<<< HEAD
 localStorage.removeItem("key");
-=======
-localStorage.getItem("key");
->>>>>>> 5e35348a96dba55443b74b175186b9d7e834d78e
 ```
 
 ### Remove all data from localstorage
 
 ```typescript
-<<<<<<< HEAD
 localStorage.clear();
-=======
-localStorage.getItem("key");
->>>>>>> 5e35348a96dba55443b74b175186b9d7e834d78e
 ```
 
 ## Conclusion
