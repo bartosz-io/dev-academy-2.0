@@ -44,7 +44,7 @@ Cookies are small text files that are stored on a user's device by a website the
 
 Let's look at how to store, get, delete specific data, or remove all data in Angular's `sessionStorage`.
 
-API methods for working with key/value pair data are incorporated into session storage.
+API methods for working with key-value pair data are incorporated into session storage.
 
 It should be noted that both key and value are string types, and if you want to keep a different data type, you must convert it to a string first.
 
@@ -101,7 +101,7 @@ This can be verified by inspecting the page and going to `application > session 
 
 If we close the browser or this tab, the session data stored will be automatically cleared.
 
-### Retrieve data from session storage
+### Retrieve data from Session Storage
 
 We will add a `get()` function to our `app.component.ts` file to retrieve and display the data stored in session storage.
 
@@ -197,7 +197,7 @@ dataRemove(){
     sessionStorage.removeItem('Name');
 ```
 
-### Delete all data from session storage
+### Delete all data from Session Storage
 
 For deleting all data from session storage first we'll create a `deleteAll()` function in the `app.component.ts` file.
 
@@ -257,7 +257,7 @@ export class AppComponent {
 <button (click)="dataSave()">Save data to sessionStorage</button>
 <p>{{ get() }}</p>
 <button (click)="dataRemove()">Remove data from sessionStorage</button>
-<button (click)="deleteAll()" >Clear sessionStorage</button>
+<button (click)="deleteAll()">Clear sessionStorage</button>
 ```
 
 ## Angular Local Storage
