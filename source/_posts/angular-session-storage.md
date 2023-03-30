@@ -217,7 +217,7 @@ deleteAll(){
 Now, add a button to clear all data in the `app.component.html` file with a click event.
 
 ```html
-<button (click)="deleteAll()" >Clear sessionStorage</button>
+<button (click)="deleteAll()">Clear sessionStorage</button>
 ```
 
 {% img "clear-data.jpg" "Clear all data in angular session storage" "lazy" %}
