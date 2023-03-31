@@ -691,7 +691,6 @@ function initPopup() {
                 if (keyupListener) {
                     document.removeEventListener('keyup', keyupListener);
                 }
-                // TODO remove from localstorage
             }, 300);
         }
 
