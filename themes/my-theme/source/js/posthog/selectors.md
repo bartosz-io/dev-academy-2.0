@@ -101,6 +101,9 @@ Optional:
 - article-share_twitter
 - article-share_disqus
 - article-sidebar__download-pdf
+- popup__cta
+- popup__close_icon
+- popup__close_text
 
 Optional:
 
