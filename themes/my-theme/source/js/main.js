@@ -601,47 +601,76 @@ function addPostHogDynamicInserts() {
 
 function initPopup() {
     var popup = document.getElementById('popup');
-    var keyupListener;
 
     if (popup) {
-        var closeButtons = popup.querySelectorAll('[data-close-popup]');
+        var keyupListener;
+        var scrollListener;
 
-        closeButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                close();
+        registerCloseListeners()
+        triggerByType();
+
+        function triggerByType() {
+            var trigger = popup.getAttribute('data-trigger');
+
+            if (isNumeric(trigger)) {
+                setTimeout(function() {
+                    open();
+                }, +trigger);
+            } else {
+                scrollListener = function() {
+                    if (window.scrollY > document.body.scrollHeight / 2) {
+                        open();
+                    }
+                };
+
+                document.addEventListener('scroll', scrollListener, {passive: true})
+            }
+        }
+
+        function registerCloseListeners() {
+            var closeButtons = popup.querySelectorAll('[data-close-popup]');
+
+            closeButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    close();
+                });
             });
-        });
-    }
+        }
 
-    setTimeout(function() {
-        open();
-    }, 1000);
+        function open() {
+            popup.style.display = 'flex';
+            popup.classList.add('animation-fade-in');
 
-    function open() {
-        popup.style.display = 'flex';
-        popup.classList.add('animation-fade-in');
-
-        keyupListener = function (event) {
-            if (event.key === 'Escape') {
-                close();
+            if (scrollListener) {
+                document.removeEventListener('scroll', scrollListener);
             }
-        };
 
-        document.addEventListener('keyup', keyupListener);
-    }
+            keyupListener = function (event) {
+                if (popup && event.key === 'Escape') {
+                    close();
+                }
+            };
 
-    function close() {
-        popup.style.opacity = '0';
+            document.addEventListener('keyup', keyupListener);
+        }
 
-        setTimeout(function() {
-            popup.style.display = 'none';
-            popup.remove();
+        function close() {
+            popup.style.opacity = '0';
 
-            if (keyupListener) {
-                document.removeEventListener('keyup', keyupListener);
-            }
-            // TODO remove from localstorage
-        }, 300);
+            setTimeout(function() {
+                popup.style.display = 'none';
+                popup.remove();
+
+                if (keyupListener) {
+                    document.removeEventListener('keyup', keyupListener);
+                }
+                // TODO remove from localstorage
+            }, 300);
+        }
+
+        function isNumeric(value) {
+            return /^-?\d+$/.test(value);
+        }
     }
 }
 
