@@ -15,7 +15,7 @@ hexo.extend.filter.register('after_generate', function () {
 # Related post
 - Każdy post powinien posiadać unikalne pole id. Aby dodać powiązany post, dodajemy jego id w polu relatedPost.
 
-# contributors
+# Contributors
 - Pole **contributors_specs** to dostępne specjalizacje, które nadawane są autorom w ich polu **specs**. Dzięki temu polu również generowany jest filter na stronie autorów.
 - Przykład dodania nowego autora:
 ```
@@ -47,6 +47,28 @@ contributors:
     - bannerUrl: string (url) - Adres url (hiperłącze), które jest przyczepione do linku.
     - bannerImage: string (url) - Adres url zdjęcia np. /img/my-image.png
 
+# Popupy
+- Pole **popup** pozwala na wyświetlenie popupa.
+- Przykład konfiguracji popo:
+```
+// _config.yml
+popup:
+  trigger: 2000 // scroll | 1000 (1000 = 1s itd.)
+  
+// Blog Post
+popup:
+   trigger: 3000 
+   header: 'Learn how to PROTECT Web applications!'
+   subheader: 'Proven methods to build ultra-secure systems'
+   image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   background: '#ff00ff'
+   closeText: 'No, thanks. I can be hacked.'
+   cta:
+      url: https://dev-academy.com/web-security
+      text: Show me!
+```
+trigger: 2000 # values: scroll | 1000 (5000 etc.)
+expire: 1 # days to show
 # Posthog
 ### Konwencja
 Konwencja nazewnicza do nadawania atrybutów (identyfikatorów) dla posthoga do eventów oraz A/B testów. Block oraz element są wymagane. Modyfikator oraz wartość jest opcjonalna. Konwencja taka sama jak w BEMie z wyjątkiem wymaganego elementu. Nie stylujemy nigdy po tych atrybutach.
