@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (isPostPage()) {
-        initFullscreenPopup();
+        initPopup();
     }
 
     if (isIndexPage()) {
@@ -599,8 +599,8 @@ function addPostHogDynamicInserts() {
     }
 }
 
-function initFullscreenPopup() {
-    var popup = document.getElementById('fullscreen-popup');
+function initPopup() {
+    var popup = document.getElementById('popup');
     var keyupListener;
 
     if (popup) {
@@ -625,7 +625,7 @@ function initFullscreenPopup() {
             if (event.key === 'Escape') {
                 close();
             }
-        }
+        };
 
         document.addEventListener('keyup', keyupListener);
     }

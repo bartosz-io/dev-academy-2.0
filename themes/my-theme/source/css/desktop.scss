@@ -590,26 +590,26 @@
     padding-top: 25rem;
   }
 
-  .fullscreen-popup-content {
+  .popup-content {
     width: 45rem;
   }
 
-  .fullscreen-popup-header {
+  .popup-header {
     font-size: $font-size-34;
     padding-bottom: 4rem;
   }
 
-  .fullscreen-popup-subheader {
+  .popup-subheader {
     padding-bottom: 4rem;
     font-size: $font-size-18;
   }
 
-  .fullscreen-popup-cta {
+  .popup-cta {
     font-size: $font-size-18;
     padding: 2rem 3rem;
   }
 
-  .fullscreen-popup-close-button {
+  .popup-close-button {
     top: 3rem;
     right: 3rem;
 
@@ -619,7 +619,7 @@
     }
   }
 
-  .fullscreen-popup-close-text {
+  .popup-close-text {
     margin-top: 2rem;
   }
 }

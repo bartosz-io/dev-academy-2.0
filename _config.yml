@@ -221,9 +221,8 @@ banners:
   top_banner: false
   article_side_banner: true
 
-# custom popups
-popups:
-  fullscreen_popup: true
+# custom popup
+popup: true
 
 # site contributors, custom generator
 contributors_specs: [nodejs, angular, vue, react]

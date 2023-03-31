@@ -7,7 +7,7 @@ tags: [angular, performance]
 id: angular-signals
 date: 2023-03-13
 dateModified: 2023-03-25
-fullscreenPopup:
+popup:
    trigger: 'click' # 
    header: 'Learn how to PROTECT Web applications!'
    subheader: 'Proven methods to build ultra-secure systems'

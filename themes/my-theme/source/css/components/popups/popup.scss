@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.fullscreen-popup {
+.popup {
   position: fixed;
   display: none;
   justify-content: center;
@@ -14,7 +14,7 @@
   transition: $transition-time opacity $transition-type;
 }
 
-.fullscreen-popup-content {
+.popup-content {
   padding: 1.5rem;
   width: 35rem;
   display: flex;
@@ -23,12 +23,12 @@
   text-align: center;
 }
 
-.fullscreen-popup-img {
+.popup-img {
   margin-bottom: 3rem;
   border-radius: 0.8rem;
 }
 
-.fullscreen-popup-header {
+.popup-header {
   color: $light-100;
   font-size: $font-size-22;
   font-weight: 500;
@@ -36,7 +36,7 @@
   padding-bottom: 2rem;
 }
 
-.fullscreen-popup-subheader {
+.popup-subheader {
   color: $indigo-100;
   font-size: $font-size-16;
   line-height: 1.5;
@@ -45,13 +45,13 @@
   letter-spacing: 0;
 }
 
-.fullscreen-popup-close-text {
+.popup-close-text {
   color: $light-800;
   padding: 1rem 0;
   margin-top: 1rem;
 }
 
-.fullscreen-popup-close-button {
+.popup-close-button {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
