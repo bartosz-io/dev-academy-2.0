@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    if (isPostPage()) {
+        initFullscreenPopup();
+    }
+
     if (isIndexPage()) {
         slider();
     }
@@ -592,5 +596,28 @@ function addPostHogDynamicInserts() {
         if (node) {
             node.setAttribute(DATA_PH_ATTR, customName);
         }
+    }
+}
+
+function initFullscreenPopup() {
+    var popup = document.getElementById('fullscreen-popup');
+
+    console.log(popup);
+
+    if (popup) {
+        var closeButtons = popup.querySelectorAll('[data-close-popup]');
+
+        console.log(closeButtons);
+
+        closeButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                popup.style.opacity = '0';
+
+                setTimeout(function() {
+                    popup.remove();
+                    // TODO remove from localstorage
+                }, 300);
+            });
+        });
     }
 }

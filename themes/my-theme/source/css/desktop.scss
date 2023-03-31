@@ -608,6 +608,20 @@
     font-size: $font-size-18;
     padding: 2rem 3rem;
   }
+
+  .fullscreen-popup-close-button {
+    top: 3rem;
+    right: 3rem;
+
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  .fullscreen-popup-close-text {
+    margin-top: 2rem;
+  }
 }
 
 @media (min-width: 992px) {
