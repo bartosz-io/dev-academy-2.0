@@ -26,8 +26,6 @@ Session storage is intended for retaining information within a particular browsi
 
 Because of these differences, session storage is more suitable for storing temporary data that is only needed for the duration of a single browsing session. Local storage, on the other hand, is more appropriate for storing data that needs to persist between multiple browsing sessions.
 
-Overall, session storage and local storage are both useful tools for web developers, providing an efficient and secure way to store data on the client-side without relying on cookies.
-
 ### Local Storage
 
 In the current era of web applications, user input plays an integral role in achieving various objectives such as registration, buffering, and personalization. This information is generally sent to a server for further processing and storage. However, there are certain scenarios where it becomes essential to store data locally on the user's device, especially when offline access is desired. This is where local storage comes in handy, offering a means to store data on the client-side rather than on a remote server, and providing several advantages over traditional server-based storage.
@@ -44,9 +42,13 @@ Cookies and session storage both serve as storage options for data used during a
 
 Session storage stands out from cookies in that it directly stores data on the user's device without constantly communicating with the server. As a result, it reduces server load and improves performance by providing faster and more efficient data access. Additionally, since the data is stored on the user's device, it can offer more stable and reliable performance over time. This long-term exposure to the stored data enhances its reliability when compared to data that is frequently exchanged between the server and client. Therefore, session storage is a vital tool for developers who prioritize both performance and reliability in their web applications.
 
-Overall, session storage is an essential tool for web developers who require temporary and secure data storage. By using session storage, developers can create more user-friendly and resilient applications that safeguard user privacy and enhance their experience. Session storage is an excellent way to optimize web application performance by reducing the amount of data transferred between the client and server. Furthermore, session storage is a more secure option for storing data because it is not stored in cookies, which third-party sites can access.
+It does not transmit data on every request like cookies do, which makes it a more secure option in certain cases. However, it's important to consider all security concerns when choosing between session storage and cookies. Authentication can be done via cookies, which has the benefit of being widely supported, but they are susceptible to security threats like cross-site scripting (XSS) and cross-site request forgery (CSRF).
 
-In summary, session storage provides a reliable, efficient, and secure way to store data temporarily on the user's device, making it an indispensable tool for web developers looking to enhance their web applications' performance, reliability, and security.
+Because session storage does not transfer data with every request made between the client and server, it is a more secure alternative for temporarily keeping sensitive data. The data kept in session storage will be deleted when the user exits the browser due to the limitation of this feature to the current session.
+
+Large data storage capacities and offline storing capabilities are two benefits of local storage. However, it is susceptible to the same security threats as session storage and cookies, so any sensitive information kept in local storage may be accessed by outside attackers.
+
+In conclusion, despite the fact that all three storage options are susceptible to security attacks, session storage is typically seen as the safest choice because it doesn't transfer data with every request. Nevertheless, it only has a small amount of storage. Now, as session storage, local storage and cookies, all have benefits and drawbacks, but whether to use one over the other should depend on the particular needs of the online application and the desired level of security.
 
 ### Cookies
 
