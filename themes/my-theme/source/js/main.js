@@ -601,23 +601,47 @@ function addPostHogDynamicInserts() {
 
 function initFullscreenPopup() {
     var popup = document.getElementById('fullscreen-popup');
-
-    console.log(popup);
+    var keyupListener;
 
     if (popup) {
         var closeButtons = popup.querySelectorAll('[data-close-popup]');
 
-        console.log(closeButtons);
-
         closeButtons.forEach(function(button) {
             button.addEventListener('click', function() {
-                popup.style.opacity = '0';
-
-                setTimeout(function() {
-                    popup.remove();
-                    // TODO remove from localstorage
-                }, 300);
+                close();
             });
         });
     }
+
+    setTimeout(function() {
+        open();
+    }, 1000);
+
+    function open() {
+        popup.style.display = 'flex';
+        popup.classList.add('animation-fade-in');
+
+        keyupListener = function (event) {
+            if (event.key === 'Escape') {
+                close();
+            }
+        }
+
+        document.addEventListener('keyup', keyupListener);
+    }
+
+    function close() {
+        popup.style.opacity = '0';
+
+        setTimeout(function() {
+            popup.style.display = 'none';
+            popup.remove();
+
+            if (keyupListener) {
+                document.removeEventListener('keyup', keyupListener);
+            }
+            // TODO remove from localstorage
+        }, 300);
+    }
 }
+

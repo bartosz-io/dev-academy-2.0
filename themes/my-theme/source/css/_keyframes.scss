@@ -55,6 +55,11 @@
   }
 }
 
+.animation-fade-in {
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+}
+
 .animation-fade-in-left {
   visibility: visible !important;
   animation-name: fadeInLeft;
