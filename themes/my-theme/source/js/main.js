@@ -603,11 +603,35 @@ function initPopup() {
     var popup = document.getElementById('popup');
 
     if (popup) {
+        var daysToExpire = popup.getAttribute('data-expire');
+        var storageKey = 'da_popup';
+
+        if (isNotExpired()) {
+            return;
+        }
+
         var keyupListener;
         var scrollListener;
 
         registerCloseListeners()
         triggerByType();
+
+        function isNotExpired() {
+            if (isNumeric(daysToExpire)) {
+                var lastShown = localStorage.getItem(storageKey);
+
+                if (isNumeric(lastShown)) {
+                    var now = new Date();
+                    var day = 24 * 60 * 60 * 1000;
+
+                    if (!(+lastShown + (day * +daysToExpire) < now.getTime())) {
+                        popup.remove();
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         function triggerByType() {
             var trigger = popup.getAttribute('data-trigger');
@@ -656,6 +680,9 @@ function initPopup() {
 
         function close() {
             popup.style.opacity = '0';
+
+            var now = new Date();
+            localStorage.setItem(storageKey, now.getTime().toString());
 
             setTimeout(function() {
                 popup.style.display = 'none';

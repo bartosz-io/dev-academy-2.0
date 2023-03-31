@@ -224,7 +224,7 @@ banners:
 # custom popup
 popup:
   trigger: 2000 # values: scroll | 1000 (5000 etc.)
-  expire: 1 # days to show
+  expire: 1 # for how many days it should appear again
 
 # site contributors, custom generator
 contributors_specs: [nodejs, angular, vue, react]

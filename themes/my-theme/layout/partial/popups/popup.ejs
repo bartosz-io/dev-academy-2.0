@@ -1,5 +1,6 @@
 <div class="popup"
      id="popup"
+     data-expire="<%- config.popup.expire ? config.popup.expire : 30 %>"
      data-trigger="<%- post.popup.trigger ? post.popup.trigger : config.popup.trigger ? config.popup.trigger : 'scroll' %>"
      style="background-color: <%- post.popup.background ? post.popup.background : '#000' %>">
     <div class="popup-content">

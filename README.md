@@ -48,13 +48,13 @@ contributors:
     - bannerImage: string (url) - Adres url zdjęcia np. /img/my-image.png
 
 # Popupy
-- Pole **popup** pozwala na wyświetlenie popupa.
-- Przykład konfiguracji popo:
+Przykład konfiguracji popupa:
 ```
 // _config.yml
 popup:
   trigger: 2000 // scroll | 1000 (1000 = 1s itd.)
-  
+   expire: 1 # for how many days it should appear again
+    
 // Blog Post
 popup:
    trigger: 3000 
@@ -67,8 +67,7 @@ popup:
       url: https://dev-academy.com/web-security
       text: Show me!
 ```
-trigger: 2000 # values: scroll | 1000 (5000 etc.)
-expire: 1 # days to show
+
 # Posthog
 ### Konwencja
 Konwencja nazewnicza do nadawania atrybutów (identyfikatorów) dla posthoga do eventów oraz A/B testów. Block oraz element są wymagane. Modyfikator oraz wartość jest opcjonalna. Konwencja taka sama jak w BEMie z wyjątkiem wymaganego elementu. Nie stylujemy nigdy po tych atrybutach.
