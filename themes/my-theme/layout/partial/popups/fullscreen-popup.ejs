@@ -1,0 +1,19 @@
+<div class="fullscreen-popup" style="background-color: <%- post.fullscreenPopup.background ? post.fullscreenPopup.background : '#000' %>">
+    <div class="fullscreen-popup-content">
+        <% if (post.fullscreenPopup.image) {%>
+            <img class="fullscreen-popup-img" src="<%- post.fullscreenPopup.image %>" loading="lazy">
+        <% } %>
+
+        <% if (post.fullscreenPopup.header) {%>
+            <h4 class="fullscreen-popup-header"><%- post.fullscreenPopup.header %></h4>
+        <% } %>
+
+        <% if (post.fullscreenPopup.subheader) {%>
+            <p class="fullscreen-popup-subheader"><%- post.fullscreenPopup.subheader %></p>
+        <% } %>
+
+        <% if (post.fullscreenPopup.cta && post.fullscreenPopup.cta.url && post.fullscreenPopup.cta.text) {%>
+            <a data-ph="fullscreen-popup__cta" class="fullscreen-popup-cta button button-primary button-block button-large" href="<%- post.fullscreenPopup.cta.url %>"><%- post.fullscreenPopup.cta.text %></a>
+        <% } %>
+    </div>
+</div>

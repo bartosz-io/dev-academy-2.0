@@ -7,6 +7,14 @@ tags: [angular, performance]
 id: angular-signals
 date: 2023-03-13
 dateModified: 2023-03-25
+fullscreenPopup:
+   header: 'Learn how to PROTECT Web applications!'
+   subheader: 'Proven methods to build ultra-secure systems'
+   # image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   # background: "#ff00ff"
+   cta:
+      url: https://dev-academy.com/web-security
+      text: Show me!
 ---
 {% image_fw 1.78 "banner.png" "Angular Signals" %}
 

@@ -589,6 +589,25 @@
   .academy-contributor-wrapper {
     padding-top: 25rem;
   }
+
+  .fullscreen-popup-content {
+    width: 45rem;
+  }
+
+  .fullscreen-popup-header {
+    font-size: $font-size-34;
+    padding-bottom: 4rem;
+  }
+
+  .fullscreen-popup-subheader {
+    padding-bottom: 4rem;
+    font-size: $font-size-18;
+  }
+
+  .fullscreen-popup-cta {
+    font-size: $font-size-18;
+    padding: 2rem 3rem;
+  }
 }
 
 @media (min-width: 992px) {
