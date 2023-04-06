@@ -1,0 +1,144 @@
+@import '../variables';
+
+
+.enriched-agenda-wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  counter-reset: chapter;
+}
+
+.enriched-agenda {
+  counter-increment: chapter;
+}
+
+.enriched-agenda-number {
+  content: '';
+  display: inline-flex;
+  position: relative;
+
+  &:before {
+    content: counter(chapter);
+    display: inline-flex;
+    color: $light-100;
+    font-size: 1.6rem;
+  }
+}
+
+.enriched-agenda-column-title {
+  background-color: $primary-200;
+  color: $light-100;
+}
+
+.agenda-wrapper {
+  counter-reset: chapter;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-row-gap: 5rem;
+}
+
+.agenda {
+  padding-left: 6rem;
+  counter-increment: chapter;
+
+  h3 {
+    position: relative;
+  }
+
+  .chip {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.agenda-number {
+  content: '';
+  width: 4rem;
+  height: 4rem;
+  display: block;
+  border-radius: 50%;
+  background-color: $primary-200;
+  position: absolute;
+  left: -6rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:before {
+    content: counter(chapter);
+    display: flex;
+    color: $light-100;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
+  }
+}
+
+.agenda-lessons {
+  li {
+    position: relative;
+    padding-left: 1.2rem;
+    line-height: 3.5rem;
+    margin-bottom: .5rem;
+
+    &:before {
+      content: '';
+      width: .4rem;
+      height: .4rem;
+      border-radius: 50%;
+      background-color: #7838d6;
+      display: inline-block;
+      position: absolute;
+      top: 1.5rem;
+      left: 0;
+    }
+  }
+}
+
+.agenda-play {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: $secondary-100;
+  padding: .4rem .8rem .2rem;
+  border: .1rem solid $secondary-100;
+  border-radius: 1.2rem;
+  left: .4rem;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.8rem;
+  transition: all 0.3s ease;
+  position: relative;
+  top: -.4rem;
+
+  & div {
+    display: inline;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  &:before {
+    content: '';
+    margin: -.2rem .6rem -.2rem .4rem;
+    display: flex;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: .7rem 0 .7rem 1.2rem;
+    border-color: transparent transparent transparent $secondary-100;
+    transition: border-color 0.3s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $light-100;
+    background-color: $secondary-100;
+
+    &:before {
+      border-color: transparent transparent transparent $light-100;
+    }
+  }
+}
+
+.agenda-disabled {
+  opacity: .5;
+}

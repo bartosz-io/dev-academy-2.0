@@ -350,6 +350,11 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .enriched-agenda {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .developer {
     margin-right: 10rem;
   }
