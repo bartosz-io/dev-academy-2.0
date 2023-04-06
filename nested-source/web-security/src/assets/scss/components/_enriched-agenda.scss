@@ -5,16 +5,20 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   counter-reset: chapter;
+  column-gap: 1.5rem;
+  row-gap: 3rem;
 }
 
 .enriched-agenda {
   counter-increment: chapter;
+  gap: 1.5rem;
 }
 
 .enriched-agenda-number {
   content: '';
   display: inline-flex;
   position: relative;
+  padding-left: 0.5rem;
 
   &:before {
     content: counter(chapter);
@@ -27,6 +31,33 @@
 .enriched-agenda-column-title {
   background-color: $primary-200;
   color: $light-100;
+  border-radius: 1.5rem;
+  padding: 0.4rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.enriched-agenda-column h3,
+.enriched-agenda-lessons,
+.enriched-agenda-module-list {
+  padding-left: 1rem;
+  border-left: .2rem solid $primary-200;
+}
+
+.enriched-agenda-column h3 {
+  font-family: $font-family-teko;
+  font-weight: 500;
+  font-size: 3rem;
+  color: $primary-200;
+}
+
+.enriched-agenda-lessons {
+  font-weight: 700;
+  color: $primary-200;
+  font-size: $font-size-18;
+
+  li {
+    padding-bottom: 0.5rem;
+  }
 }
 
 .agenda-wrapper {
