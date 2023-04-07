@@ -1,9 +1,9 @@
 ---
-title: Session Storage in Angular
+title: Session Storage in Angular ⏳
 contributor: A M Sanjeev
 avatar: a-m-sanjeev.jpg
 description: Learn how to use Session Storage in Angular.
-date: 2023-03-17
+date: 2023-04-07
 tags: [angular]
 id: angular-session-storage
 ---
@@ -42,11 +42,11 @@ Cookies and session storage both serve as storage options for data used during a
 
 Session storage is a method of storing data on a user's device without constantly sending it back and forth between the device and a server, as cookies do. As a result, it reduces server load and improves performance by providing faster and more efficient data access. Additionally, since the data is stored on the user's device, it can offer more stable and reliable performance over time. This long-term exposure to the stored data enhances its reliability when compared to data that is frequently exchanged between the server and client. Therefore, session storage is a vital tool for developers who prioritize both performance and reliability in their web applications.
 
-It does not transmit data on every request like cookies do, which makes it a more secure option in certain cases. However, it's important to consider all security concerns when choosing between session storage and cookies. Authentication can be done via cookies, which has the benefit of being widely supported, but they are susceptible to security threats like [cross-site scripting (XSS)](https://dev-academy.com/preventing-xss-in-angular/) and [cross-site request forgery (CSRF)](https://dev-academy.com/angular-csrf-protection-implementation/).
+It does not transmit data on every request like cookies do, which makes it a more secure option in certain cases. However, it's important to consider all security concerns when choosing between session storage and cookies. Authentication can be done via cookies, which has the benefit of being widely supported, but they are susceptible to security threats like [cross-site request forgery (CSRF)](/angular-csrf-protection-implementation/).
 
 Because session storage does not transfer data with every request made between the client and server, it is a more secure alternative for temporarily keeping sensitive data. The data kept in session storage will be deleted when the user exits the browser due to the limitation of this feature to the current session.
 
-Large data storage capacities and offline storing capabilities are two benefits of local storage. However, it is susceptible to the same security threats as session storage and cookies, so any sensitive information kept in local storage may be accessed by outside attackers.
+Large data storage capacities and offline storing capabilities are two benefits of local storage. However, it is susceptible to similar security threats as session storage and cookies, so any sensitive information kept in local storage may be accessed by outside attackers via [cross-site scripting (XSS)](/preventing-xss-in-angular/).
 
 In conclusion, despite the fact that all three storage options are susceptible to security attacks, session storage is typically seen as the safest choice because it doesn't transfer data with every request. Nevertheless, it only has a small amount of storage. Now, as session storage, local storage and cookies, all have benefits and drawbacks, but whether to use one over the other should depend on the particular needs of the online application and the desired level of security.
 
@@ -314,4 +314,4 @@ We learned about local storage and session storage, and we built a simple applic
 
 ## The next steps
 
-Learn more about Angular and about 2FA, time-based one-time passwords, and [how to request OTP](https://dev-academy.com/angular-otp-verification/) verification using Angular. Discover how to use Angular Guard, AuthService, AuthGuard Implementation, and [Routing Module Implementation](https://dev-academy.com/angular-router-guard-rbac/) and how to serve your [Angular application via HTTPS locally](https://dev-academy.com/running-angular-cli-over-https/).
+Learn more about Angular and about 2FA, time-based one-time passwords, and [how to request OTP](/angular-otp-verification/) verification using Angular. Discover how to use Angular Guard, AuthService, AuthGuard Implementation, and [Routing Module Implementation](/angular-router-guard-rbac/) and how to serve your [Angular application via HTTPS locally](/running-angular-cli-over-https/).
