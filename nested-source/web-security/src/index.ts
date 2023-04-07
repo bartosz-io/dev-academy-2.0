@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     loadConvertKit();
     // loadTawk();
     loadGTM();
+    collapsePanel();
 
     if (IS_SCHEDULE) {
         loadSchedule();
@@ -120,4 +121,20 @@ function loadSchedule() {
     };
 
     document.body.appendChild(script);
+}
+
+function collapsePanel() {
+    const agenda = document.querySelector('.enriched-agenda-wrapper');
+
+    if (agenda) {
+        const attrName = 'data-collapsed';
+
+        agenda.addEventListener('click', (event) => {
+            const agendaHeader = event.target.getAttribute(attrName);
+
+            if (agendaHeader) {
+                event.target.setAttribute(attrName, agendaHeader === 'false' ? 'true' : 'false');
+            }
+        });
+    }
 }

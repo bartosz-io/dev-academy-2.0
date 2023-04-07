@@ -1,5 +1,5 @@
 @import '../variables';
-
+@import '../keyframes';
 
 .enriched-agenda-wrapper {
   display: grid;
@@ -67,15 +67,59 @@
   color: $primary-200;
   font-size: $font-size-18;
 
-  li {
+  > li {
     padding: 1rem 0;
 
-    ul {
+    h4 {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0;
+      font-size: $font-size-18;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:after {
+        content: '';
+        display: flex;
+        flex-shrink: 0;
+        margin-left: 1rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        background: url("../img/icons/chevron-down.svg") $light-primary-100;
+        border-radius: 1rem;
+        transition: $transition-default;
+      }
+
+      &[data-collapsed="true"] {
+        + .enriched-agenda-module-list {
+          display: none;
+          opacity: 0;
+        }
+      }
+
+      &[data-collapsed="false"] {
+        + .enriched-agenda-module-list {
+          animation-name: opacity;
+          animation-duration: 0.5s;
+        }
+
+        &:after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .enriched-agenda-module-list {
       font-weight: normal;
       color: #505050;
       font-size: $font-size-16;
       border: 0;
       padding-left: 2rem;
+      transition: $transition-default;
     }
   }
 }
@@ -93,14 +137,6 @@
   align-items: center;
   line-height: 1.8rem;
   transition: all 0.3s ease;
-  position: relative;
-  top: -.4rem;
-
-  & div {
-    display: inline;
-    width: auto !important;
-    height: auto !important;
-  }
 
   &:before {
     content: '';
