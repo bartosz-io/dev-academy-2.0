@@ -6,11 +6,13 @@
   grid-template-columns: repeat(1, 1fr);
   counter-reset: chapter;
   column-gap: 1.5rem;
-  row-gap: 3rem;
+  row-gap: 4.5rem;
+  margin-bottom: 6rem;
 }
 
 .enriched-agenda {
   counter-increment: chapter;
+  display: grid;
   gap: 1.5rem;
 }
 
@@ -29,25 +31,35 @@
 }
 
 .enriched-agenda-column-title {
-  background-color: $primary-200;
+  background-color: $primary-100;
   color: $light-100;
-  border-radius: 1.5rem;
-  padding: 0.4rem 1.5rem;
+  border-radius: 2.5rem;
+  padding: 0.5rem 1.5rem;
   margin-bottom: 1.5rem;
+  font-size: $font-size-18;
 }
 
 .enriched-agenda-column h3,
 .enriched-agenda-lessons,
 .enriched-agenda-module-list {
   padding-left: 1rem;
-  border-left: .2rem solid $primary-200;
+  border-left: .2rem solid $primary-100;
+}
+
+.enriched-agenda-module-list {
+  list-style-type: disc;
+  padding-left: 3rem;
+
+  li {
+    padding: 0.25rem 0;
+  }
 }
 
 .enriched-agenda-column h3 {
-  font-family: $font-family-teko;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 3rem;
   color: $primary-200;
+  margin-bottom: 0;
 }
 
 .enriched-agenda-lessons {
@@ -56,76 +68,19 @@
   font-size: $font-size-18;
 
   li {
-    padding-bottom: 0.5rem;
-  }
-}
+    padding: 1rem 0;
 
-.agenda-wrapper {
-  counter-reset: chapter;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-row-gap: 5rem;
-}
-
-.agenda {
-  padding-left: 6rem;
-  counter-increment: chapter;
-
-  h3 {
-    position: relative;
-  }
-
-  .chip {
-    margin-bottom: 1.5rem;
-  }
-}
-
-.agenda-number {
-  content: '';
-  width: 4rem;
-  height: 4rem;
-  display: block;
-  border-radius: 50%;
-  background-color: $primary-200;
-  position: absolute;
-  left: -6rem;
-  top: 50%;
-  transform: translateY(-50%);
-
-  &:before {
-    content: counter(chapter);
-    display: flex;
-    color: $light-100;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.6rem;
-  }
-}
-
-.agenda-lessons {
-  li {
-    position: relative;
-    padding-left: 1.2rem;
-    line-height: 3.5rem;
-    margin-bottom: .5rem;
-
-    &:before {
-      content: '';
-      width: .4rem;
-      height: .4rem;
-      border-radius: 50%;
-      background-color: #7838d6;
-      display: inline-block;
-      position: absolute;
-      top: 1.5rem;
-      left: 0;
+    ul {
+      font-weight: normal;
+      color: #505050;
+      font-size: $font-size-16;
+      border: 0;
+      padding-left: 2rem;
     }
   }
 }
 
-.agenda-play {
+.enriched-agenda-play {
   font-weight: 700;
   font-size: 1.4rem;
   color: $secondary-100;
@@ -170,6 +125,6 @@
   }
 }
 
-.agenda-disabled {
+.enriched-agenda-disabled {
   opacity: .5;
 }
