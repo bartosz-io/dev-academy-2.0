@@ -150,6 +150,12 @@
     transition: border-color 0.3s ease;
   }
 
+  div {
+    display: inline-flex !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
   &:hover {
     cursor: pointer;
     color: $light-100;
