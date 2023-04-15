@@ -1179,6 +1179,20 @@
     flex-basis: 21rem;
     width: 21rem;
     padding-left: 4rem;
+
+    @keyframes ripples {
+      to {
+        box-shadow: 0 0 0 15px rgba(0,0,0,.01);
+      }
+    }
+
+    .button {
+      width: 90%;
+      box-shadow: 0 0 0 0 $indigo-100;
+      animation-name: ripples;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
   }
 
   .article-toc-header {
@@ -1208,12 +1222,19 @@
   
   .article-sidebar-subheader {
     font-size: 1.5rem;
-    color: $indigo-600;
+    font-weight: normal;
+    font-style: italic;
+
+    span {
+      font-weight: bold;
+      text-decoration: underline;
+    }
   }
 
   .article-sidebar-img {
     margin-bottom: 2rem;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
 
   .b-article-sidebar {
@@ -1355,8 +1376,8 @@
   }
 
   .article-sidebar {
-    flex-basis: 25rem;
-    width: 25rem;
+    flex-basis: 34rem;
+    width: 34rem;
   }
 
   .article-toc {

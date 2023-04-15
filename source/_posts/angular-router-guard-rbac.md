@@ -7,6 +7,7 @@ date: 2022-09-11
 tags: [angular, security, routing]
 id: angular-router-guard-rbac
 relatedPost: vue-router-best-practices
+bannerHeader: 'Is your role-based access implementation SECURE?'
 ---
 {% image_fw 1.78 banner.png "Angular Guard for Role-Based Access Control (RBAC)" %}
 

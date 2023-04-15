@@ -15,4 +15,53 @@
   .thank-you-information {
     display: none;
   }
+
+  .container {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+}
+
+.progress {
+  position: relative;
+  width: 90%;
+  height: 21px;
+  background: #a09b9b;
+  border-radius: 100px;
+  overflow: hidden;
+  border: 2px solid #a09b9b;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 55px;
+}
+
+.progress_bar {
+  transform: skewX(-40deg);
+  transform-origin: bottom;
+  padding-right: 45%;
+  margin-left: -30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #5416b2;
+  background-clip: content-box;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 100px;
+
+  animation-name: loading;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes loading {
+  0% {padding-right:45%}
+  to {padding-right:5%}
 }

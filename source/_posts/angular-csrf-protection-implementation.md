@@ -5,17 +5,17 @@ link: https://geogram.com
 avatar: peter-mobley.jpg
 description: Learn how to implement Cross-site Request Forgery (CSRF) Protection in Angular.
 date: 2022-02-23
+dateModified: 2023-03-01
 tags: [angular, security]
 id: csrf-protection
 relatedPost: angular-xss
 ---
-<!-- BANNER NEEDED -->
 {% image_fw 1.78 "banner.png" "How to implement CSRF protection in an Angular application" %}
 
 ## Table of Contents
 <!-- toc -->
 
-**UPDATE:** This article was updated to include information on CSURF Package Vulnerability. For those who have implemented a CSRF prevention method using CSURF, a popular Node.js CSRF protection middleware, please read on to understand this vulnerability and what to do to avoid it. 
+> **UPDATE:** This article was updated to include information on [CSURF Package Vulnerability](/csurf-vulnerability). For those who have implemented a CSRF prevention method using CSURF, a popular Node.js CSRF protection middleware, please read on to understand this vulnerability and what to do to avoid it. 
 
 ## A little Introduction
 
@@ -201,12 +201,12 @@ When the client receives the CSRF token from the server, there are two options t
 Inserting the CSRF token in the custom HTTP request header via JavaScript is considered more secure than adding the token in the hidden field form parameter because it uses custom request headers.
 
 One resource you should have at your finger-tips is the OWASP Cheat Sheet covering in detail both options. 
-(OWASP Cross-site Request Forgery Prevention Cheat Sheet)[https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html]
+[OWASP Cross-site Request Forgery Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)
 
 The following is an example of the implementation of these methods in NodeJS. The proper way to implement this protection is to use Synchronised Token Pattern. The user makes a GET request to the '/csrf-token' API endpoint and then when the user fills out the form, using angular form control and form builder, submits the data to the server via a POST request at the '/process' API endpoint.
 
 You can view the full implementation on Github:
-(CSRF Protection for Angular Tutorial)[https://github.com/geogramdotcom/csrf-angular-tutorial]
+[CSRF Protection for Angular Tutorial](https://github.com/geogramdotcom/csrf-angular-tutorial)
 
 For the server-side code:
 ``` typescript
@@ -326,7 +326,7 @@ Lastly, a good practice is to keep user logs for requests coming into your serve
 The following is an example of the implementation of these methods in NodeJS. Remember that the proper way to implement this protection for stateless is to use the "double submit cookie method". The user makes a GET request to the '/csrf-token' API endpoint and then when the user fills out the form, using angular form control and form builder, submits the data to the server via a POST request at the '/protected_endpoint' API endpoint.
 
 You can view the full implementation on Github:
-(CSRF Protection for Angular Tutorial)[https://github.com/geogramdotcom/csrf-angular-tutorial]
+[CSRF Protection for Angular Tutorial](https://github.com/geogramdotcom/csrf-angular-tutorial)
 
 For the server-side code:
 ``` typescript

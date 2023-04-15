@@ -7,7 +7,6 @@ date: 2023-01-18
 tags: [angular, security]
 id: angular-input-validation
 relatedPost: user-login-and-registration
-bannerHeader: 'Input validation in Angular'
 ---
 {% image_fw 1.78 banner.png "Input Validation in Angular" %}
 

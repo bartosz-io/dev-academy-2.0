@@ -24,7 +24,7 @@
                     <span class="contributors-figure-text">Subscribers</span>
                 </div>
                 <div class="contributors-figure">
-                    <span class="contributors-figure-number">+1600</span>
+                    <span class="contributors-figure-number">+2000</span>
                     <span class="contributors-figure-text">Courses students</span>
                 </div>
                 <div class="contributors-figure">
@@ -65,10 +65,10 @@
         <div class="contributor-list-wrapper">
             <h3 class="contributors-list-header">Meet our <span>Elite Editorial Team</span></h3>
             <div class="pills">
-                <button type="button" class="pill" data-spec="all">All Experts</button>
+                <button type="button" class="pill" data-spec="all" data-ph="experts_all">All Experts</button>
                 <% config.contributors_specs.forEach(function(spec){ var specName; %>
                 <% if (spec === 'nodejs') { specName = 'NodeJS' } else { specName = spec } %>
-                <button type="button" class="pill pill-<%- spec %> pill-inactive" data-spec="<%- spec %>"><%- specName %> Expert</button>
+                <button type="button" class="pill pill-<%- spec %> pill-inactive" data-ph="experts_<%- spec %>" data-spec="<%- spec %>"><%- specName %> Expert</button>
                 <% }) %>
             </div>
             <div class="contributors-list">

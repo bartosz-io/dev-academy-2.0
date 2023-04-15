@@ -2,7 +2,7 @@
  * Global variables
  * */
 
-window.DESKTOP_STICKY_HEADER = false;
+window.DESKTOP_STICKY_HEADER = true;
 
 // Post hog can be enabled for development if we really need this
 // e.g. we want to add DOM actions or test flags, experiments etc.
@@ -14,7 +14,7 @@ window.PH_ENABLED_DEV = false;
  * Scripts initialization
  * */
 
-window.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     if (isTablet()) {
         stickyNavigation();
         // loadOdometer();
