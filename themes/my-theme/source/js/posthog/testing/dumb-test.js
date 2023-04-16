@@ -45,9 +45,6 @@ function mainBannerLinkABTest() {
     }
 }
 
-    console.warn('End testing');
-}
-
 function popupABTest() {
     if (posthog.getFeatureFlag('blog-post-popup') === 'test') {
         var popup = document.getElementById('popup');
