@@ -606,7 +606,7 @@ function initPopup() {
         var daysToExpire = popup.getAttribute('data-expire');
         var storageKey = 'da_popup';
 
-        if (isNotExpired()) {
+        if (isExpired()) {
             return;
         }
 
@@ -616,7 +616,7 @@ function initPopup() {
         registerCloseListeners()
         triggerByType();
 
-        function isNotExpired() {
+        function isExpired() {
             if (isNumeric(daysToExpire)) {
                 var lastShown = localStorage.getItem(storageKey);
 
