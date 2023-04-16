@@ -7,16 +7,6 @@ tags: [angular, performance]
 id: angular-signals
 date: 2023-03-13
 dateModified: 2023-03-25
-popup:
-   trigger: 2000 
-   header: 'Learn how to PROTECT Web applications!'
-   subheader: 'Proven methods to build ultra-secure systems'
-   image: https://dev-academy.com/img/optins/web-security-checklist.jpg
-   # background: '#ff00ff'
-   closeText: 'No, thanks. I can be hacked.'
-   cta:
-      url: https://dev-academy.com/web-security
-      text: Show me!
 ---
 {% image_fw 1.78 "banner.png" "Angular Signals" %}
 
