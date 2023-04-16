@@ -1,3 +1,4 @@
 # Development environment variables
 posthog: false
 generate_webp_images: false
+cookie_bot: false

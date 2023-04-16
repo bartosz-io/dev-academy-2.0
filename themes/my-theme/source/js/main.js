@@ -4,6 +4,11 @@
 
 window.DESKTOP_STICKY_HEADER = true;
 
+// Post hog can be enabled for development if we really need this
+// e.g. we want to add DOM actions or test flags, experiments etc.
+// By default, the flag should be always false
+window.PH_ENABLED_DEV = false;
+
 
 /**
  * Scripts initialization

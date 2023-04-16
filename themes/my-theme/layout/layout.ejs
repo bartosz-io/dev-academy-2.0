@@ -9,13 +9,16 @@
     <%- partial('partial/head/favicon') %>
     <%- partial('partial/head/og') %>
     <% if (is_tag() || page.thankYouPage) { %> <meta name="robots" content="noindex"> <% } %>
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="58263a88-73f6-4dd8-a177-4e4fedc12b1b" data-blockingmode="auto" type="text/javascript"></script>
+
+    <% if (config.cookie_bot)  {%>
+        <script src="<%- url_for('/js/cookie-bot.js') %>"></script>
+    <% } %>
 </head>
 <%
   var bodyClasses = '';
   if (page.thankYouPage) {bodyClasses += 'thank-you '}
-  if (config.banners.top_banner && is_post()) { bodyClasses += 'b-bar-top '}
-  if (config.banners.article_side_banner) { bodyClasses += 'b-article-sidebar '}
+  if (is_post() && config.banners.main_banner && (config.banners.main_banner === 'top' || config.banners.main_banner === 'bottom')) { bodyClasses += 'b-bar-' + config.banners.main_banner + ' '}
+  if (is_post() && config.banners.article_side_banner && is_post()) { bodyClasses += 'b-article-sidebar '}
   if (is_post()) { bodyClasses += 'post-page '}
   if (is_tag()) { bodyClasses += 'tag-page ' }
   if (is_current('/')) { bodyClasses += 'index-page ' }

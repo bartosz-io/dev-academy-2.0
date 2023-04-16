@@ -1,5 +1,5 @@
-<% if (config.banners.top_banner && is_post()){ %>
-    <%- partial('banners/banner-top') %>
+<% if (is_post() && config.banners.main_banner && (config.banners.main_banner === 'top' || config.banners.main_banner === 'bottom')){ %>
+    <%- partial('banners/main-banner') %>
 <% } %>
 
 <header class="header">
