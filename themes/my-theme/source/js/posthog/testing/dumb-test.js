@@ -1,6 +1,7 @@
 if (window.posthog) {
     posthog.onFeatureFlags(function() {
         // window.DESKTOP_STICKY_HEADER = true;
+        // popupABTest();
         // sidebarWSALinkABTest();
         // mainBannerLinkABTest();
     });
@@ -41,5 +42,33 @@ function mainBannerLinkABTest() {
             document.body.classList.remove(barTopClass);
             document.body.classList.add(barBottomClass);
         }
+    }
+}
+
+function popupABTest() {
+    if (posthog.getFeatureFlag('blog-post-popup') === 'test') {
+        var popup = document.getElementById('popup');
+
+        if (!popup) return;
+
+        var header = popup.querySelector('.popup-header');
+        var subheader = popup.querySelector('.popup-subheader');
+        var cta = popup.querySelector('.popup-cta');
+        var closeText = popup.querySelector('.popup-close-text');
+        var image = popup.querySelector('.popup-img');
+
+        var replacedContent = {
+            header: 'header text',
+            subHeader: 'subheader text',
+            cta: 'cta text',
+            closeText: 'close text',
+            imageUrl: 'https://dev-academy.com/angular-signals/large_banner.webp'
+        };
+
+        if (header && replacedContent.header) header.textContent = replacedContent.header;
+        if (subheader && replacedContent.subHeader) subheader.textContent = replacedContent.subHeader;
+        if (cta && replacedContent.cta) cta.textContent = replacedContent.cta;
+        if (closeText && replacedContent.closeText) closeText.textContent = replacedContent.closeText;
+        if (image && replacedContent.imageUrl) image.src = replacedContent.imageUrl;
     }
 }

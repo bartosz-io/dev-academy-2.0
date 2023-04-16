@@ -1,2 +1,6 @@
 <%- partial('partial/article', {post: page, index: false}) %>
 <%- partial('partial/related-post', {currentPost: page}, {caches: true}) %>
+
+<% if (config.popup && page.popup) {%>
+    <%- partial('partial/popups/popup', {post: page}, {caches: true}) %>
+<% } %>

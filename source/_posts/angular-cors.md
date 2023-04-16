@@ -7,7 +7,17 @@ date: 2022-08-05
 tags: [angular, security]
 id: angular-cors
 relatedPost: angular-rxjs
-bannerHeader: 'Is your Angular application secure? 🧐'
+
+popup:
+   trigger: 10000 
+   header: 'Are you struggling with CORS errors? 🧐'
+   subheader: 'Did you know that CORS is critical for application security?'
+   # image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   # background: '#ff00ff'
+   closeText: 'No, thanks. I can be hacked... ❌'
+   cta:
+      url: /web-security
+      text: Teach me SECURE CODING!
 ---
 {% image_fw 1.78 "banner.png" "Angular CORS Guide 🛠️ Fixing errors" %}
 

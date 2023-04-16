@@ -1,0 +1,30 @@
+<div class="popup"
+     id="popup"
+     data-expire="<%- config.popup.expire ? config.popup.expire : 30 %>"
+     data-trigger="<%- post.popup.trigger ? post.popup.trigger : config.popup.trigger ? config.popup.trigger : 'scroll' %>"
+     style="background-color: <%- post.popup.background ? post.popup.background : '#000' %>">
+    <div class="popup-content">
+        <% if (post.popup.image) {%>
+            <img class="popup-img" src="<%- post.popup.image %>" loading="lazy">
+        <% } %>
+
+        <% if (post.popup.header) {%>
+            <h4 class="popup-header"><%- post.popup.header %></h4>
+        <% } %>
+
+        <% if (post.popup.subheader) {%>
+            <p class="popup-subheader"><%- post.popup.subheader %></p>
+        <% } %>
+
+        <% if (post.popup.cta && post.popup.cta.url && post.popup.cta.text) {%>
+            <a data-ph="popup__cta" class="popup-cta button button-primary button-block button-large" href="<%- post.popup.cta.url %>"><%- post.popup.cta.text %></a>
+        <% } %>
+
+        <% if (post.popup.closeText) {%>
+            <button class="popup-close-text" data-ph="popup__close_text" aria-label="Close popup" data-close-popup><%- post.popup.closeText %></button>
+        <% } %>
+    </div>
+    <button class="popup-close-button" data-ph="popup__close_icon" aria-label="Close popup" data-close-popup>
+        <img src="/img/icons/close.svg" width="30" height="30" alt="" loading="lazy">
+    </button>
+</div>

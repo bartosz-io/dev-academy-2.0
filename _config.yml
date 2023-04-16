@@ -221,6 +221,11 @@ banners:
   main_banner: top
   article_side_banner: true
 
+# custom popup
+popup:
+  trigger: 2000 # values: scroll | 1000 (5000 etc.)
+  expire: 1 # for how many days it should appear again
+
 # site contributors, custom generator
 contributors_specs: [nodejs, angular, vue, react]
 contributors:

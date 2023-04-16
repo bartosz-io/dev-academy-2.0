@@ -7,8 +7,17 @@ date: 2021-12-11
 tags: [angular, security, architecture]
 id: angular-interceptors
 relatedPost: angular-architecture
-bannerHeader: 'Is your interceptor implementation secure? 🧐'
-bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
+
+popup:
+   trigger: 10000 
+   header: 'Implementing Angular authentication? 🧐'
+   subheader: 'Are you sure it is secure?'
+   # image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   # background: '#ff00ff'
+   closeText: 'No, thanks. I can be hacked... ❌'
+   cta:
+      url: /web-security
+      text: Teach me SECURE CODING!
 ---
 {% image_fw 1.78 "banner.png" "How To Use Angular Interceptors to Manage HTTP Requests" %}
 

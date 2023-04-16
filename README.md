@@ -15,7 +15,7 @@ hexo.extend.filter.register('after_generate', function () {
 # Related post
 - Każdy post powinien posiadać unikalne pole id. Aby dodać powiązany post, dodajemy jego id w polu relatedPost.
 
-# contributors
+# Contributors
 - Pole **contributors_specs** to dostępne specjalizacje, które nadawane są autorom w ich polu **specs**. Dzięki temu polu również generowany jest filter na stronie autorów.
 - Przykład dodania nowego autora:
 ```
@@ -46,6 +46,27 @@ contributors:
     - bannerSubheader: string - Wyświetla kolejny nagłówek w banerze.
     - bannerUrl: string (url) - Adres url (hiperłącze), które jest przyczepione do linku.
     - bannerImage: string (url) - Adres url zdjęcia np. /img/my-image.png
+
+# Popupy
+Przykład konfiguracji popupa:
+```
+// _config.yml
+popup:
+  trigger: 2000 // scroll | 1000 (1000 = 1s itd.)
+   expire: 1 # for how many days it should appear again
+    
+// Blog Post
+popup:
+   trigger: 3000 
+   header: 'Learn how to PROTECT Web applications!'
+   subheader: 'Proven methods to build ultra-secure systems'
+   image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   background: '#ff00ff'
+   closeText: 'No, thanks. I can be hacked.'
+   cta:
+      url: https://dev-academy.com/web-security
+      text: Show me!
+```
 
 # Posthog
 ### Konwencja

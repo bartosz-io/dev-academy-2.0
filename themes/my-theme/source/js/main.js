@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    if (isPostPage()) {
+        initPopup();
+    }
+
     if (isIndexPage()) {
         slider();
     }
@@ -599,3 +603,105 @@ function addPostHogDynamicInserts() {
         }
     }
 }
+
+function initPopup() {
+    var popup = document.getElementById('popup');
+
+    if (popup) {
+        var daysToExpire = popup.getAttribute('data-expire');
+        var storageKey = 'da_popup';
+
+        if (isExpired()) {
+            return;
+        }
+
+        var keyupListener;
+        var scrollListener;
+
+        registerCloseListeners()
+        triggerByType();
+
+        function isExpired() {
+            if (isNumeric(daysToExpire)) {
+                var lastShown = localStorage.getItem(storageKey);
+
+                if (isNumeric(lastShown)) {
+                    var now = new Date();
+                    var day = 24 * 60 * 60 * 1000;
+
+                    if (!(+lastShown + (day * +daysToExpire) < now.getTime())) {
+                        popup.remove();
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function triggerByType() {
+            var trigger = popup.getAttribute('data-trigger');
+
+            if (isNumeric(trigger)) {
+                setTimeout(function() {
+                    open();
+                }, +trigger);
+            } else {
+                scrollListener = function() {
+                    if (window.scrollY > document.body.scrollHeight / 2) {
+                        open();
+                    }
+                };
+
+                document.addEventListener('scroll', scrollListener, {passive: true})
+            }
+        }
+
+        function registerCloseListeners() {
+            var closeButtons = popup.querySelectorAll('[data-close-popup]');
+
+            closeButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    close();
+                });
+            });
+        }
+
+        function open() {
+            popup.style.display = 'flex';
+            popup.classList.add('animation-fade-in');
+
+            if (scrollListener) {
+                document.removeEventListener('scroll', scrollListener);
+            }
+
+            keyupListener = function (event) {
+                if (popup && event.key === 'Escape') {
+                    close();
+                }
+            };
+
+            document.addEventListener('keyup', keyupListener);
+        }
+
+        function close() {
+            popup.style.opacity = '0';
+
+            var now = new Date();
+            localStorage.setItem(storageKey, now.getTime().toString());
+
+            setTimeout(function() {
+                popup.style.display = 'none';
+                popup.remove();
+
+                if (keyupListener) {
+                    document.removeEventListener('keyup', keyupListener);
+                }
+            }, 300);
+        }
+
+        function isNumeric(value) {
+            return /^-?\d+$/.test(value);
+        }
+    }
+}
+
