@@ -9,7 +9,7 @@ id: angular-interceptors
 relatedPost: angular-architecture
 
 popup:
-   trigger: 10000 
+   trigger: 30000 
    header: 'Implementing Angular authentication? 🧐'
    subheader: 'Are you sure it is secure?'
    # image: https://dev-academy.com/img/optins/web-security-checklist.jpg

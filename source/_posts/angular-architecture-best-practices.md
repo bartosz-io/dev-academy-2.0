@@ -9,7 +9,7 @@ id: angular-architecture
 relatedPost: user-login-and-registration
 
 popup:
-   trigger: 10000 
+   trigger: 30000 
    header: 'Learning Angular best practices? 🧐'
    subheader: 'How about application security best practices?'
    # image: https://dev-academy.com/img/optins/web-security-checklist.jpg

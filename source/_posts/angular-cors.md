@@ -9,7 +9,7 @@ id: angular-cors
 relatedPost: angular-rxjs
 
 popup:
-   trigger: 10000 
+   trigger: 30000
    header: 'Are you struggling with CORS errors? 🧐'
    subheader: 'Did you know that CORS is critical for application security?'
    # image: https://dev-academy.com/img/optins/web-security-checklist.jpg
