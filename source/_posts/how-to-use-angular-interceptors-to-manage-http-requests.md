@@ -17,7 +17,7 @@ popup:
    closeText: 'No, thanks. I can be hacked... ❌'
    cta:
       url: /web-security
-      text: Teach me SECURE CODING!
+      text: Teach me SECURE Angular coding!
 ---
 {% image_fw 1.78 "banner.png" "How To Use Angular Interceptors to Manage HTTP Requests" %}
 

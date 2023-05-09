@@ -11,13 +11,13 @@ relatedPost: user-login-and-registration
 popup:
    trigger: 30000 
    header: 'Learning Angular best practices? 🧐'
-   subheader: 'How about application security best practices?'
+   subheader: 'How about security best practices?'
    # image: https://dev-academy.com/img/optins/web-security-checklist.jpg
    # background: '#ff00ff'
    closeText: 'No, thanks. I can be hacked... ❌'
    cta:
       url: /web-security
-      text: Teach me SECURE CODING!
+      text: Teach me SECURE Angular coding!
 ---
 {% image_fw 1.78 banner.png "Angular Architecture Patterns and Best Practices" %}
 

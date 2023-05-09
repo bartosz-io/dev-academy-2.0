@@ -10,14 +10,14 @@ relatedPost: angular-rxjs
 
 popup:
    trigger: 30000
-   header: 'Are you struggling with CORS errors? 🧐'
-   subheader: 'Did you know that CORS is critical for application security?'
+   header: 'Struggling with CORS errors? 🧐'
+   subheader: 'Did you know it is critical for security?'
    # image: https://dev-academy.com/img/optins/web-security-checklist.jpg
    # background: '#ff00ff'
    closeText: 'No, thanks. I can be hacked... ❌'
    cta:
       url: /web-security
-      text: Teach me SECURE CODING!
+      text: Teach me SECURE Angular coding!
 ---
 {% image_fw 1.78 "banner.png" "Angular CORS Guide 🛠️ Fixing errors" %}
 
