@@ -12,12 +12,12 @@ popup:
    trigger: 30000
    header: 'Struggling with CORS errors? 🧐'
    subheader: 'Did you know it is critical for security?'
-   # image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   image: https://dev-academy.com/img/optins/web-security-checklist.jpg
    # background: '#ff00ff'
    closeText: 'No, thanks. I can be hacked... ❌'
    cta:
-      url: /web-security
-      text: Teach me SECURE Angular coding!
+      url: https://pills.dev-academy.com
+      text: Get FREE secure coding tips ✅
 ---
 {% image_fw 1.78 "banner.png" "Angular CORS Guide 🛠️ Fixing errors" %}
 
