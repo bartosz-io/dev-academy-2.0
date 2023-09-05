@@ -151,6 +151,9 @@ $danger: #DC4B4B;
 // Box shadows
 $box-shadow: 0 -2px 6px hsla(220, 47%, 48%, .15);
 
+// Button
+$button-border-color: rgba(27, 31, 35, 0.15);
+
 // Transitions
 $transition-time: .3s;
 $transition-type: ease-in-out;
@@ -161,7 +164,7 @@ $container-gap: 2rem;
 
 // Layout settings
 $main-bar-height-desktop: 5rem;
-$top-bar-height-mobile: 10rem;
+$top-bar-height-mobile: 8rem;
 $header-height-desktop: 8rem;
 $sidebar-offset: 16rem;
 
