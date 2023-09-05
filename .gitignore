@@ -9,3 +9,4 @@ public/
 .dccache
 _multiconfig.yml
 source/web-security
+.parcel-cache
