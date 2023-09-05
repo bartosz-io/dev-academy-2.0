@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (isPostPage()) {
         initPopup();
+        showBubble(10000);
     }
 
     if (isIndexPage()) {
@@ -705,3 +706,16 @@ function initPopup() {
     }
 }
 
+function showBubble(timeout) {
+    setTimeout(() => {
+        var bubble = document.getElementById('main-banner-bubble');
+        bubble.classList.add('show');
+        
+        var close = document.getElementById('main-banner-bubble-close');
+        if (close) {
+            close.addEventListener('click', function() {
+                bubble.classList.remove('show');
+            })
+        }
+    }, timeout);
+}

@@ -666,6 +666,58 @@
     padding: 0 2rem;
   }
 
+  .main-banner-bubble {
+    display: none;
+    background: yellow;
+    position: fixed;
+    width: 200px;
+    text-align: center;
+    line-height: 1.4em;
+    margin: 40px auto;
+    border: 8px solid #333;
+    border-radius: 30px;
+    font-family: sans-serif;
+    padding: 18px;
+    font-size: large;
+    bottom: 50px;
+    margin-left: 500px;
+  
+    &.show {
+      display: block;
+    }
+  
+    .main-banner-bubble-close {
+      position: absolute;
+      top: -25px;
+      right: -25px;
+      border: 2px solid #333;
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      line-height: 24px;
+      background: white;
+      cursor: pointer;
+    }
+  }
+  
+  .main-banner-bubble:before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    bottom: -50px;
+    border: 25px solid;
+    border-color: #333 transparent transparent #333;
+  }
+  
+  .main-banner-bubble:after {
+    content: '';
+    position: absolute;
+    left: 38px;
+    bottom: -30px;
+    border: 15px solid;
+    border-color: yellow transparent transparent yellow;
+  }
+
   .b-bar-top {
     padding-top: calc(#{$header-height-desktop} + #{$main-bar-height-desktop});
 
