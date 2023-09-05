@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "dev": "hexo server --config _config.yml",
     "install:web-security": "npm --prefix ./nested-source/web-security install",
     "install": "npm run install:web-security",
     "dev:web-security": "npm --prefix ./nested-source/web-security run dev",
