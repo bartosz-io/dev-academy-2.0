@@ -11,7 +11,6 @@ window.addEventListener('DOMContentLoaded', () => {
     moreTestimonials();
     loadConvertKit();
     // loadTawk();
-    loadGTM();
 
     if (IS_SCHEDULE) {
         loadSchedule();
@@ -83,17 +82,6 @@ function loadTawk() {
     script.src = 'https://embed.tawk.to/58f1276d30ab263079b5fdf3/default';
     script.setAttribute('crossorigin','*');
     document.body.appendChild(script);
-}
-
-function loadGTM() {
-    (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-        const f = d.getElementsByTagName(s)[0], j = d.createElement(s) as HTMLScriptElement, dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.defer = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MK63J5H');
 }
 
 function loadSchedule() {
