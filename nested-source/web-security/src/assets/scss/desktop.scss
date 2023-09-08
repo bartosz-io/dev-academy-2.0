@@ -151,6 +151,20 @@
     max-width: 48rem;
   }
 
+  .certificate {
+    display: flex;
+  }
+
+  .certificate-info {
+    flex-grow: 1;
+  }
+
+  .certificate-image {
+    padding-left: 4rem;
+    flex-basis: auto;
+    max-width: 48rem;
+  }
+
   .questions {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
