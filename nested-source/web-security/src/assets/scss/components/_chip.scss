@@ -11,10 +11,13 @@
   text-align: center;
 }
 
-.chip-pink {
+.chip-transparent {
   padding: .8rem 2rem;
   color: $primary-200;
   border: .1rem solid $primary-100;
   background-color: transparent;
   font-size: 1.4rem;
+  display: inline-block;
+  border-radius: 5rem;
+  margin-bottom: 1rem;
 }
