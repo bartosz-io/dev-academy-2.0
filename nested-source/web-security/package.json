@@ -5,7 +5,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel ./src/index.html --open",
     "clean": "gulp clean",
-    "build": "gulp && parcel build ./src/index.html --no-cache --no-source-maps --dist-dir ./../../source/web-security --public-url /web-security"
+    "build": "gulp && parcel build ./src/*.html --no-cache --no-source-maps --dist-dir ./../../source/web-security --public-url /web-security"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.3.2",
