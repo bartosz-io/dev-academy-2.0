@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (isPostPage()) {
         initPopup();
-        showBubble(10000);
     }
 
     if (isIndexPage()) {
