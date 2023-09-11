@@ -289,7 +289,19 @@
     }
   }
 
+  .article-hero {
+    display: none;
+  
+    &-desktop {
+      margin: auto;
+      display: block;
+      border-radius: 10px;
+    }
+  }
+  
+
   .article-header h1 {
+    padding-top: 50px;
     font-size: $font-size-46;
   }
 

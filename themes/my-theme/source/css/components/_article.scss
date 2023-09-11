@@ -36,11 +36,21 @@
   }
 }
 
+.article-hero {
+  margin: auto;
+  display: block;
+
+  &-desktop {
+    display: none;
+  }
+}
+
 .article-header {
   padding-top: 4rem;
   background-color: $navy-400;
 
   h1 {
+    padding-top: 25px;
     font-weight: 800;
     color: $light-300;
     font-size: $font-size-32;
