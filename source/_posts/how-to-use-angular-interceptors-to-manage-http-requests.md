@@ -9,15 +9,15 @@ id: angular-interceptors
 relatedPost: angular-architecture
 
 popup:
-   trigger: 30000 
-   header: 'Implementing Angular authentication? 🧐'
-   subheader: 'Are you sure it is secure?'
-   image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   trigger: scroll
+   header: 'LIVE TRAINING 🔴 Build secure Angular role-based access control (RBAC)'
+   subheader: 'Join our exclusive FREE WEBINAR @ 3 Oct 2023'
+   #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
    # background: '#ff00ff'
-   closeText: 'No, thanks. I can be hacked... ❌'
+   closeText: 'No, thanks. I don''t like free stuff... ❌'
    cta:
-      url: https://pills.dev-academy.com
-      text: Get FREE secure coding tips ✅
+      url: https://live.dev-academy.com#angular-interceptors
+      text: Save your free spot
 ---
 {% image_fw 1.78 "banner.png" "How To Use Angular Interceptors to Manage HTTP Requests" %}
 

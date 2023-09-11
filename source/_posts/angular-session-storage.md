@@ -6,6 +6,17 @@ description: Learn how to use Session Storage in Angular.
 date: 2023-04-07
 tags: [angular]
 id: angular-session-storage
+
+popup:
+   trigger: scroll
+   header: 'LIVE TRAINING 🔴 Build secure Angular role-based access control (RBAC)'
+   subheader: 'Join our exclusive FREE WEBINAR @ 3 Oct 2023'
+   #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   # background: '#ff00ff'
+   closeText: 'No, thanks. I don''t like free stuff... ❌'
+   cta:
+      url: https://live.dev-academy.com#angular-session-storage
+      text: Save your free spot
 ---
 {% image_fw 1.78 banner.png "Session Storage in Angular" %}
 

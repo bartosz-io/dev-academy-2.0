@@ -7,6 +7,17 @@ date: 2023-01-12
 tags: [react]
 id: react-firebase
 relatedPost: react-localstorage
+
+popup:
+   trigger: scroll
+   header: 'LIVE TRAINING 🔴 Build secure role-based access control (without Firebase!)'
+   subheader: 'Join our exclusive FREE WEBINAR @ 3 Oct 2023'
+   #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   # background: '#ff00ff'
+   closeText: 'No, thanks. I don''t like free stuff... ❌'
+   cta:
+      url: https://live.dev-academy.com#react-firebase
+      text: Save your free spot
 ---
 {% image_fw 1.78 banner.png "React Firebase" %}
 

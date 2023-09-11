@@ -9,6 +9,17 @@ id: angular-csp
 relatedPost: trusted-types
 bannerHeader: 'Is your Angular application REALLY secure? 🧐'
 bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
+
+popup:
+   trigger: scroll
+   header: 'LIVE TRAINING 🔴 Build secure Angular role-based access control (RBAC)'
+   subheader: 'Join our exclusive FREE WEBINAR @ 3 Oct 2023'
+   #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
+   # background: '#ff00ff'
+   closeText: 'No, thanks. I don''t like free stuff... ❌'
+   cta:
+      url: https://live.dev-academy.com#angular-csp
+      text: Save your free spot
 ---
 {% image_fw 1.78 banner.png "Content Security Policy Angular" %}
 
