@@ -83,3 +83,13 @@ hexo.extend.tag.register('review_screen', function (args) {
     </div>
   </div>`;
 });
+
+hexo.extend.tag.register('checklist', function (args) {
+  var targetUrl = args[0];
+
+  return `<div aria-label="Web application security checklist PDF">
+    <div class="checklist-block">
+      <div>If you want to get a PDF checklist with clickable points to verify your Web application security you can <a href="${targetUrl}">download it here</a>.</div>
+    </div>
+  </div>`;
+});

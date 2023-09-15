@@ -1,0 +1,10 @@
+@import '../variables';
+
+.checklist-block {
+  border-radius: 10px;
+  display: flex;
+  background: $gradient-yellow;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  color: $dark-100;
+}
