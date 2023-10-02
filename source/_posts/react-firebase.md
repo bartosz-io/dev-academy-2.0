@@ -10,14 +10,14 @@ relatedPost: react-localstorage
 
 popup:
    trigger: scroll
-   header: 'LIVE TRAINING 🔴 Build secure role-based access control (without Firebase!)'
-   subheader: 'Join our exclusive FREE WEBINAR @ 3 Oct 2023'
+   header: 'Learn how to PROTECT web applications!'
+   subheader: 'Proven methods to build ultra-secure systems'
    #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
    # background: '#ff00ff'
-   closeText: 'No, thanks. I don''t like free stuff... ❌'
+   closeText: 'No, thanks. I can be hacked... ❌'
    cta:
-      url: https://live.dev-academy.com#react-firebase
-      text: Save your free spot
+      url: https://dev-academy.com/web-security#react-firebase
+      text: Join with 40% OFF 🔥
 ---
 {% image_fw 1.78 banner.png "React Firebase" %}
 

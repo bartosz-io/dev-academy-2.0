@@ -10,14 +10,14 @@ relatedPost: angular-architecture
 
 popup:
    trigger: scroll
-   header: 'LIVE TRAINING 🔴 Build secure Angular role-based access control (RBAC)'
-   subheader: 'Join our exclusive FREE WEBINAR @ 3 Oct 2023'
+   header: 'Learn how to PROTECT web applications!'
+   subheader: 'Proven methods to build ultra-secure systems'
    #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
    # background: '#ff00ff'
-   closeText: 'No, thanks. I don''t like free stuff... ❌'
+   closeText: 'No, thanks. I can be hacked... ❌'
    cta:
-      url: https://live.dev-academy.com#angular-interceptors
-      text: Save your free spot
+      url: https://dev-academy.com/web-security#angular-interceptors
+      text: Join with 40% OFF 🔥
 ---
 {% image_fw 1.78 "banner.png" "How To Use Angular Interceptors to Manage HTTP Requests" %}
 

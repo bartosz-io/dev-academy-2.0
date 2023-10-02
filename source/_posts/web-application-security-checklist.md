@@ -10,14 +10,14 @@ relatedPost: user-login-and-registration
 
 popup:
    trigger: scroll
-   header: 'LIVE TRAINING 🔴 Build secure Angular role-based access control (RBAC)'
-   subheader: 'Join our exclusive FREE WEBINAR @ 3 Oct 2023'
+   header: 'Learn how to PROTECT web applications!'
+   subheader: 'Proven methods to build ultra-secure systems'
    #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
    # background: '#ff00ff'
-   closeText: 'No, thanks. I don''t like free stuff... ❌'
+   closeText: 'No, thanks. I can be hacked... ❌'
    cta:
-      url: https://live.dev-academy.com#angular-architecture
-      text: Save your free spot
+      url: https://dev-academy.com/web-security#checklist
+      text: Join with 40% OFF 🔥
 ---
 In this list, we will cover a comprehensive (but not exhaustive!) list of practices and activities helping to build more secure Web applications. These techniques are mostly independent of programming language because they refer to general mechanics of how Web applications work. The model of Web security and common browser behaviour is what makes this checklist universal for all Web developers.
 
