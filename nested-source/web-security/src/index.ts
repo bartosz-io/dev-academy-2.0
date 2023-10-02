@@ -1,5 +1,6 @@
 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 var IS_SCHEDULE = false;
+var collapsePanelLoaded = false;
 
 window.addEventListener('DOMContentLoaded', () => {
     if (isMobile()) {
@@ -11,8 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     moreTestimonials();
     loadConvertKit();
     // loadTawk();
-    loadGTM();
-    collapsePanel();
+    // collapsePanel();
 
     if (IS_SCHEDULE) {
         loadSchedule();
@@ -115,7 +115,7 @@ function loadSchedule() {
 function collapsePanel() {
     const agenda = document.querySelector('.enriched-agenda-wrapper');
 
-    if (agenda) {
+    if (agenda && !collapsePanelLoaded) {
         const attrName = 'data-collapsed';
 
         agenda.addEventListener('click', (event) => {
@@ -125,5 +125,7 @@ function collapsePanel() {
                 event.target.setAttribute(attrName, agendaHeader === 'false' ? 'true' : 'false');
             }
         });
+
+        collapsePanelLoaded = true;
     }
 }
