@@ -89,3 +89,26 @@
 .nav-padding {
   padding-top: 5.6rem;
 }
+
+.counter-nav {
+  margin-left: 5px;
+  display: flex;
+
+  .counter-price {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px 0;
+  }
+
+  .counter-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 5px 0;
+    font-size: 1.3em;
+
+    .counter-legend {
+      font-size: 0.6em;
+    }
+  }
+}
