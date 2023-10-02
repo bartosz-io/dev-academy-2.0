@@ -132,43 +132,41 @@ function collapsePanel() {
 }
 
 function startTimer() {
-    document.addEventListener('DOMContentLoaded', () => {
 
-        var countDownDate = new Date(Date.UTC(2023, 9, 9, 19, 0, 0)).getTime();
+    var countDownDate = new Date(Date.UTC(2023, 9, 9, 19, 0, 0)).getTime();
 
-        var x = setInterval(function () {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
+    var x = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
 
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            const daysEl = document.getElementsByClassName('dfD');
-            const hoursEl = document.getElementsByClassName('dfH');
-            const minsEl = document.getElementsByClassName('dfM');
-            const secEl = document.getElementsByClassName('dfS');
+        const daysEl = document.getElementsByClassName('dfD');
+        const hoursEl = document.getElementsByClassName('dfH');
+        const minsEl = document.getElementsByClassName('dfM');
+        const secEl = document.getElementsByClassName('dfS');
 
-            Array.from(daysEl).forEach(el => el.innerHTML = days + '')
-            Array.from(hoursEl).forEach(el => el.innerHTML = hours + '')
-            Array.from(minsEl).forEach(el => el.innerHTML = minutes + '')
-            Array.from(secEl).forEach(el => el.innerHTML = seconds + '')
-            
+        Array.from(daysEl).forEach(el => el.innerHTML = days + '')
+        Array.from(hoursEl).forEach(el => el.innerHTML = hours + '')
+        Array.from(minsEl).forEach(el => el.innerHTML = minutes + '')
+        Array.from(secEl).forEach(el => el.innerHTML = seconds + '')
+        
 
-            if (distance < 0) {
-                clearInterval(x);
-                const counter = document.getElementById("counter");
-                if (counter) {
-                    counter.innerHTML = "";
-                }
-
-                const counterNav = document.getElementById("counter-nav");
-                if (counterNav) {
-                    counterNav.innerHTML = "";
-                }
-
+        if (distance < 0) {
+            clearInterval(x);
+            const counter = document.getElementById("counter");
+            if (counter) {
+                counter.innerHTML = "";
             }
-        }, 1000);
-        });
+
+            const counterNav = document.getElementById("counter-nav");
+            if (counterNav) {
+                counterNav.innerHTML = "";
+            }
+
+        }
+    }, 1000);
 }
