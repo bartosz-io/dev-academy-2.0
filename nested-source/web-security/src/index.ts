@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     moreTestimonials();
-    loadConvertKit();
+    // loadConvertKit();
     // loadTawk();
     // collapsePanel();
     startTimer();
