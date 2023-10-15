@@ -10,10 +10,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     moreTestimonials();
-    // loadConvertKit();
+    loadConvertKit();
     // loadTawk();
     // collapsePanel();
-    startTimer();
+    // startTimer();
 
     if (IS_SCHEDULE) {
         loadSchedule();
