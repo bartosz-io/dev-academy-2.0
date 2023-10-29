@@ -290,13 +290,8 @@
   }
 
   .article-hero {
-    display: none;
-  
-    &-desktop {
-      margin: auto;
-      display: block;
-      border-radius: 10px;
-    }
+    max-width: 1200px;
+    aspect-ratio: 2.666;
   }
   
 
