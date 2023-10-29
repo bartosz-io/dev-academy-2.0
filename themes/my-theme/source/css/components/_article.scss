@@ -39,9 +39,13 @@
 .article-hero {
   margin: auto;
   display: block;
+  width: 100%;
+  aspect-ratio: 1;
 
   &-desktop {
     display: none;
+    max-width: 1200px;
+    aspect-ratio: 2.666;
   }
 }
 
