@@ -193,7 +193,7 @@ Inside the `dataRemove()` function add `removeItem` to remove specific data from
 Syntax:
 
 ```typescript
-localStorage.removeItem("key");
+sessionStorage.removeItem("key");
 ```
 
 Thus, this is how `app.component.ts` will appear:
