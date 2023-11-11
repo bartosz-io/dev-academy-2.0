@@ -21,6 +21,10 @@
     padding: 20px;
   }
 
+  .mw-560 {
+    max-width: 560px;
+  }
+
   p {
     font-size: 1.2em;
   }
@@ -28,7 +32,6 @@
 
 .progress {
   position: relative;
-  width: 90%;
   height: 21px;
   background: #a09b9b;
   border-radius: 100px;
