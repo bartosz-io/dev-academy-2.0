@@ -1,3 +1,5 @@
+interface Window { posthog: any };
+
 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 var IS_SCHEDULE = false;
 var collapsePanelLoaded = false;
@@ -10,7 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     moreTestimonials();
-    loadConvertKit();
+    loadConvertKit(fillPhId);
     // loadTawk();
     // collapsePanel();
     // startTimer();
@@ -19,6 +21,11 @@ window.addEventListener('DOMContentLoaded', () => {
         loadSchedule();
     }
 });
+
+function fillPhId() {
+    const phInput = document.querySelector('input[name="fields[ph_id]"]') ?? {};
+    phInput['value'] = window.posthog?.get_distinct_id();
+}
 
 function isMobile() {
     return window.innerWidth < 768;
@@ -71,11 +78,12 @@ function fixedNavigation() {
     }
 }
 
-function loadConvertKit() {
+function loadConvertKit(onloadCallback: Function) {
     const script = document.createElement('script');
     script.setAttribute('data-uid', '4dd9d3445a');
     script.src = 'https://dev-academy.ck.page/4dd9d3445a/index.js';
     script.defer = true;
+    script.addEventListener('load', () => onloadCallback())
     document.body.appendChild(script);
 }
 
