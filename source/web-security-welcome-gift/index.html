@@ -1,0 +1,83 @@
+---
+thankYouPage: true
+layout: landing
+sitemap: false
+---
+<style>
+  body {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding-top: 5rem;
+  }
+  .top {
+    font-size: 26px;
+    color: white;
+    padding: 0.5em;
+    font-weight: bold;
+    background-color: #130b37;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .box {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    margin: auto;
+    max-width: 700px;
+  }
+  .subheader {
+    font-size: 22px;
+    color: #666;
+    margin-bottom: 1em;
+  }
+  .gift {
+    color: #C82333;
+    font-weight: bold;
+  }
+  .timer {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
+  .button {
+    margin-bottom: 0.5em;
+    background-color: #4700ab;
+    color: white;
+    border: none;
+    padding: 1em 1.5em;
+    font-size: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 0 0 0 #bfbefc;
+    animation-name: ripples;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  .button:hover {
+    opacity: 0.8;
+  }
+</style>
+
+<div class="top">YOU ARE CONFIRMED! 👏</div>
+<div class="box">
+  <div class="subheader">Get your... <span class="gift">Exclusive Welcome GIFT* 🎁</span></div>
+  <a id="link" href="https://courses.dev-academy.com/p/web-security-fundamentals/?wsa#id=">
+    <button class="button">Take the Welcome Gift! 🎉</button>
+    <div class="timer">*expires in 30 minutes! ⏰</div>
+    <img src="gift.jpeg" alt="Gift">
+  </a>
+</div>
+
+<script src="/js/posthog/posthog.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => { 
+    var phId = window.posthog.get_distinct_id();
+    var link = document.getElementById('link');
+    link.href = link.href + phId;
+  });
+</script>
