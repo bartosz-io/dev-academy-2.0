@@ -74,7 +74,7 @@ sitemap: false
 </div>
 
 <script>
-  window.addEventListener('DOMContentLoaded', () => { 
+  window.addEventListener('PH_Ready', () => { 
     var phId = window.posthog.get_distinct_id();
     var link = document.getElementById('link');
     link.href = link.href + phId;
