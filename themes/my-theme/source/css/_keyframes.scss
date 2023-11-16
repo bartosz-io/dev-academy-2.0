@@ -71,3 +71,15 @@
   animation-name: fadeInRight;
   animation-duration: 1s;
 }
+
+@keyframes ripples {
+  to {
+    box-shadow: 0 0 0 15px rgba(0,0,0,.01);
+  }
+}
+
+.animation-ripples {
+  animation-name: ripples;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}

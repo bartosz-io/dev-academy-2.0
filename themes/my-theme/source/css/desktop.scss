@@ -1272,18 +1272,9 @@
     width: 21rem;
     padding-left: 4rem;
 
-    @keyframes ripples {
-      to {
-        box-shadow: 0 0 0 15px rgba(0,0,0,.01);
-      }
-    }
-
     .button {
       width: 90%;
       box-shadow: 0 0 0 0 $indigo-100;
-      animation-name: ripples;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
     }
   }
 
