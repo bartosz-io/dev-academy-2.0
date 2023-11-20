@@ -3,8 +3,15 @@ interface Window { posthog: any };
 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 var IS_SCHEDULE = false;
 var collapsePanelLoaded = false;
+var inited = false;
 
 window.addEventListener('DOMContentLoaded', () => {
+    if (!inited) {
+        inited = true;
+    } else {
+        return;
+    }
+
     if (isMobile()) {
         faq();
     } else {
