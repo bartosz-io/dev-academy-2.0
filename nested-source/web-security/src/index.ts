@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     moreTestimonials();
-    loadConvertKit(fillPhId);
+    loadConvertKit(onCkReady);
     // loadTawk();
     // collapsePanel();
     // startTimer();
@@ -29,9 +29,31 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function fillPhId() {
+function onCkReady() {
+    // restore id
     const phInput = document.querySelector('input[name="fields[ph_id]"]') ?? {};
     phInput['value'] = window.posthog?.get_distinct_id();
+
+    // track form submit
+    const ckForm = document.querySelector('.formkit-form') as HTMLInputElement | null;
+    if (ckForm) {
+        const phEmail = document.querySelector('input[name="email_address"]') ?? {};
+        const phName = document.querySelector('input[name="fields[first_name]"]') ?? {};
+        
+        ckForm.addEventListener('submit', () => {
+            window.posthog?.identify(phEmail['value']);
+            window.posthog?.capture(
+                'wsda_subscribe_submit', 
+                { 
+                  $set: { 
+                    first_name: phName['value'],
+                    email: phEmail['value'],
+                    wsda_list: true,
+                },
+                }
+              );
+        });
+    }
 }
 
 function isMobile() {
