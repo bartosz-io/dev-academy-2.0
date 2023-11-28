@@ -41,7 +41,6 @@ function onCkReady() {
         const phName = document.querySelector('input[name="fields[first_name]"]') ?? {};
         
         ckForm.addEventListener('submit', () => {
-            window.posthog?.identify(phEmail['value']);
             window.posthog?.capture(
                 'wsda_subscribe_submit', 
                 { 
