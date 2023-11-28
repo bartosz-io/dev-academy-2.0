@@ -88,9 +88,16 @@ sitemap: false
 <div class="bottom-bar">⚠️ The discount may not render on Brave ⚠️</div>
 
 <script>
-  window.addEventListener('PH_Ready', () => { 
+  const phInit = function() {
     var phId = window.posthog.get_distinct_id();
     var link = document.getElementById('link');
     link.href = link.href + phId;
-  });
+    window.posthog.capture('wsda_subscribe_confirm', { $set: { wsda_list: true } });
+  }
+
+  if (window.posthog.get_distinct_id) {
+    phInit();
+  } else {
+    window.addEventListener('PH_Ready', () => phInit());
+  }
 </script>
