@@ -25,5 +25,11 @@
 
 <include src="partials/scripts.html"></include>
 
+<script>
+    if (navigator['brave']) {
+      setTimeout(() => alert("It looks like you are using Brave... 😓\n\nTHE DISCOUNT MAY NOT RENDER PROPERLY! ‼️\n\nPlease try another browser."), 2000);
+    }
+</script>
+
 </body>
 </html>
