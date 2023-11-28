@@ -95,7 +95,7 @@ sitemap: false
     window.posthog.capture('wsda_subscribe_confirm', { $set: { wsda_list: true } });
   }
 
-  if (window.posthog.get_distinct_id) {
+  if (window.posthog && window.posthog.get_distinct_id) {
     phInit();
   } else {
     window.addEventListener('PH_Ready', () => phInit());
