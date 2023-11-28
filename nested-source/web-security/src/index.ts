@@ -48,7 +48,6 @@ function onCkReady() {
                   $set: { 
                     first_name: phName['value'],
                     email: phEmail['value'],
-                    wsda_list: true,
                 },
                 }
               );
