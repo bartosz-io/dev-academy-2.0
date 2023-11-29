@@ -72,6 +72,7 @@ sitemap: false
     text-align: center;
     line-height: 30px;
     font-size: 18px;
+    display: none;
   }
 </style>
 
@@ -85,9 +86,13 @@ sitemap: false
     <img src="gift.jpeg" alt="Gift">
   </a>
 </div>
-<div class="bottom-bar">⚠️ The discount may not render on Brave ⚠️</div>
+<div class="bottom-bar" id="brave">⚠️ The discount may not render on Brave ⚠️</div>
 
 <script>
+  if (navigator['brave']) {
+    document.getElementById('brave').style.display = "block";
+  }
+
   const phInit = function() {
     var phId = window.posthog.get_distinct_id();
     var link = document.getElementById('link');
