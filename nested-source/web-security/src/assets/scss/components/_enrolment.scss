@@ -99,12 +99,13 @@
 
   .deal {
     color: $highlight-100;
-    font-size: 1.3em;
+    font-size: 2em;
     font-weight: bold;
     margin-top: 10px;
   }
 
   .crossed {
+    color: $dark-100;
     text-decoration: line-through;
   }
 
