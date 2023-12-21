@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     moreTestimonials();
     // loadConvertKit(onCkReady);
-    // loadTawk();
+    loadTawk();
     // collapsePanel();
     // startTimer();
 
