@@ -413,7 +413,7 @@ var server = app.listen(process.env.PORT || 8080, function () {
 
 app.get("/csrf-token", (req, res) => {
     return res.json({
-        token: generateToken(res, req),
+        token: generateToken(req, res),
     });
 });
   
