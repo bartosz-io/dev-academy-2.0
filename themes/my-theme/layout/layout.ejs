@@ -19,7 +19,7 @@
   if (is_post() && config.banners.article_side_banner && is_post()) { bodyClasses += 'b-article-sidebar '}
   if (is_post()) { bodyClasses += 'post-page '}
   if (is_tag()) { bodyClasses += 'tag-page ' }
-  if (is_current('/')) { bodyClasses += 'index-page ' }
+  if (page.isAboutPage) { bodyClasses += 'index-page ' }
 %>
 <body class="<%- bodyClasses %>">
 
