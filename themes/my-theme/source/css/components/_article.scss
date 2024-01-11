@@ -185,6 +185,23 @@
   }
 }
 
+.post-figure {
+  position: relative;
+}
+
+.post-reading {
+  position: absolute;
+  color: white;
+  top: 22px;
+  left: 20px;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 1px 8px;
+  background: palevioletred;
+  font-size: 1.5rem;
+}
+
 .post-image {
   border-radius: 1.6rem;
   width: 100%;

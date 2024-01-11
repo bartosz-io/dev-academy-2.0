@@ -3,11 +3,12 @@
         <article class="post">
             <div class="post-content">
                 <a href="<%- post.path %>" <%- post_ph_attr(post.path, ph_prefix) %>>
-                    <figure>
+                    <figure class="post-figure">
                         <picture>
                             <source srcset="<%- url_for(post.path) %>large_banner.webp" type="image/webp">
                             <img class="post-image" src="<%- url_for(post.path) %>large_banner.png" loading="lazy" alt="<%- post.title %>">
                         </picture>
+                        <span class="post-reading"><%- readingTime(post.content, 'min.', 200) %></span>
                     </figure>
                     <header>
                         <h2 class="post-title"><%- post.title %></h2>
