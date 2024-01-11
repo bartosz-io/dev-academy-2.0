@@ -6,12 +6,12 @@
     <div class="container">
         <div class="header-bar">
             <div class="header-title">
-                <a href="/web-security" class="header-logo" data-ph="header__logo">
+                <a href="/" class="header-logo" data-ph="header__logo">
                     <img src="<%- url_for('/img/dev-academy-logo.png') %>" width="34" height="34" alt="Dev Academy Logo">
                     <span>Dev Academy</span>
                 </a>
             </div>
-            <a class="button button-primary header-bar-start" href="https://pills.dev-academy.com" data-ph="header__start-button_mobile">FREE COURSE!</a>
+            <!-- <a class="button button-primary header-bar-start" href="/web-security" data-ph="header__start-button_mobile">UPCOMING COHORT</a> -->
             <button class="header-nav-toggle" aria-label="Click here to open the mobile menu" data-ph="header-nav-toggle__button">
                 <img class="header-nav-toggle-menu" src="<%- url_for('/img/icons/menu.svg') %>" width="24" height="24" alt="">
                 <img class="header-nav-toggle-close" src="<%- url_for('/img/icons/close.svg') %>" width="24" height="24" alt="">
@@ -20,9 +20,9 @@
         <div class="header-menu">
             <nav class="header-nav">
                 <ul>
-                    <li class="header-nav-start"><a class="button button-primary" href="https://pills.dev-academy.com" data-ph="header__start-button_desktop">FREE COURSE!</a></li>
+                    <!-- <li class="header-nav-start"><a class="button button-primary" href="/web-security" data-ph="header__start-button_desktop">UPCOMING COHORT</a></li> -->
                     <li class="header-nav-submenu">
-                        <a class="header-nav-link header-nav-link-submenu" href="#" data-ph="nav__link_academies">⭐ Academy</a>
+                        <a class="header-nav-link header-nav-link-submenu" href="#" data-ph="nav__link_academies">⭐ Learn</a>
                         <div class="header-nav-link-content">
                             <span class="header-nav-link-header border border-light border-small">Academy</span>
                             <ul>
@@ -40,6 +40,7 @@
                     <li><a class="header-nav-link" href="https://courses.dev-academy.com/" rel="nofollow" data-ph="nav__link_courses">Courses</a></li>
                     <li><a class="header-nav-link <%- is_current('/blog') || is_post() ? 'header-nav-link-active' : '' %>" href="<%- url_for('/blog') %>" data-ph="nav__link_blog">Blog</a></li>
                     <li><a class="header-nav-link <%- is_current('/contributors') ? 'header-nav-link-active' : '' %>" href="<%- url_for('/contributors') %>" data-ph="nav__link_contributors">Contributors</a></li>
+                    <li><a class="header-nav-link <%- is_current('/about') ? 'header-nav-link-active' : '' %>" href="<%- url_for('/about') %>" data-ph="nav__link_about">About</a></li>
                 </ul>
             </nav>
             <ul class="header-socials">
