@@ -9,7 +9,7 @@ id: work-life-balance
 relatedPost: 
 ---
 
-{% image_fw 1.78 banner.png "Software Engineer work life balance" %}
+
 
 In today's world, where corporate culture shifts intermittently to give protective room for employees, a work-life balance is needed more than ever. The impact of COVID-19 is still a reality for a lot of corporate bodies. As a software engineer who combines both art and science to solve a problem, you will find yourself, either consciously or subconsciously, trying to solve an imaginary problem. This can be related to projects you've worked on or the ones you are anticipating solving.
 

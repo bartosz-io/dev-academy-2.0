@@ -21,7 +21,7 @@ popup:
       url: https://dev-academy.com/web-security#angular-csp
       text: Join with 40% OFF 🔥
 ---
-{% image_fw 1.78 banner.png "Content Security Policy Angular" %}
+
 
 This article is the second part of our "Preventing XSS in Angular" series. In the last article, [Angular XSS prevention](https://dev-academy.com/preventing-xss-in-angular/), we have seen that Angular ships with fantastic security mechanisms to protect our application against XSS (Cross-Site Scripting) vulnerabilities. However, even small bugs or mistakes could lead to severe security risks, so it's recommended to integrate an **in-depth** **defence strategy** into our Angular application.
 

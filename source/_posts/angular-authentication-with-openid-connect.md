@@ -9,7 +9,7 @@ tags: [angular, security, oidc]
 id: angular-oidc
 relatedPost: user-login-and-registration
 ---
-{% image_fw 1.78 banner.png "Angular Authentication with OpenID Connect (OIDC)" %}
+
 
 User authentication is a common task almost every web developer has to deal with when developing modern web applications. Angular development is no exception.
 

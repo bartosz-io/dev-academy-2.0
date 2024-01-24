@@ -8,7 +8,7 @@ tags: [angular, security]
 id: angular-input-validation
 relatedPost: user-login-and-registration
 ---
-{% image_fw 1.78 banner.png "Input Validation in Angular" %}
+
 
 ## Table of Contents
 <!-- toc -->

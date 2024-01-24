@@ -19,7 +19,7 @@ popup:
       url: https://dev-academy.com/web-security#react-firebase
       text: Join with 40% OFF 🔥
 ---
-{% image_fw 1.78 banner.png "React Firebase" %}
+
 
 # Build a To-Do Application with React and Firebase
 

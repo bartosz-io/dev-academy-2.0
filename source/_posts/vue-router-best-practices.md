@@ -10,7 +10,7 @@ relatedPost: vue-xss, vue-security-best-practices
 ---
 
 
-{% image_fw 1.78 banner.png "vue-router best practices" %}
+
 
 
 Hi #VueFriend, in this article we cover best practices around routing in Vue, are you ready?

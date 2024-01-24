@@ -11,7 +11,7 @@ bannerHeader: 'Is your Vue application REALLY secure? 🧐'
 bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
 
-{% image_fw 1.78 banner.png "Vue Security Best Practices" %}
+
 
 Hi, #VueFriend! In this post, we cover security best practices around the Vue ecosystem (in a nutshell). Security issues are always related to the development process, putting at risk the most valuable asset, the end user information. To avoid this kind of scenario, we have some best practices to improve the security in your single-page applications, web pages, web apps, or other builds with Vue. Let's get started!.
 

@@ -8,7 +8,7 @@ description: Make your Web applications ultra-secure with 7 secure coding steps
 id: secure-coding-training
 relatedPost: user-login-and-registration
 ---
-{% image_fw 1.78 banner.png "Secure coding training 🛡️ 7 steps to secure Web apps" %}
+
 
 The importance of secure coding training is often underestimated. While most developers are aware of the need to keep their code secure, they may not be aware of the specific steps that need to be taken to achieve this. In this blog post, we'll outline 7 steps that all web developers should take in order to ensure their applications are as secure as possible. By following these simple steps, you can help protect your users and your business from potential security threats. So let's get started!
 

@@ -10,7 +10,7 @@ relatedPost: react-xss
 bannerHeader: 'Is your React application REALLY secure? 🧐'
 bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
-{% image_fw 1.78 banner.png "React Security Best Practices" %}
+
 
 In this article, we'll discuss some of the best practices for security when using React in your web applications. We'll cover topics such as how to avoid malicious code injections, avoid memory leaks, and more. By following these best practices, you can help keep your React-based web application safe and secure.
 

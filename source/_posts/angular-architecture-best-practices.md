@@ -19,7 +19,7 @@ popup:
       url: https://dev-academy.com/web-security#angular-architecture
       text: Join with 40% OFF 🔥
 ---
-{% image_fw 1.78 banner.png "Angular Architecture Patterns and Best Practices" %}
+
 
 Building scalable software is a challenging task. When we think about scalability in front-end applications, we can think of increasing complexity, more and more business rules, a growing amount of data loaded into the application and large teams often distributed around the world. In order to deal with mentioned factors to maintain a high quality of delivery and prevent technical debt, robust and well-grounded architecture is necessary. Angular itself is a quite opinionated framework, forcing developers to do things *the proper way*, yet there are a lot of places where things can go wrong. In this article, I will present high-level recommendations of well-designed Angular application architecture based on best practices and battle-proven patterns. Our ultimate goal in this article is to learn how to design Angular application in order to maintain **sustainable development speed** and **ease of adding new features** in the long run. To achieve these goals, we will apply:
 

@@ -9,7 +9,7 @@ id: angular-router-guard-rbac
 relatedPost: vue-router-best-practices
 bannerHeader: 'Is your role-based access implementation SECURE?'
 ---
-{% image_fw 1.78 banner.png "Angular Guard for Role-Based Access Control (RBAC)" %}
+
 
 We learned how to use the [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-router-guard-rbac-post) training program [budget-angular](https://github.com/bartosz-io/budget-angular) to request and verify one-time passwords in the preceding post [**Angular OTP (one-time password) Verification 🔢**](https://dev-academy.com/angular-otp-verification/). We talked about two-factor authentication (2FA), time-based one-time passwords, and using Angular to request OTP verification.
 

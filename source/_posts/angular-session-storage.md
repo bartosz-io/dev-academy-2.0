@@ -18,7 +18,7 @@ popup:
       url: https://dev-academy.com/web-security#angular-session-storage
       text: Join with 40% OFF 🔥
 ---
-{% image_fw 1.78 banner.png "Session Storage in Angular" %}
+
 
 ## Table of Contents
 <!-- toc -->

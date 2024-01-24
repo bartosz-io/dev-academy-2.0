@@ -8,7 +8,7 @@ tags: [react]
 id: react-localstorage
 relatedPost: react-security-best-practices
 ---
-{% image_fw 1.78 banner.png "React localStorage" %}
+
 
 Hi, React developers! Today, we will learn how to store data using `localStorage`, and some uses of it to mix up in your React App. So, when do we need to use local storage? The short and simple answer is for data persistence, but it doesn't mean that all your app's data should persist. We need some criteria to store portions of information.
 

@@ -10,7 +10,7 @@ relatedPost: user-login-and-registration
 bannerHeader: 'Is your OTP implementation secure? 🧐'
 bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
-{% image_fw 1.78 banner.png "Angular OTP Verification" %}
+
 
 You may find new articles every week regarding well-known data breaches and password leaks. You could believe that only people with antiquated systems or lax security are susceptible to this. What about your users, though? To put it another way, it is more crucial than ever to create strong passwords.
 

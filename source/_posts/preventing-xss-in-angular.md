@@ -10,7 +10,7 @@ relatedPost: angular-csp
 bannerHeader: 'Is your Angular application REALLY secure? 🧐'
 bannerSubheader: 'Learn the secrets of bullet-proof Web apps!'
 ---
-{% image_fw 1.78 banner.png "Preventing XSS in Angular" %}
+
 
 Besides the application's primary purpose, one of the most critical aspects is protecting the sensitive data of its users. Today's client-side applications are often publicly available and connected to the cloud, increasing vulnerabilities to security threats and breaches.
 

@@ -8,7 +8,7 @@ tags: [angular, security]
 id: angular-cli-https
 relatedPost: angular-cors
 ---
-{% image_fw 1.78 banner.png "Running Angular CLI over HTTPS" %}
+
 
 <!-- toc -->
 

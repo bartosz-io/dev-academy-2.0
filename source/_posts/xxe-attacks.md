@@ -8,7 +8,7 @@ tags: [xml, security]
 id: xxe-attacks
 relatedPost: react-xss
 ---
-{% image_fw 1.78 banner.png "XXE Attacks" %}
+
 
 In recent years, there has been an increase in the number of XXE (external entity attacks) injections. These attacks take advantage of vulnerabilities in XML processing to inject malicious code into a system. This can allow attackers to gain access to sensitive data or even take control of the system altogether. Fortunately, there are steps you can take to prevent XXE attacks. In this blog post, we will explore some of the most common methods used by attackers and how you can protect your systems against them.
 
