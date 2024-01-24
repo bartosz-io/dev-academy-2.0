@@ -1261,7 +1261,7 @@
   }
 
   .article-sidebar {
-    margin-top: 50rem;
+    margin-top: 0;
     position: sticky;
     top: 12rem;
     height: 100%;
@@ -1360,7 +1360,7 @@
   .article-toc {
     display: flex;
     position: sticky;
-    margin-top: 50rem;
+    margin-top: 0;
     top: 12rem;
     height: calc(100vh - #{$sidebar-offset});
     overflow-y: auto;
