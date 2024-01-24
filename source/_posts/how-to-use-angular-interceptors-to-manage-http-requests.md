@@ -19,7 +19,7 @@ popup:
       url: https://dev-academy.com/web-security#angular-interceptors
       text: Join with 40% OFF 🔥
 ---
-{% image_fw 1.78 "banner.png" "How To Use Angular Interceptors to Manage HTTP Requests" %}
+
 
 Angular as a framework provides us with a significant number of tools and capabilities out of the box. Today I will be writing about one of these beneficial features called HTTP Interceptors.
 

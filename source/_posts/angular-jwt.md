@@ -8,7 +8,7 @@ date: 2019-05-01
 id: angular-jwt
 relatedPost: user-login-and-registration
 ---
-{% image_fw 1.78 "banner.png" "Angular JWT Authorization with Refresh Token and Http Interceptor" %}
+
 
 Securing a Single Page Application is a very important part of its implementation, yet sometimes it brings a lot of confusion, especially when there are many ways to achieve it. In this article, I will focus on the approach utilizing JSON Web Tokens (JWT) as a mechanism to convey user rights. Moreover, I will present the benefits and potential pitfalls of JWT-based security.
 

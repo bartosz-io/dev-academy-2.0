@@ -9,7 +9,7 @@ id: react-xss
 relatedPost: angular-xss
 published: true
 ---
-{% image_fw 1.78 "banner.png" "Preventing XSS in React" %}
+
 
 XSS attacks or cross-site scripting is a type of attack in which malicious code is injected into a web page and then executed. This malicious code can steal your cookies, modify the content or take control of an entire webpage.
 

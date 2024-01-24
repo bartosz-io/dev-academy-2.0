@@ -8,7 +8,7 @@ tags: [angular, rxjs]
 id: angular-rxjs
 relatedPost: angular-interceptors
 ---
-{% image_fw 1.78 "banner.png" "RxJS switchMap, concatMap, mergeMap, exhaustMap" %}
+
 
 Before RxJS become fairly popular in front-end development we all were dealing with AJAX requests with Promises. Promises are easy to use and understand but in some more complex scenarios, not enough. In this article, I will explain how to efficiently use higher-order observable streams in four different scenarios with four different flattening strategies - `mergeMap`, `concatMap` `switchMap` and `exhaustMap`.
 

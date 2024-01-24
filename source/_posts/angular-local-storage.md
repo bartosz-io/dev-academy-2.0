@@ -8,7 +8,7 @@ tags: [angular, security]
 id: angular-local-storage
 relatedPost: angular-rxjs
 ---
-{% image_fw 1.78 "banner.png" "Managing Local Storage in Angular" %}
+
 
 ## Table of Contents
 <!-- toc -->

@@ -10,7 +10,7 @@ tags: [angular, security]
 id: csrf-protection
 relatedPost: angular-xss
 ---
-{% image_fw 1.78 "banner.png" "How to implement CSRF protection in an Angular application" %}
+
 
 ## Table of Contents
 <!-- toc -->

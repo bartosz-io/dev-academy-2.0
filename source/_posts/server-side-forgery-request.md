@@ -8,7 +8,7 @@ tags: [security]
 id: server-side-request-forgery
 relatedPost: xxe-attacks
 ---
-{% image_fw 1.78 "banner.png" "Server-side request forgery" %}
+
 
 ## Table of Contents
 <!-- toc -->

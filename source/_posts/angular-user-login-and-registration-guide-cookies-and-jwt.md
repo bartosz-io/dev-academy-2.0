@@ -8,7 +8,7 @@ description: A complete guide to user login and registration with using JWT. A h
 id: user-login-and-registration
 relatedPost: angular-xss
 ---
-{% image_fw 1.78 "banner.png" "Angular User Login and Registration Guide (Cookies and JWT)" %}
+
 
 In this guide, we will design and implement **a complete solution for user authentication** including user login, registration, and account confirmation with the Angular framework. We will learn how to structure the application with a separate module responsible for the visual and logical parts of user authentication. The proposed approach will be robust and flexible to address the most demanding requirements in modern Web applications.
 

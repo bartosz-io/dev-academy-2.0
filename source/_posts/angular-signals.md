@@ -8,7 +8,7 @@ id: angular-signals
 date: 2023-03-13
 dateModified: 2023-03-25
 ---
-{% image_fw 1.78 "banner.png" "Angular Signals" %}
+
 
 ## Table of Contents
 <!-- toc -->

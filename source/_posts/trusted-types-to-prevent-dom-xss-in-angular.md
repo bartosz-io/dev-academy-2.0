@@ -8,7 +8,7 @@ tags: [angular, security]
 id: trusted-types
 relatedPost: angular-interceptors
 ---
-{% image_fw 1.78 "banner.png" "Trusted Types to prevent DOM XSS in Angular" %}
+
 
 A Cross-Site Scripting (XSS) vulnerability in an Angular application can be a &quot;game over&quot; scenario. As soon as attackers discover an XSS vulnerability in the app, they often can control the entire application. Angular ships with advanced XSS protection out-of-the-box, but even the smallest bug or unaware code mistakes can become a serious XSS vulnerability.
 

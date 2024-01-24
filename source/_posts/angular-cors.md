@@ -19,7 +19,7 @@ popup:
       url: https://dev-academy.com/web-security#angular-cors
       text: Join with 40% OFF 🔥
 ---
-{% image_fw 1.78 "banner.png" "Angular CORS Guide 🛠️ Fixing errors" %}
+
 
 In this article, we will take a look at CORS issues in Angular application, what it is, when it occurs, and how to tackle them. We will also look at how to configure local and remote scenarios to support CORS. The accompanying code is also provided on [Github](https://github.com/sookah/ninWiki).
 

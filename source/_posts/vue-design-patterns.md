@@ -10,7 +10,7 @@ relatedPost: vue-security-best-practices
 bannerHeader: Is your Vue application SECURE?
 ---
 
-{% image_fw 1.78 "banner.png" "Vue Desing Patterns banner" %}
+
 
 What's up, #VueFriends? It's time for another Vue article. Today we will put into practice some vue design patterns dispersed on the Internet, but in this case, we pick some of the most useful to apply together with our beloved and great framework. Let's go!
 
