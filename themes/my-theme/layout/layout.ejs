@@ -27,6 +27,7 @@
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THK2B8H" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 
+<!-- this is a "hack" since layout property selects "landing.ejs" which does not exist... -->
 <% if (page.layout === 'landing')  {%>
     <%- body %>
 <% } else { %>
@@ -36,6 +37,7 @@
             <%- partial('partial/slackbar', {}, {caches: true}) %>
         <% } %>
 
+        <!-- markdown content from .md file -->
         <%- body %>
 
         <% if (is_post())  {%>
