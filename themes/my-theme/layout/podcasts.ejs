@@ -1,0 +1,28 @@
+<div class="posts-wrapper">
+    <div class="container">
+        
+        <div class="podcast-hero">
+            <h1 class="podcast-hero-header">Dev Academy Podcast 🎙️</h1>
+            <span class="podcast-hero-description">
+                <%- page.content %>
+            </span>
+            <div class="podcast-hero-buttons">
+                <a href="link-to-apple-podcast" class="button button-primary apple">Apple</a>
+                <a href="link-to-spotify-podcast" class="button button-primary spotify">Spotify</a>
+                <a href="link-to-youtube-podcast" class="button button-primary youtube">YouTube</a>
+                <a href="link-to-rss-feed" class="button button-primary rss">RSS</a>
+            </div>
+        </div>
+
+        <!-- TODO Algolia search -->
+        <!-- <%- partial('partial/search') %> -->
+
+        <%
+            let podcastCategory = 'Podcast';
+            let podcasts = site.posts.filter(post => post.categories.some(c => c.name === podcastCategory));
+        %>
+        <%- partial('partial/podcasts', {posts: podcasts, ph_prefix: 'post'}) %>
+        <%- partial('partial/pagination') %>
+        <%- partial('partial/post-idea') %>
+    </div>
+</div>

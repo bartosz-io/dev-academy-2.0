@@ -38,6 +38,16 @@
 }
 
 @media (min-width: 630px) {
+
+  .podcast-speakers {
+    gap: 4rem;
+    flex-direction: row;
+  }
+
+  .podcast-hero {
+    padding: 50px;
+  }
+
   .contributor-short-info {
     padding: 5rem;
     display: flex;
@@ -295,9 +305,11 @@
   }
   
 
-  .article-header h1 {
-    padding-top: 50px;
-    font-size: $font-size-46;
+  .article-header, .podcast-header {
+    h1 {
+      padding-top: 50px;
+      font-size: $font-size-46;
+    }
   }
 
   .contributor-academies li {
@@ -972,7 +984,7 @@
     }
   }
 
-  .article-header {
+  .article-header, .podcast-header {
     padding-top: 4rem;
   }
 
@@ -1254,6 +1266,7 @@
   }
 
   .article-header,
+  .podcast-header,
   .article-footer-wrapper {
     .container {
       width: 84rem;
@@ -1328,6 +1341,7 @@
     }
 
     .article-header,
+    .podcast-header,
     .article-footer-wrapper {
       .container {
         width: 84rem;

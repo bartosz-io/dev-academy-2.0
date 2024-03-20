@@ -42,7 +42,7 @@
   aspect-ratio: 1;
 }
 
-.article-header {
+.article-header, .podcast-header {
   padding-top: 4rem;
   background-color: $navy-400;
 
@@ -60,7 +60,12 @@
   border-radius: 50%;
 }
 
-.article-contributor {
+.podcast-speakers {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-contributor, .podcast-guest, .podcast-host {
   display: flex;
   align-items: center;
   padding-bottom: 2rem;
@@ -73,22 +78,26 @@
   text-transform: capitalize;
 }
 
-.article-details {
+.article-details, .podcast-details {
   display: flex;
   flex-direction: column;
 }
 
-.article-contributor-info {
+.article-contributor-info, .podcast-guest-info {
   display: flex;
   flex-direction: column;
   padding-left: 1.5rem;
 }
 
-.article-contributor-name {
+.article-contributor-name, .podcast-guest-name {
   font-weight: 600;
   font-size: $font-size-16;
   color: $light-200;
   padding-bottom: .5rem;
+}
+
+.podcast-guest-bio {
+  color: $light-150;
 }
 
 .article-meta {
@@ -165,7 +174,7 @@
   padding: 3rem 0;
 }
 
-.posts {
+.posts, .podcasts {
   padding-bottom: 3rem;
   
   @media (min-width: 650px) {
@@ -175,7 +184,7 @@
   }
 }
 
-.post {
+.post, .podcast {
   margin-bottom: 3rem;
   box-shadow: 0 .4rem 5rem rgba(0, 67, 86, 0.08);
   border-radius: 1.6rem;
@@ -185,11 +194,15 @@
   }
 }
 
-.post-figure {
+.podcast {
+  padding-bottom: 1.5rem;
+}
+
+.post-figure, .podcast-figure {
   position: relative;
 }
 
-.post-reading {
+.post-reading, .podcast-duration {
   position: absolute;
   color: white;
   top: 22px;
@@ -202,13 +215,23 @@
   font-size: 1.5rem;
 }
 
-.post-image {
+.podcast-duration {
+  top: unset;
+  bottom: 1.5rem;
+}
+
+.post-image, .podcast-image {
   border-radius: 1.6rem;
   width: 100%;
   aspect-ratio: 1.7734;
 }
 
-.post-content {
+.podcast-image {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.post-content, .podcast-content {
   header {
     padding: 0 2.5rem;
   }
@@ -228,7 +251,7 @@
   }
 }
 
-.post-time {
+.post-time, .podcast-time {
   color: $navy-800;
   font-size: $font-size-14;
   display: flex;
@@ -239,7 +262,7 @@
   }
 }
 
-.post-title {
+.post-title, .podcast-title {
   color: $teal-300;
   margin-bottom: 0;
   transition: color $transition-time $transition-type;
@@ -249,6 +272,14 @@
   &:hover {
     color: $dark-350;
   }
+}
+
+.podcast-title {
+  margin-top: 2rem;
+}
+
+.podcast-listing-header {
+  padding-bottom: 5rem;
 }
 
 .posts-listing-header {
@@ -285,4 +316,61 @@
 
 .article-toc {
   display: none;
+}
+
+.podcast-hero {
+  width: 100%;
+  background: linear-gradient(to right, lighten($primary, 20%), lighten($secondary, 20%)); 
+  text-align: center;
+  color: $light-300;
+  padding: 20px;
+  margin: 5rem 0;
+  border-radius: 1rem;
+
+  &-header {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 8px black;
+  }
+
+  &-description {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+
+  &-buttons {
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 0 10px 10px;
+      text-decoration: none;
+      color: $light-300;
+      border-radius: 10px;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      &.apple {
+        background: linear-gradient(145deg, #d3d3d3, #a6a6a6, #8b8b8b);
+        color: black;
+      }
+
+      &.spotify {
+        background: linear-gradient(145deg, #1DB954, #1ed760, #1aa34a);
+        color: white;
+      }
+
+      &.youtube {
+        background: linear-gradient(145deg, #FF0000, #c70000, #a30000);
+        color: white;
+      }
+
+      &.rss {
+        background: linear-gradient(145deg, #FFA500, #cc8400, #b37400);
+        color: white;
+      }
+    }
+  }
 }

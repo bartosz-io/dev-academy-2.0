@@ -1,0 +1,31 @@
+<section class="podcasts">
+    <% posts.each(function(post, i){ %>
+        <article class="podcast">
+            <div class="podcast-content">
+                <a href="<%- post.path %>" <%- post_ph_attr(post.path, ph_prefix) %>>
+                    <figure class="podcast-figure">
+                        <picture>
+                            <source srcset="<%- url_for(post.path) %>large_banner.webp" type="image/webp">
+                            <img class="podcast-image" src="<%- url_for(post.path) %>large_banner.png" loading="lazy" alt="<%- post.title %>">
+                        </picture>
+                        
+                        <% if (post.duration) { %>
+                        <span class="podcast-duration"><%- post.duration %></span>
+                        <% } %>
+                    </figure>
+                    <header>
+                        <h2 class="podcast-title"><%- post.title %></h2>
+                        <div class="podcast-time">
+                            <% if (post.dateModified) {%>
+                                <span>Updated</span>
+                                <time datetime="<%= date_xml(post.dateModified) %>"><%= date(post.dateModified, 'D MMMM YYYY') %></time>
+                            <% } else { %>
+                                <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'D MMMM YYYY') %></time>
+                            <% } %>
+                        </div>
+                    </header>
+                </a>
+            </div>
+        </article>
+    <% }) %>
+</section>
