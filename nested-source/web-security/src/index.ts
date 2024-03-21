@@ -110,7 +110,6 @@ function loadConvertKit(onloadCallback: Function) {
     script.setAttribute('data-uid', '4dd9d3445a');
     script.src = 'https://dev-academy.ck.page/4dd9d3445a/index.js';
     script.defer = true;
-    script.setAttribute('crossorigin', 'anonymous');
     script.addEventListener('load', () => onloadCallback())
     document.body.appendChild(script);
 }
