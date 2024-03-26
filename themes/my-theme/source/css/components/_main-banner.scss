@@ -32,7 +32,7 @@
 
 .main-banner-link {
   color: $hover;
-  background-color: $light-150;
+  background-color: $green-400;
   border: 1px solid $button-border-color;
   border-radius: 6px;
   box-shadow: $box-shadow;
@@ -56,7 +56,7 @@
 
   &:hover {
     color: $dark-350;
-    background-color: $light-900;
+    background-color: $green-300;
     text-decoration: none;
     transition-duration: 0.1s;
   }
