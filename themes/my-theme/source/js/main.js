@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (isPostPage()) {
-        initPopup();
+        // initPopup();
     }
 
     if (isIndexPage()) {
