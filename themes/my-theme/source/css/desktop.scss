@@ -846,7 +846,7 @@
   }
 
   .header-nav-link {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
     border: 0;
     font-size: $font-size-14;
   }
@@ -1184,16 +1184,17 @@
   }
 
   .header-nav-link {
-    padding: 1.5rem 4rem;
-  }
-
-  .header-nav-link-submenu {
-    padding-right: 5rem;
-
-    &:after {
-      right: 1.5rem;
+    padding: 1.5rem 2rem;
+    
+    &.header-nav-link-submenu {
+      padding-right: 5rem;
+  
+      &:after {
+        right: 1.5rem;
+      }
     }
   }
+
 
   .contributors-list {
     grid-template-columns: repeat(3, 1fr);
@@ -1442,6 +1443,7 @@
 
   .header-nav-link {
     font-size: $font-size-15;
+    padding: 1.5rem 3rem;
   }
 }
 
