@@ -97,7 +97,16 @@ sitemap: false
     var phId = window.posthog.get_distinct_id();
     var link = document.getElementById('link');
     link.href = link.href + phId;
-    window.posthog.capture('wsda_subscribe_confirm', { $set: { wsda_list: true } });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const first_name = urlParams.get('first_name');
+    const email = urlParams.get('email');
+
+    window.posthog.capture(
+      'wsda_subscribe_confirm',
+      { 
+        $set: { first_name, email, wsda_list: true } 
+      });
   }
 
   if (window.posthog && window.posthog.get_distinct_id) {
