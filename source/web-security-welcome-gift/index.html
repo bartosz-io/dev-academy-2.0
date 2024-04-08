@@ -93,8 +93,8 @@ sitemap: false
     document.getElementById('brave').style.display = "block";
   }
 
-  const phInit = function() {
-    var phId = window.posthog.get_distinct_id();
+  const phInit = function(posthog) {
+    var phId = posthog.get_distinct_id();
     var link = document.getElementById('link');
     link.href = link.href + phId;
 
@@ -102,7 +102,7 @@ sitemap: false
     const first_name = urlParams.get('first_name');
     const email = urlParams.get('email');
 
-    window.posthog.capture(
+    posthog.capture(
       'wsda_subscribe_confirm',
       { 
         $set: { first_name, email, wsda_list: true } 
@@ -110,8 +110,8 @@ sitemap: false
   }
 
   if (window.posthog && window.posthog.get_distinct_id) {
-    phInit();
+    phInit(window.posthog);
   } else {
-    window.addEventListener('PH_Ready', () => phInit());
+    window.addEventListener('PH_Ready', (event) => phInit(event.detail.posthog));
   }
 </script>
