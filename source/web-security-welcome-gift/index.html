@@ -62,18 +62,6 @@ sitemap: false
   .button:hover {
     opacity: 0.8;
   }
-  .bottom-bar {
-    left: 0;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-    background-color: #c0392b;
-    color: white;
-    text-align: center;
-    line-height: 30px;
-    font-size: 18px;
-    display: none;
-  }
 
   #countdown-timer {
     display: flex;
@@ -143,13 +131,8 @@ sitemap: false
     <img src="gift.jpeg" alt="Gift">
   </a>
 </div>
-<div class="bottom-bar" id="brave">⚠️ The discount may not render on Brave ⚠️</div>
 
 <script>
-  if (navigator['brave']) {
-    document.getElementById('brave').style.display = "block";
-  }
-
   function startCountdown(hours, minutes) {
     var savedCountDownDate = localStorage.getItem('countDownDate');
     var countDownDate;
