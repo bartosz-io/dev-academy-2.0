@@ -178,6 +178,7 @@ sitemap: false
     const urlParams = new URLSearchParams(window.location.search);
     const first_name = urlParams.get('first_name');
     const email = urlParams.get('email');
+    window.history.replaceState(null, null, window.location.pathname);
 
     posthog.capture('wsda_subscribe_confirm', { $set: { first_name, email, wsda_list: true } });
 
