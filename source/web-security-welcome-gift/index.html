@@ -74,14 +74,71 @@ sitemap: false
     font-size: 18px;
     display: none;
   }
+
+  #countdown-timer {
+    display: flex;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  #countdown-timer .number {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 2em;
+    padding: 0.3em 0.8em;
+    border-radius: 7.5px;
+    margin: 0 0.2em;
+    box-shadow: 3px 3px 4.5px rgba(0, 0, 0, 0.2);
+    flex: 0 1 auto;
+  }
+  .subtitle {
+    text-transform: uppercase;
+    color: #e74c3c;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+
+  .colon {
+    font-size: 2em;
+    padding-top: 0.3em;
+    flex: 0 1 auto;
+  }
+
+  @media (max-width: 576px) {
+    #countdown-timer .number {
+      font-size: 1.5em;
+      padding: 0.2em 0.6em;
+    }
+    .colon {
+      font-size: 1.5em;
+      padding: 0.1em 0.3em;
+    }
+  }
 </style>
 
 <div class="top">YOU ARE CONFIRMED! 👏</div>
 <div class="box">
   <div class="subheader">Get your... <span class="gift">Exclusive Welcome GIFT* 🎁</span></div>
-  <a id="link" href="https://courses.dev-academy.com/p/web-security-fundamentals/?wsa#id=">
+  <a id="link" href="https://courses.dev-academy.com/p/web-security-fundamentals/">
     <button class="button">Take the Welcome Gift! 🎉</button>
-    <div class="ddio_countdown_wrap"></div>
+    <div id="countdown-timer">
+      <div>
+        <span id="hours" class="number">00</span>
+        <div class="subtitle">Hours</div>
+      </div>
+      <span class="colon">:</span>
+      <div>
+        <span id="minutes" class="number">00</span>
+        <div class="subtitle">Minutes</div>
+      </div>
+      <span class="colon">:</span>
+      <div>
+        <span id="seconds" class="number">00</span>
+        <div class="subtitle">Seconds</div>
+      </div>
+    </div>
     <div class="timer">*expires in 30 minutes! ⏰</div>
     <img src="gift.jpeg" alt="Gift">
   </a>
@@ -93,25 +150,68 @@ sitemap: false
     document.getElementById('brave').style.display = "block";
   }
 
+  function startCountdown(hours, minutes) {
+    var savedCountDownDate = localStorage.getItem('countDownDate');
+    var countDownDate;
+    if (savedCountDownDate) {
+      countDownDate = new Date(parseInt(savedCountDownDate)).getTime();
+    } else {
+      // Set the date we're counting down to and save it in localStorage
+      countDownDate = new Date().getTime() + hours * 60 * 60 * 1000 + minutes * 60 * 1000;
+      localStorage.setItem('countDownDate', countDownDate.toString());
+    }
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for hours, minutes and seconds
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Output the result in the elements with id="hours", id="minutes" and id="seconds"
+      document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+
+    return countDownDate;
+  }
+
   const phInit = function(posthog) {
     var phId = posthog.get_distinct_id();
-    var link = document.getElementById('link');
-    link.href = link.href + phId;
-
     const urlParams = new URLSearchParams(window.location.search);
     const first_name = urlParams.get('first_name');
     const email = urlParams.get('email');
 
-    posthog.capture(
-      'wsda_subscribe_confirm',
-      { 
-        $set: { first_name, email, wsda_list: true } 
-      });
+    posthog.capture('wsda_subscribe_confirm', { $set: { first_name, email, wsda_list: true } });
+
+    return phId;
+  }
+
+  const initPage = function(posthog) {
+    var phId = phInit(posthog);
+    var countDownDate = startCountdown(0, 30);
+
+    var link = document.getElementById('link');
+    link.href = link.href + "?countDownDate=" + countDownDate + "#id=" + phId;
   }
 
   if (window.posthog && window.posthog.get_distinct_id) {
-    phInit(window.posthog);
+    initPage(window.posthog);
   } else {
-    window.addEventListener('PH_Ready', (event) => phInit(event.detail.posthog));
+    window.addEventListener('PH_Ready', (event) => initPage(event.detail.posthog));
   }
 </script>
