@@ -176,11 +176,12 @@ sitemap: false
   const phInit = function(posthog) {
     var phId = posthog.get_distinct_id();
     const urlParams = new URLSearchParams(window.location.search);
-    const first_name = urlParams.get('first_name');
-    const email = urlParams.get('email');
+    const id = urlParams.get('id');
     window.history.replaceState(null, null, window.location.pathname);
 
-    posthog.capture('wsda_subscribe_confirm', { $set: { first_name, email, wsda_list: true } });
+    posthog.identify(id);
+
+    posthog.capture('wsda_subscribe_confirm', { $set: { wsda_list: true } });
 
     return phId;
   }
