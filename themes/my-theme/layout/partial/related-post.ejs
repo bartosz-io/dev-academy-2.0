@@ -1,6 +1,6 @@
 <div class="related-posts">
     <% site.posts.each(function(post){ %>
-        <% if (post.id === currentPost.relatedPost)  {%>
+        <% if (post.id && post.id === currentPost.relatedPost)  {%>
             <div class="related-post">
                 <a href="<%- post.path %>" class="related-post-inner" data-ph="related-post__link">
                     <figure>
