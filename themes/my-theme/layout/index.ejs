@@ -4,11 +4,7 @@
         <!-- TODO Algolia search -->
         <!-- <%- partial('partial/search') %> -->
         <%- partial('partial/tags') %>
-        <%
-            let excludeCategory = 'Podcast';
-            let posts = page.posts.filter(post => !post.categories.some(c => c.name === excludeCategory));
-        %>
-        <%- partial('partial/posts', {posts: posts, ph_prefix: 'post'}) %>
+        <%- partial('partial/posts', {posts: page.posts, ph_prefix: 'post'}) %>
         <%- partial('partial/pagination') %>
         <%- partial('partial/post-idea') %>
     </div>
