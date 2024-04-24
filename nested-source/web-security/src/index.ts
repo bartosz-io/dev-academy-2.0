@@ -105,13 +105,36 @@ function fixedNavigation() {
     }
 }
 
+function isStringSane(str) {
+    return !!str && (str.match(/^[a-zA-Z0-9_]*$/) !== null);
+}
+
+function getCkForm(): string {
+    const defaultCk = '4dd9d3445a';
+    const params = new URLSearchParams(location.search);
+    const ck = params.get('ck');
+    if (isStringSane(ck)) {
+        return ck ?? defaultCk;
+    } else {
+        return defaultCk;
+    }
+}
+
 function loadConvertKit(onloadCallback: Function) {
+    const ck = getCkForm();
+
     const script = document.createElement('script');
-    script.setAttribute('data-uid', '4dd9d3445a');
-    script.src = 'https://dev-academy.ck.page/4dd9d3445a/index.js';
+    script.setAttribute('data-uid', ck);
+    script.src = `https://dev-academy.ck.page/${ck}/index.js`;
     script.defer = true;
     script.addEventListener('load', () => onloadCallback())
     document.body.appendChild(script);
+    
+    const ckTriggers = document.querySelectorAll('[data-formkit-toggle]');
+    ckTriggers.forEach(trigger => {
+        trigger.setAttribute('data-formkit-toggle', ck);
+        trigger.setAttribute('href', `https://dev-academy.ck.page/${ck}`);
+    });
 }
 
 function loadTawk() {
