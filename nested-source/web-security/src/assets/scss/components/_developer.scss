@@ -38,3 +38,20 @@
 .developer-info {
   font-size: 1.6rem;
 }
+
+.developer-box--equal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 5rem;  
+}
+
+.developer--equal-item {
+  margin-right: 5rem;
+  flex: 1;
+}
+
+.developer--equal-item {
+  margin-bottom: 5rem;
+  margin-right: 0;
+}

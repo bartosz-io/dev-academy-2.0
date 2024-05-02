@@ -258,6 +258,14 @@
     font-size: 2rem;
   }
 
+  .developer-box--equal {
+    flex-direction: row;
+  }
+
+  .developer--equal-item:first-child {
+    margin-right: 5rem;
+  }
+
   .hero {
     display: flex;
 
@@ -378,11 +386,19 @@
 
   .developer {
     margin-right: 10rem;
-  }
 
+    &.developer--equal-item:last-child {
+      margin-right: 0;
+    }
+  }
+  
   .developer-box {
     display: flex;
     align-items: center;
+
+    &.developer-box--equal {
+      align-items: flex-start;
+    }
 
     img {
       display: inline-block;
