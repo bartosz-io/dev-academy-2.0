@@ -249,9 +249,13 @@
     }
   }
 
-  .agenda-wrapper {
+  .agenda-wrapper, .project-wrapper {
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 3rem;
+  }
+
+  .project-module-screen {
+    max-height: unset;
   }
 
   .developer {
@@ -368,7 +372,7 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .agenda-wrapper {
+  .agenda-wrapper, .project-wrapper {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -413,7 +417,7 @@
     width: 116rem;
   }
 
-  .agenda-wrapper {
+  .agenda-wrapper, .project-wrapper {
     grid-column-gap: 1rem;
   }
 

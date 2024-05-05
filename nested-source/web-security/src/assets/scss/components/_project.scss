@@ -1,0 +1,75 @@
+@import '../variables';
+
+.project-wrapper {
+  margin-top: 10rem;
+  counter-reset: chapter;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-row-gap: 5rem;
+}
+
+.project-module {
+  padding-left: 6rem;
+  counter-increment: chapter;
+
+  h3 {
+    position: relative;
+  }
+}
+
+.project-module-number {
+  content: '';
+  width: 4rem;
+  height: 4rem;
+  display: block;
+  border-radius: 50%;
+  background-color: $primary-200;
+  position: absolute;
+  left: -6rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:before {
+    content: counter(chapter);
+    display: flex;
+    color: $light-100;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
+  }
+}
+
+.project-module-screen {
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+  max-height: 40rem;
+  object-fit: cover;
+
+  &.top {
+    object-position: top;
+  }
+}
+
+.features {
+  li {
+    position: relative;
+    padding-left: 1.2rem;
+    line-height: 3.5rem;
+    margin-bottom: .5rem;
+
+    &:before {
+      content: '';
+      width: .4rem;
+      height: .4rem;
+      border-radius: 50%;
+      background-color: #7838d6;
+      display: inline-block;
+      position: absolute;
+      top: 1.5rem;
+      left: 0;
+    }
+  }
+}
