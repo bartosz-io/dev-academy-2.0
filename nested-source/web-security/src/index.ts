@@ -1,7 +1,7 @@
 interface Window { posthog: any };
 
 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-var IS_SCHEDULE = false;
+var IS_SCHEDULE = true;
 var collapsePanelLoaded = false;
 var inited = false;
 
@@ -147,7 +147,7 @@ function loadTawk() {
 
 function loadSchedule() {
     const script = document.createElement('script');
-    script.src = '/siema.min.js';
+    script.src = 'https://cdn.jsdelivr.net/npm/siema@1.5.1/dist/siema.min.js';
     script.defer = true;
     script.onload = () => {
         const schedule = document.querySelector('.schedule');

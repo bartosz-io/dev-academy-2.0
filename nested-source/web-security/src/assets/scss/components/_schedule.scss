@@ -45,6 +45,15 @@
   color: $light-500;
 }
 
+.schedule-card-highlight {
+  border-color: $highlight-100;
+
+  .schedule-day,
+  .schedule-description {
+    color: $highlight-100;
+  }
+}
+
 .schedule-date {
   display: flex;
   align-items: center;
