@@ -2,6 +2,10 @@
   visibility: hidden;
 }
 
+.schedule-weeks {
+  padding-top: 3rem;
+}
+
 .schedule-days {
   display: grid;
   grid-template-columns: repeat(1,1fr);
@@ -20,7 +24,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: .2rem solid transparent;
+  border: .1rem solid transparent;
+
+  &--bolder {
+    background: rgba($secondary-300, 0.1);
+    outline: 2px solid $secondary-100;
+  }
 }
 
 .schedule-card-pink {
@@ -71,7 +80,7 @@
 }
 
 .schedule-day {
-  font-size: 3.6rem;
+  font-size: 2.5rem;
   font-weight: 700;
   width: 4rem;
   display: flex;
@@ -101,7 +110,7 @@
   font-size: 3rem;
   font-weight: 700;
   color: $secondary-100;
-  top: -6.3rem;
+  top: -7rem;
   position: relative;
 
   &:after {
@@ -127,4 +136,9 @@
 
 .schedule-week-title {
   margin: 3rem auto 0;
+}
+
+.schedule-large-text {
+  font-size: 2.5rem;
+  font-weight: 700;
 }
