@@ -96,9 +96,12 @@
   color: $highlight-100;
 
   .counter-price {
+    color: $primary-100;
+    line-height: 1.4em;
     display: flex;
     flex-direction: column;
-    margin: 8px 5px 0;
+    text-align: right;
+    margin: 5px 8px 0;
   }
 
   .counter-block {
@@ -106,7 +109,7 @@
     flex-direction: row;
     align-items: center;
     margin: 5px 5px 0;
-    font-size: 1.3em;
+    font-size: 1.8em;
 
     .counter-legend {
       font-size: 0.6em;
