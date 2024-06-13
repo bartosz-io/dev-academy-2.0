@@ -3,57 +3,32 @@
         <div class="nav-internal">
             <div class="nav-title">
                 <a class="nav-logo">
-                    <!-- <img src="assets/img/nav-logo.png" width="42" height="42" alt="Web Security Dev Academy Logo">
+                    <img src="assets/img/nav-logo.png" width="42" height="42" alt="Web Security Dev Academy Logo">
                     <span>
                         <span class="bold uppercase">Web Security</span>
                         <span class="primary-highlight">Dev Academy</span>
-                    </span> -->
-                    <div class="counter-nav" id="counter-nav" style="display: flex">
+                    </span>
+                    <div class="counter-nav" id="counter-nav" style="display: none">
                         <div class="counter-price">
-                            <div class="bold">2024 SIGN-UP</div>
-                            <div class="bold">⏰ CLOSES IN:</div>
+                            <div class="bold">SALE END:</div>
                         </div>
                         <div class="counter-block">
-                            <div id="days">0</div>
+                            <div class="dfD">0</div>
                             <div class="counter-legend">D</div>
                         </div>
                         <div class="counter-block">
-                            <div id="hours">0</div>
+                            <div class="dfH">0</div>
                             <div class="counter-legend">H</div>
                         </div>
                         <div class="counter-block">
-                            <div id="minutes">0</div>
+                            <div class="dfM">0</div>
                             <div class="counter-legend">M</div>
                         </div>
                         <div class="counter-block">
-                            <div id="seconds">0</div>
+                            <div class="dfS">0</div>
                             <div class="counter-legend">S</div>
                         </div>
                     </div>
-                    <script>
-                        function updateCountdown() {
-                            const targetDate = new Date('June 13, 2024 17:00:00 UTC').getTime();
-                            const now = new Date().getTime();
-                            const distance = targetDate - now;
-
-                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                            document.getElementById('days').innerText = days;
-                            document.getElementById('hours').innerText = hours;
-                            document.getElementById('minutes').innerText = minutes;
-                            document.getElementById('seconds').innerText = seconds;
-
-                            if (distance < 0) {
-                                clearInterval(x);
-                                document.getElementById("counter-nav").innerHTML = "SIGN-UP IS NOW OPEN!";
-                            }
-                        }
-                        updateCountdown();
-                        const x = setInterval(updateCountdown, 1000);
-                    </script>
                 </a>
             </div>
             <span class="nav-divider"></span>
@@ -63,7 +38,7 @@
                 <li><a class="nav-link nav-link-hidden" href="#testimonials">Testimonials</a></li>
                 <li><a class="nav-link nav-link-hidden" href="#faq">FAQ</a></li>
                 <li><a class="nav-link nav-link-hidden" href="https://courses.dev-academy.com/sign_in" rel="noopener nofollow" target="_blank">Login</a></li>
-                <li><a class="nav-link nav-link-highlighted" href="#join">Join</a></li>
+                <li><a class="nav-link nav-link-highlighted" data-formkit-toggle="4dd9d3445a" href="https://dev-academy.ck.page/4dd9d3445a">Join</a></li>
             </ul>
             </div>
     </nav>
