@@ -372,6 +372,10 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
+  .icon-box-wrapper-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .agenda-wrapper, .project-wrapper {
     grid-template-columns: repeat(3, 1fr);
   }
