@@ -11,7 +11,11 @@ relatedPost: angular-csp
 
 ## Introduction to Content Security Policy
 
-The security of modern web applications primarily relies on the [Same-Origin Policy (SOP)](https://www.w3.org/Security/wiki/Same_Origin_Policy), which restricts how documents or scripts from one origin can interact with resources from another origin. This fundamental security feature helps prevent malicious activities such as cross-site scripting (XSS) and cross-site request forgery (CSRF). However, as web applications become more complex and rely on various third-party resources, SOP started to seem too permissive. To address these challenges, Content Security Policy (CSP) has emerged as a complementary mechanism. CSP provides an additional layer of security by allowing developers to specify precisely which resources are permitted to load and execute on their web pages, thus significantly enhancing the overall security posture of web applications.
+The security of modern web applications primarily relies on the [Same-Origin Policy (SOP)](https://www.w3.org/Security/wiki/Same_Origin_Policy), which restricts how documents or scripts from one origin can interact with resources from another origin. This fundamental security feature helps to mitigate certain security risks by preventing unauthorized cross-origin access to resources and data. However, as web applications become more complex and rely on various third-party resources, the limitations of SOP in preventing modern threats, such as cross-site scripting (XSS), become apparent. While SOP prevents some cross-origin interactions, it does not directly address the issue of malicious scripts being injected and executed within the same origin.
+
+To enhance security and address these modern threats, Content Security Policy (CSP) has emerged as a complementary mechanism. CSP provides an additional layer of security by allowing developers to specify precisely which resources are permitted to load and execute on their web pages, thus significantly enhancing the overall security posture of web applications. Below diagram, from [Web Security Fundamentals - Starter Kit](https://courses.dev-academy.com/p/security-starter-kit?utm_source=sop_article), presents the idea of SoP and CSP visually.
+
+{% img "same-origin-policy.png" "Same-origin Policy" "lazy" %}
 
 ## Table of Contents
 <!-- toc -->
