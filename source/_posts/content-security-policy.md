@@ -228,6 +228,18 @@ In scenarios where server-side configuration is not feasible, the Content-Securi
 
 While using the meta tag for CSP implementation can be convenient, it has limitations. The list of directives available for meta tags is more restricted compared to server-side headers. Additionally, meta tags are parsed after the initial HTML document is loaded, which can delay the enforcement of the policy and potentially allow some initial resource loads that would otherwise be blocked by a server-side CSP header. Despite these limitations, the meta tag method provides a flexible option for adding CSP to pages where server configuration changes are impractical.
 
+## Error Messages and Reporting
+
+### Understanding CSP Error Messages
+
+When a policy violation occurs, error messages are displayed in the browser’s console, providing immediate feedback on which resources or actions are blocked by the Content Security Policy (CSP). These console messages are essential for developers to diagnose and troubleshoot issues related to CSP implementation. However, relying solely on console error messages can be limiting, as they do not provide a comprehensive view of how the policy affects real users in the field. To gain deeper insights and monitor CSP violations more effectively, CSP reporting features can be utilized.
+
+{% img "errors.png" "CSP errors in console" "lazy" %}
+
+### Report-Only Header and Reporting
+
+The `Content-Security-Policy-Report-Only` header allows developers to test and fine-tune their CSP without immediately enforcing it. By using the report-only approach, the browser logs any violations of the CSP directives and sends these reports to a specified URI, known as a reporting endpoint. These reports provide valuable insights into which resources or actions would be blocked under the enforced policy, highlighting potential issues and areas for adjustment. This proactive approach enables developers to monitor and understand how their proposed CSP impacts the website’s functionality and security before full enforcement. By analyzing these reports, developers can iteratively refine their CSP to balance security and functionality, ensuring that legitimate content is not inadvertently blocked and that the policy effectively counters malicious activities. Implementing a report-only CSP and leveraging detailed reports is a crucial phase in deploying a robust and functional CSP. It helps identify and mitigate risks, ultimately enhancing the security posture of web applications while maintaining a seamless user experience.
+
 ### Best Practices for Implementing CSP
 
 1. **Start with a Report-Only Approach:**
@@ -247,7 +259,7 @@ Test the CSP across different browsers and devices to ensure consistent behavior
 
 By following these best practices and carefully implementing CSP using server-side headers or client-side meta tags, developers can significantly enhance the security of their web applications, protecting against a wide range of attacks while maintaining functionality and user experience.
 
-## Best Practices and Limitations
+## Limitations and challenges
 
 ### When to Use Content Security Policy
 
@@ -270,18 +282,6 @@ Many web applications rely on third-party services for analytics, advertising, a
 
 * **Maintenance Over Time:**
 As the application evolves, new resources are added, and existing resources are modified or removed. Maintaining an up-to-date CSP requires continuous monitoring and updating, which can be labor-intensive.
-
-## Error Messages and Reporting
-
-### Understanding CSP Error Messages
-
-When a policy violation occurs, error messages are displayed in the browser’s console, providing immediate feedback on which resources or actions are blocked by the Content Security Policy (CSP). These console messages are essential for developers to diagnose and troubleshoot issues related to CSP implementation. However, relying solely on console error messages can be limiting, as they do not provide a comprehensive view of how the policy affects real users in the field. To gain deeper insights and monitor CSP violations more effectively, CSP reporting features can be utilized.
-
-{% img "errors.png" "CSP errors in console" "lazy" %}
-
-### Report-Only Header and Reporting
-
-The `Content-Security-Policy-Report-Only` header allows developers to test and fine-tune their CSP without immediately enforcing it. By using the report-only approach, the browser logs any violations of the CSP directives and sends these reports to a specified URI, known as a reporting endpoint. These reports provide valuable insights into which resources or actions would be blocked under the enforced policy, highlighting potential issues and areas for adjustment. This proactive approach enables developers to monitor and understand how their proposed CSP impacts the website’s functionality and security before full enforcement. By analyzing these reports, developers can iteratively refine their CSP to balance security and functionality, ensuring that legitimate content is not inadvertently blocked and that the policy effectively counters malicious activities. Implementing a report-only CSP and leveraging detailed reports is a crucial phase in deploying a robust and functional CSP. It helps identify and mitigate risks, ultimately enhancing the security posture of web applications while maintaining a seamless user experience.
 
 ## Conclusion
 
