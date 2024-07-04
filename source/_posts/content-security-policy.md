@@ -73,7 +73,7 @@ script-src 'self' 'unsafe-eval' blob: open.spotifycdn.com open-review.spotifycdn
 
 Starting with the first directive `script-src`, we can see it allows the execution of:
 * Scripts downloaded from `https://spotify.com` as defined by `'self'`.
-* JavaScript’s `eval()`, `setTimeout()`, `setInterval()`, and `new Function()` as defined by `'unsafe-eval'` (let's hope Spotify engineers know what they are doing).
+* JavaScript’s `eval()` and similar methods like `new Function()` as defined by `'unsafe-eval'` (let's hope Spotify engineers know what they are doing).
 * Binary files as defined by the `blob:` scheme (maybe for streaming music?).
 * Scripts downloaded from the listed domains (`open.spotifycdn.com`, `open-review.spotifycdn.com`, `quicksilver.scdn.co`, `www.google-analytics.com`, just to point out the first ones).
 * Exact script files downloaded from the URLs listed (for example, `https://www.googleadservices.com/pagead/conversion_async.js` or `https://www.redditstatic.com/ads/pixel.js`).
@@ -104,10 +104,10 @@ The directive `default-src` serves as a fallback for the other fetch directives.
 
 The directives listed below control the capabilities of the document:
 
-* `base-uri` defines a set of allowed URLs for the HTML `base` tag (to prevent attackers from altering the base URL to manipulate how relative URLs are resolved)
-* `form-action` defines valid sources (URLs) which can be used as the target of a form submissions
-* `frame-src` defines valid sources for nested browsing contexts loading using `<frame>` and `<iframe>` (replaced by child-src),
-* `sandbox` applies restrictions to a page’s capabilities (details below),
+* `base-uri` defines a set of allowed URLs for the HTML `base` tag (to prevent attackers from altering the base URL to manipulate how relative URLs are resolved).
+* `form-action` defines valid sources (URLs) which can be used as the target of a form submissions.
+* `frame-src` defines valid sources for nested browsing contexts loading using `<frame>` and `<iframe>` (while `child-src` was initially introduced to replace `frame-src`, `frame-src` has been reintroduced in CSP Level 3 to provide more granular control).
+* `sandbox` applies restrictions to a page’s capabilities (details below).
 * `plugin-types` restricts the set of plugins that can be embedded into the document.
 
 #### The `sandbox` directive
