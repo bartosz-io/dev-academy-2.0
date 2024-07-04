@@ -64,19 +64,22 @@ CSP can specify the allowed protocols, such as `HTTPS`, to ensure that browsers 
 
 ## Example Policy Implementation
 
-Let's examine a sample CSP implementation. Below you can find the policy that `https://spotify.com` returns as of today. The policy contains two directives. Starting with the first directive `script-src`, we can see it allows the execution of:
+Let's examine a sample CSP implementation. Below you can find the policy that `https://spotify.com` returns as of today. The policy contains two directives.
+
+```csp
+script-src 'self' 'unsafe-eval' blob: open.spotifycdn.com open-review.spotifycdn.com quicksilver.scdn.co www.google-analytics.com www.googletagmanager.com static.ads-twitter.com analytics.twitter.com s.pinimg.com sc-static.net https://www.google.com/recaptcha/ cdn.ravenjs.com connect.facebook.net www.gstatic.com sb.scorecardresearch.com pixel-static.spotify.com cdn.cookielaw.org geolocation.onetrust.com www.googleoptimize.com www.fastly-insights.com static.hotjar.com script.hotjar.com https://www.googleadservices.com/pagead/conversion_async.js https://www.googleadservices.com/pagead/conversion/ https://analytics.tiktok.com/i18n/pixel/sdk.js https://analytics.tiktok.com/i18n/pixel/identify.js https://analytics.tiktok.com/i18n/pixel/config.js https://www.redditstatic.com/ads/pixel.js https://t.contentsquare.net/uxa/22f14577e19f3.js 'sha256-WfsTi7oVogdF9vq5d14s2birjvCglqWF842fyHhzoNw=' 'sha256-KRzjHxCdT8icNaDOqPBdY0AlKiIh5F8r4bnbe1PQwss=' 'sha256-Z5wh7XXSBR1+mTxLSPFhywCZJt77+uP1GikAgPIsu2s='; frame-ancestors 'self';
+```
+
+
+Starting with the first directive `script-src`, we can see it allows the execution of:
 * Scripts downloaded from `https://spotify.com` as defined by `'self'`.
-* JavaScript’s `eval()`, `setTimeout()`, `setInterval()`, and `new Function()` as defined by `'unsafe-eval'` (this is a risky game, but let's hope Spotify engineers know what they are doing).
+* JavaScript’s `eval()`, `setTimeout()`, `setInterval()`, and `new Function()` as defined by `'unsafe-eval'` (let's hope Spotify engineers know what they are doing).
 * Binary files as defined by the `blob:` scheme (maybe for streaming music?).
 * Scripts downloaded from the listed domains (`open.spotifycdn.com`, `open-review.spotifycdn.com`, `quicksilver.scdn.co`, `www.google-analytics.com`, just to point out the first ones).
 * Exact script files downloaded from the URLs listed (for example, `https://www.googleadservices.com/pagead/conversion_async.js` or `https://www.redditstatic.com/ads/pixel.js`).
 * Scripts where the hash digest calculated by SHA-256 is exactly equal to one of the listed sources (for example, `'sha256-WfsTi7oVogdF9vq5d14s2birjvCglqWF842fyHhzoNw='`).
 
-The second directive `frame-ancestors` with the value `'self'` allows embedding `spotify.com` content only on pages loaded from its own origin (look above at clickjacking).
-
-```csp
-script-src 'self' 'unsafe-eval' blob: open.spotifycdn.com open-review.spotifycdn.com quicksilver.scdn.co www.google-analytics.com www.googletagmanager.com static.ads-twitter.com analytics.twitter.com s.pinimg.com sc-static.net https://www.google.com/recaptcha/ cdn.ravenjs.com connect.facebook.net www.gstatic.com sb.scorecardresearch.com pixel-static.spotify.com cdn.cookielaw.org geolocation.onetrust.com www.googleoptimize.com www.fastly-insights.com static.hotjar.com script.hotjar.com https://www.googleadservices.com/pagead/conversion_async.js https://www.googleadservices.com/pagead/conversion/ https://analytics.tiktok.com/i18n/pixel/sdk.js https://analytics.tiktok.com/i18n/pixel/identify.js https://analytics.tiktok.com/i18n/pixel/config.js https://www.redditstatic.com/ads/pixel.js https://t.contentsquare.net/uxa/22f14577e19f3.js 'sha256-WfsTi7oVogdF9vq5d14s2birjvCglqWF842fyHhzoNw=' 'sha256-KRzjHxCdT8icNaDOqPBdY0AlKiIh5F8r4bnbe1PQwss=' 'sha256-Z5wh7XXSBR1+mTxLSPFhywCZJt77+uP1GikAgPIsu2s='; frame-ancestors 'self';
-```
+The second directive `frame-ancestors` with the value `'self'` allows embedding `spotify.com` content only on pages loaded from its own origin (look above at [clickjacking](#preventing-clickjacking-attacks)).
 
 ## Understanding CSP Directives
 
