@@ -150,7 +150,7 @@ Note that the `script-src` directive specifies valid sources for all JavaScript 
 
 ## Understanding Source Types in CSP
 
-Content Security Policy allows developers to specify various source types to control which resources can be loaded and executed on their web pages. These source types include domains, paths, and special keywords such as 'none', 'self', 'unsafe-inline', and 'unsafe-eval'. Understanding and appropriately using these source types is fundamental to creating a robust CSP.
+Content Security Policy allows developers to specify various source types to control which resources can be loaded and executed on their web pages. These source types include domains, paths, and special keywords such as `'none'`, `'self'`, `'unsafe-inline`, and `'unsafe-eval'`. Understanding and appropriately using these source types is fundamental to creating a robust CSP.
 
 * **Domains:**
 Example: `script-src https://trusted.cdn.com`
