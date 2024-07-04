@@ -119,6 +119,11 @@ main {
   background-color: $light-100;
 }
 
+figure.csp pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 code {
   overflow-wrap: break-word;
   padding: .1rem .3rem;
