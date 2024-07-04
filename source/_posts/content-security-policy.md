@@ -25,32 +25,32 @@ The security of modern web applications primarily relies on the [Same-Origin Pol
 
 ## How Content Security Policy Works
 
-### Mitigating Cross-Site Scripting and injection attacks
+### Mitigating Cross-Site Scripting and Injection Attacks
 
 CSP allows developers to reduce or eliminate the ability to trigger malicious scripts by specifying which sources of executable scripts (including inline scripts) should be considered legitimate by the browser. Inline scripts can be restricted through CSP to prevent script injections, using 'hashes' and 'nonce' to allow specific inline scripts to run while maintaining security.
 
 In a "_dynamic_" web application that consumes **API data** and/or **accepts user input**, one or more scenarios usually happen:
 
-* data is fetched from the server or API,
-* data is presented to the user,
-* data is transformed according to the business logic,
-* data is sent to the server or API.
+* Data is fetched from the server or API.
+* Data is presented to the user.
+* Data is transformed according to the business logic.
+* Data is sent to the server or API.
 
-When the website is exploited with XSS, a malicious script can manipulate each of these steps. This can happen when unsolicited content is injected and executed on the client’s browser (for example in a search feature a query string is injected into the DOM, but that string contains an executable JavaScript that performs an attack). Phishing, data theft, session hijacking, and unauthorized actions are just a few examples of what an attacker can achieve.
+When the website is exploited with XSS, a malicious script can manipulate each of these steps. This can happen when unsolicited content is injected and executed on the client’s browser (for example, in a search feature, a query string is injected into the DOM, but that string contains an executable JavaScript that performs an attack). Phishing, data theft, session hijacking, and unauthorized actions are just a few examples of what an attacker can achieve.
 
-#### Formjacking and skimming attacks
+#### Formjacking and Skimming Attacks
 
 One special case of XSS attacks is well-known in the e-commerce industry. When the payment page containing form inputs for the user's credit card data is exploited with XSS, that data can be sent to the place pointed by a malicious script, effectively stealing it.
 
-### Preventing Clickjacking attacks
+### Preventing Clickjacking Attacks
 
 Another attack vector that CSP implementation can mitigate is when the attacked website's content is embedded in an invisible iframe on the malicious website. Here is how it works:
-1. a user visits an (evil) website that has an encouraging to click button (like "*You won $100*"),
-2. that (evil) website has attacked the website embedded in an invisible `<iframe/>`,
-3. unaware user clicks the button on the attacked website,
-4. the action is executed on behalf of that (potentially logged) user.
+1. A user visits an (evil) website that has an encouraging click button (like "*You won $100*").
+2. That (evil) website has attacked the website embedded in an invisible `<iframe/>`.
+3. The unaware user clicks the button on the attacked website.
+4. The action is executed on behalf of that (potentially logged-in) user.
 
-The embedded website may be *positioned absolutely* so that when the user clicks on the proper place at that evil website, the real click happens on *the embedded one* (not the visible one), potentially executing some sensitive operation. It may be anything, from liking a post, sending a message, or even sending money in **a one-click checkout.**
+The embedded website may be *positioned absolutely* so that when the user clicks on the proper place on that evil website, the real click happens on *the embedded one* (not the visible one), potentially executing some sensitive operation. It may be anything, from liking a post, sending a message, or even sending money in **a one-click checkout.**
 
 {% img "clickjacking.png" "Clickjacking" "lazy" %}
 
@@ -58,15 +58,15 @@ The embedded website may be *positioned absolutely* so that when the user clicks
 
 CSP can specify the allowed protocols, such as `HTTPS`, to ensure that browsers load content securely. Mixed content occurs when initial HTML is loaded over a secure HTTPS connection, but other resources (such as images, videos, stylesheets, scripts) are loaded over an insecure HTTP connection. This can create vulnerabilities, as the non-secure resources can be intercepted or manipulated by attackers. CSP can prevent mixed content by blocking requests to non-secure HTTP URLs, thereby ensuring that all resources are loaded securely.
 
-## Example policy implementation
+## Example Policy Implementation
 
 Let's examine a sample CSP implementation. Below you can find the policy that `https://spotify.com` returns as of today. The policy contains two directives. Starting with the first directive `script-src`, we can see it allows the execution of:
-* scripts downloaded from `https://spotify.com` as defined by `'self'`,
-* JavaScript’s `eval()`, `setTimeout()`, `setInterval()`, and `new Function()` as defined by `'unsafe-eval'` (this is a risky game, but let's hope Spotify engineers know what they are doing)
-* binary files as defined by the `blob:` scheme (maybe for streaming music?)
-* scripts download from the listed domains (`open.spotifycdn.com`, `open-review.spotifycdn.com` `quicksilver.scdn.co`, `www.google-analytics.com`, just to point out the first ones)
-* exact script files downloaded from the URLs listed (for example `https://www.googleadservices.com/pagead/conversion_async.js` or `https://www.redditstatic.com/ads/pixel.js`)
-* scripts that the hash digest calculated by SHA-256 is exactly equal to one of the listed sources (for example `'sha256-WfsTi7oVogdF9vq5d14s2birjvCglqWF842fyHhzoNw='`)
+* Scripts downloaded from `https://spotify.com` as defined by `'self'`.
+* JavaScript’s `eval()`, `setTimeout()`, `setInterval()`, and `new Function()` as defined by `'unsafe-eval'` (this is a risky game, but let's hope Spotify engineers know what they are doing).
+* Binary files as defined by the `blob:` scheme (maybe for streaming music?).
+* Scripts downloaded from the listed domains (`open.spotifycdn.com`, `open-review.spotifycdn.com`, `quicksilver.scdn.co`, `www.google-analytics.com`, just to point out the first ones).
+* Exact script files downloaded from the URLs listed (for example, `https://www.googleadservices.com/pagead/conversion_async.js` or `https://www.redditstatic.com/ads/pixel.js`).
+* Scripts where the hash digest calculated by SHA-256 is exactly equal to one of the listed sources (for example, `'sha256-WfsTi7oVogdF9vq5d14s2birjvCglqWF842fyHhzoNw='`).
 
 The second directive `frame-ancestors` with the value `'self'` allows embedding `spotify.com` content only on pages loaded from its own origin (look above at clickjacking).
 
@@ -80,15 +80,15 @@ script-src 'self' 'unsafe-eval' blob: open.spotifycdn.com open-review.spotifycdn
 
 The following directives define valid sources of content (including `self` that represents the current page's origin):
 
-* `script-src` - scripts can be executed,
-* `style-src` - stylesheets or CSS,
-* `img-src` - images,
-* `font-src` - web fonts,
-* `media-src` - audio and video,
-* `object-src` - `<object>`, `<embed>`, and `<applet>` elements,
-* `child-src` - web workers and nested contexts like `<frame>` and `<iframe>`,
-* `connect-src` - `Fetch`, `XHR`, `WebSocket`, and `EventSource` connections,
-* `manifest-src` - application manifests,
+* `script-src` - Scripts that can be executed.
+* `style-src` - Stylesheets or CSS.
+* `img-src` - Images.
+* `font-src` - Web fonts.
+* `media-src` - Audio and video.
+* `object-src` - `<object>`, `<embed>`, and `<applet>` elements.
+* `child-src` - Web workers and nested contexts like `<frame>` and `<iframe>`.
+* `connect-src` - `Fetch`, `XHR`, `WebSocket`, and `EventSource` connections.
+* `manifest-src` - Application manifests.
 * `worker-src` - `Worker`, `SharedWorker`, or `ServiceWorker` scripts.
 
 The directive `default-src` serves as a fallback for the other fetch directives. If none of the fetch directives apply to a particular resource type, the `default-src` directive is used.
@@ -98,30 +98,30 @@ The directive `default-src` serves as a fallback for the other fetch directives.
 The directives listed below control the capabilities of the document:
 
 * `base-uri` defines a set of allowed URLs for the HTML `base` tag (to prevent attackers from altering the base URL to manipulate how relative URLs are resolved)
-* `form-action` defines valid sources (URLs) which can be used as the target of a **form submissions**
+* `form-action` defines valid sources (URLs) which can be used as the target of a form submissions
 * `frame-src` defines valid sources for nested browsing contexts loading using `<frame>` and `<iframe>` (replaced by child-src),
 * `sandbox` applies restrictions to a page’s capabilities (details below),
 * `plugin-types` restricts the set of plugins that can be embedded into the document.
 
 #### The `sandbox` directive
 
-That directive applies a set of restrictions to a page’s capabilities, providing an additional layer of security by limiting what a page can do. **When this directive is used**, it enables a sandboxing mode for the document, which can help mitigate risks from potentially malicious content. The restrictions can include disabling scripts, preventing the document from submitting forms, blocking plugins, and more. The directive can take several tokens to specify the desired restrictions, such as
+This directive applies a set of restrictions to a page’s capabilities, providing an additional layer of security by limiting what a page can do. **When this directive is used**, it enables a sandboxing mode for the document, which can help mitigate risks from potentially malicious content. The restrictions can include disabling scripts, preventing the document from submitting forms, blocking plugins, and more. The directive can take several tokens to specify the desired restrictions, such as:
 
-* `allow-forms`: Allows the document to submit forms,
-* `allow-same-origin`: Allows the document to maintain its origin, which enables it to access data and resources from the same origin,
-* `allow-scripts`: Allows the document to execute scripts,
-* `allow-popups`: Allows the document to open pop-up windows,
-* `allow-modals`: Allows the document to open modal windows,
-* `allow-orientation-lock`: Allows the document to lock the screen orientation,
-* `allow-pointer-lock`: Allows the document to use the [Pointer Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API),
-* `allow-presentation`: Allows the document to start a presentation session,
-* `allow-top-navigation`: Allows the document to navigate the top-level browsing context,
+* `allow-forms`: Allows the document to submit forms.
+* `allow-same-origin`: Allows the document to maintain its origin, enabling it to access data and resources from the same origin.
+* `allow-scripts`: Allows the document to execute scripts.
+* `allow-popups`: Allows the document to open pop-up windows.
+* `allow-modals`: Allows the document to open modal windows.
+* `allow-orientation-lock`: Allows the document to lock the screen orientation.
+* `allow-pointer-lock`: Allows the document to use the [Pointer Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API).
+* `allow-presentation`: Allows the document to start a presentation session.
+* `allow-top-navigation`: Allows the document to navigate the top-level browsing context.
 
 By default, without any tokens, the `sandbox` directive will apply all possible restrictions, effectively isolating the document from most capabilities.
 
 #### The `plugin-type` directive
 
-That directive restricts the set of plugins that can be embedded into the document, enhancing security by controlling which types of content are allowed to be embedded. This directive specifies the MIME types of plugins that the document can load, preventing potentially harmful plugins from being executed. For instance, if a site only requires a specific type of plugin, this directive can be used to block all other types, reducing the attack surface. Example usage: `plugin-types application/pdf`: Only allow the embedding of PDF files.
+This directive restricts the set of plugins that can be embedded into the document, enhancing security by controlling which types of content are allowed to be embedded. This directive specifies the MIME types of plugins that the document can load, preventing potentially harmful plugins from being executed. For instance, if a site only requires a specific type of plugin, this directive can be used to block all other types, reducing the attack surface. Example usage: `plugin-types application/pdf`: Only allow the embedding of PDF files.
 
 ### Navigation Directives
 
@@ -141,9 +141,9 @@ The `report-to` directive, introduced in CSP Level 3, allows for defining multip
 
 ### Other Important Directives
 
-* `script-src-elem` specifies valid sources for JavaScript `<script>` elements,
-* `script-src-attr` specifies valid sources for JavaScript inline event handlers,
-* `style-src-elem` specifies valid sources for `<style>` elements and `<link>` elements,
+* `script-src-elem` specifies valid sources for JavaScript `<script>` elements.
+* `script-src-attr` specifies valid sources for JavaScript inline event handlers.
+* `style-src-elem` specifies valid sources for `<style>` elements and `<link>` elements.
 * `style-src-attr` specifies valid sources for inline styles.
 
 Note that the `script-src` directive specifies valid sources for all JavaScript execution contexts, including external script files, inline scripts, and event handler attributes.
@@ -220,24 +220,24 @@ This configuration tells the browser to load all content from the same origin by
 
 ### Client-Side Implementation (Meta Tag)
 
-In scenarios where server-side configuration is not feasible, the Content-Security-Policy `<meta>` tag can be used to deliver a CSP. This approach is useful for static websites or environments where modifying server headers is not possible. The meta tag is placed within the <head> section of the HTML document:
+In scenarios where server-side configuration is not feasible, the Content-Security-Policy `<meta>` tag can be used to deliver a CSP. This approach is useful for static websites or environments where modifying server headers is not possible. The meta tag is placed within the `<head>` section of the HTML document:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted-cdn.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted-cdn.com">
 ```
 
 While using the meta tag for CSP implementation can be convenient, it has limitations. The list of directives available for meta tags is more restricted compared to server-side headers. Additionally, meta tags are parsed after the initial HTML document is loaded, which can delay the enforcement of the policy and potentially allow some initial resource loads that would otherwise be blocked by a server-side CSP header. Despite these limitations, the meta tag method provides a flexible option for adding CSP to pages where server configuration changes are impractical.
 
 ### Best Practices for Implementing CSP
 
-1. **Start with Report-Only approach:**
-Begin by deploying CSP in report-only mode to identify potential issues without affecting user experience. Monitor and analyze the violation reports to refine the policy.
+1. **Start with a Report-Only Approach:**
+Begin by deploying CSP in report-only mode to identify potential issues without affecting the user experience. Monitor and analyze the violation reports to refine the policy.
 
 2. **Iterative Policy Development:**
 Develop the CSP iteratively. Start with a basic policy and progressively add more directives, testing each step to ensure that legitimate resources are not blocked.
 
 3. **Use Nonces and Hashes:**
-Try to avoid inline scripts and styles by exporting them to separate files hosted on the page's origin. If you must stay with an inline script, use nonce or hash instead of allowing `'unsafe-inline'`. This enhances security by allowing specific inline code while blocking others.
+Try to avoid inline scripts and styles by exporting them to separate files hosted on the page's origin. If you must use an inline script, use a nonce or hash instead of allowing `'unsafe-inline'`. This enhances security by allowing specific inline code while blocking others.
 
 4. **Regular Audits and Updates:**
 Regularly audit the CSP and update it to reflect changes in the web application, such as new resource dependencies or changes in third-party services.
@@ -251,7 +251,7 @@ By following these best practices and carefully implementing CSP using server-si
 
 ### When to Use Content Security Policy
 
-CSP provides the most value for "dynamic" web applications, where data is fetched from API with  DOM manipulation where users interact with the UI. On the other hand, for "static" websites where the content is purely presentational (just HTML + CSS, **without** any JavaScript code) implementing a Content Security Policy can disallow embedding it on the other websites (with `frame-ancestors` directive). If the is no functionality on the page (think: "static" website), there is very little that can be "hacked" there (apart from unsolicited iframe embedding).
+CSP provides the most value for "dynamic" web applications, where data is fetched from APIs with DOM manipulation and where users interact with the UI. On the other hand, for "static" websites where the content is purely presentational (just HTML + CSS, **without** any JavaScript code), implementing a Content Security Policy can disallow embedding it on other websites (with the `frame-ancestors` directive). If there is no functionality on the page (think: "static" website), there is very little that can be "hacked" there (apart from unsolicited iframe embedding).
 
 ### Limitations of a Content Security Policy
 
@@ -262,7 +262,7 @@ Inventorying, aggregating, and understanding what each resource is doing after i
 * **Comprehensive Resource Analysis:**
 Every script, style, image, and other resource must be analyzed to determine its source and role within the application. This includes third-party resources, which may have their own dependencies and security considerations.
 
-* **Dynamic Content Challenges**
+* **Dynamic Content Challenges:**
 Modern web applications frequently load content dynamically through APIs, which can vary based on user interactions and data. Ensuring that all dynamically loaded content adheres to CSP rules adds another layer of complexity.
 
 * **Third-Party Integrations:**
