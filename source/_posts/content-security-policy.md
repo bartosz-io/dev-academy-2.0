@@ -130,7 +130,7 @@ This directive restricts the set of plugins that can be embedded into the docume
 
 ### Reporting Directives
 
-These directives control the reporting of CSP violations:
+As web applications grow more complex, monitoring and addressing security policy violations become crucial. Built-in in CSP reporting mechanisms specify how and where violation reports should be sent. This issue is further detailed in the "Error Messages and Reporting" paragraph. Now, let's list the directives that control the reporting functionalities:
 
 * `report-uri` **\[deprecated\]** specifies the URI to which the user agents send reports about policy violations.
 * `report-to` specifies the reporting group to which the user agent sends reports about policy violations.
@@ -236,9 +236,33 @@ When a policy violation occurs, error messages are displayed in the browser’s 
 
 {% img "errors.png" "CSP errors in console" "lazy" %}
 
-### Report-Only Header and Reporting
+### Reporting Feature
 
-The `Content-Security-Policy-Report-Only` header allows developers to test and fine-tune their CSP without immediately enforcing it. By using the report-only approach, the browser logs any violations of the CSP directives and sends these reports to a specified URI, known as a reporting endpoint. These reports provide valuable insights into which resources or actions would be blocked under the enforced policy, highlighting potential issues and areas for adjustment. This proactive approach enables developers to monitor and understand how their proposed CSP impacts the website’s functionality and security before full enforcement. By analyzing these reports, developers can iteratively refine their CSP to balance security and functionality, ensuring that legitimate content is not inadvertently blocked and that the policy effectively counters malicious activities. Implementing a report-only CSP and leveraging detailed reports is a crucial phase in deploying a robust and functional CSP. It helps identify and mitigate risks, ultimately enhancing the security posture of web applications while maintaining a seamless user experience.
+To gain deeper insights and monitor CSP violations more effectively, CSP reporting features can be utilized. These features specify how and where violation reports should be delivered. When a CSP violation occurs, the browser logs the violation and sends a report to a designated endpoint, providing valuable insights into which resources or actions were blocked. Here is a sample CSP violation report sent to the reporting endpoint:
+
+```json
+{
+  "csp-report": {
+    "document-uri": "https://example.com/index.html",
+    "referrer": "",
+    "violated-directive": "script-src 'self'",
+    "effective-directive": "script-src",
+    "original-policy": "default-src 'self'; script-src 'self'; object-src 'none';",
+    "disposition": "report",
+    "blocked-uri": "http://malicious.com/script.js",
+    "line-number": 23,
+    "source-file": "https://example.com/index.html",
+    "status-code": 200,
+    "script-sample": ""
+  }
+}
+```
+
+### Report-Only Header
+
+The `Content-Security-Policy-Report-Only` header allows developers to test and fine-tune their CSP without **immediately enforcing it**. By using the report-only approach, the browser logs any violations of the CSP directives and sends these reports to the specified endpoint. These reports provide valuable insights into which resources or actions would be blocked under the enforced policy, highlighting potential issues and areas for adjustment, without breaking the working application features.
+
+This proactive approach enables developers to monitor and understand how their proposed CSP impacts the website’s functionality and security before full enforcement. By analyzing these reports, developers can iteratively refine their CSP to balance security and functionality, ensuring that legitimate content is not inadvertently blocked and that the policy effectively counters malicious activities. Implementing a report-only CSP and leveraging detailed reports is a crucial phase in deploying a robust and functional CSP. It helps identify and mitigate risks, ultimately enhancing the security posture of web applications while maintaining a seamless user experience.
 
 ### Best Practices for Implementing CSP
 
