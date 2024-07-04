@@ -31,7 +31,7 @@ To enhance security and address these modern threats, Content Security Policy (C
 
 ### Mitigating Cross-Site Scripting and Injection Attacks
 
-CSP allows developers to reduce or eliminate the ability to trigger malicious scripts by specifying which sources of executable scripts (including inline scripts) should be considered legitimate by the browser. Inline scripts can be restricted through CSP to prevent script injections, using 'hashes' and 'nonce' to allow specific inline scripts to run while maintaining security.
+CSP allows developers to reduce or eliminate the ability to trigger malicious scripts by specifying which sources of executable scripts (including inline scripts) should be considered legitimate by the browser. Inline scripts can be restricted through CSP to prevent script injections, using hashes and nonces to allow specific inline scripts to run while maintaining security.
 
 In a "_dynamic_" web application that consumes **API data** and/or **accepts user input**, one or more scenarios usually happen:
 
@@ -44,14 +44,14 @@ When the website is exploited with XSS, a malicious script can manipulate each o
 
 #### Formjacking and Skimming Attacks
 
-One special case of XSS attacks is well-known in the e-commerce industry. When the payment page containing form inputs for the user's credit card data is exploited with XSS, that data can be sent to the place pointed by a malicious script, effectively stealing it.
+One special case of XSS attacks is well known in the e-commerce industry. When the payment page containing form inputs for the user's credit card data is exploited with XSS, that data can be sent to the place pointed by a malicious script, effectively stealing it.
 
 ### Preventing Clickjacking Attacks
 
 Another attack vector that CSP implementation can mitigate is when the attacked website's content is embedded in an invisible iframe on the malicious website. Here is how it works:
 1. A user visits an (evil) website that has an encouraging click button (like "*You won $100*").
 2. That (evil) website has attacked the website embedded in an invisible `<iframe/>`.
-3. The unaware user clicks the button on the attacked website.
+3. The unsuspecting user clicks the button on the attacked website.
 4. The action is executed on behalf of that (potentially logged-in) user.
 
 The embedded website may be *positioned absolutely* so that when the user clicks on the proper place on that evil website, the real click happens on *the embedded one* (not the visible one), potentially executing some sensitive operation. It may be anything, from liking a post, sending a message, or even sending money in **a one-click checkout.**
@@ -85,7 +85,7 @@ The second directive `frame-ancestors` with the value `'self'` allows embedding 
 
 ### Fetch Directives
 
-The following directives define valid sources of content (including `self` that represents the current page's origin):
+The following directives define valid sources of content (including `'self'` that represents the current page's origin):
 
 * `script-src` - Scripts that can be executed.
 * `style-src` - Stylesheets or CSS.
@@ -124,11 +124,11 @@ This directive applies a set of restrictions to a page’s capabilities, providi
 * `allow-presentation`: Allows the document to start a presentation session.
 * `allow-top-navigation`: Allows the document to navigate the top-level browsing context.
 
-By default, without any tokens, the `sandbox` directive will apply all possible restrictions, effectively isolating the document from most capabilities.
+By default, without any tokens, the `sandbox` directive applies all possible restrictions, effectively isolating the document from most capabilities.
 
 #### The `plugin-type` directive
 
-This directive restricts the set of plugins that can be embedded into the document, enhancing security by controlling which types of content are allowed to be embedded. This directive specifies the MIME types of plugins that the document can load, preventing potentially harmful plugins from being executed. For instance, if a site only requires a specific type of plugin, this directive can be used to block all other types, reducing the attack surface. Example usage: `plugin-types application/pdf`: Only allow the embedding of PDF files.
+This directive restricts the set of plugins that can be embedded into the document, enhancing security by controlling which types of content are allowed to be embedded. This directive specifies the MIME types of plugins that the document can load, preventing the execution of potentially harmful plugins. For instance, if a site only requires a specific type of plugin, this directive can be used to block all other types, reducing the attack surface. Example usage: `plugin-types application/pdf`: Only allow the embedding of PDF files.
 
 ### Navigation Directives
 
@@ -267,7 +267,7 @@ To gain deeper insights and monitor CSP violations more effectively, CSP reporti
 
 ### Report-Only Header
 
-The `Content-Security-Policy-Report-Only` header allows developers to test and fine-tune their CSP without **immediately enforcing it**. By using the report-only approach, the browser logs any violations of the CSP directives and sends these reports to the specified endpoint. These reports provide valuable insights into which resources or actions would be blocked under the enforced policy, highlighting potential issues and areas for adjustment, without breaking the working application features.
+The `Content-Security-Policy-Report-Only` header allows developers to test and fine-tune their CSP without **immediately enforcing it**. By using the report-only approach, the browser logs any violations of the CSP directives and sends these reports to the specified endpoint. These reports provide valuable insights into which resources or actions would be blocked under the enforced policy, highlighting potential issues and areas for adjustment without breaking the working application features.
 
 This proactive approach enables developers to monitor and understand how their proposed CSP impacts the website’s functionality and security before full enforcement. By analyzing these reports, developers can iteratively refine their CSP to balance security and functionality, ensuring that legitimate content is not inadvertently blocked and that the policy effectively counters malicious activities. Implementing a report-only CSP and leveraging detailed reports is a crucial phase in deploying a robust and functional CSP. It helps identify and mitigate risks, ultimately enhancing the security posture of web applications while maintaining a seamless user experience.
 
