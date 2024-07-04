@@ -64,7 +64,7 @@ CSP can specify the allowed protocols, such as `HTTPS`, to ensure that browsers 
 
 ## Example Policy Implementation
 
-Let's examine a sample CSP implementation. Below you can find the policy that `https://spotify.com` returns as of today. The policy contains two directives.
+Let's examine a sample CSP implementation, that `https://spotify.com` returns as of today. The policy contains two directives.
 
 ```csp
 script-src 'self' 'unsafe-eval' blob: open.spotifycdn.com open-review.spotifycdn.com quicksilver.scdn.co www.google-analytics.com www.googletagmanager.com static.ads-twitter.com analytics.twitter.com s.pinimg.com sc-static.net https://www.google.com/recaptcha/ cdn.ravenjs.com connect.facebook.net www.gstatic.com sb.scorecardresearch.com pixel-static.spotify.com cdn.cookielaw.org geolocation.onetrust.com www.googleoptimize.com www.fastly-insights.com static.hotjar.com script.hotjar.com https://www.googleadservices.com/pagead/conversion_async.js https://www.googleadservices.com/pagead/conversion/ https://analytics.tiktok.com/i18n/pixel/sdk.js https://analytics.tiktok.com/i18n/pixel/identify.js https://analytics.tiktok.com/i18n/pixel/config.js https://www.redditstatic.com/ads/pixel.js https://t.contentsquare.net/uxa/22f14577e19f3.js 'sha256-WfsTi7oVogdF9vq5d14s2birjvCglqWF842fyHhzoNw=' 'sha256-KRzjHxCdT8icNaDOqPBdY0AlKiIh5F8r4bnbe1PQwss=' 'sha256-Z5wh7XXSBR1+mTxLSPFhywCZJt77+uP1GikAgPIsu2s='; frame-ancestors 'self';
@@ -161,7 +161,7 @@ Content Security Policy allows developers to specify various source types to con
 
 * **Domains:**
 Example: `script-src https://trusted.cdn.com`
-Domains specify trusted external sources from which resources can be loaded. By listing specific domains, you ensure that only content from these sources is allowed.
+Domains specify trusted external sources from which resources can be loaded - listing specific domains ensures that only content from these sources is allowed.
 
 * **Subdomains:**
 Example: `img-src *.example.com`
@@ -211,7 +211,7 @@ Hashes-based CSP uses hashes (for example SHA-256) to allow specific scripts to 
 
 Finally `'strict-dynamic'` CSP directive tells the browser to trust child scripts created by trusted scripts with the correct hash or nonce.
 
-That approach may not be possible for web applications without the possibility to synchronize HTTP header values with HTML templates containing script tags with nonces and hashes. Also, when you rely on Content Delivery Networks (CDNs), this approach is impractical, because CDNs typically cache static content to enhance performance. If the main script requires a unique nonce for each request, this dynamic nature conflicts with the static caching mechanism of CDNs.
+That approach may not be possible for web applications without the possibility to synchronize HTTP header values with HTML templates containing script tags with nonces and hashes. Also, in (a very common!) case of using Content Delivery Networks (CDNs), this approach is impractical, because CDNs typically cache static content to enhance performance. If the main script requires a unique nonce for each request, this dynamic nature conflicts with the static caching mechanism of CDNs.
 
 ## Implementing Content Security Policy
 
@@ -280,7 +280,7 @@ Begin by deploying CSP in report-only mode to identify potential issues without 
 Develop the CSP iteratively. Start with a basic policy and progressively add more directives, testing each step to ensure that legitimate resources are not blocked.
 
 3. **Use Nonces and Hashes:**
-Try to avoid inline scripts and styles by exporting them to separate files hosted on the page's origin. If you must use an inline script, use a nonce or hash instead of allowing `'unsafe-inline'`. This enhances security by allowing specific inline code while blocking others.
+Try to avoid inline scripts and styles by exporting them to separate files hosted on the page's origin. If an inline script is an absolute must, use a nonce or hash instead of allowing `'unsafe-inline'`. This enhances security by allowing specific inline code while blocking others.
 
 4. **Regular Audits and Updates:**
 Regularly audit the CSP and update it to reflect changes in the web application, such as new resource dependencies or changes in third-party services.
