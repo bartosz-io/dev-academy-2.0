@@ -137,7 +137,7 @@ This directive restricts the set of plugins that can be embedded into the docume
 
 ### Reporting Directives
 
-As web applications grow more complex, monitoring and addressing security policy violations become crucial. Built-in in CSP reporting mechanisms specify how and where violation reports should be sent. This issue is further detailed in the "Error Messages and Reporting" paragraph. Now, let's list the directives that control the reporting functionalities:
+As web applications grow more complex, monitoring and addressing security policy violations become crucial. Built-in in CSP reporting mechanisms specify how and where violation reports should be sent. This issue is further detailed in the [Error Messages and Reporting](#error-messages-and-reporting) paragraph. Now, let's list the directives that control the reporting functionalities:
 
 * `report-uri` **\[deprecated\]** specifies the URI to which the user agents send reports about policy violations.
 * `report-to` specifies the reporting group to which the user agent sends reports about policy violations.
