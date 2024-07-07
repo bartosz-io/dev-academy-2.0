@@ -126,11 +126,11 @@ figure.csp pre {
 
 code {
   overflow-wrap: break-word;
-  padding: .1rem .3rem;
-  font-size: inherit;
-  background: $light-200;
-  border-radius: .2rem;
-  color: $dark-500;
+  padding: 0.2em;
+  font-size: 0.875em;
+  background: $code-highlight;
+  border-radius: .5rem;
+  color: $secondary;
 }
 
 blockquote {
