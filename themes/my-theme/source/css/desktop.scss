@@ -668,7 +668,7 @@
   }
 
   .main-banner {
-    height: 5rem;
+    height: $main-banner-height-desktop;
     flex-direction: row;
   }
 
@@ -738,10 +738,10 @@
   }
 
   .b-bar-top {
-    padding-top: calc(#{$header-height-desktop} + #{$main-bar-height-desktop});
+    padding-top: calc(#{$header-height-desktop} + #{$main-banner-height-desktop});
 
     .header {
-      top: $main-bar-height-desktop;
+      top: $main-banner-height-desktop;
     }
 
     .article-share {
@@ -753,17 +753,17 @@
     }
 
     .article-toc {
-      top: calc(12rem + #{$main-bar-height-desktop});
-      height: calc(100vh - #{$sidebar-offset} - #{$main-bar-height-desktop});
+      top: calc(12rem + #{$main-banner-height-desktop});
+      height: calc(100vh - #{$sidebar-offset} - #{$main-banner-height-desktop});
     }
 
     .article-sidebar {
-      top: calc(12rem + #{$main-bar-height-desktop});
+      top: calc(12rem + #{$main-banner-height-desktop});
     }
   }
 
   .b-bar-bottom {
-    padding-bottom: $main-bar-height-desktop;
+    padding-bottom: $main-banner-height-desktop;
 
     .article-content {
       @include tocScrollMarginTop(2.5rem);
