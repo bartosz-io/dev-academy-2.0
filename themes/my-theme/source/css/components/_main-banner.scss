@@ -62,7 +62,7 @@
 }
 
 .b-bar-top {
-  padding-top: 17rem;
+  padding-top: calc(#{$header-height-mobile} + #{$main-banner-height-mobile});
 
   .header {
     top: $main-banner-height-mobile;
