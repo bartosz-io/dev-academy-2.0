@@ -180,7 +180,7 @@ Example: `img-src data:`
 Data URIs permit embedding small files directly in HTML or CSS. This is useful for including inline images or fonts but should be used cautiously due to potential security risks.
 
 * **Special Keywords:**
-  * **'none':** Blocks all resources of the specified type. For example,`script-src 'none'` ensures that no scripts are executed, providing maximum security.
+  * **'none':** Blocks all resources of the specified type. For example, `script-src 'none'` ensures that no scripts are executed, providing maximum security.
   * **'self':** Allows resources to be loaded only from the same origin. For instance, `img-src 'self'` ensures images are loaded only from the same origin.
   * **'unsafe-inline':** Permits the execution of inline resources, such as scripts and styles. This reduces security by making the site vulnerable to XSS attacks and should be avoided.
   * **'unsafe-eval':** Allows the use of JavaScript’s `eval()` function and similar methods. This poses a high-security risk and should only be used when absolutely necessary.
