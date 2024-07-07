@@ -1,9 +1,9 @@
-<script async data-uid="5797b33c41" src="https://dev-academy.ck.page/5797b33c41/index.js"></script>
+<!-- <script async data-uid="5797b33c41" src="https://dev-academy.ck.page/5797b33c41/index.js"></script> -->
 
 <aside class="article-sidebar">
     <div class="article-sidebar-content">
         <a href="/web-security">
-            <img class="article-sidebar-img" src="/img/students_4.png" loading="lazy">
+            <img class="article-sidebar-img" src="/img/scanner.gif" loading="lazy">
         </a>
         
         <!-- <% if (post.bannerHeader) {%>
@@ -11,16 +11,80 @@
         <% } else { %>
             <h4 class="article-sidebar-header">FREE Web Application</br>Security Checklist ✅</h4>
         <% } %> -->
-        <h4 class="article-sidebar-header">Join the club of Dev Academy students 🥷</h4>
-
-        <!-- <a data-ph="article-sidebar__download-pdf" data-formkit-toggle="5797b33c41" href="https://dev-academy.ck.page/5797b33c41" class="formkit-submit formkit-submit button button-primary button-block">
-            FREE Checklist
-        </a> -->
-        <a data-ph="article-sidebar__save-your-spot" href="/web-security" class="formkit-submit formkit-submit button button-primary button-block animation-ripples">
-            JOIN ACADEMY 🚀
+        <h4 class="article-sidebar-header">HTTP Security Scanner</h4>
+        <h5 class="article-sidebar-subheader" style="min-height: 52px; font-size: 2rem; color: #f200a2;" id="animated-text"></h5>
+        <div class="policy-chips" style="background-color: #f9f9f9; padding: 10px; border-radius: 5px; font-size: 14px; text-align: left;">
+            <span style="display: inline-block; background-color: #e0e0e0; padding: 5px 10px; margin: 5px; border-radius: 15px;">❌ Strict-Transport-Security</span>
+            <span style="display: inline-block; background-color: #e0e0e0; padding: 5px 10px; margin: 5px; border-radius: 15px;">❌ Content-Security-Policy</span>
+            <span style="display: inline-block; background-color: #e0e0e0; padding: 5px 10px; margin: 5px; border-radius: 15px;">✅ Referrer-Policy</span>
+            <span style="display: inline-block; background-color: #e0e0e0; padding: 5px 10px; margin: 5px; border-radius: 15px;">❌ Permissions-Policy</span>
+            <span style="display: inline-block; background-color: #e0e0e0; padding: 5px 10px; margin: 5px; border-radius: 15px;">❌ X-Frame-Options</span>
+            <span style="display: inline-block; background-color: #e0e0e0; padding: 5px 10px; margin: 5px; border-radius: 15px;">✅ X-Content-Type-Options</span>
+        
+            <form class="scanner-form" action="/">
+                <input class="scanner-input" type="text" placeholder="Scan a website (e.g. dev.to)" class="article-sidebar-input">
+            </form>          
+        </div>
+        <a data-ph="article-sidebar__save-your-spot" href="https://httpscanner.com" class="formkit-submit formkit-submit button button-primary button-block animation-ripples">
+            Scan for FREE
         </a>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const text1 = "Discover our brand new security scanner ⚙️";
+                const text2 = "Find securitys errors and vulnerabilities:";
+                const element = document.getElementById("animated-text");
+                let index = 0;
 
-        <!-- <h5 class="article-sidebar-subheader">"This checklist is brilliant. It helped us to <span>pass the security pentest.</span>" </br>- Alex, Web developer</h5> -->
-        <h5 class="article-sidebar-subheader">"100% recommended <span>for ALL Web Developers.</span>" - Jordon, 5-star review ⭐️⭐️⭐️⭐️⭐️</h5>
+                function typeLetter(text, callback) {
+                    if (index < text.length) {
+                        element.innerHTML += text.charAt(index);
+                        index++;
+                        setTimeout(() => typeLetter(text, callback), 50);
+                    } else if (callback) {
+                        setTimeout(callback, 3000);
+                    }
+                }
+
+                function isElementInViewport(el) {
+                    const rect = el.getBoundingClientRect();
+                    return (
+                        rect.top >= 0 &&
+                        rect.left >= 0 &&
+                        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                    );
+                }
+
+                function checkVisibility() {
+                    if (isElementInViewport(element)) {
+                        typeLetter(text1, () => {
+                            index = 0;
+                            element.innerHTML = "";
+                            typeLetter(text2);
+                        });
+                        window.removeEventListener('scroll', checkVisibility);
+                    }
+                }
+
+                window.addEventListener('scroll', checkVisibility);
+                checkVisibility();
+            });
+        </script>
     </div>
 </aside>
+
+<style>
+    .scanner-form {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .scanner-input {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 100%;
+        border: 1px solid #e0e0e0;
+    }
+</style>
