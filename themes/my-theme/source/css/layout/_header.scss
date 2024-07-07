@@ -19,8 +19,8 @@
   display: inline-flex;
 
   img {
-    width: 5.6rem;
-    height: 5.6rem;
+    width: 5rem;
+    height: 5rem;
   }
 
   span {
@@ -159,7 +159,8 @@
 }
 
 .header-bar-start {
+  padding: 1rem 2rem;
   position: absolute;
   right: 5.5rem;
-  top: 1.3rem;
+  top: 1.5rem;
 }
