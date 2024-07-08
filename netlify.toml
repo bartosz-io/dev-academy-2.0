@@ -9,3 +9,9 @@
   to = "/contributor/:splat"
   status = 301
   force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Reporting-Endpoints = "csp-endpoint=\"https://26d299f4-d7db-4460-b42a-3b1607c843be.sansec.watch/\""
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; report-to csp-endpoint"
