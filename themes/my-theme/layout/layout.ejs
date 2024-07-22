@@ -10,7 +10,6 @@
     <%- partial('partial/head/og') %>
     <% if (is_tag() || page.thankYouPage) { %> <meta name="robots" content="noindex"> <% } %>
 
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="58263a88-73f6-4dd8-a177-4e4fedc12b1b" data-blockingmode="auto" type="text/javascript"></script>
 </head>
 <%
   var bodyClasses = '';
@@ -44,14 +43,14 @@
     <%- partial('partial/footer', {}, {caches: true}) %>
     <%- partial('partial/ck-form', {}, {caches: true}) %>
 
-    <script src="<%- url_for('/js/main.js') %>" data-cookieconsent="ignore" defer></script>
+    <script src="<%- url_for('/js/main.js') %>" defer></script>
 <% } %>
 
 <% if (config.posthog)  {%>
-    <script src="<%- url_for('/js/posthog/posthog.js') %>" data-cookieconsent="ignore" defer></script>
-    <script src="<%- url_for('/js/posthog/testing/dumb-test.js') %>" data-cookieconsent="ignore" defer></script>
-    <script src="<%- url_for('/js/posthog/testing/main-banner-test.js') %>" data-cookieconsent="ignore" defer></script>
-    <!-- <script src="<%- url_for('/js/posthog/testing/sidebar-test.js') %>" data-cookieconsent="ignore" defer></script> -->
+    <script src="<%- url_for('/js/posthog/posthog.js') %>" defer></script>
+    <script src="<%- url_for('/js/posthog/testing/dumb-test.js') %>" defer></script>
+    <script src="<%- url_for('/js/posthog/testing/main-banner-test.js') %>" defer></script>
+    <!-- <script src="<%- url_for('/js/posthog/testing/sidebar-test.js') %>" defer></script> -->
 <% } %>
 </body>
 </html>
