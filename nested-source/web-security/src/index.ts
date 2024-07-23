@@ -1,6 +1,5 @@
 interface Window { posthog: any };
 
-var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 var IS_SCHEDULE = true;
 var collapsePanelLoaded = false;
 var inited = false;
@@ -20,7 +19,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     moreTestimonials();
     loadConvertKit(onCkReady);
-    loadTawk();
     // collapsePanel();
     // startTimer();
 
@@ -135,14 +133,6 @@ function loadConvertKit(onloadCallback: Function) {
         trigger.setAttribute('data-formkit-toggle', ck);
         trigger.setAttribute('href', `https://dev-academy.ck.page/${ck}`);
     });
-}
-
-function loadTawk() {
-    const script = document.createElement('script');
-    script.defer = true;
-    script.src = 'https://embed.tawk.to/58f1276d30ab263079b5fdf3/default';
-    script.setAttribute('crossorigin','*');
-    document.body.appendChild(script);
 }
 
 function loadSchedule() {
