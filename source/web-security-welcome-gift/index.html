@@ -104,6 +104,15 @@ sitemap: false
       padding: 0.1em 0.3em;
     }
   }
+
+  @keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 56px 0; }
+  }
+
+  #progress-bar-bg {
+    animation: moveBackground 4s linear infinite;
+  }
 </style>
 
 <div class="top">YOU ARE CONFIRMED! 👏</div>
@@ -111,6 +120,10 @@ sitemap: false
   <div class="subheader">Get your... <span class="gift">Exclusive Welcome GIFT* 🎁</span></div>
   <a id="link" href="https://courses.dev-academy.com/p/security-starter-kit/">
     <button class="button">Take the Welcome Gift! 🎉</button>
+    <div id="progress-bar-container" style="max-width: 400px; height: 20px; background-color: #f3f3f3; border-radius: 10px; margin: 10px auto 40px; position: relative; overflow: hidden;">
+      <div id="progress-bar-bg" style="width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #f3f3f3, #f3f3f3 10px, #e0e0e0 10px, #e0e0e0 20px); position: absolute; top: 0; left: 0;"></div>
+      <div id="progress-bar" style="width: 0%; height: 100%; background-color: #e74c3c; position: absolute; top: 0; left: 0; transition: width 1s linear;"></div>
+    </div>
     <div id="countdown-timer">
       <div>
         <span id="hours" class="number">00</span>
@@ -133,6 +146,12 @@ sitemap: false
 </div>
 
 <script>
+  function updateProgressBar(distance, totalTime) {
+    const progressBar = document.getElementById('progress-bar');
+    const percentage = 50 + ((totalTime - distance) / totalTime * 50);
+    progressBar.style.width = percentage + '%';
+  }
+
   function startCountdown(hours, minutes) {
     var savedCountDownDate = localStorage.getItem('countDownDate');
     var countDownDate;
@@ -163,10 +182,15 @@ sitemap: false
       document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
       document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
 
+      // Update progress bar
+      const totalTime = hours * 60 * 60 * 1000 + minutes * 60 * 1000;
+      updateProgressBar(distance, totalTime);
+
       // If the count down is over, write some text 
       if (distance < 0) {
         clearInterval(x);
         document.getElementById("countdown-timer").innerHTML = "The discount expired... but you can still get the course!";
+        document.getElementById("progress-bar").style.width = '100%';
       }
     }, 1000);
 
