@@ -1,6 +1,10 @@
 @import 'variables';
 
 @media (min-width: 768px) {
+  .hide-on-mobile {
+    display: block;
+  }
+
   .cookie-consent {
     left: auto;
     right: 2rem;
@@ -274,7 +278,7 @@
     display: flex;
 
     h1 {
-      font-size: 8rem;
+      font-size: 6rem;
       line-height: 7.2rem;
     }
 

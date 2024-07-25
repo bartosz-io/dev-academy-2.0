@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (isMobile()) {
         faq();
     } else {
-        fixedNavigation();
+        // fixedNavigation();
     }
 
     moreTestimonials();
