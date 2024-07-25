@@ -1,5 +1,11 @@
 @import 'variables';
 
+@media (min-width: 500px) {
+  .icon-box-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 768px) {
   .cookie-consent {
     left: auto;
