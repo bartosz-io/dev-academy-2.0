@@ -108,7 +108,7 @@ function isStringSane(str) {
 }
 
 function getCkForm(): string {
-    const defaultCk = '4dd9d3445a';
+    const defaultCk = '7f5a767b28';
     const params = new URLSearchParams(location.search);
     const ck = params.get('ck');
     if (isStringSane(ck)) {
