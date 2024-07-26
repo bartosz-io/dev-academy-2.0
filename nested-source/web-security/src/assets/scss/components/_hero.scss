@@ -77,3 +77,16 @@ p.hero-description {
   font-size: 1.5rem;
   color: #ff8c00;
 }
+
+.hero-video {
+  max-width: 600px;
+  margin: 20px auto -80px;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero-video {
+    margin: 40px auto -20px;
+  }
+} 
