@@ -28,6 +28,13 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function onCkReady() {
+    // restore fbc
+    const currentUrl = window.location.href;
+    const urlParams = new URLSearchParams(new URL(currentUrl).search);
+    const fbclid = urlParams.get('fbclid');
+    const fbcInput = document.querySelector('input[name="fields[fbclid]"]') ?? {};
+    fbcInput['value'] = fbclid;
+
     // restore id
     const phInput = document.querySelector('input[name="fields[ph_id]"]') ?? {};
     phInput['value'] = window.posthog?.get_distinct_id();
@@ -45,6 +52,7 @@ function onCkReady() {
                   $set: { 
                     first_name: phName['value'],
                     email: phEmail['value'],
+                    fbclid: fbclid,
                 },
                 }
               );
