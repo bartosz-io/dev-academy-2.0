@@ -145,7 +145,7 @@ print("The password for the database:", db_password)
 AWS Secrets Manager enables the automatic rotation of secrets, which increases the security of stored data. We can configure automatic rotation so that Secrets Manager regularly changes the password in the database and updates it in the system. However, remember that secret rotation itself is only part of the process. You should also make sure that the application or system that uses the secret can dynamically update credentials. This can be achieved, for example, by configuring a Lambda function that not only handles the rotation process in Secrets Manager but also updates the password in the database and notifies applications to reload the secret.
 
 To configure automatic rotation, select the secret in the Secrets Manager console, and then click “Enable automatic rotation”. Select the rotation interval (e.g. every 30 days) and configure the appropriate Lambda function that will handle the rotation process and update the credentials in the system. You can set this change both when creating a new secret for storage and after it has been created.
-{% image 800px "4.png" %}
+{% image 500px "4.png" %}
 
 ## Monitoring and auditing access to secrets
 AWS CloudTrail allows you to track who accessed secrets in AWS Secrets Manager and when. Every access to a secret (e.g., through a Lambda function) is recorded in CloudTrail logs, enabling you to monitor unauthorized access attempts or conduct post-incident security analysis.
