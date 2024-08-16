@@ -107,7 +107,7 @@ To control access to a secret from a Lambda function, we first need to assign th
   }
 ```
 #### **Sample Python code to get the secret**
-```
+``` python
 import boto3
 import json
 from botocore.exceptions import ClientError
