@@ -30,7 +30,7 @@ From a security perspective, **Lambda Resource Policy** plays a key role, in con
 
 ### **Example**
 Adding a resource policy that allows Lambda functions to be called via S3.
-```
+``` bash
 aws lambda add-permission \
   --function-name MySecureFunction \
   --principal s3.amazonaws.com \
@@ -45,7 +45,7 @@ The **Execution Role** is another important security element, controlling a func
 
 ### **Example**
 Creating an Execution Role that allows you to log in to CloudWatch and access S3.
-```
+``` json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -94,7 +94,7 @@ Suppose we want to store the database password in AWS Secrets Manager.
 {% image 800px "3.png" %}
 ### **2. Accessing a Secret from AWS Lambda**
 To control access to a secret from a Lambda function, we first need to assign the function code appropriate IAM role that will allow access to that secret.
-```
+``` json
 {
     "Version": "2012-10-17",
     "Statement": [
