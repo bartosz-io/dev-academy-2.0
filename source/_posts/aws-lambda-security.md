@@ -5,7 +5,7 @@ avatar: xxxx
 description: An overview of AWS Lambda from a security perspective - what best practices should be applied to protect sensitive data, along with some examples.
 date: 2024-08-15
 tags: [aws, lambda, security]
-id: aws=lambda-security
+id: aws-lambda-security
 ---
 
 # How to Secure AWS Lambda?
