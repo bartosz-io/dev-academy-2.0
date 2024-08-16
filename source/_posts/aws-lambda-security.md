@@ -1,3 +1,13 @@
+---
+title: How to Secure AWS Lambda?
+contributor: Julia Chotkiewicz
+avatar: xxxx
+description: An overview of AWS Lambda from a security perspective - what best practices should be applied to protect sensitive data, along with some examples.
+date: 2024-08-15
+tags: [aws, lambda, security]
+id: aws=lambda-security
+---
+
 # How to Secure AWS Lambda?
 
 AWS Lambda allows you to run code without having to manage server infrastructure. It’s a serverless service, meaning users don’t have to worry about configuring, scaling, or maintaining servers — Lambda automatically manages those aspects within the AWS environment. Before I show you how to secure a lambda during development, I’ll start with a quick introduction, based on [AWS documentation](https://docs.aws.amazon.com/pdfs/whitepapers/latest/security-overview-aws-lambda/security-overview-aws-lambda.pdf#lambda-functions-and-layers), to help you better understand the lambda service itself.
