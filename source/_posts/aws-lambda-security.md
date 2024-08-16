@@ -10,7 +10,8 @@ id: aws-lambda-security
 
 # How to Secure AWS Lambda?
 AWS Lambda allows you to run code without having to manage server infrastructure. It’s a serverless service, meaning users don’t have to worry about configuring, scaling, or maintaining servers — Lambda automatically manages those aspects within the AWS environment. Before I show you how to secure a lambda during development, I’ll start with a quick introduction, based on [AWS documentation](https://docs.aws.amazon.com/pdfs/whitepapers/latest/security-overview-aws-lambda/security-overview-aws-lambda.pdf#lambda-functions-and-layers), to help you better understand the lambda service itself.
-![Isolation model for AWS Lambda Workers](https://lh7-rt.googleusercontent.com/docsz/AD_4nXexiuKkV8O2wTTLo76M-IjqDDTPeJLk-q9CZH6a7K71_GVk8_6um_SEdMv4qtys9I-0Fi55UvTyFFRX3AzwXTDuy_L4zOyTy2lxx5VKOtKeB1eU-h8r33Mwcde1OY6xgILtQoyRvjq2tMHDZ0D4qdD7RPnx?key=rVKrseBMJ4NB4mIqiDOmrw)
+{% image 800px "1.png" "Isolation model for AWS Lambda Workers" %}
+
 Each function runs in a dedicated environment isolated by a micro-virtual machine (MicroVM), ensuring that code from one function cannot impact other functions. Isolation is handled by [Firecracker](https://aws.amazon.com/blogs/opensource/firecracker-open-source-secure-fast-microvm-serverless/), an open-source virtual machine monitor designed specifically for serverless services and containers. Firecracker creates and manages micro-virtual machines that are isolated not only by hardware, but also by other technologies such as cgroups, namespaces, seccomp-bpf, iptables, routing tables, and chroot, providing a strong and comprehensive security boundary. Additional layers of security include an internal sandbox and a jailer system, which give more protection. The internal sandbox is used to restrict access to certain parts of the system kernel, making certain types of attacks more difficult and increasing the system’s resilience to threats. The jailer system further restricts the ability of Firecracker processes to execute code, even if other isolation layers are breached.
 
 **Good to know:**
@@ -88,10 +89,9 @@ Suppose we want to store the database password in AWS Secrets Manager.
 **Step 2**: Click "Store a new secret", select the secret type (e.g. **Other type of secret**), and then enter the key-value pair for the secret:
 * **Key**: db_password
 * **Value**: MySecurePassword123
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXe2W2cB04EWzJ9bAr3eWd5jHog9V3xNAEVbPGAx2hx0Sg49jIf1giwXns5j2e23tFZlwWryHLXbQgArfSJFKgnki__VhAsVgTt4vkra03PMdZhUdorAAA27JKgrW4k8bqftkBPGOl_sUwRG7GA2HpycDWah?key=rVKrseBMJ4NB4mIqiDOmrw)
+{% image 800px "2.png" %}
 **Step 3**: Choose a name for your secret, e.g. MyDatabaseSecret, then complete the process by clicking "Store".
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXehxPDm012rFUHChY28QwtI7e6oXef4Ggt70wH9DisiVpvx0i9efKB9ILxGoQrnATYsN_7wvQeoM1taf83h367gZwlY5ov21XST4w-EzW1p_qT0qL-DNllQwhVwQUClkfB4i4ju0K2hxs2qSnDKl4xWLT5b?key=rVKrseBMJ4NB4mIqiDOmrw)
-
+{% image 800px "3.png" %}
 ### **2. Accessing a Secret from AWS Lambda**
 To control access to a secret from a Lambda function, we first need to assign the function code appropriate IAM role that will allow access to that secret.
 ```
@@ -145,11 +145,11 @@ print("The password for the database:", db_password)
 AWS Secrets Manager enables the automatic rotation of secrets, which increases the security of stored data. We can configure automatic rotation so that Secrets Manager regularly changes the password in the database and updates it in the system. However, remember that secret rotation itself is only part of the process. You should also make sure that the application or system that uses the secret can dynamically update credentials. This can be achieved, for example, by configuring a Lambda function that not only handles the rotation process in Secrets Manager but also updates the password in the database and notifies applications to reload the secret.
 
 To configure automatic rotation, select the secret in the Secrets Manager console, and then click “Enable automatic rotation”. Select the rotation interval (e.g. every 30 days) and configure the appropriate Lambda function that will handle the rotation process and update the credentials in the system. You can set this change both when creating a new secret for storage and after it has been created.
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcEkC52NUGWAo9NQf0gOM_9kWZcbM7IuKy18redNR3nQZx1vNoVusEsBnhKwdeYZEjRCuSDwJ1ng3Jgs84SpGZEBm5Pr5xJ19RI88h4w4ah8H0Y7eRVefg86zMZLTUZQjfsffKz7x3iUL8qvK-Nrz8qzh7I?key=rVKrseBMJ4NB4mIqiDOmrw)
+{% image 800px "4.png" %}
 
 ## Monitoring and auditing access to secrets
 AWS CloudTrail allows you to track who accessed secrets in AWS Secrets Manager and when. Every access to a secret (e.g., through a Lambda function) is recorded in CloudTrail logs, enabling you to monitor unauthorized access attempts or conduct post-incident security analysis.
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfrDjCLtoC2NG_U1C6vOlLkLAcZBnpurLVQZ3VjsKmynXrhOXERhKZwOK7J6ub0IO3EtpUFvz_ymvy2rANULaDvb6ubphobAYqIMT-ykWEOJ-eKbX0C1kaJTJmsSsJSPZf8Gr1Q7hPMpl4YiGlM5Zlnn40?key=rVKrseBMJ4NB4mIqiDOmrw)
+{% image 800px "5.png" %}
 
 ## Lambda Best Practices 
  1. **Principle of Least Privilege -** ensure that your Lambda functions have only the permissions that are necessary for their operation. Avoid granting broad permissions, such as \* in IAM policies.
