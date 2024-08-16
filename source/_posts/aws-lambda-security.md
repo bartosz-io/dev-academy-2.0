@@ -10,9 +10,7 @@ id: aws-lambda-security
 
 # How to Secure AWS Lambda?
 AWS Lambda allows you to run code without having to manage server infrastructure. It’s a serverless service, meaning users don’t have to worry about configuring, scaling, or maintaining servers — Lambda automatically manages those aspects within the AWS environment. Before I show you how to secure a lambda during development, I’ll start with a quick introduction, based on [AWS documentation](https://docs.aws.amazon.com/pdfs/whitepapers/latest/security-overview-aws-lambda/security-overview-aws-lambda.pdf#lambda-functions-and-layers), to help you better understand the lambda service itself.
-
 ![Isolation model for AWS Lambda Workers](https://lh7-rt.googleusercontent.com/docsz/AD_4nXexiuKkV8O2wTTLo76M-IjqDDTPeJLk-q9CZH6a7K71_GVk8_6um_SEdMv4qtys9I-0Fi55UvTyFFRX3AzwXTDuy_L4zOyTy2lxx5VKOtKeB1eU-h8r33Mwcde1OY6xgILtQoyRvjq2tMHDZ0D4qdD7RPnx?key=rVKrseBMJ4NB4mIqiDOmrw)
-
 Each function runs in a dedicated environment isolated by a micro-virtual machine (MicroVM), ensuring that code from one function cannot impact other functions. Isolation is handled by [Firecracker](https://aws.amazon.com/blogs/opensource/firecracker-open-source-secure-fast-microvm-serverless/), an open-source virtual machine monitor designed specifically for serverless services and containers. Firecracker creates and manages micro-virtual machines that are isolated not only by hardware, but also by other technologies such as cgroups, namespaces, seccomp-bpf, iptables, routing tables, and chroot, providing a strong and comprehensive security boundary. Additional layers of security include an internal sandbox and a jailer system, which give more protection. The internal sandbox is used to restrict access to certain parts of the system kernel, making certain types of attacks more difficult and increasing the system’s resilience to threats. The jailer system further restricts the ability of Firecracker processes to execute code, even if other isolation layers are breached.
 
 **Good to know:**
@@ -42,7 +40,6 @@ aws lambda add-permission \
 ```
 This command adds a resource policy to the Lambda function that allows Amazon S3 to invoke the function only when the action comes from a specific bucket and AWS account.
 * [More on Lambda Resource Policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html)
-
 The **Execution Role** is another important security element, controlling a function's access to AWS resources and services. A best practice when creating roles and policies is to use the principle of least privilege, ensuring that a function only has access to those cloud resources, that are necessary, which reduces the risk of unauthorized access to other resources in the cloud.
 
 ### **Example**
