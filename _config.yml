@@ -218,8 +218,8 @@ image_minifier:
 
 # site banners, custom templates
 banners:
-  main_banner: top
-  article_side_banner: true
+  main_banner: false
+  article_side_banner: false
 
 # custom popup
 popup:
