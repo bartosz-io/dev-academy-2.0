@@ -43,9 +43,11 @@
 
                 <div class="article-content" itemprop="description">
                     <div class="embeds">
+                        <% if (post.youtubeID) { %>
                         <div class="video-responsive" style="position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 2rem;">
                             <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/<%- post.youtubeID %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
+                        <% } %>
                         <iframe style="width: 100%;" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="190" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.podcasts.apple.com/us/podcast/<%- post.appleID %>"></iframe>
                         <iframe style="border-radius:12px; width: 100%" src="https://open.spotify.com/embed/episode/<%- post.spotifyID %>?theme=0" width="496" height="279" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
