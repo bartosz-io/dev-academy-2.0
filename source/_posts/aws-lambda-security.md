@@ -152,21 +152,21 @@ AWS CloudTrail allows you to track who accessed secrets in AWS Secrets Manager a
 {% image 800px "5.png" %}
 
 ## Lambda Best Practices 
- 1. **Principle of Least Privilege -** ensure that your Lambda functions have only the permissions that are necessary for their operation. Avoid granting broad permissions, such as \* in IAM policies.
- 2. **Identity and Access Management (IAM) -** use IAM roles to restrict access to AWS resources. Each Lambda function should be assigned a dedicated IAM role with precisely defined permissions.
- 3. **Data Encryption -** always encrypt data stored in AWS (e.g., S3, RDS) and data transmitted between services. AWS KMS (Key Management Service) can be used to manage encryption keys.
- 4. **Secure Storage of Environment Variables -** do not store sensitive data, such as passwords, API keys, or access credentials, directly in environment variables. Use AWS Secrets Manager or SSM Parameter Store for secure storage of such information.
- 5. **Monitoring and Logging -** configure monitoring and logging using AWS CloudWatch. Use Lambda logs to monitor and analyze events, errors, and other issues. You can also set up alarms based on CloudWatch metrics.
- 6. **Limiting Function Size and Execution Time -** set appropriate timeouts for Lambda functions to avoid long-running operations that could lead to resource exhaustion or DoS attacks. Optimize the function’s code to minimize its execution time and the deployment package size.
- 7. **Secure Use of Libraries and Dependencies -** regularly update all dependencies and libraries to ensure they do not contain known vulnerabilities. Consider using tools like AWS CodeGuru or Snyk to scan code and dependencies for security issues.
- 8. **Protection Against Code Injection -** avoid code injection by thoroughly validating and sanitizing all input data, regardless of its source.
- 9. **Secure VPC Configuration -** if your Lambda function requires access to resources in a private network (VPC), ensure it is properly configured using security groups and access control lists (NACLs). Minimize access to public IP addresses if possible.
-10. **Automated Security Testing -** regularly conduct automated security tests and scans to ensure that your Lambda functions meet the latest standards and best practices.
-11. **Secure Versioning and Environments -** use versioning for Lambda functions to easily revert to previous versions in case of security issues. Also, use separate environments (e.g., Development, Staging, Production) to isolate test environments from production.
-12. **Secure Use of [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html) -** use Lambda Layers cautiously, ensuring that you use only trusted sources or your layers. Regularly update layers to include the latest and most secure versions of dependencies.
-13. **Access Control to External Resources -** if your Lambda function communicates with external resources or services, ensure that these connections are secure and limited to required operations.
-14. **Serverless Application Model (SAM) and Infrastructure as Code (IaC) -** consider using tools like AWS SAM or Terraform to manage infrastructure as code. This allows for auditing, version control, and automated deployment, helping to maintain a consistent and secure environment.
-15. **Applying the Zero Trust Principle -** treat each component as potentially untrustworthy. Secure communication between components (e.g., Lambda, API Gateway, DynamoDB) and restrict access based on least privilege rules.
+ 1 **Principle of Least Privilege -** ensure that your Lambda functions have only the permissions that are necessary for their operation. Avoid granting broad permissions, such as \* in IAM policies.
+ 2 **Identity and Access Management (IAM) -** use IAM roles to restrict access to AWS resources. Each Lambda function should be assigned a dedicated IAM role with precisely defined permissions.
+ 3 **Data Encryption -** always encrypt data stored in AWS (e.g., S3, RDS) and data transmitted between services. AWS KMS (Key Management Service) can be used to manage encryption keys.
+ 4 **Secure Storage of Environment Variables -** do not store sensitive data, such as passwords, API keys, or access credentials, directly in environment variables. Use AWS Secrets Manager or SSM Parameter Store for secure storage of such information.
+ 5 **Monitoring and Logging -** configure monitoring and logging using AWS CloudWatch. Use Lambda logs to monitor and analyze events, errors, and other issues. You can also set up alarms based on CloudWatch metrics.
+ 6 **Limiting Function Size and Execution Time -** set appropriate timeouts for Lambda functions to avoid long-running operations that could lead to resource exhaustion or DoS attacks. Optimize the function’s code to minimize its execution time and the deployment package size.
+ 7 **Secure Use of Libraries and Dependencies -** regularly update all dependencies and libraries to ensure they do not contain known vulnerabilities. Consider using tools like AWS CodeGuru or Snyk to scan code and dependencies for security issues.
+ 8 **Protection Against Code Injection -** avoid code injection by thoroughly validating and sanitizing all input data, regardless of its source.
+ 9 **Secure VPC Configuration -** if your Lambda function requires access to resources in a private network (VPC), ensure it is properly configured using security groups and access control lists (NACLs). Minimize access to public IP addresses if possible.
+10 **Automated Security Testing -** regularly conduct automated security tests and scans to ensure that your Lambda functions meet the latest standards and best practices.
+11 **Secure Versioning and Environments -** use versioning for Lambda functions to easily revert to previous versions in case of security issues. Also, use separate environments (e.g., Development, Staging, Production) to isolate test environments from production.
+12 **Secure Use of [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html) -** use Lambda Layers cautiously, ensuring that you use only trusted sources or your layers. Regularly update layers to include the latest and most secure versions of dependencies.
+13 **Access Control to External Resources -** if your Lambda function communicates with external resources or services, ensure that these connections are secure and limited to required operations.
+14 **Serverless Application Model (SAM) and Infrastructure as Code (IaC) -** consider using tools like AWS SAM or Terraform to manage infrastructure as code. This allows for auditing, version control, and automated deployment, helping to maintain a consistent and secure environment.
+15 **Applying the Zero Trust Principle -** treat each component as potentially untrustworthy. Secure communication between components (e.g., Lambda, API Gateway, DynamoDB) and restrict access based on least privilege rules.
 
 While AWS manages the underlying infrastructure, customers are responsible for securing their code and data. There are common misconceptions regarding security in serverless architectures, and it is crucial to understand the various facets of security related to Lambda services.
 
