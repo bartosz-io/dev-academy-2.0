@@ -4,13 +4,16 @@ contributor: Julia Chotkiewicz
 avatar: julia-chotkiewicz.png
 description: An overview of AWS Lambda from a security perspective - what best practices should be applied to protect sensitive data, along with some examples.
 date: 2024-08-15
-tags: [aws, lambda, security]
+tags: [aws, security]
 id: aws-lambda-security
 ---
 
 # How to Secure AWS Lambda?
 AWS Lambda allows you to run code without having to manage server infrastructure. It’s a serverless service, meaning users don’t have to worry about configuring, scaling, or maintaining servers — Lambda automatically manages those aspects within the AWS environment. Before I show you how to secure a lambda during development, I’ll start with a quick introduction, based on [AWS documentation](https://docs.aws.amazon.com/pdfs/whitepapers/latest/security-overview-aws-lambda/security-overview-aws-lambda.pdf#lambda-functions-and-layers), to help you better understand the lambda service itself.
 {% image 800px "1.png" "Isolation model for AWS Lambda Workers" %}
+
+## Table of Contents
+<!-- toc -->
 
 Each function runs in a dedicated environment isolated by a micro-virtual machine (MicroVM), ensuring that code from one function cannot impact other functions. Isolation is handled by [Firecracker](https://aws.amazon.com/blogs/opensource/firecracker-open-source-secure-fast-microvm-serverless/), an open-source virtual machine monitor designed specifically for serverless services and containers. Firecracker creates and manages micro-virtual machines that are isolated not only by hardware, but also by other technologies such as cgroups, namespaces, seccomp-bpf, iptables, routing tables, and chroot, providing a strong and comprehensive security boundary. Additional layers of security include an internal sandbox and a jailer system, which give more protection. The internal sandbox is used to restrict access to certain parts of the system kernel, making certain types of attacks more difficult and increasing the system’s resilience to threats. The jailer system further restricts the ability of Firecracker processes to execute code, even if other isolation layers are breached.
 
@@ -28,7 +31,7 @@ Lambda functions have direct control over the amount of allocated memory, which 
 ## Creating identity and access management policies and roles
 From a security perspective, **Lambda Resource Policy** plays a key role, in controlling which AWS services compute resources, and accounts can invoke a given function. These policies allow you to precisely define who and what can run Lambda code, preventing unauthorized access to security vulnerabilities. IAM policies are also essential for achieving compliance with regulatory standards like PCI, GDPR, and HIPAA, ensuring that your security practices support successful audits.
 
-### **Example**
+### Resource policy example
 Adding a resource policy that allows Lambda functions to be called via S3.
 ``` bash
 aws lambda add-permission \
@@ -43,7 +46,7 @@ This command adds a resource policy to the Lambda function that allows Amazon S3
 * [More on Lambda Resource Policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html)
 The **Execution Role** is another important security element, controlling a function's access to AWS resources and services. A best practice when creating roles and policies is to use the principle of least privilege, ensuring that a function only has access to those cloud resources, that are necessary, which reduces the risk of unauthorized access to other resources in the cloud.
 
-### **Example**
+### Execution role example
 Creating an Execution Role that allows you to log in to CloudWatch and access S3.
 ``` json
 {
@@ -82,8 +85,8 @@ AWS Secrets Manager is a managed service that enables you to securely store, man
 * Ability to precisely manage access to secrets using IAM policies.
 * Integration with AWS CloudTrail enables monitoring and auditing of access to secrets. Security teams benefit from these features by having the necessary tools to handle sensitive information effectively, enhancing their threat detection and incident response capabilities.
 
-## **Storing a secret in AWS Secrets Manager**
-### **1. Adding a secret to AWS Secrets Manager**
+## Storing a secret in AWS Secrets Manager
+### Adding a secret to AWS Secrets Manager
 Suppose we want to store the database password in AWS Secrets Manager.
 **Step 1**: Log in to your AWS console and go to the **Secrets Manager** section.
 **Step 2**: Click "Store a new secret", select the secret type (e.g. **Other type of secret**), and then enter the key-value pair for the secret:
@@ -92,7 +95,7 @@ Suppose we want to store the database password in AWS Secrets Manager.
 {% image 800px "2.png" %}
 **Step 3**: Choose a name for your secret, e.g. MyDatabaseSecret, then complete the process by clicking "Store".
 {% image 800px "3.png" %}
-### **2. Accessing a Secret from AWS Lambda**
+### Accessing a secret from AWS Lambda
 To control access to a secret from a Lambda function, we first need to assign the function code appropriate IAM role that will allow access to that secret.
 ``` json
 {
