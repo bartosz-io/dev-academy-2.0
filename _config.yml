@@ -434,3 +434,15 @@ contributors:
       fta: true
     socials:
       linkedin: https://www.linkedin.com/in/lukasfajger/
+  "Julia Chotkiewicz":
+    slug: julia-chotkiewicz
+    desc: Security Engineer and AWS Community Builder with a focus on cloud technologies, especially AWS. Enjoys sharing her journey in IT and raising awareness about cybersecurity. 
+    specs: [cloud, aws, security]
+    image: /img/contributors/julia-chotkiewicz.png
+    motto: Be yourself, explore yourself, and build yourself!
+    joined: 15 Aug 2024
+    academies:
+      fta: false
+      wsa: false
+    socials:
+      linkedin: https://www.linkedin.com/in/julia-chotkiewicz/ 
