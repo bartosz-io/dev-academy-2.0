@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
     moreTestimonials();
     loadConvertKit(onCkReady);
     // collapsePanel();
-    // startTimer();
+    startTimer();
 
     if (IS_SCHEDULE) {
         loadSchedule();
@@ -189,7 +189,7 @@ function collapsePanel() {
 
 function startTimer() {
 
-    var countDownDate = new Date(Date.UTC(2023, 9, 9, 19, 0, 0)).getTime();
+    var countDownDate = new Date(Date.UTC(2024, 8, 16, 19, 0, 0)).getTime();
 
     var x = setInterval(function () {
         var now = new Date().getTime();
