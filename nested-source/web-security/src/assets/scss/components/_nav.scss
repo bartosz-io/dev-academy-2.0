@@ -93,6 +93,7 @@
 .counter-nav {
   margin-left: 5px;
   display: flex;
+  justify-content: center;
   color: $highlight-100;
 
   .counter-price {
@@ -106,7 +107,7 @@
   .counter-block {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     margin: 5px 5px 0;
     font-size: 1.5em;
 
