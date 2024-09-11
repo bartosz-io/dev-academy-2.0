@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     moreTestimonials();
-    loadConvertKit(onCkReady);
+    // loadConvertKit(onCkReady);
     // collapsePanel();
     startTimer();
 
