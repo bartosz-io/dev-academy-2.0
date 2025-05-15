@@ -20,7 +20,7 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     
     # Medium-high weight (10) - Cross-Origin Policies
-    Cross-Origin-Embedder-Policy = "require-corp"
+    Cross-Origin-Embedder-Policy = "credentialless"
     Cross-Origin-Opener-Policy = "same-origin"
     Cross-Origin-Resource-Policy = "same-origin"
     
