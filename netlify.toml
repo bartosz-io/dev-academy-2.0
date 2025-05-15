@@ -13,5 +13,28 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # Reporting-Endpoints = "csp-endpoint=\"https://26d299f4-d7db-4460-b42a-3b1607c843be.sansec.watch/\""
-    # Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; report-to csp-endpoint"
+    # Highest weight (20) - Content Security Policy
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://eu-assets.posthog.com https://eu.posthog.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.convertkit.com; connect-src 'self' https://eu-assets.posthog.com https://eu.posthog.com https://static.cloudflareinsights.com; frame-ancestors 'none'; form-action 'self'"
+    
+    # High weight (15) - HTTP Strict Transport Security
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # Medium-high weight (10) - Cross-Origin Policies
+    Cross-Origin-Embedder-Policy = "require-corp"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
+    
+    # Medium weight (8) - Security Headers
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    
+    # Medium weight (7) - Privacy and Permissions
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(self), interest-cohort=()"
+    
+    # Lower weight (5 and 3) - Additional Security
+    Clear-Site-Data = "\"cache\",\"cookies\",\"storage\""
+    X-DNS-Prefetch-Control = "on"
+
+    # Leaking headers
+    Server = ""
