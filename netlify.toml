@@ -33,7 +33,6 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=(self), interest-cohort=()"
     
     # Lower weight (5 and 3) - Additional Security
-    Clear-Site-Data = "\"cache\",\"cookies\",\"storage\""
     X-DNS-Prefetch-Control = "on"
 
     # Leaking headers
