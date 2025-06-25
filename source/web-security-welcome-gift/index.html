@@ -212,7 +212,7 @@ sitemap: false
 
   const initPage = function(posthog) {
     var phId = phInit(posthog);
-    var countDownDate = startCountdown(0, 30);
+    var countDownDate = startCountdown(24, 0);
 
     var link = document.getElementById('link');
     link.href = link.href + "?countDownDate=" + countDownDate + "#id=" + phId;
