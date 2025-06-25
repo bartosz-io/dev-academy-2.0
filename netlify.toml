@@ -14,7 +14,7 @@
   for = "/*"
   [headers.values]
     # Highest weight (20) - Content Security Policy
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' *.disqus.com *.posthog.com *.convertkit.com *.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' *.disqus.com *.posthog.com *.convertkit.com *.cloudflareinsights.com; frame-ancestors 'none'; frame-src *.youtube.com *.podcasts.apple.com *.spotify.com; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' *.disqus.com *.posthog.com *.convertkit.com *.cloudflareinsights.com https://dev-academy.ck.page; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' *.disqus.com *.posthog.com *.convertkit.com *.cloudflareinsights.com; frame-ancestors 'none'; frame-src *.youtube.com *.podcasts.apple.com *.spotify.com; form-action 'self'"
     
     # High weight (15) - HTTP Strict Transport Security
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
