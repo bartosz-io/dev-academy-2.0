@@ -164,10 +164,15 @@ sitemap: false
 <script>
 
   // download checklist
-  const pdfURL = "https://dev-academy.com/web-security/checklist.pdf";
+  const pdfURL = "/web-security/checklist.pdf";
 
   setTimeout(() => {
-    window.open(pdfURL, "_blank");
+    const link = document.createElement('a');
+    link.href = pdfURL;
+    link.download = "Web Application Security Checklist.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }, 3000);
 
 
