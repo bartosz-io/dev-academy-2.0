@@ -1,0 +1,251 @@
+---
+thankYouPage: true
+layout: landing
+sitemap: false
+---
+<style>
+  p {
+    padding-bottom: 20px;
+  }
+  body {
+    background-color: #f4f4f4;
+    padding-top: 5rem;
+  }
+  .top {
+    text-align: center;
+    font-size: 26px;
+    color: white;
+    padding: 0.5em;
+    font-weight: bold;
+    background-color: #130b37;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .box {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 3em;
+    margin: auto;
+    max-width: 700px;
+  }
+  .subheader {
+    font-size: 22px;
+    color: #757575;
+    margin-bottom: 2em;
+  }
+  .gift {
+    color: #e74c3c;
+    font-weight: bold;
+  }
+  .timer {
+    font-size: 16px;
+    color: #757575;
+    margin-bottom: 2em;
+    font-weight: bold;
+  }
+  .button {
+    white-space: wrap;
+    margin-bottom: 2em;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 1em 1.5em;
+    font-size: 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 0 0 0 #3498db8e;
+    animation-name: ripples;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  .button:hover {
+    opacity: 0.8;
+  }
+
+  #countdown-timer {
+    display: flex;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  #countdown-timer .number {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 2em;
+    padding: 0.3em 0.8em;
+    border-radius: 7.5px;
+    margin: 0 0.2em;
+    box-shadow: 3px 3px 4.5px rgba(0, 0, 0, 0.2);
+    flex: 0 1 auto;
+  }
+  .subtitle {
+    text-transform: uppercase;
+    color: #e74c3c;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+
+  .colon {
+    font-size: 2em;
+    padding-top: 0.3em;
+    flex: 0 1 auto;
+  }
+
+  @media (max-width: 576px) {
+    #countdown-timer .number {
+      font-size: 1.5em;
+      padding: 0.2em 0.6em;
+    }
+    .colon {
+      font-size: 1.5em;
+      padding: 0.1em 0.3em;
+    }
+  }
+
+  @keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 56px 0; }
+  }
+
+  #progress-bar-bg {
+    animation: moveBackground 4s linear infinite;
+  }
+</style>
+
+<div class="top">YOUR CHECKLIST IS DOWNLADING IN 3 SECONDS...</div>
+<div class="box">
+  
+  
+  
+  <p>You're now able to spot the most common security issues that slip into real-world apps.</p>
+  <p>But fixing them alone can take hours of trial and error.</p>
+  <p>To help you go from: </p>
+  <p><b>"I see the problems" → "I know exactly how to fix them"</b></p>
+    
+  <p>I prepared something special for new checklist users:</p>
+  <p style="text-align: center;"><a href="https://courses.dev-academy.com/p/security-starter-kit/" class="gift">✅ Web Security Starter Kit</a></p>
+
+
+
+
+  <a id="link" href="https://courses.dev-academy.com/p/security-starter-kit/" style="text-align: center; margin:auto">
+    <div style="text-align: center;"><button class="button">Take the Welcome Bonus! 🎉</button></div>
+    <div id="progress-bar-container" style="max-width: 400px; height: 20px; background-color: #f3f3f3; border-radius: 10px; margin: 10px auto 40px; position: relative; overflow: hidden;">
+      <div id="progress-bar-bg" style="width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #f3f3f3, #f3f3f3 10px, #e0e0e0 10px, #e0e0e0 20px); position: absolute; top: 0; left: 0;"></div>
+      <div id="progress-bar" style="width: 0%; height: 100%; background-color: #e74c3c; position: absolute; top: 0; left: 0; transition: width 1s linear;"></div>
+    </div>
+    <div id="countdown-timer">
+      <div>
+        <span id="hours" class="number">00</span>
+        <div class="subtitle">Hours</div>
+      </div>
+      <span class="colon">:</span>
+      <div>
+        <span id="minutes" class="number">00</span>
+        <div class="subtitle">Minutes</div>
+      </div>
+      <span class="colon">:</span>
+      <div>
+        <span id="seconds" class="number">00</span>
+        <div class="subtitle">Seconds</div>
+      </div>
+    </div>
+    <div class="timer">*expires in 24 hours! ⏰</div>
+    <img src="starter-kit.png" alt="Gift">
+  </a>
+</div>
+
+<script>
+
+  // download checklist
+  const pdfURL = "https://dev-academy.com/web-security/checklist.pdf";
+
+  setTimeout(() => {
+    window.open(pdfURL, "_blank");
+  }, 3000);
+
+
+  function updateProgressBar(distance, totalTime) {
+    const progressBar = document.getElementById('progress-bar');
+    const percentage = 50 + ((totalTime - distance) / totalTime * 50);
+    progressBar.style.width = percentage + '%';
+  }
+
+  function startCountdown(hours, minutes) {
+    var savedCountDownDate = localStorage.getItem('countDownDate');
+    var countDownDate;
+    if (savedCountDownDate) {
+      countDownDate = new Date(parseInt(savedCountDownDate)).getTime();
+    } else {
+      // Set the date we're counting down to and save it in localStorage
+      countDownDate = new Date().getTime() + hours * 60 * 60 * 1000 + minutes * 60 * 1000;
+      localStorage.setItem('countDownDate', countDownDate.toString());
+    }
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for hours, minutes and seconds
+      var hoursLeft = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutesLeft = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var secondsLeft = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Output the result in the elements with id="hours", id="minutes" and id="seconds"
+      document.getElementById("hours").innerHTML = hoursLeft.toString().padStart(2, '0');
+      document.getElementById("minutes").innerHTML = minutesLeft.toString().padStart(2, '0');
+      document.getElementById("seconds").innerHTML = secondsLeft.toString().padStart(2, '0');
+
+      // Update progress bar
+      const totalTime = hours * 60 * 60 * 1000 + minutes * 60 * 1000;
+      updateProgressBar(distance, totalTime);
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown-timer").innerHTML = "The discount expired... but you can still get the course!";
+        document.getElementById("progress-bar").style.width = '100%';
+      }
+    }, 1000);
+
+    return countDownDate;
+  }
+
+  const phInit = function(posthog) {
+    var phId = posthog.get_distinct_id();
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    window.history.replaceState(null, null, window.location.pathname);
+
+    posthog.identify(id);
+
+    posthog.capture('wsda_subscribe_confirm', { $set: { wsda_list: true } });
+
+    return phId;
+  }
+
+  const initPage = function(posthog) {
+    var phId = phInit(posthog);
+    var countDownDate = startCountdown(24, 0);
+
+    var link = document.getElementById('link');
+    link.href = link.href + "?countDownDate=" + countDownDate + "#id=" + phId;
+  }
+
+  if (window.posthog && window.posthog.get_distinct_id) {
+    initPage(window.posthog);
+  } else {
+    window.addEventListener('PH_Ready', (event) => initPage(event.detail.posthog));
+  }
+</script>
