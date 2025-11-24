@@ -20,13 +20,12 @@
                     </div>
                     <div class="article-meta">
                         <%- partial('partial/post/tags') %>
-                        <div class="article-date">
+                        <div class="article-date <%- post.dateModified ? 'article-date-modified' : '' %>">
                             <% if (post.dateModified) {%>
                                 <span>Updated</span>
-                                <time datetime="<%= date_xml(post.dateModified) %>" itemprop="dateModified"><%= date(post.dateModified, null) %></time>
-                            <% } else { %>
-                                <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, null) %></time>
+                                <time class="date-modified" datetime="<%= date_xml(post.dateModified) %>" itemprop="dateModified"><%= date(post.dateModified, null) %></time>
                             <% } %>
+                            <time class="date-published" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, null) %></time>
                         </div>
                     </div>
                 </div>
