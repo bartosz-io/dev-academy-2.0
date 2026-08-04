@@ -73,9 +73,9 @@ assert.strictEqual(newsletterForms.length, 3);
   assert(form, 'missing newsletter form for ' + placement);
   assert(form.includes('id="' + formId + '"'));
   assert(form.includes('method="post"'));
-  assert(form.includes('action="https://app.convertkit.com/forms/1921330/subscriptions"'));
-  assert(form.includes('data-sv-form="1921330"'));
-  assert(form.includes('data-uid="e4bf864ac2"'));
+  assert(form.includes('action="https://app.kit.com/forms/9764408/subscriptions"'));
+  assert(form.includes('data-sv-form="9764408"'));
+  assert(form.includes('data-uid="23709cd512"'));
   assert(form.includes('data-newsletter-topic="both"'));
   assert(form.includes('name="email_address"'));
   assert(!form.includes('name="fields[first_name]"'));
@@ -88,7 +88,7 @@ assert(homepage.includes('For JavaScript &amp; TypeScript developers'));
 assert(homepage.includes('Build web applications you can trust.'));
 assert(homepage.includes('Security Tuesday'));
 assert(homepage.includes('Testing Friday'));
-assert(homepage.includes('under five minutes'));
+assert(homepage.includes('Under five minutes'));
 assert(homepage.includes('900+ course enrollments across Web Security &amp; Full-stack Testing'));
 assert(homepage.includes('big ball of mud'));
 assert(homepage.includes('Restrict the dependencies with testing'));
@@ -115,7 +115,7 @@ assert(homepage.includes('Two useful ideas every week. Less than ten minutes tot
 assert.strictEqual(count(homepage, 'name="email_address"'), 3);
 assert.strictEqual(count(homepage, 'name="fields[first_name]"'), 0);
 assert.strictEqual(
-  count(homepage, 'https://app.convertkit.com/forms/1921330/subscriptions'),
+  count(homepage, 'https://app.kit.com/forms/9764408/subscriptions'),
   3
 );
 assert(homepage.includes('data-newsletter-placement="homepage_hero"'));

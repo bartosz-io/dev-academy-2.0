@@ -23,9 +23,9 @@ pretty_urls:
 
 # Newsletter
 newsletter:
-  action: https://app.convertkit.com/forms/1921330/subscriptions
-  form_id: '1921330'
-  uid: e4bf864ac2
+  action: https://app.kit.com/forms/9764408/subscriptions
+  form_id: '9764408'
+  uid: 23709cd512
   privacy_url: https://courses.dev-academy.com/p/privacy
   thank_you_url: https://dev-academy.com/thank-you/
 
