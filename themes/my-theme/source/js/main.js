@@ -42,12 +42,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // cookieConsent();
     addPostHogDynamicInserts();
+    newsletterSubmitLoaders();
     loadDisqusComments();
     loadConvertKit();
     relatedPosts();
     contributors();
     userGoals();
 });
+
+function newsletterSubmitLoaders() {
+    var forms = document.querySelectorAll('.newsletter-form');
+
+    forms.forEach(function(form) {
+        var button = form.querySelector('.newsletter-form-submit');
+        var errors = form.querySelector('[data-element="errors"]');
+
+        if (!button || !errors) {
+            return;
+        }
+
+        function resetButton() {
+            button.disabled = false;
+            button.classList.remove('is-submitting');
+            button.removeAttribute('aria-busy');
+        }
+
+        form.addEventListener('submit', function() {
+            if (!form.checkValidity()) {
+                return;
+            }
+
+            button.disabled = true;
+            button.classList.add('is-submitting');
+            button.setAttribute('aria-busy', 'true');
+        });
+
+        new MutationObserver(function() {
+            if (errors.textContent.trim()) {
+                resetButton();
+            }
+        }).observe(errors, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+
+        window.addEventListener('pageshow', resetButton);
+    });
+}
 
 function loadConvertKit() {
     var script = document.createElement('script');

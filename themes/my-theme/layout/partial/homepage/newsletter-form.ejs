@@ -39,7 +39,11 @@ var formOptions = {
             placeholder="you@example.com"
             required>
         <button class="newsletter-form-submit button button-primary" type="submit">
-            <%- buttonLabel %>
+            <span class="newsletter-form-submit-label"><%- buttonLabel %></span>
+            <span class="newsletter-form-submit-loading" aria-live="polite">
+                <span class="newsletter-form-submit-spinner" aria-hidden="true"></span>
+                Sending…
+            </span>
         </button>
     </div>
     <p class="newsletter-form-reassurance">

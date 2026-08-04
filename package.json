@@ -13,7 +13,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "article": "hexo new post",
-    "test:homepage": "npm run build:hexo && node tests/verify-homepage.js"
+    "test:homepage": "npm run build:hexo && node tests/verify-homepage.js && node tests/verify-newsletter-loader.js"
   },
   "hexo": {
     "version": "5.4.2"

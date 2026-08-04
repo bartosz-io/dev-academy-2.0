@@ -88,6 +88,10 @@ assert.strictEqual(newsletterForms.length, 3);
   assert(form.includes('for="' + formId + '-email"'));
   assert(form.includes('id="' + formId + '-email"'));
   assert(form.includes('Check your inbox'));
+  assert(form.includes('class="newsletter-form-submit-label"'));
+  assert(form.includes('class="newsletter-form-submit-loading"'));
+  assert(form.includes('class="newsletter-form-submit-spinner"'));
+  assert(form.includes('Sending…'));
 });
 
 assert(homepage.includes('For JavaScript &amp; TypeScript developers'));

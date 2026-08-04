@@ -141,6 +141,51 @@
   min-height: 5.2rem;
 }
 
+.newsletter-form-submit-label {
+  display: inline;
+}
+
+.newsletter-form-submit-loading {
+  align-items: center;
+  display: none;
+  gap: .8rem;
+  justify-content: center;
+}
+
+.newsletter-form-submit.is-submitting {
+  cursor: wait;
+
+  .newsletter-form-submit-label {
+    display: none;
+  }
+
+  .newsletter-form-submit-loading {
+    display: inline-flex;
+  }
+}
+
+.newsletter-form-submit-spinner {
+  animation: newsletter-submit-spin .7s linear infinite;
+  border: .2rem solid currentColor;
+  border-radius: 50%;
+  border-right-color: transparent;
+  display: inline-block;
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+@keyframes newsletter-submit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newsletter-form-submit-spinner {
+    animation: none;
+  }
+}
+
 .newsletter-form-reassurance {
   color: var(--newsletter-muted);
   font-size: 1.15rem;
