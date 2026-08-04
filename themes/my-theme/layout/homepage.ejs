@@ -1,2 +1,23 @@
 <article class="newsletter-homepage">
+    <section class="newsletter-homepage-form newsletter-homepage-form-hero">
+        <%- partial('partial/homepage/newsletter-form', {
+            placement: 'homepage_hero',
+            formId: 'get-free-pills',
+            buttonLabel: 'Get the free Pills'
+        }) %>
+    </section>
+    <section class="newsletter-homepage-form newsletter-homepage-form-after-examples">
+        <%- partial('partial/homepage/newsletter-form', {
+            placement: 'homepage_after_examples',
+            formId: 'pills-after-examples',
+            buttonLabel: 'Send me the Pills'
+        }) %>
+    </section>
+    <section class="newsletter-homepage-form newsletter-homepage-form-final">
+        <%- partial('partial/homepage/newsletter-form', {
+            placement: 'homepage_final',
+            formId: 'pills-final',
+            buttonLabel: 'Get the free Pills'
+        }) %>
+    </section>
 </article>

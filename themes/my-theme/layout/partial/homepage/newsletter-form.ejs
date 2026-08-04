@@ -1,0 +1,34 @@
+<%
+var emailId = formId + '-email';
+%>
+<form
+    id="<%- formId %>"
+    class="newsletter-form seva-form formkit-form"
+    action="<%- config.newsletter.action %>"
+    method="post"
+    data-sv-form="<%- config.newsletter.form_id %>"
+    data-uid="<%- config.newsletter.uid %>"
+    data-format="inline"
+    data-version="5"
+    data-newsletter-topic="both"
+    data-newsletter-placement="<%- placement %>">
+    <label class="newsletter-form-label" for="<%- emailId %>">Your email address</label>
+    <div class="newsletter-form-fields">
+        <input
+            id="<%- emailId %>"
+            class="newsletter-form-input formkit-input"
+            name="email_address"
+            type="email"
+            autocomplete="email"
+            inputmode="email"
+            placeholder="you@example.com"
+            required>
+        <button class="newsletter-form-submit button button-primary" type="submit">
+            <%- buttonLabel %>
+        </button>
+    </div>
+    <p class="newsletter-form-reassurance">
+        Free. Double opt-in. Check your inbox to confirm. Unsubscribe anytime.
+        <a href="<%- config.newsletter.privacy_url %>">Privacy policy</a>.
+    </p>
+</form>
