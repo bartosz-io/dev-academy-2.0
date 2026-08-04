@@ -1,4 +1,16 @@
 [[redirects]]
+  from = "/security-starter-kit"
+  to = "https://browser-security-starter-kit.pages.dev/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/security-starter-kit/*"
+  to = "https://browser-security-starter-kit.pages.dev/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/authors"
   to = "/contributors"
   status = 301
