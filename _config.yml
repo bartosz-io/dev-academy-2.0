@@ -109,6 +109,8 @@ theme: my-theme
 sitemap:
   path: sitemap.xml
   tag: false
+  additionalUrl:
+    filename: articles-sitemap.xml
 
 # SCSS support
 # https://www.npmjs.com/package/hexo-renderer-scss

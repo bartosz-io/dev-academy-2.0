@@ -1,1 +1,14 @@
-<%- open_graph({image: 'banner.png', twitter_id: theme.twitter, google_plus: theme.google_plus, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
+<%
+const openGraphOptions = {
+  image: 'banner.png',
+  twitter_id: theme.twitter,
+  google_plus: theme.google_plus,
+  fb_admins: theme.fb_admins,
+  fb_app_id: theme.fb_app_id
+};
+
+if (page.og_url) {
+  openGraphOptions.url = page.og_url;
+}
+%>
+<%- open_graph(openGraphOptions) %>
