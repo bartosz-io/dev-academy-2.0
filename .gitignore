@@ -10,3 +10,4 @@ public/
 _multiconfig.yml
 source/web-security
 .parcel-cache
+.superpowers/
