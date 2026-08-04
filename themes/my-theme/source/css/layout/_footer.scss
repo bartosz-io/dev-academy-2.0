@@ -94,3 +94,21 @@
     margin-right: 1rem;
   }
 }
+
+.footer-navigation-brand {
+  color: $light-200;
+
+  p {
+    line-height: 2.2rem;
+    max-width: 34rem;
+
+    + p {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.footer a:focus-visible {
+  outline: .3rem solid $hover;
+  outline-offset: .3rem;
+}

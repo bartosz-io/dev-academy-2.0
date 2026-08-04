@@ -656,10 +656,10 @@
 
   // new styles
   .footer-navigation-columns {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 2fr repeat(2, 1fr);
 
     .footer-navigation-column:last-of-type {
-      padding-left: 6rem;
+      padding-left: 0;
     }
   }
 

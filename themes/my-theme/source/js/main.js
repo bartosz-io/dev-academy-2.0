@@ -171,12 +171,14 @@ function mobileNavigation() {
         menu.classList.add(activeClass);
         toggle.classList.add(activeClass);
         toggle.setAttribute('aria-label', closeMsg);
+        toggle.setAttribute('aria-expanded', 'true');
     }
 
     function close() {
         menu.classList.remove(activeClass);
         toggle.classList.remove(activeClass);
         toggle.setAttribute('aria-label', openMsg);
+        toggle.setAttribute('aria-expanded', 'false');
     }
 }
 

@@ -132,7 +132,11 @@
 }
 
 .header-nav-toggle {
-  max-height: 2.4rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 4.4rem;
+  min-width: 4.4rem;
 
   &.active {
     .header-nav-toggle-menu {
@@ -142,6 +146,11 @@
     .header-nav-toggle-close {
       display: flex;
     }
+  }
+
+  &:focus-visible {
+    outline: .3rem solid $hover;
+    outline-offset: .3rem;
   }
 }
 
@@ -163,4 +172,9 @@
   position: absolute;
   right: 5.5rem;
   top: 1.5rem;
+}
+
+.header a:focus-visible {
+  outline: .3rem solid $hover;
+  outline-offset: .3rem;
 }

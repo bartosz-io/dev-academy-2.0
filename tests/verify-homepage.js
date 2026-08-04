@@ -21,11 +21,27 @@ function countCanonical(html, canonicalUrl) {
 
 const homepage = readPublic('index.html');
 const articles = readPublic('articles/index.html');
+const mainJs = readPublic('js/main.js');
 
 assert(homepage.includes('class="newsletter-homepage"'));
 assert(articles.includes('posts-wrapper'));
 readPublic('preventing-xss-in-angular/index.html');
 readPublic('angular-cors/index.html');
+
+assert(homepage.includes('href="/articles/"'));
+assert(homepage.includes('href="/podcast/"'));
+assert(homepage.includes('href="/web-security/"'));
+assert(homepage.includes('href="/about"'));
+assert(homepage.includes('href="#get-free-pills"'));
+assert(homepage.includes('Get the free Pills'));
+assert(homepage.includes('aria-controls="primary-navigation"'));
+assert(homepage.includes('aria-expanded="false"'));
+assert(mainJs.includes('setAttribute("aria-expanded","true")'));
+assert(mainJs.includes('setAttribute("aria-expanded","false")'));
+assert(!homepage.includes('securitystarterkit.net'));
+assert(!homepage.includes('websecurity-academy.com'));
+assert(!homepage.includes('>Courses<'));
+assert(!homepage.includes('>Contributors<'));
 
 assert(homepage.includes('Build web applications you can trust.'));
 assert(homepage.includes('Security Tuesday'));
