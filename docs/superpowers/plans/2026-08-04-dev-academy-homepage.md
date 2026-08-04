@@ -24,9 +24,13 @@
 
 ---
 
-## Required content input
+## Verified content sources
 
-Before Task 5 begins, Bartosz supplies one real Testing Pill in a copyable format, including its subject/title, problem example, solution example, and any code snippet used in the original email. The Security preview uses the existing `target="_blank"` / `rel="noopener"` Pill supplied in the project materials. Before Task 6 begins, inspect the tracked `review_1.png`–`review_3.png` assets, select 2–3 legible reviews, and verify that they came from Web Security Academy or Fullstack Testing Academy. If their program context cannot be proven, Bartosz supplies replacement testimonials; Task 6 does not ship with unverified proof.
+- Security preview: the existing `target="_blank"` / `rel="noopener"` Pill supplied in the project materials.
+- Testing preview: `/Users/bartosz/Projects/dev-academy docs/testing pills/arch test.pdf`, subject `How to test ARCHITECTURE?`. Use its durable problem/solution arc: intended controller-service-repository dependencies, deterioration into a “big ball of mud,” restriction with architecture tests, and the real TSArch example that prevents controllers from depending directly on API files.
+- Do not use the Cypress email as the primary homepage preview; its tool-specific implementation story is less evergreen.
+
+Before Task 6 begins, inspect the tracked `review_1.png`–`review_3.png` assets, select 2–3 legible reviews, and verify that they came from Web Security Academy or Fullstack Testing Academy. If their program context cannot be proven, Bartosz supplies replacement testimonials; Task 6 does not ship with unverified proof.
 
 ## Task 1: Restore the reproducible baseline and add the acceptance harness
 
@@ -288,9 +292,9 @@ git commit -m "feat: add email-only newsletter forms"
 - Modify: `themes/my-theme/source/css/styles.scss`
 - Test: `scripts/verify-homepage.js`
 
-- [ ] **Step 1: Confirm the content gate is satisfied**
+- [ ] **Step 1: Verify the selected source against the PDF**
 
-Verify that Bartosz has provided the real Testing Pill described under “Required content input.” If not, pause this task without inserting synthetic copy.
+Read all four pages of `/Users/bartosz/Projects/dev-academy docs/testing pills/arch test.pdf` and compare the copy and TSArch example against the rendered pages before transcribing them. Preserve the technical meaning while correcting obvious historical typos such as `Today's questions` to `Today's question`. Do not import the Gmail chrome, recipient address, physical address, old product pitch, or unsubscribe footer into the homepage preview.
 
 - [ ] **Step 2: Add content and authenticity assertions**
 
@@ -301,7 +305,8 @@ Require the generated homepage to contain:
 - `Security Tuesday` and `Testing Friday` above the fold;
 - `under five minutes`;
 - `900+ course enrollments across Web Security & Full-stack Testing`;
-- the verified problem and solution snippets from both supplied Pills;
+- the verified `big ball of mud`, `Restrict the dependencies with testing`, and controller/API dependency concepts from the Testing Pill;
+- the verified problem and solution snippets from the Security Pill;
 - no occurrence of `working JavaScript`, `900+ developers`, `900+ students`, `12-week`, `5-week`, `€19`, or `€37`.
 
 - [ ] **Step 3: Store approved copy and real examples as data**
