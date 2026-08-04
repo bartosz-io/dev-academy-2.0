@@ -22,6 +22,11 @@ function countCanonical(html, canonicalUrl) {
 const homepage = readPublic('index.html');
 const articles = readPublic('articles/index.html');
 
+assert(homepage.includes('class="newsletter-homepage"'));
+assert(articles.includes('posts-wrapper'));
+readPublic('preventing-xss-in-angular/index.html');
+readPublic('angular-cors/index.html');
+
 assert(homepage.includes('Build web applications you can trust.'));
 assert(homepage.includes('Security Tuesday'));
 assert(homepage.includes('Testing Friday'));
@@ -37,9 +42,6 @@ assert(homepage.includes('data-newsletter-placement="homepage_after_examples"'))
 assert(homepage.includes('data-newsletter-placement="homepage_final"'));
 assert(!homepage.includes('€19'));
 assert(!homepage.includes('€37'));
-assert(articles.includes('posts-wrapper'));
-readPublic('preventing-xss-in-angular/index.html');
-
 assert.strictEqual(
   countCanonical(homepage, 'https://dev-academy.com/'),
   1,

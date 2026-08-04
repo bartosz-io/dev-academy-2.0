@@ -19,6 +19,7 @@
   if (is_post()) { bodyClasses += 'post-page '}
   if (is_tag()) { bodyClasses += 'tag-page ' }
   if (page.isAboutPage) { bodyClasses += 'index-page ' }
+  if (page.layout === 'homepage') { bodyClasses += 'newsletter-homepage-page ' }
 %>
 <body class="<%- bodyClasses %>">
 
@@ -41,7 +42,9 @@
     </main>
 
     <%- partial('partial/footer', {}, {caches: true}) %>
-    <%- partial('partial/ck-form', {}, {caches: true}) %>
+    <% if (page.layout !== 'homepage') { %>
+        <%- partial('partial/ck-form', {}, {caches: true}) %>
+    <% } %>
 
     <script src="<%- url_for('/js/main.js') %>" defer></script>
 <% } %>
