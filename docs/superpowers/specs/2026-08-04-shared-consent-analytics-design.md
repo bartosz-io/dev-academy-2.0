@@ -209,8 +209,9 @@ Consent and analytics failures must not block content, signup forms, navigation,
 offer timing, or checkout.
 
 - If localStorage is unavailable, the runtime uses an in-memory undecided state,
-  keeps PostHog memory-only, does not load Meta Pixel, and allows the visitor to
-  interact with the banner for the current page lifetime.
+  keeps PostHog memory-only, and does not load Meta Pixel before an explicit
+  in-memory choice. The visitor can use the banner, and that choice applies only
+  for the current page lifetime.
 - If stored JSON is invalid, the runtime treats it as undecided without throwing.
 - If PostHog fails to load, preference storage and all page functionality still
   work.
@@ -270,13 +271,14 @@ Manager, not only browser-side assertions.
 
 Deploy in this order:
 
-1. Deploy the Starter Kit runtime and interface using the shared v1 contract.
-2. Deploy the Dev Academy runtime, project configuration, interface, and CSP.
-3. Run the complete production-origin flow across both applications.
-4. Verify events, persistent identity, replay, and Pixel activity in the vendor
+1. Update the privacy notice and complete the review of the pre-decision replay
+   policy.
+2. Deploy the Starter Kit runtime and interface using the shared v1 contract.
+3. Deploy the Dev Academy runtime, project configuration, interface, and CSP.
+4. Run the complete production-origin flow across both applications.
+5. Verify events, persistent identity, replay, and Pixel activity in the vendor
    tools.
-5. Mark the rollout complete only after the privacy-policy review and all
-   production checks pass.
+6. Mark the rollout complete only after all production checks pass.
 
 Deploying Starter Kit first avoids a period where the main site has stored the
 new shared preference but the old Starter Kit runtime ignores it and shows its
