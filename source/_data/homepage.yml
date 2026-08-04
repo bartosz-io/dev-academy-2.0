@@ -1,7 +1,7 @@
 hero:
   audience: For JavaScript & TypeScript developers
   title: Build web applications you can trust.
-  summary: Get two practical Knowledge Pills every week - Security Tuesday and Testing Friday - each readable in under five minutes.
+  summary: Get two practical Knowledge Pills every week to help you review, secure, and test code written by you, your team, or AI.
   proof: 900+ course enrollments across Web Security & Full-stack Testing
   security_card:
     label: Security Tuesday
