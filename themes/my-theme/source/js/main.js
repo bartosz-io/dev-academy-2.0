@@ -15,12 +15,8 @@ window.PH_ENABLED_DEV = false;
  * */
 
 document.addEventListener('DOMContentLoaded', function() {
-    if (isTablet()) {
-        stickyNavigation();
-        // loadOdometer();
-    } else {
-        mobileNavigation();
-    }
+    stickyNavigation();
+    mobileNavigation();
 
     if (isLaptop()) {
         if (isPostPage()) {

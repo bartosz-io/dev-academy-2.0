@@ -44,6 +44,7 @@ assert(homepage.includes('aria-controls="primary-navigation"'));
 assert(homepage.includes('aria-expanded="false"'));
 assert(mainJs.includes('setAttribute("aria-expanded","true")'));
 assert(mainJs.includes('setAttribute("aria-expanded","false")'));
+assert(mainJs.includes('stickyNavigation(),mobileNavigation()'));
 assert(!homepage.includes('securitystarterkit.net'));
 assert(!homepage.includes('websecurity-academy.com'));
 assert(!homepage.includes('>Courses<'));
