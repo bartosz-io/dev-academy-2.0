@@ -1,5 +1,15 @@
 <%
 var emailId = formId + '-email';
+var formOptions = {
+    settings: {
+        after_subscribe: {
+            action: 'redirect',
+            success_message: 'Success! Now check your email to confirm your subscription.',
+            redirect_url: 'https://dev-academy.com/welcome'
+        }
+    },
+    version: '5'
+};
 %>
 <form
     id="<%- formId %>"
@@ -10,10 +20,15 @@ var emailId = formId + '-email';
     data-uid="<%- config.newsletter.uid %>"
     data-format="inline"
     data-version="5"
+    data-options="<%= JSON.stringify(formOptions) %>"
     data-newsletter-topic="both"
     data-newsletter-placement="<%- placement %>">
+    <ul
+        class="newsletter-form-errors formkit-alert formkit-alert-error"
+        data-element="errors"
+        data-group="alert"></ul>
     <label class="newsletter-form-label" for="<%- emailId %>">Your email address</label>
-    <div class="newsletter-form-fields">
+    <div class="newsletter-form-fields" data-element="fields" data-stacked="false">
         <input
             id="<%- emailId %>"
             class="newsletter-form-input formkit-input"

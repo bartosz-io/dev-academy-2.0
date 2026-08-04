@@ -3,22 +3,215 @@ thankYouPage: true
 sitemap: false
 title: Confirm your email | Dev Academy
 ---
-<div class="thank-you-wrapper mw-560">
-    <h3>You must <span class="thank-you-highlighted">confirm your email</span></h3>
-
-    <p><strong>We’ve sent you a confirmation email.</strong></p>
-    <p>You are not subscribed yet. Open the message from Dev Academy and click the confirmation button to receive your first Knowledge Pill.</p>
-
-    <picture>
-        <source srcset="/img/email.gif" media="(min-width: 768px)">
-        <img src="/img/email_mobile.jpg" alt="Open the confirmation email from Dev Academy">
-    </picture>
-
-    <div>
-        <p><strong>1.</strong> Check your inbox.</p>
-        <p><strong>2.</strong> Open the email from Dev Academy.</p>
-        <p><strong>3.</strong> Click the confirmation button.</p>
+<section class="welcome-confirmation" aria-labelledby="welcome-confirmation-title">
+    <div class="welcome-confirmation-icon" aria-hidden="true">
+        <span>✓</span>
     </div>
 
-    <p class="thank-you-information">Can’t find it? Check your <span>Spam</span> or <span>Promotions</span> folder.</p>
-</div>
+    <p class="welcome-confirmation-eyebrow">Almost there</p>
+    <h1 id="welcome-confirmation-title">Confirm your email</h1>
+    <p class="welcome-confirmation-lead">
+        We sent a confirmation message to your inbox.
+        <strong>You are not subscribed yet.</strong>
+    </p>
+
+    <ol class="welcome-confirmation-steps">
+        <li>
+            <span class="welcome-confirmation-step-number">1</span>
+            <div>
+                <strong>Check your inbox</strong>
+                <small>Look for an email from Dev Academy.</small>
+            </div>
+        </li>
+        <li>
+            <span class="welcome-confirmation-step-number">2</span>
+            <div>
+                <strong>Open the email</strong>
+                <small>It should arrive within the next few minutes.</small>
+            </div>
+        </li>
+        <li>
+            <span class="welcome-confirmation-step-number">3</span>
+            <div>
+                <strong>Confirm your subscription</strong>
+                <small>Click the button inside to receive your first Knowledge Pill.</small>
+            </div>
+        </li>
+    </ol>
+
+    <aside class="welcome-confirmation-note">
+        <strong>Can’t find it?</strong>
+        Check your Spam or Promotions folder and make sure the email address was typed correctly.
+    </aside>
+</section>
+
+<style>
+    .thank-you main {
+        background:
+            radial-gradient(circle at 15% 10%, rgba(97, 11, 239, .13), transparent 32rem),
+            radial-gradient(circle at 90% 85%, rgba(141, 233, 255, .2), transparent 34rem),
+            #f7f7fc;
+        min-height: calc(100vh - 8rem);
+        padding: 5.6rem 0 7.2rem;
+    }
+
+    .thank-you main > .container {
+        max-width: 92rem;
+        padding: 0 2rem;
+    }
+
+    .thank-you main .article-page {
+        margin: 0;
+        max-width: none;
+        padding: 0;
+    }
+
+    .welcome-confirmation {
+        background: #fff;
+        border: 1px solid #e1deed;
+        border-radius: 2.4rem;
+        box-shadow: 0 2.4rem 7rem rgba(19, 11, 55, .12);
+        color: #151515;
+        margin: 0 auto;
+        max-width: 78rem;
+        padding: 5.6rem;
+        text-align: center;
+    }
+
+    .welcome-confirmation p {
+        padding-bottom: 0;
+    }
+
+    .welcome-confirmation-icon {
+        align-items: center;
+        background: #610bef;
+        border: .8rem solid #eeeaff;
+        border-radius: 50%;
+        color: #fff;
+        display: flex;
+        font-size: 3rem;
+        height: 8rem;
+        justify-content: center;
+        margin: 0 auto 2.4rem;
+        width: 8rem;
+    }
+
+    .welcome-confirmation-eyebrow {
+        color: #610bef;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 1.2rem !important;
+        font-weight: 700;
+        letter-spacing: .14em;
+        margin: 0 0 1.2rem;
+        text-transform: uppercase;
+    }
+
+    .welcome-confirmation h1 {
+        color: #130b37;
+        font-size: clamp(3.6rem, 7vw, 5.6rem);
+        letter-spacing: -.045em;
+        line-height: 1.05;
+        margin: 0 0 2rem;
+    }
+
+    .welcome-confirmation-lead {
+        color: #4e4b66;
+        font-size: 1.8rem !important;
+        line-height: 1.65;
+        margin: 0 auto;
+        max-width: 58rem;
+    }
+
+    .welcome-confirmation-lead strong {
+        color: #151515;
+        display: block;
+    }
+
+    .welcome-confirmation-steps {
+        display: grid;
+        gap: 1.2rem;
+        list-style: none;
+        margin: 4rem 0 2.4rem;
+        padding: 0;
+        text-align: left;
+    }
+
+    .welcome-confirmation-steps li {
+        align-items: center;
+        background: #f7f7fc;
+        border: 1px solid #e6e3ef;
+        border-radius: 1.4rem;
+        display: flex;
+        gap: 1.6rem;
+        padding: 1.8rem 2rem;
+    }
+
+    .welcome-confirmation-step-number {
+        align-items: center;
+        background: #eeeaff;
+        border-radius: 50%;
+        color: #610bef;
+        display: flex;
+        flex: 0 0 3.8rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        height: 3.8rem;
+        justify-content: center;
+    }
+
+    .welcome-confirmation-steps strong,
+    .welcome-confirmation-steps small {
+        display: block;
+    }
+
+    .welcome-confirmation-steps strong {
+        color: #130b37;
+        font-size: 1.6rem;
+        margin-bottom: .3rem;
+    }
+
+    .welcome-confirmation-steps small {
+        color: #62636d;
+        font-size: 1.3rem;
+        line-height: 1.45;
+    }
+
+    .welcome-confirmation-note {
+        background: #fff8dc;
+        border: 1px solid #f2dc8b;
+        border-radius: 1.2rem;
+        color: #544817;
+        font-size: 1.35rem;
+        line-height: 1.55;
+        padding: 1.6rem 2rem;
+        text-align: left;
+    }
+
+    @media (max-width: 640px) {
+        .thank-you main {
+            padding: 2.4rem 0 4rem;
+        }
+
+        .thank-you main > .container {
+            padding: 0 1.2rem;
+        }
+
+        .welcome-confirmation {
+            border-radius: 1.8rem;
+            padding: 3.2rem 2rem;
+        }
+
+        .welcome-confirmation-icon {
+            height: 6.8rem;
+            width: 6.8rem;
+        }
+
+        .welcome-confirmation-lead {
+            font-size: 1.6rem !important;
+        }
+
+        .welcome-confirmation-steps {
+            margin-top: 3.2rem;
+        }
+    }
+</style>

@@ -22,6 +22,7 @@ function countCanonical(html, canonicalUrl) {
 }
 
 const homepage = readPublic('index.html');
+const welcome = readPublic('welcome/index.html');
 const articles = readPublic('articles/index.html');
 const mainJs = readPublic('js/main.js');
 const sitemapIndex = readPublic('sitemap.xml');
@@ -76,6 +77,11 @@ assert.strictEqual(newsletterForms.length, 3);
   assert(form.includes('action="https://app.kit.com/forms/9764408/subscriptions"'));
   assert(form.includes('data-sv-form="9764408"'));
   assert(form.includes('data-uid="23709cd512"'));
+  assert(form.includes('data-options='));
+  assert(form.includes('redirect'));
+  assert(form.includes('https://dev-academy.com/welcome'));
+  assert(form.includes('data-element="errors"'));
+  assert(form.includes('data-element="fields"'));
   assert(form.includes('data-newsletter-topic="both"'));
   assert(form.includes('name="email_address"'));
   assert(!form.includes('name="fields[first_name]"'));
@@ -165,5 +171,11 @@ assert(postSitemap.includes('<loc>https://dev-academy.com/preventing-xss-in-angu
 assert.strictEqual(count(emailExamplesTemplate, 'class="newsletter-email-card"'), 2);
 assert(/\.newsletter-email-card\s*\{[\s\S]*?display:\s*grid;[\s\S]*?grid-template-rows:\s*auto 1fr;/.test(newsletterStyles));
 assert(!/\.newsletter-email\s*\{[\s\S]*?height:\s*100%;/.test(newsletterStyles));
+
+assert(welcome.includes('class="welcome-confirmation"'));
+assert(welcome.includes('Check your inbox'));
+assert(welcome.includes('Open the email'));
+assert(welcome.includes('Confirm your subscription'));
+assert(welcome.includes('You are not subscribed yet'));
 
 console.log('Newsletter homepage acceptance checks passed.');
