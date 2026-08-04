@@ -93,8 +93,9 @@ assert(homepage.includes('900+ course enrollments across Web Security &amp; Full
 assert(homepage.includes('big ball of mud'));
 assert(homepage.includes('Restrict the dependencies with testing'));
 assert(homepage.includes('controllers should not depend on APIs'));
-assert(homepage.includes('window.opener'));
-assert(homepage.includes('rel=&#34;noopener&#34;'));
+assert(homepage.includes('clickjacking'));
+assert(homepage.includes('invisible iframe'));
+assert(homepage.includes('frame-ancestors'));
 assert(!homepage.includes('working JavaScript'));
 assert(!homepage.includes('900+ developers'));
 assert(!homepage.includes('900+ students'));

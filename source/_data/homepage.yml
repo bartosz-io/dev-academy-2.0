@@ -6,9 +6,9 @@ hero:
   security_card:
     label: Security Tuesday
     time: 3 min read
-    title: Opening links in a new tab?
-    problem: A new tab can access window.opener.
-    code: rel="noopener"
+    title: Can another website frame your app?
+    problem: An invisible iframe can turn a user's click into an authenticated action.
+    code: "Content-Security-Policy: frame-ancestors 'none';"
   testing_card:
     label: Testing Friday
     time: 4 min read
@@ -19,22 +19,23 @@ hero:
 security_pill:
   label: Security Tuesday
   reading_time: 3 min read
-  subject: Little-known website hack that you need to know
+  subject: Can another website click your buttons?
   greeting: Hi developer,
-  intro: Imagine your client asks you to open a link in a new tab. You add target="_blank" and move on.
-  problem_label: Here is where the problem begins
-  problem: The newly opened website can access window.opener, which points back to the page that opened it.
+  intro: Imagine a user visits an attacker-controlled page while signed in to your application. The attacker places your app inside a transparent iframe over a harmless-looking button.
+  problem_label: The click lands inside your application
+  problem: If the framed page has an authenticated session, the browser delivers the user's click to the real button inside your app.
   problem_code: |
-    <a href="https://someapp.com" target="_blank">Open link</a>
+    <iframe src="https://your-app.com/account"
+            class="invisible-overlay"></iframe>
   bullets:
-    - Read data exposed by the opener page.
-    - Manipulate the original page's DOM.
-    - Redirect the original tab to a phishing page.
-  solution_label: Make the opener unavailable
-  solution: Add rel="noopener" to links that open an external page in a new tab.
+    - The user sees the attacker's interface, not the framed page.
+    - The click can trigger a real state-changing action in your app.
+    - Authentication alone does not prove that the user intended the action.
+  solution_label: Control who can frame your application
+  solution: Return a Content Security Policy header with frame-ancestors. Use 'none' when your application should never be embedded.
   solution_code: |
-    <a href="https://someapp.com" target="_blank" rel="noopener">Open link</a>
-  takeaway: The opened page now receives a null window.opener reference.
+    Content-Security-Policy: frame-ancestors 'none';
+  takeaway: The browser now refuses to render your application inside an attacker-controlled frame, preventing the clickjacking setup.
   signoff: Stay curious, Bartosz
 
 testing_pill:
