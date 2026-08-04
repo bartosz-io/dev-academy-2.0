@@ -177,5 +177,7 @@ assert(welcome.includes('Check your inbox'));
 assert(welcome.includes('Open the email'));
 assert(welcome.includes('Confirm your subscription'));
 assert(welcome.includes('You are not subscribed yet'));
+assert(!welcome.includes('<header class="header">'));
+assert(!welcome.includes('<footer class="footer">'));
 
 console.log('Newsletter homepage acceptance checks passed.');
