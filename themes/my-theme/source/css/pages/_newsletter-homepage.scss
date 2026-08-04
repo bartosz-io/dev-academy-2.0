@@ -274,8 +274,8 @@
 }
 
 .newsletter-email-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .newsletter-email-label {
@@ -293,7 +293,6 @@
   box-shadow: 0 1.6rem 4rem rgba(17, 19, 26, .09);
   color: #202124;
   font-family: Arial, sans-serif;
-  flex: 1;
 }
 
 .newsletter-email-header {

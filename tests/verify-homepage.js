@@ -162,8 +162,7 @@ const articleSitemap = readPublic('articles-sitemap.xml');
 assert(articleSitemap.includes('<loc>https://dev-academy.com/articles/</loc>'));
 assert(postSitemap.includes('<loc>https://dev-academy.com/preventing-xss-in-angular/</loc>'));
 assert.strictEqual(count(emailExamplesTemplate, 'class="newsletter-email-card"'), 2);
-assert(/\.newsletter-email-card\s*\{[\s\S]*?display:\s*flex;[\s\S]*?flex-direction:\s*column;/.test(newsletterStyles));
-assert(/\.newsletter-email\s*\{[\s\S]*?flex:\s*1;/.test(newsletterStyles));
+assert(/\.newsletter-email-card\s*\{[\s\S]*?display:\s*grid;[\s\S]*?grid-template-rows:\s*auto 1fr;/.test(newsletterStyles));
 assert(!/\.newsletter-email\s*\{[\s\S]*?height:\s*100%;/.test(newsletterStyles));
 
 console.log('Newsletter homepage acceptance checks passed.');
