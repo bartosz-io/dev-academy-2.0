@@ -6,7 +6,7 @@ Primary domain: `https://dev-academy.com`
 
 ## Objective
 
-Rebuild Dev Academy as an English-language, newsletter-first brand for working JavaScript and TypeScript developers. The immediate objective is to build a high-quality owned audience without requiring a new premium course to exist first.
+Rebuild Dev Academy as an English-language, newsletter-first brand for JavaScript and TypeScript developers. The immediate objective is to build a high-quality owned audience without requiring a new premium course to exist first.
 
 The brand promise is:
 
@@ -24,7 +24,7 @@ Dev Academy is a personal-led brand: `Dev Academy by Bartosz Pietrucha`. The con
 
 ## Audience and positioning
 
-The primary audience is working JavaScript and TypeScript developers. The site does not target beginners preparing for their first job or pentesters.
+The primary audience is JavaScript and TypeScript developers. The site does not target beginners preparing for their first job or pentesters.
 
 The transformation is practical engineering judgment: recognizing whether a web application is secure and meaningfully tested, including when frameworks, packages or AI generate code that appears to work.
 
@@ -87,7 +87,7 @@ Use a split layout.
 
 Left side:
 
-- audience label: `For working JavaScript & TypeScript developers`;
+- audience label: `For JavaScript & TypeScript developers`;
 - headline: `Build web applications you can trust.`;
 - mechanism: two practical Knowledge Pills each week, each under five minutes;
 - email-only form;
