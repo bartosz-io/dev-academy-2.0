@@ -6,14 +6,14 @@
             <p>Every Pill stands on its own. No backlog and no course to finish - just a practical lesson you can use when the situation appears in your work.</p>
         </div>
         <div class="newsletter-email-grid">
-            <div>
+            <div class="newsletter-email-card">
                 <p class="newsletter-email-label newsletter-email-label-security">Security Tuesday · actual email</p>
                 <%- partial('partial/homepage/email-preview', {
                     pill: homepage.security_pill,
                     variant: 'security'
                 }) %>
             </div>
-            <div>
+            <div class="newsletter-email-card">
                 <p class="newsletter-email-label newsletter-email-label-testing">Testing Friday · actual email</p>
                 <%- partial('partial/homepage/email-preview', {
                     pill: homepage.testing_pill,

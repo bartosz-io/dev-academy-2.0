@@ -27,6 +27,14 @@ const mainJs = readPublic('js/main.js');
 const sitemapIndex = readPublic('sitemap.xml');
 const pageSitemap = readPublic('page-sitemap.xml');
 const postSitemap = readPublic('post-sitemap.xml');
+const emailExamplesTemplate = fs.readFileSync(
+  path.join(__dirname, '..', 'themes', 'my-theme', 'layout', 'partial', 'homepage', 'email-examples.ejs'),
+  'utf8'
+);
+const newsletterStyles = fs.readFileSync(
+  path.join(__dirname, '..', 'themes', 'my-theme', 'source', 'css', 'pages', '_newsletter-homepage.scss'),
+  'utf8'
+);
 const newsletterForms = homepage.match(/<form\b[\s\S]*?<\/form>/g) || [];
 
 assert(homepage.includes('class="newsletter-homepage"'));
@@ -153,5 +161,9 @@ assert(sitemapIndex.includes('<loc>https://dev-academy.com/articles-sitemap.xml<
 const articleSitemap = readPublic('articles-sitemap.xml');
 assert(articleSitemap.includes('<loc>https://dev-academy.com/articles/</loc>'));
 assert(postSitemap.includes('<loc>https://dev-academy.com/preventing-xss-in-angular/</loc>'));
+assert.strictEqual(count(emailExamplesTemplate, 'class="newsletter-email-card"'), 2);
+assert(/\.newsletter-email-card\s*\{[\s\S]*?display:\s*flex;[\s\S]*?flex-direction:\s*column;/.test(newsletterStyles));
+assert(/\.newsletter-email\s*\{[\s\S]*?flex:\s*1;/.test(newsletterStyles));
+assert(!/\.newsletter-email\s*\{[\s\S]*?height:\s*100%;/.test(newsletterStyles));
 
 console.log('Newsletter homepage acceptance checks passed.');
