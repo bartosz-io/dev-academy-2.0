@@ -14,6 +14,7 @@ function createHarness(isValid) {
   const classes = new Set();
   const attributes = new Map();
   const submitHandlers = [];
+  const domContentLoadedHandlers = [];
   const pageShowHandlers = [];
   const observerCallbacks = [];
   const errors = {textContent: ''};
@@ -42,7 +43,9 @@ function createHarness(isValid) {
   const sandbox = {
     console: console,
     document: {
-      addEventListener: function () {},
+      addEventListener: function (eventName, handler) {
+        if (eventName === 'DOMContentLoaded') domContentLoadedHandlers.push(handler);
+      },
       querySelectorAll: function (selector) {
         return selector === '.newsletter-form' ? [form] : [];
       }
@@ -60,7 +63,19 @@ function createHarness(isValid) {
 
   vm.createContext(sandbox);
   vm.runInContext(mainSource, sandbox);
-  sandbox.newsletterSubmitLoaders();
+  sandbox.stickyNavigation = function () {};
+  sandbox.mobileNavigation = function () {};
+  sandbox.isLaptop = function () { return false; };
+  sandbox.isPostPage = function () { return false; };
+  sandbox.isIndexPage = function () { return false; };
+  sandbox.isTagPage = function () { return false; };
+  sandbox.addPostHogDynamicInserts = function () {};
+  sandbox.loadDisqusComments = function () {};
+  sandbox.loadConvertKit = function () {};
+  sandbox.relatedPosts = function () {};
+  sandbox.contributors = function () {};
+  sandbox.userGoals = function () {};
+  domContentLoadedHandlers.forEach(function (handler) { handler(); });
 
   return {
     button: button,
