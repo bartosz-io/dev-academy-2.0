@@ -1,0 +1,33 @@
+<section class="newsletter-examples" aria-labelledby="newsletter-examples-title">
+    <div class="container">
+        <div class="newsletter-section-heading">
+            <p class="newsletter-eyebrow">See what arrives in your inbox</p>
+            <h2 id="newsletter-examples-title">One useful idea. Under five minutes.</h2>
+            <p>Every Pill stands on its own. No backlog and no course to finish - just a practical lesson you can use when the situation appears in your work.</p>
+        </div>
+        <div class="newsletter-email-grid">
+            <div>
+                <p class="newsletter-email-label newsletter-email-label-security">Security Tuesday · actual email</p>
+                <%- partial('partial/homepage/email-preview', {
+                    pill: homepage.security_pill,
+                    variant: 'security'
+                }) %>
+            </div>
+            <div>
+                <p class="newsletter-email-label newsletter-email-label-testing">Testing Friday · actual email</p>
+                <%- partial('partial/homepage/email-preview', {
+                    pill: homepage.testing_pill,
+                    variant: 'testing'
+                }) %>
+            </div>
+        </div>
+        <div class="newsletter-examples-form">
+            <p class="newsletter-examples-form-title">Want the next Pill in your inbox?</p>
+            <%- partial('partial/homepage/newsletter-form', {
+                placement: 'homepage_after_examples',
+                formId: 'pills-after-examples',
+                buttonLabel: 'Send me the Pills'
+            }) %>
+        </div>
+    </div>
+</section>

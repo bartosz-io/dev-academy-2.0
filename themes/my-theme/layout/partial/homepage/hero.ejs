@@ -1,0 +1,39 @@
+<section class="newsletter-hero" aria-labelledby="newsletter-hero-title">
+    <div class="container newsletter-hero-grid">
+        <div class="newsletter-hero-copy">
+            <p class="newsletter-eyebrow"><%= homepage.hero.audience %></p>
+            <h1 id="newsletter-hero-title"><%= homepage.hero.title %></h1>
+            <p class="newsletter-hero-summary"><%= homepage.hero.summary %></p>
+            <div class="newsletter-cadence" aria-label="Newsletter schedule">
+                <span><strong>Tuesday</strong> Security</span>
+                <span><strong>Friday</strong> Testing</span>
+            </div>
+            <%- partial('partial/homepage/newsletter-form', {
+                placement: 'homepage_hero',
+                formId: 'get-free-pills',
+                buttonLabel: 'Send me the Pills'
+            }) %>
+            <p class="newsletter-proof-line"><strong><%= homepage.hero.proof %></strong></p>
+        </div>
+        <div class="newsletter-hero-previews" aria-label="Example Knowledge Pills">
+            <article class="newsletter-mini-pill newsletter-mini-pill-security">
+                <div class="newsletter-mini-pill-meta">
+                    <span><%= homepage.hero.security_card.label %></span>
+                    <span><%= homepage.hero.security_card.time %></span>
+                </div>
+                <h2><%= homepage.hero.security_card.title %></h2>
+                <p><%= homepage.hero.security_card.problem %></p>
+                <code><%= homepage.hero.security_card.code %></code>
+            </article>
+            <article class="newsletter-mini-pill newsletter-mini-pill-testing">
+                <div class="newsletter-mini-pill-meta">
+                    <span><%= homepage.hero.testing_card.label %></span>
+                    <span><%= homepage.hero.testing_card.time %></span>
+                </div>
+                <h2><%= homepage.hero.testing_card.title %></h2>
+                <p><%= homepage.hero.testing_card.problem %></p>
+                <code><%= homepage.hero.testing_card.code %></code>
+            </article>
+        </div>
+    </div>
+</section>

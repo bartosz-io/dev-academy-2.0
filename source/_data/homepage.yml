@@ -1,0 +1,69 @@
+hero:
+  audience: For JavaScript & TypeScript developers
+  title: Build web applications you can trust.
+  summary: Get two practical Knowledge Pills every week - Security Tuesday and Testing Friday - each readable in under five minutes.
+  proof: 900+ course enrollments across Web Security & Full-stack Testing
+  security_card:
+    label: Security Tuesday
+    time: 3 min read
+    title: Opening links in a new tab?
+    problem: A new tab can access window.opener.
+    code: rel="noopener"
+  testing_card:
+    label: Testing Friday
+    time: 4 min read
+    title: Can we test application architecture?
+    problem: Stop a clean dependency graph becoming a big ball of mud.
+    code: controllers should not depend on APIs
+
+security_pill:
+  label: Security Tuesday
+  reading_time: 3 min read
+  subject: Little-known website hack that you need to know
+  greeting: Hi developer,
+  intro: Imagine your client asks you to open a link in a new tab. You add target="_blank" and move on.
+  problem_label: Here is where the problem begins
+  problem: The newly opened website can access window.opener, which points back to the page that opened it.
+  problem_code: |
+    <a href="https://someapp.com" target="_blank">Open link</a>
+  bullets:
+    - Read data exposed by the opener page.
+    - Manipulate the original page's DOM.
+    - Redirect the original tab to a phishing page.
+  solution_label: Make the opener unavailable
+  solution: Add rel="noopener" to links that open an external page in a new tab.
+  solution_code: |
+    <a href="https://someapp.com" target="_blank" rel="noopener">Open link</a>
+  takeaway: The opened page now receives a null window.opener reference.
+  signoff: Stay curious, Bartosz
+
+testing_pill:
+  label: Testing Friday
+  reading_time: 4 min read
+  subject: How to test ARCHITECTURE?
+  greeting: Hi developer,
+  intro: In a layered application, controllers should depend on services and services should depend on repositories.
+  problem_label: Architecture deteriorates silently
+  problem: Without an automated boundary, a clean dependency graph can slowly become a big ball of mud.
+  problem_code: |
+    controllers -> services -> repositories
+  bullets:
+    - A controller imports an API file directly.
+    - Reviewers miss the dependency in a large pull request.
+    - The exception becomes the next developer's precedent.
+  solution_label: Restrict the dependencies with testing
+  solution: In TypeScript, TSArch can fail the build when a controller crosses the boundary.
+  solution_code: |
+    describe("Application", () => {
+      it("controllers should not depend on APIs", async () => {
+        const rule = filesOfProject()
+          .matchingPattern(".*controller\\.ts")
+          .shouldNot()
+          .dependOnFiles()
+          .matchingPattern(".*api\\.ts");
+
+        await expect(rule).toPassAsync();
+      });
+    });
+  takeaway: The test turns an architectural intention into an executable rule.
+  signoff: See you next Friday, Bartosz

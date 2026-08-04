@@ -1,0 +1,31 @@
+<article class="newsletter-email newsletter-email-<%- variant %>">
+    <header class="newsletter-email-header">
+        <div class="newsletter-email-avatar" aria-hidden="true">BP</div>
+        <div>
+            <p class="newsletter-email-from">Bartosz from Dev Academy</p>
+            <p class="newsletter-email-subject"><%= pill.subject %></p>
+        </div>
+        <span class="newsletter-email-time"><%= pill.reading_time %></span>
+    </header>
+    <div class="newsletter-email-body">
+        <p><%= pill.greeting %></p>
+        <p><%= pill.intro %></p>
+        <div class="newsletter-email-problem">
+            <span><%= pill.problem_label %></span>
+            <p><%= pill.problem %></p>
+        </div>
+        <pre><code><%= pill.problem_code.trim() %></code></pre>
+        <ul>
+            <% pill.bullets.forEach(function (item) { %>
+                <li><%= item %></li>
+            <% }) %>
+        </ul>
+        <div class="newsletter-email-solution">
+            <span><%= pill.solution_label %></span>
+            <p><%= pill.solution %></p>
+        </div>
+        <pre><code><%= pill.solution_code.trim() %></code></pre>
+        <p class="newsletter-email-takeaway"><%= pill.takeaway %></p>
+        <p class="newsletter-email-signoff"><%= pill.signoff %></p>
+    </div>
+</article>

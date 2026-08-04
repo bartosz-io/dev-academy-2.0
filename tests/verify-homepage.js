@@ -15,8 +15,10 @@ function count(haystack, needle) {
 }
 
 function countCanonical(html, canonicalUrl) {
-  const expected = '<link rel="canonical" href="' + canonicalUrl + '">';
-  return count(html, expected);
+  const canonicalTags = html.match(/<link\b[^>]*rel="canonical"[^>]*>/g) || [];
+  return canonicalTags.filter(function (tag) {
+    return tag.includes('href="' + canonicalUrl + '"');
+  }).length;
 }
 
 const homepage = readPublic('index.html');
@@ -70,10 +72,22 @@ assert.strictEqual(newsletterForms.length, 3);
   assert(form.includes('Check your inbox'));
 });
 
+assert(homepage.includes('For JavaScript &amp; TypeScript developers'));
 assert(homepage.includes('Build web applications you can trust.'));
 assert(homepage.includes('Security Tuesday'));
 assert(homepage.includes('Testing Friday'));
 assert(homepage.includes('under five minutes'));
+assert(homepage.includes('900+ course enrollments across Web Security &amp; Full-stack Testing'));
+assert(homepage.includes('big ball of mud'));
+assert(homepage.includes('Restrict the dependencies with testing'));
+assert(homepage.includes('controllers should not depend on APIs'));
+assert(homepage.includes('window.opener'));
+assert(homepage.includes('rel=&#34;noopener&#34;'));
+assert(!homepage.includes('working JavaScript'));
+assert(!homepage.includes('900+ developers'));
+assert(!homepage.includes('900+ students'));
+assert(!homepage.includes('12-week'));
+assert(!homepage.includes('5-week'));
 assert.strictEqual(count(homepage, 'name="email_address"'), 3);
 assert.strictEqual(count(homepage, 'name="fields[first_name]"'), 0);
 assert.strictEqual(
