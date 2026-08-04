@@ -1,0 +1,13 @@
+<section class="newsletter-about-bartosz" aria-labelledby="newsletter-about-title">
+    <div class="container newsletter-about-grid">
+        <div class="newsletter-about-image">
+            <img src="<%- url_for(homepage.author.image) %>" width="300" height="300" loading="lazy" alt="<%= homepage.author.image_alt %>">
+        </div>
+        <div>
+            <p class="newsletter-eyebrow"><%= homepage.author.eyebrow %></p>
+            <h2 id="newsletter-about-title"><%= homepage.author.title %></h2>
+            <p class="newsletter-about-experience"><strong><%= homepage.author.experience %></strong></p>
+            <p><%= homepage.author.body %></p>
+        </div>
+    </div>
+</section>

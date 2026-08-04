@@ -88,6 +88,17 @@ assert(!homepage.includes('900+ developers'));
 assert(!homepage.includes('900+ students'));
 assert(!homepage.includes('12-week'));
 assert(!homepage.includes('5-week'));
+assert(homepage.includes('class="newsletter-ai-judgment"'));
+assert(homepage.includes('Code gets produced faster. Judgment doesn&#39;t.'));
+assert(homepage.includes('class="newsletter-proof"'));
+assert.strictEqual(count(homepage, 'From a previous Web Security Academy program'), 2);
+assert(homepage.includes('Hassan A Mohamed'));
+assert(homepage.includes('Ishan Soni'));
+assert(homepage.includes('class="newsletter-about-bartosz"'));
+assert(homepage.includes('Building production software since 2013. Teaching developers since 2017.'));
+assert(homepage.includes('Practical teaching for people who ship real software.'));
+assert(homepage.includes('Your first Security Pill arrives immediately'));
+assert(homepage.includes('Two useful ideas every week. Less than ten minutes total.'));
 assert.strictEqual(count(homepage, 'name="email_address"'), 3);
 assert.strictEqual(count(homepage, 'name="fields[first_name]"'), 0);
 assert.strictEqual(

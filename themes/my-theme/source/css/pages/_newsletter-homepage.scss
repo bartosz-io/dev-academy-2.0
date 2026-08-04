@@ -451,12 +451,188 @@
   text-align: center;
 }
 
-.newsletter-homepage-form-final {
+.newsletter-ai-judgment {
+  background: var(--newsletter-purple-soft);
+  padding: 6.4rem 0;
+
+  h2 {
+    font-size: clamp(3.4rem, 8vw, 5.4rem);
+    letter-spacing: -.05em;
+    line-height: 1.04;
+    margin: 1.4rem 0 0;
+  }
+}
+
+.newsletter-ai-grid {
+  display: grid;
+  gap: 3.2rem;
+}
+
+.newsletter-ai-copy {
+  color: #514d62;
+  font-size: 1.65rem;
+
+  p {
+    line-height: 1.75;
+  }
+
+  p + p {
+    color: var(--newsletter-ink);
+    margin-top: 1.8rem;
+  }
+}
+
+.newsletter-proof {
+  background: var(--newsletter-paper);
+  padding: 7.2rem 0;
+}
+
+.newsletter-testimonials {
+  display: grid;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 105rem;
+}
+
+.newsletter-testimonial {
+  background: #fff;
+  border: .1rem solid var(--newsletter-line);
+  border-radius: 1.2rem;
+  box-shadow: 0 1.2rem 3rem rgba(17, 19, 26, .06);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 2.8rem;
+
+  blockquote {
+    flex: 1;
+    font-size: 1.4rem;
+    margin: 1.6rem 0 2.4rem;
+    padding: 0;
+
+    &:before {
+      display: none;
+    }
+
+    p {
+      color: #464750;
+      line-height: 1.75;
+    }
+  }
+
+  figcaption {
+    border-top: .1rem solid #e6e6e1;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding-top: 1.6rem;
+
+    strong {
+      font-size: 1.4rem;
+    }
+
+    span {
+      color: var(--newsletter-muted);
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+  }
+}
+
+.newsletter-testimonial-stars {
+  color: #ed9b18;
+  font-size: 1.5rem;
+  letter-spacing: .12em;
+}
+
+.newsletter-about-bartosz {
+  background: #121318;
+  color: #fff;
+  padding: 7.2rem 0;
+
+  .newsletter-eyebrow {
+    color: #b9a7ff;
+  }
+
+  h2 {
+    font-size: clamp(3.4rem, 8vw, 5.2rem);
+    letter-spacing: -.045em;
+    line-height: 1.08;
+    margin: 1.4rem 0 2rem;
+  }
+
+  p:last-child {
+    color: #c4c5ca;
+    font-size: 1.55rem;
+    line-height: 1.75;
+    margin-top: 1.8rem;
+  }
+}
+
+.newsletter-about-grid {
+  align-items: center;
+  display: grid;
+  gap: 4rem;
+}
+
+.newsletter-about-image {
+  justify-self: center;
+  position: relative;
+
+  &:before {
+    background: linear-gradient(135deg, var(--newsletter-purple), #ff4d73);
+    border-radius: 2.4rem;
+    content: '';
+    inset: -1.2rem;
+    position: absolute;
+    transform: rotate(-4deg);
+  }
+
+  img {
+    border-radius: 1.6rem;
+    display: block;
+    position: relative;
+    width: 24rem;
+  }
+}
+
+.newsletter-about-experience {
+  color: #fff;
+  font-size: 1.45rem;
+  line-height: 1.65;
+}
+
+.newsletter-final-cta {
   background: var(--newsletter-purple);
-  padding: 5.6rem 2rem;
+  color: #fff;
+  padding: 6.4rem 0;
+  text-align: center;
+
+  .container {
+    max-width: 84rem;
+  }
+
+  .newsletter-eyebrow {
+    color: #d8d0ff;
+  }
+
+  h2 {
+    font-size: clamp(3.6rem, 8vw, 5.6rem);
+    letter-spacing: -.05em;
+    line-height: 1.05;
+    margin: 1.4rem 0 1.8rem;
+  }
+
+  > .container > p:not(.newsletter-eyebrow) {
+    color: #e5e0ff;
+    font-size: 1.6rem;
+    line-height: 1.7;
+  }
 
   .newsletter-form {
     margin: 0 auto;
+    padding-top: .8rem;
+    text-align: left;
   }
 
   .newsletter-form-label,
@@ -467,6 +643,11 @@
 
   .newsletter-form-submit {
     background: #151515;
+
+    &:hover {
+      background: #2c2d33;
+      color: #fff;
+    }
   }
 }
 
@@ -520,6 +701,25 @@
     align-items: stretch;
     gap: 3.2rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .newsletter-ai-grid {
+    align-items: center;
+    gap: 7rem;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  }
+
+  .newsletter-testimonials {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .newsletter-about-grid {
+    gap: 7rem;
+    grid-template-columns: minmax(28rem, .65fr) minmax(0, 1.35fr);
+  }
+
+  .newsletter-about-image img {
+    width: 30rem;
   }
 }
 

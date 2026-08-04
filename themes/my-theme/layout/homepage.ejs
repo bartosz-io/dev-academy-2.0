@@ -4,11 +4,8 @@ var homepage = site.data.homepage;
 <article class="newsletter-homepage">
     <%- partial('partial/homepage/hero', {homepage: homepage}) %>
     <%- partial('partial/homepage/email-examples', {homepage: homepage}) %>
-    <section class="newsletter-homepage-form newsletter-homepage-form-final">
-        <%- partial('partial/homepage/newsletter-form', {
-            placement: 'homepage_final',
-            formId: 'pills-final',
-            buttonLabel: 'Get the free Pills'
-        }) %>
-    </section>
+    <%- partial('partial/homepage/ai-judgment', {homepage: homepage}) %>
+    <%- partial('partial/homepage/proof', {homepage: homepage}) %>
+    <%- partial('partial/homepage/about-bartosz', {homepage: homepage}) %>
+    <%- partial('partial/homepage/final-cta', {homepage: homepage}) %>
 </article>

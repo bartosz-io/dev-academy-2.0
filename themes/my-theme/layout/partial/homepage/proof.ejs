@@ -1,0 +1,24 @@
+<section class="newsletter-proof" aria-labelledby="newsletter-proof-title">
+    <div class="container">
+        <div class="newsletter-section-heading">
+            <p class="newsletter-eyebrow"><%= homepage.proof.eyebrow %></p>
+            <h2 id="newsletter-proof-title"><%= homepage.proof.title %></h2>
+            <p><%= homepage.proof.description %></p>
+        </div>
+        <div class="newsletter-testimonials">
+            <% homepage.proof.testimonials.forEach(function (testimonial) { %>
+                <figure class="newsletter-testimonial">
+                    <div class="newsletter-testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                    <blockquote>
+                        <p><%= testimonial.quote %></p>
+                    </blockquote>
+                    <figcaption>
+                        <strong><%= testimonial.name %></strong>
+                        <span><%= testimonial.title %></span>
+                        <span><%= testimonial.program %> · <%= testimonial.date %></span>
+                    </figcaption>
+                </figure>
+            <% }) %>
+        </div>
+    </div>
+</section>

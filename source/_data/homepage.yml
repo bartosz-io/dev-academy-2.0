@@ -67,3 +67,40 @@ testing_pill:
     });
   takeaway: The test turns an architectural intention into an executable rule.
   signoff: See you next Friday, Bartosz
+
+ai:
+  eyebrow: Why this matters now
+  title: Code gets produced faster. Judgment doesn't.
+  body: AI can generate features, security headers, and tests. You still need to recognize broken trust boundaries, missing authorization, weak assertions, and tests that pass without proving useful behavior.
+  takeaway: Dev Academy trains the judgment behind the code - one focused Pill at a time.
+
+proof:
+  eyebrow: Proven teaching experience
+  title: 900+ course enrollments
+  description: Real feedback from developers who joined previous Dev Academy programs.
+  testimonials:
+    - name: Hassan A Mohamed
+      date: March 2021
+      program: From a previous Web Security Academy program
+      title: One of the Most Comprehensive Courses on Advanced Web Security
+      quote: >-
+        This is without a doubt one of the most comprehensive course I have taken on advanced web security. Bartosz's ability to explain the theory with live examples shows he is extremely knowledgeable in the topics being taught and he has tons of hours of work and effort put into research and making these contents as understandable as possible.
+    - name: Ishan Soni
+      date: August 2022
+      program: From a previous Web Security Academy program
+      title: Best and Useful course ever.
+      quote: >-
+        I learnt a lot from the course, personally I feel that the experience and the best practices for the web security is crucial, also the amount of information laid down in a concise manner was impressive, thank you for this amazing course.
+
+author:
+  eyebrow: Dev Academy by Bartosz Pietrucha
+  title: Practical teaching for people who ship real software.
+  experience: Building production software since 2013. Teaching developers since 2017.
+  body: I created Dev Academy to make difficult engineering decisions clear, practical, and useful at work. Every Pill starts with a situation a developer can recognize and ends with something concrete to apply.
+  image: /img/bartosz-large.png
+  image_alt: Bartosz Pietrucha, founder of Dev Academy
+
+final_cta:
+  eyebrow: Your first Security Pill arrives immediately
+  title: Two useful ideas every week. Less than ten minutes total.
+  body: Security Tuesday. Testing Friday. Free for JavaScript and TypeScript developers.
