@@ -227,30 +227,24 @@ sitemap: false
     return countDownDate;
   }
 
-  const phInit = function(posthog) {
-    var phId = posthog.get_distinct_id();
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
+  try {
     window.history.replaceState(null, null, window.location.pathname);
+  } catch (error) {}
 
-    posthog.identify(id);
-
-    posthog.capture('wsda_subscribe_confirm', { $set: { wsda_list: true } });
-
-    return phId;
-  }
-
-  const initPage = function(posthog) {
-    var phId = phInit(posthog);
+  const initPage = function() {
     var countDownDate = startCountdown(24, 0);
-
     var link = document.getElementById('link');
-    link.href = link.href + "?countDownDate=" + countDownDate + "#id=" + phId;
+    var linkUrl = new URL(link.href, window.location.origin);
+    linkUrl.searchParams.set('countDownDate', countDownDate.toString());
+    link.href = linkUrl.toString();
   }
 
-  if (window.posthog && window.posthog.get_distinct_id) {
-    initPage(window.posthog);
-  } else {
-    window.addEventListener('PH_Ready', (event) => initPage(event.detail.posthog));
-  }
+  initPage();
+  window.addEventListener('DOMContentLoaded', function() {
+    if (window.DevAcademyPrivacy) {
+      window.DevAcademyPrivacy.capture('gift_confirmation_viewed', {
+        gift: 'security_checklist'
+      });
+    }
+  });
 </script>

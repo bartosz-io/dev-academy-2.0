@@ -1,0 +1,56 @@
+<section class="consent-banner" id="consent-banner" aria-label="Privacy preferences" hidden>
+    <div>
+        <h2>Help debug this website</h2>
+        <p>Memory-only analytics and masked session replay are always active. You can separately allow us to remember visits and measure marketing performance.</p>
+    </div>
+    <div class="consent-actions">
+        <button class="privacy-button privacy-button-secondary" type="button" data-open-privacy-settings>Configure</button>
+        <button class="privacy-button privacy-button-primary" type="button" data-accept-all>Accept all</button>
+    </div>
+</section>
+
+<dialog class="privacy-dialog" id="privacy-dialog" aria-labelledby="privacy-dialog-title">
+    <form method="dialog">
+        <div class="privacy-dialog-header">
+            <div>
+                <p class="privacy-eyebrow">Privacy settings</p>
+                <h2 id="privacy-dialog-title">Choose what this page may remember.</h2>
+            </div>
+            <button class="privacy-close" type="submit" value="close" aria-label="Close privacy settings">×</button>
+        </div>
+
+        <div class="privacy-default">
+            <div>
+                <strong>Anonymous experience analytics</strong>
+                <span>Always active</span>
+            </div>
+            <p>Memory-only PostHog events and masked session replay. No persistent browser identifier.</p>
+        </div>
+
+        <label class="privacy-option">
+            <span>
+                <strong>Remember visits</strong>
+                <small>Allow PostHog to connect repeat visits using first-party storage.</small>
+            </span>
+            <input type="checkbox" id="persistent-analytics-consent">
+        </label>
+
+        <label class="privacy-option">
+            <span>
+                <strong>Marketing measurement</strong>
+                <small>Allow Meta Pixel to measure ad performance and checkout intent.</small>
+            </span>
+            <input type="checkbox" id="marketing-consent">
+        </label>
+
+        <div class="privacy-dialog-actions">
+            <button class="privacy-button privacy-button-secondary" type="button" data-reject-all>Reject all</button>
+            <button class="privacy-button privacy-button-secondary" type="button" data-save-privacy-settings>Save preferences</button>
+            <button class="privacy-button privacy-button-primary" type="button" data-accept-all>Accept all</button>
+        </div>
+    </form>
+</dialog>
+
+<% if (footerless) { %>
+    <button class="privacy-settings-compact" type="button" data-open-privacy-settings>Privacy settings</button>
+<% } %>

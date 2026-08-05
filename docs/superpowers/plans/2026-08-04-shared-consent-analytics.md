@@ -937,9 +937,12 @@ npx wrangler pages deploy dist --project-name browser-security-starter-kit --bra
 
 Expected: a successful production Pages deployment. Do not stage `docs/ads-report-1.csv`.
 
-- [ ] **Step 4: Deploy Dev Academy second**
+- [ ] **Step 4: Deploy Dev Academy second through Git auto-deploy**
 
-Push the tested Dev Academy commits to the Netlify production branch or trigger the existing production deployment workflow. Wait for the deployment to report success before browser verification.
+Merge and push the tested Dev Academy branch to the production branch. Netlify
+deploys automatically from that branch; no separate Netlify CLI deployment or
+authentication is required. Wait for the live production output to change and
+pass HTTP/browser checks before continuing.
 
 - [ ] **Step 5: Verify the production same-origin flow**
 

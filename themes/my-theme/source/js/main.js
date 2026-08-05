@@ -1,13 +1,4 @@
-/**
- * Global variables
- * */
-
 window.DESKTOP_STICKY_HEADER = true;
-
-// Post hog can be enabled for development if we really need this
-// e.g. we want to add DOM actions or test flags, experiments etc.
-// By default, the flag should be always false
-window.PH_ENABLED_DEV = false;
 
 
 /**
@@ -15,6 +6,14 @@ window.PH_ENABLED_DEV = false;
  * */
 
 document.addEventListener('DOMContentLoaded', function() {
+    privacyControls();
+    newsletterAnalytics();
+    uiInteractionAnalytics();
+
+    if (document.body && document.body.classList.contains('landing-page')) {
+        return;
+    }
+
     stickyNavigation();
     mobileNavigation();
 
@@ -49,6 +48,220 @@ document.addEventListener('DOMContentLoaded', function() {
     contributors();
     userGoals();
 });
+
+function privacyControls() {
+    var runtime = window.DevAcademyPrivacy;
+    var controls;
+    var initialState;
+
+    if (!runtime || privacyControls.isBound) {
+        return;
+    }
+    privacyControls.isBound = true;
+
+    controls = {
+        banner: document.querySelector('#consent-banner'),
+        dialog: document.querySelector('#privacy-dialog'),
+        persistentAnalytics: document.querySelector('#persistent-analytics-consent'),
+        marketing: document.querySelector('#marketing-consent'),
+        acceptAll: document.querySelectorAll('[data-accept-all]'),
+        rejectAll: document.querySelector('[data-reject-all]'),
+        save: document.querySelector('[data-save-privacy-settings]'),
+        open: document.querySelectorAll('[data-open-privacy-settings]')
+    };
+
+    function renderState(state) {
+        if (controls.persistentAnalytics) {
+            controls.persistentAnalytics.checked = state.persistentAnalytics;
+        }
+        if (controls.marketing) {
+            controls.marketing.checked = state.marketing;
+        }
+        if (state.decided && controls.banner) {
+            controls.banner.hidden = true;
+        }
+        if (state.decided && document.body && document.body.dataset) {
+            document.body.dataset.consentBanner = 'hidden';
+        }
+    }
+
+    function openDialog() {
+        renderState(runtime.getState());
+        if (!controls.dialog || controls.dialog.open) {
+            return;
+        }
+        if (typeof controls.dialog.showModal === 'function') {
+            controls.dialog.showModal();
+        } else {
+            controls.dialog.setAttribute('open', '');
+        }
+    }
+
+    function closeDialog() {
+        if (!controls.dialog || !controls.dialog.open) {
+            return;
+        }
+        if (typeof controls.dialog.close === 'function') {
+            controls.dialog.close();
+        } else {
+            controls.dialog.removeAttribute('open');
+        }
+    }
+
+    controls.open.forEach(function(control) {
+        control.addEventListener('click', openDialog);
+    });
+    controls.acceptAll.forEach(function(control) {
+        control.addEventListener('click', function() {
+            runtime.acceptAll();
+            closeDialog();
+        });
+    });
+    if (controls.rejectAll) {
+        controls.rejectAll.addEventListener('click', function() {
+            runtime.rejectAll();
+            closeDialog();
+        });
+    }
+    if (controls.save) {
+        controls.save.addEventListener('click', function() {
+            runtime.setPreferences({
+                persistentAnalytics: controls.persistentAnalytics && controls.persistentAnalytics.checked === true,
+                marketing: controls.marketing && controls.marketing.checked === true
+            });
+            closeDialog();
+        });
+    }
+
+    runtime.subscribe(renderState);
+    initialState = runtime.getState();
+    renderState(initialState);
+    if (!initialState.decided) {
+        if (controls.banner) {
+            controls.banner.hidden = false;
+        }
+        if (document.body && document.body.dataset) {
+            document.body.dataset.consentBanner = 'visible';
+        }
+        runtime.capture('consent_banner_viewed');
+    }
+
+    window.addEventListener('storage', function(event) {
+        if (event.key === runtime.CONSENT_KEY) {
+            runtime.applyExternalState(event.newValue);
+        }
+    });
+}
+
+function captureAnalytics(event, properties) {
+    if (window.DevAcademyPrivacy && typeof window.DevAcademyPrivacy.capture === 'function') {
+        window.DevAcademyPrivacy.capture(event, properties);
+    }
+}
+
+function canonicalAnalyticsValue(value) {
+    if (typeof value !== 'string') {
+        return 'unknown';
+    }
+    return value
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9_-]+/g, '_')
+        .replace(/^_+|_+$/g, '')
+        .slice(0, 80) || 'unknown';
+}
+
+function newsletterAnalytics() {
+    var forms;
+    var viewedForms;
+    var observer;
+
+    if (newsletterAnalytics.isBound) {
+        return;
+    }
+    newsletterAnalytics.isBound = true;
+    forms = document.querySelectorAll('.newsletter-form');
+    if (!forms.length) {
+        return;
+    }
+
+    viewedForms = new Set();
+    if (typeof IntersectionObserver === 'function') {
+        observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                var form = entry.target;
+                if (!entry.isIntersecting || viewedForms.has(form)) {
+                    return;
+                }
+                viewedForms.add(form);
+                observer.unobserve(form);
+                captureAnalytics('newsletter_form_viewed', {
+                    topic: canonicalAnalyticsValue(form.dataset.newsletterTopic),
+                    placement: canonicalAnalyticsValue(form.dataset.newsletterPlacement),
+                    source_page: window.location.pathname
+                });
+            });
+        });
+    }
+
+    forms.forEach(function(form) {
+        if (observer) {
+            observer.observe(form);
+        }
+        form.addEventListener('submit', function() {
+            if (!form.checkValidity()) {
+                return;
+            }
+            if (!window.DevAcademyPrivacy || typeof window.DevAcademyPrivacy.capture !== 'function') {
+                return;
+            }
+            captureAnalytics('newsletter_submitted', {
+                topic: canonicalAnalyticsValue(form.dataset && form.dataset.newsletterTopic),
+                placement: canonicalAnalyticsValue(form.dataset && form.dataset.newsletterPlacement),
+                source_page: window.location.pathname,
+                has_fbclid: new URLSearchParams(window.location.search).has('fbclid')
+            });
+        });
+    });
+}
+
+function uiInteractionAnalytics() {
+    if (uiInteractionAnalytics.isBound) {
+        return;
+    }
+    uiInteractionAnalytics.isBound = true;
+
+    document.addEventListener('click', function(event) {
+        var target;
+        var href;
+        var destination;
+        var url;
+
+        if (!event.target || typeof event.target.closest !== 'function') {
+            return;
+        }
+        target = event.target.closest('[data-ph]');
+        if (!target) {
+            return;
+        }
+
+        destination = window.location.origin + window.location.pathname;
+        href = target.getAttribute('href');
+        if (href) {
+            try {
+                url = new URL(href, destination);
+                if (url.protocol === 'http:' || url.protocol === 'https:') {
+                    destination = url.origin + url.pathname;
+                }
+            } catch (error) {}
+        }
+
+        captureAnalytics('ui_interaction_clicked', {
+            placement: canonicalAnalyticsValue(target.getAttribute('data-ph')),
+            destination: destination
+        });
+    });
+}
 
 function newsletterSubmitLoaders() {
     var forms = document.querySelectorAll('.newsletter-form');
@@ -200,7 +413,7 @@ function mobileNavigation() {
     }
 
     document.addEventListener('click', function(event) {
-        if (!menu.contains(event.target) && menu.classList.contains(activeClass)) {
+        if (menu && !menu.contains(event.target) && menu.classList.contains(activeClass)) {
             close();
         }
     });
