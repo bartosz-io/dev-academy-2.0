@@ -48,6 +48,18 @@ assert(homepage.includes('href="/podcast/"'));
 assert(homepage.includes('href="/web-security/"'));
 assert(homepage.includes('href="/about"'));
 assert(homepage.includes('href="#get-free-pills"'));
+assert(
+  /#get-free-pills\s*\{[\s\S]*?scroll-margin-top:\s*calc\(#\{\$header-height-mobile\}\s*\+\s*2rem\);/.test(
+    newsletterStyles
+  ),
+  'Pills form anchor must clear the fixed mobile header'
+);
+assert(
+  /@media\s*\(min-width:\s*992px\)[\s\S]*?#get-free-pills\s*\{[\s\S]*?scroll-margin-top:\s*calc\(#\{\$header-height-desktop\}\s*\+\s*2rem\);/.test(
+    newsletterStyles
+  ),
+  'Pills form anchor must clear the fixed desktop header'
+);
 assert(homepage.includes('Get the free Pills'));
 assert(homepage.includes('aria-controls="primary-navigation"'));
 assert(homepage.includes('aria-expanded="false"'));

@@ -97,6 +97,10 @@
   }
 }
 
+#get-free-pills {
+  scroll-margin-top: calc(#{$header-height-mobile} + 2rem);
+}
+
 .newsletter-form {
   background: transparent;
   display: block;
@@ -769,6 +773,12 @@
 
   .newsletter-about-image img {
     width: 30rem;
+  }
+}
+
+@media (min-width: 992px) {
+  #get-free-pills {
+    scroll-margin-top: calc(#{$header-height-desktop} + 2rem);
   }
 }
 
