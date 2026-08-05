@@ -51,6 +51,7 @@ assert(homepage.includes('href="/web-security/"'));
 assert(homepage.includes('href="/about"'));
 assert.strictEqual(count(homepage, 'href="/#get-free-pills"'), 2);
 assert.strictEqual(count(blogPost, 'href="/#get-free-pills"'), 2);
+assert(!/<div class="slack"(?:\s|>)/.test(blogPost));
 assert(
   /#get-free-pills\s*\{[\s\S]*?scroll-margin-top:\s*calc\(#\{\$header-height-mobile\}\s*\+\s*2rem\);/.test(
     newsletterStyles

@@ -30,10 +30,6 @@
 <% } else { %>
     <%- partial('partial/header', {}, {caches: true}) %>
     <main>
-        <% if (is_post())  {%>
-            <%- partial('partial/slackbar', {}, {caches: true}) %>
-        <% } %>
-
         <!-- markdown content from .md file -->
         <%- body %>
 
