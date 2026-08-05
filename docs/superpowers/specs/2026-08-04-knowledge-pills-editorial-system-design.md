@@ -148,16 +148,18 @@ Apply the Definition of Done below and obtain Bartosz's explicit content approva
 
 1. Save the approved Markdown and assets in the repository.
 2. Mark the Pill `ready`.
-3. Inspect the target Kit sequence and current final position.
-4. Add the email through Kit MCP as an unpublished draft.
-5. Set subject, preview text, HTML content, delay, weekday restriction, and append position.
-6. Store the returned Kit identifiers in the Markdown frontmatter.
-7. Give Bartosz the Kit `confirm_url` for final visual review.
-8. After it exists in Kit, set the repository status to `added-to-kit` while leaving the Kit email unpublished.
+3. Mark every image location with an explicit placeholder pointing to the source asset under the Pill ID.
+4. Bartosz manually creates or updates the Kit email, pastes the approved plain-text copy, and uploads the images.
+5. Use Kit MCP only to inspect or synchronize sequence metadata, scheduling, status, and Kit identifiers. Do not use MCP to transfer or overwrite the email body.
+6. Store the confirmed Kit identifiers in the Markdown frontmatter.
+7. Bartosz performs the final visual review in Kit.
+8. After the email exists in Kit, set the repository status to `added-to-kit` while leaving the email unpublished unless Bartosz explicitly publishes it.
+
+The repository body remains plain-text-first. Lightweight Markdown is allowed in the canonical file for readability, but HTML is not the authoring format. Kit may represent the delivered email internally as HTML; that representation is not copied back as the canonical source.
 
 ## Kit publishing safety
 
-The default MCP operation creates an unpublished draft with `published: false`.
+Kit email bodies are entered manually by Bartosz. Codex does not create or update body content through MCP.
 
 For regular appended emails:
 
@@ -168,14 +170,14 @@ For regular appended emails:
 
 The first emails in the initial sequences may use different entry delays according to the approved subscriber journey: the first Security Pill can arrive immediately, while the first Testing Pill can wait until the next permitted Friday.
 
-Kit returns a `confirm_url` after creating or updating a sequence email. Bartosz uses it to check the rendered email, links, images, mobile appearance, and sequence settings.
+When Kit MCP returns a `confirm_url` for a metadata operation, Bartosz may use it to check the rendered email, links, images, mobile appearance, and sequence settings.
 
 Publishing is a separate action:
 
 - Bartosz may publish manually in Kit; or
 - after visual review, Bartosz may explicitly instruct Codex to set `published: true` through Kit MCP.
 
-Codex must not publish a sequence email merely because its content was approved. Content approval authorizes draft creation; publishing requires a separate explicit instruction.
+Codex must not publish a sequence email merely because its content was approved. Publishing requires a separate explicit instruction.
 
 If the Kit write fails, the approved Markdown remains `ready`, the error is reported, and no `kit_email_id` is invented. The operation may be retried after inspecting the target sequence to avoid duplicates.
 
@@ -245,7 +247,8 @@ Quarterly review should reorder the backlog, identify topics worth expanding, an
 - The initial launch buffer contains four approved Pills per track.
 - Each Monday can produce one approved Pill per track within approximately two hours.
 - Every production Pill satisfies the Definition of Done and has a review date.
-- Kit MCP adds approved content as an unpublished draft and returns a review link.
+- Bartosz manually pastes the approved plain-text copy into Kit and uploads its images.
+- Kit MCP may inspect or synchronize metadata and identifiers, but it does not transfer or overwrite email bodies.
 - No Kit sequence email is published through MCP without a separate explicit instruction from Bartosz.
 - Historical PDFs remain available but are not treated as production-ready content.
 - Social-media derivatives do not block the weekly email cadence.

@@ -20,13 +20,18 @@ Only `ready` and `added-to-kit` are production statuses. `added-to-kit` means a 
 
 1. Select one independent topic per track.
 2. Verify technical claims using authoritative sources.
-3. Draft subject, preview text, and one standalone email.
+3. Draft subject, preview text, and one standalone email in plain-text style.
 4. Obtain Bartosz's explicit content approval.
 5. Save the canonical Markdown and run `npm run pills:check`.
-6. Create an unpublished Kit draft through MCP.
-7. Save the returned Kit identifiers in frontmatter.
-8. Give Bartosz the Kit confirmation URL.
-9. Publish only after a separate explicit instruction.
+6. Mark image locations with explicit placeholders and keep the source assets under the matching Pill ID.
+7. Bartosz manually pastes the plain-text copy into Kit and uploads the images.
+8. Use Kit MCP only to inspect or synchronize sequence metadata and Kit identifiers, not to transfer or overwrite the email body.
+9. Save the confirmed Kit identifiers in frontmatter and set the status to `added-to-kit`.
+10. Publish only after a separate explicit instruction.
+
+## Kit content rule
+
+The repository copy is written and reviewed as plain text with lightweight Markdown for the canonical file. Codex does not convert the body to HTML or write the body to Kit through MCP. Bartosz performs the final paste and image upload in Kit. Kit's internal HTML representation is a delivery detail and is never the canonical source.
 
 ## Evergreen reviews
 
