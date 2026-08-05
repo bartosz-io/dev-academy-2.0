@@ -24,6 +24,7 @@ function countCanonical(html, canonicalUrl) {
 const homepage = readPublic('index.html');
 const welcome = readPublic('welcome/index.html');
 const articles = readPublic('articles/index.html');
+const blogPost = readPublic('preventing-xss-in-angular/index.html');
 const mainJs = readPublic('js/main.js');
 const sitemapIndex = readPublic('sitemap.xml');
 const pageSitemap = readPublic('page-sitemap.xml');
@@ -42,14 +43,14 @@ const newsletterForms = homepage.match(
 
 assert(homepage.includes('class="newsletter-homepage"'));
 assert(articles.includes('posts-wrapper'));
-readPublic('preventing-xss-in-angular/index.html');
 readPublic('angular-cors/index.html');
 
 assert(homepage.includes('href="/articles/"'));
 assert(homepage.includes('href="/podcast/"'));
 assert(homepage.includes('href="/web-security/"'));
 assert(homepage.includes('href="/about"'));
-assert(homepage.includes('href="#get-free-pills"'));
+assert.strictEqual(count(homepage, 'href="/#get-free-pills"'), 2);
+assert.strictEqual(count(blogPost, 'href="/#get-free-pills"'), 2);
 assert(
   /#get-free-pills\s*\{[\s\S]*?scroll-margin-top:\s*calc\(#\{\$header-height-mobile\}\s*\+\s*2rem\);/.test(
     newsletterStyles
