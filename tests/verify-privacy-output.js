@@ -33,6 +33,8 @@ function runCheck(name, check) {
 const homepage = readPublic('index.html');
 const articles = readPublic('articles/index.html');
 const welcome = readPublic('welcome/index.html');
+const webSecurityGift = readPublic('web-security-welcome-gift/index.html');
+const checklistGift = readPublic('checklist-welcome-gift/index.html');
 const runtime = readPublic('js/privacy/consent-runtime.js');
 const mainSource = fs.readFileSync(
   path.join(ROOT, 'themes', 'my-theme', 'source', 'js', 'main.js'),
@@ -69,6 +71,87 @@ runCheck('loads one consent runtime before main and removes legacy vendor script
     assert(!html.includes('/js/posthog/testing/main-banner-test.js'));
   });
   assert(runtime.includes('dev_academy_consent_v1'));
+});
+
+function exerciseGiftPage(html, pathname, expectedGift) {
+  const inlineScripts = Array.from(html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g));
+  const pageScript = inlineScripts.map(function(match) { return match[1]; }).find(function(source) {
+    return source.includes('startCountdown');
+  });
+  const calls = [];
+  const listeners = {};
+  const storage = {};
+  const elements = {
+    hours: {innerHTML: ''},
+    minutes: {innerHTML: ''},
+    seconds: {innerHTML: ''},
+    'countdown-timer': {innerHTML: ''},
+    'progress-bar': {style: {}},
+    link: {href: 'https://courses.dev-academy.com/p/security-starter-kit/'}
+  };
+  const window = {
+    location: {
+      origin: 'https://dev-academy.com',
+      pathname: pathname,
+      search: '?id=synthetic%40example.invalid&utm_source=test',
+      hash: '#private'
+    },
+    history: {
+      replaceState: function(state, title, url) { calls.push(['history:replace', url]); }
+    },
+    addEventListener: function(type, listener) {
+      if (!listeners[type]) listeners[type] = [];
+      listeners[type].push(listener);
+    }
+  };
+  const document = {
+    getElementById: function(id) { return elements[id]; }
+  };
+  const localStorage = {
+    getItem: function(key) { return storage[key] || null; },
+    setItem: function(key, value) { storage[key] = value; }
+  };
+
+  assert(pageScript, 'expected a gift-page inline script');
+  vm.runInNewContext(pageScript, {
+    window: window,
+    document: document,
+    localStorage: localStorage,
+    URL: URL,
+    URLSearchParams: URLSearchParams,
+    Date: Date,
+    setInterval: function(callback) { callback(); return 1; },
+    clearInterval: function() {},
+    setTimeout: function() { return 1; },
+    clearTimeout: function() {}
+  });
+
+  assert.deepStrictEqual(calls[0], ['history:replace', pathname]);
+  assert(storage.countDownDate, 'countdown must initialize without PostHog');
+  assert(elements.link.href.includes('countDownDate='));
+  assert(!elements.link.href.includes('#id='));
+  assert.strictEqual(listeners.PH_Ready, undefined);
+
+  window.DevAcademyPrivacy = {
+    capture: function(event, properties) { calls.push(['capture', event, properties]); }
+  };
+  (listeners.DOMContentLoaded || []).forEach(function(listener) { listener(); });
+  assert.deepStrictEqual(plain(calls.slice(-1)[0]), [
+    'capture',
+    'gift_confirmation_viewed',
+    { gift: expectedGift }
+  ]);
+}
+
+runCheck('keeps both gift confirmations functional with PostHog blocked and emits no identity', function() {
+  [webSecurityGift, checklistGift].forEach(function(html) {
+    assert(!html.includes('PH_Ready'));
+    assert(!html.includes('posthog.identify'));
+    assert(!html.includes('posthog.get_distinct_id'));
+    assert(!html.includes("posthog.capture('wsda_subscribe_confirm'"));
+  });
+  exerciseGiftPage(webSecurityGift, '/web-security-welcome-gift/', 'web_security_course');
+  exerciseGiftPage(checklistGift, '/checklist-welcome-gift/', 'security_checklist');
 });
 
 runCheck('serializes only escaped public vendor configuration', function() {

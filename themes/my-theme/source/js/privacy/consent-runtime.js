@@ -10,6 +10,7 @@
   var posthogOperations = [];
   var posthogClient = null;
   var posthogSettled = false;
+  var reportedMissingConfig = {};
   var config = window.DEV_ACADEMY_PRIVACY_CONFIG || {};
   var state = readState();
 
@@ -71,6 +72,14 @@
       config.metaPixelId !== META_PLACEHOLDER;
   }
 
+  function reportMissingConfig(kind) {
+    if (config.enabled === false || reportedMissingConfig[kind]) return;
+    reportedMissingConfig[kind] = true;
+    try {
+      console.warn('Dev Academy ' + kind + ' disabled: vendor configuration unavailable.');
+    } catch (error) {}
+  }
+
   function safeReferrerHostname() {
     if (!document.referrer) return null;
     try {
@@ -78,6 +87,109 @@
     } catch (error) {
       return null;
     }
+  }
+
+  function safeUrl(value) {
+    if (typeof value !== 'string') return value;
+    try {
+      var parsed = new URL(value, window.location.origin);
+      return (/^[a-z][a-z0-9+.-]*:\/\//i.test(value) ? parsed.origin : '') + parsed.pathname;
+    } catch (error) {
+      return value.split(/[?#]/)[0];
+    }
+  }
+
+  function safeReferrer(value) {
+    if (typeof value !== 'string' || value === '') return value;
+    try {
+      return new URL(value, window.location.origin).hostname;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function isCampaignProperty(name) {
+    var normalized = String(name).toLowerCase();
+    return normalized.indexOf('utm_') !== -1 ||
+      /(^|[_$])(fbclid|gclid|dclid|gbraid|wbraid|msclkid|campaign|search_engine)($|_)/.test(normalized);
+  }
+
+  function isReferrerProperty(name) {
+    return /referr|referring_domain/i.test(String(name));
+  }
+
+  function isUrlProperty(name) {
+    return /(^|[_$])(url|href|destination|src)($|_)/i.test(String(name));
+  }
+
+  function containsEmailLikeValue(value) {
+    return typeof value === 'string' && /[^\s@]+@[^\s@]+\.[^\s@]+/.test(value);
+  }
+
+  function sanitizePostHogValue(value, name, vendorValues) {
+    var result;
+    if (typeof value === 'string') {
+      if (name !== 'token' && vendorValues.indexOf(value) !== -1) return undefined;
+      if (containsEmailLikeValue(value)) return undefined;
+      if (isReferrerProperty(name)) return safeReferrer(value);
+      if (isUrlProperty(name)) return safeUrl(value);
+      return value;
+    }
+    if (Array.isArray(value)) {
+      result = [];
+      value.forEach(function(item) {
+        var sanitized = sanitizePostHogValue(item, name, vendorValues);
+        if (sanitized !== undefined) result.push(sanitized);
+      });
+      return result;
+    }
+    if (value && typeof value === 'object' && Object.prototype.toString.call(value) === '[object Object]') {
+      result = {};
+      Object.keys(value).forEach(function(key) {
+        var sanitized;
+        if (isCampaignProperty(key)) return;
+        sanitized = sanitizePostHogValue(value[key], key, vendorValues);
+        if (sanitized !== undefined) result[key] = sanitized;
+      });
+      return result;
+    }
+    return value;
+  }
+
+  function sanitizePostHogEvent(event) {
+    return sanitizePostHogValue(event, '', [
+      config.posthogKey,
+      config.posthogHost,
+      config.posthogAssetHost,
+      config.metaPixelId
+    ]);
+  }
+
+  function sanitizeCapturedRequest(request) {
+    if (request && typeof request.name === 'string') request.name = safeUrl(request.name);
+    return request;
+  }
+
+  function postHogStorageNames() {
+    var token = typeof config.posthogKey === 'string' ? config.posthogKey : '';
+    var main = 'ph_' + token.replace(/\+/g, 'PL').replace(/\//g, 'SL').replace(/=/g, 'EQ') + '_posthog';
+    return [main, main + '__flags', main + '__surveys'];
+  }
+
+  function clearPostHogDurableState() {
+    var hostname = window.location.hostname || '';
+    var hostnameParts = hostname.split('.');
+    var rootDomain = hostnameParts.length >= 2 ? hostnameParts.slice(-2).join('.') : '';
+    postHogStorageNames().forEach(function(name) {
+      try { window.localStorage.removeItem(name); } catch (error) {}
+      try { window.sessionStorage.removeItem(name); } catch (error) {}
+      try {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        if (rootDomain) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.' + rootDomain;
+        }
+      } catch (error) {}
+    });
   }
 
   function safeCaptureProperties(properties) {
@@ -144,7 +256,13 @@
   function saveState() {
     try {
       window.localStorage.setItem(CONSENT_KEY, serializeConsent(state));
-    } catch (error) {}
+      return true;
+    } catch (error) {
+      try {
+        window.localStorage.removeItem(CONSENT_KEY);
+      } catch (removeError) {}
+      return false;
+    }
   }
 
   function reloadPage() {
@@ -159,13 +277,14 @@
     var revokedPersistence;
     var grantedMarketing;
     var revokedMarketing;
+    var decisionPersisted = true;
 
     state = {
       decided: true,
       persistentAnalytics: next.persistentAnalytics === true,
       marketing: next.marketing === true
     };
-    if (persist) saveState();
+    if (persist) decisionPersisted = saveState();
 
     grantedPersistence = !previous.persistentAnalytics && state.persistentAnalytics;
     revokedPersistence = previous.persistentAnalytics && !state.persistentAnalytics;
@@ -175,11 +294,14 @@
     if (grantedPersistence) {
       withPostHog(function(client) {
         if (typeof client.set_config === 'function') {
-          client.set_config({ persistence: 'localStorage+cookie' });
+          client.set_config({
+            persistence: decisionPersisted ? 'localStorage+cookie' : 'memory'
+          });
         }
       });
     }
     if (revokedPersistence) {
+      clearPostHogDurableState();
       withPostHog(function(client) {
         if (typeof client.reset === 'function') client.reset(true);
       });
@@ -223,12 +345,19 @@
     try {
       client.init(config.posthogKey, {
         api_host: config.posthogHost,
+        asset_host: config.posthogAssetHost,
         autocapture: false,
         capture_pageview: false,
+        save_campaign_params: false,
+        save_referrer: false,
+        before_send: sanitizePostHogEvent,
         person_profiles: 'identified_only',
         persistence: state.persistentAnalytics ? 'localStorage+cookie' : 'memory',
         disable_session_recording: false,
-        session_recording: { maskAllInputs: true }
+        session_recording: {
+          maskAllInputs: true,
+          maskCapturedNetworkRequestFn: sanitizeCapturedRequest
+        }
       });
       posthogClient = client;
     } catch (error) {
@@ -263,6 +392,7 @@
   function loadPostHog() {
     var script;
     if (!isPostHogConfigured()) {
+      reportMissingConfig('analytics');
       finishPostHogLoad(null);
       return;
     }
@@ -287,7 +417,10 @@
     var fbq;
     var script;
     var firstScript;
-    if (!isMetaConfigured()) return;
+    if (!isMetaConfigured()) {
+      reportMissingConfig('marketing');
+      return;
+    }
 
     try {
       if (window.fbq) {

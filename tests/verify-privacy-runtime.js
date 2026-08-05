@@ -40,7 +40,7 @@ function test(name, callback) {
 function makePostHog(calls) {
   return {
     init: function(key, options) {
-      calls.push(['posthog:init', key, plain(options)]);
+      calls.push(['posthog:init', key, options]);
     },
     capture: function(event, properties) {
       calls.push(['posthog:capture', event, plain(properties)]);
@@ -61,8 +61,10 @@ function makePostHog(calls) {
 
 function createHarness(options) {
   options = options || {};
-  var values = {};
+  var values = Object.assign({}, options.storageValues || {});
+  var sessionValues = Object.assign({}, options.sessionStorageValues || {});
   var storageWrites = [];
+  var cookieWrites = [];
   var appendedScripts = [];
   var calls = [];
   var listeners = {};
@@ -82,6 +84,16 @@ function createHarness(options) {
       storageWrites.push([key, value]);
       calls.push(['storage:set', key, value]);
       values[key] = value;
+    },
+    removeItem: function(key) {
+      calls.push(['storage:remove', key]);
+      delete values[key];
+    }
+  };
+  var sessionStorage = {
+    removeItem: function(key) {
+      calls.push(['session-storage:remove', key]);
+      delete sessionValues[key];
     }
   };
 
@@ -100,11 +112,19 @@ function createHarness(options) {
       return [{ parentNode: { insertBefore: appendScript } }];
     }
   };
+  Object.defineProperty(document, 'cookie', {
+    set: function(value) {
+      cookieWrites.push(value);
+      calls.push(['cookie:write', value]);
+    }
+  });
   var window = {
     DEV_ACADEMY_PRIVACY_CONFIG: config,
     localStorage: localStorage,
+    sessionStorage: sessionStorage,
     location: {
       origin: 'https://dev-academy.com',
+      hostname: 'dev-academy.com',
       pathname: options.pathname || '/knowledge-pills/',
       search: '?email=private%40example.com',
       reload: function() { calls.push(['reload']); }
@@ -117,7 +137,10 @@ function createHarness(options) {
     window: window,
     document: document,
     URL: URL,
-    console: console
+    console: {
+      warn: function(message) { calls.push(['diagnostic', message]); },
+      log: function() {}
+    }
   };
   context.self = window;
   context.global = context;
@@ -129,7 +152,9 @@ function createHarness(options) {
     window: window,
     document: document,
     values: values,
+    sessionValues: sessionValues,
     storageWrites: storageWrites,
+    cookieWrites: cookieWrites,
     appendedScripts: appendedScripts,
     calls: calls,
     listeners: listeners,
@@ -231,15 +256,13 @@ test('loads PostHog asynchronously in memory with masked replay and drains captu
 
   var init = harness.calls.filter(function(call) { return call[0] === 'posthog:init'; })[0];
   assert.strictEqual(init[1], VALID_CONFIG.posthogKey);
-  assert.deepStrictEqual(init[2], {
-    api_host: VALID_CONFIG.posthogHost,
-    autocapture: false,
-    capture_pageview: false,
-    person_profiles: 'identified_only',
-    persistence: 'memory',
-    disable_session_recording: false,
-    session_recording: { maskAllInputs: true }
-  });
+  assert.strictEqual(init[2].api_host, VALID_CONFIG.posthogHost);
+  assert.strictEqual(init[2].autocapture, false);
+  assert.strictEqual(init[2].capture_pageview, false);
+  assert.strictEqual(init[2].person_profiles, 'identified_only');
+  assert.strictEqual(init[2].persistence, 'memory');
+  assert.strictEqual(init[2].disable_session_recording, false);
+  assert.strictEqual(init[2].session_recording.maskAllInputs, true);
 
   var queued = captures(harness, 'runtime_test')[0][2];
   assert.deepStrictEqual(queued, {
@@ -255,6 +278,78 @@ test('loads PostHog asynchronously in memory with masked replay and drains captu
   assert.strictEqual(JSON.stringify(pageview).indexOf('?'), -1);
   assert.strictEqual(JSON.stringify(pageview).indexOf(VALID_CONFIG.posthogKey), -1);
   assert.strictEqual(JSON.stringify(pageview).indexOf(VALID_CONFIG.metaPixelId), -1);
+});
+
+test('sanitizes SDK-enriched custom events and replay URLs immediately before send', function() {
+  var harness = createHarness();
+  harness.attachPostHog();
+  var init = harness.calls.filter(function(call) { return call[0] === 'posthog:init'; })[0][2];
+  var unsafeUrl = 'https://dev-academy.com/confirmation/?subscriber=synthetic%40example.invalid&utm_source=test#private';
+  var unsafeReferrer = 'https://search.example/results?fbclid=test#private';
+  var timestamp = new Date('2026-08-05T10:00:00.000Z');
+  var event;
+  var snapshot;
+  var request;
+
+  assert.strictEqual(typeof init.before_send, 'function');
+  assert.strictEqual(init.save_campaign_params, false);
+  assert.strictEqual(init.save_referrer, false);
+  assert.strictEqual(init.asset_host, VALID_CONFIG.posthogAssetHost);
+
+  event = init.before_send({
+    event: 'custom_safe_event',
+    properties: {
+      token: 'required-ingest-token',
+      $current_url: unsafeUrl,
+      $referrer: unsafeReferrer,
+      $initial_referrer: unsafeReferrer,
+      $utm_source: 'test-campaign',
+      utm_campaign: 'test-campaign',
+      $gclid: 'test-click-id',
+      $fbclid: 'test-click-id',
+      posthog_copy: VALID_CONFIG.posthogKey,
+      meta_copy: VALID_CONFIG.metaPixelId,
+      nested: {
+        href: unsafeUrl,
+        contact: 'synthetic@example.invalid',
+        safe: 'kept'
+      }
+    },
+    $set: { contact: 'synthetic@example.invalid' },
+    timestamp: timestamp
+  });
+
+  assert.strictEqual(event.properties.token, 'required-ingest-token');
+  assert.strictEqual(event.properties.$current_url, 'https://dev-academy.com/confirmation/');
+  assert.strictEqual(event.properties.$referrer, 'search.example');
+  assert.strictEqual(event.properties.$initial_referrer, 'search.example');
+  assert.strictEqual(event.properties.nested.href, 'https://dev-academy.com/confirmation/');
+  assert.strictEqual(event.properties.nested.safe, 'kept');
+  ['$utm_source', 'utm_campaign', '$gclid', '$fbclid', 'posthog_copy', 'meta_copy'].forEach(function(name) {
+    assert.strictEqual(Object.prototype.hasOwnProperty.call(event.properties, name), false);
+  });
+  assert.strictEqual(Object.prototype.hasOwnProperty.call(event.properties.nested, 'contact'), false);
+  assert.strictEqual(Object.prototype.hasOwnProperty.call(event.$set, 'contact'), false);
+  assert.strictEqual(event.timestamp, timestamp);
+
+  snapshot = init.before_send({
+    event: '$snapshot',
+    properties: {
+      token: 'required-ingest-token',
+      $current_url: unsafeUrl,
+      $snapshot_data: {
+        type: 4,
+        data: { href: unsafeUrl, referrer: unsafeReferrer }
+      }
+    }
+  });
+  assert.strictEqual(snapshot.properties.$current_url, 'https://dev-academy.com/confirmation/');
+  assert.strictEqual(snapshot.properties.$snapshot_data.data.href, 'https://dev-academy.com/confirmation/');
+  assert.strictEqual(snapshot.properties.$snapshot_data.data.referrer, 'search.example');
+
+  assert.strictEqual(typeof init.session_recording.maskCapturedNetworkRequestFn, 'function');
+  request = init.session_recording.maskCapturedNetworkRequestFn({ name: unsafeUrl });
+  assert.strictEqual(request.name, 'https://dev-academy.com/confirmation/');
 });
 
 test('drops queued and future captures after a PostHog loading failure without retrying', function() {
@@ -281,6 +376,26 @@ test('skips vendor requests for missing, disabled, and placeholder configuration
   });
 });
 
+test('reports missing placeholder vendor configuration once without values', function() {
+  var harness = createHarness({
+    config: {
+      enabled: true,
+      posthogKey: 'phc_placeholder',
+      posthogHost: 'https://p.dev-academy.com',
+      posthogAssetHost: 'https://eu-assets.i.posthog.com',
+      metaPixelId: '000000000000000'
+    }
+  });
+  harness.api.acceptAll();
+  harness.api.acceptAll();
+  var diagnostics = harness.calls.filter(function(call) { return call[0] === 'diagnostic'; });
+  assert.strictEqual(diagnostics.length, 2);
+  assert(diagnostics.some(function(call) { return call[1].indexOf('analytics') !== -1; }));
+  assert(diagnostics.some(function(call) { return call[1].indexOf('marketing') !== -1; }));
+  assert.strictEqual(JSON.stringify(diagnostics).indexOf('phc_placeholder'), -1);
+  assert.strictEqual(JSON.stringify(diagnostics).indexOf('000000000000000'), -1);
+});
+
 test('grants durable PostHog persistence and revokes it in save-reset-clear-memory-capture-reload order', function() {
   var harness = createHarness();
   harness.attachPostHog();
@@ -301,7 +416,9 @@ test('grants durable PostHog persistence and revokes it in save-reset-clear-memo
 
   harness.calls.length = 0;
   harness.api.setPreferences({ persistentAnalytics: false, marketing: false });
-  assert.deepStrictEqual(harness.calls, [
+  assert.deepStrictEqual(harness.calls.filter(function(call) {
+    return call[0] === 'storage:set' || call[0].indexOf('posthog:') === 0 || call[0] === 'reload';
+  }), [
     ['storage:set', CONSENT_KEY, '{"schemaVersion":1,"persistentAnalytics":false,"marketing":false}'],
     ['posthog:reset', true],
     ['posthog:persistence:clear'],
@@ -315,6 +432,47 @@ test('grants durable PostHog persistence and revokes it in save-reset-clear-memo
     }],
     ['reload']
   ]);
+});
+
+test('revocation removes only this project durable identity before reload when PostHog is pending or failed', function() {
+  var mainName = 'ph_' + VALID_CONFIG.posthogKey + '_posthog';
+  var projectNames = [mainName, mainName + '__flags', mainName + '__surveys'];
+
+  ['pending', 'failed'].forEach(function(sdkState) {
+    var storageValues = { ph_unrelated_posthog: 'keep' };
+    var sessionValues = { ph_unrelated_posthog: 'keep' };
+    projectNames.forEach(function(name) {
+      storageValues[name] = 'old-identity';
+      sessionValues[name] = 'old-session';
+    });
+    var harness = createHarness({
+      rawConsent: '{"schemaVersion":1,"persistentAnalytics":true,"marketing":false}',
+      storageValues: storageValues,
+      sessionStorageValues: sessionValues
+    });
+    if (sdkState === 'failed') harness.failPostHog();
+    harness.calls.length = 0;
+
+    harness.api.setPreferences({ persistentAnalytics: false, marketing: false });
+
+    assert.strictEqual(
+      harness.values[CONSENT_KEY],
+      '{"schemaVersion":1,"persistentAnalytics":false,"marketing":false}'
+    );
+    projectNames.forEach(function(name) {
+      assert.strictEqual(harness.values[name], undefined);
+      assert.strictEqual(harness.sessionValues[name], undefined);
+      assert(harness.cookieWrites.some(function(write) { return write.indexOf(name + '=') === 0; }));
+    });
+    assert.strictEqual(harness.values.ph_unrelated_posthog, 'keep');
+    assert.strictEqual(harness.sessionValues.ph_unrelated_posthog, 'keep');
+
+    var saveIndex = harness.calls.findIndex(function(call) { return call[0] === 'storage:set'; });
+    var cleanupIndex = harness.calls.findIndex(function(call) { return call[0] === 'storage:remove'; });
+    var reloadIndex = harness.calls.findIndex(function(call) { return call[0] === 'reload'; });
+    assert(saveIndex < cleanupIndex);
+    assert(cleanupIndex < reloadIndex);
+  });
 });
 
 test('loads Meta once on grant and revokes consent before reload', function() {
@@ -375,6 +533,50 @@ test('keeps controls functional when storage writes fail', function() {
     persistentAnalytics: true,
     marketing: true
   });
+});
+
+test('keeps PostHog memory-only and the next load undecided when consent storage is denied', function() {
+  var harness = createHarness({ throwOnStorageWrite: true });
+  harness.attachPostHog();
+  harness.calls.length = 0;
+
+  assert.doesNotThrow(function() { harness.api.acceptAll(); });
+  assert.deepStrictEqual(plain(harness.api.getState()), {
+    decided: true,
+    persistentAnalytics: true,
+    marketing: true
+  });
+  assert.strictEqual(harness.values[CONSENT_KEY], undefined);
+  assert.strictEqual(harness.calls.some(function(call) {
+    return call[0] === 'posthog:set_config' && call[1].persistence === 'localStorage+cookie';
+  }), false);
+  assert.strictEqual(harness.calls.some(function(call) {
+    return call[0] === 'posthog:set_config' && call[1].persistence === 'memory';
+  }), true);
+
+  assert.strictEqual(createHarness({ config: null }).api.getState().decided, false);
+});
+
+test('removes a stale durable decision when replacing consent storage is denied', function() {
+  var harness = createHarness({
+    rawConsent: JSON.stringify({
+      schemaVersion: 1,
+      persistentAnalytics: true,
+      marketing: true
+    }),
+    throwOnStorageWrite: true
+  });
+
+  harness.api.rejectAll();
+
+  assert.strictEqual(harness.values[CONSENT_KEY], undefined);
+  assert.strictEqual(harness.calls.some(function(call) {
+    return call[0] === 'storage:remove' && call[1] === CONSENT_KEY;
+  }), true);
+  assert.strictEqual(createHarness({
+    config: null,
+    storageValues: harness.values
+  }).api.getState().decided, false);
 });
 
 test('Hexo privacy config honors public environment overrides without changing unrelated values', function() {

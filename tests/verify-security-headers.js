@@ -47,6 +47,7 @@ assertSource('img-src', 'https://www.facebook.com');
 assert(!directives.get('script-src').includes('*'), 'script-src must not allow every origin');
 assert(!directives.get('script-src').includes('data:'), 'script-src must not allow data:');
 assert(!directives.get('connect-src').includes('*'), 'connect-src must not allow every origin');
+assert(!cspMatch[1].includes('*.posthog.com'), 'CSP must use only the approved exact PostHog hosts');
 assert(!cspMatch[1].includes("'unsafe-eval'"), 'CSP must not allow unsafe-eval');
 
 console.log('Security header checks passed.');
