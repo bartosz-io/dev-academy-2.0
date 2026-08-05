@@ -25,19 +25,24 @@ Here is your first Testing Pill. 💊
 Imagine an agent generates this test for you:
 
 ```js
-test('calculates the total', () => {
-  calculateTotal(100, true);
-  calculateTotal(100, false);
+function calculatePrice(price, isPremium) {
+  return isPremium ? price * 0.8 : price;
+}
+
+test('calculates the price', () => {
+  calculatePrice(100, true);
+  calculatePrice(100, false);
+  // No assertions!
 });
 ```
 
-It executes both paths through `calculateTotal`.
+It executes both paths through `calculatePrice`, so a coverage report may show 100% for this function.
 
 But what does it actually verify?
 
 Nothing.
 
-There is no assertion. The function could return the wrong price and this test would not notice. Yet the relevant lines and branches may still appear as covered.
+The test never checks that the returned prices are `80` and `100`. If someone—or an agent—changed the discount from `0.8` to `0.2`, nothing in this test would detect it.
 
 **[IMAGE PLACEHOLDER — upload `assets/TST-001/code-coverage-lines.jpg` here]**
 
