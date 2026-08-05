@@ -4,7 +4,7 @@ track: security
 status: ready
 sequence_position: 2
 subject: "Would this malicious URL pass your allow-list?"
-preview_text: "safe-app.com.evil.com starts with your trusted domain—and that’s the problem."
+preview_text: "This three-line validator looks reasonable. Would you approve it?"
 created: 2026-08-05
 last_verified: 2026-08-05
 review_after: 2027-08-05

@@ -72,7 +72,7 @@ This pattern intentionally implements an exact-origin rule. It rejects different
 - Track: `security`
 - Sequence position: `2`
 - Subject: `Would this malicious URL pass your allow-list?`
-- Preview text: `safe-app.com.evil.com starts with your trusted domain—and that’s the problem.`
+- Preview text: `This three-line validator looks reasonable. Would you approve it?`
 - Initial status: `ready`
 - Review interval: 12 months because the advice depends on Web-platform URL semantics.
 
