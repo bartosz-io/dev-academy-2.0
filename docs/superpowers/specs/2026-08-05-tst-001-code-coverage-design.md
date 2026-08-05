@@ -20,7 +20,9 @@ Code coverage reports which production code ran during the tests. It does not pr
 ## Delivery
 
 - Plain-text-first canonical Markdown.
-- No image required.
+- Preserve two original graphics extracted from `coverage.pdf`: the line-coverage visualization and the body-temperature illustration.
+- Store both originals under `content/pills/assets/TST-001/` and place explicit upload placeholders in the canonical email.
+- Place the line-coverage image after explaining what coverage measures and the temperature image beside the body-temperature analogy.
 - One small code example is allowed.
 - No dependency on Jest, Vitest, Cypress, or another named framework.
 - No Kit body update through MCP. Bartosz pastes the approved copy manually.
@@ -45,5 +47,6 @@ Code coverage reports which production code ran during the tests. It does not pr
 - A developer understands the limitation of coverage without prior testing theory.
 - The example demonstrates execution without protection, rather than merely asserting that coverage is imperfect.
 - The analogy supports the technical explanation without replacing it.
+- Both historical images appear at the point where they reinforce the corresponding idea.
 - The AI reference remains secondary and will still read naturally if today’s tools change.
 - The email ends with one action the reader can perform immediately.
