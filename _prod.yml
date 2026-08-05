@@ -1,4 +1,8 @@
 # Production environment variables
-posthog: true
 generate_webp_images: true
-cookie_bot: true
+privacy:
+  enabled: true
+  posthog_key: phc_placeholder
+  posthog_host: https://p.dev-academy.com
+  posthog_asset_host: https://eu-assets.i.posthog.com
+  meta_pixel_id: '000000000000000'
