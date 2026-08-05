@@ -7,17 +7,6 @@ date: 2022-08-05
 tags: [angular, security]
 id: angular-cors
 relatedPost: angular-rxjs
-
-popup:
-   trigger: scroll
-   header: 'Learn how to PROTECT web applications!'
-   subheader: 'Proven methods to build ultra-secure systems'
-   #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
-   # background: '#ff00ff'
-   closeText: 'No, thanks. I can be hacked... ❌'
-   cta:
-      url: https://dev-academy.com/web-security#angular-cors
-      text: Join with 40% OFF 🔥
 ---
 
 
@@ -71,7 +60,12 @@ The article will allow you to tackle CORS issues on your own, by showing how to:
 * Setup CORS in your Angular application to fetch remote data successfully
 * How to setup backend to allow for remote requests
 
-{% review_screen "review_1.png" "https://websecurity-academy.com" %}
+<aside class="article-pills-cta" aria-label="Free Dev Academy Knowledge Pills">
+  <p class="article-pills-cta-eyebrow">Security Tuesday + Testing Friday</p>
+  <h3>Fix the CORS error without creating a security hole.</h3>
+  <p>Allowing every origin may silence the browser today and widen your attack surface tomorrow. Get two practical Knowledge Pills each week to understand the trade-offs behind fixes like this.</p>
+  <a class="button button-primary article-pills-cta-link" href="/" data-ph="article-pills-cta__link">Get the free Knowledge Pills →</a>
+</aside>
 
 ### Project Structure
 
@@ -256,4 +250,4 @@ We can use proxies like Nginx or load balancers like (AWS Coludfront) as alterna
 
 You now have more idea on how Angular handles cross-origin resource sharing and how to fix your cors issue via the angular CLI and your API backend. Hope you got the CORS confidence boost for the shiny web application you develop! Until next time.
 
-If you are interested in learning more about **building secure Web applications** consider joining our flagship program [Web Security Academy](https://websecurity-academy.com/?utm_source=blog&utm_medium=link&utm_campaign=angular-cors). It will teach you everything you need to know in that area. ⭐ Some of the actionable tips are also covered in our [secure coding training](/secure-coding-training) article.
+For a broader set of practical safeguards, see our [secure coding training](/secure-coding-training) guide.

@@ -7,17 +7,6 @@ date: 2019-07-02
 tags: [angular, architecture]
 id: angular-architecture
 relatedPost: user-login-and-registration
-
-popup:
-   trigger: scroll
-   header: 'Learn how to PROTECT web applications!'
-   subheader: 'Proven methods to build ultra-secure systems'
-   #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
-   # background: '#ff00ff'
-   closeText: 'No, thanks. I can be hacked... ❌'
-   cta:
-      url: https://dev-academy.com/web-security#angular-architecture
-      text: Join with 40% OFF 🔥
 ---
 
 
@@ -165,7 +154,12 @@ When it comes to the state, the abstraction layer makes our components independe
 
 Having this kind abstraction gives us a lot of flexibility and allows to change the way we manage state not even touching the presentation layer. It's even possible to seamlessly migrate to a real-time backend like Firebase, making our application **real-time**. I personally like to start with BehaviorSubjects to manage the state. If later, at some point in the development of the system, there is a need to use something else, with this kind of architecture, it is very easy to refactor.
 
-{% review_screen "review_1.png" "https://websecurity-academy.com" %}
+<aside class="article-pills-cta" aria-label="Free Dev Academy Knowledge Pills">
+  <p class="article-pills-cta-eyebrow">Security Tuesday + Testing Friday</p>
+  <h3>Architecture needs feedback loops.</h3>
+  <p>Clean boundaries are valuable only when your team can verify they still hold. Get two practical Knowledge Pills each week to help you review, secure, and test code written by you, your team, or AI.</p>
+  <a class="button button-primary article-pills-cta-link" href="/" data-ph="article-pills-cta__link">Get the free Knowledge Pills →</a>
+</aside>
 
 #### Synchronization strategy
 
@@ -308,8 +302,6 @@ The next principle we want to introduce in our system is about the data flow and
 Whenever any model value change in our application, Angular [change detection system](https://vsavkin.com/two-phases-of-angular-2-applications-fda2517604be) takes care of the propagation of that change. It does it via input property bindings from **the top to bottom** of the whole component tree. It means that a child component can only depend on its parent and never vice versa. This is why we call it unidirectional data flow. This allows Angular to traverse the components tree **only once** (as there are no cycles in the tree structure) to achieve a stable state, which means that every value in the bindings is propagated.
 
 As we know from previous chapters, there is the core layer above the presentation layer, where our application logic is implemented. There are the services and providers that operate on our data. What if we apply the same principle of data manipulation on that level? We can place the application data (the state) in one place "above" the components and propagate the values down to the components via Observable streams (Redux and NgRx call this place a store). The state can be propagated to multiple components and displayed in multiple places, but never modified locally. The change may come only "from above" and the components below only "reflect" the current state of the system. This gives us the important system's property mentioned before - **data consistency** - and the state object becomes **the single source of truth**. Practically speaking, we can *display* the same data in multiple places and not be afraid that the values would differ.
-
-{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 Our state object exposes the methods for the services in our core layer to manipulate the state. Whenever there is a need to change the state, it can happen only by calling a method on the state object (or dispatching an action in case of using NgRx). Then, the change is propagated "down", via streams, the to presentation layer (or any other service). This way, our state management is *reactive*. Moreover, with this approach, we also increase the level of predictability in our system, because of strict rules of manipulating and sharing the application state. Below you can find a code snippet modeling the state with BehaviorSubjects.
 

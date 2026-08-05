@@ -7,7 +7,6 @@ date: 2023-02-27
 tags: [vue, architecture, "design patterns"]
 id: vue-design-patterns
 relatedPost: vue-security-best-practices
-bannerHeader: Is your Vue application SECURE?
 ---
 
 
@@ -260,7 +259,14 @@ To validate our forms, we are using the [zod](https://zod.dev/) library. As we
 ## Adapter Pattern
 The adapter pattern is a structural design pattern also known as "Wrapper". This pattern allows the interfacing of an existing class used as another interface, like something in the middle of a connection. The perfect real-world example is when you go to another country, you realize that the power plug is different. So, you will need an adapter to get power. That's the magic.
 
-A typical use case is to wrap a 3rd party library, which is used everywhere in your code. Someday, many libraries will be deprecated, or in the worst case, security issues, also known as vulnerabilities. To learn more about it, we have an amazing academy, [https://websecurity-academy.com/](https://websecurity-academy.com/), and a free guide related to [Vue Security Best Practices](https://dev-academy.com/vue-security-best-practices/).
+A typical use case is to wrap a 3rd party library, which is used everywhere in your code. Someday, many libraries will be deprecated, or in the worst case, security issues, also known as vulnerabilities. For a deeper review of framework-specific risks, see our [Vue Security Best Practices](/vue-security-best-practices/) guide.
+
+<aside class="article-pills-cta" aria-label="Free Dev Academy Knowledge Pills">
+  <p class="article-pills-cta-eyebrow">Security Tuesday + Testing Friday</p>
+  <h3>A good adapter contains change. Judgment contains risk.</h3>
+  <p>Dependencies change, vulnerabilities appear, and generated code crosses boundaries quickly. Get two practical Knowledge Pills each week to sharpen the security and testing decisions behind your design patterns.</p>
+  <a class="button button-primary article-pills-cta-link" href="/" data-ph="article-pills-cta__link">Get the free Knowledge Pills →</a>
+</aside>
 
 In this case, we are using the [js-cookie](https://github.com/js-cookie/js-cookie) library to interact directly with our Cookies, which is simple and lightweight. The adapter looks like this.
 

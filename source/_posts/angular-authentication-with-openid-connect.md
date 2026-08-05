@@ -135,6 +135,13 @@ Since the response parameters are returned in the URI fragment value, the browse
 
 Next, let's review what's inside the ID token.
 
+<aside class="article-pills-cta" aria-label="Free Dev Academy Knowledge Pills">
+  <p class="article-pills-cta-eyebrow">Security Tuesday + Testing Friday</p>
+  <h3>Authentication is not a copy-paste feature.</h3>
+  <p>A working OIDC configuration can still encode the wrong flow or unsafe token handling. Get two practical Knowledge Pills each week to understand the security and testing decisions behind the code.</p>
+  <a class="button button-primary article-pills-cta-link" href="/" data-ph="article-pills-cta__link">Get the free Knowledge Pills →</a>
+</aside>
+
 ### OIDC ID token
 
 The OIDC ID token is a JWT that contains information about an authenticated user. Note, that there is no need to make an API call to a resource server to get this information, unlike it was with the traditional OAuth 2.0.
@@ -210,8 +217,6 @@ The signature is then Base64 URL encoded to form the third part of the ID token.
 Since the ID tokens are usually signed with a private key, the users of ID tokens can easily verify that the payload wasn't changed and that the sender of the ID token is actually who it says it is.
 
 Next, let's do some practice. We'll create a GCP project, and configure it for OIDC.
-
-{% review_screen "review_2.png" "https://websecurity-academy.com" %}
 
 ## Create a GCP project and enable OAuth2
 

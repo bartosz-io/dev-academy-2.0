@@ -6,17 +6,6 @@ description: Learn how to use Session Storage in Angular.
 date: 2023-04-07
 tags: [angular]
 id: angular-session-storage
-
-popup:
-   trigger: scroll
-   header: 'Learn how to PROTECT web applications!'
-   subheader: 'Proven methods to build ultra-secure systems'
-   #image: https://dev-academy.com/img/optins/web-security-checklist.jpg
-   # background: '#ff00ff'
-   closeText: 'No, thanks. I can be hacked... ❌'
-   cta:
-      url: https://dev-academy.com/web-security#angular-session-storage
-      text: Join with 40% OFF 🔥
 ---
 
 
@@ -121,6 +110,13 @@ Now, open the `app.component.html` file and add a button to the `dataSave()` fun
 ```
 
 {% img "save-data.jpg" "Save data in angular session storage" "lazy" %}
+
+<aside class="article-pills-cta" aria-label="Free Dev Academy Knowledge Pills">
+  <p class="article-pills-cta-eyebrow">Security Tuesday + Testing Friday</p>
+  <h3>Before you store it, ask how it could leak.</h3>
+  <p><code>sessionStorage</code> is convenient, but JavaScript—and therefore an XSS payload—can read it. Get two practical Knowledge Pills each week to make security and testing checks part of everyday development.</p>
+  <a class="button button-primary article-pills-cta-link" href="/" data-ph="article-pills-cta__link">Get the free Knowledge Pills →</a>
+</aside>
 
 When you click the "Save data to sessionStorage" button, the key "name" and the value "Sanjeev" will be saved.
 
