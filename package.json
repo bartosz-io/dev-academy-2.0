@@ -13,7 +13,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "article": "hexo new post",
-    "test:homepage": "npm run build:hexo && node tests/verify-homepage.js && node tests/verify-newsletter-loader.js && node tests/verify-no-transform-edge-function.js",
+    "test:homepage": "npm run build:hexo && node tests/verify-homepage.js && node tests/verify-newsletter-loader.js && node tests/verify-no-transform-edge-function.js && node tests/verify-starter-kit-proxy.js",
     "pills:check": "node scripts/pills/check.js",
     "test:pills": "node tests/verify-pill-structure.js && node tests/verify-pill-validator.js && node tests/verify-pills-cli.js"
   },

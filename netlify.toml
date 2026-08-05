@@ -1,4 +1,22 @@
 [[redirects]]
+  from = "/ai"
+  to = "/security-starter-kit/ai/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ai/"
+  to = "/security-starter-kit/ai/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/security-starter-kit/ai"
+  to = "/security-starter-kit/ai/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/security-starter-kit"
   to = "https://browser-security-starter-kit.pages.dev/"
   status = 200
