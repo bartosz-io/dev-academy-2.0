@@ -557,6 +557,27 @@ test('keeps PostHog memory-only and the next load undecided when consent storage
   assert.strictEqual(createHarness({ config: null }).api.getState().decided, false);
 });
 
+test('initializes a pending PostHog client in memory after an accept-all storage failure', function() {
+  var harness = createHarness({ throwOnStorageWrite: true });
+
+  harness.api.acceptAll();
+  harness.attachPostHog();
+
+  var clientCalls = harness.calls.filter(function(call) {
+    return call[0].indexOf('posthog:') === 0;
+  });
+  var init = clientCalls[0];
+  assert.strictEqual(init[0], 'posthog:init');
+  assert.strictEqual(init[2].persistence, 'memory');
+  assert.strictEqual(clientCalls.some(function(call) {
+    return call[0] === 'posthog:init' && call[2].persistence === 'localStorage+cookie';
+  }), false);
+  assert.strictEqual(clientCalls.some(function(call) {
+    return call[0] === 'posthog:set_config' && call[1].persistence === 'localStorage+cookie';
+  }), false);
+  assert.strictEqual(harness.values[CONSENT_KEY], undefined);
+});
+
 test('removes a stale durable decision when replacing consent storage is denied', function() {
   var harness = createHarness({
     rawConsent: JSON.stringify({

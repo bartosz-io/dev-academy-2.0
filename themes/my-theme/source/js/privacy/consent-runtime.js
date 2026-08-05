@@ -13,6 +13,7 @@
   var reportedMissingConfig = {};
   var config = window.DEV_ACADEMY_PRIVACY_CONFIG || {};
   var state = readState();
+  var effectivePersistentAnalytics = state.persistentAnalytics;
 
   function parseConsent(raw) {
     try {
@@ -285,6 +286,7 @@
       marketing: next.marketing === true
     };
     if (persist) decisionPersisted = saveState();
+    effectivePersistentAnalytics = state.persistentAnalytics && (!persist || decisionPersisted);
 
     grantedPersistence = !previous.persistentAnalytics && state.persistentAnalytics;
     revokedPersistence = previous.persistentAnalytics && !state.persistentAnalytics;
@@ -352,7 +354,7 @@
         save_referrer: false,
         before_send: sanitizePostHogEvent,
         person_profiles: 'identified_only',
-        persistence: state.persistentAnalytics ? 'localStorage+cookie' : 'memory',
+        persistence: effectivePersistentAnalytics ? 'localStorage+cookie' : 'memory',
         disable_session_recording: false,
         session_recording: {
           maskAllInputs: true,
