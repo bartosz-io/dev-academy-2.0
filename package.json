@@ -13,7 +13,9 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "article": "hexo new post",
-    "test:homepage": "npm run build:hexo && node tests/verify-homepage.js && node tests/verify-newsletter-loader.js"
+    "test:homepage": "npm run build:hexo && node tests/verify-homepage.js && node tests/verify-newsletter-loader.js",
+    "pills:check": "node scripts/pills/check.js",
+    "test:pills": "node tests/verify-pill-structure.js && node tests/verify-pill-validator.js && node tests/verify-pills-cli.js"
   },
   "hexo": {
     "version": "5.4.2"
@@ -43,5 +45,8 @@
     "minimatch": "^3.0.4",
     "posthog-js": "^1.43.1",
     "sharp": "^0.31.1"
+  },
+  "devDependencies": {
+    "hexo-front-matter": "^2.0.0"
   }
 }
