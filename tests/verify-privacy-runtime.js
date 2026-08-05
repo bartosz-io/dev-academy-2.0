@@ -16,6 +16,7 @@ var RUNTIME_PATH = path.join(
   'consent-runtime.js'
 );
 var CONFIG_PATH = path.join(__dirname, '..', 'scripts', 'privacy-config.js');
+var yaml = require('js-yaml');
 var CONSENT_KEY = 'dev_academy_consent_v1';
 var VALID_CONFIG = {
   enabled: true,
@@ -402,6 +403,17 @@ test('Hexo privacy config honors public environment overrides without changing u
     posthog_host: 'https://ingest.example',
     posthog_asset_host: 'https://assets.example',
     meta_pixel_id: '987654321098765'
+  });
+});
+
+test('development and production configs provide versioned public analytics defaults', function() {
+  ['_dev.yml', '_prod.yml'].forEach(function(filename) {
+    var config = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '..', filename), 'utf8'));
+    var privacy = config.privacy;
+    assert(/^phc_[A-Za-z0-9_-]{20,}$/.test(privacy.posthog_key), filename + ' must version the PostHog project key');
+    assert(/^\d{8,}$/.test(privacy.meta_pixel_id) && privacy.meta_pixel_id !== '000000000000000', filename + ' must version the Meta Pixel ID');
+    assert(privacy.posthog_host === 'https://p.dev-academy.com', filename + ' must use the first-party PostHog host');
+    assert(privacy.posthog_asset_host === 'https://eu-assets.i.posthog.com', filename + ' must use the approved PostHog asset host');
   });
 });
 

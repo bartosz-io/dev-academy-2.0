@@ -79,6 +79,10 @@ runCheck('serializes only escaped public vendor configuration', function() {
     Object.keys(config).sort(),
     ['metaPixelId', 'posthogAssetHost', 'posthogHost', 'posthogKey']
   );
+  assert(/^phc_[A-Za-z0-9_-]{20,}$/.test(config.posthogKey), 'PostHog production default must be versioned');
+  assert(/^\d{8,}$/.test(config.metaPixelId) && config.metaPixelId !== '000000000000000', 'Meta production default must be versioned');
+  assert(config.posthogHost === 'https://p.dev-academy.com', 'PostHog ingest host must use the first-party endpoint');
+  assert(config.posthogAssetHost === 'https://eu-assets.i.posthog.com', 'PostHog asset host must use the approved endpoint');
   assert(layoutSource.includes(".replace(/</g, '\\\\u003c')"));
 });
 
