@@ -274,6 +274,7 @@
 
   function applyState(next, action, persist) {
     var previous = state;
+    var previousEffectivePersistentAnalytics = effectivePersistentAnalytics;
     var grantedPersistence;
     var revokedPersistence;
     var grantedMarketing;
@@ -288,8 +289,8 @@
     if (persist) decisionPersisted = saveState();
     effectivePersistentAnalytics = state.persistentAnalytics && (!persist || decisionPersisted);
 
-    grantedPersistence = !previous.persistentAnalytics && state.persistentAnalytics;
-    revokedPersistence = previous.persistentAnalytics && !state.persistentAnalytics;
+    grantedPersistence = !previousEffectivePersistentAnalytics && effectivePersistentAnalytics;
+    revokedPersistence = previousEffectivePersistentAnalytics && !effectivePersistentAnalytics;
     grantedMarketing = !previous.marketing && state.marketing;
     revokedMarketing = previous.marketing && !state.marketing;
 
@@ -312,6 +313,10 @@
           client.persistence.clear();
         }
       });
+      withPostHog(function(client) {
+        if (typeof client.set_config === 'function') client.set_config({ persistence: 'memory' });
+      });
+    } else if (persist && state.persistentAnalytics && !effectivePersistentAnalytics) {
       withPostHog(function(client) {
         if (typeof client.set_config === 'function') client.set_config({ persistence: 'memory' });
       });

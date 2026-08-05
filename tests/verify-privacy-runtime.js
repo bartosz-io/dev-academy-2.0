@@ -578,6 +578,70 @@ test('initializes a pending PostHog client in memory after an accept-all storage
   assert.strictEqual(harness.values[CONSENT_KEY], undefined);
 });
 
+test('revokes effective persistence when a same-value durable save fails', function() {
+  var mainName = 'ph_' + VALID_CONFIG.posthogKey + '_posthog';
+  var projectNames = [mainName, mainName + '__flags', mainName + '__surveys'];
+  var storageValues = { ph_unrelated_posthog: 'keep' };
+  var sessionValues = { ph_unrelated_posthog: 'keep' };
+  projectNames.forEach(function(name) {
+    storageValues[name] = 'old-identity';
+    sessionValues[name] = 'old-session';
+  });
+  var harness = createHarness({
+    rawConsent: '{"schemaVersion":1,"persistentAnalytics":true,"marketing":false}',
+    storageValues: storageValues,
+    sessionStorageValues: sessionValues,
+    throwOnStorageWrite: true
+  });
+  harness.attachPostHog();
+  harness.calls.length = 0;
+
+  harness.api.setPreferences({ persistentAnalytics: true, marketing: false });
+
+  assert.strictEqual(harness.values[CONSENT_KEY], undefined);
+  projectNames.forEach(function(name) {
+    assert.strictEqual(harness.values[name], undefined);
+    assert.strictEqual(harness.sessionValues[name], undefined);
+    assert(harness.cookieWrites.some(function(write) { return write.indexOf(name + '=') === 0; }));
+  });
+  assert.strictEqual(harness.values.ph_unrelated_posthog, 'keep');
+  assert.strictEqual(harness.sessionValues.ph_unrelated_posthog, 'keep');
+  assert.deepStrictEqual(plain(harness.api.getState()), {
+    decided: true,
+    persistentAnalytics: true,
+    marketing: false
+  });
+  assert.deepStrictEqual(harness.calls.filter(function(call) {
+    return call[0] === 'posthog:reset' ||
+      call[0] === 'posthog:persistence:clear' ||
+      call[0] === 'posthog:set_config';
+  }), [
+    ['posthog:reset', true],
+    ['posthog:persistence:clear'],
+    ['posthog:set_config', { persistence: 'memory' }]
+  ]);
+  assert.strictEqual(harness.calls.slice(-1)[0][0], 'reload');
+});
+
+test('enables durable PostHog immediately when a same-value accept retry persists', function() {
+  var options = { throwOnStorageWrite: true };
+  var harness = createHarness(options);
+  harness.attachPostHog();
+
+  harness.api.acceptAll();
+  options.throwOnStorageWrite = false;
+  harness.calls.length = 0;
+  harness.api.acceptAll();
+
+  assert.strictEqual(
+    harness.values[CONSENT_KEY],
+    '{"schemaVersion":1,"persistentAnalytics":true,"marketing":true}'
+  );
+  assert.strictEqual(harness.calls.some(function(call) {
+    return call[0] === 'posthog:set_config' && call[1].persistence === 'localStorage+cookie';
+  }), true);
+});
+
 test('removes a stale durable decision when replacing consent storage is denied', function() {
   var harness = createHarness({
     rawConsent: JSON.stringify({
