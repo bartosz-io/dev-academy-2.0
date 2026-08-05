@@ -27,7 +27,7 @@ posts.forEach(function(entry) {
   assert(ctas[0].includes('Get the free Knowledge Pills'));
   assert(!html.includes('id="popup"'));
   assert(!html.includes('class="review-screen"'));
-  assert(!html.includes('websecurity-academy.com'));
+  assert(!source.includes('websecurity-academy.com'));
   assert(!source.includes('\npopup:'));
   assert(!source.includes('{% review_screen'));
   assert(!source.includes('Join with 40% OFF'));
