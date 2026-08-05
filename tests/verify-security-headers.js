@@ -43,6 +43,7 @@ assertSource('script-src', 'https://connect.facebook.net');
 assertSource('connect-src', 'https://p.dev-academy.com');
 assertSource('connect-src', 'https://www.facebook.com');
 assertSource('img-src', 'https://www.facebook.com');
+assertSource('form-action', 'https://app.kit.com');
 
 assert(!directives.get('script-src').includes('*'), 'script-src must not allow every origin');
 assert(!directives.get('script-src').includes('data:'), 'script-src must not allow data:');
