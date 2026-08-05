@@ -25,6 +25,7 @@ posts.forEach(function(entry) {
   assert(!ctas[0].includes('#get-free-pills'));
   assert(ctas[0].includes('data-ph="article-pills-cta__link"'));
   assert(ctas[0].includes('Get the free Knowledge Pills'));
+  assert(!html.includes('class="main-banner"'), route + ' must not render the obsolete fixed sales banner');
   assert(!html.includes('id="popup"'));
   assert(!html.includes('class="review-screen"'));
   assert(!source.includes('websecurity-academy.com'));
@@ -41,5 +42,9 @@ assert(fs.existsSync(componentPath), 'shared Pills CTA stylesheet must exist');
 const component = fs.readFileSync(componentPath, 'utf8');
 assert(component.includes('.article-pills-cta'));
 assert(component.includes('@media (max-width: 575px)'));
+assert(
+  /p\s*\{[^}]*padding-bottom:\s*0;/s.test(component),
+  'Pills CTA paragraphs must reset the global paragraph padding'
+);
 
 console.log('Top post Pills CTA checks passed.');

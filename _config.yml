@@ -228,7 +228,7 @@ image_minifier:
 
 # site banners, custom templates
 banners:
-  main_banner: bottom
+  main_banner: false
   article_side_banner: false
 
 # custom popup
