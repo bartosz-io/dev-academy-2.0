@@ -162,6 +162,12 @@ imageTags.forEach(function (tag) {
   assert(/\salt="[^"]*"/.test(tag), 'every image must define alt text');
 });
 assert(homepage.includes('alt="Bartosz Pietrucha, founder of Dev Academy"'));
+assert(
+  /\.newsletter-about-image\s*\{[\s\S]*?img\s*\{[\s\S]*?height:\s*auto;/.test(
+    newsletterStyles
+  ),
+  'author image must preserve its square aspect ratio on narrow screens'
+);
 
 assert.strictEqual(
   count(pageSitemap, '<loc>https://dev-academy.com/</loc>'),
