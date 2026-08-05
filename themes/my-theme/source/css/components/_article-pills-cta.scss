@@ -1,0 +1,40 @@
+.article-pills-cta {
+  margin: 3rem 0;
+  padding: 2.4rem;
+  border-left: .5rem solid $purple-100;
+  border-radius: 1.2rem;
+  background: $light-125;
+  color: $navy-400;
+
+  h3 {
+    margin: 0 0 1rem;
+  }
+
+  p {
+    margin: 0 0 1.6rem;
+  }
+
+  .article-pills-cta-eyebrow {
+    color: $purple-100;
+    font-size: $font-size-13;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .article-pills-cta-link {
+    margin-top: .4rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .article-pills-cta {
+    padding: 2rem;
+
+    .article-pills-cta-link {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
