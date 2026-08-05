@@ -27,45 +27,39 @@ Here is your first Security Pill.
 
 Imagine a user is signed in to your application. They open another website promising something harmless:
 
-**“Click here to claim your free gift.”**
+**“Click PLAY to watch the video.”**
 
 What the user cannot see is that the page has loaded your application inside a nearly transparent `<iframe>`.
 
-```html
-<iframe src="https://your-app.com/account"></iframe>
-```
+**[IMAGE PLACEHOLDER — upload `assets/SEC-001/clickjacking_img.png` here]**
 
-The attacker positions a sensitive button from your application directly over the fake button.
+The attacker positions a sensitive button from your application inside the transparent iframe, directly over the fake button.
 
-The user thinks they are clicking **“Claim my gift.”**
+The user thinks they are clicking **“PLAY.”**
 
-In reality, they might be clicking **“Change email,” “Delete account,”** or another real action inside your application.
+In reality, they might be clicking **“PAY,” “Change email,” “Delete account,”** or another real action inside your application.
 
 If the browser includes the user’s authenticated session, your application receives a genuine click from a genuine user.
 
-This is **clickjacking**.
+**This is clickjacking.**
 
 The attacker does not need to inject JavaScript or steal the user’s password. They misuse your interface and the user’s real click.
 
-### Stop your application from being framed
+**How to stop your application from being framed**
 
 If your application never needs to be embedded by another website, return this HTTP response header with its HTML documents:
 
-```http
-Content-Security-Policy: frame-ancestors 'none';
-```
+`Content-Security-Policy: frame-ancestors 'none';`
 
 The browser will refuse to render the page inside a frame.
 
 If your application legitimately uses same-origin frames, use:
 
-```http
-Content-Security-Policy: frame-ancestors 'self';
-```
+`Content-Security-Policy: frame-ancestors 'self';`
 
 Important: `frame-ancestors` must be delivered as an **HTTP response header**. Adding it to a `<meta>` element does not work.
 
-### Your check for today
+**Your check for today**
 
 Open your application in DevTools, select its main document in the **Network** tab, and inspect the response headers.
 
