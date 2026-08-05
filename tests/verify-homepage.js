@@ -36,7 +36,9 @@ const newsletterStyles = fs.readFileSync(
   path.join(__dirname, '..', 'themes', 'my-theme', 'source', 'css', 'pages', '_newsletter-homepage.scss'),
   'utf8'
 );
-const newsletterForms = homepage.match(/<form\b[\s\S]*?<\/form>/g) || [];
+const newsletterForms = homepage.match(
+  /<form\b(?=[^>]*\bclass="[^"]*\bnewsletter-form\b[^"]*")[\s\S]*?<\/form>/g
+) || [];
 
 assert(homepage.includes('class="newsletter-homepage"'));
 assert(articles.includes('posts-wrapper'));
@@ -183,5 +185,10 @@ assert(welcome.includes('Confirm your subscription'));
 assert(welcome.includes('You are not subscribed yet'));
 assert(!welcome.includes('<header class="header">'));
 assert(!welcome.includes('<footer class="footer">'));
+assert.strictEqual(count(homepage, '/js/privacy/consent-runtime.js'), 1);
+assert.strictEqual(count(welcome, '/js/privacy/consent-runtime.js'), 1);
+assert(homepage.includes('data-open-privacy-settings'));
+assert(welcome.includes('data-open-privacy-settings'));
+assert(!homepage.includes('/js/posthog/posthog.js'));
 
 console.log('Newsletter homepage acceptance checks passed.');

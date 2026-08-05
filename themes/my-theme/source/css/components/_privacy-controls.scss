@@ -1,0 +1,287 @@
+.consent-banner {
+  position: fixed;
+  right: $size-24;
+  bottom: $size-24;
+  z-index: $z-index-500;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: $size-24;
+  width: calc(100vw - #{$size-48});
+  max-width: 64rem;
+  border: .1rem solid $light-900;
+  border-radius: $size-16;
+  padding: $size-24;
+  background: $light-100;
+  box-shadow: 0 2.4rem 7rem rgba($secondary, .18);
+  color: $font-color;
+
+  &[hidden] {
+    display: none;
+  }
+
+  h2 {
+    margin: 0 0 $size-8;
+    color: $secondary;
+    font-size: $font-size-20;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    color: $navy-800;
+    font-size: $font-size-14;
+    line-height: 1.6;
+  }
+}
+
+.consent-actions,
+.privacy-dialog-actions {
+  display: flex;
+  gap: $size-8;
+}
+
+.consent-actions {
+  flex-direction: column;
+  align-self: end;
+}
+
+.privacy-button {
+  display: inline-flex;
+  min-height: 4.6rem;
+  align-items: center;
+  justify-content: center;
+  border: .2rem solid $indigo-600;
+  border-radius: $size-8;
+  padding: $size-12 $size-16;
+  font-family: $font-family;
+  font-size: $font-size-14;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: $transition-default;
+}
+
+.privacy-button-primary {
+  background: $indigo-600;
+  color: $light-100;
+
+  &:hover {
+    background: $indigo-400;
+  }
+}
+
+.privacy-button-secondary {
+  background: $light-100;
+  color: $indigo-600;
+
+  &:hover {
+    background: $light-125;
+  }
+}
+
+.privacy-dialog {
+  width: calc(100vw - #{$size-32});
+  max-width: 64rem;
+  border: .1rem solid $light-900;
+  border-radius: $size-16;
+  padding: 0;
+  background: $light-100;
+  box-shadow: 0 3rem 10rem rgba($secondary, .28);
+  color: $font-color;
+
+  &::backdrop {
+    background: rgba($navy-300, .58);
+  }
+
+  form {
+    display: grid;
+    gap: $size-16;
+    padding: $size-24;
+  }
+}
+
+.privacy-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $size-16;
+
+  h2 {
+    margin: 0;
+    color: $secondary;
+    font-size: $font-size-24;
+  }
+}
+
+.privacy-eyebrow {
+  margin: 0 0 $size-8;
+  padding: 0;
+  color: $indigo-600;
+  font-family: $font-family-monospace;
+  font-size: $font-size-12;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.privacy-close {
+  display: grid;
+  flex: 0 0 4rem;
+  width: 4rem;
+  height: 4rem;
+  place-items: center;
+  border: .1rem solid $light-900;
+  border-radius: $size-8;
+  background: $light-200;
+  color: $secondary;
+  font-size: $font-size-24;
+  cursor: pointer;
+}
+
+.privacy-default,
+.privacy-option {
+  border: .1rem solid $light-900;
+  border-radius: $size-12;
+  padding: $size-16;
+  background: $light-200;
+}
+
+.privacy-default {
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $size-16;
+  }
+
+  span {
+    flex: 0 0 auto;
+    border-radius: $size-16;
+    padding: .3rem $size-8;
+    background: $green-100;
+    color: $green-500;
+    font-size: $font-size-12;
+    font-weight: 600;
+  }
+
+  p {
+    margin: $size-8 0 0;
+    padding: 0;
+    color: $navy-800;
+    font-size: $font-size-13;
+  }
+}
+
+.privacy-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $size-16;
+  cursor: pointer;
+
+  small {
+    display: block;
+    margin-top: $size-4;
+    color: $navy-800;
+    font-size: $font-size-13;
+    line-height: 1.5;
+  }
+
+  input {
+    position: relative;
+    flex: 0 0 4.6rem;
+    width: 4.6rem;
+    height: 2.6rem;
+    margin: 0;
+    border: .1rem solid $light-750;
+    border-radius: $size-16;
+    appearance: none;
+    background: $light-400;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &::after {
+      position: absolute;
+      top: .3rem;
+      left: .3rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      background: $light-100;
+      box-shadow: 0 .2rem .6rem rgba($secondary, .24);
+      content: '';
+      transition: $transition-default;
+    }
+
+    &:checked {
+      border-color: $indigo-600;
+      background: $indigo-600;
+
+      &::after {
+        transform: translateX(2rem);
+      }
+    }
+  }
+}
+
+.privacy-dialog-actions {
+  justify-content: flex-end;
+}
+
+.privacy-settings-footer {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: $light-500;
+  font-family: $font-family;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.privacy-settings-compact {
+  position: fixed;
+  right: $size-16;
+  bottom: $size-16;
+  z-index: $z-index-400;
+  border: .1rem solid $light-900;
+  border-radius: $size-8;
+  padding: $size-8 $size-12;
+  background: rgba($light-100, .96);
+  box-shadow: $box-shadow;
+  color: $indigo-600;
+  font-family: $font-family;
+  font-size: $font-size-12;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.privacy-button:focus-visible,
+.privacy-close:focus-visible,
+.privacy-option input:focus-visible,
+.privacy-settings-footer:focus-visible,
+.privacy-settings-compact:focus-visible {
+  outline: .3rem solid $hover;
+  outline-offset: .3rem;
+}
+
+@media (max-width: 720px) {
+  .consent-banner {
+    right: $size-12;
+    bottom: $size-12;
+    width: calc(100vw - #{$size-24});
+    grid-template-columns: 1fr;
+  }
+
+  .consent-actions,
+  .privacy-dialog-actions {
+    flex-direction: column;
+
+    .privacy-button {
+      width: 100%;
+    }
+  }
+
+  .privacy-dialog form {
+    padding: $size-16;
+  }
+}

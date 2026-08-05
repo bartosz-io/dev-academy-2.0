@@ -20,6 +20,7 @@
   if (is_tag()) { bodyClasses += 'tag-page ' }
   if (page.isAboutPage) { bodyClasses += 'index-page ' }
   if (page.layout === 'homepage') { bodyClasses += 'newsletter-homepage-page ' }
+  if (page.layout === 'landing') { bodyClasses += 'landing-page ' }
 %>
 <body class="<%- bodyClasses %>">
 
@@ -46,14 +47,22 @@
         <%- partial('partial/ck-form', {}, {caches: true}) %>
     <% } %>
 
-    <script src="<%- url_for('/js/main.js') %>" defer></script>
 <% } %>
 
-<% if (config.posthog)  {%>
-    <script src="<%- url_for('/js/posthog/posthog.js') %>" defer></script>
-    <script src="<%- url_for('/js/posthog/testing/dumb-test.js') %>" defer></script>
-    <script src="<%- url_for('/js/posthog/testing/main-banner-test.js') %>" defer></script>
-    <!-- <script src="<%- url_for('/js/posthog/testing/sidebar-test.js') %>" defer></script> -->
-<% } %>
+<%- partial('partial/privacy-controls', {footerless: page.layout === 'landing'}) %>
+<%
+var privacy = config.privacy || {};
+var privacyConfigJson = JSON.stringify({
+    posthogKey: privacy.posthog_key,
+    posthogHost: privacy.posthog_host,
+    posthogAssetHost: privacy.posthog_asset_host,
+    metaPixelId: privacy.meta_pixel_id
+}).replace(/</g, '\\u003c');
+%>
+<script>
+window.DEV_ACADEMY_PRIVACY_CONFIG = <%- privacyConfigJson %>;
+</script>
+<script src="<%- url_for('/js/privacy/consent-runtime.js') %>" defer></script>
+<script src="<%- url_for('/js/main.js') %>" defer></script>
 </body>
 </html>
