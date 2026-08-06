@@ -319,7 +319,7 @@ test('loads PostHog asynchronously in memory with masked replay and drains captu
   assert.strictEqual(JSON.stringify(pageview).indexOf(VALID_CONFIG.metaPixelId), -1);
 });
 
-test('sanitizes SDK-enriched custom events and replay URLs immediately before send', function() {
+test('sanitizes SDK-enriched custom events without rewriting replay snapshots', function() {
   var harness = createHarness();
   harness.attachPostHog();
   var init = harness.calls.filter(function(call) { return call[0] === 'posthog:init'; })[0][2];
@@ -371,7 +371,7 @@ test('sanitizes SDK-enriched custom events and replay URLs immediately before se
   assert.strictEqual(Object.prototype.hasOwnProperty.call(event.$set, 'contact'), false);
   assert.strictEqual(event.timestamp, timestamp);
 
-  snapshot = init.before_send({
+  snapshot = {
     event: '$snapshot',
     properties: {
       token: 'required-ingest-token',
@@ -381,10 +381,11 @@ test('sanitizes SDK-enriched custom events and replay URLs immediately before se
         data: { href: unsafeUrl, referrer: unsafeReferrer }
       }
     }
-  });
-  assert.strictEqual(snapshot.properties.$current_url, 'https://dev-academy.com/confirmation/');
-  assert.strictEqual(snapshot.properties.$snapshot_data.data.href, 'https://dev-academy.com/confirmation/');
-  assert.strictEqual(snapshot.properties.$snapshot_data.data.referrer, 'search.example');
+  };
+  assert.strictEqual(init.before_send(snapshot), snapshot);
+  assert.strictEqual(snapshot.properties.$current_url, unsafeUrl);
+  assert.strictEqual(snapshot.properties.$snapshot_data.data.href, unsafeUrl);
+  assert.strictEqual(snapshot.properties.$snapshot_data.data.referrer, unsafeReferrer);
 
   assert.strictEqual(typeof init.session_recording.maskCapturedNetworkRequestFn, 'function');
   request = init.session_recording.maskCapturedNetworkRequestFn({ name: unsafeUrl });

@@ -262,6 +262,7 @@
   }
 
   function sanitizePostHogEvent(event) {
+    if (event && event.event === '$snapshot') return event;
     return sanitizePostHogValue(event, '', [
       config.posthogKey,
       config.posthogHost,
