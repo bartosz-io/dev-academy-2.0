@@ -171,10 +171,28 @@ function canonicalAnalyticsValue(value) {
         .slice(0, 80) || 'unknown';
 }
 
+function paidAttribution(search) {
+    var params = new URLSearchParams(search || '');
+    return {
+        utm_source: canonicalAnalyticsValue(params.get('utm_source')),
+        utm_medium: canonicalAnalyticsValue(params.get('utm_medium')),
+        utm_campaign: canonicalAnalyticsValue(params.get('utm_campaign')),
+        utm_content: canonicalAnalyticsValue(params.get('utm_content'))
+    };
+}
+
+function populateNewsletterAttribution(form, attribution) {
+    Object.keys(attribution).forEach(function(key) {
+        var input = form.querySelector('[data-newsletter-attribution="' + key + '"]');
+        if (input) input.value = attribution[key] === 'unknown' ? '' : attribution[key];
+    });
+}
+
 function newsletterAnalytics() {
     var forms;
     var viewedForms;
     var observer;
+    var attribution;
 
     if (newsletterAnalytics.isBound) {
         return;
@@ -184,6 +202,7 @@ function newsletterAnalytics() {
     if (!forms.length) {
         return;
     }
+    attribution = paidAttribution(window.location.search);
 
     viewedForms = new Set();
     if (typeof IntersectionObserver === 'function') {
@@ -205,6 +224,7 @@ function newsletterAnalytics() {
     }
 
     forms.forEach(function(form) {
+        populateNewsletterAttribution(form, attribution);
         if (observer) {
             observer.observe(form);
         }
@@ -219,8 +239,18 @@ function newsletterAnalytics() {
                 topic: canonicalAnalyticsValue(form.dataset && form.dataset.newsletterTopic),
                 placement: canonicalAnalyticsValue(form.dataset && form.dataset.newsletterPlacement),
                 source_page: window.location.pathname,
-                has_fbclid: new URLSearchParams(window.location.search).has('fbclid')
+                has_fbclid: new URLSearchParams(window.location.search).has('fbclid'),
+                utm_source: attribution.utm_source,
+                utm_medium: attribution.utm_medium,
+                utm_campaign: attribution.utm_campaign,
+                utm_content: attribution.utm_content
             });
+            if (typeof window.DevAcademyPrivacy.trackMeta === 'function') {
+                window.DevAcademyPrivacy.trackMeta('Lead', {
+                    content_name: 'pills_eu_launch',
+                    content_category: 'newsletter'
+                });
+            }
         });
     });
 }

@@ -284,14 +284,39 @@ runCheck('binds consent controls once and filters cross-app storage synchronizat
   assert.deepStrictEqual(externalStates, ['shared']);
 });
 
+runCheck('allowlists and canonicalizes paid attribution values', function() {
+  const sandbox = evaluateMain(listenerTarget(), listenerTarget());
+  assert.deepStrictEqual(plain(sandbox.paidAttribution(
+    '?utm_source=Meta&utm_medium=paid social&utm_campaign=pills_eu_launch' +
+    '&utm_content=security_a&email=secret%40example.com&fbclid=secret-click'
+  )), {
+    utm_source: 'meta',
+    utm_medium: 'paid_social',
+    utm_campaign: 'pills_eu_launch',
+    utm_content: 'security_a'
+  });
+});
+
 runCheck('captures each newsletter view once and only valid privacy-safe submissions', function() {
   const captures = [];
+  const metaCalls = [];
   const observers = [];
   function newsletterForm(placement, valid) {
     const target = listenerTarget();
+    const attributionInputs = {
+      utm_source: {value: ''},
+      utm_medium: {value: ''},
+      utm_campaign: {value: ''},
+      utm_content: {value: ''}
+    };
     return Object.assign(target, {
       dataset: {newsletterTopic: 'both', newsletterPlacement: placement},
-      checkValidity: function() { return valid.value; }
+      attributionInputs: attributionInputs,
+      checkValidity: function() { return valid.value; },
+      querySelector: function(selector) {
+        const match = selector.match(/^\[data-newsletter-attribution="([a-z_]+)"\]$/);
+        return match ? attributionInputs[match[1]] || null : null;
+      }
     });
   }
   const validity = {value: false};
@@ -306,12 +331,14 @@ runCheck('captures each newsletter view once and only valid privacy-safe submiss
   const windowTarget = listenerTarget();
   const window = Object.assign(windowTarget, {
     DevAcademyPrivacy: {
-      capture: function(event, properties) { captures.push([event, properties]); }
+      capture: function(event, properties) { captures.push([event, properties]); },
+      trackMeta: function(event, properties) { metaCalls.push([event, properties]); }
     },
     location: {
       origin: 'https://dev-academy.com',
       pathname: '/',
-      search: '?fbclid=secret-click&id=email%40example.com'
+      search: '?utm_source=Meta&utm_medium=paid social&utm_campaign=pills_eu_launch' +
+        '&utm_content=security_a&fbclid=secret-click&id=email%40example.com'
     }
   });
   function FakeIntersectionObserver(callback) {
@@ -326,6 +353,12 @@ runCheck('captures each newsletter view once and only valid privacy-safe submiss
   sandbox.newsletterAnalytics();
   assert.strictEqual(observers.length, 1);
   assert.deepStrictEqual(observers[0].observed, [first, second]);
+  assert.deepStrictEqual(plain(first.attributionInputs), {
+    utm_source: {value: 'meta'},
+    utm_medium: {value: 'paid_social'},
+    utm_campaign: {value: 'pills_eu_launch'},
+    utm_content: {value: 'security_a'}
+  });
   observers[0].callback([{target: first, isIntersecting: true}]);
   observers[0].callback([{target: first, isIntersecting: true}]);
   assert.strictEqual(captures.filter(function(call) {
@@ -343,10 +376,18 @@ runCheck('captures each newsletter view once and only valid privacy-safe submiss
     topic: 'both',
     placement: 'homepage_hero',
     source_page: '/',
-    has_fbclid: true
+    has_fbclid: true,
+    utm_source: 'meta',
+    utm_medium: 'paid_social',
+    utm_campaign: 'pills_eu_launch',
+    utm_content: 'security_a'
   }]);
   assert(!JSON.stringify(captures).includes('secret-click'));
   assert(!JSON.stringify(captures).includes('email@example.com'));
+  assert.deepStrictEqual(plain(metaCalls), [['Lead', {
+    content_name: 'pills_eu_launch',
+    content_category: 'newsletter'
+  }]]);
 });
 
 runCheck('maps data-ph clicks to canonical placements and query-free destinations', function() {

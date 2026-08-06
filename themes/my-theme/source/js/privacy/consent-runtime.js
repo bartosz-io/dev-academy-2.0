@@ -14,6 +14,110 @@
   var config = window.DEV_ACADEMY_PRIVACY_CONFIG || {};
   var state = readState();
   var effectivePersistentAnalytics = state.persistentAnalytics;
+  var landingFbclid = readLandingFbclid();
+  var landingFbclidCapturedAt = landingFbclid ? Date.now() : null;
+  var metaLandingEventsSent = false;
+
+  function readLandingFbclid() {
+    try {
+      var value = new URLSearchParams(window.location.search || '').get('fbclid');
+      return typeof value === 'string' && /^[A-Za-z0-9_-]{1,500}$/.test(value) ? value : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function readCookie(name) {
+    try {
+      var prefix = name + '=';
+      var parts = String(document.cookie || '').split(';');
+      for (var index = 0; index < parts.length; index += 1) {
+        var part = parts[index].trim();
+        if (part.indexOf(prefix) === 0) return part.slice(prefix.length);
+      }
+    } catch (error) {}
+    return null;
+  }
+
+  function validFbc(value) {
+    return typeof value === 'string' && /^fb\.1\.\d{13}\.[A-Za-z0-9_-]{1,500}$/.test(value);
+  }
+
+  function currentFbc() {
+    var existing;
+    var created;
+    if (!state.marketing) return null;
+    existing = readCookie('_fbc');
+    if (validFbc(existing)) return existing;
+    if (!landingFbclid) return null;
+    created = 'fb.1.' + landingFbclidCapturedAt + '.' + landingFbclid;
+    try {
+      document.cookie = '_fbc=' + created + '; Path=/; Max-Age=7776000; SameSite=Lax; Secure';
+    } catch (error) {}
+    return created;
+  }
+
+  function createEventId() {
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+      }
+    } catch (error) {}
+    return 'da-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 14);
+  }
+
+  function safeMetaProperties(properties) {
+    var safe = {};
+    if (properties && typeof properties.content_name === 'string') {
+      safe.content_name = properties.content_name.slice(0, 80);
+    }
+    if (properties && typeof properties.content_category === 'string') {
+      safe.content_category = properties.content_category.slice(0, 80);
+    }
+    return safe;
+  }
+
+  function sendMetaEvent(eventName, properties) {
+    var allowedEvents = ['PageView', 'ViewContent', 'Lead'];
+    var safeProperties;
+    var eventId;
+    var payload;
+    var fbc;
+    if (!state.marketing || !isMetaConfigured() || !window.fbq ||
+        typeof window.fetch !== 'function' || allowedEvents.indexOf(eventName) === -1) {
+      return null;
+    }
+    safeProperties = safeMetaProperties(properties);
+    eventId = createEventId();
+    payload = {
+      event_name: eventName,
+      event_id: eventId,
+      event_source_url: window.location.origin + window.location.pathname,
+      custom_data: safeProperties
+    };
+    fbc = currentFbc();
+    if (fbc) payload.fbc = fbc;
+    try {
+      window.fbq('track', eventName, safeProperties, { eventID: eventId });
+      window.fetch('/api/meta/events', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'content-type': 'application/json' },
+        keepalive: true,
+        body: JSON.stringify(payload)
+      }).catch(function() {});
+      return eventId;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function trackLandingMetaEvents() {
+    if (metaLandingEventsSent) return;
+    metaLandingEventsSent = true;
+    sendMetaEvent('PageView', {});
+    sendMetaEvent('ViewContent', {});
+  }
 
   function parseConsent(raw) {
     try {
@@ -193,6 +297,20 @@
     });
   }
 
+  function clearMetaDurableState() {
+    var hostname = window.location.hostname || '';
+    var hostnameParts = hostname.split('.');
+    var rootDomain = hostnameParts.length >= 2 ? hostnameParts.slice(-2).join('.') : '';
+    ['_fbc', '_fbp'].forEach(function(name) {
+      try {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        if (rootDomain) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.' + rootDomain;
+        }
+      } catch (error) {}
+    });
+  }
+
   function safeCaptureProperties(properties) {
     var result = {
       event_schema_version: 2,
@@ -332,6 +450,7 @@
         marketing: state.marketing
       });
     }
+    if (!state.marketing && (revokedMarketing || persist)) clearMetaDurableState();
     notify();
 
     if (revokedPersistence || revokedMarketing) reloadPage();
@@ -432,6 +551,7 @@
     try {
       if (window.fbq) {
         window.fbq('consent', 'grant');
+        trackLandingMetaEvents();
         return;
       }
 
@@ -462,8 +582,7 @@
 
       window.fbq('consent', 'grant');
       window.fbq('init', config.metaPixelId);
-      window.fbq('track', 'PageView');
-      window.fbq('track', 'ViewContent');
+      trackLandingMetaEvents();
     } catch (error) {}
   }
 
@@ -493,6 +612,7 @@
       };
     },
     capture: capture,
+    trackMeta: sendMetaEvent,
     applyExternalState: function(raw) {
       var external = parseConsent(raw);
       if (!external.decided) return;

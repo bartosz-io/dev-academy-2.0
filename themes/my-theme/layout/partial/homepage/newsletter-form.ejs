@@ -29,6 +29,9 @@ var formOptions = {
         data-group="alert"></ul>
     <label class="newsletter-form-label" for="<%- emailId %>">Your email address</label>
     <div class="newsletter-form-fields" data-element="fields" data-stacked="false">
+        <% ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function(key) { %>
+            <input type="hidden" name="fields[<%- key %>]" value="" data-newsletter-attribution="<%- key %>">
+        <% }); %>
         <input
             id="<%- emailId %>"
             class="newsletter-form-input formkit-input"

@@ -16,7 +16,7 @@
     "test:homepage": "npm run build:hexo && node tests/verify-homepage.js && node tests/verify-newsletter-loader.js && node tests/verify-no-transform-edge-function.js && node tests/verify-starter-kit-proxy.js && node tests/verify-top-post-pills-ctas.js",
     "pills:check": "node scripts/pills/check.js",
     "test:pills": "node tests/verify-pill-structure.js && node tests/verify-pill-validator.js && node tests/verify-pills-cli.js",
-    "test:privacy": "npm run build:hexo && node tests/verify-privacy-runtime.js && node tests/verify-privacy-output.js",
+    "test:privacy": "npm run build:hexo && node tests/verify-privacy-runtime.js && node tests/verify-privacy-output.js && node tests/verify-meta-capi-edge-function.js",
     "test:security": "node tests/verify-security-headers.js"
   },
   "hexo": {
