@@ -245,6 +245,12 @@ function newsletterAnalytics() {
                 utm_campaign: attribution.utm_campaign,
                 utm_content: attribution.utm_content
             });
+            if (typeof window.DevAcademyPrivacy.trackMeta === 'function') {
+                window.DevAcademyPrivacy.trackMeta('Lead', {
+                    content_name: 'pills_eu_launch',
+                    content_category: 'newsletter'
+                });
+            }
         });
     });
 }

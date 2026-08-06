@@ -299,6 +299,7 @@ runCheck('allowlists and canonicalizes paid attribution values', function() {
 
 runCheck('captures each newsletter view once and only valid privacy-safe submissions', function() {
   const captures = [];
+  const metaCalls = [];
   const observers = [];
   function newsletterForm(placement, valid) {
     const target = listenerTarget();
@@ -330,7 +331,8 @@ runCheck('captures each newsletter view once and only valid privacy-safe submiss
   const windowTarget = listenerTarget();
   const window = Object.assign(windowTarget, {
     DevAcademyPrivacy: {
-      capture: function(event, properties) { captures.push([event, properties]); }
+      capture: function(event, properties) { captures.push([event, properties]); },
+      trackMeta: function(event, properties) { metaCalls.push([event, properties]); }
     },
     location: {
       origin: 'https://dev-academy.com',
@@ -382,6 +384,10 @@ runCheck('captures each newsletter view once and only valid privacy-safe submiss
   }]);
   assert(!JSON.stringify(captures).includes('secret-click'));
   assert(!JSON.stringify(captures).includes('email@example.com'));
+  assert.deepStrictEqual(plain(metaCalls), [['Lead', {
+    content_name: 'pills_eu_launch',
+    content_category: 'newsletter'
+  }]]);
 });
 
 runCheck('maps data-ph clicks to canonical placements and query-free destinations', function() {

@@ -42,6 +42,7 @@ function createHarness(isValid) {
   };
   const sandbox = {
     console: console,
+    URLSearchParams: URLSearchParams,
     document: {
       addEventListener: function (eventName, handler) {
         if (eventName === 'DOMContentLoaded') domContentLoadedHandlers.push(handler);
@@ -55,6 +56,11 @@ function createHarness(isValid) {
       this.observe = function () {};
     },
     window: {
+      location: {
+        origin: 'https://dev-academy.com',
+        pathname: '/',
+        search: ''
+      },
       addEventListener: function (eventName, handler) {
         if (eventName === 'pageshow') pageShowHandlers.push(handler);
       }

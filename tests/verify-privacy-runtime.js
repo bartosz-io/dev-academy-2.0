@@ -65,9 +65,13 @@ function createHarness(options) {
   var sessionValues = Object.assign({}, options.sessionStorageValues || {});
   var storageWrites = [];
   var cookieWrites = [];
+  var cookieValues = Object.assign({}, options.cookieValues || {});
   var appendedScripts = [];
   var calls = [];
   var listeners = {};
+  var eventIds = (options.eventIds || []).slice();
+  var generatedEventCount = 0;
+  var nowValue = options.now || 1700000000000;
   var config = options.config === undefined ? VALID_CONFIG : options.config;
 
   if (options.rawConsent !== undefined && options.rawConsent !== null) {
@@ -113,9 +117,22 @@ function createHarness(options) {
     }
   };
   Object.defineProperty(document, 'cookie', {
+    get: function() {
+      return Object.keys(cookieValues).map(function(name) {
+        return name + '=' + cookieValues[name];
+      }).join('; ');
+    },
     set: function(value) {
       cookieWrites.push(value);
       calls.push(['cookie:write', value]);
+      var pair = value.split(';')[0].split('=');
+      var name = pair.shift();
+      var cookieValue = pair.join('=');
+      if (/expires=Thu, 01 Jan 1970/i.test(value) || /max-age=0/i.test(value)) {
+        delete cookieValues[name];
+      } else {
+        cookieValues[name] = cookieValue;
+      }
     }
   });
   var window = {
@@ -126,8 +143,25 @@ function createHarness(options) {
       origin: 'https://dev-academy.com',
       hostname: 'dev-academy.com',
       pathname: options.pathname || '/knowledge-pills/',
-      search: '?email=private%40example.com',
+      search: options.search || '?email=private%40example.com',
       reload: function() { calls.push(['reload']); }
+    },
+    crypto: {
+      randomUUID: function() {
+        var eventId = eventIds[generatedEventCount] || 'generated-event-' + generatedEventCount;
+        generatedEventCount += 1;
+        return eventId;
+      }
+    },
+    fetch: function(url, init) {
+      calls.push(['fetch', url, {
+        method: init.method,
+        credentials: init.credentials,
+        headers: plain(init.headers),
+        keepalive: init.keepalive,
+        body: init.body
+      }]);
+      return Promise.resolve({ ok: true, status: 200 });
     },
     addEventListener: function(type, listener) {
       listeners[type] = listener;
@@ -137,6 +171,9 @@ function createHarness(options) {
     window: window,
     document: document,
     URL: URL,
+    URLSearchParams: URLSearchParams,
+    Date: { now: function() { return nowValue; } },
+    crypto: window.crypto,
     console: {
       warn: function(message) { calls.push(['diagnostic', message]); },
       log: function() {}
@@ -155,10 +192,12 @@ function createHarness(options) {
     sessionValues: sessionValues,
     storageWrites: storageWrites,
     cookieWrites: cookieWrites,
+    cookieValues: cookieValues,
     appendedScripts: appendedScripts,
     calls: calls,
     listeners: listeners,
     api: window.DevAcademyPrivacy,
+    setNow: function(value) { nowValue = value; },
     attachPostHog: function() {
       var script = appendedScripts.filter(function(candidate) {
         return /\/static\/array\.js$/.test(candidate.src);
@@ -490,8 +529,8 @@ test('loads Meta once on grant and revokes consent before reload', function() {
   assert.deepStrictEqual(firstQueue, [
     ['consent', 'grant'],
     ['init', VALID_CONFIG.metaPixelId],
-    ['track', 'PageView'],
-    ['track', 'ViewContent']
+    ['track', 'PageView', {}, { eventID: 'generated-event-0' }],
+    ['track', 'ViewContent', {}, { eventID: 'generated-event-1' }]
   ]);
   assert.strictEqual(harness.appendedScripts.filter(function(script) {
     return script.src === 'https://connect.facebook.net/en_US/fbevents.js';
@@ -504,6 +543,145 @@ test('loads Meta once on grant and revokes consent before reload', function() {
   assert.strictEqual(harness.calls[0][0], 'storage:set');
   assert.deepStrictEqual(plain(harness.window.fbq.queue).slice(-1)[0], ['consent', 'revoke']);
   assert.deepStrictEqual(harness.calls.slice(-1)[0], ['reload']);
+});
+
+test('captures fbclid only after marketing consent and mirrors landing events with shared IDs', function() {
+  var harness = createHarness({
+    config: {
+      enabled: true,
+      posthogKey: 'phc_placeholder',
+      posthogHost: 'https://p.dev-academy.com',
+      posthogAssetHost: 'https://eu-assets.i.posthog.com',
+      metaPixelId: VALID_CONFIG.metaPixelId
+    },
+    search: '?fbclid=test-click-123&email=private%40example.com',
+    eventIds: ['page-event-id', 'view-event-id'],
+    now: 1700000000000
+  });
+
+  assert.strictEqual(harness.cookieValues._fbc, undefined);
+  assert.strictEqual(harness.calls.filter(function(call) { return call[0] === 'fetch'; }).length, 0);
+
+  harness.setNow(1800000000000);
+  harness.api.setPreferences({ persistentAnalytics: false, marketing: true });
+
+  assert.strictEqual(harness.cookieValues._fbc, 'fb.1.1700000000000.test-click-123');
+  var pixelEvents = plain(harness.window.fbq.queue).filter(function(call) {
+    return call[0] === 'track';
+  });
+  assert.deepStrictEqual(pixelEvents, [
+    ['track', 'PageView', {}, { eventID: 'page-event-id' }],
+    ['track', 'ViewContent', {}, { eventID: 'view-event-id' }]
+  ]);
+
+  var serverPayloads = harness.calls.filter(function(call) {
+    return call[0] === 'fetch';
+  }).map(function(call) {
+    assert.strictEqual(call[1], '/api/meta/events');
+    assert.strictEqual(call[2].method, 'POST');
+    assert.strictEqual(call[2].credentials, 'same-origin');
+    assert.strictEqual(call[2].keepalive, true);
+    return JSON.parse(call[2].body);
+  });
+  assert.deepStrictEqual(serverPayloads, [
+    {
+      event_name: 'PageView',
+      event_id: 'page-event-id',
+      event_source_url: 'https://dev-academy.com/knowledge-pills/',
+      fbc: 'fb.1.1700000000000.test-click-123',
+      custom_data: {}
+    },
+    {
+      event_name: 'ViewContent',
+      event_id: 'view-event-id',
+      event_source_url: 'https://dev-academy.com/knowledge-pills/',
+      fbc: 'fb.1.1700000000000.test-click-123',
+      custom_data: {}
+    }
+  ]);
+  assert.strictEqual(Object.prototype.hasOwnProperty.call(serverPayloads[0], 'fbclid'), false);
+  assert.strictEqual(JSON.stringify(serverPayloads).indexOf('private@example.com'), -1);
+});
+
+test('removes Meta browser identifiers when marketing consent is rejected or revoked', function() {
+  var stale = createHarness({
+    config: null,
+    cookieValues: {
+      _fbc: 'fb.1.1690000000000.old-click',
+      _fbp: 'fb.1.1690000000000.1234567890'
+    }
+  });
+  stale.api.rejectAll();
+  assert.strictEqual(stale.cookieValues._fbc, undefined);
+  assert.strictEqual(stale.cookieValues._fbp, undefined);
+
+  var granted = createHarness({
+    rawConsent: '{"schemaVersion":1,"persistentAnalytics":false,"marketing":true}',
+    config: {
+      enabled: true,
+      posthogKey: 'phc_placeholder',
+      posthogHost: 'https://p.dev-academy.com',
+      posthogAssetHost: 'https://eu-assets.i.posthog.com',
+      metaPixelId: VALID_CONFIG.metaPixelId
+    },
+    cookieValues: {
+      _fbc: 'fb.1.1690000000000.old-click',
+      _fbp: 'fb.1.1690000000000.1234567890'
+    }
+  });
+  granted.api.setPreferences({persistentAnalytics: false, marketing: false});
+  assert.strictEqual(granted.cookieValues._fbc, undefined);
+  assert.strictEqual(granted.cookieValues._fbp, undefined);
+});
+
+test('reuses an existing fbc and deduplicates a consented Lead without leaking custom data', function() {
+  var existingFbc = 'fb.1.1690000000000.existing-click';
+  var harness = createHarness({
+    rawConsent: '{"schemaVersion":1,"persistentAnalytics":false,"marketing":true}',
+    config: {
+      enabled: true,
+      posthogKey: 'phc_placeholder',
+      posthogHost: 'https://p.dev-academy.com',
+      posthogAssetHost: 'https://eu-assets.i.posthog.com',
+      metaPixelId: VALID_CONFIG.metaPixelId
+    },
+    search: '?fbclid=new-click',
+    cookieValues: { _fbc: existingFbc },
+    eventIds: ['page-id', 'view-id', 'lead-event-id']
+  });
+
+  harness.calls.length = 0;
+  var eventId = harness.api.trackMeta('Lead', {
+    content_name: 'pills_eu_launch',
+    content_category: 'newsletter',
+    email: 'private@example.com'
+  });
+
+  assert.strictEqual(eventId, 'lead-event-id');
+  assert.strictEqual(harness.cookieValues._fbc, existingFbc);
+  assert.strictEqual(harness.cookieWrites.some(function(write) {
+    return write.indexOf('_fbc=') === 0;
+  }), false);
+  assert.deepStrictEqual(plain(harness.window.fbq.queue).slice(-1)[0], [
+    'track',
+    'Lead',
+    { content_name: 'pills_eu_launch', content_category: 'newsletter' },
+    { eventID: 'lead-event-id' }
+  ]);
+  var request = harness.calls.filter(function(call) { return call[0] === 'fetch'; })[0];
+  var payload = JSON.parse(request[2].body);
+  assert.deepStrictEqual(payload, {
+    event_name: 'Lead',
+    event_id: 'lead-event-id',
+    event_source_url: 'https://dev-academy.com/knowledge-pills/',
+    fbc: existingFbc,
+    custom_data: {
+      content_name: 'pills_eu_launch',
+      content_category: 'newsletter'
+    }
+  });
+  assert.strictEqual(JSON.stringify(payload).indexOf('private@example.com'), -1);
+  assert.strictEqual(harness.api.trackMeta('Purchase', {}), null);
 });
 
 test('applies storage synchronization without writing or emitting another consent event', function() {
