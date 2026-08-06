@@ -219,7 +219,9 @@ Use this funnel as the measurement model:
 Meta ad impression/click
   -> newsletter landing-page view
   -> valid form submission
-  -> double opt-in confirmation
+  -> /welcome/ check-your-inbox state
+  -> Kit double opt-in confirmation
+  -> /security-starter-kit/?subscription=confirmed
   -> first Pill open/click
   -> optional Starter Kit checkout/purchase
 ```
@@ -237,15 +239,20 @@ Required events:
 - Meta standard `Lead` after a valid form submission when marketing measurement
   is permitted;
 - privacy-safe `newsletter_submitted` in the Dev Academy analytics model;
-- privacy-safe `newsletter_confirmed` after double opt-in;
+- existing privacy-safe `subscription_confirmed_landing_viewed` event from the
+  Starter Kit confirmed state after double opt-in;
 - Kit confirmation and engagement records as the source of truth for subscriber
   status and email quality.
 
-Record confirmed subscription as a distinct Meta conversion, such as standard
-`CompleteRegistration`, when the implementation can do so with a valid consent
-signal and without exposing email addresses or subscriber identifiers in URLs
-or analytics. Until that deeper event has sufficient volume, optimize delivery
-for `Lead` and evaluate performance using the confirmed result outside Meta.
+Do not create a separate confirmation page. Kit must redirect confirmed
+subscribers to exactly
+`https://dev-academy.com/security-starter-kit/?subscription=confirmed`, which
+already renders the Starter Kit confirmed state and records
+`subscription_confirmed_landing_viewed`. A distinct Meta conversion such as
+standard `CompleteRegistration` may later be added to that existing state only
+with a valid consent signal and without exposing email addresses or subscriber
+identifiers. Until that deeper event is proven reliable, optimize delivery for
+`Lead` and evaluate confirmed results using Kit and first-party analytics.
 
 Conversions API may complement the Pixel but must not bypass consent or other
 European privacy requirements. When browser and server implementations send the
@@ -291,8 +298,8 @@ Initial health thresholds:
 2. Test the form on mobile and desktop.
 3. Complete a real test journey from submit through confirmation and first Pill.
 4. Verify `PageView` and `Lead` in Meta Events Manager.
-5. Verify `newsletter_submitted` and `newsletter_confirmed` in the first-party
-   funnel reports.
+5. Verify `newsletter_submitted` and
+   `subscription_confirmed_landing_viewed` in the first-party funnel reports.
 6. Confirm that no email address or subscriber identifier enters a URL or
    analytics payload.
 7. Preview every ad in all material placements and check text safe areas.
@@ -347,6 +354,9 @@ reason for its result.
 - All links use the agreed UTM values and reach the newsletter-first homepage.
 - A test subscriber can complete the full double-opt-in journey and receive the
   first Security Pill.
+- Confirmation opens the existing Starter Kit state at
+  `https://dev-academy.com/security-starter-kit/?subscription=confirmed`; no new
+  confirmation page is introduced.
 - Meta receives the permitted launch conversion events.
 - First-party reporting distinguishes form submission from confirmation.
 - No PII appears in URLs or analytics events.

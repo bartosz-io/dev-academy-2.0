@@ -4,7 +4,7 @@
 
 **Goal:** Prepare privacy-safe attribution and confirmation measurement, produce eight placement-ready video exports, and build a four-ad Meta website-leads campaign for EU developers in the active PSC account without activating spend.
 
-**Architecture:** Keep the acquisition funnel on the existing Hexo homepage and Kit form `Pills 2026`. Add allowlisted first-party attribution to the form, expose consent-gated Meta `Lead` and `CompleteRegistration` calls through the existing privacy runtime, and add a dedicated static post-confirmation page for aggregate confirmation analytics. Build one paused Meta campaign and one broad EU ad set; attach four concepts with separate 1:1 and 9:16 media through placement asset customization.
+**Architecture:** Keep the acquisition funnel on the existing Hexo homepage and Kit form `Pills 2026`. Add allowlisted first-party attribution to the form and expose consent-gated Meta `Lead` calls through the existing privacy runtime. Preserve the existing post-confirmation destination and UI at `https://dev-academy.com/security-starter-kit/?subscription=confirmed`, where the Starter Kit already records `subscription_confirmed_landing_viewed`. Build one paused Meta campaign and one broad EU ad set; attach four concepts with separate 1:1 and 9:16 media through placement asset customization.
 
 **Tech Stack:** Hexo 5, EJS, vanilla JavaScript, Node built-in assertions, Kit forms and sequences, PostHog, Meta Pixel, Meta Ads MCP, Meta Ads Manager, Canva, Netlify.
 
@@ -25,7 +25,8 @@
 - Meta Pixel events run only when `DevAcademyPrivacy.getState().marketing === true`.
 - Persist only the four allowlisted attribution fields: `utm_source`, `utm_medium`, `utm_campaign`, and `utm_content`.
 - Preserve `/welcome/` as the immediate post-submit “check your inbox” page.
-- Use `/confirmed/` only after Kit has accepted the double-opt-in confirmation.
+- Preserve `https://dev-academy.com/security-starter-kit/?subscription=confirmed`
+  as the only post-confirmation destination; do not create `/confirmed/`.
 - Preserve the untracked `.playwright-cli/` directory; never stage or modify it.
 - Follow TDD for repository changes and create a focused commit after each code task.
 
@@ -35,7 +36,8 @@
 - `themes/my-theme/source/js/main.js`: reads allowlisted UTMs, populates the form, emits first-party funnel events, and requests consent-gated Meta events.
 - `themes/my-theme/source/js/privacy/consent-runtime.js`: owns Meta Pixel loading, consent state, and the public `trackMeta()` boundary.
 - `source/welcome/index.html`: remains the pre-confirmation inbox instruction page.
-- `source/confirmed/index.html`: new post-confirmation page with no subscriber data in its URL or markup.
+- `/Users/bartosz/Projects/browser-security-starter-kit/src/components/LandingPage.astro`: existing Starter Kit confirmed-state implementation; no replacement route is required.
+- `/Users/bartosz/Projects/browser-security-starter-kit/tests/verify-confirmed-offer-bar.mjs`: existing confirmed-state regression coverage.
 - `tests/verify-homepage.js`: generated-output acceptance checks for forms and both welcome states.
 - `tests/verify-privacy-output.js`: unit-style checks for attribution, submit, and confirmation analytics in `main.js`.
 - `tests/verify-privacy-runtime.js`: consent and Meta queue behavior.
@@ -260,56 +262,61 @@ git commit -m "feat: track consented Pills leads in Meta"
 
 ---
 
-### Task 3: Dedicated double-opt-in confirmation page and events
+### Task 3: Preserve and verify the existing Starter Kit confirmed state
 
 **Files:**
-- Create: `source/confirmed/index.html`
-- Modify: `source/welcome/index.html`
-- Modify: `themes/my-theme/source/css/pages/_newsletter-homepage.scss`
-- Modify: `themes/my-theme/source/js/main.js`
-- Modify: `tests/verify-homepage.js`
-- Modify: `tests/verify-privacy-output.js`
+- Inspect: `/Users/bartosz/Projects/browser-security-starter-kit/src/components/LandingPage.astro`
+- Verify: `/Users/bartosz/Projects/browser-security-starter-kit/tests/verify-confirmed-offer-bar.mjs`
 
 **Interfaces:**
-- Consumes: presence of `[data-newsletter-confirmed]` on the rendered page.
-- Produces: one `newsletter_confirmed` capture and one consent-gated Meta `CompleteRegistration` request per confirmation-page tab session.
+- Consumes: `subscription=confirmed` on the Starter Kit landing page.
+- Produces: the existing confirmed UI and first-party
+  `subscription_confirmed_landing_viewed` event.
 
-- [ ] **Step 1: Write failing generated-page assertions**
+- [ ] **Step 1: Verify the existing state in source**
 
-Read `public/confirmed/index.html` in `tests/verify-homepage.js` and assert it contains `data-newsletter-confirmed`, `You're subscribed`, and `Your first Security Pill`; contains no email/subscriber value; omits the standard header/footer; and loads the privacy runtime exactly once.
+Confirm that `LandingPage.astro` treats only the exact value `confirmed` as the
+confirmed subscription state and renders the Starter Kit offer without needing
+a separate confirmation page.
 
-- [ ] **Step 2: Write a failing confirmation analytics test**
+- [ ] **Step 2: Run the existing regression test**
 
-Add a `runCheck` using a fake `[data-newsletter-confirmed]` node and fake sessionStorage. Call `newsletterConfirmationAnalytics()` twice and require one `newsletter_confirmed` capture plus one:
+From `/Users/bartosz/Projects/browser-security-starter-kit`, run:
 
-```js
-['meta:CompleteRegistration', {
-  content_name: 'pills_eu_launch',
-  content_category: 'newsletter'
-}]
+```bash
+node tests/verify-confirmed-offer-bar.mjs
 ```
 
-Assert the serialized captures contain no email address or subscriber ID.
+Require exit 0. Do not change the route or introduce `source/confirmed/index.html`
+in the Dev Academy repository.
 
-- [ ] **Step 3: Run tests and verify failure**
+- [ ] **Step 3: Verify confirmation measurement**
 
-Run `npm run build:hexo`, `node tests/verify-homepage.js`, and `node tests/verify-privacy-output.js`. Expected: the confirmed output and analytics function are missing.
+Confirm that loading the exact post-confirmation URL records
+`subscription_confirmed_landing_viewed` without including an email address, Kit
+subscriber ID, or raw `fbclid` in the event payload.
 
-- [ ] **Step 4: Create the static confirmation page**
+- [ ] **Step 4: Keep Meta confirmation optimization optional**
 
-Create `source/confirmed/index.html`:
+Do not add `CompleteRegistration` as a launch blocker. The initial campaign
+optimizes for consent-gated `Lead`; confirmed subscriptions are evaluated from
+Kit and `subscription_confirmed_landing_viewed`. A later implementation may add
+consent-gated `CompleteRegistration` to this existing Starter Kit state after a
+separate design and QA pass.
 
-```html
 ---
 
 ### Task 4: Configure and verify the Kit subscriber journey
 
 **Files:**
-- Modify only if a repository assertion is needed: `tests/verify-homepage.js`
+- No repository file change is required for the established confirmation route.
 
 **Interfaces:**
-- Consumes: Kit form `Pills 2026`, the three active 2026 sequences, `/welcome/`, and `/confirmed/`.
-- Produces: a verified double-opt-in flow where submit redirects to `/welcome/`, confirmation redirects to `/confirmed/`, and the subscriber enters the approved sequences.
+- Consumes: Kit form `Pills 2026`, the three active 2026 sequences, `/welcome/`,
+  and the Starter Kit confirmed-state URL.
+- Produces: a verified double-opt-in flow where submit redirects to `/welcome/`,
+  confirmation redirects to the existing Starter Kit state, and the subscriber
+  enters the approved sequences.
 
 - [ ] **Step 1: Inspect current Kit automation before changing it**
 
@@ -319,7 +326,7 @@ Use Kit MCP and the Kit UI to verify:
 Form: Pills 2026 (9764408)
 Pre-confirmation submit redirect: https://dev-academy.com/welcome/
 Double opt-in: enabled
-Post-confirmation redirect: https://dev-academy.com/confirmed/
+Post-confirmation redirect: https://dev-academy.com/security-starter-kit/?subscription=confirmed
 Sequences:
   @ PILLS 2026 - onboarding
   @ SECURITY PILLS 2026
@@ -328,15 +335,17 @@ Sequences:
 
 MCP currently reports no Kit webhooks; do not add one for this launch.
 
-- [ ] **Step 2: Configure the post-confirmation redirect in Kit**
+- [ ] **Step 2: Preserve the post-confirmation redirect in Kit**
 
-Keep the submit redirect at `/welcome/`. In the Incentive/confirmation settings, set the redirect after successful confirmation to exactly:
+Keep the submit redirect at `/welcome/`. Confirm that the redirect after
+successful confirmation is exactly:
 
 ```text
-https://dev-academy.com/confirmed/
+https://dev-academy.com/security-starter-kit/?subscription=confirmed
 ```
 
-Do not put email, subscriber ID, form ID, `fbclid`, or UTM values in the confirmation URL.
+Do not create `/confirmed/`. Do not add email, subscriber ID, form ID, `fbclid`,
+or UTM values to the confirmation URL.
 
 - [ ] **Step 3: Verify sequence entry rules**
 
@@ -349,7 +358,7 @@ Use a user-controlled QA inbox alias not already subscribed to form `9764408`:
 1. Open `https://dev-academy.com/?utm_source=meta&utm_medium=paid_social&utm_campaign=pills_eu_launch&utm_content=security_a`.
 2. Submit the QA address and verify `/welcome/` says the user is not subscribed yet.
 3. Open the Kit confirmation message.
-4. Confirm and verify `/confirmed/` has no query string.
+4. Confirm and verify the browser opens `https://dev-academy.com/security-starter-kit/?subscription=confirmed` and shows the existing Starter Kit confirmed state.
 5. Verify the subscriber is active on `Pills 2026`, entered the three approved sequences, and received the first Security Pill.
 6. Tag the record as QA or exclude it from campaign reporting.
 
@@ -364,12 +373,13 @@ newsletter_submitted:
   utm_campaign = pills_eu_launch
   utm_content = security_a
 
-newsletter_confirmed:
-  topic = both
-  source_page = /confirmed/
+subscription_confirmed_landing_viewed:
+  source_page = /security-starter-kit/
 ```
 
-Confirm no event property or captured URL contains the QA email, Kit subscriber ID, or raw `fbclid`.
+Confirm no event property or captured URL contains the QA email, Kit subscriber
+ID, or raw `fbclid`. The fixed `subscription=confirmed` state parameter is part
+of the intended route and contains no subscriber data.
 
 ---
 
@@ -645,11 +655,19 @@ Verify whether `https://dev-academy.com/` serves the newsletter-first homepage. 
 
 - [ ] **Step 3: Request explicit deployment approval**
 
-Show the code diff, test evidence, new `/confirmed/` behavior, and Kit redirect change. Deploy or push only after the user explicitly approves the external website change.
+Show the code diff and test evidence for the homepage attribution and `Lead`
+changes. State explicitly that the existing Starter Kit confirmed state and Kit
+redirect are preserved. Deploy or push only after the user explicitly approves
+the external website change.
 
 - [ ] **Step 4: Repeat production funnel QA after deployment**
 
-Repeat the Task 4 subscription and verify homepage/forms, pre-confirmation `/welcome/`, post-confirmation `/confirmed/`, consent-aware `newsletter_submitted`, Meta `Lead`, `newsletter_confirmed`, Meta `CompleteRegistration`, first-Pill delivery, and absence of PII in URLs and analytics.
+Repeat the Task 4 subscription and verify homepage/forms, pre-confirmation
+`/welcome/`, post-confirmation
+`/security-starter-kit/?subscription=confirmed`, consent-aware
+`newsletter_submitted`, Meta `Lead`,
+`subscription_confirmed_landing_viewed`, first-Pill delivery, and absence of PII
+in URLs and analytics. `CompleteRegistration` is not required for launch.
 
 - [ ] **Step 5: Validate the paused Meta hierarchy**
 
@@ -691,7 +709,9 @@ Present production funnel evidence, six placement previews for each concept, dai
 ## Plan self-review checklist
 
 - Every campaign requirement maps to a repository, Kit, creative, Meta, or QA task.
-- `/welcome/` and `/confirmed/` have distinct, testable meanings.
+- `/welcome/` remains the pre-confirmation state, while
+  `/security-starter-kit/?subscription=confirmed` remains the existing
+  post-confirmation Starter Kit state.
 - Submit and confirmation are distinct analytics events.
 - Meta event calls are centralized behind marketing consent.
 - Paid attribution is restricted to four canonical fields and survives in Kit subscriber records.
