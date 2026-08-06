@@ -4,7 +4,7 @@
 
 **Goal:** Prepare privacy-safe attribution and confirmation measurement, produce eight placement-ready video exports, and build a four-ad Meta website-leads campaign for EU developers in the active PSC account without activating spend.
 
-**Architecture:** Keep the acquisition funnel on the existing Hexo homepage and Kit form `Pills 2026`. Add allowlisted first-party attribution to the form and expose consent-gated Meta `Lead` calls through the existing privacy runtime. Preserve the existing post-confirmation destination and UI at `https://dev-academy.com/security-starter-kit/?subscription=confirmed`, where the Starter Kit already records `subscription_confirmed_landing_viewed`. Build one paused Meta campaign and one broad EU ad set; attach four concepts with separate 1:1 and 9:16 media through placement asset customization.
+**Architecture:** Keep the acquisition funnel on the existing Hexo homepage and Kit form `Pills 2026`. The shared privacy runtime captures `fbclid` in memory on every landing, derives/persists `_fbc` only after existing marketing consent, and generates one frontend `event_id` per logical Meta event. It sends matching browser Pixel and same-origin Netlify Edge Function events with identical `event_name` and `event_id`; the Edge Function adds `fbc`, edge IP, and user agent before calling CAPI with the server-only token. Preserve the existing post-confirmation destination and UI at `https://dev-academy.com/security-starter-kit/?subscription=confirmed`, where the Starter Kit already records `subscription_confirmed_landing_viewed`. Build one paused Meta campaign and one broad EU ad set; attach four concepts with separate 1:1 and 9:16 media through placement asset customization.
 
 **Tech Stack:** Hexo 5, EJS, vanilla JavaScript, Node built-in assertions, Kit forms and sequences, PostHog, Meta Pixel, Meta Ads MCP, Meta Ads Manager, Canva, Netlify.
 
@@ -21,9 +21,15 @@
 - Never activate spend without a new, explicit user approval after final previews and event QA.
 - Do not use Meta Instant Forms, a dedicated launch retargeting ad set, or inactive EU lookalikes.
 - Do not upload or reuse historical customer, course, webinar, or waitlist lists without a separately verified legal basis.
-- Do not send names, email addresses, form contents, subscriber IDs, `fbclid` values, or arbitrary query parameters to PostHog.
-- Meta Pixel events run only when `DevAcademyPrivacy.getState().marketing === true`.
-- Persist only the four allowlisted attribution fields: `utm_source`, `utm_medium`, `utm_campaign`, and `utm_content`.
+- Do not send names, email addresses, form contents, subscriber IDs, raw `fbclid` values, `fbc`, or arbitrary query parameters to PostHog or Kit.
+- Meta Pixel and CAPI events run only when `DevAcademyPrivacy.getState().marketing === true`; reuse the existing consent banner and runtime rather than introducing another consent system.
+- Every landing that loads the shared privacy runtime must read `fbclid`, derive or reuse `fbc` after marketing consent, and attach it to CAPI events when available.
+- Every logical event mirrored through Pixel and CAPI must use an identical `event_name` and frontend-generated `event_id` for deduplication.
+- `META_CAPI_ACCESS_TOKEN` remains server-only in Netlify's Functions scope; never embed it in generated HTML, JavaScript, logs, tests, or repository files.
+- Use Meta Pixel ID `189349068273059` for browser and server events.
+- Persist only four attribution fields on the Kit subscriber:
+  `utm_source`, `utm_medium`, `utm_campaign`, and `utm_content`. The separate
+  consent-gated `_fbc` cookie is used only for Meta delivery.
 - Preserve `/welcome/` as the immediate post-submit “check your inbox” page.
 - Preserve `https://dev-academy.com/security-starter-kit/?subscription=confirmed`
   as the only post-confirmation destination; do not create `/confirmed/`.
@@ -35,6 +41,8 @@
 - `themes/my-theme/layout/partial/homepage/newsletter-form.ejs`: renders the Kit form and hidden campaign fields.
 - `themes/my-theme/source/js/main.js`: reads allowlisted UTMs, populates the form, emits first-party funnel events, and requests consent-gated Meta events.
 - `themes/my-theme/source/js/privacy/consent-runtime.js`: owns Meta Pixel loading, consent state, and the public `trackMeta()` boundary.
+- `netlify/edge-functions/meta-capi.js`: validates same-origin Meta events, adds edge request data, and forwards allowlisted events to CAPI.
+- `tests/verify-meta-capi-edge-function.js`: verifies CAPI payload validation, token isolation, and browser/server deduplication fields.
 - `source/welcome/index.html`: remains the pre-confirmation inbox instruction page.
 - `/Users/bartosz/Projects/browser-security-starter-kit/src/components/LandingPage.astro`: existing Starter Kit confirmed-state implementation; no replacement route is required.
 - `/Users/bartosz/Projects/browser-security-starter-kit/tests/verify-confirmed-offer-bar.mjs`: existing confirmed-state regression coverage.
@@ -72,7 +80,9 @@ key: utm_campaign  label: utm_campaign
 key: utm_content   label: utm_content
 ```
 
-Do not create or populate a new `fbclid` field. The existing `fbclid` field is outside this campaign contract.
+Do not create or populate a Kit `fbclid` field. Meta click attribution belongs
+only to the consent-gated Pixel/CAPI path in Task 2, never to subscriber custom
+fields.
 
 - [ ] **Step 2: Write failing generated-form assertions**
 
@@ -105,7 +115,7 @@ runCheck('allowlists and canonicalizes paid attribution values', function() {
 });
 ```
 
-Extend the existing `newsletter_submitted` expectation with `utm_source`, `utm_medium`, `utm_campaign`, and `utm_content`. Keep the assertions proving that raw `fbclid` and email values never appear in captures.
+Extend the existing `newsletter_submitted` expectation with `utm_source`, `utm_medium`, `utm_campaign`, and `utm_content`. Keep the assertions proving that raw `fbclid`, `fbc`, and email values never appear in PostHog captures.
 
 - [ ] **Step 4: Run the focused tests and verify failure**
 
@@ -152,7 +162,7 @@ function populateNewsletterAttribution(form, attribution) {
 }
 ```
 
-Compute attribution once inside `newsletterAnalytics()`, populate every form, and extend `newsletter_submitted` with the four canonical values. Do not add a raw query string or raw `fbclid`.
+Compute attribution once inside `newsletterAnalytics()`, populate every form, and extend `newsletter_submitted` with the four canonical values. Do not add a raw query string, raw `fbclid`, or `fbc` to Kit or PostHog; Task 2 handles them only inside the Meta transport.
 
 - [ ] **Step 7: Run focused and complete privacy/homepage verification**
 
@@ -174,25 +184,48 @@ git commit -m "feat: preserve paid Pills attribution"
 
 ---
 
-### Task 2: Consent-gated Meta `Lead` tracking
+### Task 2: Consent-gated Pixel and CAPI delivery with `fbc` and deduplication
 
 **Files:**
 - Modify: `themes/my-theme/source/js/privacy/consent-runtime.js`
 - Modify: `themes/my-theme/source/js/main.js`
+- Create: `netlify/edge-functions/meta-capi.js`
+- Create: `tests/verify-meta-capi-edge-function.js`
 - Modify: `tests/verify-privacy-runtime.js`
 - Modify: `tests/verify-privacy-output.js`
+- Modify: `package.json`
 
 **Interfaces:**
-- Consumes: Meta event name `Lead` or `CompleteRegistration` plus a small allowlisted property object.
-- Produces: `window.DevAcademyPrivacy.trackMeta(eventName, properties): boolean`; returns `true` only when the event is queued with active marketing consent.
+- Consumes: landing-page `fbclid`, existing `_fbc`, existing
+  `DevAcademyPrivacy` marketing consent, Meta event name, and allowlisted custom
+  data.
+- Produces: `window.DevAcademyPrivacy.trackMeta(eventName, properties): string | null`, returning the frontend-generated `event_id` only when both browser and server delivery are requested; a same-origin `POST /api/meta/events`; and matching Pixel/CAPI `event_name + event_id` pairs.
 
-- [ ] **Step 1: Write failing privacy-runtime tests**
+- [ ] **Step 1: Write failing click-context and consent tests**
 
-Add a test proving that `trackMeta('Lead', ...)` returns false without marketing consent, queues `['track', 'Lead', {content_name: 'pills_eu_launch'}]` after marketing consent, removes an `email` property, and rejects `Purchase` because only `Lead` and `CompleteRegistration` are allowed.
+Extend `tests/verify-privacy-runtime.js` to load the runtime with
+`?fbclid=test-click-123`. Assert all of the following:
 
-- [ ] **Step 2: Write a failing submit-to-Meta test**
+```text
+Before marketing consent:
+  no _fbc cookie is written
+  no Pixel event is queued
+  no /api/meta/events request is made
 
-In the newsletter submit test, add a fake `trackMeta` method and assert a valid submit requests:
+After marketing consent:
+  _fbc equals fb.1.<13-digit timestamp>.test-click-123
+  PageView Pixel and CAPI calls share one event ID
+  the CAPI request contains fbc but no standalone fbclid property
+  a pre-existing valid _fbc is reused instead of overwritten
+```
+
+Stub `crypto.randomUUID()` with deterministic values and require a different ID
+for each logical event.
+
+- [ ] **Step 2: Write failing `Lead` deduplication tests**
+
+In `tests/verify-privacy-output.js`, add a fake `trackMeta` method and assert a
+valid newsletter submit requests exactly:
 
 ```js
 ['meta:Lead', {
@@ -201,44 +234,150 @@ In the newsletter submit test, add a fake `trackMeta` method and assert a valid 
 }]
 ```
 
-- [ ] **Step 3: Run both tests and verify failure**
+In `tests/verify-privacy-runtime.js`, require the resulting calls to have the
+same generated ID despite the browser/edge naming difference:
+
+```js
+['track', 'Lead', safeProperties, {eventID: 'lead-event-id'}]
+```
+
+```json
+{
+  "event_name": "Lead",
+  "event_id": "lead-event-id",
+  "event_source_url": "https://dev-academy.com/",
+  "fbc": "fb.1.1700000000000.test-click-123",
+  "custom_data": {
+    "content_name": "pills_eu_launch",
+    "content_category": "newsletter"
+  }
+}
+```
+
+Assert email, form contents, subscriber IDs, a standalone `fbclid` property,
+and unrelated query parameters are absent from the serialized request. Do not
+assert that the click-ID substring is absent, because canonical `fbc`
+intentionally contains it as its final segment.
+
+- [ ] **Step 3: Write failing Edge Function tests**
+
+Create `tests/verify-meta-capi-edge-function.js` and import the Edge Function
+handler with injected `fetch`, environment access, and context. Cover:
+
+```text
+405 for non-POST requests
+403 for a non-dev-academy Origin
+400 for malformed JSON, unsupported event names, malformed event_id/fbc, or an
+    event_source_url outside https://dev-academy.com/
+503 when META_CAPI_ACCESS_TOKEN is absent
+200 only when Meta returns events_received = 1
+502 for Meta network errors or unsuccessful Meta responses
+```
+
+For a successful `Lead`, assert the Meta payload contains:
+
+```json
+{
+  "data": [{
+    "event_name": "Lead",
+    "event_time": 1700000000,
+    "event_id": "lead-event-id",
+    "action_source": "website",
+    "event_source_url": "https://dev-academy.com/",
+    "user_data": {
+      "client_ip_address": "203.0.113.10",
+      "client_user_agent": "test-agent",
+      "fbc": "fb.1.1700000000000.test-click-123"
+    },
+    "custom_data": {
+      "content_name": "pills_eu_launch",
+      "content_category": "newsletter"
+    }
+  }]
+}
+```
+
+Also assert the access token is used only in the server-to-Meta request and is
+absent from response bodies and logs.
+
+- [ ] **Step 4: Run the new tests and verify failure**
 
 Run:
 
 ```bash
 node tests/verify-privacy-runtime.js
 node tests/verify-privacy-output.js
+node tests/verify-meta-capi-edge-function.js
 ```
 
-Expected: failures report that `trackMeta` is not defined and that `meta:Lead` was not captured.
+Expected: failures report the absent `trackMeta` dual-delivery contract and the
+missing Edge Function.
 
-- [ ] **Step 4: Add the privacy-runtime boundary**
+- [ ] **Step 5: Implement consent-gated `fbc` lifecycle**
 
-Add this method to `window.DevAcademyPrivacy`:
+Inside `consent-runtime.js`, capture the initial `fbclid` in an IIFE-local
+variable without persisting or emitting it. Add helpers with these contracts:
 
 ```js
-trackMeta: function(eventName, properties) {
-  var allowedEvents = ['Lead', 'CompleteRegistration'];
-  var safeProperties = {};
-  if (!state.marketing || !window.fbq || allowedEvents.indexOf(eventName) === -1) return false;
-  if (properties && typeof properties.content_name === 'string') {
-    safeProperties.content_name = properties.content_name.slice(0, 80);
-  }
-  if (properties && typeof properties.content_category === 'string') {
-    safeProperties.content_category = properties.content_category.slice(0, 80);
-  }
-  try {
-    window.fbq('track', eventName, safeProperties);
-    return true;
-  } catch (error) {
-    return false;
-  }
-},
+function readCookie(name) {}                    // string | null
+function validFbc(value) {}                     // boolean
+function currentFbc() {}                        // string | null
+function createEventId() {}                     // crypto.randomUUID(), fallback
 ```
 
-- [ ] **Step 5: Request `Lead` after a valid form submit**
+`currentFbc()` must return `null` while `state.marketing !== true`. After
+consent, reuse valid `_fbc`; otherwise, if the initial URL contained an
+`fbclid` matching `^[A-Za-z0-9_-]{1,500}$`, construct
+`fb.1.${Date.now()}.${fbclid}`, set `_fbc` with
+`Path=/; Max-Age=7776000; SameSite=Lax; Secure`, and return it. Never place the
+raw `fbclid` in PostHog, Kit fields, console output, or a standalone Edge
+request property; only the canonical `fbc` value crosses the Meta boundary.
 
-After the existing `newsletter_submitted` capture, add:
+- [ ] **Step 6: Implement the shared browser/server event boundary**
+
+Add an allowlisted internal `sendMetaEvent(eventName, properties)` and expose it
+as `DevAcademyPrivacy.trackMeta`. Allow `PageView`, `ViewContent`, and `Lead`.
+For every call with active marketing consent:
+
+1. sanitize `content_name` and `content_category` to 80 characters;
+2. generate one `eventId` on the frontend;
+3. call `window.fbq('track', eventName, safeProperties, {eventID: eventId})`;
+4. `fetch('/api/meta/events', {method: 'POST', credentials: 'same-origin', headers: {'content-type': 'application/json'}, keepalive: true, body: ...})` with the same `event_name` and `event_id`, canonical `event_source_url`, `fbc` when available, and sanitized `custom_data`;
+5. return the `eventId`, or `null` when consent/event validation blocks delivery.
+
+Replace the direct Pixel `PageView` and `ViewContent` calls in `loadMetaPixel()`
+with this boundary so their browser/server copies are deduplicable. Do not delay
+the Pixel call while waiting for the Edge Function response.
+
+- [ ] **Step 7: Implement the Netlify Edge Function**
+
+Create `netlify/edge-functions/meta-capi.js` with inline config:
+
+```js
+export const config = { path: '/api/meta/events' };
+```
+
+The handler must:
+
+- accept only same-origin JSON POSTs from `https://dev-academy.com`;
+- cap and validate the request before forwarding;
+- allow only `PageView`, `ViewContent`, and `Lead`;
+- use Pixel ID `189349068273059`;
+- read `META_CAPI_ACCESS_TOKEN` via `Netlify.env.get()`;
+- set `event_time` on the server in Unix seconds;
+- obtain `client_ip_address` from `context.ip` and
+  `client_user_agent` from the request header;
+- forward to Meta Graph API without logging payloads, `fbc`, IP, user agent, or
+  access token;
+- return only `{ "accepted": true }` on success.
+
+The browser must never choose the pixel ID, access token, IP address,
+`action_source`, or server `event_time`.
+
+- [ ] **Step 8: Request `Lead` after a valid form submit**
+
+After the existing privacy-safe `newsletter_submitted` capture in `main.js`,
+add:
 
 ```js
 if (typeof window.DevAcademyPrivacy.trackMeta === 'function') {
@@ -249,15 +388,27 @@ if (typeof window.DevAcademyPrivacy.trackMeta === 'function') {
 }
 ```
 
-Do not call `window.fbq` from `main.js`.
+Do not call `window.fbq`, construct `fbc`, or call the Edge Function directly
+from `main.js`.
 
-- [ ] **Step 6: Run and commit**
+- [ ] **Step 9: Add the Edge test to the privacy suite and run verification**
 
-Run `npm run test:privacy`, require exit 0, then:
+Append `node tests/verify-meta-capi-edge-function.js` to `test:privacy`, then run:
 
 ```bash
-git add themes/my-theme/source/js/privacy/consent-runtime.js themes/my-theme/source/js/main.js tests/verify-privacy-runtime.js tests/verify-privacy-output.js
-git commit -m "feat: track consented Pills leads in Meta"
+npm run test:homepage
+npm run test:privacy
+npm run test:security
+```
+
+Expected: all commands exit 0. Search generated files and require that
+`META_CAPI_ACCESS_TOKEN` and its value do not occur anywhere under `public/`.
+
+- [ ] **Step 10: Commit the Meta delivery contract**
+
+```bash
+git add package.json themes/my-theme/source/js/privacy/consent-runtime.js themes/my-theme/source/js/main.js netlify/edge-functions/meta-capi.js tests/verify-meta-capi-edge-function.js tests/verify-privacy-runtime.js tests/verify-privacy-output.js
+git commit -m "feat: deduplicate Meta Pixel and CAPI events"
 ```
 
 ---
@@ -655,10 +806,14 @@ Verify whether `https://dev-academy.com/` serves the newsletter-first homepage. 
 
 - [ ] **Step 3: Request explicit deployment approval**
 
-Show the code diff and test evidence for the homepage attribution and `Lead`
-changes. State explicitly that the existing Starter Kit confirmed state and Kit
-redirect are preserved. Deploy or push only after the user explicitly approves
-the external website change.
+Show the code diff and test evidence for homepage attribution, `fbc`, shared
+`event_id`, Pixel/CAPI delivery, and `Lead`. Verify that
+`META_CAPI_ACCESS_TOKEN` exists in Netlify's Production Functions scope without
+printing or retrieving its value. State explicitly that the existing Starter
+Kit confirmed state and Kit redirect are preserved. Deploy or push only after
+the user explicitly approves the external website change. Because Edge Function
+environment changes are deployment-scoped, the deployment must occur after the
+token was added.
 
 - [ ] **Step 4: Repeat production funnel QA after deployment**
 
@@ -667,7 +822,11 @@ Repeat the Task 4 subscription and verify homepage/forms, pre-confirmation
 `/security-starter-kit/?subscription=confirmed`, consent-aware
 `newsletter_submitted`, Meta `Lead`,
 `subscription_confirmed_landing_viewed`, first-Pill delivery, and absence of PII
-in URLs and analytics. `CompleteRegistration` is not required for launch.
+in URLs and analytics. Use a test landing URL containing `fbclid`, grant
+marketing consent through the existing banner, and verify in Meta Test Events
+that `PageView` and `Lead` each arrive from Browser and Server with matching
+`event_id`, contain `fbc` on the server copy, and are deduplicated.
+`CompleteRegistration` is not required for launch.
 
 - [ ] **Step 5: Validate the paused Meta hierarchy**
 
@@ -713,7 +872,12 @@ Present production funnel evidence, six placement previews for each concept, dai
   `/security-starter-kit/?subscription=confirmed` remains the existing
   post-confirmation Starter Kit state.
 - Submit and confirmation are distinct analytics events.
-- Meta event calls are centralized behind marketing consent.
+- Meta event calls are centralized behind the existing marketing-consent state.
+- Every landing captures `fbclid` in the shared runtime, produces/reuses `fbc`
+  only after marketing consent, and forwards it to CAPI when available.
+- Each mirrored Pixel/CAPI event shares an exact `event_name` and frontend
+  `event_id`; Meta Test Events verifies deduplication before activation.
+- `META_CAPI_ACCESS_TOKEN` is read only by the Netlify Edge Function.
 - Paid attribution is restricted to four canonical fields and survives in Kit subscriber records.
 - The four concepts, eight placement exports, copy, URLs, country codes, and entity names are exact.
 - No step activates spend, deploys, or changes live sequence membership without an explicit approval gate.

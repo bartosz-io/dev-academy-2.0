@@ -233,11 +233,28 @@ UTM convention:
 - `utm_campaign=pills_eu_launch`
 - `utm_content=security_a`, `security_b`, `testing_a`, or `testing_b`
 
+Every paid landing page must also support Meta click attribution. The homepage
+is the only launch landing page, but the implementation must be reusable by
+future landing pages that load the shared privacy runtime:
+
+- read `fbclid` from the landing URL without sending it to PostHog or Kit;
+- after the existing marketing-consent state is `true`, reuse a valid `_fbc`
+  cookie or derive `fbc` as `fb.1.<creation_time_ms>.<fbclid>` and persist it as
+  `_fbc`;
+- attach `fbc` to every applicable Conversions API event when it is available;
+- generate a fresh `event_id` on the frontend for each logical Meta event;
+- send the same `event_name` and `event_id` through the browser Pixel and the
+  Netlify Edge Function so Meta can deduplicate the browser/server pair;
+- never send the CAPI access token to the browser.
+
 Required events:
 
 - Meta `PageView` on the destination when marketing measurement is permitted;
 - Meta standard `Lead` after a valid form submission when marketing measurement
   is permitted;
+- a matching server-side `PageView` and `Lead` through Meta Conversions API,
+  carrying the same `event_id` as the corresponding browser event and `fbc`
+  whenever the landing click supplied it;
 - privacy-safe `newsletter_submitted` in the Dev Academy analytics model;
 - existing privacy-safe `subscription_confirmed_landing_viewed` event from the
   Starter Kit confirmed state after double opt-in;
@@ -254,9 +271,15 @@ with a valid consent signal and without exposing email addresses or subscriber
 identifiers. Until that deeper event is proven reliable, optimize delivery for
 `Lead` and evaluate confirmed results using Kit and first-party analytics.
 
-Conversions API may complement the Pixel but must not bypass consent or other
-European privacy requirements. When browser and server implementations send the
-same event, use a shared event identifier for deduplication.
+Conversions API is required for launch and must run through a same-origin
+Netlify Edge Function. The function reads `META_CAPI_ACCESS_TOKEN` only from the
+Netlify Functions-scoped environment, uses Pixel ID `189349068273059`, accepts
+only allowlisted website events, adds the request user agent and Netlify edge
+client IP, and forwards no email address, form value, subscriber identifier, or
+arbitrary query parameter. Both the Pixel call and the Edge Function request
+remain gated by the already implemented `DevAcademyPrivacy` marketing-consent
+state. `fbc` improves click matching; deduplication specifically depends on
+matching `event_name` plus `event_id` across browser and server events.
 
 ## KPI model
 
@@ -298,12 +321,15 @@ Initial health thresholds:
 2. Test the form on mobile and desktop.
 3. Complete a real test journey from submit through confirmation and first Pill.
 4. Verify `PageView` and `Lead` in Meta Events Manager.
-5. Verify `newsletter_submitted` and
+5. Verify each test event appears from Browser and Server with the same
+   `event_id` and is reported as deduplicated; verify server events include
+   `fbc` after a test URL containing `fbclid`.
+6. Verify `newsletter_submitted` and
    `subscription_confirmed_landing_viewed` in the first-party funnel reports.
-6. Confirm that no email address or subscriber identifier enters a URL or
+7. Confirm that no email address or subscriber identifier enters a URL or
    analytics payload.
-7. Preview every ad in all material placements and check text safe areas.
-8. Build the campaign in `PAUSED` state and perform final QA before activation.
+8. Preview every ad in all material placements and check text safe areas.
+9. Build the campaign in `PAUSED` state and perform final QA before activation.
 
 ### During the test
 
@@ -358,6 +384,9 @@ reason for its result.
   `https://dev-academy.com/security-starter-kit/?subscription=confirmed`; no new
   confirmation page is introduced.
 - Meta receives the permitted launch conversion events.
+- Browser Pixel and CAPI copies use identical `event_name` and `event_id`, are
+  deduplicated in Meta Test Events, and carry a valid `fbc` when the landing URL
+  contains `fbclid` and marketing consent is granted.
 - First-party reporting distinguishes form submission from confirmation.
 - No PII appears in URLs or analytics events.
 - Day-7 and day-14 decisions use confirmed subscribers and quality signals, not
