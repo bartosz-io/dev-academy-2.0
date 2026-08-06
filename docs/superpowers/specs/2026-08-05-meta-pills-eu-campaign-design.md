@@ -99,9 +99,10 @@ Prepare every ad in at least:
 - 1:1 for feeds;
 - 9:16 for Stories and Reels.
 
-Keep essential text inside the safe central area in both exports. Avoid showing
-Vue, Angular, React, and Node logos together; the newsletter targets JavaScript
-and TypeScript developers more broadly than a specific framework.
+Keep essential text inside the safe central area in both exports. Retain the
+Vue, Angular, React, and Node logos from the historically successful animation
+as a supporting visual shorthand for web developers, not as the main message
+or an implication that the Pills are limited to those frameworks.
 
 ### Security A: concrete vulnerability
 
@@ -116,13 +117,18 @@ FREE EVERY TUESDAY
 
 Primary text:
 
-> An invisible iframe can turn a normal click into a real action in your app.
-> Security Tuesday explains the risk — and the browser header that stops it —
-> in a 3-minute email. Get Security Tuesday + Testing Friday free.
+> Could another website click buttons inside your app?
+>
+> An invisible iframe can turn an ordinary click into a real action. Security
+> Tuesday shows you how clickjacking works — and how to stop it — in one
+> practical email.
+>
+> Get Security Tuesday + Testing Friday free. Two useful ideas a week, under 10
+> minutes total.
 
-Headline: `Practical security in under 5 minutes`
+Headline: `Stop clickjacking before it ships`
 
-Description: `Two free Knowledge Pills every week.`
+Description: `Free Security + Testing Pills`
 
 CTA: `Sign Up`
 
@@ -132,20 +138,23 @@ Animation text:
 
 ```text
 SECURITY + TESTING
-CODE GETS PRODUCED FASTER.
-JUDGMENT DOESN'T.
+AI WRITES CODE.
+YOU MAKE THE CALL.
 2 FREE PILLS / WEEK
 ```
 
 Primary text:
 
-> AI can generate security headers, features and tests. You still need to know
-> whether they protect the right boundary. Build that judgment with two
-> practical Knowledge Pills every week.
+> AI can generate security headers, features and tests in seconds. But it
+> cannot decide whether they protect the right boundary.
+>
+> Build the judgment to review AI-generated code with two practical Knowledge
+> Pills every week: Security Tuesday + Testing Friday. Free and under 10
+> minutes total.
 
-Headline: `Build web apps you can trust`
+Headline: `AI writes code. You make the call.`
 
-Description: `Two free Knowledge Pills every week.`
+Description: `Free Security + Testing Pills`
 
 CTA: `Sign Up`
 
@@ -162,13 +171,16 @@ FREE EVERY FRIDAY
 
 Primary text:
 
-> Your test suite is green. But does it protect behavior — or only execute
-> lines? Testing Friday gives you one practical testing idea in under 5
-> minutes. Plus Security Tuesday.
+> Your tests pass. But would they catch a real regression — or are they only
+> executing lines?
+>
+> Testing Friday gives you one practical idea for writing tests that protect
+> behavior, not just coverage numbers. Plus Security Tuesday. Free and under 10
+> minutes a week.
 
 Headline: `Write tests that prove something`
 
-Description: `Two free Knowledge Pills every week.`
+Description: `Free Security + Testing Pills`
 
 CTA: `Sign Up`
 
@@ -185,13 +197,16 @@ PRACTICAL. FREE. <5 MIN.
 
 Primary text:
 
-> Architecture rarely breaks in one commit. It erodes through imports nobody
-> notices. Learn to turn architectural intentions into executable rules — one
-> focused Knowledge Pill at a time.
+> Architecture rarely breaks in one commit. It erodes through dependencies
+> nobody notices.
+>
+> Learn how to prevent it in one Testing Friday issue. Then get a new practical
+> testing idea every week — plus Security Tuesday. Free and under 10 minutes a
+> week.
 
-Headline: `Turn architecture into executable rules`
+Headline: `Test your architecture before it drifts`
 
-Description: `Two free Knowledge Pills every week.`
+Description: `Free Security + Testing Pills`
 
 CTA: `Sign Up`
 
