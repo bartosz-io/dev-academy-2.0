@@ -36,9 +36,11 @@ test('calculates the price', () => {
 });
 ```
 
-It executes both paths through `calculatePrice`, so a coverage report may show 100% for this function.
+It executes both paths through `calculatePrice`.
 
-But what does it actually verify?
+The coverage report says: 100%.
+
+But what does the test actually verify?
 
 Nothing.
 
