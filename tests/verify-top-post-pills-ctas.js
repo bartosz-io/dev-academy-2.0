@@ -19,8 +19,14 @@ posts.forEach(function(entry) {
   const html = fs.readFileSync(path.join(ROOT, 'public', route, 'index.html'), 'utf8');
   const source = fs.readFileSync(path.join(ROOT, 'source', '_posts', sourceName), 'utf8');
   const ctas = html.match(/<aside class="article-pills-cta"[\s\S]*?<\/aside>/g) || [];
+  const modalOptionsMatch = html.match(/<form[^>]+data-format="modal"[^>]+data-options="([^"]+)"/);
 
   assert.strictEqual(ctas.length, 1, route + ' must render exactly one Pills CTA');
+  assert(modalOptionsMatch, route + ' must render the Kit modal form');
+  const modalOptions = JSON.parse(modalOptionsMatch[1].replace(/&quot;/g, '"').replace(/&amp;/g, '&'));
+  assert.strictEqual(modalOptions.settings.modal.trigger, 'scroll');
+  assert.strictEqual(modalOptions.settings.modal.scroll_percentage, '50');
+  assert(!Object.prototype.hasOwnProperty.call(modalOptions.settings.modal, 'timer'));
   assert(ctas[0].includes('href="/"'));
   assert(!ctas[0].includes('#get-free-pills'));
   assert(ctas[0].includes('data-ph="article-pills-cta__link"'));
