@@ -23,7 +23,9 @@ posts.forEach(function(entry) {
 
   assert.strictEqual(ctas.length, 1, route + ' must render exactly one Pills CTA');
   assert(modalOptionsMatch, route + ' must render the Kit modal form');
-  const modalOptions = JSON.parse(modalOptionsMatch[1].replace(/&quot;/g, '"').replace(/&amp;/g, '&'));
+  const modalOptions = JSON.parse(
+    modalOptionsMatch[1].replace(/&quot;|&#34;/g, '"').replace(/&amp;/g, '&')
+  );
   assert.strictEqual(modalOptions.settings.modal.trigger, 'scroll');
   assert.strictEqual(modalOptions.settings.modal.scroll_percentage, '50');
   assert(!Object.prototype.hasOwnProperty.call(modalOptions.settings.modal, 'timer'));
