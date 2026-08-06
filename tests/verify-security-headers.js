@@ -39,8 +39,10 @@ function assertSource(directive, source) {
 
 assertSource('script-src', "'self'");
 assertSource('script-src', 'https://eu-assets.i.posthog.com');
+assertSource('script-src', 'https://p.dev-academy.com');
 assertSource('script-src', 'https://connect.facebook.net');
 assertSource('connect-src', 'https://p.dev-academy.com');
+assertSource('connect-src', 'https://eu-assets.i.posthog.com');
 assertSource('connect-src', 'https://www.facebook.com');
 assertSource('img-src', 'https://www.facebook.com');
 assertSource('form-action', 'https://app.kit.com');
