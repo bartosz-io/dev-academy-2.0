@@ -3,6 +3,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 
 const ROOT = path.join(__dirname, '..');
 const postHtml = fs.readFileSync(
@@ -10,6 +11,26 @@ const postHtml = fs.readFileSync(
   'utf8'
 );
 const homepageHtml = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8');
+const subscribeTagSource = fs.readFileSync(
+  path.join(ROOT, 'themes', 'my-theme', 'scripts', 'subscribe.js'),
+  'utf8'
+);
+let subscribeTagRenderer;
+vm.runInNewContext(subscribeTagSource, {
+  hexo: {
+    config: { newsletter: { uid: '23709cd512' } },
+    extend: {
+      tag: {
+        register: function (name, renderer) {
+          assert.strictEqual(name, 'subscribe');
+          subscribeTagRenderer = renderer;
+        }
+      }
+    }
+  }
+});
+assert(subscribeTagRenderer, 'subscribe tag renderer must be registered');
+const subscribeTagHtml = subscribeTagRenderer();
 const modalMatch = postHtml.match(/<form[^>]*data-format="modal"[\s\S]*?<\/form>/);
 
 assert(modalMatch, 'a post must render the Pills modal form');
@@ -53,5 +74,11 @@ assert(modal.includes('Free. Double opt-in. Check your inbox to confirm. Unsubsc
 assert(modal.includes('href="https://courses.dev-academy.com/p/privacy"'));
 assert(modal.includes('data-ph="pills-modal__submit"'));
 assert(!homepageHtml.includes('data-format="modal"'));
+assert(postHtml.includes('data-formkit-toggle="23709cd512"'));
+assert(postHtml.includes('href="https://dev-academy.ck.page/23709cd512"'));
+assert(!postHtml.includes('data-formkit-toggle="e4bf864ac2"'));
+assert(subscribeTagHtml.includes('data-formkit-toggle="23709cd512"'));
+assert(subscribeTagHtml.includes('href="https://dev-academy.ck.page/23709cd512"'));
+assert(!subscribeTagSource.includes('e4bf864ac2'));
 
 console.log('Pills modal checks passed.');
