@@ -100,6 +100,11 @@ assert.strictEqual(newsletterForms.length, 3);
   assert(form.includes('data-element="fields"'));
   assert(form.includes('data-newsletter-topic="both"'));
   assert(form.includes('name="email_address"'));
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function(key) {
+    assert(form.includes('name="fields[' + key + ']"'));
+    assert(form.includes('data-newsletter-attribution="' + key + '"'));
+  });
+  assert(!form.includes('name="fields[fbclid]"'));
   assert(!form.includes('name="fields[first_name]"'));
   assert(form.includes('for="' + formId + '-email"'));
   assert(form.includes('id="' + formId + '-email"'));
