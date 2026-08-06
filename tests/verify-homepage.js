@@ -37,6 +37,10 @@ const newsletterStyles = fs.readFileSync(
   path.join(__dirname, '..', 'themes', 'my-theme', 'source', 'css', 'pages', '_newsletter-homepage.scss'),
   'utf8'
 );
+const footerStyles = fs.readFileSync(
+  path.join(__dirname, '..', 'themes', 'my-theme', 'source', 'css', 'layout', '_footer.scss'),
+  'utf8'
+);
 const newsletterForms = homepage.match(
   /<form\b(?=[^>]*\bclass="[^"]*\bnewsletter-form\b[^"]*")[\s\S]*?<\/form>/g
 ) || [];
@@ -74,6 +78,10 @@ assert(!homepage.includes('securitystarterkit.net'));
 assert(!homepage.includes('websecurity-academy.com'));
 assert(!homepage.includes('>Courses<'));
 assert(!homepage.includes('>Contributors<'));
+assert(
+  /\.footer-navigation-brand\s*\{[\s\S]*?p\s*\{[\s\S]*?padding-bottom:\s*0;/.test(footerStyles),
+  'footer brand paragraphs must not inherit the global paragraph bottom padding'
+);
 
 assert.strictEqual(newsletterForms.length, 3);
 [
