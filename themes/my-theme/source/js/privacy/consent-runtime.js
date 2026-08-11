@@ -185,97 +185,6 @@
     } catch (error) {}
   }
 
-  function safeReferrerHostname() {
-    if (!document.referrer) return null;
-    try {
-      return new URL(document.referrer).hostname;
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function safeUrl(value) {
-    if (typeof value !== 'string') return value;
-    try {
-      var parsed = new URL(value, window.location.origin);
-      return (/^[a-z][a-z0-9+.-]*:\/\//i.test(value) ? parsed.origin : '') + parsed.pathname;
-    } catch (error) {
-      return value.split(/[?#]/)[0];
-    }
-  }
-
-  function safeReferrer(value) {
-    if (typeof value !== 'string' || value === '') return value;
-    try {
-      return new URL(value, window.location.origin).hostname;
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function isCampaignProperty(name) {
-    var normalized = String(name).toLowerCase();
-    return normalized.indexOf('utm_') !== -1 ||
-      /(^|[_$])(fbclid|gclid|dclid|gbraid|wbraid|msclkid|campaign|search_engine)($|_)/.test(normalized);
-  }
-
-  function isReferrerProperty(name) {
-    return /referr|referring_domain/i.test(String(name));
-  }
-
-  function isUrlProperty(name) {
-    return /(^|[_$])(url|href|destination|src)($|_)/i.test(String(name));
-  }
-
-  function containsEmailLikeValue(value) {
-    return typeof value === 'string' && /[^\s@]+@[^\s@]+\.[^\s@]+/.test(value);
-  }
-
-  function sanitizePostHogValue(value, name, vendorValues) {
-    var result;
-    if (typeof value === 'string') {
-      if (name !== 'token' && vendorValues.indexOf(value) !== -1) return undefined;
-      if (containsEmailLikeValue(value)) return undefined;
-      if (isReferrerProperty(name)) return safeReferrer(value);
-      if (isUrlProperty(name)) return safeUrl(value);
-      return value;
-    }
-    if (Array.isArray(value)) {
-      result = [];
-      value.forEach(function(item) {
-        var sanitized = sanitizePostHogValue(item, name, vendorValues);
-        if (sanitized !== undefined) result.push(sanitized);
-      });
-      return result;
-    }
-    if (value && typeof value === 'object' && Object.prototype.toString.call(value) === '[object Object]') {
-      result = {};
-      Object.keys(value).forEach(function(key) {
-        var sanitized;
-        if (isCampaignProperty(key)) return;
-        sanitized = sanitizePostHogValue(value[key], key, vendorValues);
-        if (sanitized !== undefined) result[key] = sanitized;
-      });
-      return result;
-    }
-    return value;
-  }
-
-  function sanitizePostHogEvent(event) {
-    if (event && event.event === '$snapshot') return event;
-    return sanitizePostHogValue(event, '', [
-      config.posthogKey,
-      config.posthogHost,
-      config.posthogAssetHost,
-      config.metaPixelId
-    ]);
-  }
-
-  function sanitizeCapturedRequest(request) {
-    if (request && typeof request.name === 'string') request.name = safeUrl(request.name);
-    return request;
-  }
-
   function postHogStorageNames() {
     var token = typeof config.posthogKey === 'string' ? config.posthogKey : '';
     var main = 'ph_' + token.replace(/\+/g, 'PL').replace(/\//g, 'SL').replace(/=/g, 'EQ') + '_posthog';
@@ -475,15 +384,11 @@
         asset_host: config.posthogAssetHost,
         autocapture: false,
         capture_pageview: false,
-        save_campaign_params: false,
-        save_referrer: false,
-        before_send: sanitizePostHogEvent,
         person_profiles: 'identified_only',
         persistence: effectivePersistentAnalytics ? 'localStorage+cookie' : 'memory',
         disable_session_recording: false,
         session_recording: {
-          maskAllInputs: true,
-          maskCapturedNetworkRequestFn: sanitizeCapturedRequest
+          maskAllInputs: true
         }
       });
       posthogClient = client;
@@ -504,8 +409,9 @@
     });
 
     capture('$pageview', {
-      $current_url: window.location.origin + window.location.pathname,
-      $referrer: safeReferrerHostname()
+      $current_url: window.location.origin + window.location.pathname +
+        (window.location.search || '') + (window.location.hash || ''),
+      $referrer: document.referrer || null
     });
     queuedCaptures = captureQueue;
     captureQueue = [];

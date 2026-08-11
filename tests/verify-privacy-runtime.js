@@ -285,6 +285,8 @@ test('loads PostHog asynchronously in memory with masked replay and drains captu
 
   harness.api.capture('runtime_test', {
     safe_property: 'yes',
+    utm_campaign: 'pills_eu_launch',
+    has_fbclid: true,
     event_schema_version: 99,
     page_path: '/leaked?email=private@example.com',
     posthog_key: VALID_CONFIG.posthogKey,
@@ -307,89 +309,36 @@ test('loads PostHog asynchronously in memory with masked replay and drains captu
   assert.deepStrictEqual(queued, {
     event_schema_version: 2,
     page_path: '/knowledge-pills/',
-    safe_property: 'yes'
+    safe_property: 'yes',
+    utm_campaign: 'pills_eu_launch',
+    has_fbclid: true
   });
 
   var pageview = captures(harness, '$pageview')[0][2];
-  assert.strictEqual(pageview.$current_url, 'https://dev-academy.com/knowledge-pills/');
-  assert.strictEqual(pageview.$referrer, 'search.example');
+  assert.strictEqual(
+    pageview.$current_url,
+    'https://dev-academy.com/knowledge-pills/?email=private%40example.com'
+  );
+  assert.strictEqual(pageview.$referrer, 'https://search.example/results?secret=1');
   assert.strictEqual(pageview.page_path, '/knowledge-pills/');
-  assert.strictEqual(JSON.stringify(pageview).indexOf('?'), -1);
   assert.strictEqual(JSON.stringify(pageview).indexOf(VALID_CONFIG.posthogKey), -1);
   assert.strictEqual(JSON.stringify(pageview).indexOf(VALID_CONFIG.metaPixelId), -1);
 });
 
-test('sanitizes SDK-enriched custom events without rewriting replay snapshots', function() {
+test('does not install PostHog event or replay URL sanitizers', function() {
   var harness = createHarness();
   harness.attachPostHog();
   var init = harness.calls.filter(function(call) { return call[0] === 'posthog:init'; })[0][2];
-  var unsafeUrl = 'https://dev-academy.com/confirmation/?subscriber=synthetic%40example.invalid&utm_source=test#private';
-  var unsafeReferrer = 'https://search.example/results?fbclid=test#private';
-  var timestamp = new Date('2026-08-05T10:00:00.000Z');
-  var event;
-  var snapshot;
-  var request;
 
-  assert.strictEqual(typeof init.before_send, 'function');
-  assert.strictEqual(init.save_campaign_params, false);
-  assert.strictEqual(init.save_referrer, false);
+  assert.strictEqual(Object.prototype.hasOwnProperty.call(init, 'before_send'), false);
+  assert.strictEqual(Object.prototype.hasOwnProperty.call(init, 'save_campaign_params'), false);
+  assert.strictEqual(Object.prototype.hasOwnProperty.call(init, 'save_referrer'), false);
   assert.strictEqual(init.asset_host, VALID_CONFIG.posthogAssetHost);
-
-  event = init.before_send({
-    event: 'custom_safe_event',
-    properties: {
-      token: 'required-ingest-token',
-      $current_url: unsafeUrl,
-      $referrer: unsafeReferrer,
-      $initial_referrer: unsafeReferrer,
-      $utm_source: 'test-campaign',
-      utm_campaign: 'test-campaign',
-      $gclid: 'test-click-id',
-      $fbclid: 'test-click-id',
-      posthog_copy: VALID_CONFIG.posthogKey,
-      meta_copy: VALID_CONFIG.metaPixelId,
-      nested: {
-        href: unsafeUrl,
-        contact: 'synthetic@example.invalid',
-        safe: 'kept'
-      }
-    },
-    $set: { contact: 'synthetic@example.invalid' },
-    timestamp: timestamp
-  });
-
-  assert.strictEqual(event.properties.token, 'required-ingest-token');
-  assert.strictEqual(event.properties.$current_url, 'https://dev-academy.com/confirmation/');
-  assert.strictEqual(event.properties.$referrer, 'search.example');
-  assert.strictEqual(event.properties.$initial_referrer, 'search.example');
-  assert.strictEqual(event.properties.nested.href, 'https://dev-academy.com/confirmation/');
-  assert.strictEqual(event.properties.nested.safe, 'kept');
-  ['$utm_source', 'utm_campaign', '$gclid', '$fbclid', 'posthog_copy', 'meta_copy'].forEach(function(name) {
-    assert.strictEqual(Object.prototype.hasOwnProperty.call(event.properties, name), false);
-  });
-  assert.strictEqual(Object.prototype.hasOwnProperty.call(event.properties.nested, 'contact'), false);
-  assert.strictEqual(Object.prototype.hasOwnProperty.call(event.$set, 'contact'), false);
-  assert.strictEqual(event.timestamp, timestamp);
-
-  snapshot = {
-    event: '$snapshot',
-    properties: {
-      token: 'required-ingest-token',
-      $current_url: unsafeUrl,
-      $snapshot_data: {
-        type: 4,
-        data: { href: unsafeUrl, referrer: unsafeReferrer }
-      }
-    }
-  };
-  assert.strictEqual(init.before_send(snapshot), snapshot);
-  assert.strictEqual(snapshot.properties.$current_url, unsafeUrl);
-  assert.strictEqual(snapshot.properties.$snapshot_data.data.href, unsafeUrl);
-  assert.strictEqual(snapshot.properties.$snapshot_data.data.referrer, unsafeReferrer);
-
-  assert.strictEqual(typeof init.session_recording.maskCapturedNetworkRequestFn, 'function');
-  request = init.session_recording.maskCapturedNetworkRequestFn({ name: unsafeUrl });
-  assert.strictEqual(request.name, 'https://dev-academy.com/confirmation/');
+  assert.strictEqual(
+    Object.prototype.hasOwnProperty.call(init.session_recording, 'maskCapturedNetworkRequestFn'),
+    false
+  );
+  assert.strictEqual(init.session_recording.maskAllInputs, true);
 });
 
 test('drops queued and future captures after a PostHog loading failure without retrying', function() {
