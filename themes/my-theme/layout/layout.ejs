@@ -46,10 +46,13 @@
 <% } %>
 
 <%
-var homepageServerOnly = page.layout === 'homepage';
+var noPersistentBrowserIdentifiersMode = 'no-persistent-browser-identifiers';
+var pageTrackingMode = page.trackingMode ||
+    (page.layout === 'homepage' ? noPersistentBrowserIdentifiersMode : 'consent-managed');
+var noPersistentBrowserIdentifiers = pageTrackingMode === noPersistentBrowserIdentifiersMode;
 var privacy = config.privacy || {};
 %>
-<% if (!homepageServerOnly) { %>
+<% if (!noPersistentBrowserIdentifiers) { %>
 <%- partial('partial/privacy-controls', {footerless: page.layout === 'landing'}) %>
 <% } %>
 <%
@@ -58,7 +61,7 @@ var privacyConfigJson = JSON.stringify({
     posthogHost: privacy.posthog_host,
     posthogAssetHost: privacy.posthog_asset_host,
     metaPixelId: privacy.meta_pixel_id,
-    trackingMode: homepageServerOnly ? 'memory-only-server-capi' : 'consent-managed'
+    trackingMode: pageTrackingMode
 }).replace(/</g, '\\u003c');
 %>
 <script>

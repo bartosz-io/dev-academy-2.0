@@ -45,8 +45,8 @@ const layoutSource = fs.readFileSync(
   'utf8'
 );
 
-runCheck('renders the shared consent copy and selector map once on every layout branch', function() {
-  [articles, welcome].forEach(function(html) {
+runCheck('renders the shared consent copy and selector map only on consent-managed layout branches', function() {
+  [articles].forEach(function(html) {
     assert(html.includes('Memory-only analytics and masked session replay are always active'));
     assert.strictEqual(count(html, 'id="consent-banner"'), 1);
     assert.strictEqual(count(html, 'id="privacy-dialog"'), 1);
@@ -57,10 +57,11 @@ runCheck('renders the shared consent copy and selector map once on every layout 
     assert(html.includes('data-save-privacy-settings'));
     assert(html.includes('data-open-privacy-settings'));
   });
-  assert(!homepage.includes('id="consent-banner"'));
-  assert(!homepage.includes('id="privacy-dialog"'));
-  assert(!homepage.includes('data-open-privacy-settings'));
-  assert(welcome.includes('class="privacy-settings-compact"'));
+  [homepage, welcome].forEach(function(html) {
+    assert(!html.includes('id="consent-banner"'));
+    assert(!html.includes('id="privacy-dialog"'));
+    assert(!html.includes('data-open-privacy-settings'));
+  });
 });
 
 runCheck('loads one consent runtime before main and removes legacy vendor scripts', function() {
@@ -164,12 +165,17 @@ runCheck('serializes only escaped public vendor configuration', function() {
     Object.keys(config).sort(),
     ['metaPixelId', 'posthogAssetHost', 'posthogHost', 'posthogKey', 'trackingMode']
   );
-  assert.strictEqual(config.trackingMode, 'memory-only-server-capi');
+  assert.strictEqual(config.trackingMode, 'no-persistent-browser-identifiers');
   assert(/^phc_[A-Za-z0-9_-]{20,}$/.test(config.posthogKey), 'PostHog production default must be versioned');
   assert(/^\d{8,}$/.test(config.metaPixelId) && config.metaPixelId !== '000000000000000', 'Meta production default must be versioned');
   assert(config.posthogHost === 'https://p.dev-academy.com', 'PostHog ingest host must use the first-party endpoint');
   assert(config.posthogAssetHost === 'https://eu-assets.i.posthog.com', 'PostHog asset host must use the approved endpoint');
   assert(layoutSource.includes(".replace(/</g, '\\\\u003c')"));
+
+  const welcomeMatch = welcome.match(/window\.DEV_ACADEMY_PRIVACY_CONFIG\s*=\s*({[^;]+});/);
+  assert(welcomeMatch, 'missing serialized privacy config on welcome');
+  const welcomeConfig = vm.runInNewContext('(' + welcomeMatch[1] + ')');
+  assert.strictEqual(welcomeConfig.trackingMode, 'no-persistent-browser-identifiers');
 
   const articlesMatch = articles.match(/window\.DEV_ACADEMY_PRIVACY_CONFIG\s*=\s*({[^;]+});/);
   assert(articlesMatch, 'missing serialized privacy config on articles');

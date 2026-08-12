@@ -12,8 +12,9 @@
   var posthogSettled = false;
   var reportedMissingConfig = {};
   var config = window.DEV_ACADEMY_PRIVACY_CONFIG || {};
-  var serverOnlyMode = config.trackingMode === 'memory-only-server-capi';
-  var state = serverOnlyMode ? {
+  var noPersistentBrowserIdentifiers =
+    config.trackingMode === 'no-persistent-browser-identifiers';
+  var state = noPersistentBrowserIdentifiers ? {
     decided: true,
     persistentAnalytics: false,
     marketing: false
@@ -51,7 +52,7 @@
   function currentFbc() {
     var existing;
     var created;
-    if (serverOnlyMode) {
+    if (noPersistentBrowserIdentifiers) {
       return landingFbclid ?
         'fb.1.' + landingFbclidCapturedAt + '.' + landingFbclid : null;
     }
@@ -96,7 +97,7 @@
         allowedEvents.indexOf(eventName) === -1) {
       return null;
     }
-    if (!serverOnlyMode && (!state.marketing || !isMetaConfigured() || !window.fbq)) {
+    if (!noPersistentBrowserIdentifiers && (!state.marketing || !isMetaConfigured() || !window.fbq)) {
       return null;
     }
     safeProperties = safeMetaProperties(properties);
@@ -110,7 +111,7 @@
     fbc = currentFbc();
     if (fbc) payload.fbc = fbc;
     try {
-      if (!serverOnlyMode) {
+      if (!noPersistentBrowserIdentifiers) {
         window.fbq('track', eventName, safeProperties, { eventID: eventId });
       }
       window.fetch('/api/meta/events', {
@@ -323,7 +324,7 @@
     var revokedMarketing;
     var decisionPersisted = true;
 
-    if (serverOnlyMode) return copyState(state);
+    if (noPersistentBrowserIdentifiers) return copyState(state);
 
     state = {
       decided: true,
@@ -366,7 +367,7 @@
       });
     }
 
-    if (grantedMarketing && !serverOnlyMode) loadMetaPixel();
+    if (grantedMarketing && !noPersistentBrowserIdentifiers) loadMetaPixel();
     if (revokedMarketing) revokeMetaPixel();
 
     if (persist) {
@@ -401,7 +402,7 @@
         autocapture: false,
         capture_pageview: false,
         person_profiles: 'identified_only',
-        persistence: serverOnlyMode ? 'memory' :
+        persistence: noPersistentBrowserIdentifiers ? 'memory' :
           (effectivePersistentAnalytics ? 'localStorage+cookie' : 'memory'),
         disable_session_recording: false,
         session_recording: {
@@ -539,11 +540,11 @@
     trackMeta: sendMetaEvent,
     applyExternalState: function(raw) {
       var external = parseConsent(raw);
-      if (serverOnlyMode || !external.decided) return;
+      if (noPersistentBrowserIdentifiers || !external.decided) return;
       return applyState(external, 'storage_sync', false);
     }
   };
 
   loadPostHog();
-  if (!serverOnlyMode && state.marketing) loadMetaPixel();
+  if (!noPersistentBrowserIdentifiers && state.marketing) loadMetaPixel();
 }(window, document));

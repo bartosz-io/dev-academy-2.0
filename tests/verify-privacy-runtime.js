@@ -328,10 +328,10 @@ test('loads PostHog asynchronously in memory with masked replay and drains captu
   assert.strictEqual(JSON.stringify(pageview).indexOf(VALID_CONFIG.metaPixelId), -1);
 });
 
-test('keeps homepage tracking memory-only and sends one server Lead without browser identifiers', function() {
+test('keeps non-persistent tracking in memory and sends one server Lead without browser identifiers', function() {
   var harness = createHarness({
     config: Object.assign({}, VALID_CONFIG, {
-      trackingMode: 'memory-only-server-capi'
+      trackingMode: 'no-persistent-browser-identifiers'
     }),
     pathname: '/',
     search: '?fbclid=test-click-123&utm_source=meta',
@@ -377,10 +377,10 @@ test('keeps homepage tracking memory-only and sends one server Lead without brow
   assert.strictEqual(harness.window.fbq, undefined);
 });
 
-test('ignores external consent synchronization in homepage server-only mode', function() {
+test('ignores external consent synchronization without persistent browser identifiers', function() {
   var harness = createHarness({
     config: Object.assign({}, VALID_CONFIG, {
-      trackingMode: 'memory-only-server-capi'
+      trackingMode: 'no-persistent-browser-identifiers'
     })
   });
 
@@ -399,10 +399,10 @@ test('ignores external consent synchronization in homepage server-only mode', fu
   assert.strictEqual(harness.window.fbq, undefined);
 });
 
-test('ignores public consent mutations in homepage server-only mode', function() {
+test('ignores public consent mutations without persistent browser identifiers', function() {
   var harness = createHarness({
     config: Object.assign({}, VALID_CONFIG, {
-      trackingMode: 'memory-only-server-capi'
+      trackingMode: 'no-persistent-browser-identifiers'
     })
   });
 

@@ -258,7 +258,9 @@ assert(!welcome.includes('<footer class="footer">'));
 assert.strictEqual(count(homepage, '/js/privacy/consent-runtime.js'), 1);
 assert.strictEqual(count(welcome, '/js/privacy/consent-runtime.js'), 1);
 assert(!homepage.includes('data-open-privacy-settings'));
-assert(welcome.includes('data-open-privacy-settings'));
+assert(!welcome.includes('data-open-privacy-settings'));
+assert(!welcome.includes('id="consent-banner"'));
+assert(!welcome.includes('id="privacy-dialog"'));
 assert(!homepage.includes('/js/posthog/posthog.js'));
 
 console.log('Newsletter homepage acceptance checks passed.');
