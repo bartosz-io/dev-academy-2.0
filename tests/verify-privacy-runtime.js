@@ -399,6 +399,35 @@ test('ignores external consent synchronization in homepage server-only mode', fu
   assert.strictEqual(harness.window.fbq, undefined);
 });
 
+test('ignores public consent mutations in homepage server-only mode', function() {
+  var harness = createHarness({
+    config: Object.assign({}, VALID_CONFIG, {
+      trackingMode: 'memory-only-server-capi'
+    })
+  });
+
+  assert.deepStrictEqual(plain(harness.api.setPreferences({
+    persistentAnalytics: true,
+    marketing: true
+  })), {
+    decided: true,
+    persistentAnalytics: false,
+    marketing: false
+  });
+  assert.deepStrictEqual(plain(harness.api.acceptAll()), {
+    decided: true,
+    persistentAnalytics: false,
+    marketing: false
+  });
+  assert.deepStrictEqual(plain(harness.api.rejectAll()), {
+    decided: true,
+    persistentAnalytics: false,
+    marketing: false
+  });
+  assert.strictEqual(harness.storageWrites.length, 0);
+  assert.strictEqual(harness.window.fbq, undefined);
+});
+
 test('does not install PostHog event or replay URL sanitizers', function() {
   var harness = createHarness();
   harness.attachPostHog();

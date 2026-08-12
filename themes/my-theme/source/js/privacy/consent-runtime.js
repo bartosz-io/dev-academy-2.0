@@ -323,6 +323,8 @@
     var revokedMarketing;
     var decisionPersisted = true;
 
+    if (serverOnlyMode) return copyState(state);
+
     state = {
       decided: true,
       persistentAnalytics: next.persistentAnalytics === true,
