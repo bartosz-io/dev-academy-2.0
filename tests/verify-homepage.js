@@ -151,7 +151,7 @@ assert(
     .test(testingHighlightStyles[1])
 );
 assert(/\.newsletter-mini-pill-icon\s*\{[\s\S]*?width:\s*2rem;/.test(newsletterStyles));
-assert(/\.newsletter-proof-line\s*\{[\s\S]*?text-align:\s*center;/.test(newsletterStyles));
+assert(!/\.newsletter-proof-line\s*\{/.test(newsletterStyles));
 assert(!/\.newsletter-cadence\s*\{/.test(newsletterStyles));
 assert(homepage.includes('Spot security risks and testing gaps — even in AI-generated code.'));
 assert(homepage.includes('Two practical lessons a week, under 5 minutes each.'));
@@ -162,13 +162,8 @@ assert(homepage.includes('Free. First Security lesson after confirmation. Unsubs
 assert(homepage.includes('Security Tuesday · 3-min email'));
 assert(homepage.includes('Testing Friday · 4-min email'));
 assert.strictEqual(count(homepage, 'class="newsletter-mini-pill-icon"'), 2);
-assert(homepage.includes('<strong>900+ course enrollments</strong>'));
-assert(homepage.includes('Previous Web Security &amp; Full-stack Testing programs'));
-assert(
-  homepage.indexOf('<p class="newsletter-proof-line"') >
-    homepage.indexOf('class="newsletter-mini-pill newsletter-mini-pill-testing"'),
-  'hero proof must follow both miniature emails'
-);
+assert(!homepage.includes('class="newsletter-proof-line"'));
+assert(!homepage.includes('Previous Web Security &amp; Full-stack Testing programs'));
 assert(homepage.includes('big ball of mud'));
 assert(homepage.includes('Restrict the dependencies with testing'));
 assert(homepage.includes('controllers should not depend on APIs'));

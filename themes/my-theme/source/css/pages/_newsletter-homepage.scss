@@ -189,26 +189,6 @@
   }
 }
 
-.newsletter-proof-line {
-  border-top: .1rem solid var(--newsletter-line);
-  color: var(--newsletter-muted);
-  font-size: 1.15rem;
-  line-height: 1.5;
-  margin: 2.4rem auto 0;
-  max-width: 76rem;
-  padding-top: 1.6rem !important;
-  text-align: center;
-
-  strong,
-  span {
-    display: block;
-  }
-
-  strong {
-    color: var(--newsletter-ink);
-  }
-}
-
 .newsletter-hero-previews {
   min-height: 36rem;
   position: relative;

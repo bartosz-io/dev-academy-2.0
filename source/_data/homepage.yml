@@ -6,9 +6,6 @@ hero:
     testing: tested
     after: "?"
   summary: Spot security risks and testing gaps — even in AI-generated code. Two practical lessons a week, under 5 minutes each.
-  proof:
-    value: 900+ course enrollments
-    context: Previous Web Security & Full-stack Testing programs
   security_card:
     label: Security Tuesday
     time: 3-min email
