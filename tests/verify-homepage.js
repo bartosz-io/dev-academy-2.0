@@ -132,8 +132,24 @@ assert(homepage.includes('Your code works. Do you know if it’s'));
 assert(homepage.includes('class="newsletter-highlight newsletter-highlight-security">secure</span>'));
 assert(homepage.includes('class="newsletter-highlight newsletter-highlight-testing">tested</span>'));
 assert(/\.newsletter-hero-copy\s*\{[\s\S]*?h1\s*\{[\s\S]*?line-height:\s*1\.1;/.test(newsletterStyles));
-assert(/\.newsletter-highlight-security\s*\{[\s\S]*?background:/.test(newsletterStyles));
-assert(/\.newsletter-highlight-testing\s*\{[\s\S]*?background:/.test(newsletterStyles));
+var highlightBaseStyles = newsletterStyles.match(/\.newsletter-highlight\s*\{([^}]*)\}/);
+var securityHighlightStyles = newsletterStyles.match(/\.newsletter-highlight-security\s*\{([^}]*)\}/);
+var testingHighlightStyles = newsletterStyles.match(/\.newsletter-highlight-testing\s*\{([^}]*)\}/);
+
+assert(highlightBaseStyles, 'base highlight styles must exist');
+assert(securityHighlightStyles, 'security highlight styles must exist');
+assert(testingHighlightStyles, 'testing highlight styles must exist');
+assert(!/padding:|border-radius:/.test(highlightBaseStyles[1]));
+assert(!/box-shadow:/.test(securityHighlightStyles[1]));
+assert(!/box-shadow:/.test(testingHighlightStyles[1]));
+assert(
+  /background:\s*linear-gradient\(to bottom, transparent 0 62%, #ded3ff 62% 90%, transparent 90% 100%\);/
+    .test(securityHighlightStyles[1])
+);
+assert(
+  /background:\s*linear-gradient\(to bottom, transparent 0 62%, #cff3e5 62% 90%, transparent 90% 100%\);/
+    .test(testingHighlightStyles[1])
+);
 assert(/\.newsletter-mini-pill-icon\s*\{[\s\S]*?width:\s*2rem;/.test(newsletterStyles));
 assert(/\.newsletter-proof-line\s*\{[\s\S]*?text-align:\s*center;/.test(newsletterStyles));
 assert(!/\.newsletter-cadence\s*\{/.test(newsletterStyles));

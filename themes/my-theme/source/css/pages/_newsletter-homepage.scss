@@ -72,20 +72,16 @@
 }
 
 .newsletter-highlight {
-  border-radius: .5rem;
   box-decoration-break: clone;
-  padding: 0 .08em;
   -webkit-box-decoration-break: clone;
 }
 
 .newsletter-highlight-security {
-  background: #ded3ff;
-  box-shadow: inset 0 -.13em 0 #9c7bff;
+  background: linear-gradient(to bottom, transparent 0 62%, #ded3ff 62% 90%, transparent 90% 100%);
 }
 
 .newsletter-highlight-testing {
-  background: #cff3e5;
-  box-shadow: inset 0 -.13em 0 #53c49c;
+  background: linear-gradient(to bottom, transparent 0 62%, #cff3e5 62% 90%, transparent 90% 100%);
 }
 
 #get-free-pills {
