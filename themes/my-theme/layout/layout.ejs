@@ -38,21 +38,27 @@
         <% } %>
     </main>
 
-    <%- partial('partial/footer', {}, {caches: true}) %>
+    <%- partial('partial/footer') %>
     <% if (page.layout !== 'homepage') { %>
         <%- partial('partial/ck-form', {}, {caches: true}) %>
     <% } %>
 
 <% } %>
 
-<%- partial('partial/privacy-controls', {footerless: page.layout === 'landing'}) %>
 <%
+var homepageServerOnly = page.layout === 'homepage';
 var privacy = config.privacy || {};
+%>
+<% if (!homepageServerOnly) { %>
+<%- partial('partial/privacy-controls', {footerless: page.layout === 'landing'}) %>
+<% } %>
+<%
 var privacyConfigJson = JSON.stringify({
     posthogKey: privacy.posthog_key,
     posthogHost: privacy.posthog_host,
     posthogAssetHost: privacy.posthog_asset_host,
-    metaPixelId: privacy.meta_pixel_id
+    metaPixelId: privacy.meta_pixel_id,
+    trackingMode: homepageServerOnly ? 'memory-only-server-capi' : 'consent-managed'
 }).replace(/</g, '\\u003c');
 %>
 <script>

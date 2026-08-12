@@ -46,7 +46,7 @@ const layoutSource = fs.readFileSync(
 );
 
 runCheck('renders the shared consent copy and selector map once on every layout branch', function() {
-  [homepage, articles, welcome].forEach(function(html) {
+  [articles, welcome].forEach(function(html) {
     assert(html.includes('Memory-only analytics and masked session replay are always active'));
     assert.strictEqual(count(html, 'id="consent-banner"'), 1);
     assert.strictEqual(count(html, 'id="privacy-dialog"'), 1);
@@ -57,7 +57,9 @@ runCheck('renders the shared consent copy and selector map once on every layout 
     assert(html.includes('data-save-privacy-settings'));
     assert(html.includes('data-open-privacy-settings'));
   });
-  assert(homepage.includes('class="privacy-settings-footer"'));
+  assert(!homepage.includes('id="consent-banner"'));
+  assert(!homepage.includes('id="privacy-dialog"'));
+  assert(!homepage.includes('data-open-privacy-settings'));
   assert(welcome.includes('class="privacy-settings-compact"'));
 });
 
@@ -160,13 +162,19 @@ runCheck('serializes only escaped public vendor configuration', function() {
   const config = vm.runInNewContext('(' + match[1] + ')');
   assert.deepStrictEqual(
     Object.keys(config).sort(),
-    ['metaPixelId', 'posthogAssetHost', 'posthogHost', 'posthogKey']
+    ['metaPixelId', 'posthogAssetHost', 'posthogHost', 'posthogKey', 'trackingMode']
   );
+  assert.strictEqual(config.trackingMode, 'memory-only-server-capi');
   assert(/^phc_[A-Za-z0-9_-]{20,}$/.test(config.posthogKey), 'PostHog production default must be versioned');
   assert(/^\d{8,}$/.test(config.metaPixelId) && config.metaPixelId !== '000000000000000', 'Meta production default must be versioned');
   assert(config.posthogHost === 'https://p.dev-academy.com', 'PostHog ingest host must use the first-party endpoint');
   assert(config.posthogAssetHost === 'https://eu-assets.i.posthog.com', 'PostHog asset host must use the approved endpoint');
   assert(layoutSource.includes(".replace(/</g, '\\\\u003c')"));
+
+  const articlesMatch = articles.match(/window\.DEV_ACADEMY_PRIVACY_CONFIG\s*=\s*({[^;]+});/);
+  assert(articlesMatch, 'missing serialized privacy config on articles');
+  const articlesConfig = vm.runInNewContext('(' + articlesMatch[1] + ')');
+  assert.strictEqual(articlesConfig.trackingMode, 'consent-managed');
 });
 
 function listenerTarget() {

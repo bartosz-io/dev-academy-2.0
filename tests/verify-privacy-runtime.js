@@ -23,7 +23,8 @@ var VALID_CONFIG = {
   posthogKey: 'phc_public_test_key',
   posthogHost: 'https://p.dev-academy.com',
   posthogAssetHost: 'https://eu-assets.i.posthog.com',
-  metaPixelId: '123456789012345'
+  metaPixelId: '123456789012345',
+  trackingMode: 'consent-managed'
 };
 var testsRun = 0;
 
@@ -304,6 +305,8 @@ test('loads PostHog asynchronously in memory with masked replay and drains captu
   assert.strictEqual(init[2].persistence, 'memory');
   assert.strictEqual(init[2].disable_session_recording, false);
   assert.strictEqual(init[2].session_recording.maskAllInputs, true);
+  assert.strictEqual(captures(harness, 'runtime_test').length, 1);
+  assert.strictEqual(captures(harness, '$pageview').length, 1);
 
   var queued = captures(harness, 'runtime_test')[0][2];
   assert.deepStrictEqual(queued, {
@@ -323,6 +326,77 @@ test('loads PostHog asynchronously in memory with masked replay and drains captu
   assert.strictEqual(pageview.page_path, '/knowledge-pills/');
   assert.strictEqual(JSON.stringify(pageview).indexOf(VALID_CONFIG.posthogKey), -1);
   assert.strictEqual(JSON.stringify(pageview).indexOf(VALID_CONFIG.metaPixelId), -1);
+});
+
+test('keeps homepage tracking memory-only and sends one server Lead without browser identifiers', function() {
+  var harness = createHarness({
+    config: Object.assign({}, VALID_CONFIG, {
+      trackingMode: 'memory-only-server-capi'
+    }),
+    pathname: '/',
+    search: '?fbclid=test-click-123&utm_source=meta',
+    eventIds: ['lead-event-id'],
+    now: 1700000000000,
+    rawConsent: JSON.stringify({
+      schemaVersion: 1,
+      persistentAnalytics: true,
+      marketing: true
+    })
+  });
+
+  assert.deepStrictEqual(plain(harness.api.getState()), {
+    decided: true,
+    persistentAnalytics: false,
+    marketing: false
+  });
+  assert.strictEqual(harness.storageWrites.length, 0);
+  harness.attachPostHog();
+  var init = harness.calls.filter(function(call) { return call[0] === 'posthog:init'; })[0][2];
+  assert.strictEqual(init.persistence, 'memory');
+
+  assert.strictEqual(harness.api.trackMeta('Lead', {
+    content_name: 'pills_eu_launch',
+    content_category: 'newsletter'
+  }), 'lead-event-id');
+
+  var requests = harness.calls.filter(function(call) {
+    return call[0] === 'fetch' && call[1] === '/api/meta/events';
+  });
+  assert.strictEqual(requests.length, 1);
+  assert.deepStrictEqual(JSON.parse(requests[0][2].body), {
+    event_name: 'Lead',
+    event_id: 'lead-event-id',
+    event_source_url: 'https://dev-academy.com/',
+    fbc: 'fb.1.1700000000000.test-click-123',
+    custom_data: {
+      content_name: 'pills_eu_launch',
+      content_category: 'newsletter'
+    }
+  });
+  assert.strictEqual(harness.cookieWrites.length, 0);
+  assert.strictEqual(harness.window.fbq, undefined);
+});
+
+test('ignores external consent synchronization in homepage server-only mode', function() {
+  var harness = createHarness({
+    config: Object.assign({}, VALID_CONFIG, {
+      trackingMode: 'memory-only-server-capi'
+    })
+  });
+
+  harness.api.applyExternalState(JSON.stringify({
+    schemaVersion: 1,
+    persistentAnalytics: true,
+    marketing: true
+  }));
+
+  assert.deepStrictEqual(plain(harness.api.getState()), {
+    decided: true,
+    persistentAnalytics: false,
+    marketing: false
+  });
+  assert.strictEqual(harness.storageWrites.length, 0);
+  assert.strictEqual(harness.window.fbq, undefined);
 });
 
 test('does not install PostHog event or replay URL sanitizers', function() {

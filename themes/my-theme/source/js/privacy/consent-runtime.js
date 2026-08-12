@@ -12,7 +12,12 @@
   var posthogSettled = false;
   var reportedMissingConfig = {};
   var config = window.DEV_ACADEMY_PRIVACY_CONFIG || {};
-  var state = readState();
+  var serverOnlyMode = config.trackingMode === 'memory-only-server-capi';
+  var state = serverOnlyMode ? {
+    decided: true,
+    persistentAnalytics: false,
+    marketing: false
+  } : readState();
   var effectivePersistentAnalytics = state.persistentAnalytics;
   var landingFbclid = readLandingFbclid();
   var landingFbclidCapturedAt = landingFbclid ? Date.now() : null;
@@ -46,6 +51,10 @@
   function currentFbc() {
     var existing;
     var created;
+    if (serverOnlyMode) {
+      return landingFbclid ?
+        'fb.1.' + landingFbclidCapturedAt + '.' + landingFbclid : null;
+    }
     if (!state.marketing) return null;
     existing = readCookie('_fbc');
     if (validFbc(existing)) return existing;
@@ -83,8 +92,11 @@
     var eventId;
     var payload;
     var fbc;
-    if (!state.marketing || !isMetaConfigured() || !window.fbq ||
-        typeof window.fetch !== 'function' || allowedEvents.indexOf(eventName) === -1) {
+    if (config.enabled === false || typeof window.fetch !== 'function' ||
+        allowedEvents.indexOf(eventName) === -1) {
+      return null;
+    }
+    if (!serverOnlyMode && (!state.marketing || !isMetaConfigured() || !window.fbq)) {
       return null;
     }
     safeProperties = safeMetaProperties(properties);
@@ -98,7 +110,9 @@
     fbc = currentFbc();
     if (fbc) payload.fbc = fbc;
     try {
-      window.fbq('track', eventName, safeProperties, { eventID: eventId });
+      if (!serverOnlyMode) {
+        window.fbq('track', eventName, safeProperties, { eventID: eventId });
+      }
       window.fetch('/api/meta/events', {
         method: 'POST',
         credentials: 'same-origin',
@@ -350,7 +364,7 @@
       });
     }
 
-    if (grantedMarketing) loadMetaPixel();
+    if (grantedMarketing && !serverOnlyMode) loadMetaPixel();
     if (revokedMarketing) revokeMetaPixel();
 
     if (persist) {
@@ -385,7 +399,8 @@
         autocapture: false,
         capture_pageview: false,
         person_profiles: 'identified_only',
-        persistence: effectivePersistentAnalytics ? 'localStorage+cookie' : 'memory',
+        persistence: serverOnlyMode ? 'memory' :
+          (effectivePersistentAnalytics ? 'localStorage+cookie' : 'memory'),
         disable_session_recording: false,
         session_recording: {
           maskAllInputs: true
@@ -522,11 +537,11 @@
     trackMeta: sendMetaEvent,
     applyExternalState: function(raw) {
       var external = parseConsent(raw);
-      if (!external.decided) return;
+      if (serverOnlyMode || !external.decided) return;
       return applyState(external, 'storage_sync', false);
     }
   };
 
   loadPostHog();
-  if (state.marketing) loadMetaPixel();
+  if (!serverOnlyMode && state.marketing) loadMetaPixel();
 }(window, document));
