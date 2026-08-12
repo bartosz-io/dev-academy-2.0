@@ -143,11 +143,11 @@ assert(!/padding:|border-radius:/.test(highlightBaseStyles[1]));
 assert(!/box-shadow:/.test(securityHighlightStyles[1]));
 assert(!/box-shadow:/.test(testingHighlightStyles[1]));
 assert(
-  /background:\s*linear-gradient\(to bottom, transparent 0 62%, #ded3ff 62% 90%, transparent 90% 100%\);/
+  /background:\s*linear-gradient\(to bottom, transparent 0 62%, #9c7bff 62% 90%, transparent 90% 100%\);/
     .test(securityHighlightStyles[1])
 );
 assert(
-  /background:\s*linear-gradient\(to bottom, transparent 0 62%, #cff3e5 62% 90%, transparent 90% 100%\);/
+  /background:\s*linear-gradient\(to bottom, transparent 0 62%, #53c49c 62% 90%, transparent 90% 100%\);/
     .test(testingHighlightStyles[1])
 );
 assert(/\.newsletter-mini-pill-icon\s*\{[\s\S]*?width:\s*2rem;/.test(newsletterStyles));
