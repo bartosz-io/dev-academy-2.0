@@ -103,6 +103,9 @@ the same content hierarchy. The copy and form remain the dominant left-side
 elements. Both email miniatures remain visible on the right. Mobile stacks the
 content without hiding either product example.
 
+On the homepage, the compact header CTA reads `Free lessons`. Other page header
+labels are not changed by this redesign.
+
 ## Email miniatures
 
 Retain both hero visualizations:
