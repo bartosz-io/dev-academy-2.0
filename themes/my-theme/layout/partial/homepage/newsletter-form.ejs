@@ -1,5 +1,6 @@
 <%
 var emailId = formId + '-email';
+var reassuranceText = typeof reassurance === 'string' ? reassurance : null;
 var formOptions = {
     settings: {
         after_subscribe: {
@@ -50,7 +51,11 @@ var formOptions = {
         </button>
     </div>
     <p class="newsletter-form-reassurance">
+        <% if (reassuranceText) { %>
+            <%= reassuranceText %>
+        <% } else { %>
         Free. Double opt-in. Check your inbox to confirm. Unsubscribe anytime.
         <a href="<%- config.newsletter.privacy_url %>">Privacy policy</a>.
+        <% } %>
     </p>
 </form>

@@ -68,7 +68,8 @@ assert(
   ),
   'Pills form anchor must clear the fixed desktop header'
 );
-assert(homepage.includes('Get the free Pills'));
+assert.strictEqual(count(homepage, '>Free lessons</a>'), 2);
+assert(blogPost.includes('Get the free Pills'));
 assert(homepage.includes('aria-controls="primary-navigation"'));
 assert(homepage.includes('aria-expanded="false"'));
 assert(mainJs.includes('setAttribute("aria-expanded","true")'));
@@ -116,19 +117,36 @@ assert.strictEqual(newsletterForms.length, 3);
   assert(!form.includes('name="fields[first_name]"'));
   assert(form.includes('for="' + formId + '-email"'));
   assert(form.includes('id="' + formId + '-email"'));
-  assert(form.includes('Check your inbox'));
+  if (placement === 'homepage_hero') {
+    assert(form.includes('Free. First Security lesson after confirmation. Unsubscribe anytime.'));
+  } else {
+    assert(form.includes('Check your inbox'));
+  }
   assert(form.includes('class="newsletter-form-submit-label"'));
   assert(form.includes('class="newsletter-form-submit-loading"'));
   assert(form.includes('class="newsletter-form-submit-spinner"'));
   assert(form.includes('Sending…'));
 });
 
-assert(homepage.includes('For JavaScript &amp; TypeScript developers'));
-assert(homepage.includes('Build web applications you can trust.'));
-assert(homepage.includes('Security Tuesday'));
-assert(homepage.includes('Testing Friday'));
-assert(homepage.includes('Under five minutes'));
-assert(homepage.includes('900+ course enrollments across Web Security &amp; Full-stack Testing'));
+assert(homepage.includes('Your code works. Do you know if it’s'));
+assert(homepage.includes('class="newsletter-highlight newsletter-highlight-security">secure</span>'));
+assert(homepage.includes('class="newsletter-highlight newsletter-highlight-testing">tested</span>'));
+assert(homepage.includes('Spot security risks and testing gaps — even in AI-generated code.'));
+assert(homepage.includes('Two practical lessons a week, under 5 minutes each.'));
+assert(!homepage.includes('For JavaScript &amp; TypeScript developers'));
+assert(!homepage.includes('class="newsletter-cadence"'));
+assert(homepage.includes('Get the free lessons →'));
+assert(homepage.includes('Free. First Security lesson after confirmation. Unsubscribe anytime.'));
+assert(homepage.includes('Security Tuesday · 3-min email'));
+assert(homepage.includes('Testing Friday · 4-min email'));
+assert.strictEqual(count(homepage, 'class="newsletter-mini-pill-icon"'), 2);
+assert(homepage.includes('<strong>900+ course enrollments</strong>'));
+assert(homepage.includes('Previous Web Security &amp; Full-stack Testing programs'));
+assert(
+  homepage.indexOf('<p class="newsletter-proof-line"') >
+    homepage.indexOf('class="newsletter-mini-pill newsletter-mini-pill-testing"'),
+  'hero proof must follow both miniature emails'
+);
 assert(homepage.includes('big ball of mud'));
 assert(homepage.includes('Restrict the dependencies with testing'));
 assert(homepage.includes('controllers should not depend on APIs'));
@@ -220,7 +238,7 @@ assert(!welcome.includes('<header class="header">'));
 assert(!welcome.includes('<footer class="footer">'));
 assert.strictEqual(count(homepage, '/js/privacy/consent-runtime.js'), 1);
 assert.strictEqual(count(welcome, '/js/privacy/consent-runtime.js'), 1);
-assert(homepage.includes('data-open-privacy-settings'));
+assert(!homepage.includes('data-open-privacy-settings'));
 assert(welcome.includes('data-open-privacy-settings'));
 assert(!homepage.includes('/js/posthog/posthog.js'));
 

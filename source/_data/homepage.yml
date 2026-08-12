@@ -1,19 +1,25 @@
 hero:
-  audience: For JavaScript & TypeScript developers
-  title: Build web applications you can trust.
-  summary: Get two practical Knowledge Pills every week to help you review, secure, and test code written by you, your team, or AI.
-  proof: 900+ course enrollments across Web Security & Full-stack Testing
+  title:
+    before: Your code works. Do you know if it’s
+    security: secure
+    middle: and well
+    testing: tested
+    after: "?"
+  summary: Spot security risks and testing gaps — even in AI-generated code. Two practical lessons a week, under 5 minutes each.
+  proof:
+    value: 900+ course enrollments
+    context: Previous Web Security & Full-stack Testing programs
   security_card:
     label: Security Tuesday
-    time: 3 min read
-    title: Can another website frame your app?
-    problem: An invisible iframe can turn a user's click into an authenticated action.
+    time: 3-min email
+    title: Can another website click your buttons?
+    problem: An invisible iframe can turn a user's click into a real action.
     code: "Content-Security-Policy: frame-ancestors 'none';"
   testing_card:
     label: Testing Friday
-    time: 4 min read
-    title: Can we test application architecture?
-    problem: Stop a clean dependency graph becoming a big ball of mud.
+    time: 4-min email
+    title: Test your architecture before it drifts
+    problem: Turn an architectural intention into an executable rule.
     code: controllers should not depend on APIs
 
 security_pill:

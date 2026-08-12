@@ -28,7 +28,7 @@
 <% if (page.layout === 'landing')  {%>
     <%- body %>
 <% } else { %>
-    <%- partial('partial/header', {}, {caches: true}) %>
+    <%- partial('partial/header') %>
     <main>
         <!-- markdown content from .md file -->
         <%- body %>
