@@ -164,6 +164,8 @@ assert(homepage.includes('Testing Friday · 4-min email'));
 assert.strictEqual(count(homepage, 'class="newsletter-mini-pill-icon"'), 2);
 assert(!homepage.includes('class="newsletter-proof-line"'));
 assert(!homepage.includes('Previous Web Security &amp; Full-stack Testing programs'));
+assert(homepage.includes('Every email is a short Knowledge Pill — one practical lesson you can read in under five minutes and use right away.'));
+assert(!homepage.includes('Every Pill stands on its own.'));
 assert(homepage.includes('big ball of mud'));
 assert(homepage.includes('Restrict the dependencies with testing'));
 assert(homepage.includes('controllers should not depend on APIs'));
