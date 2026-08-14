@@ -13,7 +13,7 @@
 - The body is authored as plain-text-first Markdown, not HTML.
 - Use `status: ready`, testing sequence position `2`, and an 18-month review interval ending `2028-02-14`.
 - Teach the architecture-testing concept without using TSArch or another library API in the body.
-- Do not prescribe controllers, services, or API modules as the universally correct architecture.
+- Do not prescribe controllers, services, or repositories as the universally correct architecture.
 - Keep AI secondary: a person or an agent can break the same boundary.
 - Do not claim that ordinary unit tests can never catch architecture violations; say that a boundary needs an explicit test or static rule to be enforced automatically.
 - Include exactly two image placeholders with the accepted TST-002 asset filenames.
@@ -198,11 +198,11 @@ The unit tests pass.
 
 The application behaves correctly.
 
-But the controller now imports the API module directly, bypassing the service layer:
+But the controller now imports the repository directly, bypassing the service layer:
 
 ```ts
 // checkout.controller.ts
-import { paymentsApi } from './payments.api';
+import { paymentsRepository } from './payments.repository';
 ```
 
 Is the pull request safe to merge?
@@ -214,7 +214,7 @@ Architecturally? No.
 In this application, the intended dependency direction is:
 
 ```text
-Controller → Service → API
+Controller → Service → Repository
 ```
 
 **[IMAGE PLACEHOLDER — upload `assets/TST-002/clean-layered-architecture.png` here]**
@@ -222,7 +222,7 @@ Controller → Service → API
 The new import creates a shortcut:
 
 ```text
-Controller ─────────→ API
+Controller ─────────→ Repository
 ```
 
 The behavior-focused tests may still pass because they verify what the feature does. They do not enforce the direction of dependencies unless we explicitly ask them to.
@@ -234,16 +234,16 @@ If an architectural boundary matters, turn it into an executable rule:
 ```text
 Files matching: *.controller.ts
 must not depend directly on:
-*.api.ts
+*.repository.ts
 ```
 
-Run this rule in your CI/CD pipeline. The moment a controller imports an API module directly, the architecture test fails—even if the feature works and every unit test is green.
+Run this rule in your CI/CD pipeline. The moment a controller imports a repository directly, the architecture test fails—even if the feature works and every unit test is green.
 
 One shortcut will not destroy an application. But repeated shortcuts slowly replace the intended architecture with a web of accidental dependencies.
 
 **[IMAGE PLACEHOLDER — upload `assets/TST-002/big-ball-of-mud.png` here]**
 
-The important point is not that every project must use controllers, services, and API modules.
+The important point is not that every project must use controllers, services, and repositories.
 
 The point is this:
 

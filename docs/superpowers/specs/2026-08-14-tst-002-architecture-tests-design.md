@@ -12,7 +12,7 @@ An agent or developer can complete a local task while missing an unwritten syste
 
 1. Present an agent-generated pull request containing a working feature.
 2. State that the code compiles, the unit tests pass, and the application behaves correctly.
-3. Reveal that `checkout.controller.ts` now imports `payments.api.ts` directly and bypasses the service layer.
+3. Reveal that `checkout.controller.ts` now imports `payments.repository.ts` directly and bypasses the service layer.
 4. Ask whether the pull request is safe to merge, then distinguish functional correctness from architectural compliance.
 5. Show the intended dependency direction with the original clean layered-architecture diagram.
 6. Explain that behavior-focused tests do not automatically enforce dependency direction.
@@ -21,10 +21,10 @@ An agent or developer can complete a local task while missing an unwritten syste
    ```text
    Files matching: *.controller.ts
    must not depend directly on:
-   *.api.ts
+   *.repository.ts
    ```
 
-8. Tell the reader to run the rule in the CI/CD pipeline. A direct controller-to-API dependency must fail even when the feature works and the unit tests remain green.
+8. Tell the reader to run the rule in the CI/CD pipeline. A direct controller-to-repository dependency must fail even when the feature works and the unit tests remain green.
 9. Show the original big-ball-of-mud diagram as the cumulative outcome of unguarded shortcuts.
 10. End with one practical check: choose one important architectural boundary and determine whether CI can detect a violation.
 
@@ -37,7 +37,7 @@ The production email opens with this structure:
 > The unit tests pass.  
 > The application behaves correctly.
 >
-> But the controller now imports the API module directly, bypassing the service layer.
+> But the controller now imports the repository directly, bypassing the service layer.
 >
 > Is the pull request safe to merge?
 
@@ -52,10 +52,10 @@ Use one minimal TypeScript import to make the violation concrete:
 
 ```ts
 // checkout.controller.ts
-import { paymentsApi } from './payments.api';
+import { paymentsRepository } from './payments.repository';
 ```
 
-The example illustrates one explicitly chosen architecture. It does not claim that every application must use controllers, services, or API modules. The lesson is to enforce the dependency boundaries that the team deliberately selected for its own system.
+The example illustrates one explicitly chosen architecture. It does not claim that every application must use controllers, services, or repositories. The lesson is to enforce the dependency boundaries that the team deliberately selected for its own system.
 
 ## Image delivery
 
