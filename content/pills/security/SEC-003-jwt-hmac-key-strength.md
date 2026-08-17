@@ -1,7 +1,7 @@
 ---
 id: SEC-003
 track: security
-status: draft
+status: ready
 sequence_position: 3
 subject: "Could someone guess your JWT signing key?"
 preview_text: "HS256 can be correctly implemented and still rely on a weak shared secret."

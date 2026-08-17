@@ -6,19 +6,17 @@
 
 - `SEC-001` — Clickjacking and `frame-ancestors` (source: `1 clickjacking.pdf`)
 - `SEC-002` — Exact URL origin allow-list validation (source: `url.pdf`)
+- `SEC-003` — JWT HMAC signing-key strength (source: `jwt.pdf`)
 
 ### Next
 
-1. **JWT HMAC signing-key strength** (source: `jwt.pdf`)
-   - Angle: a correctly signed token is forgeable when the shared secret is guessable.
-   - Refresh before drafting: verify current JOSE guidance, minimum key requirements, and library behavior using primary documentation.
-2. **Password-reset tokens and referrer leakage** (source: `referer.pdf`)
+1. **Password-reset tokens and referrer leakage** (source: `referer.pdf`)
    - Angle: a secret in a reset-page URL can leave the page in referrer information sent to another origin.
    - Refresh before drafting: verify current browser defaults and choose an explicit policy suitable for a sensitive reset page.
-3. **Security-event logging beyond access logs** (source: `accuntable.pdf`)
+2. **Security-event logging beyond access logs** (source: `accuntable.pdf`)
    - Angle: HTTP access logs cannot answer every question about authorization decisions and user actions.
    - Refresh before drafting: define useful event context without logging credentials, reset tokens, or unnecessary personal data.
-4. **XSS escape hatches in modern frameworks** (source: `xss.pdf`)
+3. **XSS escape hatches in modern frameworks** (source: `xss.pdf`)
    - Angle: framework escaping helps until code deliberately crosses an HTML injection boundary.
    - Refresh before drafting: select one focused framework example and verify its current API and sanitization guidance.
 
