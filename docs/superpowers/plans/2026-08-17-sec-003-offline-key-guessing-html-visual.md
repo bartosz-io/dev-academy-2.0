@@ -29,7 +29,7 @@
 - Consumes: the approved copy and HTML contract from `docs/superpowers/specs/2026-08-17-sec-003-offline-key-guessing-html-visual-design.md`.
 - Produces: one HTML region labelled `How an attacker guesses a weak JWT signing key offline` between the offline-attack paragraph and the impact paragraph.
 
-- [ ] **Step 1: Run the focused check to verify the visualization starts red**
+- [x] **Step 1: Run the focused check to verify the visualization starts red**
 
 Run:
 
@@ -39,7 +39,7 @@ node -e 'const fs=require("fs");const p="content/pills/security/SEC-003-jwt-hmac
 
 Expected: FAIL with `SEC-003 offline key guessing visual missing`.
 
-- [ ] **Step 2: Insert the approved HTML after the offline-attack paragraph**
+- [x] **Step 2: Insert the approved HTML after the offline-attack paragraph**
 
 Immediately after the paragraph ending `your application’s rate limiter does not slow it down.`, insert:
 
@@ -111,7 +111,7 @@ Immediately after the paragraph ending `your application’s rate limiter does n
 
 Do not modify the paragraphs before or after the insertion.
 
-- [ ] **Step 3: Run the focused HTML acceptance check**
+- [x] **Step 3: Run the focused HTML acceptance check**
 
 Run:
 
@@ -121,7 +121,7 @@ node -e 'const fs=require("fs");const {parsePill,countWords}=require("./scripts/
 
 Expected: exit `0`, three labelled regions, two presentation tables, two unchanged code structures, correct placement, and fewer than 900 validator words.
 
-- [ ] **Step 4: Run the Pill test suite**
+- [x] **Step 4: Run the Pill test suite**
 
 Run:
 
@@ -132,7 +132,7 @@ npm run pills:check
 
 Expected: all structure, validator, and CLI checks pass; collection validation reports `5 Knowledge Pills passed validation.`
 
-- [ ] **Step 5: Commit the canonical content change**
+- [x] **Step 5: Commit the canonical content change**
 
 ```bash
 git add content/pills/security/SEC-003-jwt-hmac-key-strength.md
@@ -153,7 +153,7 @@ git commit -m "content: visualize offline JWT key guessing"
 - Consumes: the three-region SEC-003 artifact from Task 1.
 - Produces: historical acceptance documentation that continues to validate exactly two code regions while allowing the approved third explanatory region.
 
-- [ ] **Step 1: Verify the old final acceptance commands still assume two total regions**
+- [x] **Step 1: Verify the old final acceptance commands still assume two total regions**
 
 Run:
 
@@ -163,7 +163,7 @@ rg -n 'if\(count\("role=\\"region\\""\)!==2\)' docs/superpowers/plans/2026-08-17
 
 Expected: two matches, one in each historical implementation plan.
 
-- [ ] **Step 2: Clarify the two design documents**
+- [x] **Step 2: Clarify the two design documents**
 
 In `docs/superpowers/specs/2026-08-17-sec-003-jwt-hmac-key-strength-design.md`, replace the acceptance wording that requires exactly two labelled HTML regions with:
 
@@ -177,7 +177,7 @@ In `docs/superpowers/specs/2026-08-17-knowledge-pills-html-code-snippets-design.
 These counts apply to code regions identified by their two approved code labels and `<pre><code>` structures. SEC-003 may contain the separately approved non-code HTML visualization region; acceptance must not infer the number of code snippets from the total `role="region"` count.
 ```
 
-- [ ] **Step 3: Update both historical final acceptance commands**
+- [x] **Step 3: Update both historical final acceptance commands**
 
 In the final acceptance command in each historical plan:
 
@@ -199,7 +199,7 @@ if (r.metadata.status !== "ready" || r.metadata.sequence_position !== 3) failed.
 
 Do not rewrite the historical RED steps or exact original draft; only align the commands and prose intended to validate the current artifact.
 
-- [ ] **Step 4: Verify documentation consistency**
+- [x] **Step 4: Verify documentation consistency**
 
 Run:
 
@@ -209,7 +209,7 @@ node -e 'const fs=require("fs");const files=["docs/superpowers/plans/2026-08-17-
 
 Expected: `SEC-003 historical acceptance documentation check passed.`
 
-- [ ] **Step 5: Run final repository verification**
+- [x] **Step 5: Run final repository verification**
 
 Run:
 
@@ -222,7 +222,7 @@ git status --short
 
 Expected: all Pill tests pass, five Pills pass collection validation, no whitespace errors exist, and only the approved SEC-003 consistency documentation plus this implementation plan remain uncommitted after Task 1.
 
-- [ ] **Step 6: Commit the documentation alignment and plan**
+- [x] **Step 6: Commit the documentation alignment and plan**
 
 ```bash
 git add docs/superpowers/specs/2026-08-17-sec-003-jwt-hmac-key-strength-design.md docs/superpowers/specs/2026-08-17-knowledge-pills-html-code-snippets-design.md docs/superpowers/plans/2026-08-17-sec-003-jwt-hmac-key-strength.md docs/superpowers/plans/2026-08-17-knowledge-pills-html-code-snippets.md docs/superpowers/plans/2026-08-17-sec-003-offline-key-guessing-html-visual.md

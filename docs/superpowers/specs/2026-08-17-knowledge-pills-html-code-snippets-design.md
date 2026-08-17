@@ -158,6 +158,11 @@ After migration, the check must confirm:
 10. the Pill remains within the 900-word limit and retains its existing
     metadata and technical assertions.
 
+These counts apply to code regions identified by their two approved code labels
+and `<pre><code>` structures. SEC-003 may contain the separately approved
+non-code HTML visualization region; acceptance must not infer the number of code
+snippets from the total `role="region"` count.
+
 Then run:
 
 - `npm run test:pills`;

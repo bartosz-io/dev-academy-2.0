@@ -146,9 +146,10 @@ Implementation must follow a red-green content acceptance cycle:
 
 1. verify that the canonical `SEC-003` file does not yet exist;
 2. create the exact approved draft;
-3. confirm its ID, status, sequence position, subject, preview, sources,
-   exactly two labelled syntax-highlighted HTML code regions, no fenced code
-   blocks or image placeholders, required mitigation, and maximum word count;
+3. confirm its ID, status, sequence position, subject, preview, sources, two
+   labelled syntax-highlighted HTML code regions, one labelled email-safe HTML
+   visualization of offline key guessing, no fenced code blocks or image
+   assets, required mitigation, and maximum word count;
 4. run `npm run test:pills`;
 5. run `npm run pills:check`, expecting five valid Knowledge Pills;
 6. run `git diff --check` and review the complete diff.
