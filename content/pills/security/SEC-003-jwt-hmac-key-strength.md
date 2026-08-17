@@ -26,7 +26,29 @@ It’s time for another Security Pill. 💊
 
 Imagine you find this value in an application’s deployment configuration:
 
-`JWT_HMAC_KEY=secret123`
+<div
+  role="region"
+  aria-label="Weak JWT HMAC key configuration"
+  style="
+    margin: 24px 0;
+    padding: 20px 22px;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 10px;
+  "
+>
+  <pre
+    style="
+      margin: 0;
+      color: #24292f;
+      font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 15px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    "
+  ><code>JWT_HMAC_KEY<span style="color:#57606a;">=</span><strong style="color:#cf222e;">secret123</strong></code></pre>
+</div>
 
 The application uses HS256. It creates tokens, verifies their signatures, and appears to work correctly.
 
@@ -48,12 +70,32 @@ For HS256, RFC 7518 requires a key of at least 256 bits—that is, 32 bytes. JWT
 
 In Node.js, you can generate 32 cryptographically strong random bytes like this:
 
-```js
-import { randomBytes } from 'node:crypto';
+<div
+  role="region"
+  aria-label="Generating a random HS256 key in Node.js"
+  style="
+    margin: 24px 0;
+    padding: 20px 22px;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 10px;
+  "
+>
+  <pre
+    style="
+      margin: 0;
+      color: #24292f;
+      font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 15px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    "
+  ><code><span style="color:#0000cc;">import</span> { <strong>randomBytes</strong> } <span style="color:#0000cc;">from</span> <span style="color:#0a7a28;">&#39;node:crypto&#39;</span>;
 
-const encodedKey = randomBytes(32).toString('base64url');
-console.log(encodedKey);
-```
+<span style="color:#8250df;">const</span> encodedKey = <strong>randomBytes</strong>(32).<strong>toString</strong>(<span style="color:#0a7a28;">&#39;base64url&#39;</span>);
+<strong>console</strong>.<strong>log</strong>(encodedKey);</code></pre>
+</div>
 
 Run this once during secret provisioning, then store the result in your deployment’s secret-management system.
 

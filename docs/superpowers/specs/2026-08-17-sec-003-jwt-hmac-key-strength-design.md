@@ -36,6 +36,10 @@ Open with a plausible environment value:
 JWT_HMAC_KEY=secret123
 ```
 
+In the canonical email, render this value as the syntax-highlighted HTML region
+labelled `Weak JWT HMAC key configuration`, following the Knowledge Pills code
+snippet rule.
+
 The configuration looks operational because the application can create and
 verify HS256 tokens. The hidden assumption is that using a strong hash function
 makes a human-chosen shared key strong.
@@ -65,6 +69,9 @@ import { randomBytes } from 'node:crypto';
 const encodedKey = randomBytes(32).toString('base64url');
 console.log(encodedKey);
 ```
+
+In the canonical email, render this example as the syntax-highlighted HTML
+region labelled `Generating a random HS256 key in Node.js`.
 
 Frame this as a one-time provisioning command. The output is stored in the
 deployment's secret-management system. It is not generated at every process
@@ -139,8 +146,9 @@ Implementation must follow a red-green content acceptance cycle:
 
 1. verify that the canonical `SEC-003` file does not yet exist;
 2. create the exact approved draft;
-3. confirm its ID, status, sequence position, subject, preview, sources, absence
-   of HTML and image placeholders, required mitigation, and maximum word count;
+3. confirm its ID, status, sequence position, subject, preview, sources,
+   exactly two labelled syntax-highlighted HTML code regions, no fenced code
+   blocks or image placeholders, required mitigation, and maximum word count;
 4. run `npm run test:pills`;
 5. run `npm run pills:check`, expecting five valid Knowledge Pills;
 6. run `git diff --check` and review the complete diff.

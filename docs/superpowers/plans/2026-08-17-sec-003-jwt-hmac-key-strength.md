@@ -17,6 +17,7 @@
 - State that RFC 7518 requires at least 256 bits, or 32 bytes, for HS256.
 - State that a human-memorable password must not be used directly as an HS256 key.
 - Frame `randomBytes(32)` as one-time provisioning, never application startup behavior.
+- Render the two standalone code snippets as self-contained, syntax-highlighted HTML; keep short inline technical references in Markdown code spans.
 - Do not include JWT-versus-cookie comparisons, other JWT attacks, AI framing, images, or a promotional CTA.
 - Leave `content/pills/backlog.md` and Kit unchanged while the Pill is a draft.
 
@@ -79,7 +80,29 @@ It’s time for another Security Pill. 💊
 
 Imagine you find this value in an application’s deployment configuration:
 
-`JWT_HMAC_KEY=secret123`
+<div
+  role="region"
+  aria-label="Weak JWT HMAC key configuration"
+  style="
+    margin: 24px 0;
+    padding: 20px 22px;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 10px;
+  "
+>
+  <pre
+    style="
+      margin: 0;
+      color: #24292f;
+      font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 15px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    "
+  ><code>JWT_HMAC_KEY<span style="color:#57606a;">=</span><strong style="color:#cf222e;">secret123</strong></code></pre>
+</div>
 
 The application uses HS256. It creates tokens, verifies their signatures, and appears to work correctly.
 
@@ -101,12 +124,32 @@ For HS256, RFC 7518 requires a key of at least 256 bits—that is, 32 bytes. JWT
 
 In Node.js, you can generate 32 cryptographically strong random bytes like this:
 
-```js
-import { randomBytes } from 'node:crypto';
+<div
+  role="region"
+  aria-label="Generating a random HS256 key in Node.js"
+  style="
+    margin: 24px 0;
+    padding: 20px 22px;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 10px;
+  "
+>
+  <pre
+    style="
+      margin: 0;
+      color: #24292f;
+      font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 15px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    "
+  ><code><span style="color:#0000cc;">import</span> { <strong>randomBytes</strong> } <span style="color:#0000cc;">from</span> <span style="color:#0a7a28;">&#39;node:crypto&#39;</span>;
 
-const encodedKey = randomBytes(32).toString('base64url');
-console.log(encodedKey);
-```
+<span style="color:#8250df;">const</span> encodedKey = <strong>randomBytes</strong>(32).<strong>toString</strong>(<span style="color:#0a7a28;">&#39;base64url&#39;</span>);
+<strong>console</strong>.<strong>log</strong>(encodedKey);</code></pre>
+</div>
 
 Run this once during secret provisioning, then store the result in your deployment’s secret-management system.
 
@@ -138,10 +181,10 @@ Dev Academy
 Run:
 
 ```bash
-node -e "const fs=require('fs');const {parsePill,countWords}=require('./scripts/pills/validator');const p='content/pills/security/SEC-003-jwt-hmac-key-strength.md';const s=fs.readFileSync(p,'utf8');const r=parsePill(s,p);const m=r.metadata;const checks=[[m.id==='SEC-003','id'],[m.track==='security','track'],[m.status==='draft','status'],[m.sequence_position===3,'position'],[m.subject==='Could someone guess your JWT signing key?','subject'],[m.preview_text==='HS256 can be correctly implemented and still rely on a weak shared secret.','preview'],[Array.isArray(m.sources)&&m.sources.length===4,'sources'],[s.includes('randomBytes(32)'),'random byte generation'],[s.includes('at least 256 bits'),'minimum key size'],[!/<\/?[a-z][^>]*>/i.test(s),'HTML'],[!s.includes('IMAGE PLACEHOLDER'),'image placeholder'],[countWords(r.body)<=900,'word count']];const failed=checks.filter(([ok])=>!ok).map(([,name])=>name);if(failed.length)throw new Error('failed: '+failed.join(', '));console.log('SEC-003 draft checks passed with '+countWords(r.body)+' words.');"
+node -e 'const fs=require("fs");const {parsePill,countWords}=require("./scripts/pills/validator");const p="content/pills/security/SEC-003-jwt-hmac-key-strength.md";const s=fs.readFileSync(p,"utf8");const r=parsePill(s,p);const count=x=>(s.match(new RegExp(x,"g"))||[]).length;const required=["aria-label=\"Weak JWT HMAC key configuration\"","aria-label=\"Generating a random HS256 key in Node.js\"","background: #f6f8fa","border: 1px solid #d0d7de","font-family: SFMono-Regular","white-space: pre-wrap","overflow-wrap: anywhere","color:#0000cc","color:#0a7a28","color:#8250df","color:#cf222e","color:#57606a","&#39;node:crypto&#39;","&#39;base64url&#39;"];const failed=required.filter(x=>!s.includes(x));if(count("role=\"region\"")!==2)failed.push("two regions");if(count("<pre")!==2)failed.push("two pre elements");if(count("<code>")!==2)failed.push("two code elements");if(/```/.test(r.body))failed.push("fenced code");if(/<link\b|<script\b|\son[a-z]+\s*=/i.test(r.body))failed.push("unsafe or external markup");if(s.includes("IMAGE PLACEHOLDER"))failed.push("image placeholder");if(r.metadata.status!=="draft"||r.metadata.sequence_position!==3)failed.push("metadata");if(countWords(r.body)>900)failed.push("word count");if(failed.length)throw new Error("failed: "+failed.join(", "));const visible=r.body.replace(/<[^>]+>/g," ").replace(/&#39;/g,"\u0027");console.log("SEC-003 HTML code checks passed; visible count: "+countWords(visible)+" words; validator count: "+countWords(r.body)+" words.");'
 ```
 
-Expected: `SEC-003 draft checks passed with 368 words.`
+Expected: the command exits `0`, reports both counts, and keeps the validator count below 900 words.
 
 - [x] **Step 4: Run the editorial infrastructure tests**
 
