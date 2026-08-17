@@ -62,6 +62,70 @@ Once someone obtains one valid token, they have both the signed data and its aut
 
 That work happens offline. It does not require repeated login attempts, so your application’s rate limiter does not slow it down.
 
+<div
+  role="region"
+  aria-label="How an attacker guesses a weak JWT signing key offline"
+  style="
+    margin: 24px 0;
+    padding: 24px 18px;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 14px;
+    color: #24292f;
+    font-family: Arial, Helvetica, sans-serif;
+  "
+>
+  <div style="font-size:22px;font-weight:700;text-align:center;margin-bottom:6px;">Guessing a weak JWT signing key</div>
+  <div style="font-size:14px;text-align:center;color:#57606a;margin-bottom:24px;">One captured token is enough to test candidate keys offline.</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:separate;">
+    <tr>
+      <td width="46%" valign="middle" style="width:46%;padding:18px;background:#ffffff;border:1px solid #d0d7de;border-radius:10px;text-align:center;">
+        <div style="font-size:12px;color:#57606a;margin-bottom:5px;"><strong>1 · OBTAIN A TOKEN</strong></div>
+        <div style="font-size:17px;font-weight:700;">Captured JWT</div>
+        <div style="font-size:12px;line-height:1.4;color:#57606a;margin-top:6px;">For example, from a request visible in browser DevTools</div>
+      </td>
+      <td width="8%" align="center" valign="middle" style="width:8%;font-size:26px;font-weight:700;color:#57606a;">→</td>
+      <td width="46%" valign="middle" style="width:46%;padding:18px;background:#fff5f5;border:1px solid #cf222e;border-radius:10px;text-align:center;">
+        <div style="font-size:12px;color:#cf222e;margin-bottom:5px;"><strong>2 · CHOOSE A CANDIDATE KEY</strong></div>
+        <div style="font:700 17px Consolas, Menlo, monospace;color:#cf222e;">secret123?</div>
+        <div style="font-size:12px;line-height:1.4;color:#57606a;margin-top:6px;">Try a common password or the next value from a wordlist</div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td align="center" style="height:34px;font-size:26px;font-weight:700;color:#57606a;">↓</td>
+    </tr>
+    <tr>
+      <td width="46%" valign="middle" style="width:46%;padding:18px;background:#ffffff;border:1px solid #d0d7de;border-radius:10px;text-align:center;">
+        <div style="font-size:12px;color:#57606a;margin-bottom:5px;"><strong>4 · COMPARE</strong></div>
+        <div style="font-size:17px;font-weight:700;">Signatures match?</div>
+        <div style="font-size:12px;line-height:1.4;color:#57606a;margin-top:6px;">Compare the result with the signature in the captured JWT</div>
+      </td>
+      <td width="8%" align="center" valign="middle" style="width:8%;font-size:26px;font-weight:700;color:#57606a;">←</td>
+      <td width="46%" valign="middle" style="width:46%;padding:18px;background:#faf5ff;border:1px solid #8250df;border-radius:10px;text-align:center;">
+        <div style="font-size:12px;color:#8250df;margin-bottom:5px;"><strong>3 · COMPUTE LOCALLY</strong></div>
+        <div style="font-size:17px;font-weight:700;color:#8250df;">HMAC-SHA-256</div>
+        <div style="font-size:12px;line-height:1.4;color:#57606a;margin-top:6px;">Sign the captured header and payload with the candidate key</div>
+      </td>
+    </tr>
+  </table>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;margin-top:16px;">
+    <tr>
+      <td width="50%" style="width:50%;padding:0 5px 0 0;">
+        <div style="padding:11px 13px;border-radius:8px;background:#fff1f0;color:#cf222e;font-size:14px;font-weight:700;text-align:center;">NO ↺ try the next candidate key</div>
+      </td>
+      <td width="50%" style="width:50%;padding:0 0 0 5px;">
+        <div style="padding:11px 13px;border-radius:8px;background:#dafbe1;color:#0a7a28;font-size:14px;font-weight:700;text-align:center;">YES → signing key recovered</div>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid #d0d7de;text-align:center;font-size:14px;color:#57606a;">No login attempts · No requests to the application · No rate limiting</div>
+</div>
+
 If the shared key is recovered, the attacker can change claims, calculate a new authentication code, and create tokens that services trusting that key may accept.
 
 They did not break SHA-256. They guessed the key.
