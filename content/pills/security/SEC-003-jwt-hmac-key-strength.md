@@ -73,6 +73,8 @@ A library can verify every signature correctly and still be protecting it with t
 
 That’s all for today. One strong algorithm, one weak assumption, one practical check. 💊
 
-See you next Tuesday,  
-Bartosz  
+See you next Tuesday,
+
+Bartosz
+
 Dev Academy
