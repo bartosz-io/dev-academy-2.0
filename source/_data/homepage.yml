@@ -1,23 +1,21 @@
 hero:
   title:
-    before: Your code works. Do you know if it’s
-    security: secure
-    middle: and well
-    testing: tested
-    after: "?"
-  summary: Spot security risks and testing gaps — even in AI-generated code. Two practical lessons a week, under 5 minutes each.
+    before: The weekly web
+    highlight: security
+    after: email for developers.
+  summary: One vulnerability. One code example. One practical fix. Under five minutes.
   security_card:
-    label: Security Tuesday
+    label: "Security Email #1"
     time: 3-min email
     title: Can another website click your buttons?
     problem: An invisible iframe can turn a user's click into a real action.
     code: "Content-Security-Policy: frame-ancestors 'none';"
-  testing_card:
-    label: Testing Friday
-    time: 4-min email
-    title: Test your architecture before it drifts
-    problem: Turn an architectural intention into an executable rule.
-    code: controllers should not depend on APIs
+  security_card_2:
+    label: "Security Email #2"
+    time: 3-min email
+    title: Would this malicious URL pass your allow-list?
+    problem: A string prefix can hide an attacker-controlled hostname.
+    code: "value.startsWith('https://safe-app.com')"
 
 security_pill:
   label: Security Tuesday
@@ -30,6 +28,7 @@ security_pill:
   problem_code: |
     <iframe src="https://your-app.com/account"
             class="invisible-overlay"></iframe>
+  problem_code_language: html
   bullets:
     - The user sees the attacker's interface, not the framed page.
     - The click can trigger a real state-changing action in your app.
@@ -38,73 +37,48 @@ security_pill:
   solution: Return a Content Security Policy header with frame-ancestors. Use 'none' when your application should never be embedded.
   solution_code: |
     Content-Security-Policy: frame-ancestors 'none';
+  solution_code_language: plaintext
   takeaway: The browser now refuses to render your application inside an attacker-controlled frame, preventing the clickjacking setup.
   signoff: Stay curious, Bartosz
 
-testing_pill:
-  label: Testing Friday
-  reading_time: 4 min read
-  subject: How to test ARCHITECTURE?
+security_pill_2:
+  label: Security Email #2
+  reading_time: 3 min read
+  subject: Would this malicious URL pass your allow-list?
   greeting: Hi developer,
-  intro: In a layered application, controllers should depend on services and services should depend on repositories.
-  problem_label: Architecture deteriorates silently
-  problem: Without an automated boundary, a clean dependency graph can slowly become a big ball of mud.
+  intro: Imagine an agent opens a pull request containing this URL allow-list. The intention is to accept URLs from safe-app.com and reject everything else.
+  problem_label: This check trusts a string prefix
+  problem: An attacker can put the trusted text at the beginning of a hostname they control, and this validator will accept it.
   problem_code: |
-    controllers -> services -> repositories
+    value.startsWith('https://safe-app.com')
+  problem_code_language: javascript
   bullets:
-    - A controller imports an API file directly.
-    - Reviewers miss the dependency in a large pull request.
-    - The exception becomes the next developer's precedent.
-  solution_label: Restrict the dependencies with testing
-  solution: In TypeScript, TSArch can fail the build when a controller crosses the boundary.
+    - https://safe-app.com.evil.com passes the string check.
+    - String methods do not understand URL or hostname boundaries.
+  solution_label: Parse the URL and compare its exact origin
+  solution: Let the URL parser identify the scheme, hostname, and port, then compare the complete origin your application trusts.
   solution_code: |
-    describe("Application", () => {
-      it("controllers should not depend on APIs", async () => {
-        const rule = filesOfProject()
-          .matchingPattern(".*controller\\.ts")
-          .shouldNot()
-          .dependOnFiles()
-          .matchingPattern(".*api\\.ts");
-
-        await expect(rule).toPassAsync();
-      });
-    });
-  takeaway: The test turns an architectural intention into an executable rule.
-  signoff: See you next Friday, Bartosz
+    const origin = new URL(value).origin;
+    const trusted = origin === 'https://safe-app.com';
+  solution_code_language: javascript
+  takeaway: AI can generate a validator that looks reasonable. Your review still has to verify whether it enforces the real security boundary.
+  signoff: See you next Tuesday, Bartosz
 
 ai:
   eyebrow: Why this matters now
   title: Code gets produced faster. Judgment doesn't.
-  body: AI can generate features, security headers, and tests. You still need to recognize broken trust boundaries, missing authorization, weak assertions, and tests that pass without proving useful behavior.
-  takeaway: Dev Academy trains the judgment behind the code - one focused Pill at a time.
-
-proof:
-  eyebrow: Proven teaching experience
-  title: 900+ course enrollments
-  description: Real feedback from developers who joined previous Dev Academy programs.
-  testimonials:
-    - name: Hassan A Mohamed
-      date: March 2021
-      program: From a previous Web Security Academy program
-      title: One of the Most Comprehensive Courses on Advanced Web Security
-      quote: >-
-        This is without a doubt one of the most comprehensive course I have taken on advanced web security. Bartosz's ability to explain the theory with live examples shows he is extremely knowledgeable in the topics being taught and he has tons of hours of work and effort put into research and making these contents as understandable as possible.
-    - name: Ishan Soni
-      date: August 2022
-      program: From a previous Web Security Academy program
-      title: Best and Useful course ever.
-      quote: >-
-        I learnt a lot from the course, personally I feel that the experience and the best practices for the web security is crucial, also the amount of information laid down in a concise manner was impressive, thank you for this amazing course.
+  body: AI can generate features and security fixes. You still need to recognize broken trust boundaries, missing authorization, unsafe input handling, exposed secrets, and fixes that protect the wrong thing.
+  takeaway: Dev Academy trains the security judgment behind the code — one focused email at a time.
 
 author:
   eyebrow: Dev Academy by Bartosz Pietrucha
   title: Practical teaching for people who ship real software.
   experience: Building production software since 2013. Teaching developers since 2017.
-  body: I created Dev Academy to make difficult engineering decisions clear, practical, and useful at work. Every Pill starts with a situation a developer can recognize and ends with something concrete to apply.
+  body: I created Dev Academy to make difficult engineering decisions clear, practical, and useful at work. Every email starts with a situation a developer can recognize and ends with something concrete to apply.
   image: /img/bartosz-large.png
   image_alt: Bartosz Pietrucha, founder of Dev Academy
 
 final_cta:
-  eyebrow: Your first Security Pill arrives immediately
-  title: Two useful ideas every week. Less than ten minutes total.
-  body: Security Tuesday. Testing Friday. Free for JavaScript and TypeScript developers.
+  eyebrow: Your first security email arrives immediately
+  title: One practical security lesson every week.
+  body: One vulnerability. One code example. One practical fix. Free for JavaScript and TypeScript developers.

@@ -107,7 +107,7 @@ assert.strictEqual(newsletterForms.length, 3);
   assert(form.includes('https://dev-academy.com/welcome'));
   assert(form.includes('data-element="errors"'));
   assert(form.includes('data-element="fields"'));
-  assert(form.includes('data-newsletter-topic="both"'));
+  assert(form.includes('data-newsletter-topic="security"'));
   assert(form.includes('name="email_address"'));
   ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function(key) {
     assert(form.includes('name="fields[' + key + ']"'));
@@ -128,47 +128,49 @@ assert.strictEqual(newsletterForms.length, 3);
   assert(form.includes('Sending…'));
 });
 
-assert(homepage.includes('Your code works. Do you know if it’s'));
-assert(homepage.includes('class="newsletter-highlight newsletter-highlight-security">secure</span>'));
-assert(homepage.includes('class="newsletter-highlight newsletter-highlight-testing">tested</span>'));
+assert(homepage.includes('<h1 id="newsletter-hero-title">The weekly web <span class="newsletter-highlight newsletter-highlight-security">security</span> email for developers.</h1>'));
+assert(homepage.includes('One vulnerability. One code example. One practical fix. Under five minutes.'));
+assert.strictEqual(count(homepage, 'Get the first email →'), 3);
+assert(!homepage.includes('Your code works. Do you know if it’s'));
+assert(!homepage.includes('newsletter-highlight-testing'));
 assert(/\.newsletter-hero-copy\s*\{[\s\S]*?h1\s*\{[\s\S]*?line-height:\s*1\.1;/.test(newsletterStyles));
-var highlightBaseStyles = newsletterStyles.match(/\.newsletter-highlight\s*\{([^}]*)\}/);
-var securityHighlightStyles = newsletterStyles.match(/\.newsletter-highlight-security\s*\{([^}]*)\}/);
-var testingHighlightStyles = newsletterStyles.match(/\.newsletter-highlight-testing\s*\{([^}]*)\}/);
-
-assert(highlightBaseStyles, 'base highlight styles must exist');
-assert(securityHighlightStyles, 'security highlight styles must exist');
-assert(testingHighlightStyles, 'testing highlight styles must exist');
-assert(!/padding:|border-radius:/.test(highlightBaseStyles[1]));
-assert(!/box-shadow:/.test(securityHighlightStyles[1]));
-assert(!/box-shadow:/.test(testingHighlightStyles[1]));
+assert(newsletterStyles.includes('.newsletter-highlight-security'));
+assert(!newsletterStyles.includes('.newsletter-highlight-testing'));
 assert(
-  /background:\s*linear-gradient\(to bottom, transparent 0 62%, #9c7bff 62% 90%, transparent 90% 100%\);/
-    .test(securityHighlightStyles[1])
-);
-assert(
-  /background:\s*linear-gradient\(to bottom, transparent 0 62%, #53c49c 62% 90%, transparent 90% 100%\);/
-    .test(testingHighlightStyles[1])
+  /\.newsletter-highlight-security\s*\{[\s\S]*?background:\s*linear-gradient\(to bottom, transparent 0 62%, #9c7bff 62% 90%, transparent 90% 100%\);/.test(
+    newsletterStyles
+  )
 );
 assert(/\.newsletter-mini-pill-icon\s*\{[\s\S]*?width:\s*2rem;/.test(newsletterStyles));
 assert(!/\.newsletter-proof-line\s*\{/.test(newsletterStyles));
 assert(!/\.newsletter-cadence\s*\{/.test(newsletterStyles));
-assert(homepage.includes('Spot security risks and testing gaps — even in AI-generated code.'));
-assert(homepage.includes('Two practical lessons a week, under 5 minutes each.'));
 assert(!homepage.includes('For JavaScript &amp; TypeScript developers'));
 assert(!homepage.includes('class="newsletter-cadence"'));
-assert(homepage.includes('Get the free lessons →'));
 assert(homepage.includes('Free. First Security lesson after confirmation. Unsubscribe anytime.'));
-assert(homepage.includes('Security Tuesday · 3-min email'));
-assert(homepage.includes('Testing Friday · 4-min email'));
+assert(homepage.includes('Security Email #1 · 3-min email'));
+assert(homepage.includes('Security Email #2 · 3-min email'));
+assert(!homepage.includes('Testing Friday · 4-min email'));
+assert(homepage.includes('value.startsWith(&#39;https://safe-app.com&#39;)'));
+assert(homepage.includes('class="newsletter-mini-pill newsletter-mini-pill-security-secondary"'));
+assert(!homepage.includes('class="newsletter-mini-pill newsletter-mini-pill-testing"'));
 assert.strictEqual(count(homepage, 'class="newsletter-mini-pill-icon"'), 2);
 assert(!homepage.includes('class="newsletter-proof-line"'));
 assert(!homepage.includes('Previous Web Security &amp; Full-stack Testing programs'));
 assert(homepage.includes('Every email is a short Knowledge Pill — one practical lesson you can read in under five minutes and use right away.'));
 assert(!homepage.includes('Every Pill stands on its own.'));
-assert(homepage.includes('big ball of mud'));
-assert(homepage.includes('Restrict the dependencies with testing'));
-assert(homepage.includes('controllers should not depend on APIs'));
+assert(homepage.includes('Security Email #1 · Clickjacking'));
+assert(homepage.includes('Security Email #2 · URL allow-list'));
+assert(!homepage.includes('Testing Friday · example email'));
+assert(homepage.includes('Would this malicious URL pass your allow-list?'));
+assert(homepage.includes('https://safe-app.com.evil.com'));
+assert(homepage.includes('Parse the URL and compare its exact origin'));
+assert(homepage.includes('class="hljs-keyword">const</span>'));
+assert(homepage.includes('class="hljs-string">&#x27;https://safe-app.com&#x27;</span>'));
+assert(
+  /\.newsletter-email-security-secondary\s*\{[\s\S]*?code\s*\{[\s\S]*?line-height:\s*1\.35;/.test(
+    newsletterStyles
+  )
+);
 assert(homepage.includes('clickjacking'));
 assert(homepage.includes('invisible iframe'));
 assert(homepage.includes('frame-ancestors'));
@@ -179,15 +181,25 @@ assert(!homepage.includes('12-week'));
 assert(!homepage.includes('5-week'));
 assert(homepage.includes('class="newsletter-ai-judgment"'));
 assert(homepage.includes('Code gets produced faster. Judgment doesn&#39;t.'));
-assert(homepage.includes('class="newsletter-proof"'));
-assert.strictEqual(count(homepage, 'From a previous Web Security Academy program'), 2);
-assert(homepage.includes('Hassan A Mohamed'));
-assert(homepage.includes('Ishan Soni'));
+assert(homepage.includes('AI can generate features and security fixes.'));
+assert(homepage.includes('unsafe input handling, exposed secrets, and fixes that protect the wrong thing.'));
+assert(homepage.includes('Dev Academy trains the security judgment behind the code — one focused email at a time.'));
+assert(!homepage.includes('class="newsletter-proof"'));
+assert(!homepage.includes('900+ course enrollments'));
+assert(!homepage.includes('From a previous Web Security Academy program'));
+assert(!newsletterStyles.includes('.newsletter-proof'));
+assert(!newsletterStyles.includes('.newsletter-testimonial'));
 assert(homepage.includes('class="newsletter-about-bartosz"'));
 assert(homepage.includes('Building production software since 2013. Teaching developers since 2017.'));
 assert(homepage.includes('Practical teaching for people who ship real software.'));
-assert(homepage.includes('Your first Security Pill arrives immediately'));
-assert(homepage.includes('Two useful ideas every week. Less than ten minutes total.'));
+assert(homepage.includes('Your first security email arrives immediately'));
+assert(homepage.includes('One practical security lesson every week.'));
+assert(homepage.includes('One vulnerability. One code example. One practical fix. Free for JavaScript and TypeScript developers.'));
+assert(homepage.includes('Want the next security email in your inbox?'));
+assert(homepage.includes('Every email starts with a situation a developer can recognize and ends with something concrete to apply.'));
+assert(!homepage.includes('Security Tuesday. Testing Friday.'));
+assert(!homepage.includes('Security and Testing'));
+assert(!homepage.includes('Testing Friday'));
 assert.strictEqual(count(homepage, 'name="email_address"'), 3);
 assert.strictEqual(count(homepage, 'name="fields[first_name]"'), 0);
 assert.strictEqual(
@@ -199,8 +211,12 @@ assert(homepage.includes('data-newsletter-placement="homepage_after_examples"'))
 assert(homepage.includes('data-newsletter-placement="homepage_final"'));
 assert(!homepage.includes('€19'));
 assert(!homepage.includes('€37'));
-assert(homepage.includes('<title>Build web applications you can trust | Dev Academy</title>'));
-assert(homepage.includes('<meta name="description" content="Practical Security Tuesday and Testing Friday Knowledge Pills for JavaScript and TypeScript developers.">'));
+assert(homepage.includes('<title>Weekly web security email for developers | Dev Academy</title>'));
+assert(homepage.includes('<meta name="description" content="A weekly web security email for developers: one vulnerability, one code example, and one practical fix in under five minutes.">'));
+assert(homepage.includes('A weekly web security email for JavaScript and TypeScript developers.'));
+assert(homepage.includes('<meta property="og:site_name" content="Dev Academy — Web security for developers">'));
+assert(!homepage.includes('Testing &amp; automation'));
+assert(!homepage.includes('<meta property="article:tag" content="testing">'));
 assert(homepage.includes('<meta property="og:url" content="https://dev-academy.com/">'));
 assert.strictEqual(
   countCanonical(homepage, 'https://dev-academy.com/'),
@@ -245,6 +261,8 @@ const articleSitemap = readPublic('articles-sitemap.xml');
 assert(articleSitemap.includes('<loc>https://dev-academy.com/articles/</loc>'));
 assert(postSitemap.includes('<loc>https://dev-academy.com/preventing-xss-in-angular/</loc>'));
 assert.strictEqual(count(emailExamplesTemplate, 'class="newsletter-email-card"'), 2);
+assert(!emailExamplesTemplate.includes('testing_pill'));
+assert(!emailExamplesTemplate.includes('newsletter-email-label-testing'));
 assert(/\.newsletter-email-card\s*\{[\s\S]*?display:\s*grid;[\s\S]*?grid-template-rows:\s*auto 1fr;/.test(newsletterStyles));
 assert(!/\.newsletter-email\s*\{[\s\S]*?height:\s*100%;/.test(newsletterStyles));
 

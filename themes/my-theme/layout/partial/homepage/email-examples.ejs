@@ -7,26 +7,26 @@
         </div>
         <div class="newsletter-email-grid">
             <div class="newsletter-email-card">
-                <p class="newsletter-email-label newsletter-email-label-security">Security Tuesday · example email</p>
+                <p class="newsletter-email-label newsletter-email-label-security">Security Email #1 · Clickjacking</p>
                 <%- partial('partial/homepage/email-preview', {
                     pill: homepage.security_pill,
                     variant: 'security'
                 }) %>
             </div>
             <div class="newsletter-email-card">
-                <p class="newsletter-email-label newsletter-email-label-testing">Testing Friday · example email</p>
+                <p class="newsletter-email-label newsletter-email-label-security-secondary">Security Email #2 · URL allow-list</p>
                 <%- partial('partial/homepage/email-preview', {
-                    pill: homepage.testing_pill,
-                    variant: 'testing'
+                    pill: homepage.security_pill_2,
+                    variant: 'security-secondary'
                 }) %>
             </div>
         </div>
         <div class="newsletter-examples-form">
-            <p class="newsletter-examples-form-title">Want the next Pill in your inbox?</p>
+            <p class="newsletter-examples-form-title">Want the next security email in your inbox?</p>
             <%- partial('partial/homepage/newsletter-form', {
                 placement: 'homepage_after_examples',
                 formId: 'pills-after-examples',
-                buttonLabel: 'Send me the Pills'
+                buttonLabel: 'Get the first email →'
             }) %>
         </div>
     </div>

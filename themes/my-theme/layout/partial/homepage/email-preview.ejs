@@ -14,7 +14,7 @@
             <span><%= pill.problem_label %></span>
             <p><%= pill.problem %></p>
         </div>
-        <pre><code><%= pill.problem_code.trim() %></code></pre>
+        <%- homepage_code(pill.problem_code.trim(), pill.problem_code_language) %>
         <ul>
             <% pill.bullets.forEach(function (item) { %>
                 <li><%= item %></li>
@@ -24,7 +24,7 @@
             <span><%= pill.solution_label %></span>
             <p><%= pill.solution %></p>
         </div>
-        <pre><code><%= pill.solution_code.trim() %></code></pre>
+        <%- homepage_code(pill.solution_code.trim(), pill.solution_code_language) %>
         <p class="newsletter-email-takeaway"><%= pill.takeaway %></p>
         <p class="newsletter-email-signoff"><%= pill.signoff %></p>
     </div>

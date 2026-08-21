@@ -80,10 +80,6 @@
   background: linear-gradient(to bottom, transparent 0 62%, #9c7bff 62% 90%, transparent 90% 100%);
 }
 
-.newsletter-highlight-testing {
-  background: linear-gradient(to bottom, transparent 0 62%, #53c49c 62% 90%, transparent 90% 100%);
-}
-
 #get-free-pills {
   scroll-margin-top: calc(#{$header-height-mobile} + 2rem);
 }
@@ -258,7 +254,7 @@
   }
 }
 
-.newsletter-mini-pill-testing {
+.newsletter-mini-pill-security-secondary {
   background: #141519;
   border-color: #25262d;
   bottom: 0;
@@ -319,7 +315,7 @@
   margin-bottom: 1rem;
 }
 
-.newsletter-email-label-testing {
+.newsletter-email-label-security-secondary {
   color: var(--newsletter-green);
 }
 
@@ -355,7 +351,7 @@
   width: 3.6rem;
 }
 
-.newsletter-email-testing .newsletter-email-avatar {
+.newsletter-email-security-secondary .newsletter-email-avatar {
   background: var(--newsletter-green);
 }
 
@@ -420,6 +416,24 @@
     line-height: 1.55;
     padding: 0;
   }
+
+  .hljs-keyword,
+  .hljs-literal {
+    color: #6f42c1;
+    font-weight: 700;
+  }
+
+  .hljs-string {
+    color: #0a7a28;
+  }
+
+  .hljs-title.function_ {
+    color: #0550ae;
+  }
+
+  .hljs-params {
+    color: #953800;
+  }
 }
 
 .newsletter-email-problem,
@@ -448,7 +462,11 @@
   }
 }
 
-.newsletter-email-testing {
+.newsletter-email-security-secondary {
+  code {
+    line-height: 1.35;
+  }
+
   .newsletter-email-solution {
     border-left-color: var(--newsletter-green);
   }
@@ -520,69 +538,6 @@
     color: var(--newsletter-ink);
     margin-top: 1.8rem;
   }
-}
-
-.newsletter-proof {
-  background: var(--newsletter-paper);
-  padding: 7.2rem 0;
-}
-
-.newsletter-testimonials {
-  display: grid;
-  gap: 2rem;
-  margin: 0 auto;
-  max-width: 105rem;
-}
-
-.newsletter-testimonial {
-  background: #fff;
-  border: .1rem solid var(--newsletter-line);
-  border-radius: 1.2rem;
-  box-shadow: 0 1.2rem 3rem rgba(17, 19, 26, .06);
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 2.8rem;
-
-  blockquote {
-    flex: 1;
-    font-size: 1.4rem;
-    margin: 1.6rem 0 2.4rem;
-    padding: 0;
-
-    &:before {
-      display: none;
-    }
-
-    p {
-      color: #464750;
-      line-height: 1.75;
-    }
-  }
-
-  figcaption {
-    border-top: .1rem solid #e6e6e1;
-    display: flex;
-    flex-direction: column;
-    gap: .4rem;
-    padding-top: 1.6rem;
-
-    strong {
-      font-size: 1.4rem;
-    }
-
-    span {
-      color: var(--newsletter-muted);
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
-  }
-}
-
-.newsletter-testimonial-stars {
-  color: #ed9b18;
-  font-size: 1.5rem;
-  letter-spacing: .12em;
 }
 
 .newsletter-about-bartosz {
@@ -749,10 +704,6 @@
     align-items: center;
     gap: 7rem;
     grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-  }
-
-  .newsletter-testimonials {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .newsletter-about-grid {
