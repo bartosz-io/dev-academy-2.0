@@ -1,0 +1,18 @@
+<main class="pills-landing" aria-labelledby="pills-landing-title">
+    <section class="pills-landing-card">
+        <div class="pills-landing-brand" aria-label="Dev Academy">
+            <img src="<%- url_for('/img/nav-logo.png') %>" width="48" height="48" alt="">
+            <span>Dev Academy</span>
+        </div>
+
+        <h1 id="pills-landing-title">The weekly web <span class="pills-landing-highlight">security</span> email for developers.</h1>
+        <p class="pills-landing-summary">1 vulnerability. 1 code example. 1 practical fix. Under 5 minutes.</p>
+
+        <%- partial('partial/homepage/newsletter-form', {
+            placement: 'pills_landing',
+            formId: 'pills-signup',
+            buttonLabel: 'Get the first email →',
+            reassurance: 'Free. First Security lesson after confirmation. Unsubscribe anytime.'
+        }) %>
+    </section>
+</main>

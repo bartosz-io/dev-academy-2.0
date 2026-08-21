@@ -21,11 +21,12 @@
   if (page.isAboutPage) { bodyClasses += 'index-page ' }
   if (page.layout === 'homepage') { bodyClasses += 'newsletter-homepage-page ' }
   if (page.layout === 'landing') { bodyClasses += 'landing-page ' }
+  if (page.layout === 'pills') { bodyClasses += 'pills-landing-page ' }
 %>
 <body class="<%- bodyClasses %>">
 
 <!-- this is a "hack" since layout property selects "landing.ejs" which does not exist... -->
-<% if (page.layout === 'landing')  {%>
+<% if (page.layout === 'landing' || page.layout === 'pills')  {%>
     <%- body %>
 <% } else { %>
     <%- partial('partial/header') %>
@@ -53,7 +54,7 @@ var noPersistentBrowserIdentifiers = pageTrackingMode === noPersistentBrowserIde
 var privacy = config.privacy || {};
 %>
 <% if (!noPersistentBrowserIdentifiers) { %>
-<%- partial('partial/privacy-controls', {footerless: page.layout === 'landing'}) %>
+<%- partial('partial/privacy-controls', {footerless: page.layout === 'landing' || page.layout === 'pills'}) %>
 <% } %>
 <%
 var privacyConfigJson = JSON.stringify({

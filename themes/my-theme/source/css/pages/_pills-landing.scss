@@ -1,0 +1,159 @@
+.pills-landing-page {
+  --pills-ink: #11131a;
+  --pills-muted: #62636d;
+  --pills-paper: #fbfaf7;
+  --pills-purple: #5900c7;
+
+  background: var(--pills-paper);
+  padding-top: 0;
+}
+
+.pills-landing {
+  align-items: center;
+  background:
+    radial-gradient(circle at 78% 22%, rgba(91, 49, 255, .08), transparent 28rem),
+    var(--pills-paper);
+  color: var(--pills-ink);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 4rem 2rem;
+}
+
+.pills-landing-card {
+  margin: 0 auto;
+  max-width: 94rem;
+  width: 100%;
+}
+
+.pills-landing-brand {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3.2rem;
+
+  img {
+    height: 4.4rem;
+    width: 4.4rem;
+  }
+
+  span {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -.025em;
+  }
+}
+
+.pills-landing-card h1 {
+  font-size: clamp(4rem, 10vw, 5.8rem);
+  letter-spacing: -.045em;
+  line-height: 1.04;
+  margin: 0 auto 1.8rem;
+  max-width: 92rem;
+}
+
+.pills-landing-highlight {
+  background: linear-gradient(to bottom, transparent 0 62%, #b39cff 62% 90%, transparent 90% 100%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.pills-landing-summary {
+  color: var(--pills-muted);
+  font-size: 1.8rem;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0 0 2.4rem;
+  max-width: 68rem;
+  padding-bottom: 0;
+}
+
+.pills-landing .newsletter-form {
+  margin-top: 0;
+  max-width: 68rem;
+}
+
+.pills-landing .newsletter-form-label {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.pills-landing .newsletter-form-fields {
+  display: grid;
+  gap: .8rem;
+}
+
+.pills-landing .newsletter-form-input {
+  background: #fff;
+  border: .1rem solid #a8a9b1;
+  border-radius: .8rem;
+  color: var(--pills-ink);
+  min-height: 5.6rem;
+  padding: 1.5rem 1.7rem;
+
+  &:focus {
+    border-color: var(--pills-purple);
+    box-shadow: 0 0 0 .3rem rgba(89, 0, 199, .16);
+    outline: none;
+  }
+}
+
+.pills-landing .newsletter-form-submit {
+  background: var(--pills-purple);
+  border-radius: .8rem;
+  cursor: pointer;
+  min-height: 5.6rem;
+
+  &:hover {
+    background: #3f008f;
+    color: #fff;
+  }
+}
+
+.pills-landing .newsletter-form-reassurance {
+  color: var(--pills-muted);
+  font-size: 1.15rem;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin-top: 1rem;
+  padding-bottom: 0;
+}
+
+@media (min-width: 700px) {
+  .pills-landing {
+    padding: 6rem 3rem;
+    text-align: center;
+  }
+
+  .pills-landing-brand {
+    margin-bottom: 3.6rem;
+  }
+
+  .pills-landing-summary,
+  .pills-landing .newsletter-form {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pills-landing .newsletter-form-fields {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+@media (max-width: 699px) {
+  .pills-landing-brand {
+    justify-content: flex-start;
+  }
+
+  .pills-landing .newsletter-form-submit {
+    width: 100%;
+  }
+}
